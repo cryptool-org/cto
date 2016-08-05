@@ -1,0 +1,17 @@
+# Ignore everything
+/*
+node_modules
+.idea
+
+# But not these files...
+!.gitignore
+
+!/_ctoApps
+!/_ctoApps/*
+
+!/plugins
+/plugins/*
+!/plugins/content
+/plugins/content/*
+!/plugins/content/loadcto
+!/plugins/content/loadcto/*
