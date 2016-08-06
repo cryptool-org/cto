@@ -1,0 +1,12 @@
+    {
+      "styles" : [  "style.css"
+      ],
+
+      "scripts": [  "build/react.js",
+                    "build/react-dom.js",
+                    "https://npmcdn.com/babel-core@5.8.38/browser.min.js",
+                    {"file" : "app.js", "type" : "text/babel"}
+      ],
+      
+      "tag" :    "#myReact"
+    }

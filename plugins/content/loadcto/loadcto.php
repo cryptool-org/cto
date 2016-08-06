@@ -127,28 +127,66 @@ class PlgContentLoadcto extends JPlugin
 
         $this->injectFiles($config, $appLocation);
 
-		return '<' . $config->tag . '></' . $config->tag . '>' . 'This is the CTO Algorithm ' . $toolName . ' - thats fun - and style ' . $style;
+        switch( $config->tag{0} ) {
+
+            case '.' :
+                $tag = '<div class="' . substr($config->tag,1) . '"></div>';
+                break;
+            case '#' :
+                $tag = '<div id="' . substr($config->tag,1) . '"></div>';
+                break;
+            default:
+                $tag = '<' . $config->tag . '></' . $config->tag . '>';
+
+        }
+
+		return $tag
+                . 'This is the CTO Algorithm ' . $toolName . ' - and style ' . $style;
 	}
 
 	private function injectFiles($config, $appLocation){
 
         $document = JFactory::getDocument();
 
-	    foreach ($config->styles as $style){
+        // inject all styles
+
+	    foreach ( $config->styles as $style ){
 	        //echo $style . '<br>';
-            $document->addStyleSheet(JURI::base() . $appLocation . $style);
+            if ( substr($style, 0, 4) === 'http' )
+                $document->addStyleSheet( $style );
+            else
+                $document->addStyleSheet( JURI::base() . $appLocation . $style );
         }
 
-        foreach ($config->scripts as $script){
+        // inject all scripts
+
+        foreach ( $config->scripts as $script ) {
             //echo JURI::base() . $appLocation . $script . '<br>';
 
-            $document->addScript(JURI::base() . $appLocation . $script);
+            if (is_object($script)) {
+
+                if ( substr($script->file, 0, 4) === 'http' )
+                    $document->addScript($script->file, $script->type);
+                else
+                    $document->addScript(JURI::base() . $appLocation . $script->file, $script->type);
+
+            } else {
+
+                if ( substr($script, 0, 4) === 'http' )
+                    $document->addScript($script);
+                else
+                    $document->addScript(JURI::base() . $appLocation . $script);
+            }
         }
 
-        $document->addScriptDeclaration(
+        // inject inline initialzation script if specified
+
+        if ($config->init)
+            $document->addScriptDeclaration(
             // 'System.baseURL = \'' . JURI::base() . $appLocation . '\';' .
-            $config->init
-        );
+                $config->init
+            );
+
 
     }
 
