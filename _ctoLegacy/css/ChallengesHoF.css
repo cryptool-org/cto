@@ -1,0 +1,111 @@
+.right {
+    text-align: right;
+}
+
+hr {
+    color:#ADADAD;
+    background-color:#ADB2AD;
+    height:1px;
+    border:0;
+}
+
+table.hof_wrapper {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0;
+    background-color: #707070;
+}
+
+table.hof_wrapper td {
+    padding:5px;
+}
+
+h3.challenge_title {
+    vertical-align: middle;
+    position: relative;
+    top:7px;
+    left:15px;
+}
+
+td div.level_icon {
+    position: relative;
+    left: 10px;
+    width:49px;
+    height:40px;
+    float:left;
+}
+
+td div.level_1 {
+    background: url(../images/challenge_display_combined.png) no-repeat 0 -51px;
+}
+
+td div.level_2 {
+    background: url(../images/challenge_display_combined.png) no-repeat -49px -51px;
+}
+
+td div.level_3 {
+    background: url(../images/challenge_display_combined.png) no-repeat -100px -51px;
+}
+
+td div.level_4 {
+    width: 32px;
+    margin-right: 17px;
+    background: url(../images/challenge_display_combined.png) no-repeat -149px -51px;
+}
+
+table.hof_table {
+    /*width="90%" cellspacing="0" cellpadding="2" border="0" align="left"*/
+    width:90%;
+    text-align:left;
+}
+
+table.hof_table td {
+    padding: 2px;
+}
+
+table.hof_table th {
+    font-weight: bold;
+}
+
+div.hof_rank_img {
+        width:27px;
+        height:30px;
+}
+
+div.hof_rank_img.img_1 { background: url(../images/challenge_display_combined.png) no-repeat -183px -51px; }
+div.hof_rank_img.img_2 { background: url(../images/challenge_display_combined.png) no-repeat -210px -51px; }
+div.hof_rank_img.img_3 { background: url(../images/challenge_display_combined.png) no-repeat -237px -51px; }
+div.hof_rank_img.img_4 { background: url(../images/challenge_display_combined.png) no-repeat -264px -51px; }
+
+div.not_solved_yet {
+    text-align: center;
+    font-weight: bold;
+}
+
+td.logged_in_user {
+    font-style: italic;
+    background-color: #F00;
+}
+
+div#challenge_pages { margin-top:25px; }
+
+div#challenge_pages table {
+	width:100%;
+	text-align:center;
+	border:0;
+}
+div#challenge_pages table td {
+	background-color:#707070;
+}
+
+div#challenge_pages table td.challenge_page {
+	width:25px;
+}
+
+div#challenge_pages table td#challenge_page_last {
+/*	width:*;*/
+}
+
+div#challenge_pages table td#challenge_page_all {
+	width:65px;
+}

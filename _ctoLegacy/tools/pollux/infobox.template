@@ -1,0 +1,5 @@
+<table>
+<tr><td><b>space</td><td>{-zeile1-}</td></tr>
+<tr><td><b>dash</td><td>{-zeile2-}</td></tr>
+<tr><td><b>dot</td><td>{-zeile3-}</td></tr>
+</table>

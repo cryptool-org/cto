@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>CTO Pollux</name>
+	<author>CrypTool-Online (Florian Haker, Sven Radelof, Christian Sieche)</author>
+	<creationDate>February 2009</creationDate>
+	<copyright>Copyright (C) 2009 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>christian@sieche.net</authorEmail>
+	<authorUrl>www.cryptool-online.de</authorUrl>
+	<version>PHP.0.9.0</version>
+	<description>CrypTool-Online Pollux-Chiffre-Module (PHP)</description>
+	<files>
+		<filename module="mod_cto_pollux">mod_cto_pollux.php</filename>
+		<filename module="mod_cto_pollux">alfa_dat.php</filename>
+		<filename module="mod_cto_pollux">form.template</filename>
+		<filename module="mod_cto_pollux">functions.pollux.php</filename>
+		<filename module="mod_cto_pollux">infobox.template</filename>
+		<filename module="mod_cto_pollux">prog.pollux.php</filename>
+	</files>
+    <languages>
+  		<language tag="en-GB">en-GB.mod_cto_pollux.ini</language>
+  		<language tag="de-DE">de-DE.mod_cto_pollux.ini</language>
+    </languages>
+</install>

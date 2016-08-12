@@ -1,0 +1,74 @@
+<form name="form" action="{-action-}" method="post">
+<table>
+  <tbody>
+    <tr>
+      <td valign="top">&nbsp;&nbsp;</td>
+      <td>
+        {-orgtext-}:<br/>
+        <textarea name="orgtxt" class="ctoformcss-txtinput-style ctoformcss-default-input-size" onkeyup="this.value=this.value.toUpperCase();" wrap="physical">{-orgtxt-}</textarea>
+      </td>
+      <td valign="middle">
+        
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;&nbsp;</td>
+      <td>
+        {-codtext-}:<br>
+        <textarea name="codtxt" class="ctoformcss-txtinput-style ctoformcss-default-input-size" onkeyup="this.value=this.value.toUpperCase()" wrap="physical">{-codtxt-}</textarea>
+      </td>
+      <td valign="middle">
+        
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;&nbsp;</td>
+      <td colspan="2">
+        <table border=0>
+        <tr>
+          <td>
+          </td><td colspan=2>
+            <input type=checkbox name=num {-num-}>{-Zahlen-}&nbsp;&nbsp;
+            <input type=checkbox name=alf {-alf-}>{-Buchstaben-}&nbsp;&nbsp;
+            <input type=checkbox name=misch {-misch-}>{-Mischen-}
+          </td>
+        </tr>
+        <tr>
+        <td></td><td colspan=2>
+            <input type="submit" name="encode" value="{-encrypt-}" class="ctoformcss-default-button-m">
+            <input type="submit" name="decode" value="{-decrypt-}" class="ctoformcss-default-button-m">
+        </td>
+        </tr>
+        
+        
+        </table>           
+      </td>
+    </tr>
+        <tr>
+      <td valign="top"></td>
+      <td>&nbsp;</td>
+      <td valign="left"></td>
+    </tr>
+        <tr>
+      <td valign="top"></td>
+      <td>&nbsp;</td>
+      <td valign="left"></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td><b>{-spaces-}</b> {-zeile1-}</td>
+      <td valign="left"></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td><b>{-dashes-}</b> {-zeile2-}</td>
+      <td valign="left"></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td><b>{-dots-}</b> {-zeile3-}</td>
+      <td valign="left"></td>
+    </tr>
+  </tbody>
+</table>
+</form>

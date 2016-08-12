@@ -1,0 +1,374 @@
+
+#contenti form,input,select,textarea {
+	margin:0;
+	padding:0;
+}
+
+#contenti #minimum li {
+}
+#contenti #minimum {
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+#contenti input {
+	font-size: 100%;
+	margin-bottom: 2px;
+	padding: 1px;
+}
+#contenti ol,ul {
+	line-height: 1.4em;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+#contenti p {
+	line-height: 1.4em;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	text-align: justify;
+}
+#contenti table {
+	background: #345;
+	margin-bottom: 10px;
+	width: 100%;
+}
+#contenti td {
+	background: #eee;
+	padding: 7px;
+	text-align: left;
+	vertical-align: top;
+}
+#contenti th {
+	background: #000000;
+	color: #fff;
+	text-align: left;
+	vertical-align: middle;
+}
+#contenti {
+	margin: 0 auto;
+	padding: 10px;
+	text-align: left;
+	width: 500px;
+}
+#contenti #linkstop {
+	background: #234;
+	color: #fff;
+	margin-top: -10px;
+	padding: 2px;
+}
+#contenti #linkstop a {
+	color: #fff;
+}
+#contenti #score {
+	color: #000;
+	font-size: 85%;
+	position:absolute;
+	text-align: center;
+	width: 100px;
+	z-index: 10;
+}
+#contenti #score,#contenti #rating,#contenti #standards {
+	font-weight: bold;
+}
+#contenti #scorebar {
+	background-image: url(../tools/passcheck/images/bg_strength_gradient.jpg);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	position:absolute;
+	width: 100px;
+	z-index: 0;
+}
+#contenti #scorebarBorder {
+	background: #333;
+	border: 1px #000 solid;
+	height: 16px;
+	margin-bottom: 2px;
+	width: 100px;
+}
+#contenti #passwordPwd {
+    border: 2px solid;
+	border-color: #333333;
+	scrollbar-arrow-color:#FFFFFF;
+	scrollbar-face-color:#333333;
+	scrollbar-highlight-color: #FFFFFF;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-size: 100%;
+	width: 100px;
+}
+
+
+
+#contenti #passwordPwd:hover { 
+	border: 2px dotted;
+}
+
+
+#contenti #tablePwdScoring {
+	margin-bottom: 0 !important;
+}
+#contenti #listLegend li {
+	list-style: none;
+	padding-bottom: 4px;
+	margin-left: 0;
+	padding-left: 0;
+}
+#contenti #listLegend {
+	margin-left: 0;
+	padding-left: 0;
+}
+#contenti div.fail,#contenti div.pass,#contenti div.exceed,#contenti div.warn {
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 16px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 16px;
+}
+#contenti div.exceed {
+	background-image: url(../tools/passcheck/images/img_status_exceed.png);
+}
+#contenti div.fail {
+	background-image: url(../tools/passcheck/images/img_status_fail.png);
+}
+#contenti div.pass {
+	background-image: url(../tools/passcheck/images/img_status_pass.png);
+}
+#contenti div.warn {
+	background-image: url(../tools/passcheck/images/img_status_warn.png);
+}
+#contenti td.exceed,#contenti td.fail,#contenti td.pass,#contenti td.warn {
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+}
+#contenti td.exceed {
+	background: #1C60A4;
+}
+#contenti td.fail {
+	background: #C00;
+}
+#contenti td.pass {
+	background: #093;
+}
+#contenti td.warn {
+	background: #f60;
+}
+#contenti div.box {
+	background: #456;
+	border: 0px #000 solid;
+	color: #fff;
+	height: 16px;
+	padding: 2px;
+	white-space: nowrap;
+	width: 16px;
+}
+#contenti div.boxMinus,#contenti div.boxPlus {
+	border: none;
+	color: #fff;
+	font-weight: bold;
+	padding: 2px;
+	text-align: left;
+	white-space: nowrap;
+}
+#contenti td.footnote {
+	background: #ddd;
+	font-size: 70%;
+}
+#contenti .bold {
+	font-weight: bold;
+}
+#contenti .clearNone {
+	clear: none;
+}
+#contenti .floatRight {
+	float: right;
+}
+#contenti .floatLeft {
+	float: left;
+}
+#contenti  .hide {
+	display: none;
+}
+#contenti  .imgLegend {
+	clear: left !important;
+	float: left !important;
+	position: relative !important;
+	margin-bottom: -3px !important;
+	margin-right: 5px !important;
+}
+#contenti .inline {
+	display: inline;
+}
+#contenti .italic {
+	font-style: italic;
+}
+#contenti .noPad {
+	padding: 0;
+}
+#contenti .show {
+	display: inline !important;
+}
+#contenti .txtLg {
+	font-size: 125%;
+}
+#contenti .txtSmall {
+	font-size: 75%;
+}
+#contenti .txtCenter {
+	text-align: center;
+}
+#contenti .txtRight {
+	text-align: right;
+}
+#contenti div.xtend {
+	clear: both !important;
+	line-height: 0;
+	height: 0;
+}
+
+
+
+
+
+
+
+
+
+
+#contenti a:link, #contenti a:visited
+{
+	color:#459045;
+	text-decoration:none;
+	border-bottom:none;
+}
+#contenti a:hover, #contenti a:active
+{
+	text-decoration:none;
+	border-bottom: 1px solid;
+}
+#contenti #header {
+background:url(../tools/passcheck/images/top.gif) top repeat-x;
+height:145px;
+margin:0;
+padding:0;
+width:100%;
+}
+#contenti #logo {
+height:100px;
+width:900px;
+margin:0 auto;
+}
+#contenti #blogname {
+height:30px;
+padding-left:12px;
+padding-top:28px;
+text-align:left;
+}
+#contenti h1#blogname a {
+color:#fff;
+font-size:1.3em;
+}
+#contenti #navigation
+{
+	clear:both;
+	height:24px;
+	margin:0 auto;
+	padding:0 10px;
+	text-align:center;
+	width:880px;
+	font-size:1.1em;
+}
+#contenti #navigation a:link,
+#contenti #navigation a:visited
+{
+	background:#FFF url(../tools/passcheck/images/active1.gif) left bottom no-repeat;
+	color:#fff;
+	height:24px;
+	margin-right:2px;
+	padding-left:12px;
+	text-decoration:none;
+	border:none;
+}
+#contenti #navigation a:link,
+#contenti #navigation a:link span,
+#contenti #navigation a:visited,
+#contenti #navigation a:visited span
+{
+	cursor:hand;
+	display:block;
+	float:left;
+	border:none;
+}
+#contenti #navigation li
+{
+	line-height:23px;
+	float:left;
+	list-style:none;
+	margin:0;
+}
+#contenti #navigation a:hover
+{
+	background:url(../tools/passcheck/active1.gif) left bottom no-repeat;
+	color:#040;
+	height:24px;
+	padding-left:12px;
+	text-decoration:none;
+	border:none;
+}
+#contenti #navigation .current_page_item a:link,
+#contenti #navigation .current_page_item a:visited
+{
+	background:#FFF url(../tools/passcheck/current1.gif) left bottom no-repeat;
+	color:#fff;
+	height:27px;
+	line-height:24px;
+	margin-right:2px;
+	padding-left:15px;
+	text-decoration:none;
+	border:none;
+}
+#contenti #navigation .current_page_item a:hover
+{
+	background:#FFF url(../tools/passcheck/current1.gif) left bottom no-repeat;
+	color:#AAC8E0;
+	height:27px;
+	margin-right:2px;
+	padding-left:15px;
+	text-decoration:none;
+	border:none;
+}
+#contenti #navigation ul
+{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#contenti #navigation a:link span,
+#contenti #navigation a:visited span,
+#contenti #navigation a:hover span
+{
+	background:url(../tools/passcheck/active2.gif) right bottom no-repeat;
+	height:24px;
+	padding-right:12px;
+	border:none;
+}
+#contenti #navigation .current_page_item a:link span,
+#contenti #navigation .current_page_item a:visited span,
+#contenti #navigation .current_page_item a:hover span
+{
+	background:url(../tools/passcheck/current2.gif) right bottom no-repeat;
+	height:27px;
+	padding-right:15px;
+	border:none;
+}
+#contenti #footer {
+	background:#223344 url(../tools/passcheck/top.gif) bottom repeat-x;
+	clear: both;
+	height: 60px;
+	padding: 10px;
+	text-align: center;
+	margin:0 auto;
+	color:#ccc;
+}

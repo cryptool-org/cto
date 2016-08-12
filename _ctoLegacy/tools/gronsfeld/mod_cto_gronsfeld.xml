@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>CTO Gronsfeld</name>
+	<author>CrypTool-Online (Christian Sieche)</author>
+	<creationDate>December 2008</creationDate>
+	<copyright>Copyright (C) 2009 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>christian@sieche.net</authorEmail>
+	<authorUrl>www.cryptool-online.de</authorUrl>
+	<version>JS.0.9.0</version>
+	<description>CrypTool-Online Gronsfeld-Chiffre-Module (JavaScript)</description>
+	<files>
+		<filename module="mod_cto_gronsfeld">mod_cto_gronsfeld.php</filename>
+		<filename module="mod_cto_gronsfeld">tmpl/default.php</filename>
+		<filename module="mod_cto_gronsfeld">algorithm.js</filename>
+		<filename module="mod_cto_gronsfeld">style.css</filename>
+	</files>
+    <languages>
+  		<language tag="en-GB">en-GB.mod_cto_gronsfeld.ini</language>
+  		<language tag="de-DE">de-DE.mod_cto_gronsfeld.ini</language>
+    </languages>
+</install>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>CTO Larrabee</name>
+	<author>CrypTool-Online (Marcel Braetz, Christian Sieche)</author>
+	<creationDate>March 2009</creationDate>
+	<copyright>Copyright (C) 2009 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>christian@sieche.net</authorEmail>
+	<authorUrl>www.cryptool-online.de</authorUrl>
+	<version>PHP.0.9.0</version>
+	<description>CrypTool-Online Larrabee-Chiffre-Module (PHP)</description>
+	<files>
+		<filename module="mod_cto_larrabee">mod_cto_larrabee.php</filename>
+		<filename module="mod_cto_larrabee">alfa_dat.php</filename>
+		<filename module="mod_cto_larrabee">fkt_coder.php</filename>
+		<filename module="mod_cto_larrabee">fkt_decipher.php</filename>
+		<filename module="mod_cto_larrabee">prog.larrabee.php</filename>
+		<filename module="mod_cto_larrabee">style.css</filename>
+	</files>
+    <languages>
+  		<language tag="en-GB">en-GB.mod_cto_larrabee.ini</language>
+  		<language tag="de-DE">de-DE.mod_cto_larrabee.ini</language>
+    </languages>
+</install>

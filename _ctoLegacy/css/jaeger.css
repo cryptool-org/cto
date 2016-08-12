@@ -1,0 +1,14 @@
+.ctojaegercss-txtsyncoutput-style {
+	border: 1px solid;
+	scrollbar-arrow-color:#FFFFFF;
+	scrollbar-face-color:#333333;
+	scrollbar-highlight-color: #FFFFFF;
+	overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  wrap: off;
+	/*font-family: Helvetica,Arial,sans-serif;*/
+	font-family:courier;
+	font-size: 12px;
+	color: #000000;
+}

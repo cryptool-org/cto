@@ -1,0 +1,30 @@
+/* style */
+.ctoformcss-adfgvx-matrix {
+	width: 180px;
+	height:130px;
+	font-family:courier;
+	font-size: 12px;
+}
+
+.ctoformcss-adfgvx-matrix-input-size {
+	width: 300px;
+}
+
+.ctoformcss-adfgvx-keylength {
+	width: 400px;
+}
+
+.ctoformcss-substitution-button {
+	width: 160px;
+}
+
+.ctoformcss-matrix-button {
+	width: 180px;
+}
+
+.ctoformcss-substitution {
+	width: 400px;
+	margin-left: 0px;
+	text-align: left;
+	padding-left: 1px;
+}
