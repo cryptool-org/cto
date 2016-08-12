@@ -9,6 +9,9 @@ node_modules
 !/_ctoApps
 !/_ctoApps/*
 
+!/_ctoLegacy
+!/_ctoLegacy/*
+
 !/plugins
 /plugins/*
 !/plugins/content

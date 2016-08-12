@@ -1,4 +1,6 @@
     {
+      "name" : "ctoReact",
+
       "styles" : [  "style.css"
       ],
 
@@ -8,5 +10,10 @@
                     {"file" : "app.js", "type" : "text/babel"}
       ],
       
-      "tag" :    "#myReact"
+      "tag" :    {"name"      : "#myReact",
+                  "btnText"   : "see in action",
+                  "ovlTitle"  : "The react algorithm",
+                  "ovlFooter" : "crypTool Online"
+      }
+
     }

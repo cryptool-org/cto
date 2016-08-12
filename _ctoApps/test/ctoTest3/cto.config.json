@@ -1,4 +1,5 @@
 {
+  "name"   : "ctoTest3",
   "styles" : [  "style.css"
   ],
 
@@ -10,5 +11,13 @@
   ],
 
   "init":    "System.import('appTwo').catch(function(err){ console.error(err); });",
-  "tag" :    "cto-algo"
+
+  "tag" :    {
+              "name" : "cto-algo",
+              "accGroup" : "cto",
+              "accTitle" : {"en" : "see in action" ,
+                            "de" : "Probiere es aus"
+              }
+  }
+
 }
