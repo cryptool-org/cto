@@ -43,12 +43,16 @@ class PlgContentLoadcto extends JPlugin
         //JLog::add(JText::_('cto cto'), JLog::WARNING, 'jerror');
         JLog::add(JText::_('onContentPrepare'), JLog::WARNING, 'loadcto');
 
-        $this->lang = JFactory::getLanguage()->getLocale()[4];
-
         // Don't run this plugin when the content is being indexed
         if ($context == 'com_finder.indexer') {
             return true;
         }
+
+        // get language - NOTE only the third array element is usefull for all languages
+        $this->lang = explode('_', JFactory::getLanguage()->getLocale()[2])[0];
+
+        JLog::add('Language is ' . $this->lang, JLog::WARNING, 'loadcto');
+        JLog::add('Language is ' . print_r(JFactory::getLanguage()->getLocale(), true), JLog::WARNING, 'loadcto');
 
         // Simple performance check to determine whether bot should process further
         if (strpos($article->text, 'loadCtoApp') === false && strpos($article->text, 'loadcto') === false) {
@@ -83,6 +87,11 @@ class PlgContentLoadcto extends JPlugin
                 $article->text = preg_replace("|$match[0]|", addcslashes($output, '\\$'), $article->text, 1);
                 $style = $this->params->def('style', 'none');
             }
+
+            // finaly inject globals
+            JFactory::getDocument()->addScriptDeclaration(
+                "var CTO_Globals = {}; CTO_Globals.lang='" . $this->lang . "';"
+            );
         }
 
 
@@ -166,8 +175,10 @@ class PlgContentLoadcto extends JPlugin
             case 'overlay':
                 jimport('joomla.html.html.bootstrap');
                 $modal_params = array();
+                $modal_params['height'] = 400;
+                $modal_params['width']  = "100%";
                 $modal_params['title'] = $this->__($tag->ovlTitle);
-                $modal_params['backdrop'] = "false";
+                //$modal_params['backdrop'] = "false";
                 $modal_params['footer'] = '<p>' . $this->__($tag->ovlFooter) . '</p>';
 
                 $lnk = '<a href="#modal' . $config->name . '" class="btn" data-toggle="modal">'
@@ -175,7 +186,6 @@ class PlgContentLoadcto extends JPlugin
                     . '</a>';
 
                 $html = $this->getTag($tagName);
-
                 return $lnk . JHTML::_('bootstrap.renderModal', 'modal' . $config->name, $modal_params, $html);
 
                 break;

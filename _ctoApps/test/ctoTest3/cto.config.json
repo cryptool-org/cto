@@ -4,20 +4,19 @@
   ],
 
   "scripts": [  "node_modules/core-js/client/shim.min.js",
-                "node_modules/zone.js/dist/zone.js",
-                "node_modules/reflect-metadata/Reflect.js",
-                "node_modules/systemjs/dist/system.src.js",
-                "systemjs.config.js"
+    "node_modules/zone.js/dist/zone.js",
+    "node_modules/reflect-metadata/Reflect.js",
+    "node_modules/systemjs/dist/system.src.js",
+    "systemjs.config.js"
   ],
 
   "init":    "System.import('appTwo').catch(function(err){ console.error(err); });",
 
   "tag" :    {
-              "name" : "cto-algo",
-              "accGroup" : "cto",
-              "accTitle" : {"en" : "see in action" ,
-                            "de" : "Probiere es aus"
-              }
+    "name" : "cto-algo",
+    "accGroup" : "cto",
+    "accTitle" : {"en" : "see in action" ,
+      "de" : "Probiere es aus"
+    }
   }
-
 }

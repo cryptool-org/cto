@@ -1,0 +1,18 @@
+    {
+      "name" : "adfgvx",
+
+      "styles" : ["adfgvx.css"],
+
+      "scripts": [ "../libs/handlebars-v4.0.5.js",
+                    "../libs/ctolib.js",
+                   {"file" : "adfgvx.js", "type" : "text/javascript"},
+                   {"file" : "app.js", "type" : "text/javascript"}
+      ],
+      
+      "tag" :    {"name"      : "#adfgvx",
+                  "btnText"   : "see in action",
+                  "ovlTitle"  : "ADFGVX",
+                  "ovlFooter" : "crypTool Online"
+      }
+
+    }

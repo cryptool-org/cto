@@ -1,0 +1,83 @@
+{
+  "de" : {
+    "accept" : "&Uuml;bernehmen",
+    "alphabet" : "Schlüsselalphabet anpassen (an/aus)",
+    "alpha_uppercase" : "Großbuchstaben",
+    "alpha_blanks" : "Leerzeichen",
+    "alpha_digits" : "Ziffern",
+    "alpha_puctuationmarks" : "Satzzeichen",
+    "alpha_lowercase" : "Kleinbuchstaben",
+    "alpha_umlauts" : "Umlaute",
+
+    "cleanspace" : "Ausgabe formatieren(2er Blöcke)",
+    "ciphertext" : "Geheimtext",
+    "ciphertextabc" : "COM_CTO_ADFGVX_CIPHERTEXT-ABC",
+    "columns" : "Schlüssel vor der Sortierung in Zahlen<br>(Schlüssel nach der Sortierung als transpositionierte Zeichenkette):",
+
+    "encrypt" : "Verschlüsseln",
+
+    "decrypt" : "Entschlüsseln",
+    "default_text" : "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern",
+
+    "key" : "Schlüssel",
+
+    "plaintext" : "Klartext",
+    "plaintextabc" : "Klartext-Alphabet",
+
+    "random_matrix" : "Zufallsmatrix",
+    "run" : "COM_CTO_ADFGVX_RUN",
+
+    "standard_matrix" : "Standardmatrix",
+    "specify_matrix" : "Eigene Matrix festlegen",
+    "sings" : "Zeichen",
+    "signstext" : "Nicht im Alphabet enthaltene <br/> Zeichen beibehalten",
+    "substitution" : "Substitution",
+    "substitution_matrix" : "Substitutionsmatrix",
+    "substitution_options" : "Substitutionseinstellungen (an/aus)",
+
+    "uppercase" : "COM_CTO_ADFGVX_UPPERCASE"
+
+
+  },
+
+  "en" : {
+    "accept" : "Accept",
+    "alphabet" : "Parse keyalphabet (on/off)",
+    "alpha_uppercase" : "Upper case",
+    "alpha_blanks" : "Blanks",
+    "alpha_digits" : "Digits",
+    "alpha_puctuationmarks" : "Punctuation marks",
+    "alpha_lowercase" : "Lower case",
+    "alpha_umlauts" : "Umlauts",
+
+    "cleanspace" : "Format output<br>(blocks of 2)",
+    "ciphertext" : "Ciphertext",
+    "ciphertextabc" : "COM_CTO_ADFGVX_CIPHERTEXT-ABC",
+    "columns" : "Key before the sort in numbers<br>(Key after the sort as transpositioned string):",
+
+    "encrypt" : "Encrypt",
+
+    "decrypt" : "Decrypt",
+    "default_text" : "The quick brown fox jumps over the lazy dog",
+
+    "key" : "Key",
+
+    "plaintext" : "Plaintext",
+    "plaintextabc" : "Plaintext-alphabet",
+
+    "random_matrix" : "Random matrix",
+    "run" : "COM_CTO_ADFGVX_RUN",
+
+    "standard_matrix" : "Standard matrix",
+    "specify_matrix" : "Specify matrix by yourself",
+    "sings" : "Signs",
+    "signstext" : "Ignore invalid signs<span class= \"ctoformcss-invalidtext-style\">!</span>",
+    "substitution" : "Substitution",
+    "substitution_matrix" : "Substitution matrix",
+    "substitution_options" : "Substitution options (on/off)",
+
+    "uppercase" : "COM_CTO_ADFGVX_UPPERCASE"
+
+
+  }
+}

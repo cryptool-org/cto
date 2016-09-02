@@ -230,8 +230,10 @@ ob_end_clean();
       	<td></td>
       	<td><div id='matrix' class='ctoformcss-adfgvx-matrix'><?php echo $adf?></div></td>
       	<td>
-      		<p>&nbsp;<input type='button' class='ctoformcss-default-button-l' name='key1' value='<?php echo $lang_random_matrix?>' onclick='CTOAdfgvxScripts.genRandomKeysquare();'></p>
-      		&nbsp;<input type='button' class='ctoformcss-default-button-l' name='key2' value='<?php echo $lang_standard_matrix?>' onclick='CTOAdfgvxScripts.genStandardKeysquare();'>
+      		<p>
+                <input type='button' class='ctoformcss-default-button-l' name='key1' value='<?php echo $lang_random_matrix?>' onclick='CTOAdfgvxScripts.genRandomKeysquare();'>
+      		    <input type='button' class='ctoformcss-default-button-l' name='key2' value='<?php echo $lang_standard_matrix?>' onclick='CTOAdfgvxScripts.genStandardKeysquare();'>
+            </p>
       	</td>
 
       </tr>
