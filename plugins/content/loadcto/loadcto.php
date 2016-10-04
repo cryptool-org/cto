@@ -90,7 +90,7 @@ class PlgContentLoadcto extends JPlugin
 
             // finaly inject globals
             JFactory::getDocument()->addScriptDeclaration(
-                "var CTO_Globals = {}; CTO_Globals.lang='" . $this->lang . "';"
+                "var CTO_Globals = {}; CTO_Globals.lang='" . $this->lang . "'; CTO_Globals.base='" . JURI::base() . "';    "
             );
         }
 
@@ -282,7 +282,6 @@ class PlgContentLoadcto extends JPlugin
 
         if ($config->init)
             $document->addScriptDeclaration(
-            // 'System.baseURL = \'' . JURI::base() . $appLocation . '\';' .
                 $config->init
             );
     }

@@ -2,19 +2,19 @@
 document.addEventListener('DOMContentLoaded',function(){
 
     // first load translations
-    jQuery.get('/_ctoApps/adfgvx/locale.json', function (locale) {
+    jQuery.get(CTO_Globals.base + '_ctoApps/adfgvx/locale.json', function (locale) {
 
         // get the right translations
         var data = locale[CTO_Globals.lang];
 
         // then get the table template which we want to inject later
-        jQuery.get('/_ctoApps/adfgvx/adf.template.html', function (tableTemplate) {
+        jQuery.get(CTO_Globals.base + '_ctoApps/adfgvx/adf.template.html', function (tableTemplate) {
 
             // add the template to build handlebars data
             data.adf_template = tableTemplate;
 
             // then load the handlebars template
-            jQuery.get('/_ctoApps/adfgvx/adfgvx.hbs', function (hbsTemplate) {
+            jQuery.get(CTO_Globals.base + '_ctoApps/adfgvx/adfgvx.hbs', function (hbsTemplate) {
                 // compile handlebars template
                 var tmpl = Handlebars.compile(hbsTemplate);
                 // inject translations & template
