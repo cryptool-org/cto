@@ -48,16 +48,20 @@ class PlgContentLoadcto extends JPlugin
             return true;
         }
 
+        // Simple performance check to determine whether bot should process further
+        if (strpos($article->text, 'loadCtoApp') === false && strpos($article->text, 'loadcto') === false) {
+            JLog::add('skip', JLog::WARNING, 'loadcto');
+            return true;
+        }
+
         // get language - NOTE only the third array element is usefull for all languages
         $this->lang = explode('_', JFactory::getLanguage()->getLocale()[2])[0];
 
         JLog::add('Language is ' . $this->lang, JLog::WARNING, 'loadcto');
-        JLog::add('Language is ' . print_r(JFactory::getLanguage()->getLocale(), true), JLog::WARNING, 'loadcto');
+        //JLog::add('Language is ' . print_r(JFactory::getLanguage()->getLocale(), true), JLog::WARNING, 'loadcto');
 
-        // Simple performance check to determine whether bot should process further
-        if (strpos($article->text, 'loadCtoApp') === false && strpos($article->text, 'loadcto') === false) {
-            return true;
-        }
+
+        JLog::add('process', JLog::WARNING, 'loadcto');
 
         // Expression to search for (CtoTool)
         $regex = '/{loadCtoApp\s(.*?)}/i';
@@ -80,6 +84,7 @@ class PlgContentLoadcto extends JPlugin
 
                 $toolName = trim($matcheslist[0]);
                 $style = trim($matcheslist[1]);
+                JLog::add('try to inject: ' . $toolName, JLog::WARNING, 'loadcto');
 
                 $output = $this->inject($toolName, $style);
 
@@ -186,7 +191,7 @@ class PlgContentLoadcto extends JPlugin
                     . '</a>';
 
                 $html = $this->getTag($tagName);
-                return $lnk . JHTML::_('bootstrap.renderModal', 'modal' . $config->name, $modal_params, $html);
+                $html =  $lnk . JHTML::_('bootstrap.renderModal', 'modal' . $config->name, $modal_params, $html);
 
                 break;
 
@@ -204,11 +209,11 @@ class PlgContentLoadcto extends JPlugin
                     . JHtml::_('bootstrap.endTab')
                     . JHtml::_('bootstrap.endTabSet');
 
-                return $accordion;
+                $html =  $accordion;
                 break;
 
         }
-
+        JLog::add('Used HTML: ' . $html, JLog::WARNING, 'loadcto');
         return $html;
     }
 
@@ -238,7 +243,7 @@ class PlgContentLoadcto extends JPlugin
                 $tag = '<' . $tagName . '></' . $tagName . '>';
 
         }
-
+        JLog::add('Used Tag: ' . $tag, JLog::WARNING, 'loadcto');
         return $tag;
     }
 
@@ -278,7 +283,7 @@ class PlgContentLoadcto extends JPlugin
             }
         }
 
-        // inject inline initialzation script if specified
+        // inject inline initialization script if specified
 
         if ($config->init)
             $document->addScriptDeclaration(
