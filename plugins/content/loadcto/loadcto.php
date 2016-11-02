@@ -169,7 +169,7 @@ class PlgContentLoadcto extends JPlugin
 
             $tagName = $config->tag;
         }
-
+        JLog::add('Style : ' . $style, JLog::WARNING, 'loadcto');
         switch ($style) {
 
             case 'none':
@@ -230,8 +230,9 @@ class PlgContentLoadcto extends JPlugin
 
     private function getTag($tagName)
     {
+        JLog::add('TagName: ' . $tagName, JLog::WARNING, 'loadcto');
 
-        switch ($tagName{0}) {
+        switch ($tagName[0]) {
 
             case '.' :
                 $tag = '<div class="' . substr($tagName, 1) . '"></div>';
@@ -243,7 +244,9 @@ class PlgContentLoadcto extends JPlugin
                 $tag = '<' . $tagName . '></' . $tagName . '>';
 
         }
+
         JLog::add('Used Tag: ' . $tag, JLog::WARNING, 'loadcto');
+
         return $tag;
     }
 
