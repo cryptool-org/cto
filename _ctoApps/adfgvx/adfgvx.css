@@ -7,13 +7,6 @@
 .ctoformcss-adfgvx-matrix-input-size {
 	width: 300px;
 }
-#adfgvx h2 {margin-bottom: 5px}
-#adfgvx textarea {
-	width: 100%;
-}
-.keyalphabet-wrapper,
-.substitution-matrix-wrapper {display: none; margin-bottom: 20px}
-.substitution-matrix input {width: 13px}
 #adfgvx {
 
 	margin-top: 40px;
@@ -23,9 +16,20 @@
 	padding-top: 20px;
 	padding-bottom: 40px;
 }
+
 #adfgvx h2{
 	font-size: 24px;
+	margin-bottom: 10px;
+	margin-top: 20px;
 }
+
+#adfgvx textarea {
+	width: 100%;
+}
+.keyalphabet-wrapper,
+.substitution-matrix-wrapper {display: none; margin-bottom: 20px}
+.substitution-matrix input {width: 13px}
+
 #adfgvx a.toggler {
 	background: lightgreen;
 	cursor: pointer;
