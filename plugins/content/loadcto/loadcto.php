@@ -296,7 +296,7 @@ class PlgContentLoadcto extends JPlugin
 
         // inject inline initialization script if specified
 
-        if ($config->init)
+        if (isset($config->init))
             $document->addScriptDeclaration(
                 $config->init
             );
