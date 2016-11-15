@@ -84,18 +84,19 @@ class PlgContentLoadcto extends JPlugin
 
                 $toolName = trim($matcheslist[0]);
                 $style = trim($matcheslist[1]);
-                JLog::add('try to inject: ' . $toolName, JLog::WARNING, 'loadcto');
+                JLog::add('try to inject (name/style): ' . $toolName . ' / ' . $style , JLog::WARNING, 'loadcto');
 
                 $output = $this->inject($toolName, $style);
 
                 // We should replace only first occurrence in order to allow positions with the same name to regenerate their content:
                 $article->text = preg_replace("|$match[0]|", addcslashes($output, '\\$'), $article->text, 1);
-                $style = $this->params->def('style', 'none');
+
+                //$style = $this->params->def('style', 'none');
             }
 
             // finaly inject globals
             JFactory::getDocument()->addScriptDeclaration(
-                "var CTO_Globals = {}; CTO_Globals.lang='" . $this->lang . "'; CTO_Globals.base='" . JURI::base() . "';    "
+                "var CTO_Globals = {}; CTO_Globals.lang='" . $this->lang . "'; CTO_Globals.base='" . JURI::base() . "';"
             );
         }
 
@@ -166,10 +167,12 @@ class PlgContentLoadcto extends JPlugin
             $tag = $config->tag;
 
         } else {
-
             $tagName = $config->tag;
         }
+
         JLog::add('Style : ' . $style, JLog::WARNING, 'loadcto');
+
+        $html = '';
         switch ($style) {
 
             case 'none':
@@ -209,11 +212,16 @@ class PlgContentLoadcto extends JPlugin
                     . JHtml::_('bootstrap.endTab')
                     . JHtml::_('bootstrap.endTabSet');
 
-                $html =  $accordion;
+                $html = $accordion;
                 break;
+
+            default:
+                JLog::add('!!! no valid style found: [' . $style . ']', JLog::WARNING, 'loadcto');
+
 
         }
         JLog::add('Used HTML: ' . $html, JLog::WARNING, 'loadcto');
+
         return $html;
     }
 
