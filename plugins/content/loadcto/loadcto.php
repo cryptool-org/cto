@@ -200,12 +200,12 @@ class PlgContentLoadcto extends JPlugin
 
             case 'accordion':
                 $accordion = JHtml::_('bootstrap.startTabSet',
-                        ($tag && $tag->accGroup ? $tag->accGroup : $config->name) . '_Group',
+                        ($tag && isset($tag->accGroup) ? $tag->accGroup : $config->name) . '_Group',
                         array())
 
                     . JHtml::_('bootstrap.addTab',
-                        ($tag && $tag->accGroup ? $tag->accGroup : $config->name) . '_Group',
-                        $config->name . '_id', ($tag && $tag->accTitle ? $this->__($tag->accTitle) : $config->name))
+                        ($tag && isset($tag->accGroup) ? $tag->accGroup : $config->name) . '_Group',
+                        $config->name . '_id', ($tag && isset($tag->accTitle) ? $this->__($tag->accTitle) : $config->name))
 
                     . $this->getTag($tagName)
 
