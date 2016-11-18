@@ -65,8 +65,9 @@ class PlgContentLoadcto extends JPlugin
 
         // Expression to search for (CtoTool)
         $regex = '/{loadCtoApp\s(.*?)}/i';
-        $style = $this->params->def('style', 'none');
 
+        // get default style out of plugin params and default to none
+        $defStyle = $this->params->def('style', 'none');
 
         // Find all instances of plugin and put in $matches for loadCtoTool
         // $matches[0] is full pattern match, $matches[1] is the tool name
@@ -83,7 +84,10 @@ class PlgContentLoadcto extends JPlugin
                 }
 
                 $toolName = trim($matcheslist[0]);
-                $style = trim($matcheslist[1]);
+
+                // get style if specified otherwise use default style from plugin param
+                $style = trim($matcheslist[1]) || $defStyle;
+
                 JLog::add('try to inject (name/style): ' . $toolName . ' / ' . $style , JLog::WARNING, 'loadcto');
 
                 $output = $this->inject($toolName, $style);
