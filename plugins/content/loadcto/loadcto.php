@@ -78,24 +78,18 @@ class PlgContentLoadcto extends JPlugin
             foreach ($matches as $match) {
                 $matcheslist = explode(',', $match[1]);
 
-                // We may not have a module style so fall back to the plugin default.
-                if (!array_key_exists(1, $matcheslist)) {
-                    $matcheslist[1] = $style;
-                }
-
                 $toolName = trim($matcheslist[0]);
 
                 // get style if specified otherwise use default style from plugin param
-                $style = trim($matcheslist[1]) || $defStyle;
+                $style = isset($matcheslist[1]) ? trim($matcheslist[1]) : $defStyle;
 
-                JLog::add('try to inject (name/style): ' . $toolName . ' / ' . $style , JLog::WARNING, 'loadcto');
+                JLog::add('try to inject (name/style): '
+                    . $toolName . ' / ' . $style , JLog::WARNING, 'loadcto');
 
-                $output = $this->inject($toolName, $style);
+                $html = $this->inject($toolName, $style);
 
-                // We should replace only first occurrence in order to allow positions with the same name to regenerate their content:
-                $article->text = preg_replace("|$match[0]|", addcslashes($output, '\\$'), $article->text, 1);
-
-                //$style = $this->params->def('style', 'none');
+                // and replace expression with content
+                $article->text = preg_replace("|$match[0]|", addcslashes($html, '\\$'), $article->text, 1);
             }
 
             // finaly inject globals
