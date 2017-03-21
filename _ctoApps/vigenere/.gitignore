@@ -1,0 +1,7 @@
+.idea
+node_modules/
+dist/
+dist-test/
+web/
+locales/*/*_description.json
+*.zip

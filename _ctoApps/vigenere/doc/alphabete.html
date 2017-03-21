@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Über Alphabete</title>
+    <style>
+        table { border-collapse: collapse; }
+        th, td { border: solid 1px black; margin: 0; padding: 4px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Über Alphabete</h1>
+    <h2>Was ist ein Alphabet?</h2>
+    <p>
+        Vigenère und Beaufort rechnen intern nicht mit Buchstaben, sondern mit Zahlen.
+        Daher muss eine Übersetzung stattfinden, die zum einen Buchstaben in Zahlen
+        abbilden kann und umgekehrt aus Zahlen wieder Buchstaben generiert.
+        Eine Funktion, die diese Eigenschaften erfüllt, wird im folgenden Alphabet genannt.
+    </p><p>
+        Sei etwa <var>&sigma;</var> eine solche umkehrbare Funktion.
+        So kann die Vigenère-Verschlüsselung für ein Eingabezeichen <var>in</var>
+        und ein Schlüsselzeichen <var>key</var> beschreiben werden als:
+    </p><p>
+        <var>out</var> = <var>&sigma;</var><sup>&ndash;1</sup>(<var>&sigma;</var>(<var>in</var>)
+            + <var>&sigma;</var>(<var>key</var>))
+    </p><p>
+        Die Rückwandlung findet dabei modulo zur Alphabet-Länge statt:
+        Wenn zu dem letzten Zeichen eine 1 addiert wird, ist das Ergebnis der Summe
+        das erste Zeichen des Alphabets.
+    </p>
+    <h2>Wie kann man ein Alphabet beschreiben?</h2>
+    <p>
+        In den Algorithmen können die Alphabete (ja, es kann mehrere geben: dazu weiter
+        unten mehr) durch eine Liste <var>L</var> von Buchstaben beschrieben werden.
+        Die Alphabet-Funktion <var>&sigma;</var><sub><var>L</var></sub>
+        liefert zu einem Buchstaben, der in <var>L</var> vorhanden
+        ist den kleinsten Index, an dem er auftritt (beginnend mit 0). Für Buchstaben,
+        die nicht in <var>L</var> vorkommen, ist die Alphabet-Funktion
+        <var>&sigma;</var><sub><var>L</var></sub> nicht definiert.
+    </p><p>
+        Obwohl sich die Funktion wohldefiniert verhält, wenn ein Buchstabe mehrfach
+        vorkommt, so macht dies bei Verschlüsselungs-Algorithmen wenig Sinn,
+        da die Umkehrbarkeit darunter leidet.
+    </p><p>
+        Die Umkehrfunktion liefert für eine Zahl <var>n</var> das <var>n</var>-te
+        Zeichen in <var>L</var>. Zu <var>n</var> wird gegebenenfalls so oft die Länge
+        der Liste <var>L</var> hinzugezählt oder abgezogen, bis der Index in der
+        Liste liegt.
+    </p>
+    <h2>Beispiel für ein Alphabet</h2>
+    <p>
+        Nehmen wir als Beispiel die Liste <var>L</var> = <code>"ABCD"</code>.
+        Es soll die Nachricht <code>"ACDC"</code> mit dem Schlüssel <code>ABBA</code>
+        nach Vigenère verschlüsselt werden. Es finden folgende Schritte statt:
+    </p>
+    <table>
+        <tr>
+            <th><var>in</var></th>
+            <th><var>&sigma;</var><sub><var>L</var></sub>(<var>in</var>)</th>
+            <th><var>key</var></th>
+            <th><var>&sigma;</var><sub><var>L</var></sub>(<var>key</var>)</th>
+            <th><var>&sigma;</var><sub><var>L</var></sub>(<var>in</var>) +
+                <var>&sigma;</var><sub><var>L</var></sub>(<var>key</var>)</th>
+            <th><var>&sigma;</var><sub><var>L</var></sub><sup>&ndash;1</sup>(<var>&sigma;</var><sub><var>L</var></sub>(<var>in</var>) +
+                <var>&sigma;</var><sub><var>L</var></sub>(<var>key</var>))</th>
+        </tr><tr>
+            <td><code>A</code></td>
+            <td>0</td>
+            <td><code>A</code></td>
+            <td>0</td>
+            <td>0</td>
+            <td><code>A</code></td>
+        </tr><tr>
+            <td><code>C</code></td>
+            <td>2</td>
+            <td><code>B</code></td>
+            <td>1</td>
+            <td>3</td>
+            <td><code>D</code></td>
+        </tr><tr>
+            <td><code>D</code></td>
+            <td>3</td>
+            <td><code>B</code></td>
+            <td>1</td>
+            <td>4</td>
+            <td><code>A</code></td>
+        </tr><tr>
+            <td><code>C</code></td>
+            <td>2</td>
+            <td><code>A</code></td>
+            <td>0</td>
+            <td>2</td>
+            <td><code>C</code></td>
+        </tr>
+    </table>
+    <p>
+        Im Beispiel ist beim dritten Buchstaben ein Überlauf aufgetreten.
+    </p>
+    <h2>Kurzschreibweise für Alphabete</h2>
+    <p>
+        Um die Darstellung der Alphabete zu vereinfachen, wurde folgende
+        Kurzschreibweise eingeführt: Das Minuszeichen in der Folge
+        <var>Buchstabe</var><sub>1</sub><code>-</code><var>Buchstabe</var><sub>2</sub>
+        wird zu allen Buchstaben erweitert, die zwischen den beiden flankierenden
+        Buchstaben stehen.
+    </p><p>
+        So steht etwa:
+    </p><ul>
+        <li><code>"A-Z"</code> für alle Großbuchstaben,</li>
+        <li><code>"a-z"</code> für alle Kleinbuchstaben,</li>
+        <li><code>"z-a"</code> für alle Kleinbuchstaben in umgekehrter Reihenfolge und</li>
+        <li><code>"0-9"</code> für alle Ziffern.</li>
+    </ul><p>
+        Einziger Nachteil ist, dass das Minuszeichen selbst als <code>"---"</code>
+        geschrieben werden muss, um nicht als Bereichsoperator verwechselt zu werden.
+    </p><p>
+        In der Detail-Darstellung der Alphabete (Klick auf den "…"-Knopf)
+        können die Alphabete in der Kurzschreibweise bearbeitet werden.
+    </p>
+    <h2>Mehrere Alphabete</h2>
+    <p>
+        Durch die Verwendung von mehreren Alphabeten müssen die Algorithmen nicht
+        Groß- und Kleinbuchstaben unterscheiden.
+    </p><p>
+        Es ist oft gewünscht, dass ein Großbuchstabe im Klartext auch auf einen
+        Großbuchstaben im verschlüsselten Text abgebildet wird.
+        Dies kann erreicht werden, indem man die Verschlüsselung grundsätzlich
+        in einer Auszeichnung durchführt und je nach Auszeichnung des Klartexts die
+        Auszeichnung der Ausgabe angepasst wird.
+    </p><p>
+        Dazu ist aber eine spezielle Kenntnis der Buchstaben notwendig.
+        Auch ist nicht klar, wie mit Ziffern oder Sonderzeichen umgegangen werden
+        soll. Daher gibt es bei Vigenère und Beaufort die Möglichkeit,
+        mehrere Alphabete anzugeben.
+    </p><p>
+        Ähnlich wie eben beschrieben, merkt sich der Algorithmus, mit welchem
+        Alphabet er die Zahl des Klartextes ermittelt hat. Das gleiche Alphabet
+        wird zur Erzeugung des verschlüsselten Textes verwendet.
+    </p><p>
+        Wenn ein Buchstabe in mehreren Alphabeten vorkommt, so wird das erste
+        dieser Alphabete verwendet.
+    </p><p>
+        Wenn ein Buchstabe in keinem Alphabet vorkommt, so wird er nicht
+        verschlüsselt, sondern direkt in die Ausgabe übernommen. Das ist auch
+        der Fall, wenn der Buchstabe im Schlüssel steht. Alternativ können die
+        Nicht-Alphabet Buchstaben in Schlüssel und Klartext auch herausgefiltert
+        werden, um die Sicherheit zu erhöhen.
+        Dies schränkt jedoch die Lesbarkeit ein.
+    </p>
+    <h2>Beispiel: Hex-Addition mit Vigenère</h2>
+    <p>
+        Als kleines Beispiel betrachten wir Vigenère mit folgenden Alphabeten:
+    </p><ul>
+        <li><var>L</var> = <code>"0-9A-F"</code> und</li>
+        <li><var>M</var> = <code>"0-9a-f"</code>.</li>
+    </ul><p>
+        Dann ist der verschlüsselte Text ziffernweise die unterste Stelle einer Addition von
+        Klartext und Schlüssel, wenn beide hexadezimale Ziffern sind.
+    </p><p>
+        Bestehen zum Beispiel Klartext und Schlüssel aus dem Text
+        <code>0123456789a</code>,
+        so ergibt sich als verschlüsselter Text
+        <code>02468ACE024</code>.
+    </p><p>
+        Da <var>L</var> für die Ziffern verwendet wurde, ergeben sich die
+        Großbuchstaben im verschlüsselten Text.
+    </p>
+</body>
+</html>

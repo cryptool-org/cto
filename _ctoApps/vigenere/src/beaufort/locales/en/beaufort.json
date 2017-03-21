@@ -1,0 +1,7 @@
+{
+  "TITLE": "Beaufort Encryption",
+  "DESCRIPTION": "<h1>The Beaufort Encryption</h1>",
+  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
+  "SAMPLE_ENCRYPTED": "Zxy bkliu xbqge zfn vegpk djpt lro tcsg qwy.",
+  "SAMPLE_KEY": "Secret Key"
+}

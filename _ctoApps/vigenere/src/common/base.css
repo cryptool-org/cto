@@ -1,0 +1,42 @@
+.spacer {
+    height: 2em;
+}
+.modal-footer .btn{
+    margin-top: 5px;
+}
+.cryptool-container textarea, .cryptool-container input[type="text"] {
+    font-family: monospace;
+}
+.cryptool-container svg {
+    display: block;
+    margin: 1em auto;
+}
+@keyframes flip {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+.cryptool-container #direction.flip svg {
+    animation-name: flip;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes flop {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+.cryptool-container #direction.flop svg {
+    animation-name: flop;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.cryptool-container svg polyline {
+    fill: #888;
+}

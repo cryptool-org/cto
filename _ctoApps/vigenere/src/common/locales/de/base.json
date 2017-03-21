@@ -1,0 +1,9 @@
+{
+  "DESCRIPTION": "Beschreibung",
+  "PLAIN_TEXT": "Klartext:",
+  "ENCRYPTED_TEXT": "Verschlüsselter Text:",
+  "KEY": "Schlüssel:",
+  "OPTIONS": "Optionen:",
+  "ALPHABETS": "Alphabete:",
+  "ADD_ALPHABET": "Alphabet hinzufügen"
+}

@@ -1,0 +1,7 @@
+{
+  "TITLE": "Vigenère Encryption",
+  "DESCRIPTION": "<h1>The Vigenère Encryption</h1>",
+  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
+  "SAMPLE_ENCRYPTED": "Llg hybmo zjsye jhh nsetu fzxb xfw pcqc wyk.",
+  "SAMPLE_KEY": "Secret Key"
+}

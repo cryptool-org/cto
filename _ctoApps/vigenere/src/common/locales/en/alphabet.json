@@ -1,0 +1,15 @@
+{
+  "DETAILS_TITLE": "Alphabet Details",
+  "LEN_PREFIX": "",
+  "LEN_POSTFIX": " chars",
+  "COMPRESSED_NOTATION": "Compressed Alphabet Notation:",
+  "KEYWORD": "Keyword for Alphabet:",
+  "REVERSE": "Reverse",
+  "PERMUTE": "Permutate",
+  "SHIFT_LEFT": "rotate left",
+  "SHIFT_RIGHT": "rotate right",
+  "SWITCH_CASE": "Clone to other Case",
+  "ADD_PREFIX": "Add ",
+  "ADD_POSTFIX": "",
+  "DELETE": "Delete Alphabet"
+}
