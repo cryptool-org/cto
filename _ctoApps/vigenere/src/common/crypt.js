@@ -5,10 +5,10 @@ function Crypt(algo, state, opts) {
     this.state = state;
     this.opts = opts;
 
-    this.charToValue = function(ch) {
-        var l = this.state.$alphabets.length;
+    this.charToValue = function(ch, $alphabets) {
+        var l = $alphabets.length;
         for (var i = 0; i < l; ++i) {
-            var idx = this.state.$alphabets[i].value.indexOf(ch);
+            var idx = $alphabets[i].value.indexOf(ch);
             if (idx >= 0) { return idx; }
         }
         return -1;
@@ -43,8 +43,10 @@ function Crypt(algo, state, opts) {
     this.normalizeKey = function() {
         var result = [];
         var keyLength = this.state.$key.value.length;
+        var $alphabets = this.state.$keyAlphabets;
+        if (! $alphabets) { $alphabets = this.state.$alphabets; }
         for (var i = 0; i < keyLength; ++i) {
-            var val = this.charToValue(this.state.$key.value[i]);
+            var val = this.charToValue(this.state.$key.value[i], $alphabets);
             if (val >= 0 || !this.opts.$skipNonLetterKeys.checked) {
                 result.push(val);
             }
@@ -60,7 +62,7 @@ function Crypt(algo, state, opts) {
         var result = '';
         for (var i = 0; i < fromLength; ++i) {
             var ch = from[i];
-            var val = this.charToValue(ch);
+            var val = this.charToValue(ch, this.state.$alphabets);
             if (val >= 0) {
                 if (key.length > 0) {
                     if (encrypting) {

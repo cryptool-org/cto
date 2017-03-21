@@ -1,6 +1,5 @@
 ## Immediate Actions
 
-* neuen Algorithmus
 * Rechtschreibkorrekturen von Herrn Esslinger
 
 ## TODO
@@ -18,6 +17,7 @@
 
 ## DONE
 
+* added Gronsfeld encryption
 * lokal bauen
 * nach GitHub von fschell migrieren
 * Länge der Alphabete ausgeben

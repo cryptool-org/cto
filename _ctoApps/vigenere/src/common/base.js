@@ -30,6 +30,7 @@
         this.$direction = $('direction');
 
         this.$alphabets = [];
+        this.$keyAlphabets = undefined;
 
         this.setEncrypting = function () {
             if (!this.encrypting) {
@@ -170,7 +171,7 @@
                 if (state.$alphabets[i].value == result) { return; }
             }
 
-            addAlphabet(result);
+            addAlphabet(result, $activeAlphabet.parentNode);
             closeAlphabetDetails();
         });
         $('delete-alphabet').addEventListener('click', function(event) {
@@ -181,6 +182,7 @@
             event.preventDefault();
         });
         var $alphaContainer = $('alphabets');
+        var $keyAlphaContainer = $('key-alphabets');
         var $activeAlphabet;
         var $activeInput;
 
@@ -267,7 +269,27 @@
                 })(this, $child);
             }
         }
-        function addAlphabet(value) {
+
+        if ($keyAlphaContainer) {
+            this.$keyAlphabets = [];
+            for (var $child = $keyAlphaContainer.firstChild; $child; $child = $child.nextSibling) {
+                if ($child.className == 'form-group') {
+                    (function(self, $ref) {
+                        var $inner = $ref.getElementsByTagName('div')[0];
+                        var $input = $inner.getElementsByTagName('input')[0];
+                        self.$keyAlphabets.push($input);
+                        $input.addEventListener('keyup', update);
+                        var $span = $inner.getElementsByTagName('span')[0];
+                        var $button = $span.getElementsByTagName('button')[0];
+                        $button.addEventListener('click', function (event) {
+                            showAlphabetDetails($ref);
+                            event.preventDefault();
+                        });
+                    })(this, $child);
+                }
+            }
+        }
+        function addAlphabet(value, $parent) {
             var $container = document.createElement('div');
             $container.classList.add('form-group');
             var $inner = document.createElement('div');
@@ -293,13 +315,20 @@
             });
             $span.appendChild($details);
             $inner.appendChild($span);
-            $alphaContainer.appendChild($container);
+            $parent.appendChild($container);
             update();
         }
         $('add-alphabet').addEventListener('click', function(event) {
-            addAlphabet('');
+            addAlphabet('', $alphaContainer);
             event.preventDefault();
         });
+        var $btn = $('add-key-alphabet');
+        if ($btn) {
+            $btn.addEventListener('click', function(event) {
+                addAlphabet('', $keyAlphaContainer);
+                event.preventDefault();
+            });
+        }
     };
 
     // options

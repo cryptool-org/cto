@@ -92,4 +92,29 @@
             <div class="clearfix"></div>
         </div>
     </div>
+    @@if (different_key_alphabet === true) {
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">${{ base.KEY_ALPHABETS }}$</h3>
+        </div>
+        <div class="panel-body" id="key-alphabets">
+            <div class="form-group"><div class="input-group">
+                <input type="text" class="form-control" value="ABCDEFGHIJ">
+                <span class="input-group-btn"><button class="btn btn-default">…</button></span>
+            </div></div>
+            <div class="form-group"><div class="input-group">
+                <input type="text" class="form-control" value="abcdefghij">
+                <span class="input-group-btn"><button class="btn btn-default">…</button></span>
+            </div></div>
+            <div class="form-group"><div class="input-group">
+                <input type="text" class="form-control"  value="0123456789">
+                <span class="input-group-btn"><button class="btn btn-default">…</button></span>
+            </div></div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-default pull-right" id="add-key-alphabet">${{ base.ADD_ALPHABET }}$</button>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    }
 </div>
