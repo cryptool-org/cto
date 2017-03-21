@@ -4,8 +4,8 @@ var assert = require('assert');
 var mockedState = require('../test/src/mocked_state.js');
 var mockedOpts = require('../test/src/mocked_opts.js');
 
-@@include('../src/crypt.js')
-@@include('../src/vigenere.js')
+@@include('../src/common/crypt.js')
+@@include('../src/common/vigenere.js')
 
 describe('Basic Crypt functionality', function() {
     var state;

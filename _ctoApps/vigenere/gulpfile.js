@@ -56,7 +56,7 @@ gulp.task('config', function () {
 });
 
 gulp.task('build-tests', function () {
-    return gulp.src('src/test/*.js')
+    return gulp.src('test/*.js')
         .pipe(include())
         .pipe(gulp.dest('dist-test'));
 });

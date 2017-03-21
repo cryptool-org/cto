@@ -1,9 +1,7 @@
 ## Immediate Actions
 
-* lokal bauen
 * neuen Algorithmus
 * Rechtschreibkorrekturen von Herrn Esslinger
-* nach GitHub von fschell migrieren
 
 ## TODO
 
@@ -20,6 +18,8 @@
 
 ## DONE
 
+* lokal bauen
+* nach GitHub von fschell migrieren
 * Länge der Alphabete ausgeben
 * Alphabete verschieben
 * Alphabet box mit fester Breite
