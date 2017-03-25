@@ -1,6 +1,9 @@
 ## Immediate Actions
 
 * Rechtschreibkorrekturen von Herrn Esslinger
+* Warnungen bei Dopplungen in Alphabeten
+* Start-Index für Alphabete festlegen
+* Beispiel mit Case-gemischten Alphabet
 
 ## TODO
 
