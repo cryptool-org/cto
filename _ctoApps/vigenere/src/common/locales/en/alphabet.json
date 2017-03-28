@@ -1,15 +1,15 @@
 {
-  "DETAILS_TITLE": "Alphabet Details",
+  "DETAILS_TITLE": "Details for the Message Alphabets",
   "LEN_PREFIX": "",
   "LEN_POSTFIX": " chars",
-  "COMPRESSED_NOTATION": "Compressed Alphabet Notation:",
-  "KEYWORD": "Keyword for Alphabet:",
+  "COMPRESSED_NOTATION": "Compressed alphabet notation:",
+  "KEYWORD": "Keyword for alphabet:",
   "REVERSE": "Reverse",
   "PERMUTE": "Permutate",
-  "SHIFT_LEFT": "rotate left",
-  "SHIFT_RIGHT": "rotate right",
-  "SWITCH_CASE": "Clone to other Case",
+  "SHIFT_LEFT": "Rotate left",
+  "SHIFT_RIGHT": "Rotate right",
+  "SWITCH_CASE": "Transform to other case",
   "ADD_PREFIX": "Add ",
   "ADD_POSTFIX": "",
-  "DELETE": "Delete Alphabet"
+  "DELETE": "Delete alphabet"
 }
