@@ -1,10 +1,10 @@
 {
   "DESCRIPTION": "Description",
-  "PLAIN_TEXT": "Plain Text:",
+  "PLAIN_TEXT": "Plaintext:",
   "ENCRYPTED_TEXT": "Encrypted Text:",
   "KEY": "Key:",
   "OPTIONS": "Options:",
-  "ALPHABETS": "Alphabets:",
-  "KEY_ALPHABETS": "Schlüssel-Alphabete:",
-  "ADD_ALPHABET": "Add Alphabet"
+  "ALPHABETS": "Alphabets for the messages:",
+  "KEY_ALPHABETS": "Alphabets for the key:",
+  "ADD_ALPHABET": "Add alphabet"
 }
