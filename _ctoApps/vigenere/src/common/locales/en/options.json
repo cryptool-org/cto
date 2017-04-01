@@ -3,5 +3,5 @@
   "GROUP_BY_5S": "group 5 characters",
   "FILTER_NON_LETTERS": "filter only alphabet characters",
   "CONVERT_TO_UPCASE": "convert to first alphabet",
-  "FILTER_NON_LETTER_KEYS": "filter key on alphabet characteres"
+  "FILTER_NON_LETTER_KEYS": "filter key on alphabet characters"
 }
