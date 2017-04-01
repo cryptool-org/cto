@@ -1,7 +1,7 @@
 {
   "DESCRIPTION": "Description",
   "PLAIN_TEXT": "Plaintext:",
-  "ENCRYPTED_TEXT": "Encrypted Text:",
+  "ENCRYPTED_TEXT": "Encrypted text:",
   "KEY": "Key:",
   "OPTIONS": "Options:",
   "ALPHABETS": "Alphabets for the messages:",
