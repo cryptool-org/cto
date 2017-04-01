@@ -11,5 +11,8 @@
   "SWITCH_CASE": "Transform to other case",
   "ADD_PREFIX": "Add ",
   "ADD_POSTFIX": "",
-  "DELETE": "Delete alphabet"
+  "DELETE": "Delete alphabet",
+  "EMPTY_ALPHABET": "empty alphabet",
+  "DOUBLE_CHAR": "character $1 occurs multiple times",
+  "DOUBLE_CHARS": "characters $1 occur multiple times"
 }

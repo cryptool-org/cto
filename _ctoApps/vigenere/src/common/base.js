@@ -20,6 +20,9 @@
 
     // state handling
 
+    var $alphaContainer = $('alphabets');
+    var $keyAlphaContainer = $('key-alphabets');
+
     var state = new function State() {
         this.encrypting = true;
 
@@ -181,8 +184,6 @@
             update();
             event.preventDefault();
         });
-        var $alphaContainer = $('alphabets');
-        var $keyAlphaContainer = $('key-alphabets');
         var $activeAlphabet;
         var $activeInput;
 
@@ -315,6 +316,11 @@
             });
             $span.appendChild($details);
             $inner.appendChild($span);
+            var $error = document.createElement('div');
+            $error.classList.add('alert');
+            $error.classList.add('alert-danger');
+            $error.classList.add('alert-hidden');
+            $container.appendChild($error);
             $parent.appendChild($container);
             update();
         }
@@ -347,6 +353,59 @@
     var crypt = new Crypt(algo, state, opts);
 
     function update() {
+        function validateAlphabets($parent) {
+            if (! $parent) { return; }
+
+            function countChars($parent) {
+                var result = {};
+                for (var $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
+                    var $input = $alphabet.firstChild.firstChild;
+                    var value = $input.value;
+                    for (var i = 0; i < value.length; ++i) { 
+			result[value[i]] = result[value[i]] ? result[value[i]] + 1 : 1;
+			if(result[value[i]] > 1) { console.log('bad ' + value[i]); } 
+		    }
+                }
+                return result;
+            }
+
+            var counts = countChars($parent);
+            for (var $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
+                var $input = $alphabet.firstChild.firstChild;
+                var value = $input.value;
+                var $error = $alphabet.firstChild.nextSibling;
+                var message = '';
+                if (value.length == 0) {
+                    message = "${{ alphabet.EMPTY_ALPHABET }}$";
+                } else {
+                    var doubles = '';
+                    var count = 0;
+		    var found = {};
+                    for (var i = 0; i < value.length; ++i) {
+                        if (counts[value[i]] > 1) {
+			    if (! found[value[i]]) {
+			    	if (count) { doubles += ', '; }
+                            	doubles += value[i];
+				found[value[i]] = true;
+			    }
+			    ++count;
+                        }
+                    }
+                    if (doubles.length) {
+                        message = count > 1 ? "${{ alphabet.DOUBLE_CHARS }}$" : "${{ alphabet.DOUBLE_CHAR }}$";
+                        message = message.replace('$1', doubles);
+                    }
+                }
+                if (message != $error.innerHTML) {
+                    while ($error.firstChild) { $error.removeChild($error.firstChild); }
+                    $error.appendChild(document.createTextNode(message));
+                    if (message.length) { $error.classList.remove('alert-hidden'); } else { $error.classList.add('alert-hidden'); }
+                }
+            }
+        }
+
+        validateAlphabets($alphaContainer);
+        validateAlphabets($keyAlphaContainer);
         var $from = state.encrypting ? state.$plain : state.$cipher;
         var $to = state.encrypting ? state.$cipher : state.$plain;
 

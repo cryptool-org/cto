@@ -40,3 +40,9 @@
 .cryptool-container svg polyline {
     fill: #888;
 }
+.cryptool-container .alert {
+    margin-top: 8px;
+}
+.cryptool-container .alert-hidden {
+    display: none;
+}

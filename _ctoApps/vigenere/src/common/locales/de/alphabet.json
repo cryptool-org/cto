@@ -11,5 +11,8 @@
   "SWITCH_CASE": "Neues Alphabet mit vertauschten Groß- und Kleinbuchstaben",
   "ADD_PREFIX": "",
   "ADD_POSTFIX": " hinzufügen",
-  "DELETE": "Alphabet löschen"
+  "DELETE": "Alphabet löschen",
+  "EMPTY_ALPHABET": "Alphabet ist leer",
+  "DOUBLE_CHAR": "Buchstabe $1 wird mehrfach verwendet",
+  "DOUBLE_CHARS": "Buchstaben $1 werden mehrfach verwendet"
 }

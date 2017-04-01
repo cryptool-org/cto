@@ -1,7 +1,6 @@
 ## Immediate Actions
 
 * Rechtschreibkorrekturen von Herrn Esslinger
-* Warnungen bei Dopplungen in Alphabeten
 * Start-Index für Alphabete festlegen
 * Beispiel mit Case-gemischten Alphabet
 
@@ -20,6 +19,7 @@
 
 ## DONE
 
+* Warnungen bei Dopplungen in Alphabeten
 * added Gronsfeld encryption
 * lokal bauen
 * nach GitHub von fschell migrieren

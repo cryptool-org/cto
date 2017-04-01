@@ -14,6 +14,14 @@ function dest() {
     return gulp.dest('dist');
 }
 
+function translate() {
+    return i18n({
+        locales: ['en', 'de'],
+        localeDir: './dist/locales',
+        schema: 'suffix'
+    });
+}
+
 gulp.task('collect-locales', function() {
     return gulp.src(['src/*/locales/*/*.json'])
         .pipe(rename(function(path) {
@@ -26,18 +34,15 @@ gulp.task('collect-locales', function() {
 gulp.task('html', ['collect-locales'], function () {
     return gulp.src(['src/*/*.html', '!src/common/**', '!src/test/**'])
         .pipe(include())
-        .pipe(i18n({
-            locales: ['en', 'de'],
-            localeDir: './dist/locales',
-            schema: 'suffix'
-        }))
+        .pipe(translate())
         .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(dest());
 });
 
-gulp.task('js', function (){
+gulp.task('js', ['collect-locales'], function (){
     return gulp.src(['src/*/*.js', '!src/common/**', '!src/test/**'])
         .pipe(include())
+        .pipe(translate())
         .pipe(uglify())
         .pipe(dest());
 });
