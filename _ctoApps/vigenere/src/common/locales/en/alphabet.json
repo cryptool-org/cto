@@ -12,7 +12,7 @@
   "ADD_PREFIX": "Add ",
   "ADD_POSTFIX": "",
   "DELETE": "Delete alphabet",
-  "EMPTY_ALPHABET": "empty alphabet",
+  "EMPTY_ALPHABET": "Alphabet is empty.",
   "DOUBLE_CHAR": "character $1 occurs multiple times",
   "DOUBLE_CHARS": "characters $1 occur multiple times"
 }
