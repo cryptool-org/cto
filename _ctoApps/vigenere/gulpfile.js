@@ -63,11 +63,11 @@ gulp.task('config', function () {
 gulp.task('build-tests', function () {
     return gulp.src('test/*.js')
         .pipe(include())
-        .pipe(gulp.dest('dist-test'));
+        .pipe(gulp.dest('dist/test'));
 });
 
 gulp.task('test', ['build-tests'], function () {
-    return gulp.src('dist-test/*.js')
+    return gulp.src('dist/test/*.js')
         .pipe(mocha());
 });
 
@@ -83,12 +83,12 @@ gulp.task('jquery', function() {
 gulp.task('default', [ 'test', 'bootstrap', 'jquery', 'html', 'js', 'css', 'config' ]);
 
 gulp.task('dist', ['default'], function () {
-    return gulp.src(['./**', '!node_modules/**', '!.idea/**', '!.git/**', '!*.zip', '!web/**', '!dist-test/**', '!dist/locales/**', '!dist/bootstrap*', '!dist/jquery*'])
+    return gulp.src(['./**', '!node_modules/**', '!.idea/**', '!.git/**', '!*.zip', '!web/**', '!dist/test/**', '!dist/locales/**', '!dist/bootstrap*', '!dist/jquery*'])
         .pipe(zip('vigenere.zip'))
         .pipe(gulp.dest('.'));
 });
 
 gulp.task('web', ['default', 'dist'], function () {
-    return gulp.src(['*.zip', 'dist/**', '!dist/locales', '!dist/locales/**', '!**/fragment-*.html', '!**/cto.config.json']).pipe(gulp.dest('web'));
+    return gulp.src(['*.zip', 'dist/**', '!dist/test', '!dist/test/**', '!dist/locales', '!dist/locales/**', '!**/fragment-*.html', '!**/cto.config.json']).pipe(gulp.dest('web'));
 });
 

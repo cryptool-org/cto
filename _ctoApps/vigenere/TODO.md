@@ -7,7 +7,6 @@
 ## TODO
 
 * Unit-Tests in Unterverzeichnisse
-* Unit-Tests in dist/test zusammenbauen
 * Web-Csse in eigene Datei auslagern
 * JavaScript Algorithmen in lokale Verzeichnisse
 * opts in state integrieren
@@ -19,6 +18,7 @@
 
 ## DONE
 
+* Unit-Tests in dist/test zusammenbauen
 * Warnungen bei Dopplungen in Alphabeten
 * added Gronsfeld encryption
 * lokal bauen
