@@ -46,3 +46,6 @@
 .cryptool-container .alert-hidden {
     display: none;
 }
+.alphabet-details {
+    background: transparent;
+}

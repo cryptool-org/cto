@@ -411,3 +411,8 @@
 
         $to.value = crypt.process($from.value, state.encrypting);
     }
+
+    (function() {
+        var $page = $('page');
+        if ($page) { $page.appendChild($('alphabet-details')); }
+    })();
