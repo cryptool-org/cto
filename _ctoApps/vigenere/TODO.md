@@ -5,18 +5,13 @@
 
 ## TODO
 
-* Unit-Tests in Unterverzeichnisse
-* Web-Csse in eigene Datei auslagern
-* JavaScript Algorithmen in lokale Verzeichnisse
 * opts in state integrieren
 * encryption und DOM-ELemente raus aus state
-* Alphabet-Dialog: Compression Unit-Tests
-* add author line
 * auf jQuery umstellen
-* $len zwischenspeichern
 
 ## DONE
 
+* Unit-Tests in Unterverzeichnisse
 * Rechtschreibkorrekturen von Herrn Esslinger
 * Unit-Tests in dist/test zusammenbauen
 * Warnungen bei Dopplungen in Alphabeten
