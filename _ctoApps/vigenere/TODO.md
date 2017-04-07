@@ -1,6 +1,5 @@
 ## Immediate Actions
 
-* Rechtschreibkorrekturen von Herrn Esslinger
 * Start-Index für Alphabete festlegen
 * Beispiel mit Case-gemischten Alphabet
 
@@ -18,6 +17,7 @@
 
 ## DONE
 
+* Rechtschreibkorrekturen von Herrn Esslinger
 * Unit-Tests in dist/test zusammenbauen
 * Warnungen bei Dopplungen in Alphabeten
 * added Gronsfeld encryption

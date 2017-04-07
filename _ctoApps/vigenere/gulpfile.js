@@ -8,6 +8,7 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-csso');
 var mocha = require('gulp-mocha');
 var rename = require('gulp-rename');
+var flatten = require('gulp-flatten');
 var zip = require('gulp-zip');
 
 function dest() {
@@ -61,8 +62,9 @@ gulp.task('config', function () {
 });
 
 gulp.task('build-tests', function () {
-    return gulp.src('test/*.js')
+    return gulp.src('**/t_*.js')
         .pipe(include())
+        .pipe(flatten())
         .pipe(gulp.dest('dist/test'));
 });
 

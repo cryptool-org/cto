@@ -11,6 +11,7 @@
     "gulp": "^3.9.1",
     "gulp-csso": "^2.0.0",
     "gulp-file-include": "^1.0.0",
+    "gulp-flatten": "^0.3.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-i18n-localize": "^1.2.7",
     "gulp-mocha": "^4.0.1",
