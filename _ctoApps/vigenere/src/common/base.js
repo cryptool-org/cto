@@ -353,7 +353,7 @@
     var crypt = new Crypt(algo, state, opts);
 
     function update() {
-        function validateAlphabets($parent) {
+        function validateAlphabets($parent, searchForDuplicates) {
             if (! $parent) { return; }
 
             function countChars($parent) {
@@ -377,7 +377,7 @@
                 var message = '';
                 if (value.length == 0) {
                     message = "${{ alphabet.EMPTY_ALPHABET }}$";
-                } else {
+                } else if (searchForDuplicates) {
                     var doubles = '';
                     var count = 0;
 		    var found = {};
@@ -404,8 +404,8 @@
             }
         }
 
-        validateAlphabets($alphaContainer);
-        validateAlphabets($keyAlphaContainer);
+        validateAlphabets($alphaContainer, true);
+        validateAlphabets($keyAlphaContainer, false);
         var $from = state.encrypting ? state.$plain : state.$cipher;
         var $to = state.encrypting ? state.$cipher : state.$plain;
 
