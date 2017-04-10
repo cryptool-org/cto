@@ -47,4 +47,12 @@ describe('Basic Crypt functionality', function() {
         opts.$groupBy5s.checked = true;
         assert.equal('bcdef gh', crypt.process('abcdefg', true));
     });
+    it('should honour offset in key alphabet', function() {
+        state.$key = { value: 'a' };
+        state.$keyAlphabets = [new mockedState.MockedElement({
+            alphabet: { value: 'ab' },
+            offset: { innerText: '1' }
+        })];
+        assert.equal(crypt.process('abc', true), 'bcd');
+    })
 });

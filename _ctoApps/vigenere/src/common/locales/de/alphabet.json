@@ -14,5 +14,6 @@
   "DELETE": "Alphabet löschen",
   "EMPTY_ALPHABET": "Alphabet ist leer",
   "DOUBLE_CHAR": "Buchstabe $1 wird mehrfach verwendet",
-  "DOUBLE_CHARS": "Buchstaben $1 werden mehrfach verwendet"
+  "DOUBLE_CHARS": "Buchstaben $1 werden mehrfach verwendet",
+  "OFFSET": "Verschiebung:"
 }

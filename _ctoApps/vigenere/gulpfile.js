@@ -41,7 +41,7 @@ gulp.task('html', ['collect-locales'], function () {
 });
 
 gulp.task('js', ['collect-locales'], function (){
-    return gulp.src(['src/*/*.js', '!src/common/**', '!src/test/**'])
+    return gulp.src(['src/*/*.js', '!src/common/**', '!src/test/**', '!src/**/t_*.js'])
         .pipe(include())
         .pipe(translate())
         .pipe(uglify())
@@ -62,7 +62,7 @@ gulp.task('config', function () {
 });
 
 gulp.task('build-tests', function () {
-    return gulp.src('**/t_*.js')
+    return gulp.src('src/**/t_*.js')
         .pipe(include())
         .pipe(flatten())
         .pipe(gulp.dest('dist/test'));
