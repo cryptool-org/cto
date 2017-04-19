@@ -1,0 +1,102 @@
+{
+  "de" : {
+    "ciphername": "Monoalphabetische Substitution",
+
+    "alphabet" : "Schlüssel-Alphabet zusammenfügen",
+    "alphabetClose" : "Schlüssel-Alphabet zusammenfügen schließen",
+    "alphabetlength" : "Alphabet-Länge",
+    "alphabetOptions" : "Schlüssel und Alphabet",
+
+    "alpha_uppercase" : "Großbuchstaben",
+    "alpha_blanks" : "Leerzeichen",
+    "alpha_digits" : "Ziffern",
+    "alpha_puctuationmarks" : "Satzzeichen",
+    "alpha_lowercase" : "Kleinbuchstaben",
+    "alpha_umlauts" : "Umlaute",
+
+    "beginningFirstK1": "(beginning of plaintext alphabet)",
+    "beginningFirstK2": "(beginning of ciphertext alphabet)",
+    "beginningFirstK3": "(beginning of plaintext and ciphertext alphabet)",
+    "beginningFirstK4": "(beginning of plaintext alphabet)",
+    "beginningSecond": "(beginning of ciphertext alphabet)",
+
+    "casesensitive" : "Case-sensitiv",
+    "characters" : "Zeichen",
+    "cleanspace" : "In 5er Blöcken anzeigen",
+    "ciphertext" : "Geheimtext",
+    "ciphertextabc" : "Geheimtext-Alphabet",
+
+    "default_text" : "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern",
+
+    "firstKeyword" : "Eingabe 1. Schlüsselwort",
+    "secondKeyword" : "Eingabe 2. Schlüsselwort",
+
+    "key" : "Schlüssel",
+    "length" : "Länge",
+    "moveCipherAlphabet": "Verschiebe Geheimtext-Alphabet",
+
+    "plaintext" : "Klartext",
+    "plaintextabc" : "Klartext-Alphabet",
+    "signstext" : "Nicht im Alphabet enthaltene Zeichen beibehalten",
+
+    "ownAlphabet" : "Öffnen Sie Ihr eignes Alphabet",
+    "options" : "Optionen",
+    "ownabc": "abcdefghijklmnopqrstuvwxyz",
+    "owncipherabc" : "qwertz*/&pas§$%hjklyxcvbnm",
+    "ownButton" : "Eigenes Alphabet definieren",
+    "ownButtonClose" : "Eigenes Alphabet schließen",
+    "whitespace": "No whitespaces",
+    "warningLength": "WARNUNG - Alphabet-Länge muss gleich sein",
+    "warningClash": "WARNUNG - Buchstaben-Konflikt"
+  },
+
+  "en" : {
+    "ciphername": "Monoalphabetic Substitution Cipher",
+
+    "alphabet" : "Parse key alphabet",
+    "alphabetClose" : "Close parsing key alphabet",
+    "alphabetlength" : "Alphabet length",
+    "alphabetOptions" : "Key and alphabet",
+
+    "alpha_uppercase" : "Upper case",
+    "alpha_blanks" : "Blanks",
+    "alpha_digits" : "Digits",
+    "alpha_puctuationmarks" : "Punctuation marks",
+    "alpha_lowercase" : "Lower case",
+    "alpha_umlauts" : "Umlauts",
+
+    "beginningFirstK1": "(beginning of plaintext alphabet)",
+    "beginningFirstK2": "(beginning of ciphertext alphabet)",
+    "beginningFirstK3": "(beginning of plaintext and ciphertext alphabet)",
+    "beginningFirstK4": "(beginning of plaintext alphabet)",
+    "beginningSecond": "(beginning of ciphertext alphabet)",
+
+    "casesensitive" : "Case sensitive",
+    "characters" : "characters",
+    "cleanspace" : "Blocks of 5",
+    "ciphertext" : "Ciphertext",
+    "ciphertextabc" : "Ciphertext alphabet",
+    "default_text" : "The quick brown fox jumps over the lazy dog",
+
+    "firstKeyword" : "Enter 1st keyword",
+    "secondKeyword" : "Enter 2nd keyword",
+
+    "key" : "Key",
+    "length" : "length",
+    "moveCipherAlphabet": "Move ciphertext alphabet",
+
+    "plaintext" : "Plaintext",
+    "plaintextabc" : "Plaintext alphabet",
+    "signstext" : "Keep non-alphabet characters",
+
+    "ownAlphabet" : "Define own alphabet",
+    "options" : "Options",
+    "ownabc": "abcdefghijklmnopqrstuvwxyz",
+    "owncipherabc" : "qwertz*/&pas§$%hjklyxcvbnm",
+    "ownButton" : "Define own alphabet",
+    "ownButtonClose" : "Close own alphabet",
+    "whitespace": "No whitespaces",
+    "warningLength": "WARNING - Alphabet length must equal",
+    "warningClash": "WARNING - Letter clash"
+  }
+}
