@@ -1,0 +1,43 @@
+/* style */
+.containerFluid #substitution {
+	float: left;
+	width: 100%;
+}
+.containerFluid .cell, .cellHead {
+	float: left;
+	width: 3em;
+	border: 0.1em solid #229222;/*#8B0000;*/
+	text-align: center;
+}
+.containerFluid .row {
+	width: 100%;
+	line-height:250%;
+	display: block;
+	float: left;
+	margin: 0;
+}
+.containerFluid .substitution-matrix-wrapper {
+	float: left;
+	width: 98%;
+	padding: 0 0.6em;
+	display: block;
+	border: 1px solid #ccc;
+	margin: 0 0.5em;
+}
+.containerFluid .select {
+	float: left;
+	width: 97%;
+	display: inline-block;
+	margin: 0;
+}
+.containerFluid .select label {
+	float: initial;
+	display: inline-block;
+	padding: 0.5em 0;
+	width: 35%;
+}
+.containerFluid .select select {
+	width: 57%;
+	padding: 0.5em;
+	float: right;
+}

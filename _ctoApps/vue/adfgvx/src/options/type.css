@@ -1,0 +1,9 @@
+.containerFluid #type {
+    text-align: center;
+    float: left;
+    width: 100%;
+    margin: 2em 0 1em 0;
+}
+.containerFluid #type label {
+    margin: 0 1.5em 0 0.5em;
+}

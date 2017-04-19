@@ -1,0 +1,119 @@
+{
+  "de" : {
+    "ciphername": "ADFG(V)X",
+
+    "alphabet" : "Schlüssel-Alphabet zusammenfügen",
+    "alphabetClose" : "Schlüssel-Alphabet zusammenfügen schließen",
+    "alphabetlength" : "Alphabet-Länge",
+    "alphabetOptions" : "Schlüssel und Alphabet",
+
+    "alpha_headline": "Alphabet für das Transpositions-Passwort",
+    "alpha_uppercase" : "Großbuchstaben",
+    "alpha_blanks" : "Leerzeichen",
+    "alpha_digits" : "Ziffern",
+    "alpha_puctuationmarks" : "Satzzeichen",
+    "alpha_lowercase" : "Kleinbuchstaben",
+    "alpha_umlauts" : "Umlaute",
+
+    "background" : "Hintergrund",
+    "casesensitive" : "Case-sensitiv",
+    "characters" : "Zeichen",
+    "cleanspace" : "In 2er Blöcken anzeigen",
+    "ciphertext" : "Geheimtext",
+    "ciphertextabc" : "Geheimtext-Alphabet",
+    "columns" : "Schlüssel vor der Sortierung in Zahlen",
+    "description" : "Beschreibung",
+
+    "default_text" : "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern",
+
+    "firstKeyword" : "Matrix mit Schlüsselwort füllen",
+    "groupTwo" : "2er Blöcke",
+    "groupFive" : "5er Blöcke",
+    "groupNone" : "Ohne Leerzeichen",
+
+    "keywordRoute" : "Richtung für den Substitutions-Schlüssel",
+    "substitutionKey" : "Substitutions-Schlüssel",
+
+    "key" : "Transpositions-Schlüssel",
+    "length" : "Länge",
+
+    "plaintext" : "Klartext",
+    "plaintextabc" : "Klartext-Alphabet",
+    "signstext" : "Nicht im Alphabet enthaltene Zeichen beibehalten",
+    "security" : "Sicherheit",
+
+    "random_matrix" : "Zufallsmatrix",
+    "standard_matrix" : "Standardmatrix",
+    "specify_matrix" : "Eigene Matrix festlegen",
+    "substitutiontxt" : "Zwischenergebnis nach dem Substitutions-Schritt",
+    "substitution_matrix" : "Substitutionsmatrix",
+    "substitution_options" : "Substitutionseinstellungen (an/aus)",
+
+    "options" : "Optionen",
+    "ownabc": "abcdefghijklmnopqrstuvwxyz",
+    "owncipherabc" : "qwertz*/&pas§$%hjklyxcvbnm",
+    "ownButton" : "Substitutionseinstellungen an",
+    "ownButtonClose" : "Substitutionseinstellungen aus",
+    "whitespace": "No whitespaces",
+    "warningLength": "WARNUNG - Matrix-Länge ist zu kurz",
+    "warningClash": "WARNUNG - Buchstaben-Konflikt"
+  },
+
+  "en" : {
+    "ciphername": "ADFG(V)X",
+
+    "alphabet" : "Parse transposition key alphabet",
+    "alphabetClose" : "Close parsing transposition key alphabet",
+    "alphabetlength" : "Alphabet length",
+    "alphabetOptions" : "keys and transposition key alphabet",
+
+    "alpha_headline": "Alphabet for the transposition password",
+    "alpha_uppercase" : "Upper case",
+    "alpha_blanks" : "Blanks",
+    "alpha_digits" : "Digits",
+    "alpha_puctuationmarks" : "Punctuation marks",
+    "alpha_lowercase" : "Lower case",
+    "alpha_umlauts" : "Umlauts",
+
+    "background" : "Background",
+    "casesensitive" : "Case sensitive",
+    "characters" : "characters",
+    "cleanspace" : "Blocks of 2",
+    "groupTwo" : "Blocks of 2",
+    "groupFive" : "Blocks of 5",
+    "groupNone" : "Unblocked",
+    "ciphertext" : "Ciphertext (final result after the transposition step)",
+    "ciphertextabc" : "Ciphertext alphabet",
+    "columns" : "Transposition key (thus used after rearranging: as string and as sorted number sequence)",
+    "default_text" : "The quick brown fox jumps over the lazy dog",
+    "description" : "description",
+
+    "firstKeyword" : "Substitution key (to arrange substitution matrix)",
+    "keywordRoute" : "Select route for substitution key",
+    "substitutionKey" : "Substitution key",
+
+    "key" : "Transposition key (entered by human)",
+    "length" : "length",
+
+    "plaintext" : "Plaintext",
+    "plaintextabc" : "Plaintext alphabet",
+    "signstext" : "Keep non-alphabet characters",
+    "security" : "Security",
+
+    "random_matrix" : "Random matrix",
+    "standard_matrix" : "Standard matrix",
+    "specify_matrix" : "Specify matrix by yourself",
+    "substitutiontxt" : "Intermediate result after the substitution step (this is the first of two steps)",
+    "substitution_matrix" : "Substitution matrix",
+    "substitution_options" : "Substitution options (on/off)",
+
+    "options" : "Options",
+    "ownabc": "abcdefghijklmnopqrstuvwxyz",
+    "owncipherabc" : "qwertz*/&pas§$%hjklyxcvbnm",
+    "ownButton" : "Open substitution options",
+    "ownButtonClose" : "Close substitution options",
+    "whitespace": "No whitespaces",
+    "warningLength": "WARNING - Matrix length is to short",
+    "warningClash": "WARNING - Letter clash"
+  }
+}
