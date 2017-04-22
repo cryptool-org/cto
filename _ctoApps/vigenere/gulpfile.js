@@ -10,6 +10,19 @@ var mocha = require('gulp-mocha');
 var rename = require('gulp-rename');
 var flatten = require('gulp-flatten');
 var zip = require('gulp-zip');
+var Ssh = require('gulp-ssh');
+var fs = require('fs');
+var through = require('through2');
+var path = require('path');
+
+var ssh = new Ssh({
+    ignoreErrors: true,
+    sshConfig: {
+        host: 'cryptool.org',
+        username: 'knapetm',
+        privateKey: fs.readFileSync('/Users/timm/.ssh/id_rsa')
+    }
+});
 
 function dest() {
     return gulp.dest('dist');
@@ -94,3 +107,41 @@ gulp.task('web', ['default', 'dist'], function () {
     return gulp.src(['*.zip', 'dist/**', '!dist/test', '!dist/test/**', '!dist/locales', '!dist/locales/**', '!**/fragment-*.html', '!**/cto.config.json']).pipe(gulp.dest('web'));
 });
 
+function dirs_to_deploy() {
+    return gulp.src(['dist/*', '!dist/test', '!dist/locales', '!dist/bootstrap*', '!dist/jquery*']);
+}
+
+function files_to_deploy() {
+    return gulp.src(['dist/**', '!dist/test', '!dist/test/**', '!dist/locales', '!dist/locales/**', '!dist/*/web-*.html', '!dist/bootstrap*', '!dist/jquery*']);
+}
+
+var remote_dir = '/var/www/cryptool-dev/_ctoApps/';
+function get_remote_path(p) { return remote_dir + path.basename(p); }
+
+gulp.task('prepare-deploy', function() {
+    return dirs_to_deploy()
+        .pipe(through.obj(function (chunk, encoding, cb) {
+            var remote_path = get_remote_path(chunk.path);
+            var old_path = remote_path + '_old';
+            ssh.shell([
+                'rm -Rf "' + old_path + '"',
+                'mv "' + remote_path + '" "' + old_path + '" || true'
+            ]);
+            cb(null, chunk);
+        }))
+});
+
+gulp.task('do-deploy', ['prepare-deploy'], function() {
+    return files_to_deploy()
+        .pipe(ssh.dest(remote_dir))
+});
+
+gulp.task('post-deploy', ['do-deploy'], function() {
+    return dirs_to_deploy()
+        .pipe(through.obj(function (chunk, encoding, cb) {
+            ssh.exec('chgrp -R www-data "' + get_remote_path(chunk.path) + '"');
+            cb(null, chunk);
+        }));
+
+});
+gulp.task('deploy', ['default', 'post-deploy']);

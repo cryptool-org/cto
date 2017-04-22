@@ -4,7 +4,7 @@
     "./@@name.css"
   ],
   "scripts": [
-    "./@@name.js"
+    "./@@name-de.js"
   ],
-  "html": "fragment-%lang%.html"
+  "html": "fragment-de.html"
 }

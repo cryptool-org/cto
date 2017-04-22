@@ -16,7 +16,10 @@
     "gulp-i18n-localize": "^1.2.7",
     "gulp-mocha": "^4.0.1",
     "gulp-rename": "^1.2.2",
+    "gulp-scp2": "^0.2.0",
+    "gulp-ssh": "^0.6.0",
     "gulp-uglify": "^2.0.1",
-    "gulp-zip": "^4.0.0"
+    "gulp-zip": "^4.0.0",
+    "through2": "^2.0.3"
   }
 }
