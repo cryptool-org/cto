@@ -19,8 +19,8 @@ var ssh = new Ssh({
     ignoreErrors: true,
     sshConfig: {
         host: 'cryptool.org',
-        username: 'knapetm',
-        privateKey: fs.readFileSync('/Users/timm/.ssh/id_rsa')
+        username: process.env.SSH_USER ? process.env.SSH_USED : 'knapetm',
+        privateKey: fs.readFileSync(process.env.HOME + '/.ssh/id_rsa')
     }
 });
 
@@ -96,16 +96,6 @@ gulp.task('jquery', function() {
         .pipe(dest())
 });
 gulp.task('default', [ 'test', 'bootstrap', 'jquery', 'html', 'js', 'css', 'config' ]);
-
-gulp.task('dist', ['default'], function () {
-    return gulp.src(['./**', '!node_modules/**', '!.idea/**', '!.git/**', '!*.zip', '!web/**', '!dist/test/**', '!dist/locales/**', '!dist/bootstrap*', '!dist/jquery*'])
-        .pipe(zip('vigenere.zip'))
-        .pipe(gulp.dest('.'));
-});
-
-gulp.task('web', ['default', 'dist'], function () {
-    return gulp.src(['*.zip', 'dist/**', '!dist/test', '!dist/test/**', '!dist/locales', '!dist/locales/**', '!**/fragment-*.html', '!**/cto.config.json']).pipe(gulp.dest('web'));
-});
 
 function dirs_to_deploy() {
     return gulp.src(['dist/*', '!dist/test', '!dist/locales', '!dist/bootstrap*', '!dist/jquery*']);
