@@ -19,7 +19,7 @@ var ssh = new Ssh({
     ignoreErrors: true,
     sshConfig: {
         host: 'cryptool.org',
-        username: process.env.SSH_USER ? process.env.SSH_USED : 'knapetm',
+        username: process.env.SSH_USER ? process.env.SSH_USER : 'knapetm',
         privateKey: fs.readFileSync(process.env.HOME + '/.ssh/id_rsa')
     }
 });
