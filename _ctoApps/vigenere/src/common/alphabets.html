@@ -1,0 +1,48 @@
+@@include('./alphabet_block.html', {
+    "alphabet_id": "alphabets",
+    "alphabet_title": "${{ base.ALPHABETS }}$",
+    "alphabets": [ "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz" ]
+})
+@@if (different_key_alphabet === true) {
+@@include('./alphabet_block.html', {
+"alphabet_id": "key-alphabets",
+"alphabet_title": "${{ base.KEY_ALPHABETS }}$",
+"alphabets": [ "ABCDEFGHIJ", "abcdefghij", "0123456789" ]
+})
+}
+<div class="modal fade" id="alphabet-details" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">${{ alphabet.DETAILS_TITLE }}$</h4>
+                ${{ alphabet.LEN_PREFIX }}$<span id="alphabet-length"></span>${{ alphabet.LEN_POSTFIX }}$
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="compressed-alphabet">${{ alphabet.COMPRESSED_NOTATION }}$</label>
+                        <input class="form-control" id="compressed-alphabet" type="text">
+                    </div><div class="form-group">
+                    <label for="offset-for-alphabet">${{ alphabet.OFFSET }}$</label>
+                    <input class="form-control" id="offset-for-alphabet" type="text">
+                </div><div class="form-group">
+                    <label for="keyword-for-alphabet">${{ alphabet.KEYWORD }}$</label>
+                    <input class="form-control" id="keyword-for-alphabet" type="text">
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer" id="alphabet-detail-buttons">
+                <button type="button" class="btn btn-default" id="reverse-alphabet">${{ alphabet.REVERSE }}$</button>
+                <button type="button" class="btn btn-default" id="permute-alphabet">${{ alphabet.PERMUTE }}$</button>
+                <button type="button" class="btn btn-default" id="shift-alphabet-left">${{ alphabet.SHIFT_LEFT }}$</button>
+                <button type="button" class="btn btn-default" id="shift-alphabet-right">${{ alphabet.SHIFT_RIGHT }}$</button>
+                <button type="button" class="btn btn-default" id="clone-alphabet-to-other-case">${{ alphabet.SWITCH_CASE }}$</button>
+                <button type="button" class="btn btn-default" id="add-A-Z">${{ alphabet.ADD_PREFIX }}$A&ndash;Z${{ alphabet.ADD_POSTFIX }}$</button>
+                <button type="button" class="btn btn-default" id="add-a-z">${{ alphabet.ADD_PREFIX }}$a&ndash;z${{ alphabet.ADD_POSTFIX }}$</button>
+                <button type="button" class="btn btn-default" id="add-0-9">${{ alphabet.ADD_PREFIX }}$0–9${{ alphabet.ADD_POSTFIX }}$</button>
+                <button type="button" class="btn btn-danger" id="delete-alphabet">${{ alphabet.DELETE }}$</button>
+            </div>
+        </div>
+    </div>
+</div>

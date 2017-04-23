@@ -228,7 +228,7 @@ function setupAlphabets(state) {
     }
 
     if ($keyAlphaContainer) {
-        this.$keyAlphabets = [];
+        state.$keyAlphabets = [];
         for ($child = $keyAlphaContainer.firstChild; $child; $child = $child.nextSibling) {
             if ($child.className === 'form-group') {
                 ($ref => {

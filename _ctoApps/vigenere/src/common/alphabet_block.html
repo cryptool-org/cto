@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">@@alphabet_title</h3>
+    </div>
+    <div class="panel-body" id="@@alphabet_id">
+@@for(var i = 0; i < alphabets.length; ++i) {
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control alphabet" value="` + alphabets[i] + `">
+                <span class="input-group-btn"><button class="btn btn-default">…</button></span>
+            </div>
+            <span class="offset">0</span>
+            <div class="alert alert-danger alert-hidden"></div>
+        </div>
+}
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-default pull-right" id="add-alphabet">${{ base.ADD_ALPHABET }}$</button>
+        <div class="clearfix"></div>
+    </div>
+</div>
