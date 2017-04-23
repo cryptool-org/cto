@@ -1,6 +1,5 @@
 ## Immediate Actions
 
-* Start-Index für Alphabete festlegen
 * Beispiel mit Case-gemischten Alphabet
 
 ## TODO
@@ -11,6 +10,7 @@
 
 ## DONE
 
+* Start-Index für Alphabete festlegen
 * Unit-Tests in Unterverzeichnisse
 * Rechtschreibkorrekturen von Herrn Esslinger
 * Unit-Tests in dist/test zusammenbauen

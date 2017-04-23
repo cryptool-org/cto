@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require('assert');
+const MockedElement = require('../../src/test/mocked_element.js').MockedElement;
 const mockedState = require('../../src/test/mocked_state.js');
 const mockedOpts = require('../../src/test/mocked_opts.js');
 
@@ -49,7 +50,7 @@ describe('Basic Crypt functionality', () => {
     });
     it('should honour offset in key alphabet', () => {
         state.$key = { value: 'a' };
-        state.$keyAlphabets = [new mockedState.MockedElement({
+        state.$keyAlphabets = [new MockedElement({
             alphabet: { value: 'ab' },
             offset: { innerText: '1' }
         })];
