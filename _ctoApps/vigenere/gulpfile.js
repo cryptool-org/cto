@@ -87,12 +87,12 @@ gulp.task('test', ['build-tests'], function () {
 });
 
 gulp.task('bootstrap', function () {
-    return gulp.src('lib/bootstrap/*')
+    return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.css', 'node_modules/bootstrap/dist/js/bootstrap.js'])
         .pipe(dest())
 });
 
 gulp.task('jquery', function() {
-    return gulp.src('lib/jquery/*')
+    return gulp.src('node_modules/jquery/dist/jquery.js')
         .pipe(dest())
 });
 gulp.task('default', [ 'test', 'bootstrap', 'jquery', 'html', 'js', 'css', 'config' ]);

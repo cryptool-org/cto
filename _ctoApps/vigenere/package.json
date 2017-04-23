@@ -8,6 +8,7 @@
     "dist"
   ],
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "gulp": "^3.9.1",
     "gulp-csso": "^2.0.0",
     "gulp-file-include": "^1.0.0",
@@ -20,6 +21,7 @@
     "gulp-ssh": "^0.6.0",
     "gulp-uglify": "^2.0.1",
     "gulp-zip": "^4.0.0",
+    "jquery": "^3.2.1",
     "through2": "^2.0.3"
   }
 }
