@@ -8,9 +8,9 @@
 
     // Underscore lite
 
-    var _ = {
-        'forEach': function (c, f) {
-            for (var k in c) {
+    const _ = {
+        forEach(c, f) {
+            for (let k in c) {
                 if (c.hasOwnProperty(k)) {
                     f(c[k], k);
                 }
@@ -20,10 +20,10 @@
 
     // state handling
 
-    var $alphaContainer = $('alphabets');
-    var $keyAlphaContainer = $('key-alphabets');
+    const $alphaContainer = $('alphabets');
+    const $keyAlphaContainer = $('key-alphabets');
 
-    var state = new function State() {
+    const state = new function State() {
         this.encrypting = true;
 
         this.$plain = $('plain');
@@ -51,7 +51,7 @@
             }
         };
 
-        this.$direction.addEventListener('click', function (event) {
+        this.$direction.addEventListener('click', event => {
             if (state.encrypting) {
                 state.setDecrypting();
             } else {
@@ -59,11 +59,11 @@
             }
             event.preventDefault();
         });
-        this.$plain.addEventListener('keyup', function () {
+        this.$plain.addEventListener('keyup', () => {
             state.setEncrypting();
             update();
         });
-        this.$cipher.addEventListener('keyup', function () {
+        this.$cipher.addEventListener('keyup', () => {
             state.setDecrypting();
             update();
         });
@@ -77,7 +77,7 @@
         }
 
         function updateLen() {
-            var $len = $('alphabet-length');
+            const $len = $('alphabet-length');
             while ($len.firstChild) {
                 $len.removeChild($len.firstChild);
             }
@@ -89,16 +89,18 @@
             updateLen();
             update();
         }
-        $('compressed-alphabet').addEventListener('keyup', function() {
+
+        $('compressed-alphabet').addEventListener('keyup', () => {
             $keywordForAlphabet.value = '';
             updateFromCompressedAlphabet();
         });
-        var $keywordForAlphabet = $('keyword-for-alphabet');
-        $keywordForAlphabet.addEventListener('keyup', function() {
-            var result = '';
-            var source = $activeInput.value.split('').sort();
-            for (var idx = 0; idx < $keywordForAlphabet.value.length; ++idx) {
-                var i = source.indexOf($keywordForAlphabet.value[idx]);
+        const $keywordForAlphabet = $('keyword-for-alphabet');
+        $keywordForAlphabet.addEventListener('keyup', () => {
+            let idx;
+            let result = '';
+            let source = $activeInput.value.split('').sort();
+            for (idx = 0; idx < $keywordForAlphabet.value.length; ++idx) {
+                const i = source.indexOf($keywordForAlphabet.value[idx]);
                 if (i >= 0) {
                     result += source[i];
                     source.splice(i, 1);
@@ -110,41 +112,44 @@
             $('compressed-alphabet').value = compressAlphabet(result);
             updateFromCompressedAlphabet();
         });
-        var $offsetForAlphabet = $('offset-for-alphabet');
-        $offsetForAlphabet.addEventListener('keyup', function() {
+        const $offsetForAlphabet = $('offset-for-alphabet');
+        $offsetForAlphabet.addEventListener('keyup', () =>{
             if ($offsetForAlphabet.value.match(/^[+-]?[0-9]+$/)) {
-                while ($activeOffset.firstChild) { $activeOffset.removeChild($activeOffset.firstChild); }
+                while ($activeOffset.firstChild) {
+                    $activeOffset.removeChild($activeOffset.firstChild);
+                }
                 $activeOffset.appendChild(document.createTextNode($offsetForAlphabet.value));
                 update();
             }
         });
         function addCompressedExpression(expr) {
-            return function(event) {
-                var $input = $('compressed-alphabet');
+            return event => {
+                const $input = $('compressed-alphabet');
                 $input.value += expr;
                 updateFromCompressedAlphabet();
                 event.preventDefault();
             }
         }
+
         for ($child = $('alphabet-detail-buttons').firstChild; $child; $child = $child.nextSibling) {
             if ($child.id && $child.id.substring(0, 4) === "add-") {
                 $child.addEventListener('click', addCompressedExpression($child.id.substring(4)));
             }
         }
-        $('reverse-alphabet').addEventListener('click', function(event) {
-            var result = '';
-            for (var idx = $activeInput.value.length - 1; idx >= 0; --idx) {
+        $('reverse-alphabet').addEventListener('click', event => {
+            let result = '';
+            for (let idx = $activeInput.value.length - 1; idx >= 0; --idx) {
                 result += $activeInput.value[idx];
             }
             $('compressed-alphabet').value = compressAlphabet(result);
             updateFromCompressedAlphabet();
             event.preventDefault();
         });
-        $('permute-alphabet').addEventListener('click', function(event) {
-            var chars = $activeInput.value.split('');
-            for (var i = chars.length - 1; i > 0; --i) {
-                var j = Math.floor(Math.random() * i);
-                var tmp = chars[j];
+        $('permute-alphabet').addEventListener('click', event => {
+            let chars = $activeInput.value.split('');
+            for (let i = chars.length - 1; i > 0; --i) {
+                const j = Math.floor(Math.random() * i);
+                const tmp = chars[j];
                 chars[j] = chars[i];
                 chars[i] = tmp;
             }
@@ -152,26 +157,26 @@
             updateFromCompressedAlphabet();
             event.preventDefault();
         });
-        $('shift-alphabet-left').addEventListener('click', function(event) {
-            var value = $activeInput.value;
-            var result = value.substr(1) + value.substr(0, 1);
+        $('shift-alphabet-left').addEventListener('click', event => {
+            const value = $activeInput.value;
+            const result = value.substr(1) + value.substr(0, 1);
             $('compressed-alphabet').value = compressAlphabet(result);
             updateFromCompressedAlphabet();
             event.preventDefault();
         });
-        $('shift-alphabet-right').addEventListener('click', function(event) {
-            var value = $activeInput.value;
-            var result = value.substr(value.length - 1) + value.substr(0, value.length - 1);
+        $('shift-alphabet-right').addEventListener('click', event => {
+            const value = $activeInput.value;
+            const result = value.substr(value.length - 1) + value.substr(0, value.length - 1);
             $('compressed-alphabet').value = compressAlphabet(result);
             updateFromCompressedAlphabet();
             event.preventDefault();
         });
-        $('clone-alphabet-to-other-case').addEventListener('click', function(event) {
+        $('clone-alphabet-to-other-case').addEventListener('click', event => {
             event.preventDefault();
 
-            var result = '';
-            var source = $activeInput.value;
-            for (var i = 0; i < source.length; ++i) {
+            let result = '';
+            const source = $activeInput.value;
+            for (let i = 0; i < source.length; ++i) {
                 if (source[i] === source[i].toUpperCase()) {
                     result += source[i].toLowerCase();
                 } else {
@@ -183,29 +188,31 @@
             closeAlphabetDetails();
             update();
         });
-        $('delete-alphabet').addEventListener('click', function(event) {
+        $('delete-alphabet').addEventListener('click', event => {
             state.$alphabets.splice(state.$alphabets.indexOf($activeInput), 1);
             $activeAlphabet.parentNode.removeChild($activeAlphabet);
             closeAlphabetDetails();
             update();
             event.preventDefault();
         });
-        var $activeAlphabet;
-        var $activeInput;
-        var $activeOffset;
+        let $activeAlphabet;
+        let $activeInput;
+        let $activeOffset;
 
         function compressAlphabet(expanded) {
-            if (expanded.length < 3) { return expanded; }
-            var result = '';
-            var start = 0;
+            if (expanded.length < 3) {
+                return expanded;
+            }
+            let result = '';
+            let start = 0;
             while (start < expanded.length) {
                 if (expanded[start] === '-') {
                     result += '---';
                     ++start;
                     continue;
                 }
-                var val = expanded[start].charCodeAt(0);
-                var end = start + 1;
+                let val = expanded[start].charCodeAt(0);
+                let end = start + 1;
                 if (end < expanded.length) {
                     if (val === expanded[end].charCodeAt(0) - 1) {
                         while (end < expanded.length && val === expanded[end].charCodeAt(0) - 1) {
@@ -222,7 +229,7 @@
                 if (end - start >= 3) {
                     result += expanded[start] + '-' + expanded[end - 1];
                 } else {
-                    for (var i = start; i < end; ++i) {
+                    for (let i = start; i < end; ++i) {
                         result += expanded[i];
                     }
                 }
@@ -230,17 +237,18 @@
             }
             return result;
         }
+
         function expandAlphabet(compressed) {
-            var result = '';
-            var idx = 0;
+            let result = '';
+            let idx = 0;
             while (idx < compressed.length) {
                 if (idx + 2 < compressed.length && compressed[idx + 1] === '-') {
                     if (compressed[idx].charCodeAt(0) < compressed[idx + 2].charCodeAt(0)) {
-                        for (var i = compressed[idx].charCodeAt(0); i <= compressed[idx + 2].charCodeAt(0); ++i) {
+                        for (let i = compressed[idx].charCodeAt(0); i <= compressed[idx + 2].charCodeAt(0); ++i) {
                             result += String.fromCharCode(i);
                         }
                     } else {
-                        for (var j = compressed[idx].charCodeAt(0); j >= compressed[idx + 2].charCodeAt(0); --j) {
+                        for (let j = compressed[idx].charCodeAt(0); j >= compressed[idx + 2].charCodeAt(0); --j) {
                             result += String.fromCharCode(j);
                         }
                     }
@@ -252,6 +260,7 @@
             }
             return result;
         }
+
         function showAlphabetDetails($container) {
             $activeAlphabet = $container;
             $activeInput = $container.getElementsByClassName('alphabet')[0];
@@ -262,17 +271,18 @@
             updateLen();
             jQuery('#alphabet-details').modal('show');
         }
-        var $child;
+
+        let $child;
         for ($child = $alphaContainer.firstChild; $child; $child = $child.nextSibling) {
             if ($child.className === 'form-group') {
-                (function(self, $ref) {
-                    var $inner = $ref.getElementsByTagName('div')[0];
-                    var $input = $inner.getElementsByTagName('input')[0];
+                (function (self, $ref) {
+                    const  $inner = $ref.getElementsByTagName('div')[0];
+                    const $input = $inner.getElementsByTagName('input')[0];
                     self.$alphabets.push($ref);
                     $input.addEventListener('keyup', update);
-                    var $span = $inner.getElementsByTagName('span')[0];
-                    var $button = $span.getElementsByTagName('button')[0];
-                    $button.addEventListener('click', function (event) {
+                    const $span = $inner.getElementsByTagName('span')[0];
+                    const $button = $span.getElementsByTagName('button')[0];
+                    $button.addEventListener('click', event => {
                         showAlphabetDetails($ref);
                         event.preventDefault();
                     });
@@ -284,14 +294,14 @@
             this.$keyAlphabets = [];
             for ($child = $keyAlphaContainer.firstChild; $child; $child = $child.nextSibling) {
                 if ($child.className === 'form-group') {
-                    (function(self, $ref) {
-                        var $inner = $ref.getElementsByTagName('div')[0];
-                        var $input = $inner.getElementsByTagName('input')[0];
+                    (function (self, $ref) {
+                        const  $inner = $ref.getElementsByTagName('div')[0];
+                        const $input = $inner.getElementsByTagName('input')[0];
                         self.$keyAlphabets.push($ref);
                         $input.addEventListener('keyup', update);
-                        var $span = $inner.getElementsByTagName('span')[0];
-                        var $button = $span.getElementsByTagName('button')[0];
-                        $button.addEventListener('click', function (event) {
+                        const $span = $inner.getElementsByTagName('span')[0];
+                        const $button = $span.getElementsByTagName('button')[0];
+                        $button.addEventListener('click', event => {
                             showAlphabetDetails($ref);
                             event.preventDefault();
                         });
@@ -300,12 +310,12 @@
             }
         }
         function addAlphabet(value, $parent, offset) {
-            var $container = document.createElement('div');
+            const $container = document.createElement('div');
             $container.classList.add('form-group');
-            var $inner = document.createElement('div');
+            const $inner = document.createElement('div');
             $inner.classList.add('input-group');
             $container.appendChild($inner);
-            var $input = document.createElement('input');
+            const $input = document.createElement('input');
             $input.setAttribute('type', 'text');
             $input.classList.add('form-control');
             $input.classList.add('alphabet');
@@ -314,23 +324,23 @@
             state.$alphabets.push($container);
             $inner.appendChild($input);
 
-            var $span = document.createElement('span');
+            const $span = document.createElement('span');
             $span.classList.add('input-group-btn');
-            var $details= document.createElement('button');
+            const $details = document.createElement('button');
             $details.appendChild(document.createTextNode('…'));
             $details.classList.add('btn');
             $details.classList.add('btn-default');
-            $details.addEventListener('click', function(event) {
+            $details.addEventListener('click', event => {
                 showAlphabetDetails($container);
                 event.preventDefault();
             });
             $span.appendChild($details);
             $inner.appendChild($span);
-            var $offset = document.createElement('span');
+            const $offset = document.createElement('span');
             $offset.classList.add('offset');
             $offset.appendChild(document.createTextNode('' + offset));
             $container.appendChild($offset);
-            var $error = document.createElement('div');
+            const $error = document.createElement('div');
             $error.classList.add('alert');
             $error.classList.add('alert-danger');
             $error.classList.add('alert-hidden');
@@ -338,13 +348,14 @@
             $parent.appendChild($container);
             update();
         }
-        $('add-alphabet').addEventListener('click', function(event) {
+
+        $('add-alphabet').addEventListener('click', function (event) {
             addAlphabet('', $alphaContainer);
             event.preventDefault();
         });
-        var $btn = $('add-key-alphabet');
+        const $btn = $('add-key-alphabet');
         if ($btn) {
-            $btn.addEventListener('click', function(event) {
+            $btn.addEventListener('click', function (event) {
                 addAlphabet('', $keyAlphaContainer);
                 event.preventDefault();
             });
@@ -353,7 +364,7 @@
 
     // options
 
-    var opts = new function () {
+    let opts = new function () {
         this.$deleteWhitespace = $('deleteWhitespace');
         this.$groupBy5s = $('groupBy5s');
         this.$deleteNonLetters = $('deleteNonLetters');
@@ -364,44 +375,44 @@
         });
     };
 
-    var crypt = new Crypt(algo, state, opts);
+    let crypt = new Crypt(algo, state, opts);
 
     function update() {
         function validateAlphabets($parent, searchForDuplicates) {
             if (! $parent) { return; }
 
             function countChars($parent) {
-                var result = {};
-                for (var $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
-                    var $input = $alphabet.firstChild.firstChild;
-                    var value = $input.value;
-                    for (var i = 0; i < value.length; ++i) { 
+                let result = {};
+                for (let $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
+                    const $input = $alphabet.firstChild.firstChild;
+                    const value = $input.value;
+                    for (let i = 0; i < value.length; ++i) {
             			result[value[i]] = result[value[i]] ? result[value[i]] + 1 : 1;
 		            }
                 }
                 return result;
             }
 
-            var counts = countChars($parent);
-            for (var $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
-                var $input = $alphabet.firstChild.firstChild;
-                var value = $input.value;
-                var $error = $alphabet.firstChild.nextSibling.nextSibling;
-                var message = '';
+            const counts = countChars($parent);
+            for (let $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
+                const $input = $alphabet.firstChild.firstChild;
+                const value = $input.value;
+                const $error = $alphabet.firstChild.nextSibling.nextSibling;
+                let message = '';
                 if (value.length === 0) {
                     message = "${{ alphabet.EMPTY_ALPHABET }}$";
                 } else if (searchForDuplicates) {
-                    var doubles = '';
-                    var count = 0;
-		    var found = {};
-                    for (var i = 0; i < value.length; ++i) {
+                    let doubles = '';
+                    let count = 0;
+		            let found = {};
+                    for (let i = 0; i < value.length; ++i) {
                         if (counts[value[i]] > 1) {
-			    if (! found[value[i]]) {
-			    	if (count) { doubles += ', '; }
+			                if (! found[value[i]]) {
+			    	            if (count) { doubles += ', '; }
                             	doubles += value[i];
-				found[value[i]] = true;
-			    }
-			    ++count;
+				                found[value[i]] = true;
+			                }
+			                ++count;
                         }
                     }
                     if (doubles.length) {
@@ -419,13 +430,13 @@
 
         validateAlphabets($alphaContainer, true);
         validateAlphabets($keyAlphaContainer, false);
-        var $from = state.encrypting ? state.$plain : state.$cipher;
-        var $to = state.encrypting ? state.$cipher : state.$plain;
+        const $from = state.encrypting ? state.$plain : state.$cipher;
+        const $to = state.encrypting ? state.$cipher : state.$plain;
 
         $to.value = crypt.process($from.value, state.encrypting);
     }
 
-    (function() {
-        var $page = $('page');
+    (() => {
+        const $page = $('page');
         if ($page) { $page.appendChild($('alphabet-details')); }
     })();

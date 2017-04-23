@@ -14,6 +14,7 @@ var Ssh = require('gulp-ssh');
 var fs = require('fs');
 var through = require('through2');
 var path = require('path');
+var babel = require('gulp-babel');
 
 var ssh = new Ssh({
     ignoreErrors: true,
@@ -57,6 +58,7 @@ gulp.task('js', ['collect-locales'], function (){
     return gulp.src(['src/*/*.js', '!src/common/**', '!src/test/**', '!src/**/t_*.js'])
         .pipe(include())
         .pipe(translate())
+        .pipe(babel())
         .pipe(uglify())
         .pipe(dest());
 });
