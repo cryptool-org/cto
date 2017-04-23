@@ -6,5 +6,5 @@
   "scripts": [
     "./@@name-de.js"
   ],
-  "html": "fragment-de.html"
+  "html": "fragment-%lang%.html"
 }
