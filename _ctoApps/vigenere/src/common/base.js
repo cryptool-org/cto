@@ -1,12 +1,5 @@
 "use strict";
 
-    // jQuery lite
-
-    function $(id) {
-        if (id[0] === '#') { id = id.substr(1); }
-        return document.getElementById(id);
-    }
-
     // Underscore lite
 
     const _ = {
