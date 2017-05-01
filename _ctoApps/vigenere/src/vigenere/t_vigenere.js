@@ -26,7 +26,7 @@ describe('Vigenère', () => {
         const encoded = 'Yxhrtqcj Wzwpxmlasyydbk ygii vwynb Exjmvg apvl hse bgkplqsfr mkabrlqvk.';
 
         beforeEach(() => {
-            state.$key.value = 'Geheimer Schluessel';
+            state.$key.val = () => ('Geheimer Schluessel');
         });
 
         it('can encrypt', () => {
@@ -41,7 +41,7 @@ describe('Vigenère', () => {
         const encoded = 'Llg hybmo zjsye jhh nsetu fzxb xfw pcqc wyk.';
 
         beforeEach(() => {
-            state.$key.value = 'Secret Key';
+            state.$key.val = () => ('Secret Key');
         });
 
         it('can encrypt', () => {

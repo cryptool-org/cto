@@ -26,30 +26,30 @@ describe('Basic Crypt functionality', () => {
         assert.equal('Abc', crypt.process('Bcd', false));
     });
     it('should convert to first alphabet', () => {
-        opts.$convertToUpcase.checked = true;
+        opts.$convertToUpcase.prop = () => true;
         assert.equal('BCD', crypt.process('Abc', true));
     });
     it('should not filter non-alphabet chars', () => {
         assert.equal('B c.d', crypt.process('A b.c', true));
     });
     it('should filter white spaces', () => {
-        opts.$deleteWhitespace.checked = true;
+        opts.$deleteWhitespace.prop = () => true;
         assert.equal('Bc.d', crypt.process('A b.c', true));
     });
     it('should filter non-alphabet chars', () => {
-        opts.$deleteNonLetters.checked = true;
+        opts.$deleteNonLetters.prop = () => true;
         assert.equal('Bcd', crypt.process('A b.c', true));
     });
     it('should not filter non-alphabet key chars', () => {
-        opts.$skipNonLetterKeys.checked = false;
+        opts.$skipNonLetterKeys.prop = () => false;
         assert.equal('Acc', crypt.process('Abc', true));
     });
     it('should group by 5s', () => {
-        opts.$groupBy5s.checked = true;
+        opts.$groupBy5s.prop = () => true;
         assert.equal('bcdef gh', crypt.process('abcdefg', true));
     });
     it('should honour offset in key alphabet', () => {
-        state.$key = { value: 'a' };
+        state.$key = { val: () => ('a') };
         state.$keyAlphabets = [new MockedElement({
             alphabet: { value: 'ab' },
             offset: { innerText: '1' }

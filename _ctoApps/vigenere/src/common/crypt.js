@@ -22,7 +22,7 @@ function Crypt(algo, state, opts) {
 
     this.valueToChar = function(val, origCh) {
         let $usedAlphabet = undefined;
-        if (this.opts.$convertToUpcase.checked && this.state.$alphabets.length > 0) {
+        if (this.opts.$convertToUpcase.prop('checked') && this.state.$alphabets.length > 0) {
             $usedAlphabet = this.state.$alphabets[0];
         } else {
             const l = this.state.$alphabets.length;
@@ -51,13 +51,13 @@ function Crypt(algo, state, opts) {
 
     this.normalizeKey = function() {
         let result = [];
-        const keyValue = this.state.$key.value;
+        const keyValue = this.state.$key.val();
         const keyLength = keyValue.length;
         let $alphabets = this.state.$keyAlphabets;
         if (! $alphabets) { $alphabets = this.state.$alphabets; }
         for (let i = 0; i < keyLength; ++i) {
             const val = this.charToValue(keyValue[i], $alphabets);
-            if (val >= 0 || !this.opts.$skipNonLetterKeys.checked) {
+            if (val >= 0 || !this.opts.$skipNonLetterKeys.prop('checked')) {
                 result.push(val);
             }
         }
@@ -84,13 +84,13 @@ function Crypt(algo, state, opts) {
                     ch = this.valueToChar(val, ch);
                 }
             }
-            if (ch <= ' ' && this.opts.$deleteWhitespace.checked) {
+            if (ch <= ' ' && this.opts.$deleteWhitespace.prop('checked')) {
                 continue;
             }
-            if (val < 0 && this.opts.$deleteNonLetters.checked) {
+            if (val < 0 && this.opts.$deleteNonLetters.prop('checked')) {
                 continue;
             }
-            if (k && k % 5 === 0 && this.opts.$groupBy5s.checked) {
+            if (k && k % 5 === 0 && this.opts.$groupBy5s.prop('checked')) {
                 result += ' ';
             }
             result += ch; ++k;

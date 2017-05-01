@@ -3,8 +3,8 @@
 let validateAllAlphabets;
 
 function setupAlphabets(state) {
-    const $alphaContainer = $('alphabets');
-    const $keyAlphaContainer = $('key-alphabets');
+    const $alphaContainer = jQuery('#alphabets');
+    const $keyAlphaContainer = $('#key-alphabets');
 
     function closeAlphabetDetails() {
         jQuery('#alphabet-details').modal('hide');
@@ -14,30 +14,27 @@ function setupAlphabets(state) {
     }
 
     function updateAlphabetLen() {
-        const $len = $('alphabet-length');
-        while ($len.firstChild) {
-            $len.removeChild($len.firstChild);
-        }
-        $len.appendChild(document.createTextNode('' + $activeInput.value.length));
+        jQuery('#alphabet-length').text('' + $activeInput.value.length);
     }
 
     function updateFromCompressedAlphabet() {
-        $activeInput.value = expandAlphabet($('compressed-alphabet').value);
+        $activeInput.value = expandAlphabet($('#compressed-alphabet').value);
         updateAlphabetLen();
         update();
     }
 
-    $('compressed-alphabet').addEventListener('keyup', () => {
-        $keywordForAlphabet.value = '';
+    const $keywordForAlphabet = jQuery('#keyword-for-alphabet');
+    jQuery('#compressed-alphabet').on('keyup', () => {
+        $keywordForAlphabet.val('');
         updateFromCompressedAlphabet();
     });
-    const $keywordForAlphabet = $('keyword-for-alphabet');
-    $keywordForAlphabet.addEventListener('keyup', () => {
+    $keywordForAlphabet.on('keyup', () => {
         let idx;
         let result = '';
         let source = $activeInput.value.split('').sort();
-        for (idx = 0; idx < $keywordForAlphabet.value.length; ++idx) {
-            const i = source.indexOf($keywordForAlphabet.value[idx]);
+        let val = $keywordForAlphabet.val();
+        for (idx = 0; idx < val.length; ++idx) {
+            const i = source.indexOf(val[idx]);
             if (i >= 0) {
                 result += source[i];
                 source.splice(i, 1);
@@ -46,43 +43,44 @@ function setupAlphabets(state) {
         for (idx = 0; idx < source.length; ++idx) {
             result += source[idx];
         }
-        $('compressed-alphabet').value = compressAlphabet(result);
+        jQuery('#compressed-alphabet').val(compressAlphabet(result));
         updateFromCompressedAlphabet();
     });
-    const $offsetForAlphabet = $('offset-for-alphabet');
-    $offsetForAlphabet.addEventListener('keyup', () => {
-        if ($offsetForAlphabet.value.match(/^[+-]?[0-9]+$/)) {
+    const $offsetForAlphabet = jQuery('#offset-for-alphabet');
+    $offsetForAlphabet.on('keyup', () => {
+        let val = $offsetForAlphabet.val();
+        if (val.match(/^[+-]?[0-9]+$/)) {
             while ($activeOffset.firstChild) {
                 $activeOffset.removeChild($activeOffset.firstChild);
             }
-            $activeOffset.appendChild(document.createTextNode($offsetForAlphabet.value));
+            $activeOffset.appendChild(document.createTextNode(val));
             update();
         }
     });
     function addCompressedExpression(expr) {
         return event => {
-            const $input = $('compressed-alphabet');
-            $input.value += expr;
+            const $input = jQuery('#compressed-alphabet');
+            $input.val($input.val() + expr);
             updateFromCompressedAlphabet();
             event.preventDefault();
         }
     }
 
-    for ($child = $('alphabet-detail-buttons').firstChild; $child; $child = $child.nextSibling) {
+    for ($child = $('#alphabet-detail-buttons').firstChild; $child; $child = $child.nextSibling) {
         if ($child.id && $child.id.substring(0, 4) === "add-") {
             $child.addEventListener('click', addCompressedExpression($child.id.substring(4)));
         }
     }
-    $('reverse-alphabet').addEventListener('click', event => {
+    jQuery('#reverse-alphabet').on('click', event => {
         let result = '';
         for (let idx = $activeInput.value.length - 1; idx >= 0; --idx) {
             result += $activeInput.value[idx];
         }
-        $('compressed-alphabet').value = compressAlphabet(result);
+        jQuery('#compressed-alphabet').val(compressAlphabet(result));
         updateFromCompressedAlphabet();
         event.preventDefault();
     });
-    $('permute-alphabet').addEventListener('click', event => {
+    jQuery('#permute-alphabet').on('click', event => {
         let chars = $activeInput.value.split('');
         for (let i = chars.length - 1; i > 0; --i) {
             const j = Math.floor(Math.random() * i);
@@ -90,25 +88,25 @@ function setupAlphabets(state) {
             chars[j] = chars[i];
             chars[i] = tmp;
         }
-        $('compressed-alphabet').value = compressAlphabet(chars.join(''));
+        jQuery('#compressed-alphabet').val(compressAlphabet(chars.join('')));
         updateFromCompressedAlphabet();
         event.preventDefault();
     });
-    $('shift-alphabet-left').addEventListener('click', event => {
+    jQuery('#shift-alphabet-left').on('click', event => {
         const value = $activeInput.value;
         const result = value.substr(1) + value.substr(0, 1);
-        $('compressed-alphabet').value = compressAlphabet(result);
+        jQuery('#compressed-alphabet').val(compressAlphabet(result));
         updateFromCompressedAlphabet();
         event.preventDefault();
     });
-    $('shift-alphabet-right').addEventListener('click', event => {
+    jQuery('#shift-alphabet-right').on('click', event => {
         const value = $activeInput.value;
         const result = value.substr(value.length - 1) + value.substr(0, value.length - 1);
-        $('compressed-alphabet').value = compressAlphabet(result);
+        jQuery('#compressed-alphabet').val(compressAlphabet(result));
         updateFromCompressedAlphabet();
         event.preventDefault();
     });
-    $('clone-alphabet-to-other-case').addEventListener('click', event => {
+    jQuery('#clone-alphabet-to-other-case').on('click', event => {
         event.preventDefault();
 
         let result = '';
@@ -125,7 +123,7 @@ function setupAlphabets(state) {
         closeAlphabetDetails();
         update();
     });
-    $('delete-alphabet').addEventListener('click', event => {
+    jQuery('#delete-alphabet').on('click', event => {
         state.$alphabets.splice(state.$alphabets.indexOf($activeInput), 1);
         $activeAlphabet.parentNode.removeChild($activeAlphabet);
         closeAlphabetDetails();
@@ -202,39 +200,35 @@ function setupAlphabets(state) {
         $activeAlphabet = $container;
         $activeInput = $container.getElementsByClassName('alphabet')[0];
         $activeOffset = $container.getElementsByClassName('offset')[0];
-        $('compressed-alphabet').value = compressAlphabet($activeInput.value);
-        $('keyword-for-alphabet').value = '';
-        $('offset-for-alphabet').value = $activeOffset.innerText;
+        jQuery('#compressed-alphabet').val(compressAlphabet($activeInput.value));
+        jQuery('#keyword-for-alphabet').val('');
+        jQuery('#offset-for-alphabet').val($activeOffset.innerText);
         updateAlphabetLen();
         jQuery('#alphabet-details').modal('show');
     }
 
+    jQuery('.form-group', $alphaContainer).each(function () {
+        const $ref = jQuery(this);
+        const $inner = $ref.children('div').first();
+        const $input = $inner.children('input').first();
+        state.$alphabets.push($ref.get()[0]);
+        $input.on('keyup', update);
+        const $span = $inner.children('span').first();
+        const $button = $span.children('button').first();
+        $button.on('click', event => {
+            showAlphabetDetails($ref.get()[0]);
+            event.preventDefault();
+        });
+    });
     let $child;
-    for ($child = $alphaContainer.firstChild; $child; $child = $child.nextSibling) {
-        if ($child.className === 'form-group') {
-            ($ref => {
-                const $inner = $ref.getElementsByTagName('div')[0];
-                const $input = $inner.getElementsByTagName('input')[0];
-                state.$alphabets.push($ref);
-                $input.addEventListener('keyup', update);
-                const $span = $inner.getElementsByTagName('span')[0];
-                const $button = $span.getElementsByTagName('button')[0];
-                $button.addEventListener('click', event => {
-                    showAlphabetDetails($ref);
-                    event.preventDefault();
-                });
-            })($child);
-        }
-    }
-
     if ($keyAlphaContainer) {
-        state.$keyAlphabets = [];
+        this.$keyAlphabets = [];
         for ($child = $keyAlphaContainer.firstChild; $child; $child = $child.nextSibling) {
             if ($child.className === 'form-group') {
-                ($ref => {
+                (function (self, $ref) {
                     const $inner = $ref.getElementsByTagName('div')[0];
                     const $input = $inner.getElementsByTagName('input')[0];
-                    state.$keyAlphabets.push($ref);
+                    self.$keyAlphabets.push($ref);
                     $input.addEventListener('keyup', update);
                     const $span = $inner.getElementsByTagName('span')[0];
                     const $button = $span.getElementsByTagName('button')[0];
@@ -242,7 +236,7 @@ function setupAlphabets(state) {
                         showAlphabetDetails($ref);
                         event.preventDefault();
                     });
-                })($child);
+                })(this, $child);
             }
         }
     }
@@ -286,13 +280,13 @@ function setupAlphabets(state) {
         update();
     }
 
-    $('add-alphabet').addEventListener('click', function (event) {
-        addAlphabet('', $alphaContainer);
+    jQuery('#add-alphabet').on('click', event => {
+        addAlphabet('', $alphaContainer.get()[0]);
         event.preventDefault();
     });
-    const $btn = $('add-key-alphabet');
+    const $btn = jQuery('#add-key-alphabet');
     if ($btn) {
-        $btn.addEventListener('click', function (event) {
+        $btn.on('click', event => {
             addAlphabet('', $keyAlphaContainer);
             event.preventDefault();
         });
@@ -359,7 +353,7 @@ function setupAlphabets(state) {
     }
 
     validateAllAlphabets = () => {
-        validateAlphabets($alphaContainer, true);
+        validateAlphabets($alphaContainer.get()[0], true);
         validateAlphabets($keyAlphaContainer, false);
     }
 }

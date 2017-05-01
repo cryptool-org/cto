@@ -29,7 +29,7 @@ describe('Beaufort', () => {
         const encoded = 'Olhrxigz Ofshrwzkqyofny ssaa piqjn Enbwbg iznf rqe jyehdssfr kcinrfiny.';
 
         beforeEach(() => {
-            state.$key.value = 'Geheimer Schluessel';
+            state.$key.val = () => ('Geheimer Schluessel');
         });
 
         it('can encrypt', () => {
@@ -44,7 +44,7 @@ describe('Beaufort', () => {
         const encoded = 'Zxy bkliu xbqge zfn vegpk djpt lro tcsg qwy.';
 
         beforeEach(() => {
-            state.$key.value = 'Secret Key';
+            state.$key.val = () => ('Secret Key');
         });
 
         it('can encrypt', () => {

@@ -1,22 +1,21 @@
 "use strict";
 
-var gulp = require('gulp');
-var include = require('gulp-file-include');
-var i18n = require('gulp-i18n-localize');
-var htmlmin = require('gulp-htmlmin');
-var uglify = require('gulp-uglify');
-var minifyCSS = require('gulp-csso');
-var mocha = require('gulp-mocha');
-var rename = require('gulp-rename');
-var flatten = require('gulp-flatten');
-var zip = require('gulp-zip');
-var Ssh = require('gulp-ssh');
-var fs = require('fs');
-var through = require('through2');
-var path = require('path');
-var babel = require('gulp-babel');
+let gulp = require('gulp');
+let include = require('gulp-file-include');
+let i18n = require('gulp-i18n-localize');
+let htmlmin = require('gulp-htmlmin');
+let uglify = require('gulp-uglify');
+let minifyCSS = require('gulp-csso');
+let mocha = require('gulp-mocha');
+let rename = require('gulp-rename');
+let flatten = require('gulp-flatten');
+let Ssh = require('gulp-ssh');
+let fs = require('fs');
+let through = require('through2');
+let path = require('path');
+let babel = require('gulp-babel');
 
-var ssh = new Ssh({
+let ssh = new Ssh({
     ignoreErrors: true,
     sshConfig: {
         host: 'cryptool.org',
@@ -108,14 +107,14 @@ function files_to_deploy() {
     return gulp.src(['dist/**', '!dist/test', '!dist/test/**', '!dist/locales', '!dist/locales/**', '!dist/*/web-*.html', '!dist/bootstrap*', '!dist/jquery*']);
 }
 
-var remote_dir = '/var/www/cryptool-dev/_ctoApps/';
+let remote_dir = '/var/www/cryptool-dev/_ctoApps/';
 function get_remote_path(p) { return remote_dir + path.basename(p); }
 
 gulp.task('prepare-deploy', function() {
     return dirs_to_deploy()
         .pipe(through.obj(function (chunk, encoding, cb) {
-            var remote_path = get_remote_path(chunk.path);
-            var old_path = remote_path + '_old';
+            let remote_path = get_remote_path(chunk.path);
+            let old_path = remote_path + '_old';
             ssh.shell([
                 'rm -Rf "' + old_path + '"',
                 'mv "' + remote_path + '" "' + old_path + '" || true'

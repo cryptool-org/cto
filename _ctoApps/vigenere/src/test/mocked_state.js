@@ -13,5 +13,5 @@ exports.create = () => ({
             offset: {innerText: '0'}
         })
     ],
-    $key: {value: ' b'}
+    $key: { val: () => (' b') }
 });

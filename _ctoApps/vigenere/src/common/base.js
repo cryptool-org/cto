@@ -3,6 +3,7 @@
     // jQuery lite
 
     function $(id) {
+        if (id[0] === '#') { id = id.substr(1); }
         return document.getElementById(id);
     }
 
@@ -25,32 +26,32 @@
     const state = new function State() {
         this.encrypting = true;
 
-        this.$plain = $('plain');
-        this.$cipher = $('cipher');
-        this.$key = $('key');
+        this.$plain = jQuery('#plain');
+        this.$cipher = jQuery('#cipher');
+        this.$key = jQuery('#key');
 
-        this.$direction = $('direction');
+        this.$direction = jQuery('#direction');
 
         this.$alphabets = [];
         this.$keyAlphabets = undefined;
 
         this.setEncrypting = function () {
             if (!this.encrypting) {
-                this.$direction.classList.remove('flip');
-                this.$direction.classList.add('flop');
+                this.$direction.removeClass('flip');
+                this.$direction.addClass('flop');
                 this.encrypting = true;
             }
         };
 
         this.setDecrypting = function () {
             if (this.encrypting) {
-                this.$direction.classList.remove('flop');
-                this.$direction.classList.add('flip');
+                this.$direction.removeClass('flop');
+                this.$direction.addClass('flip');
                 this.encrypting = false;
             }
         };
 
-        this.$direction.addEventListener('click', event => {
+        this.$direction.on('click', event => {
             if (state.encrypting) {
                 state.setDecrypting();
             } else {
@@ -58,27 +59,27 @@
             }
             event.preventDefault();
         });
-        this.$plain.addEventListener('keyup', () => {
+        this.$plain.on('keyup', () => {
             state.setEncrypting();
             update();
         });
-        this.$cipher.addEventListener('keyup', () => {
+        this.$cipher.on('keyup', () => {
             state.setDecrypting();
             update();
         });
-        this.$key.addEventListener('keyup', update);
+        this.$key.on('keyup', update);
     };
 
     // options
 
     let opts = new function () {
-        this.$deleteWhitespace = $('deleteWhitespace');
-        this.$groupBy5s = $('groupBy5s');
-        this.$deleteNonLetters = $('deleteNonLetters');
-        this.$convertToUpcase = $('convertToUpcase');
-        this.$skipNonLetterKeys = $('skipNonLetterKeys');
+        this.$deleteWhitespace = jQuery('#deleteWhitespace');
+        this.$groupBy5s = jQuery('#groupBy5s');
+        this.$deleteNonLetters = jQuery('#deleteNonLetters');
+        this.$convertToUpcase = jQuery('#convertToUpcase');
+        this.$skipNonLetterKeys = jQuery('#skipNonLetterKeys');
         _.forEach(this, function (opt) {
-            opt.addEventListener('change', update);
+            opt.on('change', update);
         });
     };
 
@@ -89,11 +90,11 @@
         const $from = state.encrypting ? state.$plain : state.$cipher;
         const $to = state.encrypting ? state.$cipher : state.$plain;
 
-        $to.value = crypt.process($from.value, state.encrypting);
+        $to.val(crypt.process($from.val(), state.encrypting));
     }
 
     (() => {
         setupAlphabets(state);
-        const $page = $('page');
-        if ($page) { $page.appendChild($('alphabet-details')); }
+        const $page = jQuery('#page');
+        if ($page) { $page.append(jQuery('#alphabet-details')); }
     })();
