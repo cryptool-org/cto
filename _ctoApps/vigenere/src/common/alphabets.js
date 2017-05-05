@@ -121,7 +121,7 @@ function setupAlphabets(state) {
             }
         }
 
-        addAlphabet(result, $activeAlphabet.parentNode, parseInt($activeOffset.innerText));
+        addAlphabet(result, jQuery($activeAlphabet.parentNode), parseInt($activeOffset.innerText));
         closeAlphabetDetails();
         update();
     });
@@ -225,7 +225,6 @@ function setupAlphabets(state) {
         }
     }
     jQuery('.form-group', $alphaContainer).each(alphabetDecorator(state.$alphabets));
-    let $child;
     if ($keyAlphaContainer.length) {
         state.$keyAlphabets = [];
         jQuery('.form-group', $keyAlphaContainer).each(alphabetDecorator(state.$keyAlphabets));
@@ -266,18 +265,18 @@ function setupAlphabets(state) {
         $error.classList.add('alert-danger');
         $error.classList.add('alert-hidden');
         $container.appendChild($error);
-        $parent.appendChild($container);
+        $parent.append($container);
         update();
     }
 
     jQuery('#add-alphabet').on('click', event => {
-        addAlphabet('', $alphaContainer.get()[0]);
+        addAlphabet('', $alphaContainer);
         event.preventDefault();
     });
     const $btn = jQuery('#add-key-alphabet');
     if ($btn) {
         $btn.on('click', event => {
-            addAlphabet('', $keyAlphaContainer.get()[0]);
+            addAlphabet('', $keyAlphaContainer);
             event.preventDefault();
         });
     }

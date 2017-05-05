@@ -1,13 +1,15 @@
 @@include('./alphabet_block.html', {
     "alphabet_id": "alphabets",
     "alphabet_title": "${{ base.ALPHABETS }}$",
-    "alphabets": [ "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz" ]
+    "alphabets": [ "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz" ],
+    "add_alphabet_id": "add-alphabet"
 })
 @@if (different_key_alphabet === true) {
 @@include('./alphabet_block.html', {
 "alphabet_id": "key-alphabets",
 "alphabet_title": "${{ base.KEY_ALPHABETS }}$",
-"alphabets": [ "ABCDEFGHIJ", "abcdefghij", "0123456789" ]
+"alphabets": [ "ABCDEFGHIJ", "abcdefghij", "0123456789" ],
+"add_alphabet_id": "add-key-alphabet"
 })
 }
 <div class="modal fade" id="alphabet-details" tabindex="-1" role="dialog">
