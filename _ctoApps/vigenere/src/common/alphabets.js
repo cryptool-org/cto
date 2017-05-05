@@ -8,17 +8,17 @@ function setupAlphabets(state) {
 
     function closeAlphabetDetails() {
         jQuery('#alphabet-details').modal('hide');
-        $activeAlphabet = undefined;
-        $activeInput = undefined;
-        $activeOffset = undefined;
+        $activeAlphabet = null;
+        $activeInput = null;
+        $activeOffset = null;
     }
 
     function updateAlphabetLen() {
-        jQuery('#alphabet-length').text('' + $activeInput.value.length);
+        jQuery('#alphabet-length').text('' + $activeInput.val().length);
     }
 
     function updateFromCompressedAlphabet() {
-        $activeInput.value = expandAlphabet(jQuery('#compressed-alphabet').val());
+        $activeInput.val(expandAlphabet(jQuery('#compressed-alphabet').val()));
         updateAlphabetLen();
         update();
     }
@@ -31,7 +31,7 @@ function setupAlphabets(state) {
     $keywordForAlphabet.on('keyup', () => {
         let idx;
         let result = '';
-        let source = $activeInput.value.split('').sort();
+        let source = $activeInput.val().split('').sort();
         let val = $keywordForAlphabet.val();
         for (idx = 0; idx < val.length; ++idx) {
             const i = source.indexOf(val[idx]);
@@ -50,10 +50,7 @@ function setupAlphabets(state) {
     $offsetForAlphabet.on('keyup', () => {
         let val = $offsetForAlphabet.val();
         if (val.match(/^[+-]?[0-9]+$/)) {
-            while ($activeOffset.firstChild) {
-                $activeOffset.removeChild($activeOffset.firstChild);
-            }
-            $activeOffset.appendChild(document.createTextNode(val));
+            $activeOffset.text(val);
             update();
         }
     });
@@ -75,15 +72,15 @@ function setupAlphabets(state) {
     });
     jQuery('#reverse-alphabet').on('click', event => {
         let result = '';
-        for (let idx = $activeInput.value.length - 1; idx >= 0; --idx) {
-            result += $activeInput.value[idx];
+        for (let idx = $activeInput.val().length - 1; idx >= 0; --idx) {
+            result += $activeInput.val()[idx];
         }
         jQuery('#compressed-alphabet').val(compressAlphabet(result));
         updateFromCompressedAlphabet();
         event.preventDefault();
     });
     jQuery('#permute-alphabet').on('click', event => {
-        let chars = $activeInput.value.split('');
+        let chars = $activeInput.val().split('');
         for (let i = chars.length - 1; i > 0; --i) {
             const j = Math.floor(Math.random() * i);
             const tmp = chars[j];
@@ -95,14 +92,14 @@ function setupAlphabets(state) {
         event.preventDefault();
     });
     jQuery('#shift-alphabet-left').on('click', event => {
-        const value = $activeInput.value;
+        const value = $activeInput.val();
         const result = value.substr(1) + value.substr(0, 1);
         jQuery('#compressed-alphabet').val(compressAlphabet(result));
         updateFromCompressedAlphabet();
         event.preventDefault();
     });
     jQuery('#shift-alphabet-right').on('click', event => {
-        const value = $activeInput.value;
+        const value = $activeInput.val();
         const result = value.substr(value.length - 1) + value.substr(0, value.length - 1);
         jQuery('#compressed-alphabet').val(compressAlphabet(result));
         updateFromCompressedAlphabet();
@@ -112,7 +109,7 @@ function setupAlphabets(state) {
         event.preventDefault();
 
         let result = '';
-        const source = $activeInput.value;
+        const source = $activeInput.val();
         for (let i = 0; i < source.length; ++i) {
             if (source[i] === source[i].toUpperCase()) {
                 result += source[i].toLowerCase();
@@ -121,13 +118,13 @@ function setupAlphabets(state) {
             }
         }
 
-        addAlphabet(result, jQuery($activeAlphabet.parentNode), parseInt($activeOffset.innerText));
+        addAlphabet(result, jQuery($activeAlphabet.parent()), parseInt($activeOffset.text()));
         closeAlphabetDetails();
         update();
     });
     jQuery('#delete-alphabet').on('click', event => {
-        state.$alphabets.splice(state.$alphabets.indexOf($activeInput), 1);
-        $activeAlphabet.parentNode.removeChild($activeAlphabet);
+        state.$alphabets.splice(state.$alphabets.indexOf($activeInput.get()[0]), 1);
+        $activeAlphabet.remove();
         closeAlphabetDetails();
         update();
         event.preventDefault();
@@ -200,11 +197,11 @@ function setupAlphabets(state) {
 
     function showAlphabetDetails($container) {
         $activeAlphabet = $container;
-        $activeInput = $container.getElementsByClassName('alphabet')[0];
-        $activeOffset = $container.getElementsByClassName('offset')[0];
-        jQuery('#compressed-alphabet').val(compressAlphabet($activeInput.value));
+        $activeInput = jQuery('.alphabet', $container);
+        $activeOffset = jQuery('.offset', $container);
+        jQuery('#compressed-alphabet').val(compressAlphabet($activeInput.val()));
         jQuery('#keyword-for-alphabet').val('');
-        jQuery('#offset-for-alphabet').val($activeOffset.innerText);
+        jQuery('#offset-for-alphabet').val($activeOffset.text());
         updateAlphabetLen();
         jQuery('#alphabet-details').modal('show');
     }
@@ -219,7 +216,7 @@ function setupAlphabets(state) {
             const $span = $inner.children('span').first();
             const $button = $span.children('button').first();
             $button.on('click', event => {
-                showAlphabetDetails($ref.get()[0]);
+                showAlphabetDetails($ref);
                 event.preventDefault();
             });
         }
@@ -230,42 +227,29 @@ function setupAlphabets(state) {
         jQuery('.form-group', $keyAlphaContainer).each(alphabetDecorator(state.$keyAlphabets));
     }
     function addAlphabet(value, $parent, offset) {
-        const $container = document.createElement('div');
-        $container.classList.add('form-group');
-        const $inner = document.createElement('div');
-        $inner.classList.add('input-group');
-        $container.appendChild($inner);
-        const $input = document.createElement('input');
-        $input.setAttribute('type', 'text');
-        $input.classList.add('form-control');
-        $input.classList.add('alphabet');
-        $input.value = value;
-        $input.addEventListener('keyup', update);
-        state.$alphabets.push($container);
-        $inner.appendChild($input);
+        const $container = jQuery('<div class="form-group">' +
+            '<div class="input-group">' +
+                '<input type="text" class="form-control alphabet">' +
+                '<span class="input-group-btn">' +
+                    '<button class="btn btn-default">…</button>' +
+                '</span>' +
+            '</div>' +
+            '<span class="offset">' + offset + '</span>' +
+            '<div class="alert alert-danger alert-hidden"></div>' +
+        '</div>');
 
-        const $span = document.createElement('span');
-        $span.classList.add('input-group-btn');
-        const $details = document.createElement('button');
-        $details.appendChild(document.createTextNode('…'));
-        $details.classList.add('btn');
-        $details.classList.add('btn-default');
-        $details.addEventListener('click', event => {
+        $parent.append($container);
+
+        const $input = jQuery('input', $container);
+        $input.val(value);
+        $input.on('keyup', update);
+
+        jQuery('button', $container).on('click', event => {
             showAlphabetDetails($container);
             event.preventDefault();
         });
-        $span.appendChild($details);
-        $inner.appendChild($span);
-        const $offset = document.createElement('span');
-        $offset.classList.add('offset');
-        $offset.appendChild(document.createTextNode('' + offset));
-        $container.appendChild($offset);
-        const $error = document.createElement('div');
-        $error.classList.add('alert');
-        $error.classList.add('alert-danger');
-        $error.classList.add('alert-hidden');
-        $container.appendChild($error);
-        $parent.append($container);
+
+        state.$alphabets.push($container.get()[0]);
         update();
     }
 
