@@ -1,0 +1,7 @@
+{
+  "TITLE": "Autokey Encryption",
+  "DESCRIPTION": "<h1>The Autokey Encryption</h1>",
+  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
+  "SAMPLE_ENCRYPTED": "Llg hybmo zkvad zwz tvddo baso cbq asnt hfz.",
+  "SAMPLE_KEY": "Secret Key"
+}
