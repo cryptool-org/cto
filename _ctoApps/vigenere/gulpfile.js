@@ -1,15 +1,29 @@
 "use strict";
 
-var gulp = require('gulp');
-var include = require('gulp-file-include');
-var i18n = require('gulp-i18n-localize');
-var htmlmin = require('gulp-htmlmin');
-var uglify = require('gulp-uglify');
-var minifyCSS = require('gulp-csso');
-var mocha = require('gulp-mocha');
-var rename = require('gulp-rename');
-var flatten = require('gulp-flatten');
-var zip = require('gulp-zip');
+let gulp = require('gulp');
+let include = require('gulp-file-include');
+let i18n = require('gulp-i18n-localize');
+let htmlmin = require('gulp-htmlmin');
+let uglify = require('gulp-uglify');
+let minifyCSS = require('gulp-csso');
+let mocha = require('gulp-mocha');
+let rename = require('gulp-rename');
+let flatten = require('gulp-flatten');
+let Ssh = require('gulp-ssh');
+let fs = require('fs');
+let through = require('through2');
+let path = require('path');
+let babel = require('gulp-babel');
+
+let ssh = new Ssh({
+    ignoreErrors: true,
+    sshConfig: {
+        host: 'cryptool.org',
+        username: process.env.SSH_USER ? process.env.SSH_USER : 'knapetm',
+        privateKey: fs.existsSync(process.env.HOME + '/.ssh/id_rsa') ?
+              fs.readFileSync(process.env.HOME + '/.ssh/id_rsa') : ''
+    }
+});
 
 function dest() {
     return gulp.dest('dist');
@@ -44,6 +58,7 @@ gulp.task('js', ['collect-locales'], function (){
     return gulp.src(['src/*/*.js', '!src/common/**', '!src/test/**', '!src/**/t_*.js'])
         .pipe(include())
         .pipe(translate())
+        .pipe(babel())
         .pipe(uglify())
         .pipe(dest());
 });
@@ -74,23 +89,51 @@ gulp.task('test', ['build-tests'], function () {
 });
 
 gulp.task('bootstrap', function () {
-    return gulp.src('lib/bootstrap/*')
+    return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.css', 'node_modules/bootstrap/dist/js/bootstrap.js'])
         .pipe(dest())
 });
 
 gulp.task('jquery', function() {
-    return gulp.src('lib/jquery/*')
+    return gulp.src('node_modules/jquery/dist/jquery.js')
         .pipe(dest())
 });
 gulp.task('default', [ 'test', 'bootstrap', 'jquery', 'html', 'js', 'css', 'config' ]);
 
-gulp.task('dist', ['default'], function () {
-    return gulp.src(['./**', '!node_modules/**', '!.idea/**', '!.git/**', '!*.zip', '!web/**', '!dist/test/**', '!dist/locales/**', '!dist/bootstrap*', '!dist/jquery*'])
-        .pipe(zip('vigenere.zip'))
-        .pipe(gulp.dest('.'));
+function dirs_to_deploy() {
+    return gulp.src(['dist/*', '!dist/test', '!dist/locales', '!dist/bootstrap*', '!dist/jquery*']);
+}
+
+function files_to_deploy() {
+    return gulp.src(['dist/**', '!dist/test', '!dist/test/**', '!dist/locales', '!dist/locales/**', '!dist/*/web-*.html', '!dist/bootstrap*', '!dist/jquery*']);
+}
+
+let remote_dir = '/var/www/cryptool-dev/_ctoApps/';
+function get_remote_path(p) { return remote_dir + path.basename(p); }
+
+gulp.task('prepare-deploy', function() {
+    return dirs_to_deploy()
+        .pipe(through.obj(function (chunk, encoding, cb) {
+            let remote_path = get_remote_path(chunk.path);
+            let old_path = remote_path + '_old';
+            ssh.shell([
+                'rm -Rf "' + old_path + '"',
+                'mv "' + remote_path + '" "' + old_path + '" || true'
+            ]);
+            cb(null, chunk);
+        }))
 });
 
-gulp.task('web', ['default', 'dist'], function () {
-    return gulp.src(['*.zip', 'dist/**', '!dist/test', '!dist/test/**', '!dist/locales', '!dist/locales/**', '!**/fragment-*.html', '!**/cto.config.json']).pipe(gulp.dest('web'));
+gulp.task('do-deploy', ['prepare-deploy'], function() {
+    return files_to_deploy()
+        .pipe(ssh.dest(remote_dir))
 });
 
+gulp.task('post-deploy', ['do-deploy'], function() {
+    return dirs_to_deploy()
+        .pipe(through.obj(function (chunk, encoding, cb) {
+            ssh.exec('chgrp -R www-data "' + get_remote_path(chunk.path) + '"');
+            cb(null, chunk);
+        }));
+
+});
+gulp.task('deploy', ['default', 'post-deploy']);

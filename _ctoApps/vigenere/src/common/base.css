@@ -49,6 +49,26 @@
 .cryptool-container .alert-hidden {
     display: none;
 }
-.alphabet-details {
+#alphabet-details {
     background: transparent;
+}
+.checkbox-inline {
+    margin-left: 10px;
+}
+#options-body {
+    padding-left: 5px;
+}
+.cryptool-container .alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: inherit;
+}
+.cryptool-container .alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }

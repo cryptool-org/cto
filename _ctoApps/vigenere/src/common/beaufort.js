@@ -2,7 +2,7 @@
 
 function Beaufort() {
     this.encrypt = function (val, idx, key) {
-        var keyVal = this.keyForIdx(key, idx);
+        const keyVal = this.keyForIdx(key, idx);
         if (val < 0 || keyVal < 0) {
             return val;
         }

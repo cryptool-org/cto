@@ -1,55 +1,56 @@
 "use strict";
 
-var assert = require('assert');
-var mockedState = require('../../src/test/mocked_state.js');
-var mockedOpts = require('../../src/test/mocked_opts.js');
+const assert = require('assert');
+const MockedElement = require('../../src/test/mocked_element.js').MockedElement;
+const mockedState = require('../../src/test/mocked_state.js');
+const mockedOpts = require('../../src/test/mocked_opts.js');
 
 @@include('../common/crypt.js')
 @@include('../common/vigenere.js')
 
-describe('Basic Crypt functionality', function() {
-    var state;
-    var opts;
-    var crypt;
+describe('Basic Crypt functionality', () => {
+    let state;
+    let opts;
+    let crypt;
 
-    beforeEach(function() {
+    beforeEach(() => {
         state = mockedState.create();
         opts = mockedOpts.create();
         crypt = new Crypt(algo, state, opts);
     });
 
-    it('should encrypt both alphabets', function() {
+    it('should encrypt both alphabets', () => {
         assert.equal('Bcd', crypt.process('Abc', true));
     });
-    it('should decrypt both alphabets', function() {
+    it('should decrypt both alphabets', () => {
         assert.equal('Abc', crypt.process('Bcd', false));
     });
-    it('should convert to first alphabet', function() {
-        opts.$convertToUpcase.checked = true;
+    it('should convert to first alphabet', () => {
+        opts.$convertToUpcase.prop = () => true;
         assert.equal('BCD', crypt.process('Abc', true));
     });
-    it('should not filter non-alphabet chars', function() {
+    it('should not filter non-alphabet chars', () => {
         assert.equal('B c.d', crypt.process('A b.c', true));
     });
-    it('should filter white spaces', function() {
-        opts.$deleteWhitespace.checked = true;
+    it('should filter white spaces', () => {
+        opts.$deleteWhitespace.prop = () => true;
         assert.equal('Bc.d', crypt.process('A b.c', true));
     });
-    it('should filter non-alphabet chars', function() {
-        opts.$deleteNonLetters.checked = true;
+    it('should filter non-alphabet chars', () => {
+        opts.$deleteNonLetters.prop = () => true;
         assert.equal('Bcd', crypt.process('A b.c', true));
     });
-    it('should not filter non-alphabet key chars', function() {
-        opts.$skipNonLetterKeys.checked = false;
+    it('should not filter non-alphabet key chars', () => {
+        opts.$skipNonLetterKeys.prop = () => false;
         assert.equal('Acc', crypt.process('Abc', true));
     });
-    it('should group by 5s', function() {
-        opts.$groupBy5s.checked = true;
+    it('should group by 5s', () => {
+        opts.$groupBy5s.prop = () => true;
         assert.equal('bcdef gh', crypt.process('abcdefg', true));
     });
-    it('should honour offset in key alphabet', function() {
-        state.$key = { value: 'a' };
-        state.$keyAlphabets = [new mockedState.MockedElement({
+    it('should honour offset in key alphabet', () => {
+        state.$key = { val: () => ('a') };
+        state.$keyAlphabets = [new MockedElement({
             alphabet: { value: 'ab' },
             offset: { innerText: '1' }
         })];

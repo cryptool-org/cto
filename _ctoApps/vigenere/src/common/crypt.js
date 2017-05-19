@@ -6,13 +6,13 @@ function Crypt(algo, state, opts) {
     this.opts = opts;
 
     this.charToValue = function(ch, $alphabets) {
-        var l = $alphabets.length;
-        for (var i = 0; i < l; ++i) {
-            var value = $alphabets[i].getElementsByClassName('alphabet')[0].value;
-            var offset =  parseInt($alphabets[i].getElementsByClassName('offset')[0].innerText);
-            var idx = value.indexOf(ch);
+        const l = $alphabets.length;
+        for (let i = 0; i < l; ++i) {
+            const value = $alphabets[i].getElementsByClassName('alphabet')[0].value;
+            const offset =  parseInt($alphabets[i].getElementsByClassName('offset')[0].innerText);
+            const idx = value.indexOf(ch);
             if (idx >= 0) {
-                var res = idx + offset;
+                let res = idx + offset;
                 while (res < 0) { res += value.length; }
                 return res % value.length;
             }
@@ -21,20 +21,20 @@ function Crypt(algo, state, opts) {
     };
 
     this.valueToChar = function(val, origCh) {
-        var $usedAlphabet = undefined;
-        if (this.opts.$convertToUpcase.checked && this.state.$alphabets.length > 0) {
+        let $usedAlphabet = undefined;
+        if (this.opts.$convertToUpcase.prop('checked') && this.state.$alphabets.length > 0) {
             $usedAlphabet = this.state.$alphabets[0];
         } else {
-            var l = this.state.$alphabets.length;
-            for (var i = 0; ! $usedAlphabet && i < l; ++i) {
+            const l = this.state.$alphabets.length;
+            for (let i = 0; ! $usedAlphabet && i < l; ++i) {
                 if (this.state.$alphabets[i].getElementsByClassName('alphabet')[0].value.indexOf(origCh) >= 0) {
                     $usedAlphabet = this.state.$alphabets[i];
                 }
             }
         }
         if ($usedAlphabet) {
-            var value = $usedAlphabet.getElementsByClassName('alphabet')[0].value;
-            var offset = parseInt($usedAlphabet.getElementsByClassName('offset')[0].innerText);
+            let value = $usedAlphabet.getElementsByClassName('alphabet')[0].value;
+            const offset = parseInt($usedAlphabet.getElementsByClassName('offset')[0].innerText);
             if (value.length) {
                 val -= offset;
                 while (val < 0) {
@@ -50,14 +50,14 @@ function Crypt(algo, state, opts) {
     // generic crypto handling
 
     this.normalizeKey = function() {
-        var result = [];
-        var keyValue = this.state.$key.value;
-        var keyLength = keyValue.length;
-        var $alphabets = this.state.$keyAlphabets;
+        let result = [];
+        const keyValue = this.state.$key.val();
+        const keyLength = keyValue.length;
+        let $alphabets = this.state.$keyAlphabets;
         if (! $alphabets) { $alphabets = this.state.$alphabets; }
-        for (var i = 0; i < keyLength; ++i) {
-            var val = this.charToValue(keyValue[i], $alphabets);
-            if (val >= 0 || !this.opts.$skipNonLetterKeys.checked) {
+        for (let i = 0; i < keyLength; ++i) {
+            const val = this.charToValue(keyValue[i], $alphabets);
+            if (val >= 0 || !this.opts.$skipNonLetterKeys.prop('checked')) {
                 result.push(val);
             }
         }
@@ -65,14 +65,14 @@ function Crypt(algo, state, opts) {
     };
 
     this.process = function(from, encrypting) {
-        var key = this.normalizeKey();
-        var fromLength = from.length;
-        var k = 0;
-        var j = 0;
-        var result = '';
-        for (var i = 0; i < fromLength; ++i) {
-            var ch = from[i];
-            var val = this.charToValue(ch, this.state.$alphabets);
+        const key = this.normalizeKey();
+        const fromLength = from.length;
+        let k = 0;
+        let j = 0;
+        let result = '';
+        for (let i = 0; i < fromLength; ++i) {
+            let ch = from[i];
+            const val = this.charToValue(ch, this.state.$alphabets);
             if (val >= 0) {
                 if (key.length > 0) {
                     if (encrypting) {
@@ -84,13 +84,13 @@ function Crypt(algo, state, opts) {
                     ch = this.valueToChar(val, ch);
                 }
             }
-            if (ch <= ' ' && this.opts.$deleteWhitespace.checked) {
+            if (ch <= ' ' && this.opts.$deleteWhitespace.prop('checked')) {
                 continue;
             }
-            if (val < 0 && this.opts.$deleteNonLetters.checked) {
+            if (val < 0 && this.opts.$deleteNonLetters.prop('checked')) {
                 continue;
             }
-            if (k && k % 5 === 0 && this.opts.$groupBy5s.checked) {
+            if (k && k % 5 === 0 && this.opts.$groupBy5s.prop('checked')) {
                 result += ' ';
             }
             result += ch; ++k;

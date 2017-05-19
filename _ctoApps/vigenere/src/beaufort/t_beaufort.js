@@ -1,56 +1,56 @@
 "use strict";
 
-var assert = require('assert');
-var mockedState = require('../../src/test/mocked_state.js');
-var mockedOpts = require('../../src/test/mocked_opts.js');
+const assert = require('assert');
+const mockedState = require('../../src/test/mocked_state.js');
+const mockedOpts = require('../../src/test/mocked_opts.js');
 
 @@include('../common/crypt.js')
 @@include('../common/vigenere.js')
 @@include('../common/beaufort.js')
 
-describe('Beaufort', function() {
-    var state;
-    var opts;
-    var crypt;
+describe('Beaufort', () => {
+    let state;
+    let opts;
+    let crypt;
 
-    beforeEach(function() {
+    beforeEach(() => {
         state = mockedState.create();
         opts = mockedOpts.create();
         crypt = new Crypt(algo, state, opts);
     });
 
-    it('is symmetrical', function() {
-        var plain = 'Just a Test';
-        var encrypted = crypt.process(plain, true);
+    it('is symmetrical', () => {
+        const plain = 'Just a Test';
+        const encrypted = crypt.process(plain, true);
         assert.equal(plain, crypt.process(encrypted, true));
     });
-    describe('1st reference value', function() {
-        var plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
-        var encoded = 'Olhrxigz Ofshrwzkqyofny ssaa piqjn Enbwbg iznf rqe jyehdssfr kcinrfiny.';
+    describe('1st reference value', () => {
+        const plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
+        const encoded = 'Olhrxigz Ofshrwzkqyofny ssaa piqjn Enbwbg iznf rqe jyehdssfr kcinrfiny.';
 
-        beforeEach(function() {
-            state.$key.value = 'Geheimer Schluessel';
+        beforeEach(() => {
+            state.$key.val = () => ('Geheimer Schluessel');
         });
 
-        it('can encrypt', function() {
+        it('can encrypt', () => {
             assert.equal(encoded, crypt.process(plain, true));
         });
-        it('can decrypt', function() {
+        it('can decrypt', () => {
             assert.equal(plain, crypt.process(encoded, false));
         });
     });
-    describe('2nd reference value', function() {
-        var plain = 'The quick brown fox jumps over the lazy dog.';
-        var encoded = 'Zxy bkliu xbqge zfn vegpk djpt lro tcsg qwy.';
+    describe('2nd reference value', () => {
+        const plain = 'The quick brown fox jumps over the lazy dog.';
+        const encoded = 'Zxy bkliu xbqge zfn vegpk djpt lro tcsg qwy.';
 
-        beforeEach(function() {
-            state.$key.value = 'Secret Key';
+        beforeEach(() => {
+            state.$key.val = () => ('Secret Key');
         });
 
-        it('can encrypt', function() {
+        it('can encrypt', () => {
             assert.equal(encoded, crypt.process(plain, true));
         });
-        it('can decrypt', function() {
+        it('can decrypt', () => {
             assert.equal(plain, crypt.process(encoded, false));
         });
     });

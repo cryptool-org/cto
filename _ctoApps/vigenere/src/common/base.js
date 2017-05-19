@@ -1,16 +1,10 @@
 "use strict";
 
-    // jQuery lite
-
-    function $(id) {
-        return document.getElementById(id);
-    }
-
     // Underscore lite
 
-    var _ = {
-        'forEach': function (c, f) {
-            for (var k in c) {
+    const _ = {
+        forEach(c, f) {
+            for (let k in c) {
                 if (c.hasOwnProperty(k)) {
                     f(c[k], k);
                 }
@@ -20,38 +14,37 @@
 
     // state handling
 
-    var $alphaContainer = $('alphabets');
-    var $keyAlphaContainer = $('key-alphabets');
+@@include('./alphabets.js')
 
-    var state = new function State() {
+    const state = new function State() {
         this.encrypting = true;
 
-        this.$plain = $('plain');
-        this.$cipher = $('cipher');
-        this.$key = $('key');
+        this.$plain = jQuery('#plain');
+        this.$cipher = jQuery('#cipher');
+        this.$key = jQuery('#key');
 
-        this.$direction = $('direction');
+        this.$direction = jQuery('#direction');
 
         this.$alphabets = [];
         this.$keyAlphabets = undefined;
 
         this.setEncrypting = function () {
             if (!this.encrypting) {
-                this.$direction.classList.remove('flip');
-                this.$direction.classList.add('flop');
+                this.$direction.removeClass('flip');
+                this.$direction.addClass('flop');
                 this.encrypting = true;
             }
         };
 
         this.setDecrypting = function () {
             if (this.encrypting) {
-                this.$direction.classList.remove('flop');
-                this.$direction.classList.add('flip');
+                this.$direction.removeClass('flop');
+                this.$direction.addClass('flip');
                 this.encrypting = false;
             }
         };
 
-        this.$direction.addEventListener('click', function (event) {
+        this.$direction.on('click', event => {
             if (state.encrypting) {
                 state.setDecrypting();
             } else {
@@ -59,373 +52,42 @@
             }
             event.preventDefault();
         });
-        this.$plain.addEventListener('keyup', function () {
+        this.$plain.on('keyup', () => {
             state.setEncrypting();
             update();
         });
-        this.$cipher.addEventListener('keyup', function () {
+        this.$cipher.on('keyup', () => {
             state.setDecrypting();
             update();
         });
-        this.$key.addEventListener('keyup', update);
-
-        function closeAlphabetDetails() {
-            jQuery('#alphabet-details').modal('hide');
-            $activeAlphabet = undefined;
-            $activeInput = undefined;
-            $activeOffset = undefined;
-        }
-
-        function updateLen() {
-            var $len = $('alphabet-length');
-            while ($len.firstChild) {
-                $len.removeChild($len.firstChild);
-            }
-            $len.appendChild(document.createTextNode('' + $activeInput.value.length));
-        }
-
-        function updateFromCompressedAlphabet() {
-            $activeInput.value = expandAlphabet($('compressed-alphabet').value);
-            updateLen();
-            update();
-        }
-        $('compressed-alphabet').addEventListener('keyup', function() {
-            $keywordForAlphabet.value = '';
-            updateFromCompressedAlphabet();
-        });
-        var $keywordForAlphabet = $('keyword-for-alphabet');
-        $keywordForAlphabet.addEventListener('keyup', function() {
-            var result = '';
-            var source = $activeInput.value.split('').sort();
-            for (var idx = 0; idx < $keywordForAlphabet.value.length; ++idx) {
-                var i = source.indexOf($keywordForAlphabet.value[idx]);
-                if (i >= 0) {
-                    result += source[i];
-                    source.splice(i, 1);
-                }
-            }
-            for (idx = 0; idx < source.length; ++idx) {
-                result += source[idx];
-            }
-            $('compressed-alphabet').value = compressAlphabet(result);
-            updateFromCompressedAlphabet();
-        });
-        var $offsetForAlphabet = $('offset-for-alphabet');
-        $offsetForAlphabet.addEventListener('keyup', function() {
-            if ($offsetForAlphabet.value.match(/^[+-]?[0-9]+$/)) {
-                while ($activeOffset.firstChild) { $activeOffset.removeChild($activeOffset.firstChild); }
-                $activeOffset.appendChild(document.createTextNode($offsetForAlphabet.value));
-                update();
-            }
-        });
-        function addCompressedExpression(expr) {
-            return function(event) {
-                var $input = $('compressed-alphabet');
-                $input.value += expr;
-                updateFromCompressedAlphabet();
-                event.preventDefault();
-            }
-        }
-        for ($child = $('alphabet-detail-buttons').firstChild; $child; $child = $child.nextSibling) {
-            if ($child.id && $child.id.substring(0, 4) === "add-") {
-                $child.addEventListener('click', addCompressedExpression($child.id.substring(4)));
-            }
-        }
-        $('reverse-alphabet').addEventListener('click', function(event) {
-            var result = '';
-            for (var idx = $activeInput.value.length - 1; idx >= 0; --idx) {
-                result += $activeInput.value[idx];
-            }
-            $('compressed-alphabet').value = compressAlphabet(result);
-            updateFromCompressedAlphabet();
-            event.preventDefault();
-        });
-        $('permute-alphabet').addEventListener('click', function(event) {
-            var chars = $activeInput.value.split('');
-            for (var i = chars.length - 1; i > 0; --i) {
-                var j = Math.floor(Math.random() * i);
-                var tmp = chars[j];
-                chars[j] = chars[i];
-                chars[i] = tmp;
-            }
-            $('compressed-alphabet').value = compressAlphabet(chars.join(''));
-            updateFromCompressedAlphabet();
-            event.preventDefault();
-        });
-        $('shift-alphabet-left').addEventListener('click', function(event) {
-            var value = $activeInput.value;
-            var result = value.substr(1) + value.substr(0, 1);
-            $('compressed-alphabet').value = compressAlphabet(result);
-            updateFromCompressedAlphabet();
-            event.preventDefault();
-        });
-        $('shift-alphabet-right').addEventListener('click', function(event) {
-            var value = $activeInput.value;
-            var result = value.substr(value.length - 1) + value.substr(0, value.length - 1);
-            $('compressed-alphabet').value = compressAlphabet(result);
-            updateFromCompressedAlphabet();
-            event.preventDefault();
-        });
-        $('clone-alphabet-to-other-case').addEventListener('click', function(event) {
-            event.preventDefault();
-
-            var result = '';
-            var source = $activeInput.value;
-            for (var i = 0; i < source.length; ++i) {
-                if (source[i] === source[i].toUpperCase()) {
-                    result += source[i].toLowerCase();
-                } else {
-                    result += source[i].toUpperCase();
-                }
-            }
-
-            addAlphabet(result, $activeAlphabet.parentNode, parseInt($activeOffset.innerText));
-            closeAlphabetDetails();
-            update();
-        });
-        $('delete-alphabet').addEventListener('click', function(event) {
-            state.$alphabets.splice(state.$alphabets.indexOf($activeInput), 1);
-            $activeAlphabet.parentNode.removeChild($activeAlphabet);
-            closeAlphabetDetails();
-            update();
-            event.preventDefault();
-        });
-        var $activeAlphabet;
-        var $activeInput;
-        var $activeOffset;
-
-        function compressAlphabet(expanded) {
-            if (expanded.length < 3) { return expanded; }
-            var result = '';
-            var start = 0;
-            while (start < expanded.length) {
-                if (expanded[start] === '-') {
-                    result += '---';
-                    ++start;
-                    continue;
-                }
-                var val = expanded[start].charCodeAt(0);
-                var end = start + 1;
-                if (end < expanded.length) {
-                    if (val === expanded[end].charCodeAt(0) - 1) {
-                        while (end < expanded.length && val === expanded[end].charCodeAt(0) - 1) {
-                            ++end;
-                            ++val;
-                        }
-                    } else if (val === expanded[end].charCodeAt(0) + 1) {
-                        while (end < expanded.length && val === expanded[end].charCodeAt(0) + 1) {
-                            ++end;
-                            --val;
-                        }
-                    }
-                }
-                if (end - start >= 3) {
-                    result += expanded[start] + '-' + expanded[end - 1];
-                } else {
-                    for (var i = start; i < end; ++i) {
-                        result += expanded[i];
-                    }
-                }
-                start = end;
-            }
-            return result;
-        }
-        function expandAlphabet(compressed) {
-            var result = '';
-            var idx = 0;
-            while (idx < compressed.length) {
-                if (idx + 2 < compressed.length && compressed[idx + 1] === '-') {
-                    if (compressed[idx].charCodeAt(0) < compressed[idx + 2].charCodeAt(0)) {
-                        for (var i = compressed[idx].charCodeAt(0); i <= compressed[idx + 2].charCodeAt(0); ++i) {
-                            result += String.fromCharCode(i);
-                        }
-                    } else {
-                        for (var j = compressed[idx].charCodeAt(0); j >= compressed[idx + 2].charCodeAt(0); --j) {
-                            result += String.fromCharCode(j);
-                        }
-                    }
-                    idx += 3;
-                } else {
-                    result += compressed[idx];
-                    ++idx;
-                }
-            }
-            return result;
-        }
-        function showAlphabetDetails($container) {
-            $activeAlphabet = $container;
-            $activeInput = $container.getElementsByClassName('alphabet')[0];
-            $activeOffset = $container.getElementsByClassName('offset')[0];
-            $('compressed-alphabet').value = compressAlphabet($activeInput.value);
-            $('keyword-for-alphabet').value = '';
-            $('offset-for-alphabet').value = $activeOffset.innerText;
-            updateLen();
-            jQuery('#alphabet-details').modal('show');
-        }
-        var $child;
-        for ($child = $alphaContainer.firstChild; $child; $child = $child.nextSibling) {
-            if ($child.className === 'form-group') {
-                (function(self, $ref) {
-                    var $inner = $ref.getElementsByTagName('div')[0];
-                    var $input = $inner.getElementsByTagName('input')[0];
-                    self.$alphabets.push($ref);
-                    $input.addEventListener('keyup', update);
-                    var $span = $inner.getElementsByTagName('span')[0];
-                    var $button = $span.getElementsByTagName('button')[0];
-                    $button.addEventListener('click', function (event) {
-                        showAlphabetDetails($ref);
-                        event.preventDefault();
-                    });
-                })(this, $child);
-            }
-        }
-
-        if ($keyAlphaContainer) {
-            this.$keyAlphabets = [];
-            for ($child = $keyAlphaContainer.firstChild; $child; $child = $child.nextSibling) {
-                if ($child.className === 'form-group') {
-                    (function(self, $ref) {
-                        var $inner = $ref.getElementsByTagName('div')[0];
-                        var $input = $inner.getElementsByTagName('input')[0];
-                        self.$keyAlphabets.push($ref);
-                        $input.addEventListener('keyup', update);
-                        var $span = $inner.getElementsByTagName('span')[0];
-                        var $button = $span.getElementsByTagName('button')[0];
-                        $button.addEventListener('click', function (event) {
-                            showAlphabetDetails($ref);
-                            event.preventDefault();
-                        });
-                    })(this, $child);
-                }
-            }
-        }
-        function addAlphabet(value, $parent, offset) {
-            var $container = document.createElement('div');
-            $container.classList.add('form-group');
-            var $inner = document.createElement('div');
-            $inner.classList.add('input-group');
-            $container.appendChild($inner);
-            var $input = document.createElement('input');
-            $input.setAttribute('type', 'text');
-            $input.classList.add('form-control');
-            $input.classList.add('alphabet');
-            $input.value = value;
-            $input.addEventListener('keyup', update);
-            state.$alphabets.push($container);
-            $inner.appendChild($input);
-
-            var $span = document.createElement('span');
-            $span.classList.add('input-group-btn');
-            var $details= document.createElement('button');
-            $details.appendChild(document.createTextNode('…'));
-            $details.classList.add('btn');
-            $details.classList.add('btn-default');
-            $details.addEventListener('click', function(event) {
-                showAlphabetDetails($container);
-                event.preventDefault();
-            });
-            $span.appendChild($details);
-            $inner.appendChild($span);
-            var $offset = document.createElement('span');
-            $offset.classList.add('offset');
-            $offset.appendChild(document.createTextNode('' + offset));
-            $container.appendChild($offset);
-            var $error = document.createElement('div');
-            $error.classList.add('alert');
-            $error.classList.add('alert-danger');
-            $error.classList.add('alert-hidden');
-            $container.appendChild($error);
-            $parent.appendChild($container);
-            update();
-        }
-        $('add-alphabet').addEventListener('click', function(event) {
-            addAlphabet('', $alphaContainer);
-            event.preventDefault();
-        });
-        var $btn = $('add-key-alphabet');
-        if ($btn) {
-            $btn.addEventListener('click', function(event) {
-                addAlphabet('', $keyAlphaContainer);
-                event.preventDefault();
-            });
-        }
+        this.$key.on('keyup', update);
     };
 
     // options
 
-    var opts = new function () {
-        this.$deleteWhitespace = $('deleteWhitespace');
-        this.$groupBy5s = $('groupBy5s');
-        this.$deleteNonLetters = $('deleteNonLetters');
-        this.$convertToUpcase = $('convertToUpcase');
-        this.$skipNonLetterKeys = $('skipNonLetterKeys');
+    let opts = new function () {
+        this.$deleteWhitespace = jQuery('#deleteWhitespace');
+        this.$groupBy5s = jQuery('#groupBy5s');
+        this.$deleteNonLetters = jQuery('#deleteNonLetters');
+        this.$convertToUpcase = jQuery('#convertToUpcase');
+        this.$skipNonLetterKeys = jQuery('#skipNonLetterKeys');
         _.forEach(this, function (opt) {
-            opt.addEventListener('change', update);
+            opt.on('change', update);
         });
     };
 
-    var crypt = new Crypt(algo, state, opts);
+    let crypt = new Crypt(algo, state, opts);
 
     function update() {
-        function validateAlphabets($parent, searchForDuplicates) {
-            if (! $parent) { return; }
+        validateAllAlphabets();
+        const $from = state.encrypting ? state.$plain : state.$cipher;
+        const $to = state.encrypting ? state.$cipher : state.$plain;
 
-            function countChars($parent) {
-                var result = {};
-                for (var $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
-                    var $input = $alphabet.firstChild.firstChild;
-                    var value = $input.value;
-                    for (var i = 0; i < value.length; ++i) { 
-            			result[value[i]] = result[value[i]] ? result[value[i]] + 1 : 1;
-		            }
-                }
-                return result;
-            }
-
-            var counts = countChars($parent);
-            for (var $alphabet = $parent.firstChild; $alphabet; $alphabet = $alphabet.nextSibling) {
-                var $input = $alphabet.firstChild.firstChild;
-                var value = $input.value;
-                var $error = $alphabet.firstChild.nextSibling.nextSibling;
-                var message = '';
-                if (value.length === 0) {
-                    message = "${{ alphabet.EMPTY_ALPHABET }}$";
-                } else if (searchForDuplicates) {
-                    var doubles = '';
-                    var count = 0;
-		    var found = {};
-                    for (var i = 0; i < value.length; ++i) {
-                        if (counts[value[i]] > 1) {
-			    if (! found[value[i]]) {
-			    	if (count) { doubles += ', '; }
-                            	doubles += value[i];
-				found[value[i]] = true;
-			    }
-			    ++count;
-                        }
-                    }
-                    if (doubles.length) {
-                        message = count > 1 ? "${{ alphabet.DOUBLE_CHARS }}$" : "${{ alphabet.DOUBLE_CHAR }}$";
-                        message = message.replace('$1', doubles);
-                    }
-                }
-                if (message !== $error.innerHTML) {
-                    while ($error.firstChild) { $error.removeChild($error.firstChild); }
-                    $error.appendChild(document.createTextNode(message));
-                    if (message.length) { $error.classList.remove('alert-hidden'); } else { $error.classList.add('alert-hidden'); }
-                }
-            }
-        }
-
-        validateAlphabets($alphaContainer, true);
-        validateAlphabets($keyAlphaContainer, false);
-        var $from = state.encrypting ? state.$plain : state.$cipher;
-        var $to = state.encrypting ? state.$cipher : state.$plain;
-
-        $to.value = crypt.process($from.value, state.encrypting);
+        $to.val(crypt.process($from.val(), state.encrypting));
     }
 
-    (function() {
-        var $page = $('page');
-        if ($page) { $page.appendChild($('alphabet-details')); }
+    (() => {
+        setupAlphabets(state);
+        const $page = jQuery('#page');
+        if ($page) { $page.append(jQuery('#alphabet-details')); }
     })();
