@@ -6,5 +6,6 @@
   "OPTIONS": "Optionen:",
   "ALPHABETS": "Alphabete:",
   "KEY_ALPHABETS": "Schlüssel-Alphabete:",
-  "ADD_ALPHABET": "Alphabet hinzufügen"
+  "ADD_ALPHABET": "Alphabet hinzufügen",
+  "MULTIPLIER": "Multiplikator: "
 }

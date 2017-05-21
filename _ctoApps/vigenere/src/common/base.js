@@ -61,6 +61,8 @@
             update();
         });
         this.$key.on('keyup', update);
+
+
     };
 
     // options
@@ -77,6 +79,10 @@
     };
 
     let crypt = new Crypt(algo, state, opts);
+
+    this.evokeUpdate = function () {
+        update();
+    }
 
     function update() {
         validateAllAlphabets();

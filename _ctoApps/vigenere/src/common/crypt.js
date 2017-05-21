@@ -76,9 +76,9 @@ function Crypt(algo, state, opts) {
             if (val >= 0) {
                 if (key.length > 0) {
                     if (encrypting) {
-                        ch = this.valueToChar(this.algo.encrypt(val, j++, key, this.state.$alphabets), ch);
+                        ch = this.valueToChar(this.algo.encrypt(val, j++, key, this.state.$alphabets, from), ch);
                     } else {
-                        ch = this.valueToChar(this.algo.decrypt(val, j++, key, this.state.$alphabets), ch);
+                        ch = this.valueToChar(this.algo.decrypt(val, j++, key, this.state.$alphabets, from), ch);
                     }
                 } else {
                     ch = this.valueToChar(val, ch);
