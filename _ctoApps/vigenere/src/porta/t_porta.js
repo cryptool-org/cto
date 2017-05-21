@@ -1,17 +1,17 @@
 "use strict";
 
-var assert = require('assert');
-var mockedState = require('../../src/test/mocked_state.js');
-var mockedOpts = require('../../src/test/mocked_opts.js');
+const assert = require('assert');
+const mockedState = require('../../src/test/mocked_state.js');
+const mockedOpts = require('../../src/test/mocked_opts.js');
 
 @@include('../common/crypt.js')
 @@include('../common/vigenere.js')
 @@include('../common/porta.js')
 
 describe('Porta', function() {
-    var state;
-    var opts;
-    var crypt;
+    let state;
+    let opts;
+    let crypt;
 
     beforeEach(function() {
         state = mockedState.create();
@@ -20,16 +20,16 @@ describe('Porta', function() {
     });
 
     it('is symmetrical', function() {
-        var plain = 'Just a Test';
-        var encrypted = crypt.process(plain, true);
+        const plain = 'Just a Test';
+        const encrypted = crypt.process(plain, true);
         assert.equal(plain, crypt.process(encrypted, true));
     });
     describe('1st reference value', function() {
-        var plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
-        var encoded = 'Iixcuyaa Vlfzttczdfibkr hapm uihxx Ywatsx lsgz bdi nqnzbxrjc wolkczygb.';
+        const plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
+        const encoded = 'Iixcuyaa Vlfzttczdfibkr hapm uihxx Ywatsx lsgz bdi nqnzbxrjc wolkczygb.';
 
         beforeEach(function() {
-            state.$key.value = 'Geheimer Schluessel';
+            state.$key.val = () => 'Geheimer Schluessel';
         });
 
         it('can encrypt', function() {
@@ -40,11 +40,11 @@ describe('Porta', function() {
         });
     });
     describe('2nd reference value', function() {
-        var plain = 'The quick brown fox jumps over the lazy dog.';
-        var encoded = 'Csq ljzxv padki qkc ugqeg jkvj ivv wzha ugr.';
+        const plain = 'The quick brown fox jumps over the lazy dog.';
+        const encoded = 'Csq ljzxv padki qkc ugqeg jkvj ivv wzha ugr.';
 
         beforeEach(function() {
-            state.$key.value = 'Secret Key';
+            state.$key.val = () => 'Secret Key';
         });
 
         it('can encrypt', function() {
