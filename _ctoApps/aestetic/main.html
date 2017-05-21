@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AEStetic</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link href="aestetic.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>AEStetic<span>Build: <a target="_blank" href="https://github.com/itmm/AEStetic/commit/[LAST-COMMIT]">[LAST-COMMIT]</a><br/>Date: [DATE]</span></h1>
+        <div id="no-javascript" class="error-overlay">
+            <h2>No JavaScript active</h2>
+            <p>
+                Please activate Javascript to use this Web-App.
+            </p>
+        </div>
+        <script>
+            'use strict';
+            document.getElementById('no-javascript').classList.add('hidden');
+        </script>
+        <div id="main" class="content hidden">
+            <div class="content-padded">
+                <p>Inspect the encryption of AES step by step.
+                    Tap on each byte to see the bytes it depends on.</p>
+            </div>
+            <ul>
+                <li class="header"><a id="toggle-configuration" href="">Configuration
+                    <span class="right"><span id="badge" class="badge-aes256"></span>
+                    <span class="icon"></span></span></a></li>
+                    <li id="testvectors-toggler"><a id="toggle-testvectors" href="" class="collapsed">AES
+                        Variants and Test Vectors<span class="icon"></span></a></li>
+                        <li class="hidden sub" id="testvectors">
+                            <div class="card"><ul id="testvectors-container"></ul></div>
+                        </li>
+                    <li id="rounds-toggler">Number of Rounds:
+                        <span id="rounds-label"></span>
+                        <div class="segmented">
+                        <a class="big" id="dec-rounds" href="">–</a><a class="big" id="inc-rounds" href="">+</a>
+                        </div>
+                    </li>
+                    <li id="sbox-toggler"><a id="toggle-sbox" href="" class="collapsed">S-Box
+                        <span class="icon"></span></a></li>
+                        <li class="editable hidden sub" id="sbox"></li>
+                    <li id="permute-toggler"><a id="toggle-permute" href="" class="collapsed">Permutation
+                        <span class="icon"></span></a></li>
+                        <li class="editable hidden sub" id="permute"></li>
+                    <li id="chain-selector">Chaining:
+                        <div class="segmented">
+                            <a class="active" id="chaining-none" href="">None</a><a id="chaining-cbc" href="">CBC</a><a href="" id="chaining-ecb">ECB</a>
+                        </div>
+                    <li id="iv-toggler"><a id="toggle-iv" href="" class="collapsed">Initial Vector (CBC only)
+                        <span class="icon"></span></a></li>
+                        <li class="editable hidden sub" id="iv"></li>
+                <li class="header"><a id="toggle-key" href="" >Key<span class="icon"></span></a></li>
+                    <li class="editable" id="key"></li>
+                    <li id="expanded-key-toggler"><a id="toggle-expanded-key" class="collapsed" href="">Expanded Key
+                        <span class="icon"></span></a></li>
+                        <li class="referable hidden sub" id="expanded-key"></li>
+                <li class="header"><a id="toggle-input" href="">Input<span class="icon"></span></a></li>
+                    <li class="editable" id="input"></li>
+                <li class="header" id="rounds"><a id="toggle-enc-rounds" href="">Encoding Rounds
+                    <span class="icon"></span></a></li>
+                <li class="header" id="rounds-end"><a id="toggle-encoded" href="">Encoded
+                    <span class="icon"></span></a></li>
+                    <li class="referable" id="output"></li>
+                <li class="header" id="reference"><a id="toggle-reference" href="">Reference
+                    <span class="icon"></span></a></li>
+                    <li class="bytes" id="reference-bytes"></li>
+                <li class="header" id="decode-rounds"><a id="toggle-dec-rounds" href="">Decoding Rounds
+                    <span class="icon"></span></a></li>
+                <li class="header" id="decode-rounds-end"><a id="toggle-decoded" href="">Decoded
+                    <span class="icon"></span></a></li>
+                    <li class="referable" id="decoded"></li>
+            </ul>
+            <div id="calc" class="hidden">Calculation</div>
+            <svg id="connections" xmlns="http://www.w3.org/2000/svg"
+                version="1.1" baseProfile="full"
+                width="100%" height="100%">
+            </svg>
+            <div id="dimmer" class="hidden">
+                <div id="textbox">
+                    <label id="textbox-header" for="textarea"></label>
+                    <div id="textbox-content">
+                        <textarea id="textarea"></textarea>
+                    </div>
+                    <div id="textbox-footer"><a id="textbox-cancel" href="">Cancel</a><a id="textbox-ok" href="">OK</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- jstart -->
+        <script src="show.js"></script>
+        <script src="exports.js"></script>
+        <script src="config.js"></script>
+        <script src="underscore.js"></script>
+        <script src="dom.js"></script>
+        <script src="dependencies.js"></script>
+        <script src="key.js"></script>
+        <script src="crypt.js"></script>
+        <script src="chaining.js"></script>
+        <script src="aestetic.js"></script>
+        <script src="text.js"></script>
+        <!-- jsend -->
+    </body>
+</html>
