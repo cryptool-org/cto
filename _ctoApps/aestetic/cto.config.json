@@ -1,0 +1,10 @@
+{
+  "name": "aestetic",
+  "styles": [
+    "./aestetic.css"
+  ],
+  "scripts": [
+    "./aestetic.js"
+  ],
+  "html": "aestetic.html"
+}

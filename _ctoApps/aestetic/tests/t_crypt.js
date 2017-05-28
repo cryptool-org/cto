@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 
-global.$ = function() { return null; }
+global.jQuery = function() { return null; }
 global.removeBetween = function() {}
 global.writeBytes = function() {}
 

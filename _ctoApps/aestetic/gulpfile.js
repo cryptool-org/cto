@@ -1,46 +1,103 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var html = require('gulp-htmlmin');
-var gif = require('gulp-if');
-var inline = require('gulp-inline');
-var rename = require('gulp-rename');
-var replace = require('gulp-replace');
-var resources = require('gulp-resources');
+"use strict";
 
-var lazypipe = require('lazypipe');
-var shell = require('shelljs');
+let gulp = require('gulp');
+let include = require('gulp-file-include');
+let htmlmin = require('gulp-htmlmin');
+let uglify = require('gulp-uglify');
+let minifyCSS = require('gulp-csso');
+let babel = require('gulp-babel');
+let Ssh = require('gulp-ssh');
+let fs = require('fs');
+let through = require('through2');
+let path = require('path');
 
-var now = new Date().toISOString();
-var formattedDate = now.substring(0, 10) + ' ' + now.substring(11, 19);
-var commit = shell.exec('git rev-parse --short HEAD', {silent: true}).output.trim();
-
-gulp.task('default', function () {
-    var jspipe = lazypipe()
-        .pipe(concat, 'all.js')
-        .pipe(gulp.dest, 'tmp');
-
-    var csspipe = lazypipe()
-        .pipe(concat, 'all.css')
-        .pipe(gulp.dest, 'tmp');
-
-    var htmlpipe = lazypipe()
-        .pipe(replace, /<!--startjs-->[^]+<!--endjs-->/, '<script src="tmp/all.js"></script>')
-        .pipe(replace, /<!--startcss-->[^]+<!--endcss-->/, '<link href="tmp/all.css" rel="stylesheet">')
-        .pipe(inline, {})
-        .pipe(rename, 'index.html')
-        .pipe(html, {
-            removeComments: true,
-            removeWhitespace: true,
-            minifyJS: true,
-            minifyCSS: true
-        })
-        .pipe(gulp.dest, './');
-
-    gulp.src('main.html')
-        .pipe(replace(/\[DATE]/g, formattedDate))
-        .pipe(replace(/\[LAST-COMMIT]/g, commit))
-        .pipe(resources())
-        .pipe(gif('**/*.js', jspipe()))
-        .pipe(gif('**/*.css', csspipe()))
-        .pipe(gif('**/*.html', htmlpipe()));
+let ssh = new Ssh({
+    ignoreErrors: true,
+    sshConfig: {
+        host: 'cryptool.org',
+        username: process.env.SSH_USER ? process.env.SSH_USER : 'knapetm',
+        privateKey: fs.existsSync(process.env.HOME + '/.ssh/id_rsa') ?
+            fs.readFileSync(process.env.HOME + '/.ssh/id_rsa') : ''
+    }
 });
+
+function dest() {
+    return gulp.dest('dist/aestetic');
+}
+
+gulp.task('html', function() {
+    return gulp.src(['web.html', 'aestetic.html'])
+        .pipe(include())
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(dest());
+});
+
+gulp.task('js', function() {
+    return gulp.src(['aestetic.js'])
+        .pipe(include())
+        .pipe(babel())
+        .pipe(uglify())
+        .pipe(dest());
+});
+
+gulp.task('css', function() {
+    return gulp.src(['aestetic.css'])
+        .pipe(minifyCSS())
+        .pipe(dest());
+});
+
+gulp.task('config', function() {
+    return gulp.src(['cto.config.json']).pipe(dest());
+});
+
+gulp.task('bootstrap', function () {
+    return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.css', 'node_modules/bootstrap/dist/js/bootstrap.js'])
+        .pipe(dest())
+});
+
+gulp.task('jquery', function() {
+    return gulp.src('node_modules/jquery/dist/jquery.js')
+        .pipe(dest())
+});
+
+gulp.task('default', ['html', 'js', 'css', 'config', 'bootstrap', 'jquery']);
+
+let remote_dir = '/var/www/cryptool-dev/_ctoApps/';
+function get_remote_path(p) { return remote_dir + path.basename(p); }
+
+function dirs_to_deploy() {
+    return gulp.src(['dist/*']);
+}
+/*
+function files_to_deploy() {
+    return gulp.src(['dist/**', '!dist/web.html', '!dist/boostrap.*', '!dist/jquery.*']);
+}
+
+gulp.task('prepare-deploy', function() {
+    return dirs_to_deploy()
+        .pipe(through.obj(function (chunk, encoding, cb) {
+            let remote_path = get_remote_path(chunk.path);
+            let old_path = remote_path + '_old';
+            ssh.shell([
+                'rm -Rf "' + old_path + '"',
+                'mv "' + remote_path + '" "' + old_path + '" || true'
+            ]);
+            cb(null, chunk);
+        }))
+});
+
+gulp.task('do-deploy', ['prepare-deploy'], function() {
+    return files_to_deploy()
+        .pipe(ssh.dest(remote_dir))
+});
+
+gulp.task('post-deploy', ['do-deploy'], function() {
+    return dirs_to_deploy()
+        .pipe(through.obj(function (chunk, encoding, cb) {
+            ssh.exec('chgrp -R www-data "' + get_remote_path(chunk.path) + '"');
+            cb(null, chunk);
+        }));
+
+});
+gulp.task('deploy', ['default', 'post-deploy']);
+*/

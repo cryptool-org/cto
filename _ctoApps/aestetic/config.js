@@ -11,13 +11,13 @@
 	to the standard algorithm.
 */
 
-var Chaining = {
+const Chaining = {
 	None: 0,
 	CBC: 1,
 	ECB: 2
 };
 
-var defaults = {
+const defaults = {
 
 	/*
 		The S-Box is a permutation of bytes. Every of the 256 possible values of a byte must occur
@@ -105,7 +105,7 @@ var defaults = {
 /*
     Define the standard rounds used for AES
  */
-var std_rounds = {
+const std_rounds = {
     minRijndael16: 10,
     minRijndael20: 11,
     minRijndael24: 12,
@@ -127,7 +127,7 @@ var std_rounds = {
 	The first entry will be used on startup.
 */
 
-var test_keys = {
+const test_keys = {
 	aes128: [
 		0x2b, 0x7e, 0x15, 0x16,  0x28, 0xae, 0xd2, 0xa6,
 		0xab, 0xf7, 0x15, 0x88,  0x09, 0xcf, 0x4f, 0x3c
@@ -144,7 +144,7 @@ var test_keys = {
 		0x2d, 0x98, 0x10, 0xa3,  0x09, 0x14, 0xdf, 0xf4
 	]
 };
-var test_inputs = [
+const test_inputs = [
 	[
 		0x6b, 0xc1, 0xbe, 0xe2,  0x2e, 0x40, 0x9f, 0x96,
 		0xe9, 0x3d, 0x7e, 0x11,  0x73, 0x93, 0x17, 0x2a
@@ -159,12 +159,12 @@ var test_inputs = [
 		0xad, 0x2b, 0x41, 0x7b,  0xe6, 0x6c, 0x37, 0x10
 	]
 ];
-var test_iv = [
+const test_iv = [
     0x00, 0x01, 0x02, 0x03,  0x04, 0x05, 0x06, 0x07,
     0x08, 0x09, 0x0A, 0x0B,  0x0C, 0x0D, 0x0E, 0x0F
 ];
 
-var testcases = [
+const testcases = [
 	{
 		name: 'FIPS: AES-256',
 		key: [

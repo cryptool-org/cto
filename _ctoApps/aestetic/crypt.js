@@ -243,20 +243,21 @@ function applyMixWithKey(block, subkey, prefix, prevPrefix, keyPrefix) {
 }
 
 function encode(step, input, state, expandedKey) {
-	var $computation = $('rounds');
-	var $parent = $computation? $computation.parentNode : null;
-    var $computation_end = $('rounds-end');
+	const $computation = jQuery('#rounds');
+	const $parent = $computation? $computation.parentNode : null;
+    const $computation_end = jQuery('#rounds-end');
 
+    let block;
 	if (! disables['s-' + step + '-r-0-key']) {
-		var block = _.map(new Array(state.blockSize), function(_, i) {
+		block = _.map(new Array(state.blockSize), function(_, i) {
 			return input[i] ^ expandedKey[i];
 		});
 	} else {
 		block = input;
 	}
-	var roundHeaderClasses;
-	var roundContentClasses;
-	if (dom.hasClass($('toggle-enc-rounds'), 'collapsed')) {
+	let roundHeaderClasses;
+	let roundContentClasses;
+	if (dom.hasClass(jQuery('#toggle-enc-rounds'), 'collapsed')) {
 		roundHeaderClasses = 'hidden';
 		roundContentClasses = ['hidden', 'hidden-2', 'sub'];
 	} else {
@@ -264,21 +265,21 @@ function encode(step, input, state, expandedKey) {
 		roundContentClasses = ['hidden', 'sub'];
 	}
 
-	var lastPrefix = 'input-';
-	for (var round = 1; round <= state.rounds; ++round) {
-		var rnd = 's-' + step + '-r-' + round;
-		var $container = addRound(round, $parent, $computation_end, 's-' + step + '-r-enc-' + round + '-', roundHeaderClasses, roundContentClasses);
+	let lastPrefix = 'input-';
+	for (let round = 1; round <= state.rounds; ++round) {
+		const rnd = 's-' + step + '-r-' + round;
+		const $container = addRound(round, $parent, $computation_end, 's-' + step + '-r-enc-' + round + '-', roundHeaderClasses, roundContentClasses);
 
-		var rndInput = rnd + '-input-';
+		const rndInput = rnd + '-input-';
 		block = applyInput(block, state, rndInput, lastPrefix);
 		addSubEntry('input to Round ' + round, block, rndInput, $container, null, state.colored);
 		lastPrefix = rndInput;
 
 		// sbox
 
-		var sboxKey = rnd + '-sbox';
+		const sboxKey = rnd + '-sbox';
+        const rndSBox = rnd + '-sbox-';
 		if (! disables[sboxKey]) {
-			var rndSBox = rnd + '-sbox-';
 			block = applySBox(block, state.sbox, rndSBox, lastPrefix);
 			lastPrefix = rndSBox;
 		}
@@ -286,9 +287,9 @@ function encode(step, input, state, expandedKey) {
 
 		// permute
 
-		var permuteKey = rnd + '-permute';
+		const permuteKey = rnd + '-permute';
+        const rndPermute = rnd + '-permute-';
 		if (! disables[permuteKey]) {
-			var rndPermute = rnd + '-permute-';
 			block = applyPermute(block, state.permute, rndPermute, lastPrefix);
 			lastPrefix = rndPermute;
 		}
@@ -297,9 +298,9 @@ function encode(step, input, state, expandedKey) {
 		// mult
 
 		if (round < state.rounds) {
-			var multKey = rnd + '-mult';
+			const multKey = rnd + '-mult';
+            const rndMult = rnd + '-mult-';
 			if (! disables[multKey]) {
-				var rndMult = rnd + '-mult-';
 				block = applyMults(block, 0x2, 0x3, 0x1, 0x1, rndMult, lastPrefix);
 				lastPrefix = rndMult;
 			}
@@ -308,13 +309,13 @@ function encode(step, input, state, expandedKey) {
 
 		// mix key
 
-		var rnd_subkey = rnd + '-subkey-';
-		var key = applySubkey(block, round, expandedKey, rnd_subkey, lastPrefix);
+		const rnd_subkey = rnd + '-subkey-';
+		const key = applySubkey(block, round, expandedKey, rnd_subkey, lastPrefix);
 		addSubEntry('used subkey:', key, rnd_subkey, $container, null, state.colored);
 
-		var keyKey = rnd + '-key';
+		const keyKey = rnd + '-key';
+        const rnd_key = rnd + '-key-';
 		if (! disables[keyKey]) {
-			var rnd_key = rnd + '-key-';
 			block = applyMixWithKey(block, key, rnd_key, lastPrefix, rnd_subkey);
 			lastPrefix = rnd_key;
 		}
@@ -328,14 +329,14 @@ function encode(step, input, state, expandedKey) {
 // do decoding
 
 function decode(step, block, state, expandedKey) {
-	var $computation = $('decode-rounds');
-	var $computation_end = $('decode-rounds-end');
-	var $parent = $computation ? $computation.parentNode : null;
+	const $computation = jQuery('#decode-rounds');
+	const $computation_end = jQuery('#decode-rounds-end');
+	const $parent = $computation ? $computation.parentNode : null;
 
-	var dec = new Array(state.blockSize);
+	let dec = new Array(state.blockSize);
 
-	var inv_permute = new Array(state.blockSize);
-	var inv_sbox = new Array(256);
+	const inv_permute = new Array(state.blockSize);
+	const inv_sbox = new Array(256);
 
 	_.each(state.permute, function(val, i) { inv_permute[val] = i; });
 	_.each(state.sbox, function(val, i) { inv_sbox[val] = i; });
@@ -347,31 +348,31 @@ function decode(step, block, state, expandedKey) {
 	} else {
 		dec = block;
 	}
-	var roundHeaderClasses;
-	var roundContentClasses;
-	if (dom.hasClass($('toggle-dec-rounds'), 'collapsed')) {
+	let roundHeaderClasses;
+	let roundContentClasses;
+	if (dom.hasClass(jQuery('#toggle-dec-rounds'), 'collapsed')) {
 		roundHeaderClasses = 'hidden';
 		roundContentClasses = ['hidden', 'hidden-2', 'sub'];
 	} else {
 		roundHeaderClasses = null;
 		roundContentClasses = ['hidden', 'sub'];
 	}
-	var lastPrefix = 's-' + step + '-out-';
-	for (var i = state.rounds - 1; i >= 0; --i) {
-		var rnd = 's-' + step + '-d-' + (i + 1);
-		var rrd = 's-' + step + '-r-' + (i + 1);
-		var $container = addRound(i + 1, $parent, $computation_end, 's-' + step + '-r-dec-' + (i + 1) + '-', roundHeaderClasses, roundContentClasses);
+	let lastPrefix = 's-' + step + '-out-';
+	for (let i = state.rounds - 1; i >= 0; --i) {
+		const rnd = 's-' + step + '-d-' + (i + 1);
+		const rrd = 's-' + step + '-r-' + (i + 1);
+		const $container = addRound(i + 1, $parent, $computation_end, 's-' + step + '-r-dec-' + (i + 1) + '-', roundHeaderClasses, roundContentClasses);
 
-		var rnd_input = rnd + '-input-';
+		const rnd_input = rnd + '-input-';
 		dec = applyInput(dec, state, rnd_input, lastPrefix, expandedKey);
 		addSubEntry('input to Round ' + (i + 1), dec, rnd_input, $container, null, state.colored);
 		lastPrefix = rnd_input;
 
 		// permute
 
-		var permuteKey = rrd + '-permute';
+		const permuteKey = rrd + '-permute';
+        const rnd_permute = rnd + '-permute-';
 		if (! disables[permuteKey]) {
-			var rnd_permute = rnd + '-permute-';
 			dec = applyInvPermute(dec, inv_permute, rnd_permute, lastPrefix);
 			lastPrefix = rnd_permute;
 		}
@@ -379,9 +380,9 @@ function decode(step, block, state, expandedKey) {
 
 		// sbox
 
-		var sboxKey = rrd + '-sbox';
+		const sboxKey = rrd + '-sbox';
+        const rnd_sbox = rnd + '-sbox-';
 		if (! disables[sboxKey]) {
-			var rnd_sbox = rnd + '-sbox-';
 			dec = applyInvSBox(dec, inv_sbox, rnd_sbox, lastPrefix);
 			lastPrefix = rnd_sbox;
 		}
@@ -389,13 +390,13 @@ function decode(step, block, state, expandedKey) {
 
 		// mix with key
 
-		var rnd_subkey = rnd + '-subkey-';
-		var key = applySubkey(dec, i, expandedKey, rnd_subkey, lastPrefix);
+		const rnd_subkey = rnd + '-subkey-';
+		const key = applySubkey(dec, i, expandedKey, rnd_subkey, lastPrefix);
 		addSubEntry('used subkey:', key, rnd_subkey, $container, null, state.colored);
 
-		var keyKey = 's-' + step + '-r-' + i + '-key';
+		const keyKey = 's-' + step + '-r-' + i + '-key';
+        const rnd_key = rnd + '-key-';
 		if (! disables[keyKey]) {
-			var rnd_key = rnd + '-key-';
 			dec = applyMixWithKey(dec, key, rnd_key, lastPrefix, rnd_subkey);
 			lastPrefix = rnd_key;
 		}
@@ -404,9 +405,9 @@ function decode(step, block, state, expandedKey) {
 		// mult
 
 		if (i > 0) {
-			var multKey = 's-' + step + '-r-' + i + '-mult';
+			const multKey = 's-' + step + '-r-' + i + '-mult';
+            const rndMult = rnd + '-mult-';
 			if (! disables[multKey]) {
-				var rndMult = rnd + '-mult-';
 				dec = applyMults(dec, 0xe, 0xb, 0xd, 0x9, rndMult, lastPrefix);
 				lastPrefix = rndMult;
 			}
