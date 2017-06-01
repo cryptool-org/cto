@@ -1,0 +1,48 @@
+@@include('../common/base.html', {
+    "plain": "${{ kamasutra.SAMPLE_PLAIN }}$",
+    "encrypted": "${{ kamasutra.SAMPLE_ENCRYPTED }}$",
+    "different_key_alphabet": false,
+    "noKey": true,
+    "dropdown": false,
+    "key": "${{ kamasutra.SAMPLE_KEY }}$",
+    "alphaInput": true,
+    "numInput": false
+})
+
+<script>
+    var alphaA = document.getElementById("inputField").value;
+    var alphaB = alphaA.substr((alphaA.length/2));
+    alphaA = alphaA.substr(0,(alphaA.length/2));
+    document.getElementById("alphaDisplay").innerHTML = alphaA;
+    document.getElementById("alphaDisplay").innerHTML += "\n" + alphaB;
+
+
+
+    this.updateDisplay = function () {
+        alphaA = document.getElementById("inputField").value;
+        alphaB = alphaA.substr((alphaA.length/2));
+        alphaA = alphaA.substr(0,(alphaA.length/2));
+        document.getElementById("alphaDisplay").innerHTML = alphaA;
+        document.getElementById("alphaDisplay").innerHTML += "\n" + alphaB;
+    }
+
+    document.getElementById('inputField').addEventListener ('keyup', function (event) {
+        updateDisplay();
+        evokeUpdate();
+    });
+
+    this.randomAlpha = function () {
+        var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        for (var i = alphabet.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = alphabet[i];
+            alphabet[i] = alphabet[j];
+            alphabet[j] = temp;
+        }
+        document.getElementById("inputField").value = alphabet.join("");
+
+        updateDisplay();
+        evokeUpdate();
+        return false;
+    }
+</script>

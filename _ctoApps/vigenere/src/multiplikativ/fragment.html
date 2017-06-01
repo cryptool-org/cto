@@ -3,11 +3,14 @@
     "encrypted": "${{ multiplikativ.SAMPLE_ENCRYPTED }}$",
     "different_key_alphabet": false,
     "noKey": true,
-    "key": "${{ multiplikativ.SAMPLE_KEY }}$"
+    "dropdown": true,
+    "key": "${{ multiplikativ.SAMPLE_KEY }}$",
+    "alphaInput": false,
+    "numInput": false
 })
 
 <style>
-    /* Style The Dropdown Button */
+
     .dropdown {
 
         position: relative;
@@ -20,30 +23,22 @@
 </script>
 
 <script>
+
+    for(var i = 1; i <= 26; i++) {
+        if(i == 1 || i == 3 || i == 5 || i == 7 || i == 9 || i == 11 ||
+            i == 15 || i == 17 || i == 19 || i == 21 || i == 23 || i == 25) {
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = i;
+            document.getElementById('dropdown').appendChild(opt);
+        }
+    }
+
     this.setMult = function (mult) {
         var keyValue = parseInt(mult) + 65;
         document.getElementById("key").value = String.fromCharCode(keyValue);
 
         evokeUpdate();
     }
-
 </script>
-
-<div class="dropdown" id="dropdown">
-    <label>${{ base.MULTIPLIER }}$&nbsp</label>
-    <select onchange="setMult(this.value)">
-        <option>1</option>
-        <option selected="selected">3</option>
-        <option>5</option>
-        <option>7</option>
-        <option>9</option>
-        <option>11</option>
-        <option>15</option>
-        <option>17</option>
-        <option>19</option>
-        <option>21</option>
-        <option>23</option>
-        <option>25</option>
-    </select>
-</div>
 

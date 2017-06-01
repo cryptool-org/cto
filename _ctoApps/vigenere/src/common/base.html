@@ -24,8 +24,22 @@
             <label for="key">${{ base.KEY }}$</label>
             <input class="form-control" type="text" id="key" value="@@key">
         </div>}
+        <br>
+        @@if (alphaInput === true) {
+        <div class="form-group">
+            <pre id="alphaDisplay" style="text-align: center">
+            </pre>
+            <br>
+            <label id="field-title">Alphabet:</label><br>
+            <input class="form-control" type="text" id="inputField" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/><br>
+            <button id="inputButton" style="text-align: center" onclick="return randomAlpha()">${{ base.RANDOM_ALPHABET }}$</button>
+        </div>
+        }
     </form>
-@@include('./options.html')
+@@include('./options.html', {
+    "dropdown": @@dropdown,
+    "numInput": @@numInput
+    })
 @@include('./alphabets.html', {
     "different_key_alphabet": @@different_key_alphabet
 })

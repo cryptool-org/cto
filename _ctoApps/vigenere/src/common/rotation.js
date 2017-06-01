@@ -5,55 +5,125 @@ function Rotation() {
 
 
     this.encrypt = function (val, idx, key, alphabets, from) {
-        //var ctolib = new CTOLib();
-
-        var blocksize = 5;
-        var degree = 270;
+        var blocksize = document.getElementById("textParam").value;
+        var degree = document.getElementById("dropdown").value;
         var result = val;
+        var tmpVal;
 
         switch (degree) {
-            case 90:
-                var result = this.rotate90(from, blocksize).charAt(idx).charCodeAt() - 97;
-                break;
+            case "90":
+                tmpVal = this.rotate90(from, blocksize).charAt(idx);
+                if(isNaN(tmpVal)) {
+                    if (tmpVal == tmpVal.toUpperCase()) {
+                        result = tmpVal.charCodeAt() - 65;
+                        break;
+                    }
+                    else {
+                        result = tmpVal.charCodeAt() - 97;
+                        break;
+                    }
+                }else{
+                    result = tmpVal;
+                    break;
+                }
 
-            case 180:
-                var result = this.rotate180(from).charAt(idx).charCodeAt() - 97;
-                break;
+            case "180":
+                tmpVal = this.rotate180(from).charAt(idx);
+                if(isNaN(tmpVal)) {
+                    if (tmpVal == tmpVal.toUpperCase()) {
+                        result = tmpVal.charCodeAt() - 65;
+                        break;
+                    } else {
+                        result = tmpVal.charCodeAt() - 97
+                        break;
+                    }
+                }else{
+                    result = tmpVal;
+                    break;
+                }
 
-            case 270:
-                var result = this.rotate180(this.rotate90(from, blocksize)).charAt(idx).charCodeAt() - 97;
+            case "270":
+                tmpVal = this.rotate180(this.rotate90(from, blocksize)).charAt(idx);
+                if(isNaN(tmpVal)) {
+                    if (tmpVal == tmpVal.toUpperCase()) {
+                        result = tmpVal.charCodeAt() - 65;
+                        break;
+                    }
+                    else {
+                        result = tmpVal.charCodeAt() - 97;
+                        break;
+                    }
+                }else{
+                    result = tmpVal;
+                    break;
+                }
         }
-
         return result;
     };
-    this.decrypt = function (val, idx, key, aplhabets, from) {
-        var blocksize = 5;
-        var degree = 270;
+    this.decrypt = function (val, idx, key, alphabets, from) {
+        var blocksize = document.getElementById("textParam").value;
+        var degree = document.getElementById("dropdown").value;
         var result = val;
+        var tmpVal;
 
         switch (degree) {
-            case 90:
-                var result = this.rotate90D(from, blocksize).charAt(idx).charCodeAt() - 97;
-                break;
+            case "90":
+                tmpVal = this.rotate90D(from, blocksize).charAt(idx);
+                if(isNaN(tmpVal)) {
+                    if (tmpVal == tmpVal.toUpperCase()) {
+                        result = tmpVal.charCodeAt() - 65;
+                        break;
+                    }
+                    else {
+                        result = tmpVal.charCodeAt() - 97;
+                        break;
+                    }
+                }else{
+                    result = tmpVal;
+                    break;
+                }
 
-            case 180:
-                var result = this.rotate180(from).charAt(idx).charCodeAt() - 97;
-                break;
+            case "180":
+                tmpVal = this.rotate180(from).charAt(idx);
+                if(isNaN(tmpVal)) {
+                    if (tmpVal == tmpVal.toUpperCase()) {
+                        result = tmpVal.charCodeAt() - 65;
+                        break;
+                    } else {
+                        result = tmpVal.charCodeAt() - 97
+                        break;
+                    }
+                }else{
+                    result = tmpVal;
+                    break;
+                }
 
-            case 270:
-                var result = this.rotate90D(this.rotate180(from), blocksize).charAt(idx).charCodeAt() - 97;
+            case "270":
+                tmpVal = this.rotate90D(this.rotate180(from), blocksize).charAt(idx);
+                if(isNaN(tmpVal)) {
+                    if (tmpVal == tmpVal.toUpperCase()) {
+                        result = tmpVal.charCodeAt() - 65;
+                        break;
+                    }
+                    else {
+                        result = tmpVal.charCodeAt() - 97;
+                        break;
+                    }
+                }else{
+                    result = tmpVal;
+                    break;
+                }
         }
-
         return result;
     };
 
     this.rotate90 = function (from, blocksize) {
-        var array = this.str_split(from, blocksize);
-        var arrayLength=array.length;
+        var text = from.replace(/\W+/g, '');
+        var array = this.str_split(text, blocksize);
         var output="";
         for (var j=0; j<blocksize; j++)
         {
-            for (var i=(arrayLength-1); i>=0; i--)
+            for (var i=(array.length-1); i>=0; i--)
             {
                 output+=array[i].charAt(j);
             }
@@ -62,19 +132,19 @@ function Rotation() {
     }
 
     this.rotate180 = function (from) {
-        var textlength = from.length;
+        var text = from.replace(/\W+/g, '');
         var output="";
-        for (var i=textlength; i>=0; i--) output+=from.charAt(i);
+        for (var i=text.length; i>=0; i--) output+=text.charAt(i);
         return output;
     }
 
     this.rotate90D = function (from, blocksize) {
-        var textlength=from.length;
+        var text = from.replace(/\W+/g, '');
 
         //oversize
-        var ueber=textlength % blocksize;
+        var ueber=text.length % blocksize;
         //array size
-        var arraysize=parseInt(textlength / blocksize);
+        var arraysize=parseInt(text.length / blocksize);
         //create array
         var outarray = new Array(arraysize+1);
 
@@ -87,7 +157,7 @@ function Rotation() {
         }
 
         var j=0;
-        while (j<textlength)
+        while (j<text.length)
         {
             for (i=arraysize; i>=0; i--)
             {
@@ -96,12 +166,12 @@ function Rotation() {
                 {
                     if (ueber>0)
                     {
-                        outarray[i]+=from.charAt(j);
+                        outarray[i]+=text.charAt(j);
                         ueber--;
                     }
                     else j--;
                 }
-                else outarray[i]+=from.charAt(j);
+                else outarray[i]+=text.charAt(j);
                 j++;
             }
         }
