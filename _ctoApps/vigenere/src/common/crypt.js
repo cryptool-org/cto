@@ -65,8 +65,22 @@ function Crypt(algo, state, opts) {
     };
 
     this.process = function(from, encrypting) {
+        if(this.algo.algoName == "HILL") {
+            var tmpFrom = from;
+            if(document.getElementById("2x2").checked) {
+                if (tmpFrom.replace(/[^a-zA-Z]/gi, '').length % 2 == 1)
+                    from += "Z";
+            }
+            else {
+                if(tmpFrom.replace(/[^a-zA-Z]/gi, '').length % 3 == 1)
+                    from += "ZZ";
+                if(tmpFrom.replace(/[^a-zA-Z]/gi, '').length % 3 == 2)
+                    from += "Z";
+            }
+        }
         const key = this.normalizeKey();
         const fromLength = from.length;
+
         let k = 0;
         let j = 0;
         let result = '';

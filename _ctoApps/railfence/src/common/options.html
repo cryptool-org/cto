@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">${{ base.OPTIONS }}$</h3>
+    </div>
+    <div class="panel-body" id="options-body">
+            <div>
+                <label id="depthLabel">&nbsp ${{ options.DEPTH }}$&nbsp</label>
+                <select id="depth" onchange="setDepth(this.value)"></select>
+                <label id="offsetLabel">&nbsp Offset:&nbsp</label>
+                <select id="offset" onchange="setFenceOffset()"></select>
+                @@if (name === "redefence") {
+                    <label id="orderLabel">&nbsp ${{ options.ORDER }}$&nbsp</label>
+                    <input type="text" id="order" value="2 1 4 3 5" size="35" onKeyUp="setFenceOffset()"/>
+                }
+            </div>
+        <br>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="deleteWhitespace">
+        ${{ options.FILTER_WHITESPACE }}$
+    </label><label class="checkbox-inline">
+        <input type="checkbox" id="groupBy5s">
+        ${{ options.GROUP_BY_5S }}$
+    </label><label class="checkbox-inline">
+        <input type="checkbox" id="deleteNonLetters">
+        ${{ options.FILTER_NON_LETTERS }}$
+    </label><label class="checkbox-inline">
+        <input type="checkbox" id="convertToUpcase">
+        ${{ options.CONVERT_TO_UPCASE }}$
+    </label>
+    <label class="checkbox-inline" style="display:none;">
+        <input type="checkbox" id="skipNonLetterKeys"  checked="checked">
+        ${{ options.FILTER_NON_LETTER_KEYS }}$
+    </label>
+    </div>
+</div>

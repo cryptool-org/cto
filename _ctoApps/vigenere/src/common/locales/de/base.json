@@ -7,5 +7,7 @@
   "ALPHABETS": "Alphabete:",
   "KEY_ALPHABETS": "Schlüssel-Alphabete:",
   "ADD_ALPHABET": "Alphabet hinzufügen",
-  "RANDOM_ALPHABET": "Zufallsalphabet"
+  "RANDOM_ALPHABET": "Zufallsalphabet",
+  "RANDOM_MATRIX": "Zufällige Schlüsselmatrix generieren",
+  "KEY_MATRIX": "Schlüsselmatrix:"
 }

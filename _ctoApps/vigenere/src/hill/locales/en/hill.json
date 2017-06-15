@@ -1,0 +1,7 @@
+{
+  "TITLE": "Hill Encryption",
+  "DESCRIPTION": "<h1>The Hill Encryption</h1>",
+  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
+  "SAMPLE_ENCRYPTED": "Xfg cwuwa vhkyp rne ytxqw mgfp hkj ivyf eht.",
+  "SAMPLE_KEY": "W D J G"
+}

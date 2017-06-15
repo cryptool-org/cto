@@ -1,0 +1,87 @@
+@@include('../common/base.html', {
+    "plain": "${{ hill.SAMPLE_PLAIN }}$",
+    "encrypted": "${{ hill.SAMPLE_ENCRYPTED }}$",
+    "different_key_alphabet": false,
+    "noKey": true,
+    "dropdown": false,
+    "key": "${{ hill.SAMPLE_KEY }}$",
+    "alphaInput": false,
+    "numInput": false,
+    "matKey": true,
+    "name": "hill"
+})
+
+<script src="../common/hill.js">
+</script>
+
+<script>
+
+    this.getRandomKey = function () {
+        var matSizeX = 2;
+        if(document.getElementById("3x3").checked)
+            matSizeX = 3;
+        var lenX = matSizeX * matSizeX;
+        var keyX = [];
+        var countX = 0; // Prevent infinite loop
+        var iX, detX;
+        var alphabetX = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
+        do {
+            for ( i = 0; i < lenX; i += 1 ) {
+                keyX[i] = Math.floor((Math.random() * alphabetX.length)+0);
+            }
+            detX = this.getDeterminant(keyX, alphabetX);
+            countX += 1;
+        } while ( (detX === 0 || this.gcd(alphabetX.length, detX) > 1) && countX < 100 );
+
+        if ( countX < 100 ) {
+            var resultX = [];
+            for(var j = 0; j < keyX.length; j++) {
+                resultX[j] = String.fromCharCode(keyX[j] + 65);
+            }
+            document.getElementById("matKey").value = keyX.join(" ");
+            document.getElementById("key").value = resultX.join(" ");
+            evokeUpdate();
+        } else {
+            alert("No valid matrix found. Please try again");
+        }
+
+        return false;
+    }
+
+    this.getDeterminant = function (matKey, alphabet) {
+        var det;
+        // Calculate determinant of matrix (ad - bc)
+        if ( matKey.length === 4 ) {
+            det = matKey[0] * matKey[3] - matKey[1] * matKey[2];
+        } else {
+            // Calculate determinant of matrix ( (aei + bfg + cdh) - (ceg + afh + bdi) )
+            det = matKey[0] * matKey[4] * matKey[8] + matKey[1] * matKey[5] * matKey[6] + matKey[2] * matKey[3] * matKey[7];
+            det -= ( matKey[2] * matKey[4] * matKey[6] + matKey[0] * matKey[5] * matKey[7] + matKey[1] * matKey[3] * matKey[8] );
+        }
+        det = this.getModuloRemainder( det, alphabet.length );
+        return det;
+    }
+
+    this.getModuloRemainder = function ( num, modulo ) {
+        var rem = ((num % modulo) + modulo) % modulo;
+        return rem;
+    }
+
+    this.gcd = function (a, b) {
+        if (b) {
+            return this.gcd(b, a % b);
+        } else {
+            return Math.abs(a);
+        }
+    }
+
+    this.useParam = function (input) {
+        var result = [];
+        var tmp = input.split(/[ ,]+/);
+        for(var j = 0; j < tmp.length; j++) {
+            result[j] = String.fromCharCode(parseInt(tmp[j]) + 65);
+        }
+        document.getElementById("key").value = result.join(" ");
+        evokeUpdate();
+    }
+</script>

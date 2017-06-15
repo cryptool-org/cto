@@ -1,0 +1,8 @@
+{
+  "TITLE": "Redefence-Verschlüsselung",
+  "DESCRIPTION": "<h1>Die Redefence-Verschlüsselung</h1>",
+  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
+  "SAMPLE_ENCRYPTED": "SEoefdru tsxinurArrvemw nayp tsqdh iiodae dnee izg uckwnenbe tldurajnr.",
+  "SAMPLE_KEY": "Geheimer Schluessel",
+  "RAILFENCE": "S       E       o       e       f       d       r       u     \n t     s x     i n     u r     A r     r v     e m     w n    \n  a   y   p   t   s   q   d   h   i   i   o   d   a   e   d   \n   n e     e i     z g     u c     k w     n e     n b     e t\n    l       d       u       r       a       j       n       r "
+}

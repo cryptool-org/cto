@@ -35,9 +35,16 @@
     </label><label class="checkbox-inline">
         <input type="checkbox" id="convertToUpcase">
         ${{ options.CONVERT_TO_UPCASE }}$
-    </label><label class="checkbox-inline">
-        <input type="checkbox" id="skipNonLetterKeys" checked="checked">
-        ${{ options.FILTER_NON_LETTER_KEYS }}$
     </label>
+        @@if(name === "rotation" || name === "hill" || name === "multiplikativ" || name === "trithemius" || name === "kamasutra"){
+        <label class="checkbox-inline" style="display:none;">
+            <input type="checkbox" id="skipNonLetterKeys"  checked="checked">
+            ${{ options.FILTER_NON_LETTER_KEYS }}$
+        </label>}
+        @@if(name !== "rotation" && name !== "hill" && name !== "multiplikativ" && name !== "trithemius" && name !== "kamasutra"){
+        <label class="checkbox-inline">
+            <input type="checkbox" id="skipNonLetterKeys" checked="checked">
+            ${{ options.FILTER_NON_LETTER_KEYS }}$
+        </label>}
     </div>
 </div>
