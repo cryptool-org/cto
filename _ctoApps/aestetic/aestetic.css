@@ -71,23 +71,6 @@ p {
     font-size: 14px;
     color: #777;
 }
-body {
-	font-family: "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 17px;
-	line-height: 21px;
-	color: #000;
-	background-color: #fff;
-}
-.content {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	padding-top: 44px;
-}
-.content-padded {
-	margin: 10px 15px;
-}
 .error-overlay {
 	position: absolute;
 	z-index: 20;

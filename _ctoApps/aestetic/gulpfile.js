@@ -91,7 +91,7 @@ gulp.task('prepare-deploy', function() {
         }))
 });
 
-gulp.task('do-deploy', ['prepare-deploy'], function() {
+gulp.task('do-deploy', [/*'prepare-deploy'*/], function() {
     return files_to_deploy()
         .pipe(ssh.dest(remote_dir))
 });
