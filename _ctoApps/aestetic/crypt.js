@@ -2,8 +2,8 @@
 
 // create table DOM elements
 
-var disables = {};
-var disables_count = 0;
+let disables = {};
+let disables_count = 0;
 
 function resetDisables() {
 	disables = {};
@@ -12,23 +12,23 @@ function resetDisables() {
 
 function addRound(round, $parent, $before, prefix, headerClasses, contentClasses) {
     if (! $parent) { return; }
-	var $header = newTag('li', prefix + 'hdr', headerClasses);
-	var $a = setTxt(newTag('a', prefix + 'hdr-a', 'collapsed'), 'Round ' + round);
-	var $spn = newTag('span', null, 'icon');
-	$a.appendChild($spn);
-	$header.appendChild($a);
-	$parent.insertBefore($header, $before);
+	const $header = newTag('li', prefix + 'hdr', headerClasses);
+	const $a = setTxt(newTag('a', prefix + 'hdr-a', 'collapsed'), 'Round ' + round);
+	const $spn = newTag('span', null, 'icon');
+	$a.append($spn);
+	$header.append($a);
+	$header.insertBefore($before);
 
-	var $cell = newTag('li', prefix + 'cnt', contentClasses);
-	$parent.insertBefore($cell, $before);
-	var $div = newTag('div', null, 'card');
-	var $container = newTag('ul');
-	$div.appendChild($container);
-	$cell.appendChild($div);
-	$parent.insertBefore($cell, $before);
+	const $cell = newTag('li', prefix + 'cnt', contentClasses);
+	$cell.insertBefore($before);
+	const $div = newTag('div', null, 'card');
+	const $container = newTag('ul');
+	$div.append($container);
+	$cell.append($div);
+	$cell.insertBefore($before);
 
-	$a.addEventListener('click', function(evt) {
-		toggleDiv(prefix + 'hdr-a', prefix + 'cnt');
+	$a.on('click', (evt) => {
+		toggleDiv('#' + prefix + 'hdr-a', '#' + prefix + 'cnt');
 		if (evt) { evt.preventDefault(); }
 	});
 
@@ -37,10 +37,10 @@ function addRound(round, $parent, $before, prefix, headerClasses, contentClasses
 
 function addSubEntry(name, block, prefix, $container, key, colored) {
     if (! $container) { return; }
-	var $li = setTxt(newTag('li'), name);
-	var skip = false;
+	const $li = setTxt(newTag('li'), name);
+	let skip = false;
 	if (key) {
-		var $check = newTag('div', null, 'toggle');
+		const $check = newTag('div', null, 'toggle');
 		if (disables[key]) {
 			skip = true;
 		} else {
@@ -48,7 +48,7 @@ function addSubEntry(name, block, prefix, $container, key, colored) {
 		}
 		appendChild($check, newTag('div', null, 'toggle-handle'));
 		appendChild($li, $check);
-		$check.addEventListener('click', function(evt) {
+		$check.on('click', (evt) => {
 			if (disables[key]) {
 				disables[key] = false;
 				--disables_count;
@@ -60,11 +60,11 @@ function addSubEntry(name, block, prefix, $container, key, colored) {
 			evt.preventDefault();
 		});
 	}
-	$container.appendChild($li);
+	$container.append($li);
 	if (!skip) {
-		var $entry = newTag('li', null, 'referable');
+		const $entry = newTag('li', null, 'referable');
 		writeBytes($entry, block, prefix, true, colored);
-		$container.appendChild($entry);
+		$container.append($entry);
 	}
 }
 
@@ -72,10 +72,10 @@ function addSubEntry(name, block, prefix, $container, key, colored) {
 // do encoding
 
 function applyInput(block, state, prefix, prevPrefix, expandedKey) {
-	_.each(block, function(val, i) {
-		var idx = prefix + i;
+	_.each(block, (val, i) => {
+		const idx = prefix + i;
 		aes.addDependencies(idx, [prevPrefix + i]);
-		if (prevPrefix == 'input-') {
+		if (prevPrefix === 'input-') {
 			if (! disables['r-0-key']) {
 				aes.addDependencies(idx, ['input-' + i, 'key-' + i, 'expanded-key-' + i]);
 				aes.addCalculations(idx, [
@@ -85,9 +85,9 @@ function applyInput(block, state, prefix, prevPrefix, expandedKey) {
 				aes.addDependencies(idx, 'input-' + i);
 				aes.addCalculations(idx, fb(val) + " = input[" + i + "]");
 			}
-		} else if (prevPrefix == 'out-') {
+		} else if (prevPrefix === 'out-') {
 			if (! disables['r-' + state.rounds + '-key']) {
-				var j = state.rounds * block.length + i;
+				const j = state.rounds * block.length + i;
 				aes.addDependencies(idx, ['out-' + i, 'key-' + i, 'expanded-key-' + i]);
 				aes.addCalculations(idx, [
 					"bs ← " + block.length,
@@ -109,19 +109,19 @@ function applyInput(block, state, prefix, prevPrefix, expandedKey) {
 }
 
 function applySBox(block, sbox, prefix, prevPrefix) {
-	return _.map(block, function(val, i) {
-		var idx = prefix + i;
+	return _.map(block, (val, i) => {
+		const idx = prefix + i;
 		aes.addDependencies(idx, [prevPrefix + i, 'sbox-' + val]);
-		var res = sbox[val];
+		const res = sbox[val];
 		aes.addCalculations(idx, fb(res) + " = S-Box[" + fb(val) + "]");
 		return res;				
 	});
 }
 
 function applyInvSBox(block, invsbox, prefix, prevPrefix) {
-	return _.map(block, function(val, i) {
-		var idx = prefix + i;
-		var res = invsbox[val];
+	return _.map(block, (val, i) => {
+		const idx = prefix + i;
+		const res = invsbox[val];
 		aes.addDependencies(idx, [prevPrefix + i, 'sbox-' + res]);
 		aes.addCalculations(idx, [
 			fb(val) + " = S-Box[i]",
@@ -133,9 +133,9 @@ function applyInvSBox(block, invsbox, prefix, prevPrefix) {
 }
 
 function applyPermute(block, permute, prefix, prevPrefix) {
-	return _.map(block, function(_, i) {
-		var j = permute[i];
-		var idx = prefix + i;
+	return _.map(block, (_, i) => {
+		const j = permute[i];
+		const idx = prefix + i;
 		aes.addDependencies(idx, [prevPrefix + j, 'permute-' + i]);
 		aes.addCalculations(idx, [
 			"i ← " + j + " = permute[" + i + "]",
@@ -146,9 +146,9 @@ function applyPermute(block, permute, prefix, prevPrefix) {
 }
 
 function applyInvPermute(block, invpermute, prefix, prevPrefix) {
-	return _.map(block, function(_, i) {
-		var j = invpermute[i];
-		var idx = prefix + i;
+	return _.map(block, (_, i) => {
+		const j = invpermute[i];
+		const idx = prefix + i;
 		aes.addDependencies(idx, [prevPrefix + j, 'permute-' + j]);
 		aes.addCalculations(idx, [
 			i + " = permute[i]",
@@ -160,26 +160,26 @@ function applyInvPermute(block, invpermute, prefix, prevPrefix) {
 }
 
 function singleMultStep(b, f, i, id) {
-	if (f == 1) { return b; }
-	var res = mult(f, b);
+	if (f === 1) { return b; }
+	const res = mult(f, b);
 	aes.addCalculations(id, "s" + i + " ← " + fb(res) + " = " + fb(f) + " × " + fb(b));
 	return res;
 }
 
 function singleMult(b0, b1, b2, b3, f0, f1, f2, f3, id) {
-	var s0 = singleMultStep(b0, f0, 0, id);
-	var s1 = singleMultStep(b1, f1, 1, id);
-	var s2 = singleMultStep(b2, f2, 2, id);
-	var s3 = singleMultStep(b3, f3, 3, id);
+	const s0 = singleMultStep(b0, f0, 0, id);
+	const s1 = singleMultStep(b1, f1, 1, id);
+	const s2 = singleMultStep(b2, f2, 2, id);
+	const s3 = singleMultStep(b3, f3, 3, id);
 
-	var r0 = f0 == 1 ? fb(b0) : "s0";
-	var r1 = f1 == 1 ? fb(b1) : "s1";
-	var r2 = f2 == 1 ? fb(b2) : "s2";
-	var r3 = f3 == 1 ? fb(b3) : "s3";
+	const r0 = f0 === 1 ? fb(b0) : "s0";
+	const r1 = f1 === 1 ? fb(b1) : "s1";
+	const r2 = f2 === 1 ? fb(b2) : "s2";
+	const r3 = f3 === 1 ? fb(b3) : "s3";
 
-	var a = s0 ^ s1;
-	var b = s2 ^ s3;
-	var res = a ^ b;
+	const a = s0 ^ s1;
+	const b = s2 ^ s3;
+	const res = a ^ b;
 
 	aes.addCalculations(id, [
 		"a ← " + fb(a) + " = " + r0 + " ⊕ " + r1,
@@ -191,33 +191,33 @@ function singleMult(b0, b1, b2, b3, f0, f1, f2, f3, id) {
 }
 
 function applyMults(block, f0, f1, f2, f3, prefix, prevPrefix) {
-	var l = block.length/4;
-	for (var i = 0; i < l; ++i) {
-		var j = 4 * i;
-		var b0 = block[j];
-		var b1 = block[j + 1];
-		var b2 = block[j + 2];
-		var b3 = block[j + 3];
-		var m0 = singleMult(b0, b1, b2, b3, f0, f1, f2, f3, prefix + j);
-		var m1 = singleMult(b0, b1, b2, b3, f3, f0, f1, f2, prefix + (j + 1));
-		var m2 = singleMult(b0, b1, b2, b3, f2, f3, f0, f1, prefix + (j + 2));
-		var m3 = singleMult(b0, b1, b2, b3, f1, f2, f3, f0, prefix + (j + 3));
+	const l = block.length/4;
+	for (let i = 0; i < l; ++i) {
+		const j = 4 * i;
+		const b0 = block[j];
+		const b1 = block[j + 1];
+		const b2 = block[j + 2];
+		const b3 = block[j + 3];
+		const m0 = singleMult(b0, b1, b2, b3, f0, f1, f2, f3, prefix + j);
+		const m1 = singleMult(b0, b1, b2, b3, f3, f0, f1, f2, prefix + (j + 1));
+		const m2 = singleMult(b0, b1, b2, b3, f2, f3, f0, f1, prefix + (j + 2));
+		const m3 = singleMult(b0, b1, b2, b3, f1, f2, f3, f0, prefix + (j + 3));
 		block[j] = m0;
 		block[j + 1] = m1;
 		block[j + 2] = m2;
 		block[j + 3] = m3;
-		var deps = _.map([j, j + 1, j + 2, j + 3], function(k) {
+		const deps = _.map([j, j + 1, j + 2, j + 3], (k) => {
 			return prevPrefix + k;
 		});
-		_.each(deps, function(_, k) { aes.addDependencies(prefix + (j + k), deps); });
+		_.each(deps, (_, k) => { aes.addDependencies(prefix + (j + k), deps); });
 	}
 	return block;
 }
 
 function applySubkey(block, round, expandedKey, prefix, prevPrefix) {
-	return _.map(block, function(_, i) {
-		var idx = prefix + i;
-		var j = block.length * round + i;
+	return _.map(block, (_, i) => {
+		const idx = prefix + i;
+		const j = block.length * round + i;
 		aes.addDependencies(idx, 'expanded-key-' + j, prevPrefix + i);
 		aes.addCalculations(idx, [
 			"bs ← " + block.length,
@@ -231,10 +231,10 @@ function applySubkey(block, round, expandedKey, prefix, prevPrefix) {
 }
 
 function applyMixWithKey(block, subkey, prefix, prevPrefix, keyPrefix) {
-	return _.map(block, function(val, i) {
-		var idx = prefix + i;
+	return _.map(block, (val, i) => {
+		const idx = prefix + i;
 		aes.addDependencies(idx, [prevPrefix + i, keyPrefix + i]);
-		var res = val ^ subkey[i];
+		const res = val ^ subkey[i];
 		aes.addCalculations(idx, [
 			fb(res) + " = " + fb(val) + " ⊕ " + fb(subkey[i])
 		]);
@@ -244,12 +244,12 @@ function applyMixWithKey(block, subkey, prefix, prevPrefix, keyPrefix) {
 
 function encode(step, input, state, expandedKey) {
 	const $computation = jQuery('#rounds');
-	const $parent = $computation? $computation.parentNode : null;
+	const $parent = $computation? $computation.parent() : null;
     const $computation_end = jQuery('#rounds-end');
 
     let block;
 	if (! disables['s-' + step + '-r-0-key']) {
-		block = _.map(new Array(state.blockSize), function(_, i) {
+		block = _.map(new Array(state.blockSize), (_, i) => {
 			return input[i] ^ expandedKey[i];
 		});
 	} else {
@@ -331,18 +331,18 @@ function encode(step, input, state, expandedKey) {
 function decode(step, block, state, expandedKey) {
 	const $computation = jQuery('#decode-rounds');
 	const $computation_end = jQuery('#decode-rounds-end');
-	const $parent = $computation ? $computation.parentNode : null;
+	const $parent = $computation ? $computation.parent() : null;
 
 	let dec = new Array(state.blockSize);
 
 	const inv_permute = new Array(state.blockSize);
 	const inv_sbox = new Array(256);
 
-	_.each(state.permute, function(val, i) { inv_permute[val] = i; });
-	_.each(state.sbox, function(val, i) { inv_sbox[val] = i; });
+	_.each(state.permute, (val, i) => { inv_permute[val] = i; });
+	_.each(state.sbox, (val, i) => { inv_sbox[val] = i; });
 
 	if (! disables['s-' + step + '-r-' + state.rounds + '-key']) {
-		dec = _.map(dec, function(_ ,i) {
+		dec = _.map(dec, (_, i) => {
 			return block[i] ^ expandedKey[state.rounds * state.blockSize + i];
 		});
 	} else {

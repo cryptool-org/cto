@@ -1,20 +1,20 @@
 'use strict';
 
-var txt = {};
+const txt = {};
 
-window.addEventListener('load', function () {
-    txt['show'] = function(message, data, callback) {
-        setTxt($('textbox-header'), message);
-        var current = '';
+jQuery(function () {
+    txt['show'] = (message, data, callback) => {
+        setTxt(jQuery('#textbox-header'), message);
+        let current = '';
         _.each(data, function(byte, idx) {
-            if (idx == 0) {}
-            else if (idx % 4 == 0) { current += '   '; }
+            if (idx === 0) {}
+            else if (idx % 4 === 0) { current += '   '; }
             else { current += ' '; }
             current += formatByte(byte);
         });
-        var ta = $('textarea');
+        const ta = jQuery('#textarea');
         setTxt(ta, current);
-        dom.removeClass($('dimmer'), 'hidden');
+        dom.removeClass(jQuery('#dimmer'), 'hidden');
         txt['callback'] = callback;
         ta.focus();
     };
@@ -24,12 +24,12 @@ window.addEventListener('load', function () {
     }
 
     txt['commit'] = function() {
-        var entered = $('textarea').value;
+        const entered = $('#textarea').val();
 
-        var result = [];
-        var lastNibble = 0;
-        var hasLastNibble = false;
-        for (var i = 0; i < entered.length; ++i) {
+        const result = [];
+        let lastNibble = 0;
+        let hasLastNibble = false;
+        for (let i = 0; i < entered.length; ++i) {
             if (i < entered.length && entered[i] <= ' ') {
                 if (hasLastNibble) {
                     result.push(lastNibble);
@@ -37,7 +37,7 @@ window.addEventListener('load', function () {
                     hasLastNibble = false;
                 }
             } else if (isValidHexDigit(entered[i])) {
-                var value = lastNibble * 16 + parseInt(entered[i], 16);
+                const value = lastNibble * 16 + parseInt(entered[i], 16);
                 if (hasLastNibble) {
                     result.push(value);
                     lastNibble = 0;
@@ -59,51 +59,52 @@ window.addEventListener('load', function () {
             txt.hide();
         }
     };
+
     txt['hide'] = function() {
-        dom.addClass($('dimmer'), 'hidden');
+        dom.addClass(jQuery('#dimmer'), 'hidden');
     };
-    $('dimmer').addEventListener('click', function(evt) {
+    jQuery('#dimmer').on('click', (evt) => {
         txt.hide();
         evt.preventDefault();
     });
-    $('textbox').addEventListener('click', function(evt) {
+    jQuery('#textbox').on('click', (evt) => {
         evt.stopPropagation();
     });
-    $('textbox-ok').addEventListener('click', function(evt) {
+    jQuery('#textbox-ok').on('click', (evt) => {
         txt.commit();
         evt.preventDefault();
     });
-    $('textbox-cancel').addEventListener('click', function(evt) {
+    jQuery('#textbox-cancel').on('click', (evt) => {
         txt.hide();
         evt.preventDefault();
     });
 
     function repairSelection(textarea) {
-        var ta = textarea;
-        if (ta.selectionStart == ta.selectionEnd && ta.selectionEnd < ta.value.length) {
+        const ta = textarea;
+        if (ta.selectionStart === ta.selectionEnd && ta.selectionEnd < ta.value.length) {
             ta.selectionEnd = ta.selectionStart + 1;
         }
     }
-    var textarea = $('textarea');
-    textarea.addEventListener('focus', function() {
+    const textarea = jQuery('textarea');
+    textarea.on('focus', () => {
         if (this.value.length > 0) {
             this.selectionStart = 0;
             this.selectionEnd = 1;
         }
     });
-    textarea.addEventListener('select', function() {
+    textarea.on('select', () => {
         repairSelection(this);
     });
-    textarea.addEventListener('keydown', function(evt) {
-        var c = evt.keyCode;
-        if (c == 13) {
+    textarea.on('keydown', (evt) => {
+        const c = evt.keyCode;
+        if (c === 13) {
             this.blur();
             txt.commit();
             evt.preventDefault();
-        } else if (c == 8) {
+        } else if (c === 8) {
             // delete
-        } else if (c == 37) {
-            var next = Math.max(0, this.selectionStart - 1);
+        } else if (c === 37) {
+            const next = Math.max(0, this.selectionStart - 1);
             this.selectionStart = next;
             this.selectionEnd = Math.min(next + 1, this.value.length);
             evt.preventDefault();
@@ -115,10 +116,10 @@ window.addEventListener('load', function () {
             evt.preventDefault();
         }
     });
-    textarea.addEventListener('keyup', function() {
+    textarea.on('keyup', () => {
         repairSelection(this);
     });
-    textarea.addEventListener('click', function() {
+    textarea.on('click', () => {
         repairSelection(this);
     });
 });

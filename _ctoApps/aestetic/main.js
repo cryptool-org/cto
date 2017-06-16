@@ -1,10 +1,10 @@
 'use strict';
 
-var refresh;
+let refresh;
 
-window.addEventListener('load', function () {
+jQuery(function () {
 
-	var state = {
+	const state = {
 		'sbox': defaults.sbox.slice(),
 		'permute': defaults.permute.slice(),
 		'key': testcases[0].key.slice(),
@@ -17,11 +17,11 @@ window.addEventListener('load', function () {
 
 // handle state
 
-	var is_rijndael = false;
-	var is_aes128 = false;
-	var is_aes192 = false;
-	var is_aes256 = false;
-	var usedTestcase = null;
+	let is_rijndael = false;
+	let is_aes128 = false;
+	let is_aes192 = false;
+	let is_aes256 = false;
+	let usedTestcase = null;
 
 	function checkForKnownConfigurations() {
 		is_rijndael = false;
@@ -30,12 +30,12 @@ window.addEventListener('load', function () {
 		is_aes256 = false;
 		usedTestcase = null;
 
-		if (disables_count == 0 && _.equals(state.sbox, defaults.sbox) && _.equals(state.permute, defaults.permute)) {
+		if (disables_count === 0 && _.equals(state.sbox, defaults.sbox) && _.equals(state.permute, defaults.permute)) {
 			switch (state.key.length) {
 				case 16:
 					if (state.rounds >= std_rounds.minRijndael16 && state.rounds <= std_rounds.maxRijndael) {
 						is_rijndael = true;
-						is_aes128 = (state.rounds == std_rounds.aes128);
+						is_aes128 = (state.rounds === std_rounds.aes128);
 					}
 					break;
 				case 20:
@@ -46,7 +46,7 @@ window.addEventListener('load', function () {
 				case 24:
 					if (state.rounds >= std_rounds.minRijndael24 && state.rounds <= std_rounds.maxRijndael) {
 						is_rijndael = true;
-						is_aes192 = (state.rounds == std_rounds.aes192);
+						is_aes192 = (state.rounds === std_rounds.aes192);
 					}
 					break;
 				case 28:
@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
 					}
 					break;
 				case 32:
-					if (state.rounds == std_rounds.aes256) {
+					if (state.rounds === std_rounds.aes256) {
 						is_rijndael = true;
 						is_aes256 = true;
 
@@ -64,21 +64,21 @@ window.addEventListener('load', function () {
 			}
 
 			if (is_aes256 || is_aes192 || is_aes128) {
-				for (var i = 0; i < testcases.length; ++i) {
-					var tc = testcases[i];
-					var isTestcaseKey = _.equals(state.key, tc.key);
-					var isTestcaseInput = _.equals(state.input, tc.input);
-                    var isTestcaseChaining = state.chaining == tc.chaining;
-                    var currentIV = state.iv ? state.iv : new Array(state.blockSize);
-                    var testcaseIV = tc.iv ? tc.iv : new Array(state.blockSize);
-                    var isTestcaseIV = _.equals(currentIV, testcaseIV);
-					if (state.rounds == tc.rounds && isTestcaseKey && isTestcaseInput && isTestcaseChaining && isTestcaseIV) {
+				for (let i = 0; i < testcases.length; ++i) {
+					const tc = testcases[i];
+					const isTestcaseKey = _.equals(state.key, tc.key);
+					const isTestcaseInput = _.equals(state.input, tc.input);
+                    const isTestcaseChaining = state.chaining === tc.chaining;
+                    const currentIV = state.iv ? state.iv : new Array(state.blockSize);
+                    const testcaseIV = tc.iv ? tc.iv : new Array(state.blockSize);
+                    const isTestcaseIV = _.equals(currentIV, testcaseIV);
+					if (state.rounds === tc.rounds && isTestcaseKey && isTestcaseInput && isTestcaseChaining && isTestcaseIV) {
 						usedTestcase = tc;
 					}
 				}
 			}
 		}		
-		var $badge = $('badge');
+		const $badge = jQuery('#badge');
 		dom.setClass($badge, 'badge-aes256', is_aes256);
 		dom.setClass($badge, 'badge-aes192', is_aes192);
 		dom.setClass($badge, 'badge-aes128', is_aes128);
@@ -87,43 +87,43 @@ window.addEventListener('load', function () {
 	}
 
 	function refreshState() {
-		setTxt($('rounds-label'), state.rounds);
-		dom.setClass($('dec-rounds'), 'disabled', state.rounds <= 1);
+		setTxt(jQuery('#rounds-label'), state.rounds);
+		dom.setClass(jQuery('#dec-rounds'), 'disabled', state.rounds <= 1);
 
-		writeBytes($('sbox'), state.sbox, 'sbox-', false, state.colored);
-		writeBytes($('permute'), state.permute, 'permute-', false, state.colored);
+		writeBytes(jQuery('#sbox'), state.sbox, 'sbox-', false, state.colored);
+		writeBytes(jQuery('#permute'), state.permute, 'permute-', false, state.colored);
         if (! state.iv) { state.iv = new Array(state.blockSize); }
-        writeBytes($('iv'), state.iv, 'iv-', false, state.colored);
-		writeBytes($('key'), state.key, 'key-', false, state.colored);
-		writeBytes($('input'), state.input, 'input-', false, state.colored);
+        writeBytes(jQuery('#iv'), state.iv, 'iv-', false, state.colored);
+		writeBytes(jQuery('#key'), state.key, 'key-', false, state.colored);
+		writeBytes(jQuery('#input'), state.input, 'input-', false, state.colored);
 
 		checkForKnownConfigurations();
 
-		dom.setClass($('reference'), 'hidden', usedTestcase == null);
-		var referenceBytes = $('reference-bytes');
-		dom.setClass(referenceBytes, 'hidden', usedTestcase == null);
+		dom.setClass(jQuery('#reference'), 'hidden', usedTestcase === null);
+		const referenceBytes = jQuery('#reference-bytes');
+		dom.setClass(referenceBytes, 'hidden', usedTestcase === null);
 		if (usedTestcase) {
 			writeBytes(referenceBytes, usedTestcase.encoded, false, state.colored);
 		}
 
-        dom.setClass($('chaining-none'), 'active', state.chaining == Chaining.None);
-        dom.setClass($('chaining-cbc'), 'active', state.chaining == Chaining.CBC);
-        dom.setClass($('chaining-ecb'), 'active', state.chaining == Chaining.ECB);
+        dom.setClass(jQuery('#chaining-none'), 'active', state.chaining === Chaining.None);
+        dom.setClass(jQuery('#chaining-cbc'), 'active', state.chaining === Chaining.CBC);
+        dom.setClass(jQuery('#chaining-ecb'), 'active', state.chaining === Chaining.ECB);
 	}
 
 
 // test vector handling
 
 	function updateTestvectors() {
-		var $container = $('testvectors-container');
+		const $container = jQuery('#testvectors-container');
 		removeChilds($container);
-		_.each(testcases, function(testcase) {
-			var $li = newTag('li');
-			var $a = newTag('a');
+		_.each(testcases, (testcase) => {
+			const $li = newTag('li');
+			const $a = newTag('a');
 			setTxt($a, testcase.name);
-			$li.appendChild($a);
-			$container.appendChild($li);
-			$a.addEventListener('click', function(evt) {
+			$li.append($a);
+			$container.append(jQuery($li));
+			$a.on('click', (evt) => {
 				state.sbox = defaults.sbox.slice();
 				state.permute = defaults.permute.slice();
 				state.key = testcase.key.slice();
@@ -150,9 +150,9 @@ window.addEventListener('load', function () {
 		aes.relayout();
 		refreshState();
 		updateTestvectors();
-		var expandedKey = expandKey(state);
-		writeBytes($('expanded-key'), expandedKey, 'expanded-key-', true, state.colored);
-		var encoded = encode_chain(state, expandedKey);
+		const expandedKey = expandKey(state);
+		writeBytes(jQuery('#expanded-key'), expandedKey, 'expanded-key-', true, state.colored);
+		const encoded = encode_chain(state, expandedKey);
 		decode_chain(encoded, state, expandedKey);
 		updateCollapseState();
 		aes.refreshTappedCell();
@@ -165,34 +165,34 @@ window.addEventListener('load', function () {
 
 
 	function addToggleDiv(a, divs) {
-		$(a).addEventListener('click', function(evt) {
+		jQuery(a).on('click', (evt) => {
             toggleDiv(a, divs);
 			if (evt) { evt.preventDefault(); }
 		});
 	}
 
-	addToggleDiv('toggle-configuration', [
-		'testvectors-toggler', 'testvectors', 'rounds-toggler', 'sbox-toggler', 'sbox', 'permute-toggler', 'permute', 'chain-selector', 'iv-toggler', 'iv'
+	addToggleDiv('#toggle-configuration', [
+		'#testvectors-toggler', '#testvectors', '#rounds-toggler', '#sbox-toggler', '#sbox', '#permute-toggler', '#permute', '#chain-selector', '#iv-toggler', '#iv'
 	]);
-	addToggleDiv('toggle-testvectors', ['testvectors']);
-	addToggleDiv('toggle-sbox', ['sbox']);
-	addToggleDiv('toggle-permute', ['permute']);
-    addToggleDiv('toggle-iv', ['iv']);
+	addToggleDiv('#toggle-testvectors', ['#testvectors']);
+	addToggleDiv('#toggle-sbox', ['#sbox']);
+	addToggleDiv('#toggle-permute', ['#permute']);
+    addToggleDiv('#toggle-iv', ['#iv']);
 
-	addToggleDiv('toggle-key', ['key', 'expanded-key-toggler', 'expanded-key']);
-	addToggleDiv('toggle-expanded-key', ['expanded-key']);
+	addToggleDiv('#toggle-key', ['#key', '#expanded-key-toggler', '#expanded-key']);
+	addToggleDiv('#toggle-expanded-key', ['#expanded-key']);
 
-	addToggleDiv('toggle-input', ['input']);
+	addToggleDiv('#toggle-input', ['#input']);
 
 	function setRoundsToggle(a, prefix) {
-		var $a = $(a);
-		$a.addEventListener('click', function(evt) {
-            var divs = [];
-            var steps = state.chaining == Chaining.None ? 1 : state.input.length / state.blockSize + 1;
-            for (var j = 0; j < steps; ++j) {
-                for (var i = 1; i <= state.rounds; ++i) {
-                    divs.push('s-' + j + '-' + prefix + i + '-hdr');
-                    divs.push('s-' + j + '-' + prefix + i + '-cnt');
+		const $a = jQuery(a);
+		$a.on('click', (evt) => {
+            const divs = [];
+            const steps = state.chaining === Chaining.None ? 1 : state.input.length / state.blockSize + 1;
+            for (let j = 0; j < steps; ++j) {
+                for (let i = 1; i <= state.rounds; ++i) {
+                    divs.push('#s-' + j + '-' + prefix + i + '-hdr');
+                    divs.push('#s-' + j + '-' + prefix + i + '-cnt');
                 }
             }
             toggleDiv(a, divs);
@@ -200,18 +200,18 @@ window.addEventListener('load', function () {
 		});
 	}
 
-	setRoundsToggle('toggle-enc-rounds', 'r-enc-');
-	setRoundsToggle('toggle-dec-rounds', 'r-dec-');
+	setRoundsToggle('#toggle-enc-rounds', 'r-enc-');
+	setRoundsToggle('#toggle-dec-rounds', 'r-dec-');
 
-	addToggleDiv('toggle-encoded', ['output']);
-	addToggleDiv('toggle-reference', ['reference-bytes']);
-	addToggleDiv('toggle-decoded', ['decoded']);
+	addToggleDiv('#toggle-encoded', ['#output']);
+	addToggleDiv('#toggle-reference', ['#reference-bytes']);
+	addToggleDiv('#toggle-decoded', ['#decoded']);
 
 // change round count
 
 	function addChangeRounds(a, delta) {
-		$(a).addEventListener('click', function(evt) {
-			var newRounds = state.rounds + delta;
+		jQuery(a).on('click', (evt) => {
+			const newRounds = state.rounds + delta;
 			if (newRounds > 0) {
 				state.rounds = newRounds;
 				refresh();
@@ -220,21 +220,21 @@ window.addEventListener('load', function () {
 		});
 	}
 
-	addChangeRounds('inc-rounds', 1);
-	addChangeRounds('dec-rounds', -1);
+	addChangeRounds('#inc-rounds', 1);
+	addChangeRounds('#dec-rounds', -1);
 
 
 // update parameters
 
 	function updateBytes(message, bytes, validator) {
-		var current = '';
-		_.each(bytes, function(byte) {
+		let current = '';
+		_.each(bytes, (byte) => {
 			current += formatByte(byte);			
 		});
-		txt.show(message, bytes, function(result) {
+		txt.show(message, bytes, (result) => {
 			if (validator(result, bytes)) {
 				while (bytes.length > result.length) { bytes.pop(); }
-				for (var i = 0; i < bytes.length; ++i) { bytes[i] = result[i]; }
+				for (let i = 0; i < bytes.length; ++i) { bytes[i] = result[i]; }
 				for (i = bytes.length; i < result.length; ++i) { bytes.push(result[i]); }
 				refresh();
 				return true;
@@ -246,7 +246,7 @@ window.addEventListener('load', function () {
 	}
 
 	function addUpdateBytes(elm, message, bytes, validator) {
-		$(elm).addEventListener('click', function(evt) {
+		jQuery(elm).on('click', (evt) => {
 			updateBytes(message, state[bytes], validator);
 			evt.preventDefault();
 		});
@@ -256,25 +256,25 @@ window.addEventListener('load', function () {
 		return newArray.length >= 4;
 	}
 
-	addUpdateBytes('key', 'change key', 'key', validKeyLength);
+	addUpdateBytes('#key', 'change key', 'key', validKeyLength);
 
-	function sameLength(newArray, oldArray) { return newArray.length == oldArray.length; }
+	function sameLength(newArray, oldArray) { return newArray.length === oldArray.length; }
 
     function validInputLength(newArray) {
-        if (state.chaining == Chaining.None) {
-            return newArray.length == state.blockSize;
+        if (state.chaining === Chaining.None) {
+            return newArray.length === state.blockSize;
         } else {
             return true;
         }
     }
 
-	addUpdateBytes('sbox', 'change S-Box', 'sbox', sameLength);
-	addUpdateBytes('permute', 'change permutation', 'permute', sameLength);
-    addUpdateBytes('iv', 'change initial vector', 'iv', sameLength);
-	addUpdateBytes('input', 'change input', 'input', validInputLength);
+	addUpdateBytes('#sbox', 'change S-Box', 'sbox', sameLength);
+	addUpdateBytes('#permute', 'change permutation', 'permute', sameLength);
+    addUpdateBytes('#iv', 'change initial vector', 'iv', sameLength);
+	addUpdateBytes('#input', 'change input', 'input', validInputLength);
 
-    $('chaining-none').addEventListener('click', function(evt) {
-        if (state.blockSize != state.input.length) {
+    jQuery('#chaining-none').on('click', (evt) => {
+        if (state.blockSize !== state.input.length) {
             alert("input must be " + state.blockSize + " bytes long");
             return;
         }
@@ -282,12 +282,12 @@ window.addEventListener('load', function () {
         refresh();
         evt.preventDefault();
     });
-    $('chaining-cbc').addEventListener('click', function(evt) {
+    jQuery('#chaining-cbc').on('click', (evt) => {
         state.chaining = Chaining.CBC;
         refresh();
         evt.preventDefault();
     });
-    $('chaining-ecb').addEventListener('click', function(evt) {
+    jQuery('#chaining-ecb').on('click', (evt) => {
         state.chaining = Chaining.ECB;
         refresh();
         evt.preventDefault();

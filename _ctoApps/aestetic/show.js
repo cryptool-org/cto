@@ -1,3 +1,3 @@
 'use strict';
-document.getElementById('main').classList.remove('hidden');
+jQuery('#main').removeClass('hidden');
 

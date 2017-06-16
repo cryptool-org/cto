@@ -1,30 +1,30 @@
 'use strict';
 
-var aes = {};
+const aes = {};
 /*
 	handling the dependencies between cells and the calculations
 */
 
 (function() {
-	var dependencies = {};
-	var calculations = {};
+	let dependencies = {};
+	let calculations = {};
 
-	aes['addDependencies'] = function(key, ids) {
-		var val = dependencies[key];
-		if (val == null) { val = []; dependencies[key] = val; }
-		_.each(ids, function(id) { val.push(id); });
+	aes['addDependencies'] = (key, ids) => {
+		let value = dependencies[key];
+		if (! value) { value = []; dependencies[key] = value; }
+		_.each(ids, (id) => { value.push(id); });
 	};
 
-	aes['addCalculations'] = function(key, lines) {
-		var val = calculations[key];
-		if (val == null) { val = []; calculations[key] = val; }
-		_.each(lines, function(line) { val.push(par(line)); });
+	aes['addCalculations'] = (key, lines) => {
+		let value = calculations[key];
+		if (! value) { value = []; calculations[key] = value; }
+		_.each(lines, (line) => { value.push(par(line)); });
 	};
 
-	aes['rotateDependencies'] = function(prefix, start, end) {
-		var firstDependency = dependencies[prefix + start];
-		var firstCalculation = calculations[prefix + start];
-		for (var i = start; i < end - 1; ++i) {
+	aes['rotateDependencies'] = (prefix, start, end) => {
+		const firstDependency = dependencies[prefix + start];
+		const firstCalculation = calculations[prefix + start];
+		for (let i = start; i < end - 1; ++i) {
 			dependencies[i] = dependencies[i + 1];
 			calculations[i] = calculations[i + 1];
 		}
@@ -32,47 +32,47 @@ var aes = {};
 		calculations[end - 1] = firstCalculation;
 	};
 
-	aes['resetDependencies'] = function() {
+	aes['resetDependencies'] = () => {
 		dependencies = {};
 		calculations = {};
 	};
 
 
-	var tappedCell = null;
+	let tappedCell = null;
 
 	function processClosure(active, visited, depth, addActiveClass) {
 		if (!active.length || depth > 10) return;
 
-		var nextLevel = [];
+		const nextLevel = [];
 
-		var className = "active-" + depth;
-		_.each(active, function(obj) {
+		const className = "active-" + depth;
+		_.each(active, (obj) => {
 			if (visited.indexOf(obj) < 0) {
-				_.each(dependencies[obj], function(val) { nextLevel.push(val); });
+				_.each(dependencies[obj], (val) => { nextLevel.push(val); });
 				visited.push(obj);
 			}
 			if (addActiveClass) {
-				dom.addClass($(obj), className);
+				dom.addClass(jQuery('#' + obj), className);
 			} else {
-				dom.removeClass($(obj), className);
+				dom.removeClass(jQuery('#' + obj), className);
 			}
 		});
 		processClosure(nextLevel, visited, depth + 1, addActiveClass);
 	}
 
 	function repositionCalc() {
-		var $calc = $('calc');
-		if (tappedCell && $(tappedCell) && $calc.firstChild) {
+		const $calc = jQuery('#calc');
+		if (tappedCell && jQuery('#' + tappedCell) && $calc.first()) {
 
-			var box = absoluteBox($(tappedCell));
+			const box = absoluteBox(jQuery('#' + tappedCell));
 			if (! box.width || ! box.height) {
 				processClosure([tappedCell], [], 1, false);
 				tappedCell = null;
 				removeChilds($calc);
 				aes.relayout();
 			}
-			$calc.style['left'] = (box.right + 4) + "px";
-			$calc.style['top'] = (box.bottom + 4) + "px";
+			$calc.css('left', (box.right + 4) + "px");
+			$calc.css('top', (box.bottom + 4) + "px");
 			dom.removeClass($calc, 'hidden');
 		} else {
 			dom.addClass($calc, 'hidden');
@@ -80,18 +80,18 @@ var aes = {};
 	}
 
 	function newLine($from, $to) {
-		var fromBox = absoluteBox($from);
-		var toBox = absoluteBox($to);
+		const fromBox = absoluteBox($from);
+		const toBox = absoluteBox($to);
 		if (! fromBox.width || ! fromBox.height || ! toBox.width || ! toBox.height) {
 			return null;
 		}
 
-		var fromCenter = center(fromBox);
-		var toCenter = center(toBox);
+		const fromCenter = center(fromBox);
+		const toCenter = center(toBox);
 
-		var x1, y1, x2, y2;
+		let x1, y1, x2, y2;
 		if (Math.abs(fromCenter.x - toCenter.x) > Math.abs(fromCenter.y - toCenter.y)) {
-			var slope = (toCenter.y - fromCenter.y)/(toCenter.x - fromCenter.x);
+			const slope = (toCenter.y - fromCenter.y)/(toCenter.x - fromCenter.x);
 			if (fromCenter.x < toCenter.x) {
 				x1 = fromBox.right + 1;
 				x2 = toBox.left - 1;
@@ -102,7 +102,7 @@ var aes = {};
 			y1 = fromCenter.y - slope * (fromCenter.x - x1);
 			y2 = fromCenter.y - slope * (fromCenter.x - x2);
 		} else {
-			slope = (toCenter.x - fromCenter.x)/(toCenter.y - fromCenter.y);
+			const slope = (toCenter.x - fromCenter.x)/(toCenter.y - fromCenter.y);
 			if (fromCenter.y < toCenter.y) {
 				y1 = fromBox.bottom + 1;
 				y2 = toBox.top - 1;
@@ -114,57 +114,57 @@ var aes = {};
 			x2 = fromCenter.x - slope * (fromCenter.y - y2);
 		}
 
-		var $line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-	    $line.setAttribute('x1', x1);
-	    $line.setAttribute('y1', y1);
-	    $line.setAttribute('x2', x2);
-	    $line.setAttribute('y2', y2);
-	    $line.setAttribute('stroke', 'rgba(255, 0, 0, 0.3)');
-	    $line.setAttribute('stroke-width', "1px");
+		const $line = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'line'));
+	    $line.attr('x1', x1);
+	    $line.attr('y1', y1);
+	    $line.attr('x2', x2);
+	    $line.attr('y2', y2);
+	    $line.attr('stroke', 'rgba(255, 0, 0, 0.3)');
+	    $line.attr('stroke-width', "1px");
 	    return $line;
 	}
 
 	function updateConnections() {
-		var $connections = $('connections');
+		const $connections = jQuery('#connections');
 		removeChilds($connections);
 		if (tappedCell) {
-			var $source = $(tappedCell);
+			const $source = jQuery('#' + tappedCell);
 
-			_.each(dependencies[tappedCell], function(destination) {
-				var $destination = $(destination);
-				var $line = newLine($source, $destination);
+			_.each(dependencies[tappedCell], (destination) => {
+				const $destination = jQuery('#' + destination);
+				const $line = newLine($source, $destination);
 				if ($line) {
-					$connections.appendChild($line);
+					$connections.append($line);
 				}
 			});
 		}
 	}
 
-	aes['relayout'] = function() {
+	aes['relayout'] = () => {
 		repositionCalc();
 		updateConnections();
 	};
 
-	aes['refreshTappedCell'] = function() {
+	aes['refreshTappedCell'] = () => {
 		if (tappedCell) {
 			processClosure([tappedCell], [], 1, true);			
 		}
 	};
 
-	aes['doCellClick'] = function(evt) {
-		if (tappedCell) { 
+	aes['doCellClick'] = (evt) => {
+		if (tappedCell) {
 			processClosure([tappedCell], [], 1, false);
 		}
-		var id = this.getAttribute('id');
-		if (id == tappedCell) {
+		const id = jQuery(evt.target).attr('id');
+		if (id === tappedCell) {
 			tappedCell = null;
 		} else {
 			tappedCell = id;
 			processClosure([tappedCell], [], 1, true);
-			var calc = $('calc');
-			var msg = calculations[id];
+			const calc = jQuery('#calc');
+			const msg = calculations[id];
 			removeChilds(calc);
-			_.each(msg, function(elm) { calc.appendChild(elm); });
+			_.each(msg, (elm) => { calc.append(elm); });
 		}
 		aes.relayout();
 		evt.preventDefault();

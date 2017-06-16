@@ -1,5 +1,5 @@
         <h1>AEStetic</h1>
-        <div id="no-javascript" class="error-overlay">
+        <div id="aestetic-no-javascript" class="error-overlay">
             <h2>No JavaScript active</h2>
             <p>
                 Please activate Javascript to use this Web-App.
@@ -7,7 +7,7 @@
         </div>
         <script>
             'use strict';
-            document.getElementById('no-javascript').classList.add('hidden');
+            jQuery('#aestetic-no-javascript').addClass('hidden');
         </script>
         <div id="main" class="content hidden">
             <div class="content-padded">
@@ -16,17 +16,19 @@
             </div>
             <ul>
                 <li class="header"><a id="toggle-configuration" href="">Configuration
-                    <span class="right"><span id="badge" class="badge-aes256"></span>
-                    <span class="icon"></span></span></a></li>
+                    <span id="badge" class="badge-aes256"></span>
+                    <span class="collapse"><span class="glyphicon glyphicon-chevron-up"></span></span>
+                        <span class="expand"><span class="glyphicon glyphicon-chevron-down"></span></span></a></li>
                     <li id="testvectors-toggler"><a id="toggle-testvectors" href="" class="collapsed">AES
                         Variants and Test Vectors<span class="icon"></span></a></li>
                         <li class="hidden sub" id="testvectors">
                             <div class="card"><ul id="testvectors-container"></ul></div>
                         </li>
-                    <li id="rounds-toggler">Number of Rounds:
-                        <span id="rounds-label"></span>
-                        <div class="segmented">
-                        <a class="big" id="dec-rounds" href="">–</a><a class="big" id="inc-rounds" href="">+</a>
+                    <li id="rounds-toggler" class="flex-container"><span class="flex-grow">Number of Rounds:
+                        <span id="rounds-label"></span></span>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-default" id="dec-rounds" href=""><span class="glyphicon glyphicon-minus"></span></button>
+                            <button type="button" class="btn btn-default" id="inc-rounds" href=""><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                     </li>
                     <li id="sbox-toggler"><a id="toggle-sbox" href="" class="collapsed">S-Box
@@ -35,9 +37,11 @@
                     <li id="permute-toggler"><a id="toggle-permute" href="" class="collapsed">Permutation
                         <span class="icon"></span></a></li>
                         <li class="editable hidden sub" id="permute"></li>
-                    <li id="chain-selector">Chaining:
-                        <div class="segmented">
-                            <a class="active" id="chaining-none" href="">None</a><a id="chaining-cbc" href="">CBC</a><a href="" id="chaining-ecb">ECB</a>
+                <li id="chain-selector" class="flex-container"><span class="flex-grow">Chaining:</span>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="active btn btn-default" id="chaining-none" href="">None</button>
+                            <button type="button" class="btn btn-default" id="chaining-cbc" href="">CBC</button>
+                            <button type="button" class="btn btn-default" id="chaining-ecb">ECB</button>
                         </div>
                     <li id="iv-toggler"><a id="toggle-iv" href="" class="collapsed">Initial Vector (CBC only)
                         <span class="icon"></span></a></li>

@@ -55,12 +55,17 @@ gulp.task('bootstrap', function () {
         .pipe(dest())
 });
 
+gulp.task('bootstrap-fonts', function () {
+    return gulp.src(['node_modules/bootstrap/dist/fonts/*'])
+        .pipe(gulp.dest('dist/fonts'));
+});
+
 gulp.task('jquery', function() {
     return gulp.src('node_modules/jquery/dist/jquery.js')
         .pipe(dest())
 });
 
-gulp.task('default', ['html', 'js', 'css', 'config', 'bootstrap', 'jquery']);
+gulp.task('default', ['html', 'js', 'css', 'config', 'bootstrap', 'bootstrap-fonts', 'jquery']);
 
 let remote_dir = '/var/www/cryptool-dev/_ctoApps/';
 function get_remote_path(p) { return remote_dir + path.basename(p); }
@@ -68,7 +73,7 @@ function get_remote_path(p) { return remote_dir + path.basename(p); }
 function dirs_to_deploy() {
     return gulp.src(['dist/*']);
 }
-/*
+
 function files_to_deploy() {
     return gulp.src(['dist/**', '!dist/web.html', '!dist/boostrap.*', '!dist/jquery.*']);
 }
@@ -100,4 +105,3 @@ gulp.task('post-deploy', ['do-deploy'], function() {
 
 });
 gulp.task('deploy', ['default', 'post-deploy']);
-*/

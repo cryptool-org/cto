@@ -4,22 +4,20 @@
 	This file contains functions for manipulation the DOM.
 */
 
-function $(id) { return document.getElementById(id); }
-
-var dom = {};
+let dom = {};
 
 (function() {
-	dom['addClass'] = function($elm, cls) {
-		if ($elm && $elm.classList) { $elm.classList.add(cls); }
+	dom['addClass'] = ($elm, cls) => {
+		if ($elm) { $elm.addClass(cls); }
 		return $elm;
 	};
 
-	dom['removeClass'] = function($elm, cls) {
-		if ($elm && $elm.classList) { $elm.classList.remove(cls); }
+	dom['removeClass'] = ($elm, cls) => {
+		if ($elm) { $elm.removeClass(cls); }
 		return $elm;
 	};
 
-	dom['setClass'] = function($elm, cls, set) {
+	dom['setClass'] = ($elm, cls, set) => {
 		if (set) {
 			return dom.addClass($elm, cls);
 		} else {
@@ -27,52 +25,48 @@ var dom = {};
 		}
 	};
 
-    dom['hasClass'] = function($elm, cls) {
-        return $elm && $elm.classList && $elm.classList.contains(cls);
+    dom['hasClass'] = ($elm, cls) => {
+        return $elm && $elm.hasClass(cls);
     };
 })();
 
 function newTag(tag, id, classes) {
-	var $elm = document.createElement(tag);
-	if (id) { $elm.setAttribute('id', id); }
-	_.each(classes, function(cls) { dom.addClass($elm, cls); });
+	const $elm = jQuery('<' + tag + '/>');
+	if (id) { $elm.attr('id', id); }
+	_.each(classes, (cls) => { $elm.addClass(cls); });
 	return $elm;
 }
 
-function newTxt(txt) { return document.createTextNode(txt); }
-
-function appendChild($parent, $child, addSpace) {
+function appendChild($parent, $child) {
     if (! $parent) { return $parent; }
-	if (addSpace) { $parent.appendChild(newTxt(' ')); }
-	$parent.appendChild($child);
+	$parent.append($child);
 	return $parent;
 }
 
 function removeChilds($parent) {
-	while ($parent && $parent.hasChildNodes()) { $parent.removeChild($parent.firstChild); }
+	if ($parent) { $parent.empty(); }
 	return $parent;
 }
 
 function removeBetween($from, $to) {
 	if (! $from || ! $to) { return; }
-	var $parent = $from.parentNode;
 	for (;;) {
-		var $next = $from.nextSibling;
-		if ($next == $to) { break; }
-		$parent.removeChild($next);
+		const $next = $from.next();
+		if ($next.is($to)) { break; }
+		$next.remove();
 	}
 }
 
 function setTxt($elm, txt) {
-	return appendChild(removeChilds($elm), newTxt(txt));
+	return $elm.text(txt);
 }
 
-function par(text) {
-	return setTxt(newTag('p'), text);
+function par(txt) {
+	return setTxt(newTag('p'), txt);
 }
 
 function absoluteBox($elm) {
-	var box = $elm.getBoundingClientRect();
+	const box = $elm[0].getBoundingClientRect();
 	return {
 		left: box.left + window.pageXOffset,
 		right: box.right + window.pageXOffset,
@@ -87,7 +81,7 @@ function center(box) {
 	return { x: box.left + box.width/2, y: box.top + box.height/2 };
 }
 
-	var expanded = {
+	const expanded = {
 		'toggle-configuration': true,
 		'toggle-key': true,
 		'toggle-input': true,
@@ -99,21 +93,21 @@ function center(box) {
 	};
 
 	function toggleDiv(a, divs) {
-		var collapse = expanded[a];
+		const collapse = expanded[a];
 		expanded[a] = ! collapse;
-		dom.setClass($(a), 'collapsed', collapse);
-		_.each(divs, function(div) { dom.setHide($(div), collapse); });
+		dom.setClass(jQuery(a), 'collapsed', collapse);
+		_.each(divs, (div) => { dom.setHide(jQuery(div), collapse); });
 		aes.relayout();
 	}
 
 	function updateCollapseState() {
-		for (var key in expanded) {
+		for (let key in expanded) {
 			if (! expanded.hasOwnProperty(key)) { continue; }
-			var $obj = $(key);
+			const $obj = jQuery(key);
 			if (! $obj) { continue; }
-			var shouldBeExpanded = expanded[key];
-			var isExpanded = ! $obj.classList.contains('collapsed');
-			if (shouldBeExpanded != isExpanded) {
+			const shouldBeExpanded = expanded[key];
+			const isExpanded = ! $obj.hasClass('collapsed');
+			if (shouldBeExpanded !== isExpanded) {
 				expanded[key] = isExpanded;
 				$obj.click();
 			}
@@ -121,19 +115,19 @@ function center(box) {
 	}
 
 	function writeBytes($dest, ary, prefix, activeCells, colored) {
-		var grouping = 4;
-		var len = ary.length;
+		const grouping = 4;
+		const len = ary.length;
 
 		removeChilds($dest);
 
-		for (var i = 0; i < len; i += grouping) {
-			var $div = newTag('div');
-			for (var j = 0; j < grouping; ++j) {
-				var k = i + j;
-				var v = ary[k];
-				var $span = newTag('span', prefix + k, colored ? 'c' + defaults.colorRamp[v] : null);
+		for (let i = 0; i < len; i += grouping) {
+			const $div = newTag('div');
+			for (let j = 0; j < grouping; ++j) {
+				const k = i + j;
+				const v = ary[k];
+				const $span = newTag('span', prefix + k, colored ? 'c' + defaults.colorRamp[v] : null);
 				if (activeCells) {
-					$span.addEventListener('click', aes.doCellClick);
+					$span.on('click', aes.doCellClick);
 				}
 				appendChild($div, setTxt($span, formatByte(v)), j > 0);
 			}
@@ -143,10 +137,10 @@ function center(box) {
 
 (function() {
 	function hideLevel($elm) {
-		var level = 0;
-		if ($elm.classList.contains('hidden')) {
+		let level = 0;
+		if ($elm.hasClass('hidden')) {
 			level = 1;
-			while ($elm.classList.contains('hidden-' + (level + 1))) {
+			while ($elm.hasClass('hidden-' + (level + 1))) {
 				++level;
 			}
 		}
@@ -154,16 +148,16 @@ function center(box) {
 	}
 
 	function hide($elm) {
-		var level = hideLevel($elm);
+		const level = hideLevel($elm);
 		dom.addClass($elm, level <= 0 ? 'hidden' : 'hidden-' + (level + 1));
 	}
 
 	function unhide($elm) {
-		var level = hideLevel($elm);
+		const level = hideLevel($elm);
 		dom.removeClass($elm, level <= 1 ? 'hidden' : 'hidden-' + level);
 	}
 
-	dom['setHide'] = function ($elm, doHide) {
+	dom['setHide'] = ($elm, doHide) => {
 		if (doHide) {
 			hide($elm);
 		} else {

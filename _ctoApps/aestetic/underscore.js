@@ -6,7 +6,7 @@
 	reimplemented with a modern browser in mind.
 */
 
-var _ = {
+const _ = {
 
 	/*
 		Invoke the function `fn` for each element of the array `ary`.
@@ -16,11 +16,11 @@ var _ = {
 		with `ary`. So a non-Array will be treated as an array with only one element.
 	*/
 
-	'each': function(ary, fn) {
+	'each': (ary, fn) => {
 		if (! ary) { return; }
 		if (Array.isArray(ary)) {
-			var l = ary.length;
-			for (var i = 0; i < l; ++i) { fn(ary[i], i); }
+			const l = ary.length;
+			for (let i = 0; i < l; ++i) { fn(ary[i], i); }
 		} else {
 			fn(ary, 0);
 		}
@@ -30,12 +30,12 @@ var _ = {
 		Compares two arrays, if the contain the same elements. This is a swallow comparison.
 	*/
 
-	'equals': function(a, b) {
+	'equals': (a, b) => {
 		if (! a) { return ! b; }
 		if (! b) { return false; }
-		if (a.length != b.length) { return false; }
-		for (var i = 0; i < a.length; ++i) {
-			if (a[i] != b[i]) { return false; }
+		if (a.length !== b.length) { return false; }
+		for (let i = 0; i < a.length; ++i) {
+			if (a[i] !== b[i]) { return false; }
 		}
 		return true;			
 	},
@@ -47,12 +47,12 @@ var _ = {
 		invoked with the value and the current index.
 	*/
 
-	'map': function(ary, fn) {
+	'map': (ary, fn) => {
 		if (! ary) { return ary; }
 		if (Array.isArray(ary)) {
-			var l = ary.length;
-			var result = [];
-			for (var i = 0; i < l; ++i) { result.push(fn(ary[i], i)); }
+			const l = ary.length;
+			const result = [];
+			for (let i = 0; i < l; ++i) { result.push(fn(ary[i], i)); }
 			return result;
 		} else {
 			return [fn(ary, 0)];
@@ -62,7 +62,7 @@ var _ = {
 
 function formatByte(byte) {
 	if (! byte) { return '00'; }
-	var formatted = byte.toString(16);
+	const formatted = byte.toString(16);
 	return byte < 16 ? '0' + formatted : formatted;
 }
 

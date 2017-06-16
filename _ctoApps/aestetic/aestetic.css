@@ -78,38 +78,6 @@ body {
 	color: #000;
 	background-color: #fff;
 }
-h1 {
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;	
-	z-index: 10;
-	height: 44px;
-	background-color: #fff;
-	border-bottom: solid 1px #ddd;
-
-	display: block;
-	width: 100%;
-	padding: 0 10px;
-	margin: 0 -10px;
-	font-size: 17px;
-	font-weight: 500;
-	line-height: 44px;
-	text-align: center;
-}
-h1 span {
-	position: absolute;
-	right: 15px;
-	top: 50%;
-	transform: translateY(-50%);
-	text-align: right;
-    font-size: 12px;
-    padding: 0;
-    margin: 0;
-    line-height: 1.2;
-    color: #777;
-    font-weight: normal;
-}
 .content {
 	position: absolute;
 	top: 0;
@@ -228,39 +196,12 @@ li li {
 	position: relative;
 }
 /*noinspection CssUnusedSymbol*/
-.right, .segmented, .toggle, a > .icon {
+.right, .toggle, a > .icon {
 	position: absolute;
 	right: 15px;
 	top: 50%;
 	transform: translateY(-50%);
 	font-size: 21px;
-}
-.segmented {
-	height: 80%;
-	display: inline-block;
-	background-color: #fff;
-	border: #ccc 1px solid;
-	border-radius: 3px;
-    -webkit-user-select: none;
-    -moz-user-select: -moz-none;
-    user-select: none;
-}
-.segmented > a {
-	display: inline-block;
-	height: 32px;
-	text-decoration: none;
-	padding: 2px 15px;
-	border-left: #ccc 1px solid;
-	font-size: 17px;
-}
-.segmented > a.big {
-    font-size: 32px;
-}
-.segmented > a.active {
-    background-color: #ddf;
-}
-.segmented > a:first-child {
-	border-left: none;
 }
 /*noinspection CssUnusedSymbol*/
 .toggle {
@@ -315,6 +256,12 @@ li li {
 }
 .collapsed .icon:before {
 	content: "\27e9";
+}
+.expand, .collapsed .collapse {
+	display: inline-block;
+}
+.collapse, .collapsed .expand {
+	display: inline-block;
 }
 /*noinspection CssUnusedSymbol*/
 .badge-aes256, .badge-aes192, .badge-aes128, .badge-rijndael, .badge-unknown {
@@ -459,4 +406,10 @@ li li {
 	height: 90%;
 	font-family: monospace;
 	font-size: 17px;
+}
+.flex-container {
+	display: flex;
+}
+.flex-grow {
+	flex-grow: 2;
 }
