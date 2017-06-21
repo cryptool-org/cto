@@ -13,9 +13,11 @@ function resetDisables() {
 function addRound(round, $parent, $before, prefix, headerClasses, contentClasses) {
     if (! $parent) { return; }
 	const $header = newTag('li', prefix + 'hdr', headerClasses);
-	const $a = setTxt(newTag('a', prefix + 'hdr-a', 'collapsed'), 'Round ' + round);
-	const $spn = newTag('span', null, 'icon');
-	$a.append($spn);
+	const $a = newTag('a', prefix + 'hdr-a', ['collapsed', 'flex-container']);
+	const $label = setTxt(newTag('span', null, 'flex-grow'), 'Round ' + round);
+	$a.append($label);
+	$a.append(newTag('span', null, ['collapse', 'glyphicon', 'glyphicon-chevron-up']));
+    $a.append(newTag('span', null, ['expand', 'glyphicon', 'glyphicon-chevron-down']));
 	$header.append($a);
 	$header.insertBefore($before);
 
@@ -28,7 +30,7 @@ function addRound(round, $parent, $before, prefix, headerClasses, contentClasses
 	$cell.insertBefore($before);
 
 	$a.on('click', (evt) => {
-		toggleDiv('#' + prefix + 'hdr-a', '#' + prefix + 'cnt');
+		toggleDiv(prefix + 'hdr-a', prefix + 'cnt');
 		if (evt) { evt.preventDefault(); }
 	});
 

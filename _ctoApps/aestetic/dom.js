@@ -67,11 +67,12 @@ function par(txt) {
 
 function absoluteBox($elm) {
 	const box = $elm[0].getBoundingClientRect();
+	const ref = jQuery('#main')[0].getBoundingClientRect();
 	return {
-		left: box.left + window.pageXOffset,
-		right: box.right + window.pageXOffset,
-		top: box.top + window.pageYOffset,
-		bottom: box.bottom + window.pageYOffset,
+		left: box.left - ref.left,
+		right: box.right - ref.left,
+		top: box.top - ref.top,
+		bottom: box.bottom - ref.top,
 		width: box.width,
 		height: box.height
 	};
@@ -95,8 +96,8 @@ function center(box) {
 	function toggleDiv(a, divs) {
 		const collapse = expanded[a];
 		expanded[a] = ! collapse;
-		dom.setClass(jQuery(a), 'collapsed', collapse);
-		_.each(divs, (div) => { dom.setHide(jQuery(div), collapse); });
+		dom.setClass(jQuery('#' + a), 'collapsed', collapse);
+		_.each(divs, (div) => { dom.setHide(jQuery('#' + div), collapse); });
 		aes.relayout();
 	}
 

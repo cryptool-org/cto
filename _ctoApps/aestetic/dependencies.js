@@ -127,6 +127,10 @@ const aes = {};
 	function updateConnections() {
 		const $connections = jQuery('#connections');
 		removeChilds($connections);
+		let bounds = absoluteBox(jQuery('#main'));
+		$connections.css('width', bounds.width + 'px');
+		$connections.css('height', bounds.height + 'px');
+
 		if (tappedCell) {
 			const $source = jQuery('#' + tappedCell);
 
