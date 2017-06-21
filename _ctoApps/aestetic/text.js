@@ -81,19 +81,19 @@ jQuery(function () {
 
     function repairSelection(textarea) {
         const ta = textarea;
-        if (ta.selectionStart === ta.selectionEnd && ta.selectionEnd < ta.value.length) {
+        if (ta.selectionStart === ta.selectionEnd && ta.selectionEnd < ta.val().length) {
             ta.selectionEnd = ta.selectionStart + 1;
         }
     }
-    const textarea = jQuery('textarea');
-    textarea.on('focus', () => {
-        if (this.value.length > 0) {
+    const textarea = jQuery('#textarea');
+    textarea.on('focus', (evt) => {
+        if (jQuery(evt.target).val().length > 0) {
             this.selectionStart = 0;
             this.selectionEnd = 1;
         }
     });
-    textarea.on('select', () => {
-        repairSelection(this);
+    textarea.on('select', (evt) => {
+        repairSelection(jQuery(evt.target));
     });
     textarea.on('keydown', (evt) => {
         const c = evt.keyCode;
@@ -116,10 +116,10 @@ jQuery(function () {
             evt.preventDefault();
         }
     });
-    textarea.on('keyup', () => {
-        repairSelection(this);
+    textarea.on('keyup', (evt) => {
+        repairSelection(jQuery(evt.target));
     });
-    textarea.on('click', () => {
-        repairSelection(this);
+    textarea.on('click', (evt) => {
+        repairSelection(jQuery(evt.target));
     });
 });

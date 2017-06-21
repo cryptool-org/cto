@@ -235,7 +235,7 @@ jQuery(function () {
 			if (validator(result, bytes)) {
 				while (bytes.length > result.length) { bytes.pop(); }
 				for (let i = 0; i < bytes.length; ++i) { bytes[i] = result[i]; }
-				for (i = bytes.length; i < result.length; ++i) { bytes.push(result[i]); }
+				for (let i = bytes.length; i < result.length; ++i) { bytes.push(result[i]); }
 				refresh();
 				return true;
 			} else {
