@@ -1,0 +1,10 @@
+{
+  "DESCRIPTION": "Description",
+  "PLAIN_TEXT": "Plaintext:",
+  "ENCRYPTED_TEXT": "Encrypted text:",
+  "KEY": "Key:",
+  "OPTIONS": "Options:",
+  "ALPHABETS": "Alphabets:",
+  "KEY_ALPHABETS": "Alphabets for the key:",
+  "ADD_ALPHABET": "Add alphabet"
+}
