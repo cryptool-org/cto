@@ -3,6 +3,7 @@
         <h3 class="panel-title">${{ base.OPTIONS }}$</h3>
     </div>
     <div class="panel-body" id="options-body">
+            @@if (name === "railfence" || name === "redefence") {
             <div>
                 <label id="depthLabel">&nbsp ${{ options.DEPTH }}$&nbsp</label>
                 <select id="depth" onchange="setDepth(this.value)"></select>
@@ -13,7 +14,8 @@
                     <input type="text" id="order" value="2 1 4 3 5" size="35" onKeyUp="setFenceOffset()"/>
                 }
             </div>
-        <br>
+            <br>
+            }
     <label class="checkbox-inline">
         <input type="checkbox" id="deleteWhitespace">
         ${{ options.FILTER_WHITESPACE }}$

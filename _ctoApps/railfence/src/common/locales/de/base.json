@@ -2,7 +2,7 @@
   "DESCRIPTION": "Beschreibung",
   "PLAIN_TEXT": "Klartext:",
   "ENCRYPTED_TEXT": "Verschlüsselter Text:",
-  "KEY": "Schlüssel:",
+  "KEY": "Anzahl an Windungen des Bands:",
   "OPTIONS": "Optionen:",
   "ALPHABETS": "Alphabete:",
   "KEY_ALPHABETS": "Schlüssel-Alphabete:",
@@ -10,5 +10,5 @@
   "RANDOM_ALPHABET": "Zufallsalphabet",
   "RANDOM_MATRIX": "Zufällige Schlüsselmatrix generieren",
   "KEY_MATRIX": "Schlüsselmatrix:",
-  "RAILFENCE_TEXT": "Jägerzaundarstellung:"
+  "RAILFENCE_TEXT": "Darstellung:"
 }

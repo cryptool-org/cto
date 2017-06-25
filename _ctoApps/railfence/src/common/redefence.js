@@ -73,6 +73,7 @@ function Redefence() {
         return result.charAt(idx);
     };
     this.decrypt = function (val, idx, key, alphabets, msg2) {
+        // org contains the text that will be decrypted
         var org = msg2;
 
         var result = "";
@@ -81,6 +82,7 @@ function Redefence() {
         var orderInput = document.getElementById("order").value;
         var orderTmp = orderInput.split(" ");
 
+        // order defines in which order the rows are filled
         var order = orderTmp.filter(function(elem, index, self) {
             return index == self.indexOf(elem);
         });
@@ -96,12 +98,17 @@ function Redefence() {
         var regex = new RegExp('[^' + allAlphabets + ']', 'g');
         org = org.replace(regex, '');
 
-
-        //------------------------------------------------------------------
+        // oneTurn is the amount of characters before they reach the topmost position
         var oneTurn = rails*2-2;
+
+        // halfTurn is the amount of characters before they reach the bottommost position
         var halfTurn = (rails*2-2)/2;
+
+        // turns is an array that contains the amount of characters in each horizontal row
         var turns = [];
         var len = org.length;
+
+        // resultArray contains the characters of each row (rA[0] is only the topmost row, rA[1] the second row ...)
         var resultArray = [];
 
         for(var i = 0; i < rails; i++) {
@@ -118,6 +125,8 @@ function Redefence() {
                 turns[oneTurn-i] = turns[oneTurn-i] + 1;
         }
 
+        // the loop goes through org and fills the entries of resultArray with as many characters as stated in turns[] for each row
+        // it is filled in the order that was defined inside "order"
         for(var i = 0; i < rails; i++) {
             var m = order[i]-1;
             for(var j = 0; j < turns[m]; j++) {
@@ -125,9 +134,10 @@ function Redefence() {
                 org = org.slice(1);
             }
         }
-        var msg = resultArray.join("");
 
-        //---------------------------------------------------------------
+        // msg is a string that contains the ciphertext, but with the character groups in the correct order
+        // now it will do the same same steps that are used in the standard railfence decryption
+        var msg = resultArray.join("");
 
 
         msg = msg.replace(regex, '');
@@ -180,7 +190,6 @@ function Redefence() {
 
         result = result.substr(offset);
 
-        //this.encrypt(val, idx, key, alphabets,result);
         return result.charAt(idx);
 
     };

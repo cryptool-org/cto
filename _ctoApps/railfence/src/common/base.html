@@ -12,7 +12,14 @@
         </div><div class="form-group">
             <label for="cipher">${{ base.ENCRYPTED_TEXT }}$</label>
             <textarea id="cipher" class="form-control">@@encrypted</textarea>
-        </div><div class="form-group">
+        </div>
+        @@if (name === "skytale") {
+        <div class="form-group">
+            <label for="turns">${{ base.KEY }}$</label>
+            <input class="form-control" type="text" id="turns" value="14" onKeyUp="this.value=this.value.replace(/[^\d]/,''); setTurns();">
+
+        </div>}
+        <div class="form-group">
         <label for="railfence-display">${{ base.RAILFENCE_TEXT }}$</label>
         <textarea id="railfence-display" class="form-control" rows="6" readonly>@@railfence</textarea>
         </div>

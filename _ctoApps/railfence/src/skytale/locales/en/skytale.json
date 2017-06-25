@@ -1,0 +1,8 @@
+{
+  "TITLE": "Scytale Encryption",
+  "DESCRIPTION": "<h1>The Scytale Encryption</h1>",
+  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
+  "SAMPLE_ENCRYPTED": "Tol hxaej zquyu mdi pocsg kobv reo rwtn hfe.",
+  "SAMPLE_KEY": "ABC",
+  "RAILFENCE": "| T | h | e | q | u | i | c | k | b | r | o | w | n | f | \n| o | x | j | u | m | p | s | o | v | e | r | t | h | e | \n| l | a | z | y | d | o | g |   |   |   |   |   |   |   | "
+}

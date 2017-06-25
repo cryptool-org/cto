@@ -2,7 +2,7 @@
   "DESCRIPTION": "Description",
   "PLAIN_TEXT": "Plaintext:",
   "ENCRYPTED_TEXT": "Encrypted text:",
-  "KEY": "Key:",
+  "KEY": "Number of turns of the band:",
   "OPTIONS": "Options:",
   "ALPHABETS": "Alphabets:",
   "KEY_ALPHABETS": "Alphabets for the key:",
@@ -10,5 +10,5 @@
   "RANDOM_ALPHABET": "Randomize alphabet",
   "RANDOM_MATRIX": "Generate random key matrix",
   "KEY_MATRIX": "Key matrix:",
-  "RAILFENCE_TEXT": "Railfence:"
+  "RAILFENCE_TEXT": "Rendering:"
 }
