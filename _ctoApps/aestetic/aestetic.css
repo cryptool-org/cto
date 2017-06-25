@@ -1,77 +1,80 @@
-.hidden {
+.aestetics .hidden {
 	display: none;
 }
-.bytes, .editable, .referable {
+.aestetics .bytes, .aestetics .editable, .aestetics .referable {
 	font-family: monospace;
 	padding: 8px 15px;
 	background-color: #fff;
 }
-.bytes {
+.aestetics .bytes {
 	color: #888;
 }
-.editable {
+.aestetics .editable {
 	color: #008;
 	background-color: #ddf;
 }
-.referable {
+.aestetics .referable {
 	color: #008;
 }
-.bytes div, .editable div, .referable div {
+.aestetics .bytes div, .aestetics .editable div, .aestetics .referable div {
 	display: inline-block;
 	padding: 0 12px 0 0;
 }
+#main.aestetics {
+	position: relative;
+}
 /*noinspection CssUnusedSymbol*/
-.active-1 {
+.aestetics .active-1 {
 	background-color: rgba(255, 0, 0, 0.5);
 }
 /*noinspection CssUnusedSymbol*/
-.active-2 {
+.aestetics .active-2 {
 	background-color: rgba(255, 0, 0, 0.25);
 }
 /*noinspection CssUnusedSymbol*/
-.active-3 {
+.aestetics .active-3 {
 	background-color: rgba(255, 0, 0, 0.125);
 }
 /*noinspection CssUnusedSymbol*/
-.active-4 {
+.aestetics .active-4 {
 	background-color: rgba(255, 0, 0, 0.115);
 }
 /*noinspection CssUnusedSymbol*/
-.active-5 {
+.aestetics .active-5 {
 	background-color: rgba(255, 0, 0, 0.105);
 }
 /*noinspection CssUnusedSymbol*/
-.active-6 {
+.aestetics .active-6 {
 	background-color: rgba(255, 0, 0, 0.095);
 }
 /*noinspection CssUnusedSymbol*/
-.active-7 {
+.aestetics .active-7 {
 	background-color: rgba(255, 0, 0, 0.085);
 }
 /*noinspection CssUnusedSymbol*/
-.active-8 {
+.aestetics .active-8 {
 	background-color: rgba(255, 0, 0, 0.075);
 }
 /*noinspection CssUnusedSymbol*/
-.active-9 {
+.aestetics .active-9 {
 	background-color: rgba(255, 0, 0, 0.065);
 }
 /*noinspection CssUnusedSymbol*/
-.active-10 {
+.aestetics .active-10 {
 	background-color: rgba(255, 0, 0, 0.055);
 }
 /*noinspection CssUnusedSymbol*/
-.disabled {
+.aestetics .disabled {
 	color: rgba(0, 0, 0, .2) !important;
 	pointer-events: none;
 }
-p {
+.aestetics p {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 14px;
     color: #777;
 }
-.error-overlay {
+.aestetics .error-overlay {
 	position: absolute;
 	z-index: 20;
 	top: 50%;
@@ -82,7 +85,7 @@ p {
 	border: solid 3px #f00;
 	border-radius: 6px;
 }
-#calc {
+.aestetics #calc {
 	position: absolute;
 	z-index: 30;
 	top: 0;
@@ -95,11 +98,11 @@ p {
 
 }
 
-#calc p {
+.aestetics #calc p {
 	margin-bottom: 0;
 }
 
-.error-overlay > h2 {
+.aestetics .error-overlay > h2 {
 	height: 44px;
 	background-color: #600;
 	border-bottom: solid 1px #f00;
@@ -111,28 +114,28 @@ p {
 	line-height: 44px;
 	text-align: center;
 }
-.error-overlay > p {
+.aestetics .error-overlay > p {
 	margin: 0;
 	padding: 6px 10px;
 	color: #fff;
 }
-ul {
+.aestetics ul {
 	padding-left: 0;
 	margin-top: 0;
 	margin-bottom: 15px;
 	list-style: none;
 	border-bottom: 1px solid #ddd;
 }
-li {
+.aestetics li {
 	border-top: 1px solid #ddd;		
 	padding: 11px 65px 11px 15px;
 	position: relative;
 }
-.sub {
+.aestetics .sub {
 	border-top: 0;
 	margin-top: -10px;
 }
-.header {
+.aestetics .header {
 	padding-top: 6px;
 	padding-bottom: 6px;
 	padding-left: 15px;
@@ -143,22 +146,22 @@ li {
 	background-color: #fafafa;
 	border-top: 2px solid #888;
 }
-.card {
+.aestetics .card {
 	overflow: hidden;
 	background-color: #fff;
 	margin: 0 10px 10px 10px;
 	border: 1px solid #ddd;
 	border-radius: 6px;
 }
-.card ul {
+.aestetics .card ul {
 	margin-bottom: 0;
 	border-top: 0;
 	border-bottom: 0;
 }
-.card ul li:first-child {
+.aestetics .card ul li:first-child {
 	border-top: 0;
 }
-li > a {
+.aestetics li > a {
 	position: relative;
 	display: block;
 	padding: inherit;
@@ -170,16 +173,16 @@ li > a {
     -moz-user-select: -moz-none;
     user-select: none;
 }
-.header > a {
+.aestetics .header > a {
 	padding: inherit;
 	margin: -6px -65px -6px -15px;	
 }
 
-li li {
+.aestetics li li {
 	position: relative;
 }
 /*noinspection CssUnusedSymbol*/
-.right, .toggle, a > .icon {
+.aestetics .right, .aestetics .toggle, .aestetics a > .icon {
 	position: absolute;
 	right: 15px;
 	top: 50%;
@@ -187,7 +190,7 @@ li li {
 	font-size: 21px;
 }
 /*noinspection CssUnusedSymbol*/
-.toggle {
+.aestetics .toggle {
 	font-size: 21px;
 	cursor: pointer;
 	width: 74px;
@@ -197,12 +200,12 @@ li li {
 	border-radius: 20px;
 }
 /*noinspection CssUnusedSymbol*/
-.toggle.active {
+.aestetics .toggle.active {
 	background-color: #5a5;
 	border: solid 2px #5a5;
 }
 /*noinspection CssUnusedSymbol*/
-.toggle:before {
+.aestetics .toggle:before {
 	position: absolute;
 	top: 3px;
 	right: 11px;
@@ -211,14 +214,14 @@ li li {
 	content: "OFF";
 }
 /*noinspection CssUnusedSymbol*/
-.toggle.active:before {
+.aestetics .toggle.active:before {
 	right: auto;
 	left: 15px;
 	color: #fff;
 	content: "ON";
 }
 /*noinspection CssUnusedSymbol*/
-.toggle .toggle-handle {
+.aestetics .toggle .toggle-handle {
 	position: absolute;
 	top: -1px;
 	left: -1px;
@@ -230,24 +233,24 @@ li li {
 	border-radius: 100px;
 }
 /*noinspection CssUnusedSymbol*/
-.toggle.active .toggle-handle {
+.aestetics .toggle.active .toggle-handle {
 	border-color: #5a5;
 	transform: translateX(44px);
 }
-.icon:before {
+.aestetics .icon:before {
 	content: "\27e8";
 }
-.collapsed .icon:before {
+.aestetics .collapsed .icon:before {
 	content: "\27e9";
 }
-.expand, .collapsed .collapse {
-	display: inline-block;
+.aestetics .expand, .aestetics .collapsed .collapse {
+	display: none;
 }
-.collapse, .collapsed .expand {
+.aestetics .collapse, .aestetics .collapsed .expand {
 	display: inline-block;
 }
 /*noinspection CssUnusedSymbol*/
-.badge-aes256, .badge-aes192, .badge-aes128, .badge-rijndael, .badge-unknown {
+.aestetics .badge-aes256, .aestetics .badge-aes192, .aestetics .badge-aes128, .aestetics .badge-rijndael, .aestetics .badge-unknown {
 	display: inline-block;
 	padding: 2px 9px 3px;
 	font-size: 12px;
@@ -257,88 +260,89 @@ li li {
 	transform: translateY(-2px);
 }
 /*noinspection CssUnusedSymbol*/
-.badge-aes256, .badge-aes192, .badge-aes128 {
+.aestetics .badge-aes256, .aestetics .badge-aes192, .aestetics .badge-aes128 {
 	color: #060;
 	background-color: rgba(0, 255, 0, 0.15);
 	border: solid 1px #060;
 }
 /*noinspection CssUnusedSymbol*/
-.badge-rijndael {
+.aestetics .badge-rijndael {
 	color: #550;
 	background-color: rgba(255, 255, 0, 0.15);
 	border: solid 1px #550;
 }
 /*noinspection CssUnusedSymbol*/
-.badge-unknown {
+.aestetics .badge-unknown {
 	color: #600;
 	background-color: rgba(255, 0, 0, 0.15);
 	border: solid 1px #600;
 }
 /*noinspection CssUnusedSymbol*/
-.badge-aes256:before {
+.aestetics .badge-aes256:before {
 	content: "AES-256";
 }
 /*noinspection CssUnusedSymbol*/
-.badge-aes192:before {
+.aestetics .badge-aes192:before {
 	content: "AES-192";
 }
 /*noinspection CssUnusedSymbol*/
-.badge-aes128:before {
+.aestetics .badge-aes128:before {
 	content: "AES-128";
 }
 /*noinspection CssUnusedSymbol*/
-.badge-rijndael:before {
+.aestetics .badge-rijndael:before {
 	content: "Rijndael";
 }
 /*noinspection CssUnusedSymbol*/
-.badge-unknown:before {
+.aestetics .badge-unknown:before {
 	content: "Non-Standard Configuration";
 }
-#connections {
+.aestetics #connections {
 	position: absolute;
 	top: 0;
-	bottom: 0;
 	left: 0;
-	right: 0;
+	width: 100%;
+	height: 100%;
 	pointer-events: none;
+	z-index: 15;
 }
 /*noinspection CssUnusedSymbol*/
-.c0 {
+.aestetics .c0 {
 	color: #000;
 }
 /*noinspection CssUnusedSymbol*/
-.c1 {
+.aestetics .c1 {
 	color: #022;
 }
 /*noinspection CssUnusedSymbol*/
-.c2 {
+.aestetics .c2 {
 	color: #044;
 }
 /*noinspection CssUnusedSymbol*/
-.c3 {
+.aestetics .c3 {
 	color: #066;
 }
 /*noinspection CssUnusedSymbol*/
-.c4 {
+.aestetics .c4 {
 	color: #088;
 }
 /*noinspection CssUnusedSymbol*/
-.c5 {
+.aestetics .c5 {
 	color: #0aa;
 }
 /*noinspection CssUnusedSymbol*/
-.c6 {
+.aestetics .c6 {
 	color: #0cc;
 }
 /*noinspection CssUnusedSymbol*/
-.c7 {
+.aestetics .c7 {
 	color: #0ee;
 }
 /*noinspection CssUnusedSymbol*/
-.c8 {
+.aestetics .c8 {
 	color: #1ff;
 }
-#dimmer {
+.aestetics #dimmer {
 	z-index: 20;
 	position: fixed;
 	width: 100%;
@@ -347,7 +351,7 @@ li li {
 	top: 0;
 	background-color: rgba(1, 1, 1, 0.5);
 }
-#textbox {
+.aestetics #textbox {
 	position: absolute;
 	width: 70%;
 	height: 70%;
@@ -357,16 +361,16 @@ li li {
 	border: solid 1px #ddd;
 	border-radius: 20px;
 }
-#textbox-header, #textbox-footer {
+.aestetics #textbox-header, #textbox-footer {
 	display: inline-block;
 	position: relative;
 	width: 100%;
 	height: 10%;
 }
-#textbox-header {
+.aestetics #textbox-header {
 	text-align: center;
 }
-#textbox-footer a {
+.aestetics #textbox-footer a {
 	display: inline-block;
 	position: relative;
 	margin: 0;
@@ -376,12 +380,12 @@ li li {
 	text-decoration: none;
 	text-align: center;
 }
-#textbox-content {
+.aestetics #textbox-content {
 	position: relative;
 	width: 100%;
 	height: 80%;
 }
-#textarea {
+.aestetics #textarea {
 	position: relative;
 	left: 5%;
 	top: 5%;
@@ -390,9 +394,9 @@ li li {
 	font-family: monospace;
 	font-size: 17px;
 }
-.flex-container {
+.aestetics .flex-container {
 	display: flex;
 }
-.flex-grow {
+.aestetics .flex-grow {
 	flex-grow: 2;
 }

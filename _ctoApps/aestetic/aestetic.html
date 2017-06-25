@@ -1,14 +1,11 @@
-        <h1>AEStetic</h1>
-        <div id="main">
+        <div id="main" class="aestetics">
             <p>Inspect the encryption of AES step by step.
                 Tap on each byte to see the bytes it depends on.</p>
             <ul>
-                <li class="header"><a id="toggle-configuration" href="">Configuration
-                    <span id="badge" class="badge-aes256"></span>
-                    <span class="collapse"><span class="glyphicon glyphicon-chevron-up"></span></span>
-                        <span class="expand"><span class="glyphicon glyphicon-chevron-down"></span></span></a></li>
-                    <li id="testvectors-toggler"><a id="toggle-testvectors" href="" class="collapsed">AES
-                        Variants and Test Vectors<span class="icon"></span></a></li>
+                <li class="header"><a class="flex-container" id="toggle-configuration" href=""><span class="flex-grow">Configuration</span>
+                    <span id="badge" class="badge-aes256"></span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
+                    <li id="testvectors-toggler"><a id="toggle-testvectors" href="" class="collapsed flex-container"><span class="flex-grow">AES
+                        Variants and Test Vectors</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                         <li class="hidden sub" id="testvectors">
                             <div class="card"><ul id="testvectors-container"></ul></div>
                         </li>
@@ -19,11 +16,9 @@
                             <button type="button" class="btn btn-default" id="inc-rounds" href=""><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                     </li>
-                    <li id="sbox-toggler"><a id="toggle-sbox" href="" class="collapsed">S-Box
-                        <span class="icon"></span></a></li>
+                <li id="sbox-toggler"><a id="toggle-sbox" href="" class="collapsed flex-container"><span class="flex-grow">S-Box</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                         <li class="editable hidden sub" id="sbox"></li>
-                    <li id="permute-toggler"><a id="toggle-permute" href="" class="collapsed">Permutation
-                        <span class="icon"></span></a></li>
+                <li id="permute-toggler"><a id="toggle-permute" href="" class="collapsed flex-container"><span class="flex-grow">Permutation</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                         <li class="editable hidden sub" id="permute"></li>
                 <li id="chain-selector" class="flex-container"><span class="flex-grow">Chaining:</span>
                         <div class="btn-group btn-group-sm" role="group">
@@ -31,28 +26,21 @@
                             <button type="button" class="btn btn-default" id="chaining-cbc" href="">CBC</button>
                             <button type="button" class="btn btn-default" id="chaining-ecb">ECB</button>
                         </div>
-                    <li id="iv-toggler"><a id="toggle-iv" href="" class="collapsed">Initial Vector (CBC only)
-                        <span class="icon"></span></a></li>
+                <li id="iv-toggler"><a id="toggle-iv" href="" class="collapsed flex-container"><span class="flex-grow">Initial Vector (CBC only)</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                         <li class="editable hidden sub" id="iv"></li>
-                <li class="header"><a id="toggle-key" href="" >Key<span class="icon"></span></a></li>
+                <li class="header"><a id="toggle-key" href="" class="flex-container" ><span class="flex-grow">Key</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                     <li class="editable" id="key"></li>
-                    <li id="expanded-key-toggler"><a id="toggle-expanded-key" class="collapsed" href="">Expanded Key
-                        <span class="icon"></span></a></li>
+                <li id="expanded-key-toggler"><a id="toggle-expanded-key" class="collapsed flex-container" href=""><span class="flex-grow">Expanded Key</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                         <li class="referable hidden sub" id="expanded-key"></li>
-                <li class="header"><a id="toggle-input" href="">Input<span class="icon"></span></a></li>
+                <li class="header"><a id="toggle-input" href="" class="flex-container"><span class="flex-grow">Input</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                     <li class="editable" id="input"></li>
-                <li class="header" id="rounds"><a id="toggle-enc-rounds" href="">Encoding Rounds
-                    <span class="icon"></span></a></li>
-                <li class="header" id="rounds-end"><a id="toggle-encoded" href="">Encoded
-                    <span class="icon"></span></a></li>
+                <li class="header" id="rounds"><a id="toggle-enc-rounds" href="" class="flex-container"><span class="flex-grow">Encoding Rounds</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
+                <li class="header" id="rounds-end"><a id="toggle-encoded" href="" class="flex-container"><span class="flex-grow">Encoded</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                     <li class="referable" id="output"></li>
-                <li class="header" id="reference"><a id="toggle-reference" href="">Reference
-                    <span class="icon"></span></a></li>
+                <li class="header" id="reference"><a id="toggle-reference" href="" class="flex-container"><span class="flex-grow">Reference</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                     <li class="bytes" id="reference-bytes"></li>
-                <li class="header" id="decode-rounds"><a id="toggle-dec-rounds" href="">Decoding Rounds
-                    <span class="icon"></span></a></li>
-                <li class="header" id="decode-rounds-end"><a id="toggle-decoded" href="">Decoded
-                    <span class="icon"></span></a></li>
+                <li class="header" id="decode-rounds"><a id="toggle-dec-rounds" href="" class="flex-container"><span class="flex-grow">Decoding Rounds</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
+                <li class="header" id="decode-rounds-end"><a id="toggle-decoded" href="" class="flex-container"><span class="flex-grow">Decoded</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                     <li class="referable" id="decoded"></li>
             </ul>
             <div id="calc" class="hidden">Calculation</div>

@@ -165,34 +165,34 @@ jQuery(function () {
 
 
 	function addToggleDiv(a, divs) {
-		jQuery(a).on('click', (evt) => {
+		jQuery('#' + a).on('click', (evt) => {
             toggleDiv(a, divs);
 			if (evt) { evt.preventDefault(); }
 		});
 	}
 
-	addToggleDiv('#toggle-configuration', [
-		'#testvectors-toggler', '#testvectors', '#rounds-toggler', '#sbox-toggler', '#sbox', '#permute-toggler', '#permute', '#chain-selector', '#iv-toggler', '#iv'
+	addToggleDiv('toggle-configuration', [
+		'testvectors-toggler', 'testvectors', 'rounds-toggler', 'sbox-toggler', 'sbox', 'permute-toggler', 'permute', 'chain-selector', 'iv-toggler', 'iv'
 	]);
-	addToggleDiv('#toggle-testvectors', ['#testvectors']);
-	addToggleDiv('#toggle-sbox', ['#sbox']);
-	addToggleDiv('#toggle-permute', ['#permute']);
-    addToggleDiv('#toggle-iv', ['#iv']);
+	addToggleDiv('toggle-testvectors', ['testvectors']);
+	addToggleDiv('toggle-sbox', ['sbox']);
+	addToggleDiv('toggle-permute', ['permute']);
+    addToggleDiv('toggle-iv', ['iv']);
 
-	addToggleDiv('#toggle-key', ['#key', '#expanded-key-toggler', '#expanded-key']);
-	addToggleDiv('#toggle-expanded-key', ['#expanded-key']);
+	addToggleDiv('toggle-key', ['key', 'expanded-key-toggler', 'expanded-key']);
+	addToggleDiv('toggle-expanded-key', ['expanded-key']);
 
-	addToggleDiv('#toggle-input', ['#input']);
+	addToggleDiv('toggle-input', ['input']);
 
 	function setRoundsToggle(a, prefix) {
-		const $a = jQuery(a);
+		const $a = jQuery('#' + a);
 		$a.on('click', (evt) => {
             const divs = [];
             const steps = state.chaining === Chaining.None ? 1 : state.input.length / state.blockSize + 1;
             for (let j = 0; j < steps; ++j) {
                 for (let i = 1; i <= state.rounds; ++i) {
-                    divs.push('#s-' + j + '-' + prefix + i + '-hdr');
-                    divs.push('#s-' + j + '-' + prefix + i + '-cnt');
+                    divs.push('s-' + j + '-' + prefix + i + '-hdr');
+                    divs.push('s-' + j + '-' + prefix + i + '-cnt');
                 }
             }
             toggleDiv(a, divs);
@@ -200,17 +200,17 @@ jQuery(function () {
 		});
 	}
 
-	setRoundsToggle('#toggle-enc-rounds', 'r-enc-');
-	setRoundsToggle('#toggle-dec-rounds', 'r-dec-');
+	setRoundsToggle('toggle-enc-rounds', 'r-enc-');
+	setRoundsToggle('toggle-dec-rounds', 'r-dec-');
 
-	addToggleDiv('#toggle-encoded', ['#output']);
-	addToggleDiv('#toggle-reference', ['#reference-bytes']);
-	addToggleDiv('#toggle-decoded', ['#decoded']);
+	addToggleDiv('toggle-encoded', ['output']);
+	addToggleDiv('toggle-reference', ['reference-bytes']);
+	addToggleDiv('toggle-decoded', ['decoded']);
 
 // change round count
 
 	function addChangeRounds(a, delta) {
-		jQuery(a).on('click', (evt) => {
+		jQuery('#' + a).on('click', (evt) => {
 			const newRounds = state.rounds + delta;
 			if (newRounds > 0) {
 				state.rounds = newRounds;
@@ -220,8 +220,8 @@ jQuery(function () {
 		});
 	}
 
-	addChangeRounds('#inc-rounds', 1);
-	addChangeRounds('#dec-rounds', -1);
+	addChangeRounds('inc-rounds', 1);
+	addChangeRounds('dec-rounds', -1);
 
 
 // update parameters
@@ -235,7 +235,7 @@ jQuery(function () {
 			if (validator(result, bytes)) {
 				while (bytes.length > result.length) { bytes.pop(); }
 				for (let i = 0; i < bytes.length; ++i) { bytes[i] = result[i]; }
-				for (i = bytes.length; i < result.length; ++i) { bytes.push(result[i]); }
+				for (let i = bytes.length; i < result.length; ++i) { bytes.push(result[i]); }
 				refresh();
 				return true;
 			} else {
@@ -246,7 +246,7 @@ jQuery(function () {
 	}
 
 	function addUpdateBytes(elm, message, bytes, validator) {
-		jQuery(elm).on('click', (evt) => {
+		jQuery('#' + elm).on('click', (evt) => {
 			updateBytes(message, state[bytes], validator);
 			evt.preventDefault();
 		});
@@ -256,7 +256,7 @@ jQuery(function () {
 		return newArray.length >= 4;
 	}
 
-	addUpdateBytes('#key', 'change key', 'key', validKeyLength);
+	addUpdateBytes('key', 'change key', 'key', validKeyLength);
 
 	function sameLength(newArray, oldArray) { return newArray.length === oldArray.length; }
 
@@ -268,10 +268,10 @@ jQuery(function () {
         }
     }
 
-	addUpdateBytes('#sbox', 'change S-Box', 'sbox', sameLength);
-	addUpdateBytes('#permute', 'change permutation', 'permute', sameLength);
-    addUpdateBytes('#iv', 'change initial vector', 'iv', sameLength);
-	addUpdateBytes('#input', 'change input', 'input', validInputLength);
+	addUpdateBytes('sbox', 'change S-Box', 'sbox', sameLength);
+	addUpdateBytes('permute', 'change permutation', 'permute', sameLength);
+    addUpdateBytes('iv', 'change initial vector', 'iv', sameLength);
+	addUpdateBytes('input', 'change input', 'input', validInputLength);
 
     jQuery('#chaining-none').on('click', (evt) => {
         if (state.blockSize !== state.input.length) {
