@@ -67,7 +67,7 @@ gulp.task('jquery', function() {
 
 gulp.task('default', ['html', 'js', 'css', 'config', 'bootstrap', 'bootstrap-fonts', 'jquery']);
 
-let remote_dir = '/var/www/cryptool-dev/_ctoApps/';
+let remote_dir = '/var/www/cryptool-dev/_ctoApps/aestetic';
 function get_remote_path(p) { return remote_dir + path.basename(p); }
 
 function dirs_to_deploy() {
@@ -75,7 +75,7 @@ function dirs_to_deploy() {
 }
 
 function files_to_deploy() {
-    return gulp.src(['dist/**', '!dist/web.html', '!dist/boostrap.*', '!dist/jquery.*']);
+    return gulp.src(['dist/aestetic/aestetic.*', 'dist/aestetic/cto.config.json']);
 }
 
 gulp.task('prepare-deploy', function() {
