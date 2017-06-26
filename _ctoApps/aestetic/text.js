@@ -4,7 +4,7 @@ const txt = {};
 
 jQuery(function () {
     txt['show'] = (message, data, callback) => {
-        setTxt(jQuery('#textbox-header'), message);
+        setTxt(jQuery('#aestetic-textbox-header'), message);
         let current = '';
         _.each(data, function(byte, idx) {
             if (idx === 0) {}
@@ -12,9 +12,9 @@ jQuery(function () {
             else { current += ' '; }
             current += formatByte(byte);
         });
-        const ta = jQuery('#textarea');
+        const ta = jQuery('#aestetic-textarea');
         setTxt(ta, current);
-        dom.removeClass(jQuery('#dimmer'), 'hidden');
+        jQuery('#aestetic-textbox').modal('show');
         txt['callback'] = callback;
         ta.focus();
     };
@@ -24,7 +24,7 @@ jQuery(function () {
     }
 
     txt['commit'] = function() {
-        const entered = $('#textarea').val();
+        const entered = jQuery('#aestetic-textarea').val();
 
         const result = [];
         let lastNibble = 0;
@@ -61,20 +61,13 @@ jQuery(function () {
     };
 
     txt['hide'] = function() {
-        dom.addClass(jQuery('#dimmer'), 'hidden');
+        jQuery('#aestetic-textbox').modal('hide');
     };
-    jQuery('#dimmer').on('click', (evt) => {
-        txt.hide();
-        evt.preventDefault();
-    });
-    jQuery('#textbox').on('click', (evt) => {
-        evt.stopPropagation();
-    });
-    jQuery('#textbox-ok').on('click', (evt) => {
+    jQuery('#aestetic-textbox-ok').on('click', (evt) => {
         txt.commit();
         evt.preventDefault();
     });
-    jQuery('#textbox-cancel').on('click', (evt) => {
+    jQuery('#aestetic-textbox-cancel').on('click', (evt) => {
         txt.hide();
         evt.preventDefault();
     });
@@ -85,7 +78,7 @@ jQuery(function () {
             ta.selectionEnd = ta.selectionStart + 1;
         }
     }
-    const textarea = jQuery('#textarea');
+    const textarea = jQuery('#aestetic-textarea');
     textarea.on('focus', (evt) => {
         if (jQuery(evt.target).val().length > 0) {
             this.selectionStart = 0;
@@ -122,4 +115,7 @@ jQuery(function () {
     textarea.on('click', (evt) => {
         repairSelection(jQuery(evt.target));
     });
+
+    const $page = jQuery('#page');
+    if ($page) { $page.append(jQuery('#aestetic-textbox')); }
 });

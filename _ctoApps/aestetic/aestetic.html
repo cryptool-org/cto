@@ -17,9 +17,9 @@
                         </div>
                     </li>
                 <li id="sbox-toggler"><a id="toggle-sbox" href="" class="collapsed flex-container"><span class="flex-grow">S-Box</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="editable hidden sub" id="sbox"></li>
+                        <li class="aestetic-editable hidden sub" id="sbox"></li>
                 <li id="permute-toggler"><a id="toggle-permute" href="" class="collapsed flex-container"><span class="flex-grow">Permutation</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="editable hidden sub" id="permute"></li>
+                        <li class="aestetic-editable hidden sub" id="permute"></li>
                 <li id="chain-selector" class="flex-container"><span class="flex-grow">Chaining:</span>
                         <div class="btn-group btn-group-sm" role="group">
                             <button type="button" class="active btn btn-default" id="chaining-none" href="">None</button>
@@ -27,13 +27,13 @@
                             <button type="button" class="btn btn-default" id="chaining-ecb">ECB</button>
                         </div>
                 <li id="iv-toggler"><a id="toggle-iv" href="" class="collapsed flex-container"><span class="flex-grow">Initial Vector (CBC only)</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="editable hidden sub" id="iv"></li>
+                        <li class="aestetic-editable hidden sub" id="iv"></li>
                 <li class="header"><a id="toggle-key" href="" class="flex-container" ><span class="flex-grow">Key</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                    <li class="editable" id="key"></li>
+                    <li class="aestetic-editable" id="key"></li>
                 <li id="expanded-key-toggler"><a id="toggle-expanded-key" class="collapsed flex-container" href=""><span class="flex-grow">Expanded Key</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                         <li class="referable hidden sub" id="expanded-key"></li>
                 <li class="header"><a id="toggle-input" href="" class="flex-container"><span class="flex-grow">Input</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                    <li class="editable" id="input"></li>
+                    <li class="aestetic-editable" id="input"></li>
                 <li class="header" id="rounds"><a id="toggle-enc-rounds" href="" class="flex-container"><span class="flex-grow">Encoding Rounds</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                 <li class="header" id="rounds-end"><a id="toggle-encoded" href="" class="flex-container"><span class="flex-grow">Encoded</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
                     <li class="referable" id="output"></li>
@@ -48,13 +48,25 @@
                 version="1.1" baseProfile="full"
                 width="100%" height="100%">
             </svg>
-            <div id="dimmer" class="hidden">
-                <div id="textbox">
-                    <label id="textbox-header" for="textarea"></label>
-                    <div id="textbox-content">
-                        <textarea id="textarea"></textarea>
+            <div class="modal fade" id="aestetic-textbox" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" id="aestetic-textbox-header"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <textarea id="aestetic-textarea"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="aestetic-textbox-cancel">Cancel</button>
+                            <button type="button" class="btn btn-default" id="aestetic-textbox-ok">OK</button>
+                        </div>
                     </div>
-                    <div id="textbox-footer"><a id="textbox-cancel" href="">Cancel</a><a id="textbox-ok" href="">OK</a></div>
                 </div>
             </div>
         </div>

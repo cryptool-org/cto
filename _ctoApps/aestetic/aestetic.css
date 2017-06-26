@@ -1,7 +1,7 @@
 .aestetics .hidden {
 	display: none;
 }
-.aestetics .bytes, .aestetics .editable, .aestetics .referable {
+.aestetics .bytes, .aestetics .aestetic-editable, .aestetics .referable {
 	font-family: monospace;
 	padding: 8px 15px;
 	background-color: #fff;
@@ -9,14 +9,14 @@
 .aestetics .bytes {
 	color: #888;
 }
-.aestetics .editable {
+.aestetics .aestetic-editable {
 	color: #008;
 	background-color: #ddf;
 }
 .aestetics .referable {
 	color: #008;
 }
-.aestetics .bytes div, .aestetics .editable div, .aestetics .referable div {
+.aestetics .bytes div, .aestetics .aestetic-editable div, .aestetics .referable div {
 	display: inline-block;
 	padding: 0 12px 0 0;
 }
@@ -342,50 +342,10 @@
 .aestetics .c8 {
 	color: #1ff;
 }
-.aestetics #dimmer {
-	z-index: 20;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	background-color: rgba(1, 1, 1, 0.5);
+#aestetic-textbox {
+	background-color: transparent;
 }
-.aestetics #textbox {
-	position: absolute;
-	width: 70%;
-	height: 70%;
-	left: 15%;
-	top: 15%;
-	background-color: #fff;
-	border: solid 1px #ddd;
-	border-radius: 20px;
-}
-.aestetics #textbox-header, #textbox-footer {
-	display: inline-block;
-	position: relative;
-	width: 100%;
-	height: 10%;
-}
-.aestetics #textbox-header {
-	text-align: center;
-}
-.aestetics #textbox-footer a {
-	display: inline-block;
-	position: relative;
-	margin: 0;
-	padding: 0;
-	width: 50%;
-	height: 100%;
-	text-decoration: none;
-	text-align: center;
-}
-.aestetics #textbox-content {
-	position: relative;
-	width: 100%;
-	height: 80%;
-}
-.aestetics #textarea {
+#aestetic-textarea {
 	position: relative;
 	left: 5%;
 	top: 5%;
