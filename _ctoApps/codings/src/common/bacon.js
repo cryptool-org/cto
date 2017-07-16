@@ -34,7 +34,7 @@ function Bacon() {
                     output += "aabaa ";
                     break;
                 case "F":
-                case "A":
+                case "f":
                     output += "aabab ";
                     break;
 
