@@ -115,15 +115,170 @@ function Redefence() {
             turns[i] = Math.floor(len/oneTurn)*2;
             resultArray[i] = "";
         }
-        turns[0] = Math.floor(len/oneTurn);
-        turns[rails-1] = Math.floor(len/oneTurn);
+        turns[0] = 0;
+        turns[rails-1] = 0;
+
+        // offset adjustments
+        if(offset > 0){
+            if(offset <= halfTurn+1) {
+                for(var i = 0; i < offset; i++) {
+                    turns[i] = turns[i]-1;
+                }
+            }
+            else {
+                for(var i = 0; i < halfTurn; i++) {
+                    turns[i] = turns[i]-1;
+                }
+                for(var i = halfTurn; i > halfTurn-(offset%halfTurn); i--) {
+                    turns[i] = turns[i]-1;
+                }
+            }
+            if(len%oneTurn < (len+offset)%oneTurn) {
+                if ((len + offset) % oneTurn <= halfTurn + 1 && (len + offset) % oneTurn > 0) {
+                    for (var i = (len + offset) % oneTurn; i > len % oneTurn; i = (i - 1) % oneTurn) {
+                        turns[i - 1] = turns[i - 1] + 1;
+                    }
+                }
+                else {
+                    if (len % oneTurn < halfTurn + 1) {
+                        for (var i = halfTurn + 1; i > len % oneTurn; i--) {
+                            turns[i - 1] = turns[i - 1] + 1;
+                        }
+                        for (var i = halfTurn - ((len + offset) % halfTurn - 1); i < halfTurn; i++) {
+                            turns[i] = turns[i] + 1;
+                        }
+                    }
+                    else {
+                        if((len-1)%halfTurn != 0) {
+                            for (var i = halfTurn - ((len + offset - 1) % halfTurn); i <= len % halfTurn; i = (i + 1) % halfTurn) {
+                                turns[i] = turns[i] + 1;
+                            }
+                        }
+                        else {
+                            for (var i = halfTurn-1; i >= halfTurn - (len+offset - 1)%halfTurn; i--) {
+                                turns[i] = turns[i] + 1;
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                if((len+offset)%oneTurn == 0) {
+                    for(var i = 0; i < oneTurn; i++) {
+                        if(i <= oneTurn/2)
+                            turns[i] = turns[i]+1;
+                        else
+                            turns[oneTurn-i] = turns[oneTurn-i] + 1;
+                    }
+                    for(var i = 0; i < len%oneTurn; i++) {
+                        if(i <= oneTurn/2)
+                            turns[i] = turns[i]-1;
+                        else
+                            turns[oneTurn-i] = turns[oneTurn-i] - 1;
+                    }
+                }
+                else {
+                    if(len%oneTurn != halfTurn+1) {
+                        if(len % oneTurn < halfTurn + 1) {
+                            for (var i = halfTurn; i > (len - 1) % halfTurn; i--) {
+                                turns[i] = turns[i] + 1;
+                            }
+                            for (var i = halfTurn - 1; i >= halfTurn - ((len - 1) % halfTurn); i--) {
+                                turns[i] = turns[i] + 1;
+                            }
+                        }
+                        if ((len + offset) % oneTurn == 1) {
+                            for (var i = halfTurn - (len - 1) % halfTurn; i > halfTurn - (len + offset - 2) % halfTurn; i--) {
+                                turns[i - 1] = turns[i - 1] + 1;
+                            }
+                            turns[0] = turns[0] + 1;
+                        }
+                        else {
+                            if ((len + offset) % oneTurn <= halfTurn) {
+                                for (var i = halfTurn - (len - 1) % halfTurn; i > 1; i--) {
+                                    turns[i - 1] = turns[i - 1] + 1;
+                                }
+                                turns[0] = turns[0] + 1;
+
+                                for (var i = 1; i <= (len + offset - 1) % halfTurn; i++) {
+                                    turns[i] = turns[i] + 1;
+                                }
+                            }
+                            else {
+                                for (var i = halfTurn - (len - 1) % halfTurn; i > 1; i--) {
+                                    turns[i - 1] = turns[i - 1] + 1;
+                                }
+                                turns[0] = turns[0] + 1;
+
+                                for (var i = 1; i <= halfTurn; i++) {
+                                    turns[i] = turns[i] + 1;
+                                }
+                                if ((len + offset) % halfTurn != 1) {
+                                    for (var i = halfTurn - 1; i > (len + offset) % halfTurn; i--) {
+                                        turns[i] = turns[i] + 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if ((len + offset) % oneTurn == 1) {
+                            for (var i = halfTurn - (len - 1) % halfTurn; i > halfTurn - (len + offset - 2) % halfTurn; i--) {
+                                turns[i - 1] = turns[i - 1] + 1;
+                            }
+                            turns[0] = turns[0] + 1;
+                        }
+                        else {
+                            if ((len + offset) % oneTurn <= halfTurn) {
+                                for (var i = halfTurn - (len - 1) % halfTurn; i > 1; i--) {
+                                    turns[i - 1] = turns[i - 1] + 1;
+                                }
+                                turns[0] = turns[0] + 1;
+
+                                for (var i = 1; i <= (len + offset - 1) % halfTurn; i++) {
+                                    turns[i] = turns[i] + 1;
+                                }
+                            }
+                            else {
+                                for (var i = halfTurn - (len - 1) % halfTurn; i > 1; i--) {
+                                    turns[i - 1] = turns[i - 1] + 1;
+                                }
+                                turns[0] = turns[0] + 1;
+
+                                for (var i = 1; i <= halfTurn; i++) {
+                                    turns[i] = turns[i] + 1;
+                                }
+                                if ((len + offset) % halfTurn != 1) {
+                                    for (var i = halfTurn - 1; i > (len + offset) % halfTurn; i--) {
+                                        turns[i] = turns[i] + 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        turns[0] += Math.floor(len/oneTurn);
+        turns[rails-1] += Math.floor(len/oneTurn);
+
 
         for(var i = 0; i < (len%oneTurn); i++) {
-            if(i <= oneTurn/2)
+            if(i <= halfTurn)
                 turns[i] = turns[i]+1;
             else
                 turns[oneTurn-i] = turns[oneTurn-i] + 1;
         }
+
+        // check row lengths
+        /*var out = "";
+        for(var i = 0; i < turns.length; i++) {
+            out += "Reihe " + i + ": " + turns[i] + "\n";
+        }
+        alert(out);*/
 
         // the loop goes through org and fills the entries of resultArray with as many characters as stated in turns[] for each row
         // it is filled in the order that was defined inside "order"
@@ -138,7 +293,6 @@ function Redefence() {
         // msg is a string that contains the ciphertext, but with the character groups in the correct order
         // now it will do the same same steps that are used in the standard railfence decryption
         var msg = resultArray.join("");
-
 
         msg = msg.replace(regex, '');
 
@@ -189,6 +343,8 @@ function Redefence() {
         }
 
         result = result.substr(offset);
+
+        this.encrypt(val, idx, key, alphabets,result);
 
         return result.charAt(idx);
 

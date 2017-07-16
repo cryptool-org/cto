@@ -9,7 +9,7 @@ function Hill() {
             matSize = 3;
 
         var alphabet = alphabets[0].getElementsByClassName('alphabet')[0].value;
-        //-----------------------------------------------------------------
+
         var i;
         var c = "";
         var ascA = this.ord('A');
@@ -48,7 +48,7 @@ function Hill() {
             matSize = 3;
 
         var alphabet = alphabets[0].getElementsByClassName('alphabet')[0].value;
-        //-----------------------------------------------------------------
+
         var i;
         var c = "";
         var ascA = this.ord('A');
