@@ -1,4 +1,22 @@
 <div class="cryptool-container container">
+    @@if (name === "morsecode") {
+        <p>${{ base.MORSETEXT }}$</p>
+        <br>
+
+        <table>
+            <tr>
+                <td>${{ base.EASY }}$</td>
+            </tr>
+            <tr>
+                <td>${{ base.INTERMEDIATE }}$</td>
+            </tr>
+            <tr>
+                <td>${{ base.HARD }}$</td>
+            </tr>
+        </table>
+        <br><br>
+    }
+
     <form id="parameters">
         <div class="form-group">
             <label for="plain">${{ base.PLAIN_TEXT }}$</label>

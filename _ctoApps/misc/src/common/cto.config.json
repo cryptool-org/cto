@@ -1,0 +1,10 @@
+{
+  "name": "@@name",
+  "styles": [
+    "./@@name.css"
+  ],
+  "scripts": [
+    "./@@name-de.js"
+  ],
+  "html": "fragment-%lang%.html"
+}

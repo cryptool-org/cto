@@ -1,0 +1,7 @@
+{
+  "TITLE": "Passwort-Generator",
+  "DESCRIPTION": "<h1>Passwort-Generator</h1>",
+  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
+  "SAMPLE_ENCRYPTED": " ",
+  "SAMPLE_KEY": "Geheimer Schluessel"
+}

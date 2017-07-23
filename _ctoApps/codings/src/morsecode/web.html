@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>${{ morsecode.TITLE }}$</title>
+        <link rel="stylesheet" href="../bootstrap.css">
+        <link rel="stylesheet" href="./morsecode.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>${{ morsecode.TITLE }}$</h1>
+            <div class="spacer"></div>
+        </div>
+        @@include('./fragment.html')
+        <script src="../jquery.js"></script>
+        <script src="../bootstrap.js"></script>
+        <script src="./morsecode${{ lang.suffix }}$.js"></script>
+    </body>
+</html>

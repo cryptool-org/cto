@@ -1,0 +1,157 @@
+<div class="cryptool-container container">
+    <form id="parameters">
+        <table width="602" border="0">
+            <tr>
+                <td width="177"><div align="left">${{ base.VALID_CHARACTERS }}$</div></td>
+                <td width="309">&nbsp;</td>
+            </tr>
+            <tr>
+                <td><strong>${{ base.LOWERCASE }}$</strong></td>
+                <td><label>
+                    <input name="lowercase" type="checkbox" id="lowercase" checked="checked" onclick="countAlpha();" />
+                </label></td>
+            </tr>
+            <tr>
+                <td><strong>${{ base.UPPERCASE }}$</strong></td>
+                <td><label>
+                    <input name="uppercase" type="checkbox" id="uppercase" checked="checked" onclick="countAlpha();"/>
+                </label></td>
+            </tr>
+            <tr>
+                <td><strong>${{ base.NUMBERS }}$</strong></td>
+                <td><label>
+                    <input name="numbers" type="checkbox" id="numbers" checked="checked" onclick="countAlpha();"/>
+                </label></td>
+            </tr>
+            <tr>
+                <td><strong>${{ base.SYMBOLS }}$</strong></td>
+                <td><label>
+                    <input name="special" type="checkbox" id="special" checked="checked" onclick="countAlpha();"/>
+                </label></td>
+            </tr>
+            <tr>
+                <td colspan="2">${{ base.AMOUNT }}$ &nbsp;&nbsp;<span id="counter"></span></td>
+            </tr>
+            <tr>
+                <td>&nbsp; </td>
+                <td>&nbsp; </td>
+            </tr>
+            <tr>
+                <td><strong>${{ base.LENGTH }}$</strong></td>
+                <td><label>
+                    <input type="text" name="length2" maxlength="3" value="16" id="length2" />
+                </label></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td valign="top"><label>
+
+                    <input type="button" name="create" id="create" value="${{ base.GENERATE }}$" onclick="createPass();" />
+
+                </label></td>
+                <td><textarea name="passoutput" id="passoutput" cols="40" rows="3" wrap="hard" class="ctoformcss-passgen-outputstyle" ></textarea></td>
+            </tr>
+            <tr>
+                <td><label>
+                </label></td>
+                <td></td>
+            </tr>
+
+
+
+        </table>
+    </form>
+</div>
+
+<script>
+
+    var counter = 91;
+    document.getElementById("counter").innerHTML=counter;
+
+    this.countAlpha = function () {
+        //specify alphabet
+        var lowercase = document.getElementById("lowercase").checked;
+        var uppercase = document.getElementById("uppercase").checked;
+        var numbers = document.getElementById("numbers").checked;
+        var special = document.getElementById("special").checked;
+        var signs = "";
+        if (lowercase) signs+="abcdefghijklmnopqrstuvwxyz";
+        if (uppercase) signs+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        if (numbers) signs+="0123456789";
+        if (special) signs+="^°!§$%&/()=?´ß?\*+'#;,:._-<>@";
+        if (special) signs+='"';
+        //calculate signs
+        counter=signs.length;
+        document.getElementById("counter").innerHTML=counter;
+        return (signs);
+    }
+
+    this.createPass = function () {
+        var alpha=countAlpha();
+        var plength=parseInt(document.getElementById("length2").value);
+        //check key
+        if (plength<=0 || this.inputString(document.getElementById("length2").value, "0123456789")==false) plength=16;
+        if (plength>128) plength=128;
+        //set key
+        document.getElementById("length2").value=plength;
+
+        //get random char from alphabet
+        var temp="";
+        for (i=0;i<plength;i++)
+        {
+            temp+=alpha.charAt(Math.floor(Math.random()*alpha.length))
+        }
+        var tmp2 = this.str_split(temp, 40);
+        temp = tmp2.join("\n");
+        //html encode the output
+        /*temp = temp.replace(/</g, "&lt;");
+        temp = temp.replace(/>/g, "&gt;");*/
+        document.getElementById("passoutput").value=temp;
+
+    }
+
+    this.str_split = function (input, splitlength)
+    {
+        input += '';
+
+        if (splitlength > 0)
+        {
+            var output = [];
+            while (input.length > splitlength)
+            {
+                output[output.length] = input.substring(0, splitlength);
+                input = input.substring(splitlength);
+            }
+            output[output.length] = input;
+
+            return output;
+        }
+
+        return false;
+    }
+
+    this.inputString = function (text, alphabet)
+    {
+        for (var i = 0; i < text.length; i++)
+        {
+            var charerror = true;
+            for (var j = 0; j < alphabet.length; j++)
+            {
+
+                if (text.charAt(i) == alphabet.charAt(j))
+                    charerror = false;
+            }
+
+            if (text.charCodeAt(i) == 13 || text.charCodeAt(i) == 32 || text.charCodeAt(i) == 10) //ignore enter and space
+                charerror = false;
+            if (charerror == true)
+
+                return (false);
+        }
+
+        return (true);
+    }
+</script>

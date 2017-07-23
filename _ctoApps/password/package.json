@@ -1,0 +1,27 @@
+{
+  "name": "Codings",
+  "version": "1.0.0",
+  "description": "Basic codings in JavaScript",
+  "private": false,
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "babel-preset-env": "^1.4.0",
+    "bootstrap": "^3.3.7",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-csso": "^2.0.0",
+    "gulp-file-include": "^1.0.0",
+    "gulp-flatten": "^0.3.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-i18n-localize": "^1.2.7",
+    "gulp-mocha": "^4.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-ssh": "^0.6.0",
+    "gulp-uglify": "^2.0.1",
+    "jquery": "^3.2.1",
+    "through2": "^2.0.3"
+  }
+}

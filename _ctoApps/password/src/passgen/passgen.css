@@ -1,0 +1,21 @@
+@@include('../common/base.css')
+
+.ctoformcss-passgen-passoutput {
+    font-weight: bold;
+    font-size: 15px;
+    width: 300px;
+}
+
+.ctoformcss-passgen-outputstyle {
+    border: 0px solid;
+    /*background: #F3F1F1;
+    scrollbar-arrow-color:#FFFFFF;
+    scrollbar-face-color:#333333;
+    scrollbar-highlight-color: #FFFFFF;*/
+    overflow: hidden;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    width: 400px;
+    color: #000000;
+    margin-top: 0px;
+}

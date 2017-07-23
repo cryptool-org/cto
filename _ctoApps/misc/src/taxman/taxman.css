@@ -1,0 +1,25 @@
+@@include('../common/base.css')
+
+table.taxman {
+    border-collapse:collapse;
+    border: 1px solid black;
+}
+table.taxcap {
+    border-collapse:collapse;
+    border:none
+}
+table.taxcap {
+    border-collapse:collapse;
+    border:none
+}
+table.taxcap {
+    border-collapse:collapse; border:none;
+
+    font: 18px Arial bold; color: #000000;
+}
+td.taxcap {
+    height: 40px;
+    text-align: center !important;
+    vertical-align:middle !important;
+    font: 18px Arial bold; color: #000000;
+}
