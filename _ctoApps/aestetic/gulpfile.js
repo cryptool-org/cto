@@ -10,6 +10,7 @@ let Ssh = require('gulp-ssh');
 let fs = require('fs');
 let through = require('through2');
 let path = require('path');
+let i18n = require('gulp-i18n-localize');
 
 let ssh = new Ssh({
     ignoreErrors: true,
@@ -25,9 +26,18 @@ function dest() {
     return gulp.dest('dist/aestetic');
 }
 
+function translate() {
+    return i18n({
+        locales: ['en', 'de'],
+        localeDir: './locales',
+        schema: 'suffix'
+    });
+}
+
 gulp.task('html', function() {
     return gulp.src(['web.html', 'aestetic.html'])
         .pipe(include())
+        .pipe(translate())
         .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(dest());
 });
@@ -35,6 +45,7 @@ gulp.task('html', function() {
 gulp.task('js', function() {
     return gulp.src(['aestetic.js'])
         .pipe(include())
+        .pipe(translate())
         .pipe(babel())
         .pipe(uglify())
         .pipe(dest());

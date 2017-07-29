@@ -11,6 +11,7 @@
     "gulp-uglify": "^2.0.1",
     "gulp-ssh": "^0.6.0",
     "through2": "^2.0.3",
+    "gulp-i18n-localize": "^1.2.7",
     "jquery": "^3.2.1"
   }
 }

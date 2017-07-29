@@ -239,7 +239,7 @@ jQuery(function () {
 				refresh();
 				return true;
 			} else {
-				alert("invalid byte sequence entered");
+				alert("${{ aestetic.INVALID_BYTE_SEQUENCE }}$");
 				return false;
 			}
 		});
@@ -256,7 +256,7 @@ jQuery(function () {
 		return newArray.length >= 4;
 	}
 
-	addUpdateBytes('key', 'change key', 'key', validKeyLength);
+	addUpdateBytes('key', '${{ aestetic.CHANGE_KEY }}$', 'key', validKeyLength);
 
 	function sameLength(newArray, oldArray) { return newArray.length === oldArray.length; }
 
@@ -268,14 +268,14 @@ jQuery(function () {
         }
     }
 
-	addUpdateBytes('sbox', 'change S-Box', 'sbox', sameLength);
-	addUpdateBytes('permute', 'change permutation', 'permute', sameLength);
-    addUpdateBytes('iv', 'change initial vector', 'iv', sameLength);
-	addUpdateBytes('input', 'change input', 'input', validInputLength);
+	addUpdateBytes('sbox', '${{ aestetic.CHANGE_SBOX }}$', 'sbox', sameLength);
+	addUpdateBytes('permute', '${{ aestetic.CHANGE_PERMUTATION }}$', 'permute', sameLength);
+    addUpdateBytes('iv', '${{ aestetic.CHANGE_IV }}$', 'iv', sameLength);
+	addUpdateBytes('input', '${{ aestetic.CHANGE_INPUT }}$', 'input', validInputLength);
 
     jQuery('#chaining-none').on('click', (evt) => {
         if (state.blockSize !== state.input.length) {
-            alert("input must be " + state.blockSize + " bytes long");
+            alert("${{ aestetic.INPUT_WRONG_LEN }}$".replace("##", state.blockSize))
             return;
         }
         state.chaining = Chaining.None;

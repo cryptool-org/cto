@@ -14,7 +14,7 @@ function addRound(round, $parent, $before, prefix, headerClasses, contentClasses
     if (! $parent) { return; }
 	const $header = newTag('li', prefix + 'hdr', headerClasses);
 	const $a = newTag('a', prefix + 'hdr-a', ['collapsed', 'flex-container']);
-	const $label = setTxt(newTag('span', null, 'flex-grow'), 'Round ' + round);
+	const $label = setTxt(newTag('span', null, 'flex-grow'), '${{ aestetic.ROUND }}$ ' + round);
 	$a.append($label);
 	$a.append(newTag('span', null, ['collapse', 'glyphicon', 'glyphicon-chevron-up']));
     $a.append(newTag('span', null, ['expand', 'glyphicon', 'glyphicon-chevron-down']));
@@ -274,7 +274,7 @@ function encode(step, input, state, expandedKey) {
 
 		const rndInput = rnd + '-input-';
 		block = applyInput(block, state, rndInput, lastPrefix);
-		addSubEntry('input to Round ' + round, block, rndInput, $container, null, state.colored);
+		addSubEntry('${{ aestetic.INPUT_TO_ROUND }}$ ' + round, block, rndInput, $container, null, state.colored);
 		lastPrefix = rndInput;
 
 		// sbox
@@ -285,7 +285,7 @@ function encode(step, input, state, expandedKey) {
 			block = applySBox(block, state.sbox, rndSBox, lastPrefix);
 			lastPrefix = rndSBox;
 		}
-		addSubEntry('after S-Box:', block, rndSBox, $container, sboxKey, state.colored);
+		addSubEntry('${{ aestetic.AFTER_SBOX }}$', block, rndSBox, $container, sboxKey, state.colored);
 
 		// permute
 
@@ -295,7 +295,7 @@ function encode(step, input, state, expandedKey) {
 			block = applyPermute(block, state.permute, rndPermute, lastPrefix);
 			lastPrefix = rndPermute;
 		}
-		addSubEntry('after permutation:', block, rndPermute, $container, permuteKey, state.colored);
+		addSubEntry('${{ aestetic.AFTER_PERMUTATION }}$', block, rndPermute, $container, permuteKey, state.colored);
 
 		// mult
 
@@ -306,14 +306,14 @@ function encode(step, input, state, expandedKey) {
 				block = applyMults(block, 0x2, 0x3, 0x1, 0x1, rndMult, lastPrefix);
 				lastPrefix = rndMult;
 			}
-			addSubEntry('after mult:', block, rndMult, $container, multKey, state.colored);
+			addSubEntry('${{ aestetic.AFTER_MULT }}$', block, rndMult, $container, multKey, state.colored);
 		}
 
 		// mix key
 
 		const rnd_subkey = rnd + '-subkey-';
 		const key = applySubkey(block, round, expandedKey, rnd_subkey, lastPrefix);
-		addSubEntry('used subkey:', key, rnd_subkey, $container, null, state.colored);
+		addSubEntry('${{ aestetic.USED_SUBKEY }}$', key, rnd_subkey, $container, null, state.colored);
 
 		const keyKey = rnd + '-key';
         const rnd_key = rnd + '-key-';
@@ -321,7 +321,7 @@ function encode(step, input, state, expandedKey) {
 			block = applyMixWithKey(block, key, rnd_key, lastPrefix, rnd_subkey);
 			lastPrefix = rnd_key;
 		}
-		addSubEntry('after mix with key:', block, rnd_key, $container, keyKey, state.colored);
+		addSubEntry('${{ aestetic.AFTER_MIX_WITH_KEY }}$', block, rnd_key, $container, keyKey, state.colored);
 	}
 
 	return block;
@@ -367,7 +367,7 @@ function decode(step, block, state, expandedKey) {
 
 		const rnd_input = rnd + '-input-';
 		dec = applyInput(dec, state, rnd_input, lastPrefix, expandedKey);
-		addSubEntry('input to Round ' + (i + 1), dec, rnd_input, $container, null, state.colored);
+		addSubEntry('${{ aestetic.INPUT_TO_ROUND }}$ ' + (i + 1), dec, rnd_input, $container, null, state.colored);
 		lastPrefix = rnd_input;
 
 		// permute
@@ -378,7 +378,7 @@ function decode(step, block, state, expandedKey) {
 			dec = applyInvPermute(dec, inv_permute, rnd_permute, lastPrefix);
 			lastPrefix = rnd_permute;
 		}
-		addSubEntry('after permute:', dec, rnd_permute, $container, permuteKey, state.colored);
+		addSubEntry('${{ aestetic.AFTER_PERMUTATION }}$', dec, rnd_permute, $container, permuteKey, state.colored);
 
 		// sbox
 
@@ -388,13 +388,13 @@ function decode(step, block, state, expandedKey) {
 			dec = applyInvSBox(dec, inv_sbox, rnd_sbox, lastPrefix);
 			lastPrefix = rnd_sbox;
 		}
-		addSubEntry('after S-Box:', dec, rnd_sbox, $container, sboxKey, state.colored);
+		addSubEntry('${{ aestetic.AFTER_SBOX }}$', dec, rnd_sbox, $container, sboxKey, state.colored);
 
 		// mix with key
 
 		const rnd_subkey = rnd + '-subkey-';
 		const key = applySubkey(dec, i, expandedKey, rnd_subkey, lastPrefix);
-		addSubEntry('used subkey:', key, rnd_subkey, $container, null, state.colored);
+		addSubEntry('${{ aestetic.USED_SUBKEY }}$', key, rnd_subkey, $container, null, state.colored);
 
 		const keyKey = 's-' + step + '-r-' + i + '-key';
         const rnd_key = rnd + '-key-';
@@ -402,7 +402,7 @@ function decode(step, block, state, expandedKey) {
 			dec = applyMixWithKey(dec, key, rnd_key, lastPrefix, rnd_subkey);
 			lastPrefix = rnd_key;
 		}
-		addSubEntry('after mix with key:', dec, rnd_key, $container, keyKey, state.colored);
+		addSubEntry('${{ aestetic.AFTER_MIX_WITH_KEY }}$', dec, rnd_key, $container, keyKey, state.colored);
 
 		// mult
 
@@ -413,7 +413,7 @@ function decode(step, block, state, expandedKey) {
 				dec = applyMults(dec, 0xe, 0xb, 0xd, 0x9, rndMult, lastPrefix);
 				lastPrefix = rndMult;
 			}
-			addSubEntry('after mult:', dec, rndMult, $container, multKey, state.colored);
+			addSubEntry('${{ aestetic.AFTER_MULT }}$', dec, rndMult, $container, multKey, state.colored);
 		}
 
 	}

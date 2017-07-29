@@ -47,7 +47,7 @@ jQuery(function () {
                     hasLastNibble = true;
                 }
             } else {
-                alert("'" + entered[i] + "' is not a valid hex digit");
+                alert("${{ aestetic.NOT_VALID_HEX }}$".replace('##', entered[i]));
                 return;
             }
         }
