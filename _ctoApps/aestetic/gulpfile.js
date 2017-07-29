@@ -86,7 +86,7 @@ function dirs_to_deploy() {
 }
 
 function files_to_deploy() {
-    return gulp.src(['dist/aestetic/aestetic.*', 'dist/aestetic/cto.config.json']);
+    return gulp.src(['dist/aestetic/aestetic*', 'dist/aestetic/cto.config.json']);
 }
 
 gulp.task('prepare-deploy', function() {

@@ -4,7 +4,7 @@
     "./aestetic.css"
   ],
   "scripts": [
-    "./aestetic.js"
+    "./aestetic-%lang%.js"
   ],
-  "html": "aestetic.html"
+  "html": "aestetic-%lang%.html"
 }
