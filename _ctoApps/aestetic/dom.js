@@ -67,12 +67,12 @@ function par(txt) {
 
 function absoluteBox($elm) {
 	const box = $elm[0].getBoundingClientRect();
-	const ref = jQuery('#main')[0].getBoundingClientRect();
+	const off = $elm.offset();
 	return {
-		left: box.left - ref.left,
-		right: box.right - ref.left,
-		top: box.top - ref.top,
-		bottom: box.bottom - ref.top,
+		left: off.left,
+		right: off.left + box.width,
+		top: off.top,
+		bottom: off.top + box.height,
 		width: box.width,
 		height: box.height
 	};

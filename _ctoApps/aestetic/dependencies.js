@@ -71,9 +71,8 @@ const aes = {};
 				removeChilds($calc);
 				aes.relayout();
 			}
-			$calc.css('left', (box.right + 4) + "px");
-			$calc.css('top', (box.bottom + 4) + "px");
-			dom.removeClass($calc, 'hidden');
+            dom.removeClass($calc, 'hidden');
+			$calc.offset({ left: box.right + 4, top: box.bottom + 4});
 		} else {
 			dom.addClass($calc, 'hidden');
 		}
@@ -114,11 +113,12 @@ const aes = {};
 			x2 = fromCenter.x - slope * (fromCenter.y - y2);
 		}
 
+		const ref = jQuery('#main').offset();
 		const $line = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'line'));
-	    $line.attr('x1', x1);
-	    $line.attr('y1', y1);
-	    $line.attr('x2', x2);
-	    $line.attr('y2', y2);
+	    $line.attr('x1', x1 - ref.left);
+	    $line.attr('y1', y1 - ref.top);
+	    $line.attr('x2', x2 - ref.left);
+	    $line.attr('y2', y2 - ref.top);
 	    $line.attr('stroke', 'rgba(255, 0, 0, 0.3)');
 	    $line.attr('stroke-width', "1px");
 	    return $line;
