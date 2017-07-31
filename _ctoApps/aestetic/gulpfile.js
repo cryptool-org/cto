@@ -92,7 +92,7 @@ function files_to_deploy() {
 gulp.task('prepare-deploy', function() {
     return dirs_to_deploy()
         .pipe(through.obj(function (chunk, encoding, cb) {
-            let remote_path = get_remote_path(chunk.path);
+            let remote_path = get_remote_path(chun
             let old_path = remote_path + '_old';
             ssh.shell([
                 'rm -Rf "' + old_path + '"',

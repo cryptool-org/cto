@@ -61,7 +61,7 @@ const aes = {};
 	}
 
 	function repositionCalc() {
-		const $calc = jQuery('#calc');
+		const $calc = jQuery('#aestetic-calc');
 		if (tappedCell && jQuery('#' + tappedCell) && $calc.first()) {
 
 			const box = absoluteBox(jQuery('#' + tappedCell));
@@ -165,7 +165,7 @@ const aes = {};
 		} else {
 			tappedCell = id;
 			processClosure([tappedCell], [], 1, true);
-			const calc = jQuery('#calc');
+			const calc = jQuery('#aestetic-calc');
 			const msg = calculations[id];
 			removeChilds(calc);
 			_.each(msg, (elm) => { calc.append(elm); });

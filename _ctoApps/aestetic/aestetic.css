@@ -1,6 +1,9 @@
 .aestetics .hidden {
 	display: none;
 }
+.aestetics {
+	position: relative;
+}
 .aestetics .bytes, .aestetics .aestetic-editable, .aestetics .referable {
 	font-family: monospace;
 	padding: 8px 15px;
@@ -85,7 +88,7 @@
 	border: solid 3px #f00;
 	border-radius: 6px;
 }
-.aestetics #calc {
+#aestetic-calc {
 	position: absolute;
 	z-index: 30;
 	top: 0;
@@ -98,7 +101,7 @@
 
 }
 
-.aestetics #calc p {
+#aestetic-calc p {
 	margin-bottom: 0;
 }
 
