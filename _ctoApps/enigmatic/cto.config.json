@@ -1,10 +1,10 @@
 {
-  "name": "aestetic",
+  "name": "enigmatic",
   "styles": [
-    "./aestetic.css"
+    "./enigmatic.css"
   ],
   "scripts": [
-    "./aestetic-%lang%.js"
+    "./enigmatic-%lang%.js"
   ],
   "html": "aestetic-%lang%.html"
 }
