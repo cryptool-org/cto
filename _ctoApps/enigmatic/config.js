@@ -1,16 +1,26 @@
 'use strict';
 
-/*
-	In this file the default configurations of AES and test vectors are defined. The default values
-	can be changed by the user with the current exception of `defaults.blockSize` which is always
-	16 bytes.
+const std_reflectors = {
+	'A': "AE BJ CM DZ FL GY HX IV KW NR OQ PU ST",
+	'B': "AY BR CU DH EQ FS GL IP JX KN MO TZ VW",
+	'C': "AF BV CP DJ EI GO HY KR LZ MX NW QT SU"
+};
 
-	The `defaults` variable contains the default values for Rijndael and AES ciphers. If they are
-	changed, the resulting cipher is no longer Rijndael. This values are used to initialize the
-	algorithm and to check the current settings against to see, if the current configuration conforms
-	to the standard algorithm.
-*/
+const std_wheels = {
+	'I':   "EKMFL GDQVZ NTOWY HXUSP AIBRC J",
+	'II':  "AJDKS IRUXB LHWTM CQGZN PYFVO E",
+	'III': "BDFHJ LCPRT XVZNY EIWGA KMUSQ O",
+	'IV':  "ESOVP ZJAYQ UIRHX LNFTG KDCMW B",
+	'V':   "VZBRG ITYUP SDNHL XAWMJ QOFEC K"
+};
 
+const std_overflows = {
+	'I':   "R",
+	'II':  "F",
+	'III': "W",
+	'IV':  "K",
+	'V':   "A"
+};
 const Chaining = {
 	None: 0,
 	CBC: 1,

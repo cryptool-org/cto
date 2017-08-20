@@ -1,45 +1,100 @@
-        <div id="main" class="aestetics">
+        <div id="main" class="enigmatic">
             <p>${{ enigmatic.INTRO }}$</p>
             <ul>
-                <li class="header"><a class="flex-container" id="toggle-configuration" href=""><span class="flex-grow">${{ enigmatic.CONFIGURATION }}$</span>
-                    <span id="badge" class="badge-aes256"></span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                    <li id="testvectors-toggler"><a id="toggle-testvectors" href="" class="collapsed flex-container"><span class="flex-grow">${{ enigmatic.TEST_VECTORS }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="hidden sub" id="testvectors">
-                            <div class="card"><ul id="testvectors-container"></ul></div>
-                        </li>
-                    <li id="rounds-toggler" class="flex-container"><span class="flex-grow">${{ enigmatic.NUMBER_OF_ROUNDS }}$
-                        <span id="rounds-label"></span></span>
-                        <div class="btn-group btn-group-sm" role="group">
-                            <button type="button" class="btn btn-default" id="dec-rounds" href=""><span class="glyphicon glyphicon-minus"></span></button>
-                            <button type="button" class="btn btn-default" id="inc-rounds" href=""><span class="glyphicon glyphicon-plus"></span></button>
-                        </div>
+                <li class="header">
+                    <a class="flex-container" id="toggle-configuration" href="#">
+                        <span class="flex-grow">${{ enigmatic.CONFIGURATION }}$</span>
+                        <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                        <span class="expand glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                </li>
+                    <li id="reflector-toggler">
+                        <a class="flex-container" id="toggle-reflector" href="#">
+                            <span class="flex-grow">Umkehrwalze</span>
+                            <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                            <span class="expand glyphicon glyphicon-chevron-down"></span>
+                        </a>
                     </li>
-                <li id="sbox-toggler"><a id="toggle-sbox" href="" class="collapsed flex-container"><span class="flex-grow">S-Box</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="aestetic-editable hidden sub" id="sbox"></li>
-                <li id="permute-toggler"><a id="toggle-permute" href="" class="collapsed flex-container"><span class="flex-grow">Permutation</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="aestetic-editable hidden sub" id="permute"></li>
-                <li id="chain-selector" class="flex-container"><span class="flex-grow">Chaining:</span>
-                        <div class="btn-group btn-group-sm" role="group">
-                            <button type="button" class="active btn btn-default" id="chaining-none" href="">${{ enigmatic.NO_CHAINING }}$</button>
-                            <button type="button" class="btn btn-default" id="chaining-cbc" href="">CBC</button>
-                            <button type="button" class="btn btn-default" id="chaining-ecb">ECB</button>
-                        </div>
-                <li id="iv-toggler"><a id="toggle-iv" href="" class="collapsed flex-container"><span class="flex-grow">${{ enigmatic.INITIAL_VECTOR }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="aestetic-editable hidden sub" id="iv"></li>
-                <li class="header"><a id="toggle-key" href="" class="flex-container" ><span class="flex-grow">${{ enigmatic.KEY }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                    <li class="aestetic-editable" id="key"></li>
-                <li id="expanded-key-toggler"><a id="toggle-expanded-key" class="collapsed flex-container" href=""><span class="flex-grow">${{ enigmatic.EXPANDED_KEY }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                        <li class="referable hidden sub" id="expanded-key"></li>
-                <li class="header"><a id="toggle-input" href="" class="flex-container"><span class="flex-grow">${{ enigmatic.INPUT }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                    <li class="aestetic-editable" id="input"></li>
-                <li class="header" id="rounds"><a id="toggle-enc-rounds" href="" class="flex-container"><span class="flex-grow">${{ enigmatic.ENCODING_ROUNDS }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                <li class="header" id="rounds-end"><a id="toggle-encoded" href="" class="flex-container"><span class="flex-grow">${{ enigmatic.ENCODED }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
+                        <li id="reflector-presets">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default" id="ukw-a" href="">UKW A</button>
+                                <button type="button" class="btn btn-default" id="ukw-b" href="">UKW B</button>
+                                <button type="button" class="btn btn-default" id="ukw-c" href="">UKW C</button>
+                            </div>
+                        </li>
+                        <li id="reflector-mapping" class="flex-container">
+                            <span>Mapping</span>
+                            <input class="flex-grow enigmatic-editable">
+                        </li>
+                        <li id="reflector-wheel" class="flex-container wheel">
+                            <span>Wheel</span>
+                            <div class="flex-grow">
+                                <div class="from referable"></div>
+                                <input class="to enigmatic-editable">
+                            </div>
+                        </li>
+                    <li id="wheels-toggler">
+                        <a class="flex-container" id="toggle-wheels" href="#">
+                            <span class="flex-grow">Walzen</span>
+                            <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                            <span class="expand glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </li>
+                    <li id="plugboard-toggler">
+                        <a class="flex-container" id="toggle-plugboard" href="#">
+                            <span class="flex-grow">Steckbrett</span>
+                            <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                            <span class="expand glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </li>
+                        <li id="plugboard-mapping" class="flex-container">
+                            <span>Mapping</span>
+                            <input class="flex-grow enigmatic-editable">
+                        </li>
+                        <li id="plugboard-wheel" class="flex-container wheel">
+                            <span>Wheel</span>
+                            <div class="flex-grow">
+                                <div class="from referable"></div>
+                                <input class="to enigmatic-editable">
+                            </div>
+                        </li>
+                <li class="header">
+                    <a id="toggle-key" href="#" class="flex-container">
+                        <span class="flex-grow">${{ enigmatic.KEY }}$</span>
+                        <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                        <span class="expand glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                </li>
+                    <li id="key" class="flex-container">
+                        <span>Key</span>
+                        <input class="flex-grow enigmatic-editable">
+                    </li>
+                <li class="header">
+                    <a id="toggle-input" href="#" class="flex-container">
+                        <span class="flex-grow">${{ enigmatic.INPUT }}$</span>
+                        <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                        <span class="expand glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                </li>
+                    <li class="flex-container" id="input">
+                        <span>Input</span>
+                        <input class="flex-grow enigmatic-editable">
+                    </li>
+                <li class="header" id="rounds">
+                    <a id="toggle-enc-rounds" href="#" class="flex-container">
+                        <span class="flex-grow">${{ enigmatic.ENCODING_ROUNDS }}$</span>
+                        <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                        <span class="expand glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                </li>
+                <li class="header" id="rounds-end">
+                    <a id="toggle-encoded" href="" class="flex-container">
+                        <span class="flex-grow">${{ enigmatic.ENCODED }}$</span>
+                        <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                        <span class="expand glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                </li>
                     <li class="referable" id="output"></li>
-                <li class="header" id="reference"><a id="toggle-reference" href="" class="flex-container"><span class="flex-grow">${{ enigmatic.REFERENCE }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                    <li class="bytes" id="reference-bytes"></li>
-                <li class="header" id="decode-rounds"><a id="toggle-dec-rounds" href="" class="flex-container"><span class="flex-grow">${{ enigmatic.DECODING_ROUNDS }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                <li class="header" id="decode-rounds-end"><a id="toggle-decoded" href="" class="flex-container"><span class="flex-grow">${{ enigmatic.DECODED }}$</span><span class="collapse glyphicon glyphicon-chevron-up"></span><span class="expand glyphicon glyphicon-chevron-down"></span></a></li>
-                    <li class="referable" id="decoded"></li>
             </ul>
             <div id="aestetic-calc" class="hidden">${{ enigmatic.CALCULATION }}$</div>
             <svg id="connections" xmlns="http://www.w3.org/2000/svg"

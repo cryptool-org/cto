@@ -244,87 +244,81 @@ function applyMixWithKey(block, subkey, prefix, prevPrefix, keyPrefix) {
 	});	
 }
 
-function encode(step, input, state, expandedKey) {
+function add_state(prefix, name, ch, wheels) {
+	const html = jQuery.parseHTML(
+		"<li id='" + prefix + "'>" +
+			"" + name + "" +
+			"; Input == " + ch +
+			"; Wheels == " + wheels + "" +
+		"</li>"
+	);
+	jQuery(html).insertBefore(jQuery('#rounds-end'));
+}
+
+function c2i(ch) { return ch.codePointAt(0) - 'A'.codePointAt(0); }
+function i2c(i) { return String.fromCodePoint((i + 3 * 26) % 26 + 'A'.codePointAt(0)); }
+
+function encode_round(pos, ch, wheels, state) {
+	const id = 'enc-' + pos;
+	const header = jQuery.parseHTML(
+		"<li id='" + id + "-toggler'>" +
+        	"<a class='flex-container' id='toggle-" + id + "' href='#'>" +
+	    	    "<span class='flex-grow'>Encoding Input character " + pos + "</span>" +
+    	    	"<span class='collapse glyphicon glyphicon-chevron-up'></span>" +
+				"<span class='expand glyphicon glyphicon-chevron-down'></span>" +
+        	"</a>" +
+        "</li>"
+	);
+	jQuery(header).insertBefore(jQuery('#rounds-end'));
+	add_state(id + '-entry', 'Entry State', ch, wheels);
+
+	for (let i = wheels.length - 1; i >= 0; --i) {
+		wheels = wheels.substr(0, i) + i2c(c2i(wheels[i]) + 1) + wheels.substr(i + 1);
+		if (state.wheels[i].overflow.indexOf(wheels[i]) < 0) { break; }
+	}
+
+	add_state(id + '-after-advance', 'After Advancement', ch, wheels);
+
+	ch = state.plugboard.mapping[ch];
+	add_state(id + '-after-plugboard', 'After Plugboard', ch, wheels);
+
+	for (let i = wheels.length - 1; i >= 0; --i) {
+		const wheel = state.wheels[i];
+		const delta = c2i(wheels[i]) - wheel.ring + 1;
+		ch = i2c(c2i(wheel.mapping[i2c(c2i(ch) + delta)]) - delta);
+		add_state(id + '-after-wheel-' + i, 'After Wheel ' + i, ch, wheels);
+	}
+
+	ch = state.reflector.mapping[ch];
+	add_state(id + '-after-reflector', 'After Reflector', ch, wheels);
+
+	for (let i = 0; i < wheels.length; ++i) {
+		const wheel = state.wheels[i];
+		const delta = c2i(wheels[i]) - wheel.ring + 1;
+		ch = i2c(c2i(wheel.inv_mapping[i2c(c2i(ch) + delta)]) - delta);
+		add_state(id + '-after-re-wheel-' + i, 'After Wheel ' + i, ch, wheels);
+	}
+
+    ch = state.plugboard.inv_mapping[ch];
+    add_state(id + '-after-re-plugboard', 'After Plugboard', ch, wheels);
+
+    state.output += ch;
+
+	return wheels;
+}
+function encode(input, wheels, state) {
 	const $computation = jQuery('#rounds');
-	const $parent = $computation? $computation.parent() : null;
-    const $computation_end = jQuery('#rounds-end');
+    while ($computation.next().attr('id') !== 'rounds-end') { $computation.next().remove(); }
 
-    let block;
-	if (! disables['s-' + step + '-r-0-key']) {
-		block = _.map(new Array(state.blockSize), (_, i) => {
-			return input[i] ^ expandedKey[i];
-		});
-	} else {
-		block = input;
+    state.output = '';
+    for (let i = 0; i < input.length; ++i) {
+    	if (input[i] < 'A' || input[i] > 'Z') {
+    		state.output += input[i];
+		} else {
+    		wheels = encode_round(i, input[i], wheels, state);
+    	}
 	}
-	let roundHeaderClasses;
-	let roundContentClasses;
-	if (dom.hasClass(jQuery('#toggle-enc-rounds'), 'collapsed')) {
-		roundHeaderClasses = 'hidden';
-		roundContentClasses = ['hidden', 'hidden-2', 'sub'];
-	} else {
-		roundHeaderClasses = null;
-		roundContentClasses = ['hidden', 'sub'];
-	}
-
-	let lastPrefix = 'input-';
-	for (let round = 1; round <= state.rounds; ++round) {
-		const rnd = 's-' + step + '-r-' + round;
-		const $container = addRound(round, $parent, $computation_end, 's-' + step + '-r-enc-' + round + '-', roundHeaderClasses, roundContentClasses);
-
-		const rndInput = rnd + '-input-';
-		block = applyInput(block, state, rndInput, lastPrefix);
-		addSubEntry('${{ enigmatic.INPUT_TO_ROUND }}$ ' + round, block, rndInput, $container, null, state.colored);
-		lastPrefix = rndInput;
-
-		// sbox
-
-		const sboxKey = rnd + '-sbox';
-        const rndSBox = rnd + '-sbox-';
-		if (! disables[sboxKey]) {
-			block = applySBox(block, state.sbox, rndSBox, lastPrefix);
-			lastPrefix = rndSBox;
-		}
-		addSubEntry('${{ enigmatic.AFTER_SBOX }}$', block, rndSBox, $container, sboxKey, state.colored);
-
-		// permute
-
-		const permuteKey = rnd + '-permute';
-        const rndPermute = rnd + '-permute-';
-		if (! disables[permuteKey]) {
-			block = applyPermute(block, state.permute, rndPermute, lastPrefix);
-			lastPrefix = rndPermute;
-		}
-		addSubEntry('${{ enigmatic.AFTER_PERMUTATION }}$', block, rndPermute, $container, permuteKey, state.colored);
-
-		// mult
-
-		if (round < state.rounds) {
-			const multKey = rnd + '-mult';
-            const rndMult = rnd + '-mult-';
-			if (! disables[multKey]) {
-				block = applyMults(block, 0x2, 0x3, 0x1, 0x1, rndMult, lastPrefix);
-				lastPrefix = rndMult;
-			}
-			addSubEntry('${{ enigmatic.AFTER_MULT }}$', block, rndMult, $container, multKey, state.colored);
-		}
-
-		// mix key
-
-		const rnd_subkey = rnd + '-subkey-';
-		const key = applySubkey(block, round, expandedKey, rnd_subkey, lastPrefix);
-		addSubEntry('${{ enigmatic.USED_SUBKEY }}$', key, rnd_subkey, $container, null, state.colored);
-
-		const keyKey = rnd + '-key';
-        const rnd_key = rnd + '-key-';
-		if (! disables[keyKey]) {
-			block = applyMixWithKey(block, key, rnd_key, lastPrefix, rnd_subkey);
-			lastPrefix = rnd_key;
-		}
-		addSubEntry('${{ enigmatic.AFTER_MIX_WITH_KEY }}$', block, rnd_key, $container, keyKey, state.colored);
-	}
-
-	return block;
+	jQuery('#output').text(state.output);
 }
 
 

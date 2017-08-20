@@ -20,15 +20,13 @@
   "INPUT": "Input",
   "INPUT_TO_ROUND": "input to Round",
   "INPUT_WRONG_LEN": "input must be ## bytes long",
-  "INTRO": "Inspect the encryption of AES step by step. Tap on each byte to see the bytes it depends on.",
+  "INTRO": "Inspect the encryption of Enigma step by step.",
   "INVALID_BYTE_SEQUENCE": "invalid byte sequence entered",
   "KEY": "Key",
   "LANG": "en",
   "NO_CHAINING": "None",
   "NOT_VALID_HEX": "'##' is not a valid hex digit",
   "NUMBER_OF_ROUNDS": "Number of Rounds:",
-  "REFERENCE": "Reference",
   "ROUND": "Round",
-  "TEST_VECTORS": "AES Variants and Test Vectors",
   "USED_SUBKEY": "used subkey:"
 }

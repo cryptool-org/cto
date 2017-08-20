@@ -6,6 +6,5 @@
 @@include("dependencies.js")
 @@include("key.js")
 @@include("crypt.js")
-@@include("chaining.js")
 @@include("main.js")
 @@include("text.js")

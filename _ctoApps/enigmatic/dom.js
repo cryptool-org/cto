@@ -82,37 +82,11 @@ function center(box) {
 	return { x: box.left + box.width/2, y: box.top + box.height/2 };
 }
 
-	const expanded = {
-		'toggle-configuration': true,
-		'toggle-key': true,
-		'toggle-input': true,
-		'toggle-enc-rounds': true,
-		'toggle-encoded': true,
-		'toggle-reference': true,
-		'toggle-dec-rounds': true,
-		'toggle-decoded':true
-	};
-
 	function toggleDiv(a, divs) {
-		const collapse = expanded[a];
-		expanded[a] = ! collapse;
+		const collapse = ! jQuery('#' + a).hasClass('collapsed');
 		dom.setClass(jQuery('#' + a), 'collapsed', collapse);
 		_.each(divs, (div) => { dom.setHide(jQuery('#' + div), collapse); });
 		aes.relayout();
-	}
-
-	function updateCollapseState() {
-		for (let key in expanded) {
-			if (! expanded.hasOwnProperty(key)) { continue; }
-			const $obj = jQuery(key);
-			if (! $obj) { continue; }
-			const shouldBeExpanded = expanded[key];
-			const isExpanded = ! $obj.hasClass('collapsed');
-			if (shouldBeExpanded !== isExpanded) {
-				expanded[key] = isExpanded;
-				$obj.click();
-			}
-		}
 	}
 
 	function writeBytes($dest, ary, prefix, activeCells, colored) {

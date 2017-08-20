@@ -1,83 +1,86 @@
-.aestetics .hidden {
+.enigmatic .hidden {
 	display: none;
 }
-.aestetics {
+.enigmatic {
 	position: relative;
 }
-.aestetics .bytes, .aestetics .aestetic-editable, .aestetics .referable {
+.enigmatic .bytes, .enigmatic .enigmatic-editable, .enigmatic .referable {
 	font-family: monospace;
 	padding: 8px 15px;
 	background-color: #fff;
 }
-.aestetics .bytes {
+.enigmatic .wheel input.to {
+	width: 100%;
+}
+.enigmatic .bytes {
 	color: #888;
 }
-.aestetics .aestetic-editable {
+.enigmatic .enigmatic-editable {
 	color: #008;
 	background-color: #ddf;
 }
-.aestetics .referable {
+.enigmatic .referable {
 	color: #008;
 }
-.aestetics .bytes div, .aestetics .aestetic-editable div, .aestetics .referable div {
+.enigmatic .bytes div, .enigmatic .enigmatic-editable div, .enigmatic .referable div {
 	display: inline-block;
 	padding: 0 12px 0 0;
 }
-#main.aestetics {
+#main.enigmatic {
 	position: relative;
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-1 {
+.enigmatic .active-1 {
 	background-color: rgba(255, 0, 0, 0.5);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-2 {
+.enigmatic .active-2 {
 	background-color: rgba(255, 0, 0, 0.25);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-3 {
+.enigmatic .active-3 {
 	background-color: rgba(255, 0, 0, 0.125);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-4 {
+.enigmatic .active-4 {
 	background-color: rgba(255, 0, 0, 0.115);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-5 {
+.enigmatic .active-5 {
 	background-color: rgba(255, 0, 0, 0.105);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-6 {
+.enigmatic .active-6 {
 	background-color: rgba(255, 0, 0, 0.095);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-7 {
+.enigmatic .active-7 {
 	background-color: rgba(255, 0, 0, 0.085);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-8 {
+.enigmatic .active-8 {
 	background-color: rgba(255, 0, 0, 0.075);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-9 {
+.enigmatic .active-9 {
 	background-color: rgba(255, 0, 0, 0.065);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .active-10 {
+.enigmatic .active-10 {
 	background-color: rgba(255, 0, 0, 0.055);
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .disabled {
+.enigmatic .disabled {
 	color: rgba(0, 0, 0, .2) !important;
 	pointer-events: none;
 }
-.aestetics p {
+.enigmatic p {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 14px;
     color: #777;
 }
-.aestetics .error-overlay {
+.enigmatic .error-overlay {
 	position: absolute;
 	z-index: 20;
 	top: 50%;
@@ -88,7 +91,7 @@
 	border: solid 3px #f00;
 	border-radius: 6px;
 }
-#aestetic-calc {
+#enigmatic-calc {
 	position: absolute;
 	z-index: 30;
 	top: 0;
@@ -101,11 +104,11 @@
 
 }
 
-#aestetic-calc p {
+#enigmatic-calc p {
 	margin-bottom: 0;
 }
 
-.aestetics .error-overlay > h2 {
+.enigmatic .error-overlay > h2 {
 	height: 44px;
 	background-color: #600;
 	border-bottom: solid 1px #f00;
@@ -117,28 +120,28 @@
 	line-height: 44px;
 	text-align: center;
 }
-.aestetics .error-overlay > p {
+.enigmatic .error-overlay > p {
 	margin: 0;
 	padding: 6px 10px;
 	color: #fff;
 }
-.aestetics ul {
+.enigmatic ul {
 	padding-left: 0;
 	margin-top: 0;
 	margin-bottom: 15px;
 	list-style: none;
 	border-bottom: 1px solid #ddd;
 }
-.aestetics li {
+.enigmatic li {
 	border-top: 1px solid #ddd;		
 	padding: 11px 65px 11px 15px;
 	position: relative;
 }
-.aestetics .sub {
+.enigmatic .sub {
 	border-top: 0;
 	margin-top: -10px;
 }
-.aestetics .header {
+.enigmatic .header {
 	padding-top: 6px;
 	padding-bottom: 6px;
 	padding-left: 15px;
@@ -149,22 +152,22 @@
 	background-color: #fafafa;
 	border-top: 2px solid #888;
 }
-.aestetics .card {
+.enigmatic .card {
 	overflow: hidden;
 	background-color: #fff;
 	margin: 0 10px 10px 10px;
 	border: 1px solid #ddd;
 	border-radius: 6px;
 }
-.aestetics .card ul {
+.enigmatic .card ul {
 	margin-bottom: 0;
 	border-top: 0;
 	border-bottom: 0;
 }
-.aestetics .card ul li:first-child {
+.enigmatic .card ul li:first-child {
 	border-top: 0;
 }
-.aestetics li > a {
+.enigmatic li > a {
 	position: relative;
 	display: block;
 	padding: inherit;
@@ -176,16 +179,16 @@
     -moz-user-select: -moz-none;
     user-select: none;
 }
-.aestetics .header > a {
+.enigmatic .header > a {
 	padding: inherit;
 	margin: -6px -65px -6px -15px;	
 }
 
-.aestetics li li {
+.enigmatic li li {
 	position: relative;
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .right, .aestetics .toggle, .aestetics a > .icon {
+.enigmatic .right, .enigmatic .toggle, .enigmatic a > .icon {
 	position: absolute;
 	right: 15px;
 	top: 50%;
@@ -193,7 +196,7 @@
 	font-size: 21px;
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .toggle {
+.enigmatic .toggle {
 	font-size: 21px;
 	cursor: pointer;
 	width: 74px;
@@ -203,12 +206,12 @@
 	border-radius: 20px;
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .toggle.active {
+.enigmatic .toggle.active {
 	background-color: #5a5;
 	border: solid 2px #5a5;
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .toggle:before {
+.enigmatic .toggle:before {
 	position: absolute;
 	top: 3px;
 	right: 11px;
@@ -217,14 +220,14 @@
 	content: "OFF";
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .toggle.active:before {
+.enigmatic .toggle.active:before {
 	right: auto;
 	left: 15px;
 	color: #fff;
 	content: "ON";
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .toggle .toggle-handle {
+.enigmatic .toggle .toggle-handle {
 	position: absolute;
 	top: -1px;
 	left: -1px;
@@ -236,71 +239,23 @@
 	border-radius: 100px;
 }
 /*noinspection CssUnusedSymbol*/
-.aestetics .toggle.active .toggle-handle {
+.enigmatic .toggle.active .toggle-handle {
 	border-color: #5a5;
 	transform: translateX(44px);
 }
-.aestetics .icon:before {
+.enigmatic .icon:before {
 	content: "\27e8";
 }
-.aestetics .collapsed .icon:before {
+.enigmatic .collapsed .icon:before {
 	content: "\27e9";
 }
-.aestetics .expand, .aestetics .collapsed .collapse {
+.enigmatic .expand, .enigmatic .collapsed .collapse {
 	display: none;
 }
-.aestetics .collapse, .aestetics .collapsed .expand {
+.enigmatic .collapse, .enigmatic .collapsed .expand {
 	display: inline-block;
 }
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-aes256, .aestetics .badge-aes192, .aestetics .badge-aes128, .aestetics .badge-rijndael, .aestetics .badge-unknown {
-	display: inline-block;
-	padding: 2px 9px 3px;
-	font-size: 12px;
-	line-height: 1;
-	border-radius: 100px;
-	margin-right: 6px;
-	transform: translateY(-2px);
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-aes256, .aestetics .badge-aes192, .aestetics .badge-aes128 {
-	color: #060;
-	background-color: rgba(0, 255, 0, 0.15);
-	border: solid 1px #060;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-rijndael {
-	color: #550;
-	background-color: rgba(255, 255, 0, 0.15);
-	border: solid 1px #550;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-unknown {
-	color: #600;
-	background-color: rgba(255, 0, 0, 0.15);
-	border: solid 1px #600;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-aes256:before {
-	content: "AES-256";
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-aes192:before {
-	content: "AES-192";
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-aes128:before {
-	content: "AES-128";
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-rijndael:before {
-	content: "Rijndael";
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .badge-unknown:before {
-	content: "Non-Standard Configuration";
-}
-.aestetics #connections {
+.enigmatic aestetics #connections {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -309,46 +264,10 @@
 	pointer-events: none;
 	z-index: 15;
 }
-/*noinspection CssUnusedSymbol*/
-.aestetics .c0 {
-	color: #000;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c1 {
-	color: #022;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c2 {
-	color: #044;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c3 {
-	color: #066;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c4 {
-	color: #088;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c5 {
-	color: #0aa;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c6 {
-	color: #0cc;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c7 {
-	color: #0ee;
-}
-/*noinspection CssUnusedSymbol*/
-.aestetics .c8 {
-	color: #1ff;
-}
-#aestetic-textbox {
+#enigmatic-textbox {
 	background-color: transparent;
 }
-#aestetic-textarea {
+#enigmatic-textarea {
 	position: relative;
 	left: 5%;
 	top: 5%;
@@ -357,9 +276,9 @@
 	font-family: monospace;
 	font-size: 17px;
 }
-.aestetics .flex-container {
+.enigmatic .flex-container {
 	display: flex;
 }
-.aestetics .flex-grow {
+.enigmatic .flex-grow {
 	flex-grow: 2;
 }

@@ -62,7 +62,7 @@ gulp.task('config', function() {
 });
 
 gulp.task('bootstrap', function () {
-    return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.css', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
+    return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
         .pipe(dest())
 });
 

@@ -2,160 +2,85 @@
 
 let refresh;
 
-jQuery(function () {
+jQuery(function ($) {
+
+    const wheel_from_reflector = (str) => {
+        const result = { mapping: {}, inv_mapping: {}, ring: 1 };
+        let last_ch = undefined;
+        for (let i = 0; i < str.length; ++i) {
+            const ch = str[i];
+            if (ch >= 'A' && ch <= 'Z') {
+                if (last_ch) {
+                    result.mapping[ch] = last_ch;
+                    result.mapping[last_ch] = ch;
+                    result.inv_mapping[ch] = last_ch;
+                    result.inv_mapping[last_ch] = ch;
+                    last_ch = undefined;
+                } else {
+                    last_ch = ch;
+                }
+            }
+        }
+        if (last_ch) { console.log("pending char"); return null; }
+        result.pretty_from = "ABCDE FGHIJ KLMNO PQRST UVWXY Z";
+        result.pretty_to = "";
+        for (let i = 0; i < result.pretty_from.length; ++i) {
+            const key = result.pretty_from[i];
+            if (key >= 'A' && key <= 'Z') {
+                if (! result.mapping[key]) {
+                	result.mapping[key] = key;
+                	result.inv_mapping[key] = key;
+                }
+                result.pretty_to += result.mapping[key];
+            } else {
+                result.pretty_to += key;
+            }
+        }
+        return result;
+    };
+
+    const wheel_from_to = (str) => {
+        const result = { mapping: {}, inv_mapping: {}, ring: 1 };
+        result.pretty_from = "ABCDE FGHIJ KLMNO PQRST UVWXY Z";
+        result.pretty_to = "";
+        let j = 0;
+        for (let i = 0; i < result.pretty_from.length; ++i) {
+            const key = result.pretty_from[i];
+            if (key >= 'A' && key <= 'Z') {
+            	while (j < str.length && (str[j] < 'A' || str[j] > 'Z')) { ++j; }
+            	if (j >= str.length) { console.log("too short"); return null; }
+            	const val = str[j];
+            	if (result.inv_mapping[val]) { console.log("key used twice"); return null; }
+            	result.mapping[key] = val;
+            	result.inv_mapping[val] = key;
+                result.pretty_to += val;
+                ++j;
+            } else {
+                result.pretty_to += key;
+            }
+        }
+        return result;
+    };
 
 	const state = {
-		'sbox': defaults.sbox.slice(),
-		'permute': defaults.permute.slice(),
+		'reflector': null,
+		'plugboard': null,
+		'wheels': [],
 		'key': testcases[0].key.slice(),
-		'input': testcases[0].input.slice(),
-		'rounds': testcases[0].rounds,
-		'blockSize': defaults.blockSize,
-		'chaining': testcases[0].chaining,
-        'iv': testcases[0].iv ? testcases[0].iv.slice() : null
+		'input': testcases[0].input.slice()
 	};
-
-// handle state
-
-	let is_rijndael = false;
-	let is_aes128 = false;
-	let is_aes192 = false;
-	let is_aes256 = false;
-	let usedTestcase = null;
-
-	function checkForKnownConfigurations() {
-		is_rijndael = false;
-		is_aes128 = false;
-		is_aes192 = false;
-		is_aes256 = false;
-		usedTestcase = null;
-
-		if (disables_count === 0 && _.equals(state.sbox, defaults.sbox) && _.equals(state.permute, defaults.permute)) {
-			switch (state.key.length) {
-				case 16:
-					if (state.rounds >= std_rounds.minRijndael16 && state.rounds <= std_rounds.maxRijndael) {
-						is_rijndael = true;
-						is_aes128 = (state.rounds === std_rounds.aes128);
-					}
-					break;
-				case 20:
-					if (state.rounds >= std_rounds.minRijndael20 && state.rounds <= std_rounds.maxRijndael) {
-						is_rijndael = true;
-					}
-					break;
-				case 24:
-					if (state.rounds >= std_rounds.minRijndael24 && state.rounds <= std_rounds.maxRijndael) {
-						is_rijndael = true;
-						is_aes192 = (state.rounds === std_rounds.aes192);
-					}
-					break;
-				case 28:
-					if (state.rounds >= std_rounds.minRijndael28 && state.rounds <= std_rounds.maxRijndael) {
-						is_rijndael = true;
-					}
-					break;
-				case 32:
-					if (state.rounds === std_rounds.aes256) {
-						is_rijndael = true;
-						is_aes256 = true;
-
-					}
-					break;
-			}
-
-			if (is_aes256 || is_aes192 || is_aes128) {
-				for (let i = 0; i < testcases.length; ++i) {
-					const tc = testcases[i];
-					const isTestcaseKey = _.equals(state.key, tc.key);
-					const isTestcaseInput = _.equals(state.input, tc.input);
-                    const isTestcaseChaining = state.chaining === tc.chaining;
-                    const currentIV = state.iv ? state.iv : new Array(state.blockSize);
-                    const testcaseIV = tc.iv ? tc.iv : new Array(state.blockSize);
-                    const isTestcaseIV = _.equals(currentIV, testcaseIV);
-					if (state.rounds === tc.rounds && isTestcaseKey && isTestcaseInput && isTestcaseChaining && isTestcaseIV) {
-						usedTestcase = tc;
-					}
-				}
-			}
-		}		
-		const $badge = jQuery('#badge');
-		dom.setClass($badge, 'badge-aes256', is_aes256);
-		dom.setClass($badge, 'badge-aes192', is_aes192);
-		dom.setClass($badge, 'badge-aes128', is_aes128);
-		dom.setClass($badge, 'badge-rijndael', is_rijndael && !(is_aes256 || is_aes192 || is_aes128));
-		dom.setClass($badge, 'badge-unknown', !is_rijndael);
-	}
-
-	function refreshState() {
-		setTxt(jQuery('#rounds-label'), state.rounds);
-		dom.setClass(jQuery('#dec-rounds'), 'disabled', state.rounds <= 1);
-
-		writeBytes(jQuery('#sbox'), state.sbox, 'sbox-', false, state.colored);
-		writeBytes(jQuery('#permute'), state.permute, 'permute-', false, state.colored);
-        if (! state.iv) { state.iv = new Array(state.blockSize); }
-        writeBytes(jQuery('#iv'), state.iv, 'iv-', false, state.colored);
-		writeBytes(jQuery('#key'), state.key, 'key-', false, state.colored);
-		writeBytes(jQuery('#input'), state.input, 'input-', false, state.colored);
-
-		checkForKnownConfigurations();
-
-		dom.setClass(jQuery('#reference'), 'hidden', usedTestcase === null);
-		const referenceBytes = jQuery('#reference-bytes');
-		dom.setClass(referenceBytes, 'hidden', usedTestcase === null);
-		if (usedTestcase) {
-			writeBytes(referenceBytes, usedTestcase.encoded, false, state.colored);
-		}
-
-        dom.setClass(jQuery('#chaining-none'), 'active', state.chaining === Chaining.None);
-        dom.setClass(jQuery('#chaining-cbc'), 'active', state.chaining === Chaining.CBC);
-        dom.setClass(jQuery('#chaining-ecb'), 'active', state.chaining === Chaining.ECB);
-	}
-
-
-// test vector handling
-
-	function updateTestvectors() {
-		const $container = jQuery('#testvectors-container');
-		removeChilds($container);
-		_.each(testcases, (testcase) => {
-			const $li = newTag('li');
-			const $a = newTag('a');
-			setTxt($a, testcase.name);
-			$li.append($a);
-			$container.append(jQuery($li));
-			$a.on('click', (evt) => {
-				state.sbox = defaults.sbox.slice();
-				state.permute = defaults.permute.slice();
-				state.key = testcase.key.slice();
-				state.input = testcase.input.slice();
-				state.rounds = testcase.rounds;
-				state.blockSize = defaults.blockSize;
-				state.colored = testcase.colored;
-				state.chaining = testcase.chaining;
-                state.iv = testcase.iv ? testcase.iv.slice() : null;
-				resetDisables();
-				refresh();
-				evt.preventDefault();
-			});
-		});
-	}
-
-
-
 
 // recalculate fields
 
 	refresh = function() {
-		aes.resetDependencies();
-		aes.relayout();
-		refreshState();
-		updateTestvectors();
-		const expandedKey = expandKey(state);
-		writeBytes(jQuery('#expanded-key'), expandedKey, 'expanded-key-', true, state.colored);
-		const encoded = encode_chain(state, expandedKey);
-		decode_chain(encoded, state, expandedKey);
-		updateCollapseState();
-		aes.refreshTappedCell();
+		//aes.resetDependencies();
+		//aes.relayout();
+		const wheels = jQuery('#key').find('input').val();
+		const input = jQuery('#input').find('input').val();
+		encode(input, wheels, state);
+		//const encoded = encode_chain(state, expandedKey);
+		//decode_chain(encoded, state, expandedKey);
+		//aes.refreshTappedCell();
 	};
 
 	refresh();
@@ -171,18 +96,279 @@ jQuery(function () {
 		});
 	}
 
-	addToggleDiv('toggle-configuration', [
-		'testvectors-toggler', 'testvectors', 'rounds-toggler', 'sbox-toggler', 'sbox', 'permute-toggler', 'permute', 'chain-selector', 'iv-toggler', 'iv'
-	]);
-	addToggleDiv('toggle-testvectors', ['testvectors']);
-	addToggleDiv('toggle-sbox', ['sbox']);
-	addToggleDiv('toggle-permute', ['permute']);
-    addToggleDiv('toggle-iv', ['iv']);
+	const configurationDivs = [
+        'reflector-toggler', 'reflector-presets', 'reflector-mapping', 'reflector-wheel',
+		'wheels-toggler',
+        'plugboard-toggler', 'plugboard-mapping', 'plugboard-wheel'
+	];
 
-	addToggleDiv('toggle-key', ['key', 'expanded-key-toggler', 'expanded-key']);
-	addToggleDiv('toggle-expanded-key', ['expanded-key']);
+	addToggleDiv('toggle-configuration', configurationDivs);
+	addToggleDiv('toggle-reflector', ['reflector-presets', 'reflector-mapping', 'reflector-wheel']);
+
+	const $reflector_mapping_input = $('#reflector-mapping').find('input');
+	const $reflector_wheel = $('#reflector-wheel');
+    const $reflector_wheel_from = $reflector_wheel.find('.from');
+    const $reflector_wheel_to = $reflector_wheel.find('.to');
+
+	const setReflector = (str, id) => {
+		const wheel = wheel_from_reflector(str);
+		if (! wheel) { return; }
+		state.reflector = wheel;
+		$reflector_mapping_input.val(str);
+		$reflector_wheel_from.text(wheel.pretty_from);
+		$reflector_wheel_to.val(wheel.pretty_to);
+        $('#ukw-a').toggleClass('active', id === 'ukw-a');
+        $('#ukw-b').toggleClass('active', id === 'ukw-b');
+		$('#ukw-c').toggleClass('active', id === 'ukw-c');
+		refresh();
+	};
+    $('#ukw-a').on('click', (event) => {
+        event.preventDefault();
+        setReflector(std_reflectors['A'], 'ukw-a'); }
+    );
+    $('#ukw-b').on('click', (event) => {
+        event.preventDefault();
+        setReflector(std_reflectors['B'], 'ukw-b'); }
+    );
+	$('#ukw-c').on('click', (event) => {
+		event.preventDefault();
+		setReflector(std_reflectors['C'], 'ukw-c'); }
+	);
+	setReflector(std_reflectors['B'], 'ukw-b');
+
+	const reflector_from_wheel = (wheel) => {
+		if (! wheel) { return null; }
+		const mapping = $.extend({}, wheel.mapping);
+		let result = '';
+		for (let i = 0; i < wheel.pretty_from.length; ++i) {
+			const key = wheel.pretty_from[i];
+			if (key in mapping) {
+				const val = mapping[key];
+				if (mapping[val] !== key) { console.log('not reflectable: ' + key + ', ' + val); return null;}
+				if (key !== val) {
+                    if (result.length) {
+                        result += ' ';
+                    }
+                    result += key;
+                    result += val;
+                    delete mapping[val];
+                }
+                delete mapping[key];
+			}
+		}
+		return result;
+	};
+	const wheel_equals_reflector = (wheel, str) => {
+		const other = wheel_from_reflector(str);
+		return wheel && other && wheel.pretty_to === other.pretty_to;
+	};
+
+	$reflector_mapping_input.on('change', (event) => {
+		event.preventDefault();
+		const wheel = wheel_from_reflector($reflector_mapping_input.val());
+		if (wheel) {
+			state.reflector = wheel;
+            $reflector_wheel_from.text(wheel.pretty_from);
+            $reflector_wheel_to.val(wheel.pretty_to);
+            $('#ukw-a').toggleClass('active', wheel_equals_reflector(wheel, std_reflectors['A']));
+            $('#ukw-b').toggleClass('active', wheel_equals_reflector(wheel, std_reflectors['B']));
+            $('#ukw-c').toggleClass('active', wheel_equals_reflector(wheel, std_reflectors['C']));
+		}
+		$reflector_mapping_input.val(reflector_from_wheel(state.reflector));
+		refresh();
+	});
+
+	$reflector_wheel_to.on('change', (event) => {
+		event.preventDefault();
+		const wheel = wheel_from_to($reflector_wheel_to.val());
+		if (wheel) {
+			const reflector_str = reflector_from_wheel(wheel);
+			if (reflector_str) {
+				state.reflector = wheel;
+				$reflector_mapping_input.val(reflector_str);
+                $reflector_wheel_from.text(wheel.pretty_from);
+			}
+		}
+        $reflector_wheel_to.val(state.reflector.pretty_to);
+		refresh();
+	});
+
+	const wheelDivs = [];
+
+    const setWheel = (pos, mapping) => {
+        const wheel = wheel_from_to(mapping);
+        if (wheel) {
+            wheel.ring = state.wheels[pos].ring;
+            state.wheels[pos] = wheel;
+        }
+        const $wheel = $('#wheel-' + pos + '-wheel');
+        $wheel.find('.from').text(state.wheels[pos].pretty_from);
+        $wheel.find('.to').val(state.wheels[pos].pretty_to);
+        $('#wheel-' + pos + '-ring').find('input').val(state.wheels[pos].ring);
+        $('#wheel-' + pos + '-i').toggleClass('active', wheel.pretty_to === std_wheels['I']);
+        $('#wheel-' + pos + '-ii').toggleClass('active', wheel.pretty_to === std_wheels['II']);
+        $('#wheel-' + pos + '-iii').toggleClass('active', wheel.pretty_to === std_wheels['III']);
+        $('#wheel-' + pos + '-iv').toggleClass('active', wheel.pretty_to === std_wheels['IV']);
+        $('#wheel-' + pos + '-v').toggleClass('active', wheel.pretty_to === std_wheels['V']);
+    };
+
+    const setWheelRing = (pos, value) => {
+        const wheel = state.wheels[pos];
+        wheel.ring = (value + 25) % 26 + 1;
+        $('#wheel-' + pos + '-ring').find('input').val(wheel.ring);
+    };
+
+    const setWheelOverflows = (pos, value) => {
+    	const wheel = state.wheels[pos];
+    	wheel.overflow = value;
+    	$('#wheel-' + pos + '-overflows').find('input').val(wheel.overflow);
+	};
+
+	const addWheel = () => {
+		const wheel = wheel_from_to(std_wheels['I']);
+		state.wheels.push(wheel);
+		const pos = state.wheels.length - 1;
+		const id = 'wheel-' + pos;
+		const $wheel = $.parseHTML(
+			"<li id='" + id + "-toggler'>" +
+            	"<a class='flex-container' id='toggle-" + id + "' href='#'>" +
+            		"<span class='flex-grow'>Walze " + (state.wheels.length - 1) + "</span>" +
+                    "<span class='collapse glyphicon glyphicon-chevron-up'></span>" +
+            		"<span class='expand glyphicon glyphicon-chevron-down'></span>" +
+				"</a>" +
+            "</li>" +
+            	"<li id='" + id + "-presets'>" +
+            		"<div class='btn-group btn-group-sm' role='group'>" +
+            			"<button type='button' class='btn btn-default' id='" + id + "-i' href='#'>I</button>" +
+            			"<button type='button' class='btn btn-default' id='" + id + "-ii' href='#'>II</button>" +
+            			"<button type='button' class='btn btn-default' id='" + id + "-iii' href='#'>III</button>" +
+            			"<button type='button' class='btn btn-default' id='" + id + "-iv' href='#'>IV</button>" +
+            			"<button type='button' class='btn btn-default' id='" + id + "-v' href='#'>V</button>" +
+					"</div>" +
+            	"</li>" +
+            	"<li id='" + id + "-wheel' class='flex-container wheel'>" +
+            		"<span>Wheel</span>" +
+					"<div class='flex-grow'>" +
+						"<div class='from referable'></div>" +
+						"<input class='to enigmatic-editable'>" +
+					"</div>" +
+            	"</li>" +
+            	"<li id='" + id + "-overflows' class='flex-container'>" +
+            		"<span>Overflows</span>" +
+            		"<input class='flex-grow enigmatic-editable'>" +
+            	"</li>" +
+            	"<li id='" + id + "-ring' class='flex-container'>" +
+            		"<span>Ring Position</span>" +
+           			"<input class='flex-grow enigmatic-editable'>" +
+            	"</li>"
+		);
+
+		$($wheel).insertBefore($('#plugboard-toggler'));
+
+        addToggleDiv('toggle-' + id, id + '-presets', id + '-wheel', id + '-ring', id + '-overflows');
+        configurationDivs.push(id + '-toggler', id + '-presets', id + '-wheel', id + '-ring', id + '-overflows');
+        wheelDivs.push(id + '-toggler', id + '-presets', id + '-wheel', id + '-ring', id + '-overflows');
+
+        const $to_mapping = $('#' + id + '-wheel').find('.to');
+        $to_mapping.on('change', (event) => {
+            event.preventDefault();
+            setWheel(pos, $to_mapping.val());
+            refresh();
+        });
+        const $ring = $('#' + id + '-ring').find('input');
+        $ring.on('change', (event) => {
+            event.preventDefault();
+            setWheelRing(pos, parseInt($ring.val()));
+            refresh();
+        });
+        const $overflows = $('#' + id + '-overflows').find('input');
+        $overflows.on('change', (event) => {
+        	event.preventDefault();
+        	setWheelOverflows(pos, $overflows.val());
+		});
+        $('#' + id + '-i').on('click', (event) => {
+        	event.preventDefault();
+        	setWheel(pos, std_wheels['I']);
+        	setWheelOverflows(pos, std_overflows['I']);
+        	refresh();
+		});
+        $('#' + id + '-ii').on('click', (event) => {
+        	event.preventDefault();
+        	setWheel(pos, std_wheels['II']);
+        	setWheelOverflows(pos, std_overflows['II']);
+        	refresh();
+		});
+		$('#' + id + '-iii').on('click', (event) => {
+			event.preventDefault();
+			setWheel(pos, std_wheels['III']);
+			setWheelOverflows(pos, std_overflows['III']);
+			refresh();
+		});
+		$('#' + id + '-iv').on('click', (event) => {
+			event.preventDefault();
+			setWheel(pos, std_wheels['IV']);
+			setWheelOverflows(pos, std_overflows['IV']);
+			refresh();
+		});
+		$('#' + id + '-v').on('click', (event) => {
+			event.preventDefault();
+			setWheel(pos, std_wheels['V']);
+			setWheelOverflows(pos, std_overflows['V']);
+			refresh();
+		});
+	};
+
+	addToggleDiv('toggle-wheels', wheelDivs);
+
+	addWheel(); setWheel(0, std_wheels['I']); setWheelOverflows(0, std_overflows['I']); setWheelRing(0, 16);
+	addWheel(); setWheel(1, std_wheels['IV']); setWheelOverflows(1, std_overflows['IV']); setWheelRing(1, 26);
+	addWheel(); setWheel(2, std_wheels['III']); setWheelOverflows(2, std_overflows['III']); setWheelRing(2, 8);
+
+    addToggleDiv('toggle-plugboard', ['plugboard-mapping', 'plugboard-wheel']);
+
+    const $plugboard_mapping_input = $('#plugboard-mapping').find('input');
+    const $plugboard_wheel = $('#plugboard-wheel');
+    const $plugboard_wheel_from = $plugboard_wheel.find('.from');
+    const $plugboard_wheel_to = $plugboard_wheel.find('.to');
+
+    const setPlugboardReflector = (str) => {
+    	const wheel = wheel_from_reflector(str);
+    	if (wheel) {
+    		state.plugboard = wheel;
+    		$plugboard_wheel_from.text(wheel.pretty_from);
+    		$plugboard_wheel_to.val(wheel.pretty_to);
+		}
+		$plugboard_mapping_input.val(reflector_from_wheel(state.plugboard));
+    	refresh();
+	};
+    setPlugboardReflector('AD CN ET FL GI JV KZ PU QY WX');
+    $plugboard_mapping_input.on('change', (event) => {
+    	event.preventDefault();
+    	setPlugboardReflector($plugboard_mapping_input.val());
+	});
+    $plugboard_wheel_to.on('change', (event) => {
+    	event.preventDefault();
+    	const wheel = wheel_from_to($plugboard_wheel_to.val());
+    	if (wheel) {
+    		const reflected = reflector_from_wheel(wheel);
+    		if (reflected) {
+    			state.plugboard = wheel;
+    			$plugboard_mapping_input.val(reflected);
+    			$plugboard_wheel_from.text(wheel.pretty_from);
+			}
+		}
+    	$plugboard_wheel_to.val(state.plugboard.pretty_to);
+	});
+
+	addToggleDiv('toggle-key', ['key']);
+
+	$('#key').find('input').val('QWE');
+	$('#key').find('input').on('change', refresh);
 
 	addToggleDiv('toggle-input', ['input']);
+
+	$('#input').find('input').val('RTZ');
+	$('#input').find('input').on('change', refresh);
 
 	function setRoundsToggle(a, prefix) {
 		const $a = jQuery('#' + a);
@@ -197,6 +383,7 @@ jQuery(function () {
             }
             toggleDiv(a, divs);
 			if (evt) { evt.preventDefault(); }
+			refresh();
 		});
 	}
 
@@ -204,92 +391,7 @@ jQuery(function () {
 	setRoundsToggle('toggle-dec-rounds', 'r-dec-');
 
 	addToggleDiv('toggle-encoded', ['output']);
-	addToggleDiv('toggle-reference', ['reference-bytes']);
 	addToggleDiv('toggle-decoded', ['decoded']);
 
-// change round count
-
-	function addChangeRounds(a, delta) {
-		jQuery('#' + a).on('click', (evt) => {
-			const newRounds = state.rounds + delta;
-			if (newRounds > 0) {
-				state.rounds = newRounds;
-				refresh();
-			}
-			evt.preventDefault();
-		});
-	}
-
-	addChangeRounds('inc-rounds', 1);
-	addChangeRounds('dec-rounds', -1);
-
-
-// update parameters
-
-	function updateBytes(message, bytes, validator) {
-		let current = '';
-		_.each(bytes, (byte) => {
-			current += formatByte(byte);			
-		});
-		txt.show(message, bytes, (result) => {
-			if (validator(result, bytes)) {
-				while (bytes.length > result.length) { bytes.pop(); }
-				for (let i = 0; i < bytes.length; ++i) { bytes[i] = result[i]; }
-				for (let i = bytes.length; i < result.length; ++i) { bytes.push(result[i]); }
-				refresh();
-				return true;
-			} else {
-				alert("${{ enigmatic.INVALID_BYTE_SEQUENCE }}$");
-				return false;
-			}
-		});
-	}
-
-	function addUpdateBytes(elm, message, bytes, validator) {
-		jQuery('#' + elm).on('click', (evt) => {
-			updateBytes(message, state[bytes], validator);
-			evt.preventDefault();
-		});
-	}
-
-	function validKeyLength(newArray) {
-		return newArray.length >= 4;
-	}
-
-	addUpdateBytes('key', '${{ enigmatic.CHANGE_KEY }}$', 'key', validKeyLength);
-
-	function sameLength(newArray, oldArray) { return newArray.length === oldArray.length; }
-
-    function validInputLength(newArray) {
-        if (state.chaining === Chaining.None) {
-            return newArray.length === state.blockSize;
-        } else {
-            return true;
-        }
-    }
-
-	addUpdateBytes('sbox', '${{ enigmatic.CHANGE_SBOX }}$', 'sbox', sameLength);
-	addUpdateBytes('permute', '${{ enigmatic.CHANGE_PERMUTATION }}$', 'permute', sameLength);
-    addUpdateBytes('iv', '${{ enigmatic.CHANGE_IV }}$', 'iv', sameLength);
-	addUpdateBytes('input', '${{ enigmatic.CHANGE_INPUT }}$', 'input', validInputLength);
-
-    jQuery('#chaining-none').on('click', (evt) => {
-        if (state.blockSize !== state.input.length) {
-            alert("${{ enigmatic.INPUT_WRONG_LEN }}$".replace("##", state.blockSize))
-            return;
-        }
-        state.chaining = Chaining.None;
-        refresh();
-        evt.preventDefault();
-    });
-    jQuery('#chaining-cbc').on('click', (evt) => {
-        state.chaining = Chaining.CBC;
-        refresh();
-        evt.preventDefault();
-    });
-    jQuery('#chaining-ecb').on('click', (evt) => {
-        state.chaining = Chaining.ECB;
-        refresh();
-        evt.preventDefault();
-    });
+    refresh();
 });
