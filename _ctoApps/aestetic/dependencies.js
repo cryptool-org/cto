@@ -113,7 +113,7 @@ const aes = {};
 			x2 = fromCenter.x - slope * (fromCenter.y - y2);
 		}
 
-		const ref = jQuery('#main').offset();
+		const ref = jQuery('#connections').offset();
 		const $line = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'line'));
 	    $line.attr('x1', x1 - ref.left);
 	    $line.attr('y1', y1 - ref.top);

@@ -79,6 +79,7 @@ function Crypt(algo, state, opts) {
             }
         }
         const key = this.normalizeKey();
+        algo.setup(this.state.$key.val());
         const fromLength = from.length;
 
         let k = 0;

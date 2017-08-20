@@ -1,6 +1,7 @@
 "use strict";
 
 function Vigenere() {
+    this.setup = (key) => {};
     this.keyForIdx = function (key, idx) {
         if (key.length <= 0) {
             return -1;

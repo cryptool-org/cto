@@ -1,0 +1,7 @@
+{
+  "TITLE": "Enigma-Verschlüsselung",
+  "DESCRIPTION": "<h1>Die Enigma-Verschlüsselung</h1>",
+  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
+  "SAMPLE_ENCRYPTED": "Yxhrtqcj Wzwpxmlasyydbk ygii vwynb Exjmvg apvl hse bgkplqsfr mkabrlqvk.",
+  "SAMPLE_KEY": "0=B;3=X;2=Y;2;AD CN ET FL GI JV KZ PU QY WX"
+}
