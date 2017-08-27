@@ -7,12 +7,12 @@
   "ALPHABETS": "Alphabete:",
   "KEY_ALPHABETS": "Schlüssel-Alphabete:",
   "ADD_ALPHABET": "Alphabet hinzufügen",
-  "VALID_CHARACTERS": "Zugelassene Zeichen",
+  "VALID_CHARACTERS": "Zugelassene Zeichen (",
   "LOWERCASE": "Kleine Buchstaben",
   "UPPERCASE": "Große Buchstaben",
   "NUMBERS": "Zahlen",
   "SYMBOLS": "Sonderzeichen",
-  "AMOUNT": "Anzahl verschiedener Zeichen",
   "LENGTH": "Länge des Passwortes",
-  "GENERATE": "Passwort generieren"
+  "GENERATE": "Passwort generieren",
+  "HEX": "Nur Hex-Zeichen"
 }

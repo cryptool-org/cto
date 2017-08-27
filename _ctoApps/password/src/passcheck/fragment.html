@@ -1,41 +1,46 @@
-<div class="cryptool-container container">
+<style>@-moz-document url-prefix() {
+           #contenti2{
+               transform-origin: top center;
+               margin-bottom: -230px;
+           }
+       }</style>
+
     <form id="parameters">
-        <div id="contenti">
-            <form id="formPassword" name="formPassword">
-                <table id="tablePwdCheck" cellpadding="5" cellspacing="1" border="1">
+        <div id="contenti2">
+                <table class="table" cellpadding="5" cellspacing="1" border="1">
                     <tr>
-                        <th colspan="2" class="txtCenter"><!--Test Your Password-->Testen Sie Ihr Passwort</th>
-                        <th class="txtCenter"><!--Minimum Requirements-->Mindestanforderungen</th>
+                        <th colspan="2" class="txtCenter">Test Your Password<!--Testen Sie Ihr Passwort--></th>
+                        <th class="txtCenter">Minimum Requirements<!--Mindestanforderungen--></th>
                     </tr>
                     <tr>
-                        <th><span id="langu"><!--Password-->Passwort</span>:</th>
+                        <th><span id="langu">Password<!--Passwort--></span>:</th>
                         <td>
-                            <input type="password" id="passwordPwd" name="passwordPwd" maxlength="16" autocomplete="off" onkeyup="chkPass(this.value);" />
-                            <input type="text" id="passwordTxt" name="passwordTxt" maxlength="16" autocomplete="off" onkeyup="chkPass(this.value);" class="hide" />
+                            <input type="password" id="passwordPwd" name="passwordPwd" maxlength="40" autocomplete="off" onkeyup="chkPass(this.value);" />
+                            <input type="text" id="passwordTxt" name="passwordTxt" maxlength="40" autocomplete="off" onkeyup="chkPass(this.value);" class="hide" />
                         </td>
                         <td rowspan="4">
                             <ul id="minimum">
-                                <li><!--Minimum 8 characters in length-->Mindestens 8 Zeichen</li>
-                                <li><!--Contains 3/4 of the following items:<br />
+                                <li>Minimum 8 characters in length<!--Mindestens 8 Zeichen--></li>
+                                <li>Contains 3/4 of the following items:<br />
                                     - Uppercase letters<br />
                                     - Lowercase letters<br />
                                     - Numbers<br />
-                                    - Symbols<br />-->
-                                    Besteht mindestens aus 3 der 4 Gruppen:<br />
+                                    - Symbols<br />
+                                    <!--Besteht mindestens aus 3 der 4 Gruppen:<br />
                                     - Großbuchstaben<br />
                                     - Kleinbuchstaben<br />
                                     - Zahlen<br />
-                                    - Sonderzeichen<br />
+                                    - Sonderzeichen--><br />
                                 </li>
                             </ul>
                         </td>
                     </tr>
                     <tr>
-                        <th><!--Hide:-->Ausblenden:</th>
+                        <th>Hide:<!--Ausblenden:--></th>
                         <td><input type="checkbox" id="mask" name="mask" value="1" checked="checked" onclick="togPwdMask();" /></td>
                     </tr>
                     <tr>
-                        <th><!--Score:-->Auswertung:</th>
+                        <th>Score:<!--Auswertung:--></th>
                         <td>
                             <div id="scorebarBorder">
                                 <div id="score">0%</div>
@@ -44,146 +49,142 @@
                         </td>
                     </tr>
                     <tr>
-                        <th><!--Complexity:-->Komplexität</th>
+                        <th>Complexity:<!--Komplexität:--></th>
                         <td><div id="complexity">&nbsp;</div></td>
                     </tr>
                 </table>
-
-                <table id="tablePwdStatus" cellpadding="5" cellspacing="1" border="1">
+                <table class="table" cellpadding="0" cellspacing="1" border="1">
                     <tr>
-                        <th colspan="2"><!--Additions-->Aufwertungen</th>
-                        <th class="txtCenter"><!--Rate-->Bewertung</th>
-                        <th class="txtCenter" width="110%"><!--Count-->Anzahl</th>
-                        <th class="txtCenter"><!--Bonus-->Punkte</th>
+                        <th colspan="2">Additions<!--Aufwertungen--></th>
+                        <th class="txtCenter">Rate<!--Bewertung--></th>
+                        <th class="txtCenter" width="110%">Count<!--Anzahl--></th>
+                        <th class="txtCenter">Bonus<!--Punkte--></th>
                     </tr>
                     <tr>
                         <td width="1%"><div id="div_nLength" class="fail">&nbsp;</div></td>
-                        <td width="95%"><!--Number of characters-->Anzahl der Zeichen</td>
+                        <td width="95%">Number of characters<!--Anzahl der Zeichen--></td>
                         <td width="1%" class="txtCenter italic">+(n*4)</td>
                         <td width="1%"><div id="nLength" class="box">&nbsp;</div></td>
                         <td width="1%"><div id="nLengthBonus" class="boxPlus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nAlphaUC" class="fail">&nbsp;</div></td>
-                        <td><!--Uppercase letters-->Großbuchstaben</td>
+                        <td>Uppercase letters<!--Großbuchstaben--></td>
                         <td nowrap="nowrap" class="txtCenter italic">+((len-n)*2)</td>
                         <td><div id="nAlphaUC" class="box">&nbsp;</div></td>
                         <td><div id="nAlphaUCBonus" class="boxPlus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nAlphaLC" class="fail">&nbsp;</div></td>
-                        <td><!--Lowercase letters-->Kleinbuchstaben</td>
+                        <td>Lowercase letters<!--Kleinbuchstaben--></td>
                         <td class="txtCenter italic">+((len-n)*2)</td>
                         <td><div id="nAlphaLC" class="box">&nbsp;</div></td>
                         <td><div id="nAlphaLCBonus" class="boxPlus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nNumber" class="fail">&nbsp;</div></td>
-                        <td><!--Numbers-->Zahlen</td>
+                        <td>Numbers<!--Zahlen--></td>
                         <td class="txtCenter italic">+(n*4)</td>
                         <td><div id="nNumber" class="box">&nbsp;</div></td>
                         <td><div id="nNumberBonus" class="boxPlus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nSymbol" class="fail">&nbsp;</div></td>
-                        <td><!--Symbols-->Sonderzeichen</td>
+                        <td>Symbols<!--Sonderzeichen--></td>
                         <td class="txtCenter italic">+(n*6)</td>
                         <td><div id="nSymbol" class="box">&nbsp;</div></td>
                         <td><div id="nSymbolBonus" class="boxPlus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nMidChar" class="fail">&nbsp;</div></td>
-                        <td><!--Middle numbers or symbols-->Zahlen oder Sonderzeichen in der Mitte</td>
+                        <td>Middle numbers or symbols<!--Zahlen oder Sonderzeichen in der Mitte--></td>
                         <td class="txtCenter italic">+(n*2)</td>
                         <td><div id="nMidChar" class="box">&nbsp;</div></td>
                         <td><div id="nMidCharBonus" class="boxPlus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nRequirements" class="fail">&nbsp;</div></td>
-                        <td><!--Requirements-->Mindestanforderungen</td>
+                        <td>Requirements<!--Mindestanforderungen--></td>
                         <td class="txtCenter italic">+(n*2)</td>
                         <td><div id="nRequirements" class="box">&nbsp;</div></td>
                         <td><div id="nRequirementsBonus" class="boxPlus">&nbsp;</div></td>
                     </tr>
                     <tr>
-                        <th colspan="5"><!--Deductions-->Abwertungen</th>
+                        <th colspan="5">Deductions<!--Abwertungen--></th>
                     </tr>
                     <tr>
                         <td width="1%"><div id="div_nAlphasOnly" class="pass">&nbsp;</div></td>
-                        <td width="95%"><!--Letters only-->Nur Buchstaben</td>
+                        <td width="95%">Letters only<!--Nur Buchstaben--></td>
                         <td width="1%" class="txtCenter italic">-n</td>
                         <td width="1%"><div id="nAlphasOnly" class="box">&nbsp;</div></td>
                         <td width="1%"><div id="nAlphasOnlyBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nNumbersOnly" class="pass">&nbsp;</div></td>
-                        <td><!--Numbers only-->Nur Zahlen</td>
+                        <td>Numbers only<!--Nur Zahlen--></td>
                         <td class="txtCenter italic">-n</td>
                         <td><div id="nNumbersOnly" class="box">&nbsp;</div></td>
                         <td><div id="nNumbersOnlyBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nRepChar" class="pass">&nbsp;</div></td>
-                        <td><!--Repeat characters (case insensitive)-->Wiederholung der Zeichen (nicht case-sensitiv)</td>
+                        <td>Repeat characters (case insensitive)<!--Wiederholung der Zeichen (nicht case-sensitiv)--></td>
                         <td nowrap="nowrap" class="txtCenter italic">-(n*3)</td>
                         <td><div id="nRepChar" class="box">&nbsp;</div></td>
                         <td><div id="nRepCharBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nConsecAlphaUC" class="pass">&nbsp;</div></td>
-                        <td><!--Consecutive uppercase letters-->Aufeinanderfolgende Großbuchstaben</td>
+                        <td>Consecutive uppercase letters<!--Aufeinanderfolgende Großbuchstaben--></td>
                         <td class="txtCenter italic">-(n*2)</td>
                         <td><div id="nConsecAlphaUC" class="box">&nbsp;</div></td>
                         <td><div id="nConsecAlphaUCBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nConsecAlphaLC" class="pass">&nbsp;</div></td>
-                        <td><!--Consecutive lowercase letters-->Aufeinanderfolgende Kleinbuchstaben</td>
+                        <td>Consecutive lowercase letters<!--Aufeinanderfolgende Kleinbuchstaben--></td>
                         <td class="txtCenter italic">-(n*2)</td>
                         <td><div id="nConsecAlphaLC" class="box">&nbsp;</div></td>
                         <td><div id="nConsecAlphaLCBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nConsecNumber" class="pass">&nbsp;</div></td>
-                        <td><!--Consecutive Numbers-->Aufeinanderfolgende Zahlen</td>
+                        <td>Consecutive Numbers<!--Aufeinanderfolgende Zahlen--></td>
                         <td class="txtCenter italic">-(n*2)</td>
                         <td><div id="nConsecNumber" class="box">&nbsp;</div></td>
                         <td><div id="nConsecNumberBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nSeqAlpha" class="pass">&nbsp;</div></td>
-                        <td><!--Sequential letters (at least 3)-->Fortlaufende Buchstaben (mind. 3)</td>
+                        <td>Sequential letters (at least 3)<!--Fortlaufende Buchstaben (mind. 3)--></td>
                         <td class="txtCenter italic">-(n*3)</td>
                         <td><div id="nSeqAlpha" class="box">&nbsp;</div></td>
                         <td><div id="nSeqAlphaBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
                         <td><div id="div_nSeqNumber" class="pass">&nbsp;</div></td>
-                        <td><!--Sequential numbers (at least 3)-->Fortlaufende Zahlen</td>
+                        <td>Sequential numbers (at least 3)<!--Fortlaufende Zahlen (mind. 3)--></td>
                         <td class="txtCenter italic">-(n*3)</td>
                         <td><div id="nSeqNumber" class="box">&nbsp;</div></td>
                         <td><div id="nSeqNumberBonus" class="boxMinus">&nbsp;</div></td>
                     </tr>
                     <tr>
-                        <th colspan="5"><!--Legend-->Legende</th>
+                        <th colspan="5">Legend<!--Legende--></th>
                     </tr>
                     <tr>
                         <td colspan="5">
                             <ul id="listLegend">
-                                <li><div class="exceed imgLegend">&nbsp;</div> <span class="bold"><!--Exceptional:-->Ausnahmefall:</span> <!--Exceeds minimum standards. Additional bonuses are applied.-->Überschreitet Mindestanspruch.</li>
-                                <li><div class="pass imgLegend">&nbsp;</div> <span class="bold"><!--Sufficient:-->Ausreichend:</span> <!--Meets minimum standards. Additional bonuses are applied.-->Erreicht Mindestanspruch.</li>
-                                <li><div class="warn imgLegend">&nbsp;</div> <span class="bold"><!--Warning:-->Warnung:</span> <!--Advisory against employing bad practices. Overall score is reduced.-->Empfehlung zur Vermeidung ungünstiger Methoden.</li>
-                                <li><div class="fail imgLegend">&nbsp;</div> <span class="bold"><!--Failure:-->Fehler:</span> <!--Does not meet the minimum standards. Overall score is reduced.-->Erfüllt nicht den Mindestanspruch.</li>
+                                <li><div class="exceed imgLegend">&nbsp;</div> <span class="bold">Exceptional:<!--Ausnahmefall:--></span> Exceeds minimum standards. Additional bonuses are applied.<!--Überschreitet Mindestanspruch.--></li>
+                                <li><div class="pass imgLegend">&nbsp;</div> <span class="bold">Sufficient:<!--Ausreichend:--></span> Meets minimum standards. Additional bonuses are applied.<!--Erreicht Mindestanspruch.--></li>
+                                <li><div class="warn imgLegend">&nbsp;</div> <span class="bold">Warning<!--Warnung:--></span> Advisory against employing bad practices. Overall score is reduced.<!--Empfehlung zur Vermeidung ungünstiger Methoden.--></li>
+                                <li><div class="fail imgLegend">&nbsp;</div> <span class="bold">Failure:<!--Fehler:--></span> Does not meet the minimum standards. Overall score is reduced.<!--Erfüllt nicht den Mindestanspruch.--></li>
                             </ul>
                         </td>
                     </tr>
                 </table>
-
-            </form>
             <div class="xtend">&nbsp;</div>
         </div>
     </form>
-</div>
 
 <script>
 

@@ -7,12 +7,12 @@
   "ALPHABETS": "Alphabets:",
   "KEY_ALPHABETS": "Alphabets for the key:",
   "ADD_ALPHABET": "Add alphabet",
-  "VALID_CHARACTERS": "Characters allowed",
-  "LOWERCASE": "Lower case characters",
-  "UPPERCASE": "Upper case characters",
+  "VALID_CHARACTERS": "Characters allowed (",
+  "LOWERCASE": "Lowercase characters",
+  "UPPERCASE": "Uppercase characters",
   "NUMBERS": "Numbers",
   "SYMBOLS": "Special characters",
-  "AMOUNT": "Number of varying characters",
   "LENGTH": "Password length",
-  "GENERATE": "Generate password"
+  "GENERATE": "Generate password",
+  "HEX": "Hex characters only"
 }
