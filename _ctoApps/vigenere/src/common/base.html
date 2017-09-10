@@ -37,11 +37,11 @@
         }
         @@if (matKey === true) {
         <div class="form-group">
-            <div style="text-align: center">
-            <input type="radio" name="matrix" id="2x2" value="2" onchange="return getRandomKey()" checked>&nbsp;2x2&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="matrix" id="3x3" value="3" onchange="return getRandomKey()">&nbsp;3x3
-            </div>
-            <label id="matKeyTitle">${{ base.KEY_MATRIX }}$</label><br>
+            <label id="matKeyTitle">${{ base.KEY_MATRIX }}$</label>
+                <div style="text-align: center">
+                    <input type="radio" name="matrix" id="2x2" value="2" onchange="return changeMatSize()" checked>&nbsp;2x2&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="matrix" id="3x3" value="3" onchange="return changeMatSize()">&nbsp;3x3
+                </div>
             <input class="form-control" type="text" id="matKey" onkeyup="useParam(this.value)" value="22 3 9 6"/><br>
             <button id="genMat" style="text-align: center" onclick="return getRandomKey()">${{ base.RANDOM_MATRIX }}$</button>
         </div>
@@ -53,6 +53,7 @@
     "name": "@@name"
     })
 @@include('./alphabets.html', {
-    "different_key_alphabet": @@different_key_alphabet
+    "different_key_alphabet": @@different_key_alphabet,
+    "name": "@@name"
 })
 </div>

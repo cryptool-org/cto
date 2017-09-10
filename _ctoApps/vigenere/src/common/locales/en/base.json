@@ -8,6 +8,6 @@
   "KEY_ALPHABETS": "Alphabets for the key:",
   "ADD_ALPHABET": "Add alphabet",
   "RANDOM_ALPHABET": "Randomize alphabet",
-  "RANDOM_MATRIX": "Generate random key matrix",
+  "RANDOM_MATRIX": "Generate new random key",
   "KEY_MATRIX": "Key matrix:"
 }
