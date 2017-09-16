@@ -249,18 +249,24 @@ function setupAlphabets(state) {
             event.preventDefault();
         });
 
-        state.$alphabets.push($container.get()[0]);
+        if ($parent === $alphaContainer) {
+            state.$alphabets.push($container.get()[0]);
+        } else if ($parent === $keyAlphaContainer) {
+            state.$keyAlphabets.push($container.get()[0]);
+        } else {
+            console.log("unknown parent");
+        }
         update();
     }
 
     jQuery('#add-alphabet').on('click', event => {
-        addAlphabet('', $alphaContainer);
+        addAlphabet('', $alphaContainer, 0);
         event.preventDefault();
     });
     const $btn = jQuery('#add-key-alphabet');
     if ($btn) {
         $btn.on('click', event => {
-            addAlphabet('', $keyAlphaContainer);
+            addAlphabet('', $keyAlphaContainer, 0);
             event.preventDefault();
         });
     }
