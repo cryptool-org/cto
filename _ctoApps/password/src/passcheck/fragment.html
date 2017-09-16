@@ -28,7 +28,7 @@
                         <td>
                             <div id="scorebarBorder">
                                 <div id="score">0%</div>
-                                <div id="scorebar">&nbsp;</div>
+                                <div id="scorebar" style="height: 15px">&nbsp;</div>
                             </div>
                         </td>
                     </tr>
@@ -160,8 +160,20 @@
                             <ul id="listLegend">
                                 <li><div class="exceed imgLegend">&nbsp;</div> <span class="bold"><!--Exceptional:-->Ausnahmefall:</span> <!--Exceeds minimum standards. Additional bonuses are applied.-->Überschreitet Mindestanspruch.</li>
                                 <li><div class="pass imgLegend">&nbsp;</div> <span class="bold"><!--Sufficient:-->Ausreichend:</span> <!--Meets minimum standards. Additional bonuses are applied.-->Erreicht Mindestanspruch.</li>
-                                <li><div class="warn imgLegend">&nbsp;</div> <span class="bold"><!--Warning-->Warnung:</span> <!--Advisory against employing bad practices. Overall score is reduced.-->Empfehlung zur Vermeidung ungünstiger Methoden.</li>
+                                <li><div class="warn imgLegend">&nbsp;</div> <span class="bold"><!--Warning-->Warnung:</span> <!--Advisory against employing bad practices. Overall score is reduced.-->Bitte schlechte Praxis vermeiden.</li>
                                 <li><div class="fail imgLegend">&nbsp;</div> <span class="bold"><!--Failure:-->Fehler:</span> <!--Does not meet the minimum standards. Overall score is reduced.-->Erfüllt nicht den Mindestanspruch.</li>
+                            </ul>
+                            <div><strong><!--Password can only be 40 characters long.-->Passwort darf maximal aus 40 Zeichen bestehen.</strong></div><br>
+                            <div><strong><!--Minimum Requirements:-->Mindestanforderungen:</strong></div>
+                            <ul id="requirements">
+                                <li><!--Minimum 8 characters in length-->Mindestens 8 Zeichen</li>
+                                <li><!--Contains 3/4 of the following characters:-->Besteht mindestens aus 3 der 4 Gruppen:</li>
+                                <ul>
+                                    <li><!--Uppercase letters-->Großbuchstaben</li>
+                                    <li><!--Lowercase letters-->Kleinbuchstaben</li>
+                                    <li><!--Numbers-->Zahlen</li>
+                                    <li><!--Symbols-->Sonderzeichen</li>
+                                </ul>
                             </ul>
                         </td>
                     </tr>
