@@ -260,15 +260,38 @@ jQuery(function ($) {
             	"<li id='" + id + "-ring' class='flex-container'>" +
             		"<span>Ring Position</span>" +
            			"<input class='flex-grow enigmatic-editable'>" +
-            	"</li>"
+            	"</li>" +
+                "<li id='" + id + "-delete' class='flex-container'>" +
+                    "<button class='btn btn-danger'>delete Wheel</button>" +
+                "</li>"
 		);
 
-		$($wheel).insertBefore($('#plugboard-toggler'));
+		$($wheel).insertBefore($('#add-wheel'));
 
-        addToggleDiv('toggle-' + id, id + '-presets', id + '-wheel', id + '-ring', id + '-overflows');
-        configurationDivs.push(id + '-toggler', id + '-presets', id + '-wheel', id + '-ring', id + '-overflows');
-        wheelDivs.push(id + '-toggler', id + '-presets', id + '-wheel', id + '-ring', id + '-overflows');
+		if (pos >= 1) {
+            $('#wheel-' + (pos - 1) + '-delete').addClass('unavailable');
+        }
+        addToggleDiv('toggle-' + id, [id + '-presets', id + '-wheel', id + '-ring', id + '-overflows', id + '-delete']);
+        configurationDivs.push(id + '-toggler', id + '-presets', id + '-wheel', id + '-ring', id + '-overflows', id + '-delete');
+        wheelDivs.push(id + '-toggler', id + '-presets', id + '-wheel', id + '-ring', id + '-overflows', id + '-delete');
 
+        $('#' + id + '-delete button').on('click', (event) => {
+            event.preventDefault();
+            if (pos > 1) {
+                $('#wheel-' + (pos - 1) + '-delete').removeClass('unavailable');
+            }
+            $('#' + id + '-toggler').remove();
+            $('#' + id + '-presets').remove();
+            $('#' + id + '-wheel').remove();
+            $('#' + id + '-ring').remove();
+            $('#' + id + '-overflows').remove();
+            $('#' + id + '-delete').remove();
+            state.wheels.pop();
+            const $input = $('#key').find('input');
+            if ($input.val().length > pos) { $input.val($input.val().substring(0, pos)); }
+
+            refresh();
+        });
         const $to_mapping = $('#' + id + '-wheel').find('.to');
         $to_mapping.on('change', (event) => {
             event.preventDefault();
@@ -323,6 +346,20 @@ jQuery(function ($) {
 	addWheel(); setWheel(0, std_wheels['I']); setWheelOverflows(0, std_overflows['I']); setWheelRing(0, 16);
 	addWheel(); setWheel(1, std_wheels['IV']); setWheelOverflows(1, std_overflows['IV']); setWheelRing(1, 26);
 	addWheel(); setWheel(2, std_wheels['III']); setWheelOverflows(2, std_overflows['III']); setWheelRing(2, 8);
+
+    $('#add-wheel button').on('click', (event) => {
+        event.preventDefault();
+        const wheel_num = state.wheels.length;
+        addWheel();
+        setWheel(wheel_num, std_wheels['I']);
+        setWheelOverflows(wheel_num, std_overflows['I']);
+        setWheelRing(wheel_num, 1);
+        const $input = $('#key').find('input');
+        while ($input.val().length <= wheel_num) { $input.val($input.val() + 'A'); }
+        refresh();
+    });
+    configurationDivs.push('add-wheel');
+    wheelDivs.push('add-wheel');
 
     addToggleDiv('toggle-plugboard', ['plugboard-mapping', 'plugboard-wheel']);
 
@@ -388,10 +425,8 @@ jQuery(function ($) {
 	}
 
 	setRoundsToggle('toggle-enc-rounds', 'r-enc-');
-	setRoundsToggle('toggle-dec-rounds', 'r-dec-');
 
 	addToggleDiv('toggle-encoded', ['output']);
-	addToggleDiv('toggle-decoded', ['decoded']);
 
     refresh();
 });

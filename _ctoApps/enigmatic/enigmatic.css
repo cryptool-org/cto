@@ -1,5 +1,5 @@
-.enigmatic .hidden {
-	display: none;
+.enigmatic .hidden, .enigmatic .unavailable {
+	display: none !important;
 }
 .enigmatic {
 	position: relative;
