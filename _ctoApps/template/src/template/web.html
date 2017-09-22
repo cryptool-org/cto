@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>${{ template.TITLE }}$</title>
+    <link rel="stylesheet" href="../bootstrap.css">
+    <link rel="stylesheet" href="./template.css">
+</head>
+<body>
+<div class="container">
+    <h1>${{ template.TITLE }}$</h1>
+    <div class="spacer"></div>
+</div>
+@@include('./fragment.html')
+<script src="../jquery.js"></script>
+<script src="../bootstrap.js"></script>
+</body>
+</html>
