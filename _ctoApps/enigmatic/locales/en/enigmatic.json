@@ -20,7 +20,7 @@
   "INPUT": "Input",
   "INPUT_TO_ROUND": "input to Round",
   "INPUT_WRONG_LEN": "input must be ## bytes long",
-  "INTRO": "Inspect the encryption of Enigma step by step.",
+  "INTRO": "Inspect the encryption of Enigma cipher machine step by step.",
   "INVALID_BYTE_SEQUENCE": "invalid byte sequence entered",
   "KEY": "Key",
   "LANG": "en",

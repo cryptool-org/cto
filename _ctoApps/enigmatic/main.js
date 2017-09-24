@@ -347,7 +347,7 @@ jQuery(function ($) {
 	addWheel(); setWheel(1, std_wheels['IV']); setWheelOverflows(1, std_overflows['IV']); setWheelRing(1, 26);
 	addWheel(); setWheel(2, std_wheels['III']); setWheelOverflows(2, std_overflows['III']); setWheelRing(2, 8);
 
-    $('#add-wheel button').on('click', (event) => {
+    $('#add-wheel').find('button').on('click', (event) => {
         event.preventDefault();
         const wheel_num = state.wheels.length;
         addWheel();
@@ -399,13 +399,15 @@ jQuery(function ($) {
 
 	addToggleDiv('toggle-key', ['key']);
 
-	$('#key').find('input').val('QWE');
-	$('#key').find('input').on('change', refresh);
+	let $keyInput = $('#key').find('input');
+	$keyInput.val('QWE');
+	$keyInput.on('change', refresh);
 
 	addToggleDiv('toggle-input', ['input']);
 
-	$('#input').find('input').val('RTZ');
-	$('#input').find('input').on('change', refresh);
+	let $inputInput = $('#input').find('input');
+	$inputInput.val('RTZ');
+	$inputInput.on('change', refresh);
 
 	function setRoundsToggle(a, prefix) {
 		const $a = jQuery('#' + a);

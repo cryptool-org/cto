@@ -20,7 +20,7 @@
   "INPUT": "Eingabe",
   "INPUT_TO_ROUND": "Eingabe für Runde",
   "INPUT_WRONG_LEN": "Eingabe muss ## Bytes lang sein",
-  "INTRO": "Untersuchen Sie die Enigma Verschlüsselung Schritt für Schritt.",
+  "INTRO": "Untersuchen Sie die Enigma-Verschlüsselung Schritt für Schritt.",
   "INVALID_BYTE_SEQUENCE": "Ungültige Byte-Sequenz eingegeben",
   "KEY": "Schlüssel",
   "LANG": "de",
