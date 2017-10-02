@@ -6,5 +6,5 @@
   "scripts": [
     "./enigmatic-%lang%.js"
   ],
-  "html": "aestetic-%lang%.html"
+  "html": "enigmatic-%lang%.html"
 }
