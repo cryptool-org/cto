@@ -97,13 +97,14 @@ jQuery(function ($) {
 	}
 
 	const configurationDivs = [
-        'reflector-toggler', 'reflector-presets', 'reflector-mapping', 'reflector-wheel',
-		'wheels-toggler',
-        'plugboard-toggler', 'plugboard-mapping', 'plugboard-wheel'
+		'configuration-intro',
+        'wheels-toggler', 'wheels-intro', 'add-wheel',
+        'reflector-toggler', 'reflector-intro', 'reflector-presets', 'reflector-mapping', 'reflector-wheel',
+        'plugboard-toggler', 'plugboard-intro', 'plugboard-mapping', 'plugboard-wheel'
 	];
 
 	addToggleDiv('toggle-configuration', configurationDivs);
-	addToggleDiv('toggle-reflector', ['reflector-presets', 'reflector-mapping', 'reflector-wheel']);
+	addToggleDiv('toggle-reflector', ['reflector-intro', 'reflector-presets', 'reflector-mapping', 'reflector-wheel']);
 
 	const $reflector_mapping_input = $('#reflector-mapping').find('input');
 	const $reflector_wheel = $('#reflector-wheel');
@@ -193,7 +194,7 @@ jQuery(function ($) {
 		refresh();
 	});
 
-	const wheelDivs = [];
+	const wheelDivs = ['wheels-intro', 'add-wheel'];
 
     const setWheel = (pos, mapping) => {
         const wheel = wheel_from_to(mapping);
@@ -229,16 +230,19 @@ jQuery(function ($) {
 		state.wheels.push(wheel);
 		const pos = state.wheels.length - 1;
 		const id = 'wheel-' + pos;
+		const wheel_pattern = "${{ enigmatic.WHEEL }}$";
+		const expanded_wheel_pattern = wheel_pattern.replace(/\$\$/, state.wheels.length);
 		const $wheel = $.parseHTML(
 			"<li id='" + id + "-toggler'>" +
             	"<a class='flex-container' id='toggle-" + id + "' href='#'>" +
-            		"<span class='flex-grow'>Walze " + (state.wheels.length - 1) + "</span>" +
+            		"<span class='flex-grow'>" + expanded_wheel_pattern + "</span>" +
                     "<span class='collapse glyphicon glyphicon-chevron-up'></span>" +
             		"<span class='expand glyphicon glyphicon-chevron-down'></span>" +
 				"</a>" +
             "</li>" +
-            	"<li id='" + id + "-presets'>" +
-            		"<div class='btn-group btn-group-sm' role='group'>" +
+            	"<li id='" + id + "-presets' class='flex-container'>" +
+            		"<span>${{ enigmatic.WHEEL_PRESET }}$</span>" +
+                    "<div class='btn-group btn-group-sm flex-grow' role='group'>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-i' href='#'>I</button>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-ii' href='#'>II</button>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-iii' href='#'>III</button>" +
@@ -247,22 +251,22 @@ jQuery(function ($) {
 					"</div>" +
             	"</li>" +
             	"<li id='" + id + "-wheel' class='flex-container wheel'>" +
-            		"<span>Wheel</span>" +
+            		"<span>${{ enigmatic.WHEEL_PERMUTATION }}$</span>" +
 					"<div class='flex-grow'>" +
 						"<div class='from referable'></div>" +
 						"<input class='to enigmatic-editable'>" +
 					"</div>" +
             	"</li>" +
             	"<li id='" + id + "-overflows' class='flex-container'>" +
-            		"<span>Overflows</span>" +
+            		"<span>${{ enigmatic.WHEEL_OVERFLOWS }}$</span>" +
             		"<input class='flex-grow enigmatic-editable'>" +
             	"</li>" +
             	"<li id='" + id + "-ring' class='flex-container'>" +
-            		"<span>Ring Position</span>" +
+            		"<span>${{ enigmatic.WHEEL_OFFSET }}$</span>" +
            			"<input class='flex-grow enigmatic-editable'>" +
             	"</li>" +
                 "<li id='" + id + "-delete' class='flex-container'>" +
-                    "<button class='btn btn-danger'>delete Wheel</button>" +
+                    "<button class='btn btn-danger'>${{ enigmatic.WHEEL_DELETE }}$</button>" +
                 "</li>"
 		);
 
@@ -358,10 +362,8 @@ jQuery(function ($) {
         while ($input.val().length <= wheel_num) { $input.val($input.val() + 'A'); }
         refresh();
     });
-    configurationDivs.push('add-wheel');
-    wheelDivs.push('add-wheel');
 
-    addToggleDiv('toggle-plugboard', ['plugboard-mapping', 'plugboard-wheel']);
+    addToggleDiv('toggle-plugboard', ['plugboard-intro', 'plugboard-mapping', 'plugboard-wheel']);
 
     const $plugboard_mapping_input = $('#plugboard-mapping').find('input');
     const $plugboard_wheel = $('#plugboard-wheel');

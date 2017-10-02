@@ -8,54 +8,59 @@
                         <span class="expand glyphicon glyphicon-chevron-down"></span>
                     </a>
                 </li>
-                    <li id="reflector-toggler">
-                        <a class="flex-container" id="toggle-reflector" href="#">
-                            <span class="flex-grow">Umkehrwalze</span>
+                    <li id="configuration-intro">${{ enigmatic.CONFIGURATION_INTRO }}$</li>
+                    <li id="wheels-toggler">
+                        <a class="flex-container" id="toggle-wheels" href="#">
+                            <span class="flex-grow">${{ enigmatic.WHEELS }}$</span>
                             <span class="collapse glyphicon glyphicon-chevron-up"></span>
                             <span class="expand glyphicon glyphicon-chevron-down"></span>
                         </a>
                     </li>
-                        <li id="reflector-presets">
-                            <div class="btn-group btn-group-sm" role="group">
+                        <li id="wheels-intro">${{ enigmatic.WHEELS_INTRO }}$</li>
+                        <li id="add-wheel">
+                            <button>${{ enigmatic.WHEEL_ADD }}$</button>
+                        </li>
+                    <li id="reflector-toggler">
+                        <a class="flex-container" id="toggle-reflector" href="#">
+                            <span class="flex-grow">${{ enigmatic.REFLECTOR }}$</span>
+                            <span class="collapse glyphicon glyphicon-chevron-up"></span>
+                            <span class="expand glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </li>
+                        <li id="reflector-intro">${{ enigmatic.REFLECTOR_INTRO }}$</li>
+                        <li id="reflector-presets" class="flex-container">
+                            <span>${{ enigmatic.REFLECTOR_PRESET }}$</span>
+                            <div class="btn-group btn-group-sm flex-grow" role="group">
                                 <button type="button" class="btn btn-default" id="ukw-a" href="">UKW A</button>
                                 <button type="button" class="btn btn-default" id="ukw-b" href="">UKW B</button>
                                 <button type="button" class="btn btn-default" id="ukw-c" href="">UKW C</button>
                             </div>
                         </li>
                         <li id="reflector-mapping" class="flex-container">
-                            <span>Mapping</span>
+                            <span>${{ enigmatic.REFLECTOR_SWAPS}}$</span>
                             <input class="flex-grow enigmatic-editable">
                         </li>
                         <li id="reflector-wheel" class="flex-container wheel">
-                            <span>Wheel</span>
+                            <span>${{ enigmatic.REFLECTOR_WHEEL }}$</span>
                             <div class="flex-grow">
                                 <div class="from referable"></div>
                                 <input class="to enigmatic-editable">
                             </div>
                         </li>
-                    <li id="wheels-toggler">
-                        <a class="flex-container" id="toggle-wheels" href="#">
-                            <span class="flex-grow">Walzen</span>
-                            <span class="collapse glyphicon glyphicon-chevron-up"></span>
-                            <span class="expand glyphicon glyphicon-chevron-down"></span>
-                        </a>
-                    </li>
-                        <li id="add-wheel">
-                            <button>add Wheel</button>
-                        </li>
                     <li id="plugboard-toggler">
                         <a class="flex-container" id="toggle-plugboard" href="#">
-                            <span class="flex-grow">Steckbrett</span>
+                            <span class="flex-grow">${{ enigmatic.PLUGBOARD }}$</span>
                             <span class="collapse glyphicon glyphicon-chevron-up"></span>
                             <span class="expand glyphicon glyphicon-chevron-down"></span>
                         </a>
                     </li>
+                        <li id="plugboard-intro">${{ enigmatic.PLUGBOARD_INTRO }}$</li>
                         <li id="plugboard-mapping" class="flex-container">
-                            <span>Mapping</span>
+                            <span>${{ enigmatic.REFLECTOR_SWAPS }}$</span>
                             <input class="flex-grow enigmatic-editable">
                         </li>
                         <li id="plugboard-wheel" class="flex-container wheel">
-                            <span>Wheel</span>
+                            <span>${{ enigmatic.REFLECTOR_WHEEL }}$</span>
                             <div class="flex-grow">
                                 <div class="from referable"></div>
                                 <input class="to enigmatic-editable">
@@ -69,7 +74,7 @@
                     </a>
                 </li>
                     <li id="key" class="flex-container">
-                        <span>Key</span>
+                        <span>${{ enigmatic.KEY }}$</span>
                         <input class="flex-grow enigmatic-editable">
                     </li>
                 <li class="header">
@@ -80,7 +85,7 @@
                     </a>
                 </li>
                     <li class="flex-container" id="input">
-                        <span>Input</span>
+                        <span>${{ enigmatic.INPUT }}$</span>
                         <input class="flex-grow enigmatic-editable">
                     </li>
                 <li class="header" id="rounds">
