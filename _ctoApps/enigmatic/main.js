@@ -1,6 +1,7 @@
 'use strict';
 
 let refresh;
+let main_ids = [];
 
 jQuery(function ($) {
 
@@ -411,25 +412,7 @@ jQuery(function ($) {
 	$inputInput.val('RTZ');
 	$inputInput.on('change', refresh);
 
-	function setRoundsToggle(a, prefix) {
-		const $a = jQuery('#' + a);
-		$a.on('click', (evt) => {
-            const divs = [];
-            const steps = state.chaining === Chaining.None ? 1 : state.input.length / state.blockSize + 1;
-            for (let j = 0; j < steps; ++j) {
-                for (let i = 1; i <= state.rounds; ++i) {
-                    divs.push('s-' + j + '-' + prefix + i + '-hdr');
-                    divs.push('s-' + j + '-' + prefix + i + '-cnt');
-                }
-            }
-            toggleDiv(a, divs);
-			if (evt) { evt.preventDefault(); }
-			refresh();
-		});
-	}
-
-	setRoundsToggle('toggle-enc-rounds', 'r-enc-');
-
+	addToggleDiv('toggle-enc-rounds', main_ids);
 	addToggleDiv('toggle-encoded', ['output']);
 
     refresh();
