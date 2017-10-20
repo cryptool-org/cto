@@ -4,7 +4,5 @@
 @@include("underscore.js")
 @@include("dom.js")
 @@include("dependencies.js")
-@@include("key.js")
 @@include("crypt.js")
 @@include("main.js")
-@@include("text.js")

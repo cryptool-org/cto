@@ -38,17 +38,21 @@
                         </li>
                         <li id="reflector-mapping" class="flex-container">
                             <span>${{ enigmatic.REFLECTOR_SWAPS}}$</span>
-                            <input class="flex-grow enigmatic-editable">
+                            <div class="flex-grow">
+                                <div class="alert alert-danger hidden"></div>
+                                <input class="enigmatic-editable">
+                            </div>
                         </li>
                         <li id="reflector-wheel" class="flex-container wheel">
                             <span>${{ enigmatic.REFLECTOR_WHEEL }}$</span>
                             <div class="flex-grow">
                                 <div class="from referable"></div>
+                                <div class="alert alert-danger hidden"></div>
                                 <input class="to enigmatic-editable">
                             </div>
                         </li>
                     <li id="plugboard-toggler">
-                        <a class="flex-container" id="toggle-plugboard" href="#">
+                             const $wheel = $('#wheel-' + pos + '-wheel');   <a class="flex-container" id="toggle-plugboard" href="#">
                             <span class="flex-grow">${{ enigmatic.PLUGBOARD }}$</span>
                             <span class="collapse glyphicon glyphicon-chevron-up"></span>
                             <span class="expand glyphicon glyphicon-chevron-down"></span>
@@ -57,12 +61,16 @@
                         <li id="plugboard-intro">${{ enigmatic.PLUGBOARD_INTRO }}$</li>
                         <li id="plugboard-mapping" class="flex-container">
                             <span>${{ enigmatic.REFLECTOR_SWAPS }}$</span>
-                            <input class="flex-grow enigmatic-editable">
+                            <div class="flex-grow">
+                                <div class="alert alert-danger hidden"></div>
+                                <input class="flex-grow enigmatic-editable">
+                            </div>
                         </li>
                         <li id="plugboard-wheel" class="flex-container wheel">
                             <span>${{ enigmatic.REFLECTOR_WHEEL }}$</span>
                             <div class="flex-grow">
                                 <div class="from referable"></div>
+                                <div class="alert alert-danger hidden"></div>
                                 <input class="to enigmatic-editable">
                             </div>
                         </li>

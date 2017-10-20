@@ -5,7 +5,13 @@ let main_ids = [];
 
 jQuery(function ($) {
 
-    const wheel_from_reflector = (str) => {
+    const err = ($base, msg) => {
+        const $alert = $base.find('.alert');
+        $alert.toggleClass('hidden', !msg);
+        $alert.text(msg);
+    };
+
+    const wheel_from_reflector = (str, $base) => {
         const result = { mapping: {}, inv_mapping: {}, ring: 1 };
         let last_ch = undefined;
         for (let i = 0; i < str.length; ++i) {
@@ -22,7 +28,7 @@ jQuery(function ($) {
                 }
             }
         }
-        if (last_ch) { console.log("pending char"); return null; }
+        if (last_ch) { err($base, "pending char"); return null; }
         result.pretty_from = "ABCDE FGHIJ KLMNO PQRST UVWXY Z";
         result.pretty_to = "";
         for (let i = 0; i < result.pretty_from.length; ++i) {
@@ -40,7 +46,7 @@ jQuery(function ($) {
         return result;
     };
 
-    const wheel_from_to = (str) => {
+    const wheel_from_to = (str, $base) => {
         const result = { mapping: {}, inv_mapping: {}, ring: 1 };
         result.pretty_from = "ABCDE FGHIJ KLMNO PQRST UVWXY Z";
         result.pretty_to = "";
@@ -49,9 +55,9 @@ jQuery(function ($) {
             const key = result.pretty_from[i];
             if (key >= 'A' && key <= 'Z') {
             	while (j < str.length && (str[j] < 'A' || str[j] > 'Z')) { ++j; }
-            	if (j >= str.length) { console.log("too short"); return null; }
+            	if (j >= str.length) { err($base, "too short"); return null; }
             	const val = str[j];
-            	if (result.inv_mapping[val]) { console.log("key used twice"); return null; }
+            	if (result.inv_mapping[val]) { err($base, "key used twice"); return null; }
             	result.mapping[key] = val;
             	result.inv_mapping[val] = key;
                 result.pretty_to += val;
@@ -113,8 +119,9 @@ jQuery(function ($) {
     const $reflector_wheel_to = $reflector_wheel.find('.to');
 
 	const setReflector = (str, id) => {
-		const wheel = wheel_from_reflector(str);
+		const wheel = wheel_from_reflector(str, $('#reflector-mapping'));
 		if (! wheel) { return; }
+		err($('#reflector-mapping'));
 		state.reflector = wheel;
 		$reflector_mapping_input.val(str);
 		$reflector_wheel_from.text(wheel.pretty_from);
@@ -138,7 +145,7 @@ jQuery(function ($) {
 	);
 	setReflector(std_reflectors['B'], 'ukw-b');
 
-	const reflector_from_wheel = (wheel) => {
+	const reflector_from_wheel = (wheel, $base) => {
 		if (! wheel) { return null; }
 		const mapping = $.extend({}, wheel.mapping);
 		let result = '';
@@ -146,7 +153,7 @@ jQuery(function ($) {
 			const key = wheel.pretty_from[i];
 			if (key in mapping) {
 				const val = mapping[key];
-				if (mapping[val] !== key) { console.log('not reflectable: ' + key + ', ' + val); return null;}
+				if (mapping[val] !== key) { err($base, 'not reflectable: ' + key + ', ' + val); return null;}
 				if (key !== val) {
                     if (result.length) {
                         result += ' ';
@@ -161,14 +168,16 @@ jQuery(function ($) {
 		return result;
 	};
 	const wheel_equals_reflector = (wheel, str) => {
-		const other = wheel_from_reflector(str);
+		const other = wheel_from_reflector(str, null);
 		return wheel && other && wheel.pretty_to === other.pretty_to;
 	};
 
 	$reflector_mapping_input.on('change', (event) => {
 		event.preventDefault();
-		const wheel = wheel_from_reflector($reflector_mapping_input.val());
+		const $mapping = $('#reflector-mapping');
+		const wheel = wheel_from_reflector($reflector_mapping_input.val(), $mapping);
 		if (wheel) {
+		    err($mapping);
 			state.reflector = wheel;
             $reflector_wheel_from.text(wheel.pretty_from);
             $reflector_wheel_to.val(wheel.pretty_to);
@@ -176,16 +185,18 @@ jQuery(function ($) {
             $('#ukw-b').toggleClass('active', wheel_equals_reflector(wheel, std_reflectors['B']));
             $('#ukw-c').toggleClass('active', wheel_equals_reflector(wheel, std_reflectors['C']));
 		}
-		$reflector_mapping_input.val(reflector_from_wheel(state.reflector));
+		$reflector_mapping_input.val(reflector_from_wheel(state.reflector, $mapping));
 		refresh();
 	});
 
 	$reflector_wheel_to.on('change', (event) => {
 		event.preventDefault();
-		const wheel = wheel_from_to($reflector_wheel_to.val());
+		const $wheel = $('#reflector-wheel');
+		const wheel = wheel_from_to($reflector_wheel_to.val(), $wheel);
 		if (wheel) {
-			const reflector_str = reflector_from_wheel(wheel);
+			const reflector_str = reflector_from_wheel(wheel, $wheel);
 			if (reflector_str) {
+			    err($wheel);
 				state.reflector = wheel;
 				$reflector_mapping_input.val(reflector_str);
                 $reflector_wheel_from.text(wheel.pretty_from);
@@ -198,12 +209,13 @@ jQuery(function ($) {
 	const wheelDivs = ['wheels-intro', 'add-wheel'];
 
     const setWheel = (pos, mapping) => {
-        const wheel = wheel_from_to(mapping);
+        const $wheel = $('#wheel-' + pos + '-wheel');
+        const wheel = wheel_from_to(mapping, $wheel);
         if (wheel) {
+            err($wheel);
             wheel.ring = state.wheels[pos].ring;
             state.wheels[pos] = wheel;
         }
-        const $wheel = $('#wheel-' + pos + '-wheel');
         $wheel.find('.from').text(state.wheels[pos].pretty_from);
         $wheel.find('.to').val(state.wheels[pos].pretty_to);
         $('#wheel-' + pos + '-ring').find('input').val(state.wheels[pos].ring);
@@ -227,7 +239,7 @@ jQuery(function ($) {
 	};
 
 	const addWheel = () => {
-		const wheel = wheel_from_to(std_wheels['I']);
+		const wheel = wheel_from_to(std_wheels['I'], null);
 		state.wheels.push(wheel);
 		const pos = state.wheels.length - 1;
 		const id = 'wheel-' + pos;
@@ -255,6 +267,7 @@ jQuery(function ($) {
             		"<span>${{ enigmatic.WHEEL_PERMUTATION }}$</span>" +
 					"<div class='flex-grow'>" +
 						"<div class='from referable'></div>" +
+                        "<div class='alert alert-danger hidden'></div>" +
 						"<input class='to enigmatic-editable'>" +
 					"</div>" +
             	"</li>" +
@@ -264,6 +277,7 @@ jQuery(function ($) {
             	"</li>" +
             	"<li id='" + id + "-ring' class='flex-container'>" +
             		"<span>${{ enigmatic.WHEEL_OFFSET }}$</span>" +
+                    "<div class='alert alert-danger hidden'></div>" +
            			"<input class='flex-grow enigmatic-editable'>" +
             	"</li>" +
                 "<li id='" + id + "-delete' class='flex-container'>" +
@@ -372,13 +386,15 @@ jQuery(function ($) {
     const $plugboard_wheel_to = $plugboard_wheel.find('.to');
 
     const setPlugboardReflector = (str) => {
-    	const wheel = wheel_from_reflector(str);
+        const $mapping = $('#plugboard-mapping');
+    	const wheel = wheel_from_reflector(str, $mapping);
     	if (wheel) {
+    	    err($mapping);
     		state.plugboard = wheel;
     		$plugboard_wheel_from.text(wheel.pretty_from);
     		$plugboard_wheel_to.val(wheel.pretty_to);
 		}
-		$plugboard_mapping_input.val(reflector_from_wheel(state.plugboard));
+		$plugboard_mapping_input.val(reflector_from_wheel(state.plugboard, $mapping));
     	refresh();
 	};
     setPlugboardReflector('AD CN ET FL GI JV KZ PU QY WX');
@@ -388,7 +404,7 @@ jQuery(function ($) {
 	});
     $plugboard_wheel_to.on('change', (event) => {
     	event.preventDefault();
-    	const wheel = wheel_from_to($plugboard_wheel_to.val());
+    	const wheel = wheel_from_to($plugboard_wheel_to.val(), $('#plugboard-wheel'));
     	if (wheel) {
     		const reflected = reflector_from_wheel(wheel);
     		if (reflected) {
