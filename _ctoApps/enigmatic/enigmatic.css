@@ -104,7 +104,7 @@
 
 }
 
-#enigmatic ul {
+.tab-content .enigmatic ul li p {
 	text-indent: 0;
 }
 #enigmatic-calc p {
