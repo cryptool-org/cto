@@ -15,7 +15,7 @@ jQuery(function ($) {
         const result = { mapping: {}, inv_mapping: {}, ring: 1 };
         let last_ch = undefined;
         for (let i = 0; i < str.length; ++i) {
-            const ch = str[i];
+            const ch = str[i].toUpperCase();
             if (ch >= 'A' && ch <= 'Z') {
                 if (last_ch) {
                     result.mapping[ch] = last_ch;
@@ -32,7 +32,7 @@ jQuery(function ($) {
         result.pretty_from = "ABCDE FGHIJ KLMNO PQRST UVWXY Z";
         result.pretty_to = "";
         for (let i = 0; i < result.pretty_from.length; ++i) {
-            const key = result.pretty_from[i];
+            const key = result.pretty_from[i].toUpperCase();
             if (key >= 'A' && key <= 'Z') {
                 if (! result.mapping[key]) {
                 	result.mapping[key] = key;
@@ -50,6 +50,7 @@ jQuery(function ($) {
         const result = { mapping: {}, inv_mapping: {}, ring: 1 };
         result.pretty_from = "ABCDE FGHIJ KLMNO PQRST UVWXY Z";
         result.pretty_to = "";
+        str = str.toUpperCase();
         let j = 0;
         for (let i = 0; i < result.pretty_from.length; ++i) {
             const key = result.pretty_from[i];
@@ -80,14 +81,9 @@ jQuery(function ($) {
 // recalculate fields
 
 	refresh = function() {
-		//aes.resetDependencies();
-		//aes.relayout();
 		const wheels = jQuery('#key').find('input').val();
 		const input = jQuery('#input').find('input').val();
 		encode(input, wheels, state);
-		//const encoded = encode_chain(state, expandedKey);
-		//decode_chain(encoded, state, expandedKey);
-		//aes.refreshTappedCell();
 	};
 
 	refresh();
@@ -426,7 +422,7 @@ jQuery(function ($) {
 
 	let $inputInput = $('#input').find('input');
 	$inputInput.val('RTZ');
-	$inputInput.on('change', refresh);
+	$inputInput.on('input', refresh);
 
 	addToggleDiv('toggle-enc-rounds', main_ids);
 	addToggleDiv('toggle-encoded', ['output']);

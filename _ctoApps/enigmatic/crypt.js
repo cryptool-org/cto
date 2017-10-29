@@ -80,6 +80,8 @@ function encode(input, wheels, state) {
     while ($computation.next().attr('id') !== 'rounds-end') { $computation.next().remove(); }
 
     state.output = '';
+    input = input.toUpperCase();
+    wheels = wheels.toUpperCase();
     for (let i = 0; i < input.length; ++i) {
     	if (input[i] < 'A' || input[i] > 'Z') {
     		state.output += input[i];

@@ -16,11 +16,11 @@
 	color: #888;
 }
 .enigmatic .enigmatic-editable {
-	color: #008;
-	background-color: #ddf;
+	color: #3c763d;
+	background-color: #edf6ed;
 }
 .enigmatic .referable {
-	color: #008;
+	color: #3c763d;
 }
 .enigmatic .bytes div, .enigmatic .enigmatic-editable div, .enigmatic .referable div {
 	display: inline-block;
@@ -104,6 +104,9 @@
 
 }
 
+#enigmatic ul {
+	text-indent: 0;
+}
 #enigmatic-calc p {
 	margin-bottom: 0;
 }
@@ -133,7 +136,7 @@
 	border-bottom: 1px solid #ddd;
 }
 .enigmatic ul > li {
-	border-top: 1px solid #ddd;		
+	border-top: 1px solid #ddd;
 	padding: 11px 65px 11px 15px;
 	position: relative;
 }
@@ -148,8 +151,8 @@
 	margin-top: -1px;
 	margin-left: 0;
 	font-weight: 500;
-	color: #999;
-	background-color: #fafafa;
+	color: #3c763d;
+	background-color: #edf6ed;
 	border-top: 2px solid #888;
 }
 .enigmatic .card {
@@ -172,7 +175,7 @@
 	display: block;
 	padding: inherit;
 	margin: -11px -65px -11px -15px;
-	color: #008;
+	color: #3c763d;
 	text-decoration: none;
 
     -webkit-user-select: none;
@@ -181,7 +184,7 @@
 }
 .enigmatic .header > a {
 	padding: inherit;
-	margin: -6px -65px -6px -15px;	
+	margin: -6px -65px -6px -15px;
 }
 
 .enigmatic li li {
