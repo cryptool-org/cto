@@ -22,6 +22,7 @@
   "KEY": "Schlüssel",
   "LANG": "de",
   "NO_CHAINING": "Ohne",
+  "NON_STANDARD_CONF": "Aktuelle Konfiguration kann nicht mit einer Standard-Enigma umgesetzt werden.",
   "NOT_VALID_HEX": "'##' ist keine gültige Hex-Ziffer",
   "NUMBER_OF_ROUNDS": "Rundenanzahl:",
   "PLUGBOARD": "Steckbrett",

@@ -23,6 +23,7 @@
   "KEY": "Key",
   "LANG": "en",
   "NO_CHAINING": "None",
+  "NON_STANDARD_CONF": "Current configuration is impossible with a physical enigma.",
   "NOT_VALID_HEX": "'##' is not a valid hex digit",
   "NUMBER_OF_ROUNDS": "Number of Rounds:",
   "PLUGBOARD": "Plugboard",

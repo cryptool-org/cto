@@ -12,7 +12,7 @@ jQuery(function ($) {
     };
 
     const wheel_from_reflector = (str, $base) => {
-        const result = { mapping: {}, inv_mapping: {}, ring: 1 };
+        const result = { mapping: {}, inv_mapping: {}, ring: 1, overflow: '' };
         let last_ch = undefined;
         for (let i = 0; i < str.length; ++i) {
             const ch = str[i].toUpperCase();
@@ -47,7 +47,7 @@ jQuery(function ($) {
     };
 
     const wheel_from_to = (str, $base) => {
-        const result = { mapping: {}, inv_mapping: {}, ring: 1 };
+        const result = { mapping: {}, inv_mapping: {}, ring: 1, overflow: '' };
         result.pretty_from = "ABCDE FGHIJ KLMNO PQRST UVWXY Z";
         result.pretty_to = "";
         str = str.toUpperCase();
@@ -73,14 +73,48 @@ jQuery(function ($) {
 	const state = {
 		'reflector': null,
 		'plugboard': null,
-		'wheels': [],
-		'key': testcases[0].key.slice(),
-		'input': testcases[0].input.slice()
+		'wheels': []
 	};
 
 // recalculate fields
 
-	refresh = function() {
+    const isDefaultConfiguration = () => { 
+        const wheels = state.wheels;
+        if (state.wheels.length !== 3) { return false; }
+        let wheels_found = {};
+        for (let i = state.wheels.length - 1; i >= 0; --i) {
+            const pretty_to = wheels[i].pretty_to;
+            const overflows = wheels[i].overflow;
+            if ((pretty_to === std_wheels['I']) && (overflows == std_overflows['I']) && ! wheels_found['I']) { 
+                wheels_found['I'] = true; 
+            } else if ((pretty_to === std_wheels['II']) && (overflows == std_overflows['II']) && ! wheels_found['II']) {
+                wheels_found['II'] = true;
+            } else if ((pretty_to === std_wheels['III']) && (overflows == std_overflows['III']) && ! wheels_found['III']) {
+                wheels_found['III'] = true;
+            } else if ((pretty_to === std_wheels['IV']) && (overflows == std_overflows['IV']) && ! wheels_found['IV']) {
+                wheels_found['IV'] = true;
+            } else if ((pretty_to === std_wheels['V']) && (overflows == std_overflows['V']) && ! wheels_found['V']) {
+                wheels_found['V'] = true;
+            } else { return false; }
+        }
+
+        const ref_pretty_to = state.reflector.pretty_to;
+        if ((ref_pretty_to !== wheel_from_reflector(std_reflectors['A']).pretty_to)
+            && (ref_pretty_to !== wheel_from_reflector(std_reflectors['B']).pretty_to)
+            && (ref_pretty_to !== wheel_from_reflector(std_reflectors['C'])).pretty_to
+        ) {
+            return false;
+        }
+
+        return true;
+    };
+
+    const checkForDefaultConfiguration = () => {
+        $('#non-standard-warning').toggleClass('hidden', isDefaultConfiguration());
+    };
+
+	refresh = () => {
+        checkForDefaultConfiguration();
 		const wheels = jQuery('#key').find('input').val();
 		const input = jQuery('#input').find('input').val();
 		encode(input, wheels, state);
@@ -210,16 +244,17 @@ jQuery(function ($) {
         if (wheel) {
             err($wheel);
             wheel.ring = state.wheels[pos].ring;
+            wheel.overflow = state.wheels[pos].overflow;
             state.wheels[pos] = wheel;
         }
         $wheel.find('.from').text(state.wheels[pos].pretty_from);
         $wheel.find('.to').val(state.wheels[pos].pretty_to);
         $('#wheel-' + pos + '-ring').find('input').val(state.wheels[pos].ring);
-        $('#wheel-' + pos + '-i').toggleClass('active', wheel.pretty_to === std_wheels['I']);
-        $('#wheel-' + pos + '-ii').toggleClass('active', wheel.pretty_to === std_wheels['II']);
-        $('#wheel-' + pos + '-iii').toggleClass('active', wheel.pretty_to === std_wheels['III']);
-        $('#wheel-' + pos + '-iv').toggleClass('active', wheel.pretty_to === std_wheels['IV']);
-        $('#wheel-' + pos + '-v').toggleClass('active', wheel.pretty_to === std_wheels['V']);
+        $('#wheel-' + pos + '-i').toggleClass('active', wheel.pretty_to === std_wheels['I'] && wheel.overflow === std_overflows['I']);
+        $('#wheel-' + pos + '-ii').toggleClass('active', wheel.pretty_to === std_wheels['II'] && wheel.overflow === std_overflows['II']);
+        $('#wheel-' + pos + '-iii').toggleClass('active', wheel.pretty_to === std_wheels['III'] && wheel.overflow === std_overflows['III']);
+        $('#wheel-' + pos + '-iv').toggleClass('active', wheel.pretty_to === std_wheels['IV'] && wheel.overflow === std_overflows['IV']);
+        $('#wheel-' + pos + '-v').toggleClass('active', wheel.pretty_to === std_wheels['V'] && wheel.overflow === std_overflows['V']);
     };
 
     const setWheelRing = (pos, value) => {
@@ -326,48 +361,48 @@ jQuery(function ($) {
 		});
         $('#' + id + '-i').on('click', (event) => {
         	event.preventDefault();
-        	setWheel(pos, std_wheels['I']);
         	setWheelOverflows(pos, std_overflows['I']);
+        	setWheel(pos, std_wheels['I']);
         	refresh();
 		});
         $('#' + id + '-ii').on('click', (event) => {
         	event.preventDefault();
-        	setWheel(pos, std_wheels['II']);
         	setWheelOverflows(pos, std_overflows['II']);
+        	setWheel(pos, std_wheels['II']);
         	refresh();
 		});
 		$('#' + id + '-iii').on('click', (event) => {
 			event.preventDefault();
-			setWheel(pos, std_wheels['III']);
 			setWheelOverflows(pos, std_overflows['III']);
+			setWheel(pos, std_wheels['III']);
 			refresh();
 		});
 		$('#' + id + '-iv').on('click', (event) => {
 			event.preventDefault();
-			setWheel(pos, std_wheels['IV']);
 			setWheelOverflows(pos, std_overflows['IV']);
+			setWheel(pos, std_wheels['IV']);
 			refresh();
 		});
 		$('#' + id + '-v').on('click', (event) => {
 			event.preventDefault();
-			setWheel(pos, std_wheels['V']);
 			setWheelOverflows(pos, std_overflows['V']);
+			setWheel(pos, std_wheels['V']);
 			refresh();
 		});
 	};
 
 	addToggleDiv('toggle-wheels', wheelDivs);
 
-	addWheel(); setWheel(0, std_wheels['I']); setWheelOverflows(0, std_overflows['I']); setWheelRing(0, 16);
-	addWheel(); setWheel(1, std_wheels['IV']); setWheelOverflows(1, std_overflows['IV']); setWheelRing(1, 26);
-	addWheel(); setWheel(2, std_wheels['III']); setWheelOverflows(2, std_overflows['III']); setWheelRing(2, 8);
+	addWheel(); setWheelOverflows(0, std_overflows['I']); setWheel(0, std_wheels['I']); setWheelRing(0, 16);
+	addWheel(); setWheelOverflows(1, std_overflows['IV']); setWheel(1, std_wheels['IV']); setWheelRing(1, 26);
+	addWheel(); setWheelOverflows(2, std_overflows['III']); setWheel(2, std_wheels['III']); setWheelRing(2, 8);
 
     $('#add-wheel').find('button').on('click', (event) => {
         event.preventDefault();
         const wheel_num = state.wheels.length;
         addWheel();
-        setWheel(wheel_num, std_wheels['I']);
         setWheelOverflows(wheel_num, std_overflows['I']);
+        setWheel(wheel_num, std_wheels['I']);
         setWheelRing(wheel_num, 1);
         const $input = $('#key').find('input');
         while ($input.val().length <= wheel_num) { $input.val($input.val() + 'A'); }
