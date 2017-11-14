@@ -401,8 +401,29 @@ jQuery(function ($) {
         event.preventDefault();
         const wheel_num = state.wheels.length;
         addWheel();
-        setWheelOverflows(wheel_num, std_overflows['I']);
-        setWheel(wheel_num, std_wheels['I']);
+
+        let possible_wheels = { 'I': true, 'II': true, 'III': true, 'IV': true, 'V': true };
+        for (let i = 0; i < state.wheels.length; ++i) {
+            let pretty_to = state.wheels[i].pretty_to;
+            let overflow = state.wheels[i].overflow;
+            let keys = Object.keys(possible_wheels);
+            for (var j = 0; j < keys.length; ++j) {
+                if (std_overflows[keys[j]] === overflow && std_wheels[keys[j]] === pretty_to) {
+                    delete possible_wheels[keys[j]];
+                }
+            }
+        }
+        let something = false;
+        for (let key in possible_wheels) {
+            setWheelOverflows(wheel_num, std_overflows[key]);
+            setWheel(wheel_num, std_wheels[key]);
+            something = true;
+            break;
+        }
+        if (! something) {
+            setWheelOverflows(wheel_num, std_overflows['I']);
+            setWheel(wheel_num, std_wheels['I']);
+        }
         setWheelRing(wheel_num, 1);
         const $input = $('#key').find('input');
         while ($input.val().length <= wheel_num) { $input.val($input.val() + 'A'); }
