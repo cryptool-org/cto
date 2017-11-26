@@ -79,6 +79,7 @@ jQuery(function ($) {
 // recalculate fields
 
     const isDefaultConfiguration = () => { 
+console.log('check for defaults');
         const wheels = state.wheels;
         if (state.wheels.length !== 3) { return false; }
         let wheels_found = {};
@@ -105,7 +106,7 @@ jQuery(function ($) {
         ) {
             return false;
         }
-
+console.log('is default configuration');
         return true;
     };
 
