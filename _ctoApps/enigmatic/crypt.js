@@ -36,7 +36,7 @@ function encode_round(pos, ch, wheels, state) {
 	}
     const wheel_advancement_template = "${{ enigmatic.WHEEL_ADVANCEMENT }}$";
 	const wheel_advancement = wheel_advancement_template.replace(/\$1/, orig_wheels).replace(/\$2/, wheels);
-	add_state(id + '-wheels', wheel_advancement, ch, wheels, $container);
+	add_state(id + '-wheels', wheel_advancement, $container);
 
 	let current = "${{ enigmatic.STEP_INPUT}}$".replace(/\$\$/, ch);
 	ch = state.plugboard.mapping[ch];
