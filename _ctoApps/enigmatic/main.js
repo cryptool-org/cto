@@ -79,7 +79,6 @@ jQuery(function ($) {
 // recalculate fields
 
     const isDefaultConfiguration = () => { 
-console.log('check for defaults');
         const wheels = state.wheels;
         if (state.wheels.length !== 3) { return false; }
         let wheels_found = {};
@@ -106,7 +105,6 @@ console.log('check for defaults');
         ) {
             return false;
         }
-console.log('is default configuration');
         return true;
     };
 
@@ -285,35 +283,51 @@ console.log('is default configuration');
             		"<span class='expand glyphicon glyphicon-chevron-down'></span>" +
 				"</a>" +
             "</li>" +
-            	"<li id='" + id + "-presets' class='flex-container'>" +
-            		"<span>${{ enigmatic.WHEEL_PRESET }}$</span>" +
-                    "<div class='btn-group btn-group-sm flex-grow' role='group'>" +
+            	"<li id='" + id + "-presets'>" +
+                    "<div class='form-group'>" +
+            		"<label for='"+ id + "-presets' class='col-lg-3'>${{ enigmatic.WHEEL_PRESET }}$</label>" +
+                    "<div class='btn-group btn-group-sm col-lg-9' role='group'>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-i' href='#'>I</button>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-ii' href='#'>II</button>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-iii' href='#'>III</button>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-iv' href='#'>IV</button>" +
             			"<button type='button' class='btn btn-default' id='" + id + "-v' href='#'>V</button>" +
 					"</div>" +
+                    "</div>" +
             	"</li>" +
-            	"<li id='" + id + "-wheel' class='flex-container wheel'>" +
-            		"<span>${{ enigmatic.WHEEL_PERMUTATION }}$</span>" +
-					"<div class='flex-grow'>" +
+            	"<li id='" + id + "-wheel' class='wheel'>" +
+                    "<div class='form-group'>" + 
+            		"<label for='" + id + "-wheel' class='col-lg-3'>${{ enigmatic.WHEEL_PERMUTATION }}$</label>" +
+					"<div class='col-lg-9'>" +
 						"<div class='from referable'></div>" +
                         "<div class='alert alert-danger hidden'></div>" +
-						"<input class='to enigmatic-editable'>" +
+						"<input class='to enigmatic-editable form-control'>" +
 					"</div>" +
+                    "</div>" + 
             	"</li>" +
-            	"<li id='" + id + "-overflows' class='flex-container'>" +
-            		"<span>${{ enigmatic.WHEEL_OVERFLOWS }}$</span>" +
-            		"<input class='flex-grow enigmatic-editable'>" +
+            	"<li id='" + id + "-overflows'>" +
+                    "<div class='form-group'>" +
+            		"<label for='" + id + "-overflows' class='col-lg-3'>${{ enigmatic.WHEEL_OVERFLOWS }}$</label>" +
+                    "<div class='col-lg-9'>" +
+            		"<input class='form-control enigmatic-editable'>" +
+                    "</div>" +
+                    "</div>" +
             	"</li>" +
-            	"<li id='" + id + "-ring' class='flex-container'>" +
-            		"<span>${{ enigmatic.WHEEL_OFFSET }}$</span>" +
+            	"<li id='" + id + "-ring'>" +
+                    "<div class='form-group'>" + 
+            		"<label for='"+ id + "-ring' class='col-lg-3'>${{ enigmatic.WHEEL_OFFSET }}$</label>" +
+                    "<div class='col-lg-9'>" + 
                     "<div class='alert alert-danger hidden'></div>" +
-           			"<input class='flex-grow enigmatic-editable'>" +
+           			"<input class='form-control enigmatic-editable'>" +
+                    "</div>" + 
+                    "</div>" + 
             	"</li>" +
-                "<li id='" + id + "-delete' class='flex-container'>" +
+                "<li id='" + id + "-delete'>" +
+                    "<div class='form-group'>" +
+                    "<div class='col-lg-9 col-lg-offset-3'>" +
                     "<button class='btn btn-danger'>${{ enigmatic.WHEEL_DELETE }}$</button>" +
+                    "</div>" +
+                    "</div>" +
                 "</li>"
 		);
 

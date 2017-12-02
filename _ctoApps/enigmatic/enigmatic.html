@@ -3,7 +3,7 @@
             <p id="non-standard-warning" class="hidden alert alert-warning">
                 ${{ enigmatic.NON_STANDARD_CONF }}$
             </p>
-            <ul>
+            <form class="form-horizontal" role="form"><ul>
                 <li class="header">
                     <a class="flex-container" id="toggle-configuration" href="#">
                         <span class="flex-grow">${{ enigmatic.CONFIGURATION }}$</span>
@@ -21,7 +21,11 @@
                     </li>
                         <li id="wheels-intro">${{ enigmatic.WHEELS_INTRO }}$</li>
                         <li id="add-wheel">
+                            <div class="form-group">
+                            <div class="col-lg-9 col-lg-offset-3">
                             <button class="btn btn-default">${{ enigmatic.WHEEL_ADD }}$</button>
+                            </div>
+                            </div>
                         </li>
                     <li id="reflector-toggler">
                         <a class="flex-container" id="toggle-reflector" href="#">
@@ -31,27 +35,31 @@
                         </a>
                     </li>
                         <li id="reflector-intro">${{ enigmatic.REFLECTOR_INTRO }}$</li>
-                        <li id="reflector-presets" class="flex-container">
-                            <span>${{ enigmatic.REFLECTOR_PRESET }}$</span>
-                            <div class="btn-group btn-group-sm flex-grow" role="group">
+                        <li id="reflector-presets">
+                            <div class="form-group">
+                            <label for="enigmatic-reflector-defaults" class="col-lg-3">${{ enigmatic.REFLECTOR_PRESET }}$</label>
+                            <div id="enigmatic-reflector-defaults" class="btn-group btn-group-sm col-lg-9" role="group">
                                 <button type="button" class="btn btn-default" id="ukw-a" href="">UKW A</button>
                                 <button type="button" class="btn btn-default" id="ukw-b" href="">UKW B</button>
                                 <button type="button" class="btn btn-default" id="ukw-c" href="">UKW C</button>
                             </div>
-                        </li>
-                        <li id="reflector-mapping" class="flex-container">
-                            <span>${{ enigmatic.REFLECTOR_SWAPS}}$</span>
-                            <div class="flex-grow">
-                                <div class="alert alert-danger hidden"></div>
-                                <input class="enigmatic-editable">
                             </div>
                         </li>
-                        <li id="reflector-wheel" class="flex-container wheel">
-                            <span>${{ enigmatic.REFLECTOR_WHEEL }}$</span>
-                            <div class="flex-grow">
+                        <li id="reflector-mapping">
+                            <div class="form-group">
+                            <label for="enigmatic-reflector-swaps" class="col-lg-3">${{ enigmatic.REFLECTOR_SWAPS}}$</label>
+                            <div class="col-lg-9">
+                                <div class="alert alert-danger hidden"></div>
+                                <input id="enigmatic-reflector-swaps" class="form-control enigmatic-editable">
+                            </div>
+                            </div>
+                        </li>
+                        <li id="reflector-wheel" class="wheel">
+                            <label for="enigmatic-reflector-to" class="col-lg-3">${{ enigmatic.REFLECTOR_WHEEL }}$</label>
+                            <div class="col-lg-9">
                                 <div class="from referable"></div>
                                 <div class="alert alert-danger hidden"></div>
-                                <input class="to enigmatic-editable">
+                                <input id="enigmatic-reflector-to" class="form-control to enigmatic-editable">
                             </div>
                         </li>
                     <li id="plugboard-toggler">
@@ -62,19 +70,23 @@
                         </a>
                     </li>
                         <li id="plugboard-intro">${{ enigmatic.PLUGBOARD_INTRO }}$</li>
-                        <li id="plugboard-mapping" class="flex-container">
-                            <span>${{ enigmatic.REFLECTOR_SWAPS }}$</span>
-                            <div class="flex-grow">
+                        <li id="plugboard-mapping">
+                            <div class="form-group">
+                            <label for="enigmatic-plugboard-to" class="col-lg-3">${{ enigmatic.REFLECTOR_SWAPS }}$</label>
+                            <div class="flex-grow col-lg-9">
                                 <div class="alert alert-danger hidden"></div>
-                                <input class="flex-grow enigmatic-editable">
+                                <input id="enigmatic-plugboard-to" class="flex-grow enigmatic-editable form-control">
+                            </div>
                             </div>
                         </li>
-                        <li id="plugboard-wheel" class="flex-container wheel">
-                            <span>${{ enigmatic.REFLECTOR_WHEEL }}$</span>
-                            <div class="flex-grow">
+                        <li id="plugboard-wheel">
+                            <div class="form-group">
+                            <label for="enigmatic-reflector-to" class="col-lg-3">${{ enigmatic.REFLECTOR_WHEEL }}$</label>
+                            <div class="col-lg-9">
                                 <div class="from referable"></div>
                                 <div class="alert alert-danger hidden"></div>
-                                <input class="to enigmatic-editable">
+                                <input id="enigmatic-reflector-to" class="to enigmatic-editable form-control">
+                            </div>
                             </div>
                         </li>
                 <li class="header">
@@ -84,8 +96,12 @@
                         <span class="expand glyphicon glyphicon-chevron-down"></span>
                     </a>
                 </li>
-                    <li id="key" class="flex-container">
-                        <input class="flex-grow enigmatic-editable">
+                    <li id="key">
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                            <input class="form-control enigmatic-editable">
+                            </div>
+                        </div>
                     </li>
                 <li class="header">
                     <a id="toggle-input" href="#" class="flex-container">
@@ -94,8 +110,12 @@
                         <span class="expand glyphicon glyphicon-chevron-down"></span>
                     </a>
                 </li>
-                    <li class="flex-container" id="input">
-                        <input class="flex-grow enigmatic-editable">
+                    <li id="input">
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <input class="form-control enigmatic-editable">
+                            </div>
+                        </div>
                     </li>
                 <li class="header" id="rounds">
                     <a id="toggle-enc-rounds" href="#" class="flex-container">
@@ -112,5 +132,5 @@
                     </a>
                 </li>
                     <li class="referable" id="output"></li>
-            </ul>
+            </ul></form>
         </div>
