@@ -1,3 +1,14 @@
+.enigmatic .panel-heading h4:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: right;
+    color: grey;
+}
+
+.enigmatic .panel-heading.collapsed h4:after {
+    content: "\e080";
+}
+
 .enigmatic .hidden, .enigmatic .unavailable {
 	display: none !important;
 }
