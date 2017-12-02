@@ -2,9 +2,9 @@
 
 // do encoding
 
-function add_state(prefix, name) {
-	const html = jQuery.parseHTML("<li id='" + prefix + "' class='hidden'>" + name + "</li>");
-	jQuery(html).insertBefore(jQuery('#rounds-end'));
+function add_state(prefix, name, $parent) {
+	const html = jQuery.parseHTML("<div>" + name + "</div>");
+	jQuery(html).appendTo($parent);
 }
 
 function c2i(ch) { return ch.codePointAt(0) - 'A'.codePointAt(0); }
@@ -14,17 +14,21 @@ function encode_round(pos, ch, wheels, state) {
 	const id = 'enc-' + pos;
 	const header_template = "${{ enigmatic.ENCODING_INPUT_CHAR }}$";
 	const header_text = header_template.replace(/\$1/, ch).replace(/\$3/, pos);
-	const header = jQuery.parseHTML(
-		"<li id='" + id + "-toggler'>" +
-        	"<a class='flex-container collapsed' id='toggle-" + id + "' href='#'>" +
-	    	    "<span class='flex-grow'></span>" +
-    	    	"<span class='collapse glyphicon glyphicon-chevron-up'></span>" +
-				"<span class='expand glyphicon glyphicon-chevron-down'></span>" +
-        	"</a>" +
-        "</li>"
+	const panel = jQuery.parseHTML(
+        "<div class='panel panel-default'>" +
+            "<div class='panel-heading' data-toggle='collapse' data-target='#" + id + "-panel'>" +
+                "<h4 class='panel-title'></h4>" +
+            "</div>" +
+            "<div id='" + id + "-panel' class='panel-collapse collapse'>" +
+                "<div class='panel-body'>" +
+                "</div>" +
+            "</div>" +
+        "</div>"
 	);
-	jQuery(header).insertBefore(jQuery('#rounds-end'));
+	jQuery(panel).appendTo(jQuery('#rounds'));
 
+    const $panel = jQuery('#' + id + '-panel');
+    const $container = $panel.find('.panel-body');
 	const orig_wheels = wheels;
 	for (let i = wheels.length - 1; i >= 0; --i) {
 		wheels = wheels.substr(0, i) + i2c(c2i(wheels[i]) + 1) + wheels.substr(i + 1);
@@ -32,7 +36,7 @@ function encode_round(pos, ch, wheels, state) {
 	}
     const wheel_advancement_template = "${{ enigmatic.WHEEL_ADVANCEMENT }}$";
 	const wheel_advancement = wheel_advancement_template.replace(/\$1/, orig_wheels).replace(/\$2/, wheels);
-	add_state(id + '-wheels', wheel_advancement, ch, wheels);
+	add_state(id + '-wheels', wheel_advancement, ch, wheels, $container);
 
 	let current = "${{ enigmatic.STEP_INPUT}}$".replace(/\$\$/, ch);
 	ch = state.plugboard.mapping[ch];
@@ -47,7 +51,7 @@ function encode_round(pos, ch, wheels, state) {
 
     ch = state.reflector.mapping[ch];
 	current += "${{ enigmatic.STEP_REFLECTOR }}$".replace(/\$\$/, ch);
-	add_state(id + '-forward', current);
+	add_state(id + '-forward', current, $container);
 
 	current = "${{ enigmatic.STEP_BACKWARD }}$".replace(/\$\$/, ch);
 
@@ -61,23 +65,17 @@ function encode_round(pos, ch, wheels, state) {
     ch = state.plugboard.inv_mapping[ch];
     current += "${{ enigmatic.STEP_PLUGBOARD }}$".replace(/\$\$/, ch);
     current += "${{ enigmatic.STEP_OUTPUT }}$";
-    add_state(id + '-backward', current);
+    add_state(id + '-backward', current, $container);
 
     state.output += ch;
 
-    const $btn = jQuery('#toggle-' + id);
-    $btn.find('.flex-grow').text(header_text.replace(/\$2/, ch));
-    $btn.on('click', (evt) => {
-        toggleDiv('toggle-' + id, [id + '-wheels', id + '-forward', id + '-backward']);
-        if (evt) { evt.preventDefault(); }
-    });
-    main_ids.push(id + '-toggler', id + '-wheels', id + '-forward', id + '-backward');
+    $panel.parent().find('.panel-title').text(header_text.replace(/\$2/, ch));
 	return wheels;
 }
 
 function encode(input, wheels, state) {
-	const $computation = jQuery('#rounds');
-    while ($computation.next().attr('id') !== 'rounds-end') { $computation.next().remove(); }
+	const $computation = jQuery('#rounds-panel').find('.panel-body');
+    $computation.empty();
 
     state.output = '';
     input = input.toUpperCase();
