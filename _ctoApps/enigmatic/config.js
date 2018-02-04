@@ -22,3 +22,6 @@ const std_overflows = {
 	'V':   "A"
 };
 
+exports.reflectors = std_reflectors;
+exports.wheels = std_wheels;
+exports.overflows = std_overflows;

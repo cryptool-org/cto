@@ -88,6 +88,7 @@ function encode(input, wheels, state) {
     	}
 	}
 	jQuery('#output').text(state.output);
+	return state.output;
 }
 
 exports.encode = encode;

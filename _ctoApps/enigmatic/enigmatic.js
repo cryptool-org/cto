@@ -5,4 +5,5 @@
 @@include("dom.js")
 @@include("dependencies.js")
 @@include("crypt.js")
+@@include("wheels.js")
 @@include("main.js")
