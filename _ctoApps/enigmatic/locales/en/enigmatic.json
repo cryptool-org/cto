@@ -44,6 +44,7 @@
   "WHEEL": "Wheel $$",
   "WHEEL_ADD": "Add Wheel",
   "WHEEL_ADVANCEMENT": "Advanced Wheels from $1 to $2",
+  "WHEEL_ANOMAL": "Wheel will be advanced if left sibling advances",
   "WHEEL_DELETE": "Remove last Wheel",
   "WHEEL_OFFSET": "Offset",
   "WHEEL_OVERFLOWS": "Overflows",

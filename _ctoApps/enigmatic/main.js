@@ -209,8 +209,9 @@ jQuery(function ($) {
     	$('#wheel-' + pos + '-overflows').find('input').val(wheel.overflow);
 	};
 
-	const addWheel = () => {
+	const addWheel = (anomal) => {
 		const wheel = wheel_from_to(std_wheels['I'], null);
+		wheel.anomal = !! anomal;
 		state.wheels.push(wheel);
 		const pos = state.wheels.length - 1;
 		const id = 'wheel-' + pos;
@@ -262,6 +263,14 @@ jQuery(function ($) {
                             "</div>" + 
                             "</div>" + 
                         "</div>" +
+						"<div id='" + id + "-anomal'>" +
+							"<div class='form-group'>" +
+							"<label for='" + id + "-anomal' class='col-lg-3'>${{ enigmatic.WHEEL_ANOMAL }}$</label>"+
+							"<div class='col-lg-9'>" +
+							"<input class='form-control' type='checkbox'" + (anomal ? " checked" : "") + ">" +
+							"</div>" +
+							"</div>" + 
+						"</div>" +
                         "<div id='" + id + "-delete'>" +
                             "<div class='form-group'>" +
                             "<div class='col-lg-9 col-lg-offset-3'>" +
@@ -312,6 +321,13 @@ jQuery(function ($) {
         	event.preventDefault();
         	setWheelOverflows(pos, $overflows.val());
 		});
+		const $anomal = $('#' + id + '-anomal').find('input');
+		$anomal.on('click', (event) => {
+			event.prevetDefault();
+			const wheel = state.wheels[pos];
+			wheel.anomal = $anomal.is(':checked');
+			refresh();
+		});
         $('#' + id + '-i').on('click', (event) => {
         	event.preventDefault();
         	setWheelOverflows(pos, std_overflows['I']);
@@ -347,7 +363,7 @@ jQuery(function ($) {
 	addToggleDiv('toggle-wheels', wheelDivs);
 
 	addWheel(); setWheelOverflows(0, std_overflows['I']); setWheel(0, std_wheels['I']); setWheelRing(0, 16);
-	addWheel(); setWheelOverflows(1, std_overflows['IV']); setWheel(1, std_wheels['IV']); setWheelRing(1, 26);
+	addWheel(true); setWheelOverflows(1, std_overflows['IV']); setWheel(1, std_wheels['IV']); setWheelRing(1, 26);
 	addWheel(); setWheelOverflows(2, std_overflows['III']); setWheel(2, std_wheels['III']); setWheelRing(2, 8);
 
     $('#add-wheel').find('button').on('click', (event) => {

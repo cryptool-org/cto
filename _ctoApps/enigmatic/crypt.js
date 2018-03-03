@@ -10,6 +10,44 @@ function add_state(prefix, name, $parent) {
 function c2i(ch) { return ch.codePointAt(0) - 'A'.codePointAt(0); }
 function i2c(i) { return String.fromCodePoint((i + 3 * 26) % 26 + 'A'.codePointAt(0)); }
 
+function advance_wheel(wheels, index) {
+	return (
+		wheels.substr(0, index)
+	+
+		i2c(c2i(wheels[index]) + 1)
+	+
+		wheels.substr(index + 1)
+	);
+}
+
+function is_overflow_char(wheel, ch) {
+	return wheel.overflow.indexOf(ch) >= 0;
+}
+
+function advance_wheels(wheels, state) {
+	let last_did_overflow = true;
+	for (let i = wheels.length - 1; i >= 0; --i) {
+		if (state.wheels[i].anomal) {
+			let next = i2c(c2i(wheels[i]) + 1);
+			if (is_overflow_char(state.wheels[i], next)) {
+				wheels = advance_wheel(wheels, i);
+				last_did_overflow = true;
+			} else {
+				if (last_did_overflow) {
+					wheels = advance_wheel(wheels, i);
+				}
+				last_did_overflow = false;
+			}
+		} else if (last_did_overflow) {
+			wheels = advance_wheel(wheels, i);
+			last_did_overflow = is_overflow_char(state.wheels[i], wheels[i]);
+		} else {
+			last_did_overflow = false;
+		}
+	}
+	return wheels;
+}
+
 function encode_round(pos, ch, wheels, state) {
 	const id = 'enc-' + pos;
 	const header_template = "${{ enigmatic.ENCODING_INPUT_CHAR }}$";
@@ -30,10 +68,7 @@ function encode_round(pos, ch, wheels, state) {
     const $panel = jQuery('#' + id + '-panel');
     const $container = $panel.find('.panel-body');
 	const orig_wheels = wheels;
-	for (let i = wheels.length - 1; i >= 0; --i) {
-		wheels = wheels.substr(0, i) + i2c(c2i(wheels[i]) + 1) + wheels.substr(i + 1);
-		if (state.wheels[i].overflow.indexOf(wheels[i]) < 0) { break; }
-	}
+	wheels = advance_wheels(wheels, state);
     const wheel_advancement_template = "${{ enigmatic.WHEEL_ADVANCEMENT }}$";
 	const wheel_advancement = wheel_advancement_template.replace(/\$1/, orig_wheels).replace(/\$2/, wheels);
 	add_state(id + '-wheels', wheel_advancement, $container);
@@ -92,3 +127,4 @@ function encode(input, wheels, state) {
 }
 
 exports.encode = encode;
+exports.advance_wheels = advance_wheels;

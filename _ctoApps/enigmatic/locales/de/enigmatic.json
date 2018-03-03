@@ -43,6 +43,7 @@
   "WHEEL": "Walze $$",
   "WHEEL_ADD": "Walze hinzufügen",
   "WHEEL_ADVANCEMENT": "Walzen von $1 zu $2 weitergedreht",
+  "WHEEL_ANOMAL": "Walze dreht, wenn linker Nachbar weiterdreht",
   "WHEEL_DELETE": "Letzte Walze löschen",
   "WHEEL_OFFSET": "Ring-Einstellung",
   "WHEEL_OVERFLOWS": "Überläufe",
