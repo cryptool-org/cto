@@ -27,7 +27,7 @@ function is_overflow_char(wheel, ch) {
 function advance_wheels(wheels, state) {
 	let last_did_overflow = true;
 	for (let i = wheels.length - 1; i >= 0; --i) {
-		if (state.wheels[i].anomal) {
+		if (state.wheels[i].anomal && i > 0) {
 			let next = i2c(c2i(wheels[i]) + 1);
 			if (is_overflow_char(state.wheels[i], next)) {
 				wheels = advance_wheel(wheels, i);

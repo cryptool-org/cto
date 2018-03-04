@@ -36,7 +36,9 @@ function test_enigma(
 	};
 	for (var i = 0; i < std_wheels.length; ++i) {
 		state.wheels.push(build_std_wheel(std_wheels[i], wheel_rings[i]));
+		state.wheels[i].anomal = true;
 	}
+	state.wheels[std_wheels.length - 1].anomal = false;
 	var encrypted = crypt.encode(msg, key, state);
 	assert.equal(encrypted, expected);
 	var decoded = crypt.encode(encrypted, key, state);
