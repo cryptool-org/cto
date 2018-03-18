@@ -19,24 +19,42 @@ jQuery(function ($) {
 
 // recalculate fields
 
-    const isDefaultConfiguration = () => { 
+	const getStdWheelName = (pretty_to) => {
+		for (let key in std_wheels) {
+			if (std_wheels.hasOwnProperty(key)) {
+				if (pretty_to === std_wheels[key]) { return key; }
+			}
+		}
+		return null;
+	};
+
+    const getNonDefaultReason = () => { 
         const wheels = state.wheels;
-        if (state.wheels.length !== 3) { return false; }
+        if (wheels.length !== 3) {
+			return "${{enigmatic.NOT_THREE_WHEELS}}$".replace("##", wheels.length);
+		}
         let wheels_found = {};
-        for (let i = state.wheels.length - 1; i >= 0; --i) {
-            const pretty_to = wheels[i].pretty_to;
-            const overflows = wheels[i].overflow;
-            if ((pretty_to === std_wheels['I']) && (overflows == std_overflows['I']) && ! wheels_found['I']) { 
-                wheels_found['I'] = true; 
-            } else if ((pretty_to === std_wheels['II']) && (overflows == std_overflows['II']) && ! wheels_found['II']) {
-                wheels_found['II'] = true;
-            } else if ((pretty_to === std_wheels['III']) && (overflows == std_overflows['III']) && ! wheels_found['III']) {
-                wheels_found['III'] = true;
-            } else if ((pretty_to === std_wheels['IV']) && (overflows == std_overflows['IV']) && ! wheels_found['IV']) {
-                wheels_found['IV'] = true;
-            } else if ((pretty_to === std_wheels['V']) && (overflows == std_overflows['V']) && ! wheels_found['V']) {
-                wheels_found['V'] = true;
-            } else { return false; }
+        for (let i = wheels.length - 1; i >= 0; --i) {
+			const wheel = wheels[i];
+            const pretty_to = wheel.pretty_to;
+            const overflows = wheel.overflow;
+			const std_wheel = getStdWheelName(pretty_to);
+			if (! std_wheel) {
+				return "${{enigmatic.NOT_STD_WHEEL}}$".replace("##", i + 1);
+			}
+			if (overflows !== std_overflows[std_wheel]) {
+				return "${{enigmatic.NOT_STD_OVERFLOW}}$".replace("##", i + 1);
+			}
+			if (wheels_found[std_wheel]) {
+				return "${{enigmatic.MULTIPLE_USE_OF_STD_WHEEL}}$".replace("##", std_wheel);
+			}
+			wheels_found[std_wheel] = true;
+			if (i > 1 && wheel.anomal) {
+				return "${{enigmatic.ANOMAL_WHEEL}}$".replace("##", i + 1);
+			}
+			if (i === 1 && ! wheel.anomal) {
+				return "${{enigmatic.NOT_ANOMAL_WHEEL}}$".replace("##", i + 1);
+			}
         }
 
         const ref_pretty_to = state.reflector.pretty_to;
@@ -44,13 +62,16 @@ jQuery(function ($) {
             && (ref_pretty_to !== wheel_from_reflector(std_reflectors['B']).pretty_to)
             && (ref_pretty_to !== wheel_from_reflector(std_reflectors['C'])).pretty_to
         ) {
-            return false;
+            return "${{enigmatic.NOT_STD_REFLECTOR}}$";
         }
-        return true;
+        return null;
     };
 
     const checkForDefaultConfiguration = () => {
-        $('#non-standard-warning').toggleClass('hidden', isDefaultConfiguration());
+		const non_default_reason = getNonDefaultReason();
+        const $warning = $('#non-standard-warning');
+		$warning.find('span').text(non_default_reason ? non_default_reason : '');
+		$warning.toggleClass('hidden', ! non_default_reason);
     };
 
 	refresh = () => {
@@ -185,6 +206,7 @@ jQuery(function ($) {
             err($wheel);
             wheel.ring = state.wheels[pos].ring;
             wheel.overflow = state.wheels[pos].overflow;
+			wheel.anomal = state.wheels[pos].anomal;
             state.wheels[pos] = wheel;
         }
         $wheel.find('.from').text(state.wheels[pos].pretty_from);
@@ -320,10 +342,10 @@ jQuery(function ($) {
         $overflows.on('change', (event) => {
         	event.preventDefault();
         	setWheelOverflows(pos, $overflows.val());
+			refresh();
 		});
 		const $anomal = $('#' + id + '-anomal').find('input');
 		$anomal.on('click', (event) => {
-			event.prevetDefault();
 			const wheel = state.wheels[pos];
 			wheel.anomal = $anomal.is(':checked');
 			refresh();
