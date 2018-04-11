@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>${{ ascii.TITLE }}$</title>
+        <link rel="stylesheet" href="../bootstrap.css">
+        <link rel="stylesheet" href="./ascii.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>${{ ascii.TITLE }}$</h1>
+            <div class="spacer"></div>
+        </div>
+        @@include('./fragment.html')
+        <script src="../jquery.js"></script>
+        <script src="../bootstrap.js"></script>
+        <script src="./ascii${{ lang.suffix }}$.js"></script>
+    </body>
+</html>

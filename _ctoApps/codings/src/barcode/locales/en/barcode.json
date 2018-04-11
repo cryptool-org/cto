@@ -1,0 +1,10 @@
+{
+  "TITLE": "Barcode Generator",
+  "DESCRIPTION": "With this barcode generator you can generate barcodes based on a variety of different standards.<br>Choose the desired barcode standard, enter the data, and start the generation.",
+  "DETAILS_CODABAR": "<a href='https://en.wikipedia.org/wiki/Codabar'><b>CODABAR</b> at Wikipedia</a>",
+  "DETAILS_CODE128": "<a href='https://en.wikipedia.org/wiki/Code128'><b>CODE128</b> at Wikipedia</a>",
+  "DETAILS_CODE39": "<a href='https://en.wikipedia.org/wiki/Code_39'><b>CODE39</b> at Wikipedia</a>",
+  "DETAILS_EAN13": "<a href='https://en.wikipedia.org/wiki/European_Article_Number'><b>EAN13</b> at Wikipedia</a>",
+  "DETAILS_EAN8": "<a href='https://en.wikipedia.org/wiki/EAN-8'><b>EAN8</b> at Wikipedia</a>",
+  "DETAILS_UPC": "<a href='https://en.wikipedia.org/wiki/Universal_Product_Code'><b>UPC</b> at Wikipedia</a>"
+}

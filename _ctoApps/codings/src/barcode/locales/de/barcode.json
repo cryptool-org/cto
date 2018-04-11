@@ -1,0 +1,10 @@
+{
+  "TITLE": "Barcode-Generator",
+  "DESCRIPTION": "Mit diesem Barcode-Generator k&ouml;nnen Sie Barcodes basierend af einer Auswahl verschiedener Standards generieren.<br>W&auml;hlen Sie den gew&uuml;nschten Barcode-Standard, geben Sie die Daten ein, und starten Sie die Generierung.",
+  "DETAILS_CODABAR": "<a href='https://de.wikipedia.org/wiki/Codabar'><b>CODABAR</b> auf Wikipedia</a>",
+  "DETAILS_CODE128": "<a href='https://de.wikipedia.org/wiki/Code128'><b>CODE128</b> auf Wikipedia</a>",
+  "DETAILS_CODE39": "<a href='https://de.wikipedia.org/wiki/Code_39'><b>CODE39</b> auf Wikipedia</a>",
+  "DETAILS_EAN13": "<a href='https://de.wikipedia.org/wiki/European_Article_Number'><b>EAN13</b> auf Wikipedia</a>",
+  "DETAILS_EAN8": "<a href='https://en.wikipedia.org/wiki/EAN-8'><b>EAN8</b> auf Wikipedia</a>",
+  "DETAILS_UPC": "<a href='https://de.wikipedia.org/wiki/Universal_Product_Code'><b>UPC</b> auf Wikipedia</a>"
+}
