@@ -1,0 +1,31 @@
+<p>${{ barcode.DESCRIPTION }}$</p>
+
+ <table style="width:50%">
+    <tr>
+        <td>Barcode Standard<td>
+        <td align="left">
+            <select id="BarcodeStandard" onchange="BarcodeStandardChange()">
+                <option value="CODABAR">CODABAR</option>
+                <option value="CODE128">CODE128</option>
+                <option value="CODE39">CODE39</option>
+                <option value="EAN13">EAN13</option>
+                <option value="EAN8">EAN8</option>
+                <option value="UPC">UPC</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Barcode Details</td>
+        <td id="BarcodeDetails">${{ barcode.DETAILS_CODABAR }}$</td>
+    </tr>
+    <tr>
+        <td>Barcode Data</td>
+        <td><input id="BarcodeData" value="DATA"></td>
+    </tr>
+    <tr>
+        <td>Barcode Generation</td>
+        <td><button onclick="BarcodeGenerate()">Generate</button>
+    </tr>
+</table>
+
+<canvas id="BarcodeImage"></canvas>
