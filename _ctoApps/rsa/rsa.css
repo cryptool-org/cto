@@ -1,0 +1,34 @@
+#direction svg {
+    display: block;
+    margin: 1em auto 2em auto;
+}
+@keyframes flip {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+#direction.flip svg {
+    animation-name: flip;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes flop {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+#direction.flop svg {
+    animation-name: flop;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+#direction svg polyline {
+    fill: #888;
+}
+

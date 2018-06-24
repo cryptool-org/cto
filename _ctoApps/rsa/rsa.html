@@ -1,0 +1,219 @@
+<div class="container">
+	<h1>RSA-js</h1>
+
+	<p>
+		Dieses Modul demonstriert die Ver- oder Entschlüsselung mit dem
+		RSA Verfahren.
+	</p>
+
+
+	<h2>Primfaktoren</h2>
+
+	<p>
+		Die Sicherheit von RSA basiert darauf, dass es zwar einfach ist,
+		das Produkt <i>n</i> zweier Primzahlen <i>p</i> und <i>q</i> zu
+		berechnen.
+		Es ist jedoch sehr schwer, nur aus dem Produkt <i>n</i> die
+		Primzahlen zu bestimmen, die das Produkt ergeben.
+		Diesen Vorgang nennt man auch das Faktorisieren von <i>n</i>.
+	</p>
+	<p>
+		Als Ausgangspunkt für RSA wählt man zwei Primzahlen <i>p</i> und
+		<i>q</i>.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="prime-1">Erste
+				Primzah <i>p</i></math></label>
+			<div class="col-sm-10"><input class="form-control" id="prime-1" value="11"></div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="prime-2">Zweite
+				Primzahl <i>q</i></label>
+			<div class="col-sm-10"><input class="form-control" id="prime-2" value="13"></div>
+		</div>
+	</form>
+	<p>
+		Damit der Algorithmus funktioniert, müssen beide Primzahlen
+		verschieden sein.
+	</p>
+	<p>
+		Zusätzlich müssen die Primzahlen möglichst groß gewählt
+		werden, um die Faktorisierung möglichst schwierig zu gestalten.
+		Aktuell werden für eine sichere Kommunikation mehrere tausend
+		Stellen verwendet.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label"
+				for="public-key"><i>n</i> = <i>p</i> &times; <i>q</i></label>
+			<div class="col-sm-10"><p class="form-control-static" id="public-key"></div>
+		</div>
+	</form>
+
+
+	<h2>Geheimer Schlüssel</h2>
+
+	<p>
+		Der geheime Schlüssel besteht neben dem Modul <i>n</i> noch aus
+		einem Exponenten <i>e</i>.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="base">Basis <i>e</i></label>
+			<div class="col-sm-10"><input class="form-control" id="base" value="23"></div>
+		</div>
+	</form>
+	<p>RSA benutzt als zentrales Element die Eulersche &phi;-Funktion
+		von <i>n</i>. Diese ist definiert als
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label"
+	for="phi">&phi;(<i>n</i>)<br>= (<i>p</i> &minus; 1) &times;
+	(<i>q</i> &minus; 1)</label>
+			<div class="col-sm-10"><p class="form-control-static" id="phi"></p></div>
+		</div>
+	</form>
+	<p>
+		Hier wird ausgenutzt, dass <i>p</i> und <i>q</i> verschieden
+		sind.
+		Andernfalls würde sich die &phi;-Funktion anders berechnen.
+	</p>
+	<p>
+		Wichtig ist für RSA, dass der Wert der &phi;-Funktion mit
+		<i>e</i> teilerfremd ist.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="gcd">ggT(<i>e</i>, &phi;(<i>n</i>))</label>
+			<div class="col-sm-10"><p class="form-control-static" id="gcd"></p></div>
+		</div>
+	</form>
+	<p>
+		Um den Wert von &phi;(<i>n</i>) zu bestimmen reicht es nicht
+		aus, <i>n</i> zu kennen.
+		Nur mit der Kenntnis von <i>p</i> und <i>q</i> kann man
+		&phi(<i>n</i>) effizient bestimmen.
+	</p>
+
+
+	<h2>Öffentlicher Schlüssel</h2>
+
+	<p>
+		Der öffentliche Schlüssel besteht ebenfalls aus <i>n</i> und
+		einem <i>d</i> mit der Eigenschaft, dass <i>e</i> &times;
+		<i>d</i> ein Vielfaches von &phi;(<i>n</i>) plus eins ist.
+	</p>
+	<p>
+		In Formeln ausgedrückt, muss
+	</p>
+	<p>
+		e &times; d = 1 (mod &phi;(<i>n</i>))
+	</p>
+	<p>
+		gelten.
+	</p>
+	<p>
+		Dabei ist mit dem mod-Ausdruck die Gleichheit bezüglich einer
+		Restklasse gemeint.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label"
+	for="private-key"><i>r</i></label>
+			<div class="col-sm-10"><p class="form-control-static" id="private-key"></div>
+		</div>
+	</form>
+	<p>
+		Diese <i>d</i> kann bestimmt werden, wenn <i>e</i> mit der oben
+		beschriebenen Einschränkung gewählt wurde.
+		Es bietet sich der erweiterte Euklidische Algorithmus an, um das
+		passende <i>d</i> zu finden.
+	</p>
+	
+
+	<h2>Ver- und Entschlüsseln</h2>
+	<p>
+		Grundsätzlich werden bei diesem Verfahren keine Texte,
+		sondern nur Zahlen ver- und entschlüsselt, die zwischen 0 und
+		<i>n</i> liegen.
+	</p>
+	<p>
+		Um eine Nachricht <i>m</i> mit dem privaten Schlüssel (<i>n</i>,
+		<i>e</i>) zu verschlüsseln, wird
+	</p>
+	<p>
+		<i>m'</i> := <i>m</i><sup><i>e</i></sup> (mod <i>n</i>)
+	</p>
+	<p>
+		berechnet.
+	</p>
+	<p>
+		Das Entschlüsseln mit dem öffentlichen Schlüssel (<i>n</i>,
+		<i>d</i> erfolgt analog mit
+	</p>
+	<p>
+		<i>m''</i> := <i>m'</i><sup><i>d</i></sup> (mod <i>n</i>).
+	</p>
+	<p>
+		Damit ist
+	</p>
+		<i>m''</i> = <i>m</i><sup><i>e</i> &times; <i>d</i></sup>.
+	</p>
+	<p>
+		RSA nutzt nun die Eigenschaft aus, dass
+	</p>
+	<p>
+		<i>x</i><sup><i>a</i></sup> = <i>x</i><sup><i>b</i></sup>
+		(mod <i>n</i>)
+	</p>
+	<p>
+		wenn
+	</p>
+	<p.
+		<i>a</i> = <i>b</i> (mod &phi;(<i>n</i>))
+	</p>
+	<p>
+		<i>e</i> und <i>d</i> wurden passend gewählt damit
+	</p>
+	<p>
+		<i>m''</i> = <i>m</i>.
+	</p>
+	<p>
+		Die Reihenfolge spielt keine Rolle.
+		Es kann auch erst eine Nachricht mit dem öffentlichen Schlüssel
+		verschlüsselt werden.
+		Diese kann dann nur mit dem privaten Schlüssel wieder
+		entschlüsselt werden.
+	</p>
+
+	<h2>Nachrichten</h2>
+
+	<p>In den folgenden zwei Textboxen können Sie untersuchen, wie das
+		Ver- und Entschlüsseln funktioniert.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="public-key">Private Nachricht</label>
+			<div class="col-sm-10"><input class="form-control" id="private-message" value="7"></div>
+		</div>
+		<div class="row">
+			<div id="direction">
+				<svg viewbox="0 0 50 50" width="50" height="50">
+					<polyline points="0,20 15,20 15,0 35,0 35,20 50,20 25,50"></polyline>
+				</svg>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="private-key">Öffentliche Nachricht</label>
+			<div class="col-sm-10"><input class="form-control" id="public-message"></div>
+		</div>
+	</form>
+
+	<h2>Verwendete Bibliothek</h2>
+		Diese Seite verwendet für die Rechnung mit großen Zahlen die
+		Bibliothek
+
+		<a href="https://peterolson.github.com/BigInteger.js/">BigInteger.js</a>.
+</div>

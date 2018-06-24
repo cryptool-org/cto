@@ -1,0 +1,11 @@
+{
+  "name": "rsa",
+  "styles": [
+    "./rsa.css"
+  ],
+  "scripts": [
+    "./rsa.js",
+	"./BigInteger.min.js"
+  ],
+  "html": "rsa.html"
+}
