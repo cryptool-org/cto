@@ -1,9 +1,9 @@
-<div class="container">
+<div id="rsa-container" class="container">
 	<h1>RSA-js</h1>
 
 	<p>
 		Dieses Modul demonstriert die Ver- oder Entschlüsselung mit dem
-		RSA Verfahren.
+		RSA-Verfahren.
 	</p>
 
 
@@ -23,12 +23,12 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="prime-1">Erste
-				Primzah <i>p</i></math></label>
+			<label class="col-sm-2 control-label" for="prime-1">1.
+				Primzahl <i>p</i></math></label>
 			<div class="col-sm-10"><input class="form-control" id="prime-1" value="11"></div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="prime-2">Zweite
+			<label class="col-sm-2 control-label" for="prime-2">2.
 				Primzahl <i>q</i></label>
 			<div class="col-sm-10"><input class="form-control" id="prime-2" value="13"></div>
 		</div>
@@ -40,8 +40,8 @@
 	<p>
 		Zusätzlich müssen die Primzahlen möglichst groß gewählt
 		werden, um die Faktorisierung möglichst schwierig zu gestalten.
-		Aktuell werden für eine sichere Kommunikation mehrere tausend
-		Stellen verwendet.
+		Aktuell werden für eine sichere Kommunikation <i>n</i> gesucht, die 
+		mehrere tausend Binärstellen verwenden.
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
@@ -52,10 +52,10 @@
 	</form>
 
 
-	<h2>Geheimer Schlüssel</h2>
+	<h2>Öffentlicher Schlüssel</h2>
 
 	<p>
-		Der geheime Schlüssel besteht neben dem Modul <i>n</i> noch aus
+		Der öffentliche Schlüssel besteht neben dem Modul <i>n</i> noch aus
 		einem Exponenten <i>e</i>.
 	</p>
 	<form class="form-horizontal">
@@ -64,8 +64,17 @@
 			<div class="col-sm-10"><input class="form-control" id="base" value="23"></div>
 		</div>
 	</form>
-	<p>RSA benutzt als zentrales Element die Eulersche &phi;-Funktion
-		von <i>n</i>. Diese ist definiert als
+	<p>
+		Dieses <i>e</i> kann sogar vorab gewählt werden und für alle Teilnehmer
+		gleich sein.
+		Es müssen jedoch unterschiedliche Primzahlen <i>p</i> und <i>q</i>
+		verwendet werden.
+	</p>
+	<h2>Geheimer Schlüssel</h2>
+
+	<p>RSA benutzt für die Berechnung des geheimen Schlüssels die Eulersche
+		&phi;-Funktion von <i>n</i>.
+		Diese ist definiert als
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
@@ -94,14 +103,10 @@
 		Um den Wert von &phi;(<i>n</i>) zu bestimmen reicht es nicht
 		aus, <i>n</i> zu kennen.
 		Nur mit der Kenntnis von <i>p</i> und <i>q</i> kann man
-		&phi(<i>n</i>) effizient bestimmen.
+		&phi;(<i>n</i>) effizient bestimmen.
 	</p>
-
-
-	<h2>Öffentlicher Schlüssel</h2>
-
 	<p>
-		Der öffentliche Schlüssel besteht ebenfalls aus <i>n</i> und
+		Der geheime Schlüssel besteht ebenfalls aus <i>n</i> und
 		einem <i>d</i> mit der Eigenschaft, dass <i>e</i> &times;
 		<i>d</i> ein Vielfaches von &phi;(<i>n</i>) plus eins ist.
 	</p>
@@ -117,16 +122,24 @@
 	<p>
 		Dabei ist mit dem mod-Ausdruck die Gleichheit bezüglich einer
 		Restklasse gemeint.
+		Es ist genau dann <i>x</i> = <i>y</i> (mod <i>z</i>), wenn es
+		ein ganzzahliges <i>a</i> gibt mit
+	</p>
+	<p>
+		<i>x</i> &minus; <i>y</i> = <i>z</i> &times; <i>a</i>.
+	</p>
+	<p>
+		Es ergibt sich <i>d</i> als:
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
 			<label class="col-sm-2 control-label"
-	for="private-key"><i>r</i></label>
+	for="private-key"><i>d</i></label>
 			<div class="col-sm-10"><p class="form-control-static" id="private-key"></div>
 		</div>
 	</form>
 	<p>
-		Diese <i>d</i> kann bestimmt werden, wenn <i>e</i> mit der oben
+		Dieses <i>d</i> kann immer bestimmt werden, wenn <i>e</i> mit der oben
 		beschriebenen Einschränkung gewählt wurde.
 		Es bietet sich der erweiterte Euklidische Algorithmus an, um das
 		passende <i>d</i> zu finden.
@@ -140,7 +153,7 @@
 		<i>n</i> liegen.
 	</p>
 	<p>
-		Um eine Nachricht <i>m</i> mit dem privaten Schlüssel (<i>n</i>,
+		Um eine Nachricht <i>m</i> mit dem öffentlichen Schlüssel (<i>n</i>,
 		<i>e</i>) zu verschlüsseln, wird
 	</p>
 	<p>
@@ -150,8 +163,8 @@
 		berechnet.
 	</p>
 	<p>
-		Das Entschlüsseln mit dem öffentlichen Schlüssel (<i>n</i>,
-		<i>d</i> erfolgt analog mit
+		Das Entschlüsseln mit dem privaten Schlüssel (<i>n</i>,
+		<i>d</i>) erfolgt analog mit
 	</p>
 	<p>
 		<i>m''</i> := <i>m'</i><sup><i>d</i></sup> (mod <i>n</i>).
@@ -182,9 +195,9 @@
 	</p>
 	<p>
 		Die Reihenfolge spielt keine Rolle.
-		Es kann auch erst eine Nachricht mit dem öffentlichen Schlüssel
+		Es kann auch erst eine Nachricht mit dem privaten Schlüssel
 		verschlüsselt werden.
-		Diese kann dann nur mit dem privaten Schlüssel wieder
+		Diese kann dann nur mit dem öffentlichen Schlüssel wieder
 		entschlüsselt werden.
 	</p>
 
@@ -195,7 +208,7 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="public-key">Private Nachricht</label>
+			<label class="col-sm-2 control-label" for="public-key">Öffentliche Nachricht</label>
 			<div class="col-sm-10"><input class="form-control" id="private-message" value="7"></div>
 		</div>
 		<div class="row">
@@ -206,7 +219,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="private-key">Öffentliche Nachricht</label>
+			<label class="col-sm-2 control-label" for="private-key">Private Nachricht</label>
 			<div class="col-sm-10"><input class="form-control" id="public-message"></div>
 		</div>
 	</form>
