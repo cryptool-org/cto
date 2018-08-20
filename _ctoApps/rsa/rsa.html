@@ -27,11 +27,14 @@
 				Primzahl <i>p</i></math></label>
 			<div class="col-sm-10"><input class="form-control" id="prime-1" value="11"></div>
 		</div>
+		<div id="err-p-not-prime" class="row alert alert-danger"><i>p</i> ist keine Primzahl!</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" for="prime-2">2.
 				Primzahl <i>q</i></label>
 			<div class="col-sm-10"><input class="form-control" id="prime-2" value="13"></div>
 		</div>
+		<div id="err-q-not-prime" class="row alert alert-danger"><i>q</i> ist keine Primzahl!</div>
+		<div id="err-p-equal-q" class="row alert alert-danger"><i>p</i> und <i>q</i> sind nicht verschieden!</div>
 	</form>
 	<p>
 		Damit der Algorithmus funktioniert, müssen beide Primzahlen
@@ -47,7 +50,7 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label"
 				for="public-key"><i>n</i> = <i>p</i> &times; <i>q</i></label>
-			<div class="col-sm-10"><p class="form-control-static" id="public-key"></div>
+			<div class="col-sm-10"><p class="form-control-static"><span id="public-key"></span> (<span id="public-key-length"></span> Bits)</p></div>
 		</div>
 	</form>
 
@@ -63,6 +66,7 @@
 			<label class="col-sm-2 control-label" for="base">Basis <i>e</i></label>
 			<div class="col-sm-10"><input class="form-control" id="base" value="23"></div>
 		</div>
+		<div id="err-gcd-not-1" class="row alert alert-danger"><i>e</i> und <i>n</i> sind nicht teilerfremd.</div>
 	</form>
 	<p>
 		Dieses <i>e</i> kann sogar vorab gewählt werden und für alle Teilnehmer
@@ -133,8 +137,7 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label"
-	for="private-key"><i>d</i></label>
+			<label class="col-sm-2 control-label" for="private-key"><i>d</i></label>
 			<div class="col-sm-10"><p class="form-control-static" id="private-key"></div>
 		</div>
 	</form>
@@ -211,6 +214,7 @@
 			<label class="col-sm-2 control-label" for="public-key">Öffentliche Nachricht</label>
 			<div class="col-sm-10"><input class="form-control" id="private-message" value="7"></div>
 		</div>
+		<div id="err-public-msg-too-big" class="row alert alert-danger">Öffentliche Nachricht ist zu groß</div>
 		<div class="row">
 			<div id="direction">
 				<svg viewbox="0 0 50 50" width="50" height="50">
@@ -222,6 +226,7 @@
 			<label class="col-sm-2 control-label" for="private-key">Private Nachricht</label>
 			<div class="col-sm-10"><input class="form-control" id="public-message"></div>
 		</div>
+		<div id="err-private-msg-too-big" class="row alert alert-danger">Private Nachricht ist zu groß</div>
 	</form>
 
 	<h2>Verwendete Bibliothek</h2>

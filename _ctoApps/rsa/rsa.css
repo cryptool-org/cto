@@ -35,3 +35,7 @@
 #rsa-container h2 {
 	margin-top: 2em;
 }
+
+.hidden {
+	display: none;
+}

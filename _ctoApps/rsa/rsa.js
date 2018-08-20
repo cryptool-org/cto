@@ -2,6 +2,7 @@ jQuery(($) => {
 	const $prime1 = $('#prime-1');
 	const $prime2 = $('#prime-2');
 	const $public_key = $('#public-key');
+	const $public_key_length = $('#public-key-length');
 	const $private_key = $('#private-key');
 	const $phi = $('#phi');
 	const $gcd = $('#gcd');
@@ -9,6 +10,13 @@ jQuery(($) => {
 	const $private_message = $('#private-message');
 	const $public_message = $('#public-message');
 	const $direction = $('#direction');
+
+	const $errPNotPrime = $('#err-p-not-prime');
+	const $errQNotPrime = $('#err-q-not-prime');
+	const $errPEqualQ = $('#err-p-equal-q');
+	const $errGcdNot1 = $('#err-gcd-not-1');
+	const $errPublicMsgTooBig = $('#err-public-msg-too-big');
+	const $errPrivateMsgTooBig = $('#err-private-msg-too-big');
 
 	let encrypt = true;
 
@@ -49,24 +57,39 @@ jQuery(($) => {
 
 	const refresh = () => {
 		const prime1 = bigInt($prime1.val());
+		$errPNotPrime.toggleClass('hidden', prime1.isProbablePrime());
 		const prime2 = bigInt($prime2.val());
+		$errQNotPrime.toggleClass('hidden', prime2.isProbablePrime());
+		$errPEqualQ.toggleClass('hidden', ! prime1.equals(prime2));
 		const public_key = prime1.multiply(prime2);
 		$public_key.text(public_key.toString());
+		$public_key_length.text(public_key.bitLength());
 		const one = bigInt.one;
 		const phi = prime1.subtract(one).multiply(prime2.subtract(one));
 		$phi.text(phi.toString());
 		const e = bigInt($e.val());
 		const gg = gcd(phi, e);
+		$errGcdNot1.toggleClass('hidden', gg.a.equals(1));
 		$gcd.text(gg.a.toString());
-		const private_key = gg.v;
+
+		let private_key = gg.v;
+		if (private_key.lesser(0)) {
+			private_key = private_key.add(phi);
+		}
 		$private_key.text(private_key.toString());
 
 		if (encrypt) {
 			const source = bigInt($private_message.val());
+			$errPublicMsgTooBig.toggleClass('hidden', source.lesser(public_key));
+			$errPrivateMsgTooBig.toggleClass('hidden', true);
+
 			const encrypted = source.modPow(e, public_key);
 			$public_message.val(encrypted.toString());
 		} else {
 			const source = bigInt($public_message.val());
+			$errPublicMsgTooBig.toggleClass('hidden', true);
+			$errPrivateMsgTooBig.toggleClass('hidden', source.lesser(public_key));
+
 			const decrypted = source.modPow(private_key, public_key);
 			$private_message.val(decrypted.toString());
 		}
@@ -92,6 +115,7 @@ jQuery(($) => {
 			refresh();
 		} else {
 			clearTimeout(timer);
+			$public_key_length.text('...');
 			$public_key.text('...');
 			$phi.text('...');
 			$gcd.text('...');
