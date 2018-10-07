@@ -36,6 +36,10 @@
 	margin-top: 2em;
 }
 
+#rsa-container p {
+	margin: 0 0 10px;
+}
+
 .hidden {
 	display: none;
 }
