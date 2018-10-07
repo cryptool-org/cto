@@ -1,3 +1,13 @@
-@@include('../common/cto.config.json', {
-  "name": "barcode"
-})
+{
+  "name": "barcode",
+  "styles": [
+    "./barcode.css"
+  ],
+  "scripts": [
+    "./barcode-%lang%.js",
+    "./barcodeutitilities-%lang%.js",
+    "./barcodegenerator-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html"
+}
+
