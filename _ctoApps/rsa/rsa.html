@@ -3,7 +3,7 @@
 		Dieses Modul demonstriert die Ver- oder Entschlüsselung mit dem
 		RSA-Verfahren. Der Sender verwendet dabei zum Verschlüsseln den
 		öffentlichen Schlüssel des Empfängers; der Empfänger verwendet
-		zum Entschlüsseln den zugehörigen privaten Schlüssel.
+		zum Entschlüsseln seinen zugehörigen privaten Schlüssel.
 	</p>
 
 
@@ -22,17 +22,17 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="prime-1">1.
+			<label class="col-sm-3 control-label" for="prime-1">1.
 				Primzahl <i>p</i></math></label>
-			<div class="col-sm-10"><input class="form-control"
+			<div class="col-sm-9"><input class="form-control"
 				id="prime-1" value="11"></div>
 		</div>
 		<div id="err-p-not-prime" class="row alert alert-danger"><i>p</i>
 			ist keine Primzahl!</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="prime-2">2.
+			<label class="col-sm-3 control-label" for="prime-2">2.
 				Primzahl <i>q</i></label>
-			<div class="col-sm-10"><input class="form-control"
+			<div class="col-sm-9"><input class="form-control"
 				id="prime-2" value="13"></div>
 		</div>
 		<div id="err-q-not-prime" class="row alert alert-danger"><i>q</i>
@@ -52,10 +52,10 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label"
+			<label class="col-sm-3 control-label"
 				for="public-key"><i>n</i> = <i>p</i> &times;
 				<i>q</i></label>
-			<div class="col-sm-10"><p class="form-control-static"><span
+			<div class="col-sm-9"><p class="form-control-static"><span
 				id="public-key"></span> (<span
 				id="public-key-length"></span> Bit)</p></div>
 		</div>
@@ -71,9 +71,9 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="base">Basis
+			<label class="col-sm-3 control-label" for="base">Basis
 				<i>e</i></label>
-			<div class="col-sm-10"><input class="form-control" id="base"
+			<div class="col-sm-9"><input class="form-control" id="base"
 				value="23"></div>
 		</div>
 		<div id="err-gcd-not-1" class="row alert alert-danger"><i>e</i>
@@ -94,10 +94,10 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label"
-				for="phi">&phi;(<i>n</i>) = (<i>p</i> &minus;
-				1)<br/>&times; (<i>q</i> &minus; 1)</label>
-			<div class="col-sm-10"><p class="form-control-static"
+			<label class="col-sm-3 control-label"
+				for="phi">&phi;(<i>n</i>) = (<i>p</i> &minus; 1) &times;
+				(<i>q</i> &minus; 1)</label>
+			<div class="col-sm-9"><p class="form-control-static"
 				id="phi"></p></div>
 		</div>
 	</form>
@@ -111,9 +111,9 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="gcd">ggT(<i>e</i>,
+			<label class="col-sm-3 control-label" for="gcd">ggT(<i>e</i>,
 				&phi;(<i>n</i>))</label>
-			<div class="col-sm-10"><p class="form-control-static"
+			<div class="col-sm-9"><p class="form-control-static"
 				id="gcd"></p></div>
 		</div>
 	</form>
@@ -142,9 +142,9 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label"
+			<label class="col-sm-3 control-label"
 				for="private-key"><i>d</i></label>
-			<div class="col-sm-10"><p class="form-control-static"
+			<div class="col-sm-9"><p class="form-control-static"
 				id="private-key"></div>
 		</div>
 	</form>
@@ -204,9 +204,9 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-2 control-label"
+			<label class="col-sm-3 control-label"
 				for="public-key">Klartext</label>
-			<div class="col-sm-10"><input class="form-control"
+			<div class="col-sm-9"><input class="form-control"
 				id="private-message" value="7"></div>
 		</div>
 		<div id="err-public-msg-too-big" class="row alert
@@ -219,9 +219,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label"
+			<label class="col-sm-3 control-label"
 				for="private-key">Geheimtext</label>
-			<div class="col-sm-10"><input class="form-control"
+			<div class="col-sm-9"><input class="form-control"
 				id="public-message"></div>
 		</div>
 		<div id="err-private-msg-too-big" class="row alert
@@ -235,5 +235,9 @@
 		Diese Seite verwendet für die Rechnung mit großen Zahlen die
 		Bibliothek
 		<a href="https://peterolson.github.com/BigInteger.js/">BigInteger.js</a>.
+	</p><p>
+		Dadurch kann man auch in JavaScript mit beliebig großen Zahlen
+		rechnen, also auch solchen, die real bei RSA-Anwendungen
+		verwendet werden.
 	</p>
 </div>
