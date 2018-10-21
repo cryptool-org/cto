@@ -1,0 +1,243 @@
+<div id="rsa-container" class="container">
+	<p>
+		This module demonstrates the encryption or decryption with the
+		RSA method.
+		The sender uses the public key of the recipient for
+		encryption; the recipient uses its associated private key to
+		decrypt.
+	</p>
+
+
+	<h2>Prime Factors</h2>
+
+	<p>
+		The security of RSA is based on the fact that it is easy to
+		calculate the product <i>n</i> of two large primes <i>p</i> and
+		<i>q</i>.
+		However, it is very difficult to determine only from the product
+		<i>n</i> the two primes that yield the product.
+		This decomposition is also called the factorization of <i>n</i>.
+	</p><p>
+		As a starting point for RSA choose two primes <i>p</i> and
+		<i>q</i>.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label" for="prime-1">1st
+				Prime <i>p</i></math></label>
+			<div class="col-sm-9"><input class="form-control"
+				id="prime-1" value="11"></div>
+		</div>
+		<div id="err-p-not-prime" class="row alert alert-danger"><i>p</i>
+			is not prime!</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label" for="prime-2">2nd
+				Prime <i>q</i></label>
+			<div class="col-sm-9"><input class="form-control"
+				id="prime-2" value="13"></div>
+		</div>
+		<div id="err-q-not-prime" class="row alert alert-danger"><i>q</i>
+			is not prime!</div>
+		<div id="err-p-equal-q" class="row alert alert-danger"><i>p</i>
+			and <i>q</i> are not different!</div>
+	</form>
+	<p>
+		For the algorithm to work, the two primes must be different.
+	</p><p>
+		For demonstration we start with small primes.
+		To make the factorization difficult, the primes must be as large
+		as possible.
+		Currently, values of <i>n</i> with several thousand binary digits
+		are used for secure communication.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label"
+				for="public-key"><i>n</i> = <i>p</i> &times;
+				<i>q</i></label>
+			<div class="col-sm-9"><p class="form-control-static"><span
+				id="public-key"></span> (<span
+				id="public-key-length"></span> Bit)</p></div>
+		</div>
+	</form>
+
+
+	<h2>Public key</h2>
+
+	<p>
+		The product <i>n</i> is also called module in the RSA method.
+		The public key consists of the module <i>n</i> and an exponent
+		<i>e</i>.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label" for="base">Base
+				<i>e</i></label>
+			<div class="col-sm-9"><input class="form-control" id="base"
+				value="23"></div>
+		</div>
+		<div id="err-gcd-not-1" class="row alert alert-danger"><i>e</i>
+			and <i>n</i> have a common divisor.</div>
+	</form>
+	<p>
+		This <i>e</i> may even be pre-selected and the same for all
+		participants (the largest common divisor must be 1).
+	</p>
+
+
+	<h2>Secret key</h2>
+
+	<p>
+		RSA uses the Euler &phi; function of <i>n</i> to calculate the
+		secret key.
+		This is defined as
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label"
+				for="phi">&phi;(<i>n</i>) = (<i>p</i> &minus; 1) &times;
+				(<i>q</i> &minus; 1)</label>
+			<div class="col-sm-9"><p class="form-control-static"
+				id="phi"></p></div>
+		</div>
+	</form>
+	<p>
+		Hier wird ausgenutzt, dass <i>p</i> und <i>q</i> verschieden
+		sind.
+		Andernfalls würde sich die &phi;-Funktion anders berechnen.
+	</p><p>
+		Wichtig ist für RSA, dass der Wert der &phi;-Funktion
+		teilerfremd zu <i>e</i> ist.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label" for="gcd">ggT(<i>e</i>,
+				&phi;(<i>n</i>))</label>
+			<div class="col-sm-9"><p class="form-control-static"
+				id="gcd"></p></div>
+		</div>
+	</form>
+	<p>
+		Um den Wert von &phi;(<i>n</i>) zu bestimmen, reicht es nicht
+		aus <i>n</i> zu kennen.
+		Nur mit der Kenntnis von <i>p</i> und <i>q</i> kann man
+		&phi;(<i>n</i>) effizient bestimmen.
+	</p><p>
+		Der geheime Schlüssel besteht ebenfalls aus <i>n</i> und
+		einem <i>d</i> mit der Eigenschaft, dass <i>e</i> &times;
+		<i>d</i> ein Vielfaches von &phi;(<i>n</i>) plus eins ist.
+	</p><p>
+		In Formeln ausgedrückt, muss gelten:
+	</p><p>
+		e &times; d = 1 (mod &phi;(<i>n</i>))
+	</p><p>
+		Dabei ist mit dem mod-Ausdruck die Gleichheit bezüglich einer
+		Restklasse gemeint.
+		Es ist genau dann <i>x</i> = <i>y</i> (mod <i>z</i>), wenn es
+		ein ganzzahliges <i>a</i> gibt mit
+		<i>x</i> &minus; <i>y</i> = <i>z</i> &times; <i>a</i>.
+	</p><p>
+		Für die gewählten Werte von <i>p</i>, <i>q</i> und <i>e</i>
+		ergibt sich <i>d</i> als:
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label"
+				for="private-key"><i>d</i></label>
+			<div class="col-sm-9"><p class="form-control-static"
+				id="private-key"></div>
+		</div>
+	</form>
+	<p>
+		Dieses <i>d</i> kann immer bestimmt werden, wenn <i>e</i> mit der
+		oben beschriebenen Einschränkung gewählt wurde &ndash; bspw. mit
+		dem erweiterten Euklidischen Algorithmus.
+	</p>
+	
+
+	<h2>Ver- und Entschlüsseln</h2>
+	<p>
+		Grundsätzlich werden bei diesem Verfahren keine Texte,
+		sondern nur Zahlen ver- und entschlüsselt, die zwischen 0 und
+		<i>n</i> liegen.
+	</p><p>
+		Um eine Nachricht <i>m</i> mit dem öffentlichen Schlüssel
+		(<i>n</i>, <i>e</i>) zu verschlüsseln, wird
+	</p><p>
+		<i>m'</i> := <i>m</i><sup><i>e</i></sup> (mod <i>n</i>)
+	</p><p>
+		berechnet.
+	</p><p>
+		Das Entschlüsseln mit dem privaten Schlüssel (<i>n</i>,
+		<i>d</i>) erfolgt analog mit
+	</p><p>
+		<i>m''</i> := <i>m'</i><sup><i>d</i></sup> (mod <i>n</i>).
+	</p><p>
+		Damit ist
+	</p>
+		<i>m''</i> = <i>m</i><sup><i>e</i> &times; <i>d</i></sup>.
+	</p><p>
+		RSA nutzt nun die Eigenschaft aus, dass
+	</p><p>
+		<i>x</i><sup><i>a</i></sup> = <i>x</i><sup><i>b</i></sup>
+		(mod <i>n</i>)
+	</p><p>
+		wenn
+	</p><p>
+		<i>a</i> = <i>b</i> (mod &phi;(<i>n</i>))
+	</p><p>
+		<i>e</i> und <i>d</i> wurden passend gewählt damit
+	</p><p>
+		<i>m''</i> = <i>m</i>.
+	</p><p>
+		Die Reihenfolge spielt keine Rolle. Man könnte auch erst eine
+		Nachricht mit dem privaten Schlüssel potenzieren, und das
+		Ergebnis dann mit dem öffentlichen Schlüssel potenzieren &ndash;
+		das verwendet man bei RSA-Signaturen.
+	</p>
+
+
+	<h2>Nachrichten</h2>
+	<p>
+		In den folgenden zwei Textboxen können Sie sehen, wie das Ver-
+		und Entschlüsseln für konkrete Eingaben (Zahlen)funktioniert.
+	</p>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label"
+				for="public-key">Klartext</label>
+			<div class="col-sm-9"><input class="form-control"
+				id="private-message" value="7"></div>
+		</div>
+		<div id="err-public-msg-too-big" class="row alert
+			alert-danger">Klartext ist zu groß</div>
+		<div class="row">
+			<div id="direction">
+				<svg viewbox="0 0 50 50" width="50" height="50">
+					<polyline points="0,20 15,20 15,0 35,0 35,20 50,20 25,50"></polyline>
+				</svg>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label"
+				for="private-key">Geheimtext</label>
+			<div class="col-sm-9"><input class="form-control"
+				id="public-message"></div>
+		</div>
+		<div id="err-private-msg-too-big" class="row alert
+			alert-danger">Geheimtext ist zu groß</div>
+	</form>
+
+
+	<h2>Verwendete Bibliothek</h2>
+
+	<p>
+		Diese Seite verwendet für die Rechnung mit großen Zahlen die
+		Bibliothek
+		<a href="https://peterolson.github.com/BigInteger.js/">BigInteger.js</a>.
+	</p><p>
+		Dadurch kann man auch in JavaScript mit beliebig großen Zahlen
+		rechnen, also auch solchen, die real bei RSA-Anwendungen
+		verwendet werden.
+	</p>
+</div>

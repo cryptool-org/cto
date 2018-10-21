@@ -7,5 +7,5 @@
     "./rsa.js",
 	"./BigInteger.min.js"
   ],
-  "html": "rsa.html"
+  "html": "rsa-%lang%.html"
 }
