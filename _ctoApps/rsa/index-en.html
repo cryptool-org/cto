@@ -19,18 +19,17 @@
 	</head>
 	<body>
 		<!-- BEGIN rsa.html -->
-		<!-- END rsa.html -->
 <div id="rsa-container" class="container">
 	<p>
-		This module demonstrates the encryption or decryption with the
-		RSA method.
+		This module demonstrates step-by-step encryption or decryption
+		with the RSA method.
 		The sender uses the public key of the recipient for
-		encryption; the recipient uses its associated private key to
+		encryption; the recipient uses his associated private key to
 		decrypt.
 	</p>
 
 
-	<h2>Prime Factors</h2>
+	<h2>Prime factors</h2>
 
 	<p>
 		The security of RSA is based on the fact that it is easy to
@@ -46,7 +45,7 @@
 	<form class="form-horizontal">
 		<div class="form-group">
 			<label class="col-sm-3 control-label" for="prime-1">1st
-				Prime <i>p</i></math></label>
+				prime <i>p</i></math></label>
 			<div class="col-sm-9"><input class="form-control"
 				id="prime-1" value="11"></div>
 		</div>
@@ -54,7 +53,7 @@
 			is not prime!</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label" for="prime-2">2nd
-				Prime <i>q</i></label>
+				prime <i>q</i></label>
 			<div class="col-sm-9"><input class="form-control"
 				id="prime-2" value="13"></div>
 		</div>
@@ -67,8 +66,8 @@
 		For the algorithm to work, the two primes must be different.
 	</p><p>
 		For demonstration we start with small primes.
-		To make the factorization difficult, the primes must be as large
-		as possible.
+		To make the factorization difficult, the primes must be much
+		larger.
 		Currently, values of <i>n</i> with several thousand binary digits
 		are used for secure communication.
 	</p>
@@ -93,8 +92,7 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-3 control-label" for="base">Base
-				<i>e</i></label>
+			<label class="col-sm-3 control-label" for="base"><i>e</i></label>
 			<div class="col-sm-9"><input class="form-control" id="base"
 				value="23"></div>
 		</div>
@@ -103,7 +101,7 @@
 	</form>
 	<p>
 		This <i>e</i> may even be pre-selected and the same for all
-		participants (the largest common divisor must be 1).
+		participants.
 	</p>
 
 
@@ -128,7 +126,7 @@
 		Otherwise, the &phi; function would calculate differently.
 	</p><p>
 		It is important for RSA that the value of the &phi; function is
-		prime alien to <i>e</i>.
+		prime alien to <i>e</i> (the largest common divisor must be 1).
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
@@ -141,7 +139,7 @@
 	<p>
 		To determine the value of &phi;(<i>n</i>), it is not enough to
 		know <i>n</i>.
-		Only with the knowledge of <i>p</i> and <i>q</i> can we
+		Only with the knowledge of <i>p</i> and <i>q</i> we can
 		efficiently determine &phi;(<i>n</i>).
 	</p><p>
 		The secret key also consists of <i>n</i> and a <i>d</i> with the
@@ -170,18 +168,18 @@
 	</form>
 	<p>
 		This <i>d</i> can always be determined if <i>e</i> was chosen
-		with the restriction described above&mdash;for example with the
+		(with the restriction described above)&mdash;for example with the
 		extended Euclidean algorithm.
 	</p>
 	
 
 	<h2>Encryption and decryption</h2>
 	<p>
-		Basically, in this method, no texts, but only numbers are
-		encrypted and decrypted, which are between 0 and <i>n</i>.
+		Internally, this method works only with numbers (no text), which
+		are between 0 and <i>n</i>.
 	</p><p>
-		To encrypt a message m with the public key (<i>n</i>, <i>e</i>)
-		is
+		Encrypting a message <i>m</i> (number) with the public key
+		(<i>n</i>, <i>e</i>) is calculated:
 	</p><p>
 		<i>m'</i> := <i>m</i><sup><i>e</i></sup> (mod <i>n</i>)
 	</p><p>
@@ -194,7 +192,8 @@
 	</p><p>
 		This is
 	</p><p>
-		<i>m''</i> = <i>m</i><sup><i>e</i> &times; <i>d</i></sup>.
+		<i>m''</i> = <i>m</i><sup><i>e</i> &times; <i>d</i></sup> (mod
+		<i>n</i>).
 	</p><p>
 		RSA now exploits the property that
 	</p><p>
@@ -205,7 +204,7 @@
 	</p><p>
 		<i>a</i> = <i>b</i> (mod &phi;(<i>n</i>))
 	</p><p>
-		<i>e</i> and <i>d</i> were chosen appropriately with it
+		As <i>e</i> and <i>d</i> were chosen appropriately, it is
 	</p><p>
 		<i>m''</i> = <i>m</i>.
 	</p><p>
@@ -224,12 +223,12 @@
 	<form class="form-horizontal">
 		<div class="form-group">
 			<label class="col-sm-3 control-label"
-				for="public-key">plain text</label>
+				for="public-key">plaintext</label>
 			<div class="col-sm-9"><input class="form-control"
 				id="private-message" value="7"></div>
 		</div>
 		<div id="err-public-msg-too-big" class="row alert
-			alert-danger">plain text too big</div>
+			alert-danger">plaintext too big</div>
 		<div class="row">
 			<div id="direction">
 				<svg viewbox="0 0 50 50" width="50" height="50">
@@ -251,15 +250,19 @@
 	<h2>Used library</h2>
 
 	<p>
-		This page uses the
-		<a href="https://peterolson.github.com/BigInteger.js/">BigInteger.js</a>.
-		library for the big-numbers bill.
+		This page uses the library
+		<a href="https://peterolson.github.com/BigInteger.js/">BigInteger.js</a>
+		to work with big numbers.
 	</p><p>
-		As a result, you can count on arbitrarily large numbers in
+		As a result, you can calculate arbitrarily large numbers in
 		JavaScript, even those that are actually used in RSA
 		applications.
 	</p>
+
+	<div id="authors"><em>CTOAUTHORS: Timm Knape; Thanks to Bernhard
+			Esslinger for the Review</em></div>
 </div>
+		<!-- END rsa.html -->
 		<script
 			  src="https://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

@@ -1,7 +1,8 @@
 <div id="rsa-container" class="container">
 	<p>
-		Dieses Modul demonstriert die Ver- oder Entschlüsselung mit dem
-		RSA-Verfahren. Der Sender verwendet dabei zum Verschlüsseln den
+		Dieses Modul demonstriert schrittweise die Ver- und
+		Entschlüsselung mit dem RSA-Verfahren.
+		Der Sender verwendet dabei zum Verschlüsseln den
 		öffentlichen Schlüssel des Empfängers; der Empfänger verwendet
 		zum Entschlüsseln seinen zugehörigen privaten Schlüssel.
 	</p>
@@ -71,8 +72,7 @@
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-3 control-label" for="base">Basis
-				<i>e</i></label>
+			<label class="col-sm-3 control-label" for="base"><i>e</i></label>
 			<div class="col-sm-9"><input class="form-control" id="base"
 				value="23"></div>
 		</div>
@@ -81,8 +81,7 @@
 	</form>
 	<p>
 		Dieses <i>e</i> kann sogar vorab gewählt werden und für alle
-		Teilnehmer gleich sein (der größte gemeinsame Teiler muss 1
-		sein).
+		Teilnehmer gleich sein.
 	</p>
 
 
@@ -107,7 +106,8 @@
 		Andernfalls würde sich die &phi;-Funktion anders berechnen.
 	</p><p>
 		Wichtig ist für RSA, dass der Wert der &phi;-Funktion
-		teilerfremd zu <i>e</i> ist.
+		teilerfremd zu <i>e</i> ist (der größte gemeinsame Teiler also 1
+		ist).
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
@@ -175,7 +175,8 @@
 	</p><p>
 		Damit ist
 	</p>
-		<i>m''</i> = <i>m</i><sup><i>e</i> &times; <i>d</i></sup>.
+		<i>m''</i> = <i>m</i><sup><i>e</i> &times; <i>d</i></sup>
+		(mod <i>n</i>).
 	</p><p>
 		RSA nutzt nun die Eigenschaft aus, dass
 	</p><p>
@@ -240,4 +241,7 @@
 		rechnen, also auch solchen, die real bei RSA-Anwendungen
 		verwendet werden.
 	</p>
+
+	<div id="authors"><em>CTOAUTHORS: Timm Knape; Dank an Bernhard
+			Esslinger für das Review</em></div>
 </div>
