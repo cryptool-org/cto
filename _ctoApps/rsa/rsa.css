@@ -43,3 +43,6 @@
 .hidden {
 	display: none;
 }
+#authors {
+	margin-top: 40px;
+}

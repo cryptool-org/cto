@@ -126,11 +126,11 @@
 		Otherwise, the &phi; function would calculate differently.
 	</p><p>
 		It is important for RSA that the value of the &phi; function is
-		prime alien to <i>e</i> (the largest common divisor must be 1).
+		coprime to <i>e</i> (the largest common divisor must be 1).
 	</p>
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label class="col-sm-3 control-label" for="gcd">ggT(<i>e</i>,
+			<label class="col-sm-3 control-label" for="gcd">gcd(<i>e</i>,
 				&phi;(<i>n</i>))</label>
 			<div class="col-sm-9"><p class="form-control-static"
 				id="gcd"></p></div>
@@ -167,8 +167,8 @@
 		</div>
 	</form>
 	<p>
-		This <i>d</i> can always be determined if <i>e</i> was chosen
-		(with the restriction described above)&mdash;for example with the
+		This <i>d</i> can always be determined (if <i>e</i> was chosen
+		with the restriction described above)&mdash;for example with the
 		extended Euclidean algorithm.
 	</p>
 	
@@ -182,8 +182,6 @@
 		(<i>n</i>, <i>e</i>) is calculated:
 	</p><p>
 		<i>m'</i> := <i>m</i><sup><i>e</i></sup> (mod <i>n</i>)
-	</p><p>
-		calculated.
 	</p><p>
 		Decrypting with the private key (<i>n</i>, <i>d</i>) is done
 		analogously with
