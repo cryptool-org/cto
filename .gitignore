@@ -18,3 +18,4 @@ node_modules
 /plugins/content/*
 !/plugins/content/loadcto
 !/plugins/content/loadcto/*
+!/docs
