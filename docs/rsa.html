@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="de"l>
+<head>
+<meta charset="utf-8">
+<title>RSA Implementierung in JavaScript</title><link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
+<body>
+<h1>RSA Implementierung in JavaScript</h1>
+<div class="slides">
+<div><div>
+<h1>RSA Implementierung in JavaScript</h1>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">file: rsa.js)</span></span><br/>
+<span class="in1"></span>
+<span class="fn">jQuery</span>((<span class="fn">$</span>) =&gt; {<br/>
+<span class="in2"></span>
+<span class="expand">@expand(<span class="name">globals)</span></span>;<br/>
+<span class="in2"></span>
+<span class="expand">@expand(<span class="name">setup rsa)</span></span>;<br/>
+<span class="in1"></span>
+});<br/>
+
+<span class="end">@end(<span class="name">file: rsa.js)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
+  geladen wurde</li><li>
+ Durch das Scoping in einer eigenen Funktion wird der globale
+  Namensraum nicht verschmutzt</li><li>
+ Dieses Projekt verwendet <code>jQuery</code></li></ul></div>
+</div>
+<h1>Refresh</h1>
+<div class="slides">
+<div><div>
+<h1>Refresh</h1>
+</div>
+<ul><li>
+ Neben den wenigen Aktionen findet die Hauptarbeit während des Refreshs
+  statt</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">setup rsa)</span></span><br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="fn">refresh</span> = () =&gt; {<br/>
+<span class="in2"></span>
+<span class="expand">@expand(<span class="name">refresh)</span></span>;<br/>
+<span class="in1"></span>
+};<br/>
+<span class="in1"></span>
+<span class="fn">refresh</span>();<br/>
+
+<span class="end">@end(<span class="name">setup rsa)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Während des Refreshs werden alle zu berechnenden Felder neu berechnet</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">$prime1</span> = <span class="fn">$</span>(<span class="str">'#prime-1'</span>);<br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">$prime2</span> = <span class="fn">$</span>(<span class="str">'#prime-2'</span>);<br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">$errPNotPrime</span> =<br/>
+<span class="in2"></span>
+<span class="fn">$</span>(<span class="str">'#err-p-not-prime'</span>);<br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">$errQNotPrime</span> =<br/>
+<span class="in2"></span>
+<span class="fn">$</span>(<span class="str">'#err-q-not-prime'</span>);<br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">$errPEqualQ</span> =<br/>
+<span class="in2"></span>
+<span class="fn">$</span>(<span class="str">'#err-p-equal-q'</span>);<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ In zwei Textfeldern werden die Primzahlen eingegeben</li><li>
+ Zusätzlich gibt es Panels mit Fehlermeldungen</li><li>
+ Diese sind aber versteckt, wenn der Fehler nicht aufgetreten ist</li><li>
+ Die Objekte werden in globalen Variablen abgelegt, um sie nicht jedes
+  Mal suchen zu müssen</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">prime1</span> = <span class="fn">bigInt</span>(<span class="var">$prime1</span>.<span class="fn">val</span>());<br/>
+<span class="in1"></span>
+<span class="var">$errPNotPrime</span>.<span class="fn">toggleClass</span>(<br/>
+<span class="in2"></span>
+<span class="str">'hidden'</span>, <span class="var">prime1</span>.<span class="fn">isProbablePrime</span>()<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">prime2</span> = <span class="fn">bigInt</span>(<span class="var">$prime2</span>.<span class="fn">val</span>());<br/>
+<span class="in1"></span>
+<span class="var">$errQNotPrime</span>.<span class="fn">toggleClass</span>(<br/>
+<span class="in2"></span>
+<span class="str">'hidden'</span>, <span class="var">prime2</span>.<span class="fn">isProbablePrime</span>()<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+<span class="var">$errPEqualQ</span>.<span class="fn">toggleClass</span>(<br/>
+<span class="in2"></span>
+<span class="str">'hidden'</span>, ! <span class="var">prime1</span>.<span class="fn">equals</span>(<span class="var">prime2</span>)<br/>
+<span class="in1"></span>
+);<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Die beiden Primzahlen werden aus dem DOM-Modell gelesen</li><li>
+ Und in große Zahlen konvertiert</li><li>
+ Wenn sie vermutlich keine Primzahl oder gleich sind, wird die
+  passende Fehlermeldung angezeigt</li><li>
+ Und andernfalls ausgeblendet</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">$public_key</span> =<br/>
+<span class="in2"></span>
+<span class="fn">$</span>(<span class="str">'#public-key'</span>);<br/>
+<span class="in1"></span>
+<span class="type">const</span> <span class="var">$public_key_length</span> =<br/>
+<span class="in2"></span>
+<span class="fn">$</span>(<span class="str">'#public-key-length'</span>);<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ In zwei Elementen wird der öffentliche Schlüssel und dessen Länge
+  abgelegt</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+const public_key =<br/>
+<span class="in2"></span>
+prime1.multiply(prime2);<br/>
+<span class="in1"></span>
+$public_key.text(<br/>
+<span class="in2"></span>
+public_key.toString()<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+$public_key_length.text(<br/>
+<span class="in2"></span>
+public_key.bitLength()<br/>
+<span class="in1"></span>
+);<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen</li><li>
+ Die Länge des Schlüssels kann die Integer-Bibliothek direkt ermitteln</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+const $phi = $('#phi');<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Auch das Ergebnis der φ-Funktion wird auf der Webseite angezeigt</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+const one = bigInt.one;<br/>
+<span class="in1"></span>
+const phi = prime1.subtract(one).<br/>
+<span class="in2"></span>
+multiply(prime2.subtract(one));<br/>
+<span class="in1"></span>
+$phi.text(phi.toString());<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
+  sind, ist das Produkt deren Vorgänger der Wert der φ-Funktion
+  des öffentlichen Schlüssels</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+const gcd = (a, b) =&gt; {<br/>
+<span class="in2"></span>
+<span class="expand">@expand(<span class="name">gcd)</span></span>;<br/>
+<span class="in1"></span>
+};<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Das inverse Element kann mit dem Erweiterten Euklidischen Algorithmus
+  berechnet werden</li><li>
+ Dieser wird weiter unten implementiert</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+const $e = $('#base');<br/>
+<span class="in1"></span>
+const $gcd = $('#gcd');<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Der Wert <code>e</code> wird wie die Primzahlen aus einem Textfeld ausgelesen</li><li>
+ Der kleinste gemeinsame Teiler wird zur Kontrolle auch angezeigt</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+const e = bigInt($e.val());<br/>
+<span class="in1"></span>
+const gg = gcd(phi, e);<br/>
+<span class="in1"></span>
+$errGcdNot1.toggleClass(<br/>
+<span class="in2"></span>
+'hidden', gg.a.equals(1)<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+$gcd.text(gg.a.toString());<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Wenn <code>e</code> mit dem Wert der φ-Funktion nicht teilerfremd sind, wird
+  eine entsprechende Fehlermeldung angezeigt</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+const $private_key = $('#private-key');<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Der private Schlüssel wird auch auf der Webseite ausgegeben</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+let private_key = gg.v;<br/>
+<span class="in1"></span>
+if (private_key.lesser(0)) {<br/>
+<span class="in2"></span>
+private_key = private_key.add(phi);<br/>
+<span class="in1"></span>
+}<br/>
+<span class="in1"></span>
+$private_key.text(private_key.toString());<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Der private Schlüssel ist das multiplikative Inverse Modulo φ</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+let encrypt = true;<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Der Algorithmus kann sowohl Ver- als auch Entschlüsseln</li><li>
+ Diese Variable bestimmt, in welche Richtung der Algorithmus läuft</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+if (encrypt) {<br/>
+<span class="in2"></span>
+<span class="expand">@expand(<span class="name">encrypt)</span></span>;<br/>
+<span class="in1"></span>
+} else {<br/>
+<span class="in2"></span>
+<span class="expand">@expand(<span class="name">decrypt)</span></span>;<br/>
+<span class="in1"></span>
+}<br/>
+
+<br/>
+<span class="in1"></span>
+timer = null;<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">encrypt)</span></span><br/>
+<span class="in1"></span>
+const source =<br/>
+<span class="in2"></span>
+bigInt($private_message.val());<br/>
+<span class="in1"></span>
+$errPublicMsgTooBig.toggleClass(<br/>
+<span class="in2"></span>
+'hidden', source.lesser(public_key)<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+$errPrivateMsgTooBig.toggleClass(<br/>
+<span class="in2"></span>
+'hidden', true<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+const encrypted = source.modPow(<br/>
+<span class="in2"></span>
+e, public_key<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+$public_message.val(<br/>
+<span class="in2"></span>
+encrypted.toString()<br/>
+<span class="in1"></span>
+);<br/>
+
+<span class="end">@end(<span class="name">encrypt)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">decrypt)</span></span><br/>
+<span class="in1"></span>
+const source =<br/>
+<span class="in2"></span>
+bigInt($public_message.val());<br/>
+<span class="in1"></span>
+$errPublicMsgTooBig.toggleClass(<br/>
+<span class="in2"></span>
+'hidden', true<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+$errPrivateMsgTooBig.toggleClass(<br/>
+<span class="in2"></span>
+'hidden', source.lesser(public_key)<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+const decrypted = source.modPow(<br/>
+<span class="in2"></span>
+private_key, public_key<br/>
+<span class="in1"></span>
+);<br/>
+<span class="in1"></span>
+$private_message.val(<br/>
+<span class="in2"></span>
+decrypted.toString()<br/>
+<span class="in1"></span>
+);<br/>
+
+<span class="end">@end(<span class="name">decrypt)</span></span><br/>
+</code>
+</div>
+</div>
+</div>
+<h1>Größter gemeinsamer Teiler</h1>
+<div class="slides">
+<div><div>
+<h1>Größter gemeinsamer Teiler</h1>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">gcd)</span></span><br/>
+<span class="in1"></span>
+let ca = a;<br/>
+<span class="in1"></span>
+let cb = b;<br/>
+
+<br/>
+<span class="in1"></span>
+let u = bigInt.one;<br/>
+<span class="in1"></span>
+let s = bigInt.zero;<br/>
+<span class="in1"></span>
+let v = s;<br/>
+<span class="in1"></span>
+let t = u;<br/>
+
+<span class="end">@end(<span class="name">gcd)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">gcd)</span></span><br/>
+<span class="in1"></span>
+while (! cb.isZero()) {<br/>
+<span class="in2"></span>
+<span class="expand">@expand(<span class="name">gcd loop)</span></span>;<br/>
+<span class="in1"></span>
+}<br/>
+
+<span class="end">@end(<span class="name">gcd)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">gcd loop)</span></span><br/>
+<span class="in1"></span>
+const dd = ca.divmod(cb);<br/>
+<span class="in1"></span>
+const na = cb;<br/>
+
+<br/>
+<span class="in1"></span>
+const nb = dd.remainder;<br/>
+<span class="in1"></span>
+const nu = s;<br/>
+<span class="in1"></span>
+const nv = t;<br/>
+<span class="in1"></span>
+const ns =<br/>
+<span class="in2"></span>
+u.subtract(dd.quotient.multiply(s));<br/>
+<span class="in1"></span>
+const nt =<br/>
+<span class="in2"></span>
+v.subtract(dd.quotient.multiply(t));<br/>
+
+<span class="end">@end(<span class="name">gcd loop)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">gcd loop)</span></span><br/>
+<span class="in1"></span>
+ca = na;<br/>
+<span class="in1"></span>
+cb = nb;<br/>
+<span class="in1"></span>
+u = nu;<br/>
+<span class="in1"></span>
+v = nv;<br/>
+<span class="in1"></span>
+s = ns;<br/>
+<span class="in1"></span>
+t = nt;<br/>
+
+<span class="end">@end(<span class="name">gcd loop)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">gcd)</span></span><br/>
+<span class="in1"></span>
+return {<br/>
+<span class="in2"></span>
+a: ca, u: u, v: v,<br/>
+<span class="in2"></span>
+s: s, t: t <br/>
+<span class="in1"></span>
+};<br/>
+
+<span class="end">@end(<span class="name">gcd)</span></span><br/>
+</code>
+</div>
+</div>
+</div>
+<h1>Interaktion</h1>
+<div class="slides">
+<div><div>
+<h1>Interaktion</h1>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
+const $private_message =<br/>
+<span class="in2"></span>
+$('#private-message');<br/>
+<span class="in1"></span>
+const $public_message =<br/>
+<span class="in2"></span>
+$('#public-message');<br/>
+<span class="in1"></span>
+const $direction =<br/>
+<span class="in2"></span>
+$('#direction');<br/>
+<span class="in1"></span>
+const $errGcdNot1 =<br/>
+<span class="in2"></span>
+$('#err-gcd-not-1');<br/>
+<span class="in1"></span>
+const $errPublicMsgTooBig =<br/>
+<span class="in2"></span>
+$('#err-public-msg-too-big');<br/>
+<span class="in1"></span>
+const $errPrivateMsgTooBig =<br/>
+<span class="in2"></span>
+$('#err-private-msg-too-big');<br/>
+<span class="in1"></span>
+let timer;<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">setup rsa)</span></span><br/>
+<span class="in1"></span>
+const setEncrypt = (new_encrypt) =&gt; {<br/>
+<span class="in2"></span>
+if (encrypt === new_encrypt) { return; }<br/>
+<span class="in2"></span>
+encrypt = new_encrypt;<br/>
+<span class="in2"></span>
+if (encrypt) {<br/>
+<span class="in3"></span>
+$direction.removeClass('flip');<br/>
+<span class="in3"></span>
+$direction.addClass('flop');<br/>
+<span class="in2"></span>
+} else {<br/>
+<span class="in3"></span>
+$direction.removeClass('flop');<br/>
+<span class="in3"></span>
+$direction.addClass('flip');<br/>
+<span class="in2"></span>
+}<br/>
+<span class="in1"></span>
+};<br/>
+
+<span class="end">@end(<span class="name">setup rsa)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">setup rsa)</span></span><br/>
+<span class="in1"></span>
+const queueRefresh = (event) =&gt; {<br/>
+<span class="in2"></span>
+event.preventDefault();<br/>
+<span class="in2"></span>
+if (! timer) {<br/>
+<span class="in3"></span>
+refresh();<br/>
+<span class="in2"></span>
+} else {<br/>
+<span class="in3"></span>
+clearTimeout(timer);<br/>
+<span class="in3"></span>
+<span class="expand">@expand(<span class="name">set fields to pending)</span></span>;<br/>
+<span class="in2"></span>
+}<br/>
+<span class="in2"></span>
+timer = setTimeout(refresh, 500);<br/>
+<span class="in1"></span>
+}<br/>
+
+<span class="end">@end(<span class="name">setup rsa)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">set fields to pending)</span></span><br/>
+<span class="in1"></span>
+$public_key_length.text('...');<br/>
+<span class="in1"></span>
+$public_key.text('...');<br/>
+<span class="in1"></span>
+$phi.text('...');<br/>
+<span class="in1"></span>
+$gcd.text('...');<br/>
+<span class="in1"></span>
+$private_key.text('...');<br/>
+
+<br/>
+<span class="in1"></span>
+if (encrypt) {<br/>
+<span class="in2"></span>
+$public_message.val('...');<br/>
+<span class="in1"></span>
+} else {<br/>
+<span class="in2"></span>
+$private_message.val('...');<br/>
+<span class="in1"></span>
+}<br/>
+
+<span class="end">@end(<span class="name">set fields to pending)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">setup rsa)</span></span><br/>
+<span class="in1"></span>
+$prime1.on('input', queueRefresh);<br/>
+<span class="in1"></span>
+$prime2.on('input', queueRefresh);<br/>
+<span class="in1"></span>
+$e.on('input', queueRefresh);<br/>
+<span class="in1"></span>
+$private_message.on('input', event =&gt; {<br/>
+<span class="in2"></span>
+setEncrypt(true);<br/>
+<span class="in2"></span>
+queueRefresh(event);<br/>
+<span class="in1"></span>
+});<br/>
+<span class="in1"></span>
+$public_message.on('input', event =&gt; {<br/>
+<span class="in2"></span>
+setEncrypt(false);<br/>
+<span class="in2"></span>
+queueRefresh(event);<br/>
+<span class="in1"></span>
+});<br/>
+
+<span class="end">@end(<span class="name">setup rsa)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+timer = null;<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
