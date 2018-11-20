@@ -459,11 +459,11 @@
 <ul><li>
  Die aktuellen Werte von <code><span class="var">a</span></code> und <code><span class="var">b</span></code> werden in <code><span class="var">ca</span></code> und
   <code><span class="var">cb</span></code> gespeichert</li><li>
- Solange <code><span class="var">cb</span> nicht </code>n{0}<code> ist, gilt stets dass der größte gemeinsame
-  Teiler von </code>v{a}<code> und </code>v{b}<code> auch der größte gemeinsame Teiler von
-  </code>v{ca}<code> und </code>v{cb}<code> ist</li><li>
- Der Euklidische Algorithmus reduziert </code>v{ca}<code> und </code>v{cb}<code>, bis
-  </code>v{cb}<code> gleich </code>n{0}<code> wird</li></ul></div>
+ Solange <code><span class="var">cb</span></code> nicht <code><span class="num">0</span></code> ist, gilt stets dass der größte
+  gemeinsame Teiler von <code><span class="var">a</span></code> und <code><span class="var">b</span></code> auch der größte gemeinsame
+  Teiler von <code><span class="var">ca</span></code> und <code><span class="var">cb</span></code> ist</li><li>
+ Der Euklidische Algorithmus reduziert <code><span class="var">ca</span></code> und <code><span class="var">cb</span></code>, bis
+  <code><span class="var">cb</span></code> gleich <code><span class="num">0</span></code> wird</li></ul></div>
 <div><div>
 <code>
 
@@ -482,9 +482,9 @@
 </div>
 <ul><li>
  Der Erweiterte Euklidische Algorithums hält vier weitere Parameter
-  </code>v{u}<code>, </code>v{v}<code>, </code>v{s}<code> und </code>v{t}<code></li><li>
- Es gilt stets, dass </code>v{ca} = v{u} * v{a} + v{v} * v{b}<code></li><li>
- Und </code>v{cb} = v{s} * v{a} + v{t} * v{b}<code></li></ul></div>
+  <code><span class="var">u</span></code>, <code><span class="var">v</span></code>, <code><span class="var">s</span></code> und <code><span class="var">t</span></code></li><li>
+ Es gilt stets, dass <code><span class="var">ca</span> = <span class="var">u</span> * <span class="var">a</span> + <span class="var">v</span> * <span class="var">b</span></code></li><li>
+ Und <code><span class="var">cb</span> = <span class="var">s</span> * <span class="var">a</span> + <span class="var">t</span> * <span class="var">b</span></code></li></ul></div>
 <div><div>
 <code>
 
@@ -500,7 +500,7 @@
 </code>
 </div>
 <ul><li>
- Solange </code>v{cb}<code> nicht </code>n{0}<code> ist, wird die Schleife ausgeführt</li></ul></div>
+ Solange <code><span class="var">cb</span></code> nicht <code><span class="num">0</span></code> ist, wird die Schleife ausgeführt</li></ul></div>
 <div><div>
 <code>
 
@@ -516,11 +516,11 @@
 </code>
 </div>
 <ul><li>
- </code>v{ca}<code> wird durch </code>v{cb}<code> geteilt</li><li>
- Der neue Wert von </code>v{ca}<code> (</code>v{na}<code>) wird auf </code>v{cb}<code> gesetzt</li><li>
- Der neue Wert von </code>v{cb}<code> (</code>v{nb}<code>) ist der Rest aus der Division</li><li>
- Der größte gemeinsame Teiler von </code>v{ca}<code> und </code>v{cb}<code> ist auch der
-  größte gemeinsame Teiler von </code>v{na}<code> und </code>v{nb}<code></li></ul></div>
+ <code><span class="var">ca</span></code> wird durch <code><span class="var">cb</span></code> geteilt</li><li>
+ Der neue Wert von <code><span class="var">ca</span></code> (<code><span class="var">na</span></code>) wird auf <code><span class="var">cb</span></code> gesetzt</li><li>
+ Der neue Wert von <code><span class="var">cb</span></code> (<code><span class="var">nb</span></code>) ist der Rest aus der Division</li><li>
+ Der größte gemeinsame Teiler von <code><span class="var">ca</span></code> und <code><span class="var">cb</span></code> ist auch der
+  größte gemeinsame Teiler von <code><span class="var">na</span></code> und <code><span class="var">nb</span></code></li></ul></div>
 <div><div>
 <code>
 
@@ -534,8 +534,8 @@
 </code>
 </div>
 <ul><li>
- Dadurch, dass </code>v{cb}<code> nach </code>v{na}<code> kopiert wurde, können die
-  Koeffizienten </code>v{s}<code> und </code>v{t}<code> nach </code>v{nu}<code> und </code>v{nv}<code> kopiert
+ Dadurch, dass <code><span class="var">cb</span></code> nach <code><span class="var">na</span></code> kopiert wurde, können die
+  Koeffizienten <code><span class="var">s</span></code> und <code><span class="var">t</span></code> nach <code><span class="var">nu</span></code> und <code><span class="var">nv</span></code> kopiert
   werden</li></ul></div>
 <div><div>
 <code>
@@ -554,8 +554,8 @@
 </code>
 </div>
 <ul><li>
- Aus den aktuellen </code>v{u}<code> und </code>v{v}<code> können die neuen </code>v{s}<code> und
-  </code>v{t}<code> bestimmt werden</li></ul></div>
+ Aus den aktuellen <code><span class="var">u</span></code> und <code><span class="var">v</span></code> können die neuen <code><span class="var">s</span></code> und
+  <code><span class="var">t</span></code> bestimmt werden</li></ul></div>
 <div><div>
 <code>
 
@@ -605,7 +605,7 @@
 </code>
 </div>
 <ul><li>
- Zurück liefert die Funktion den größten gemeinsamen Teiler </code>v{a}<code></li><li>
+ Zurück liefert die Funktion den größten gemeinsamen Teiler <code><span class="var">a</span></code></li><li>
  Und die Koeffizientent</li></ul></div>
 </div>
 <h2>Unit-Test</h2>
@@ -659,7 +659,7 @@ eq(g.a, bigInt(2));<br/>
 </code>
 </div>
 <ul><li>
- Der größte gemeinsame Teiler muss </code>n{2}<code> sein</li></ul></div>
+ Der größte gemeinsame Teiler muss <code><span class="num">2</span></code> sein</li></ul></div>
 <div><div>
 <code>
 
@@ -673,7 +673,7 @@ eq(g.v, bigInt(-17));<br/>
 </code>
 </div>
 <ul><li>
- Die Koeffizienten </code>v{g}.v{u}<code> und </code>v{g}.v{v}<code> liefern
+ Die Koeffizienten <code><span class="var">g</span>.<span class="var">u</span></code> und <code><span class="var">g</span>.<span class="var">v</span></code> liefern
   Linearkombination für den größten gemeinsamen Teiler</li></ul></div>
 <div><div>
 <code>
@@ -688,8 +688,8 @@ eq(g.t, bigInt(35));<br/>
 </code>
 </div>
 <ul><li>
- Die Koeffizienten </code>v{g}.v{s}<code> und </code>v{g}.v{t}<code> liefern nicht-triviale
-  Linearkombination von </code>n{0}<code></li></ul></div>
+ Die Koeffizienten <code><span class="var">g</span>.<span class="var">s</span></code> und <code><span class="var">g</span>.<span class="var">t</span></code> liefern nicht-triviale
+  Linearkombination von <code><span class="num">0</span></code></li></ul></div>
 </div>
 <h1>Interaktion</h1>
 <div class="slides">
