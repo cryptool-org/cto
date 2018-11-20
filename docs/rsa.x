@@ -259,9 +259,9 @@ x{gcd}
 ```
 * Die aktuellen Werte von `v{a}` und `v{b}` werden in `v{ca}` und
   `v{cb}` gespeichert
-* Solange `v{cb} nicht `n{0}` ist, gilt stets dass der größte gemeinsame
-  Teiler von `v{a}` und `v{b}` auch der größte gemeinsame Teiler von
-  `v{ca}` und `v{cb}` ist
+* Solange `v{cb}` nicht `n{0}` ist, gilt stets dass der größte
+  gemeinsame Teiler von `v{a}` und `v{b}` auch der größte gemeinsame
+  Teiler von `v{ca}` und `v{cb}` ist
 * Der Euklidische Algorithmus reduziert `v{ca}` und `v{cb}`, bis
   `v{cb}` gleich `n{0}` wird
 
