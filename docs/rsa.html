@@ -149,19 +149,19 @@
 
 <span class="add">@add(<span class="name">refresh)</span></span><br/>
 <span class="in1"></span>
-const public_key =<br/>
+<span class="type">const</span> <span class="var">public_key</span> =<br/>
 <span class="in2"></span>
-prime1.multiply(prime2);<br/>
+<span class="var">prime1</span>.<span class="fn">multiply</span>(<span class="var">prime2</span>);<br/>
 <span class="in1"></span>
-$public_key.text(<br/>
+<span class="var">$public_key</span>.<span class="fn">text</span>(<br/>
 <span class="in2"></span>
-public_key.toString()<br/>
+<span class="var">public_key</span>.<span class="fn">toString</span>()<br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-$public_key_length.text(<br/>
+<span class="var">$public_key_length</span>.<span class="fn">text</span>(<br/>
 <span class="in2"></span>
-public_key.bitLength()<br/>
+<span class="var">public_key</span>.<span class="fn">bitLength</span>()<br/>
 <span class="in1"></span>
 );<br/>
 
@@ -176,7 +176,7 @@ public_key.bitLength()<br/>
 
 <span class="add">@add(<span class="name">globals)</span></span><br/>
 <span class="in1"></span>
-const $phi = $('#phi');<br/>
+<span class="type">const</span> <span class="var">$phi</span> = <span class="fn">$</span>(<span class="str">'#phi'</span>);<br/>
 
 <span class="end">@end(<span class="name">globals)</span></span><br/>
 </code>
@@ -188,13 +188,13 @@ const $phi = $('#phi');<br/>
 
 <span class="add">@add(<span class="name">refresh)</span></span><br/>
 <span class="in1"></span>
-const one = bigInt.one;<br/>
+<span class="type">const</span> <span class="var">one</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
 <span class="in1"></span>
-const phi = prime1.subtract(one).<br/>
+<span class="type">const</span> <span class="var">phi</span> = <span class="var">prime1</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<br/>
 <span class="in2"></span>
-multiply(prime2.subtract(one));<br/>
+<span class="fn">multiply</span>(<span class="var">prime2</span>.<span class="fn">subtract</span>(<span class="var">one</span>));<br/>
 <span class="in1"></span>
-$phi.text(phi.toString());<br/>
+<span class="var">$phi</span>.<span class="fn">text</span>(<span class="var">phi</span>.<span class="fn">toString</span>());<br/>
 
 <span class="end">@end(<span class="name">refresh)</span></span><br/>
 </code>
@@ -208,7 +208,7 @@ $phi.text(phi.toString());<br/>
 
 <span class="add">@add(<span class="name">globals)</span></span><br/>
 <span class="in1"></span>
-const gcd = (a, b) =&gt; {<br/>
+<span class="type">const</span> <span class="fn">gcd</span> = (<span class="var">a</span>, <span class="var">b</span>) =&gt; {<br/>
 <span class="in2"></span>
 <span class="expand">@expand(<span class="name">gcd)</span></span>;<br/>
 <span class="in1"></span>
@@ -226,45 +226,45 @@ const gcd = (a, b) =&gt; {<br/>
 
 <span class="add">@add(<span class="name">globals)</span></span><br/>
 <span class="in1"></span>
-const $e = $('#base');<br/>
+<span class="type">const</span> <span class="var">$e</span> = <span class="fn">$</span>(<span class="str">'#base'</span>);<br/>
 <span class="in1"></span>
-const $gcd = $('#gcd');<br/>
+<span class="type">const</span> <span class="var">$gcd</span> = <span class="fn">$</span>(<span class="str">'#gcd'</span>);<br/>
 
 <span class="end">@end(<span class="name">globals)</span></span><br/>
 </code>
 </div>
 <ul><li>
- Der Wert <code>e</code> wird wie die Primzahlen aus einem Textfeld ausgelesen</li><li>
+ Der Wert <code><span class="var">e</span></code> wird wie die Primzahlen aus einem Textfeld ausgelesen</li><li>
  Der kleinste gemeinsame Teiler wird zur Kontrolle auch angezeigt</li></ul></div>
 <div><div>
 <code>
 
 <span class="add">@add(<span class="name">refresh)</span></span><br/>
 <span class="in1"></span>
-const e = bigInt($e.val());<br/>
+<span class="type">const</span> <span class="var">e</span> = <span class="fn">bigInt</span>(<span class="var">$e</span>.<span class="fn">val</span>());<br/>
 <span class="in1"></span>
-const gg = gcd(phi, e);<br/>
+<span class="type">const</span> <span class="var">gg</span> = <span class="fn">gcd</span>(<span class="var">phi</span>, <span class="var">e</span>);<br/>
 <span class="in1"></span>
-$errGcdNot1.toggleClass(<br/>
+<span class="var">$errGcdNot1</span>.<span class="fn">toggleClass</span>(<br/>
 <span class="in2"></span>
-'hidden', gg.a.equals(1)<br/>
+<span class="str">'hidden'</span>, <span class="var">gg</span>.<span class="var">a</span>.<span class="fn">equals</span>(<span class="num">1</span>)<br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-$gcd.text(gg.a.toString());<br/>
+<span class="var">$gcd</span>.<span class="fn">text</span>(<span class="var">gg</span>.<span class="var">a</span>.<span class="fn">toString</span>());<br/>
 
 <span class="end">@end(<span class="name">refresh)</span></span><br/>
 </code>
 </div>
 <ul><li>
- Wenn <code>e</code> mit dem Wert der φ-Funktion nicht teilerfremd sind, wird
+ Wenn <code><span class="var">e</span></code> mit dem Wert der φ-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt</li></ul></div>
 <div><div>
 <code>
 
 <span class="add">@add(<span class="name">globals)</span></span><br/>
 <span class="in1"></span>
-const $private_key = $('#private-key');<br/>
+<span class="type">const</span> <span class="var">$private_key</span> = <span class="fn">$</span>(<span class="str">'#private-key'</span>);<br/>
 
 <span class="end">@end(<span class="name">globals)</span></span><br/>
 </code>
@@ -276,15 +276,15 @@ const $private_key = $('#private-key');<br/>
 
 <span class="add">@add(<span class="name">refresh)</span></span><br/>
 <span class="in1"></span>
-let private_key = gg.v;<br/>
+<span class="type">let</span> <span class="var">private_key</span> = <span class="var">gg</span>.<span class="var">v</span>;<br/>
 <span class="in1"></span>
-if (private_key.lesser(0)) {<br/>
+<span class="keyword">if</span> (<span class="var">private_key</span>.<span class="fn">lesser</span>(<span class="num">0</span>)) {<br/>
 <span class="in2"></span>
-private_key = private_key.add(phi);<br/>
+<span class="var">private_key</span> = <span class="var">private_key</span>.<span class="fn">add</span>(<span class="var">phi</span>);<br/>
 <span class="in1"></span>
 }<br/>
 <span class="in1"></span>
-$private_key.text(private_key.toString());<br/>
+<span class="var">$private_key</span>.<span class="fn">text</span>(<span class="var">private_key</span>.<span class="fn">toString</span>());<br/>
 
 <span class="end">@end(<span class="name">refresh)</span></span><br/>
 </code>
@@ -296,7 +296,7 @@ $private_key.text(private_key.toString());<br/>
 
 <span class="add">@add(<span class="name">globals)</span></span><br/>
 <span class="in1"></span>
-let encrypt = true;<br/>
+<span class="type">let</span> <span class="var">encrypt</span> = <span class="keyword">true</span>;<br/>
 
 <span class="end">@end(<span class="name">globals)</span></span><br/>
 </code>
@@ -309,19 +309,26 @@ let encrypt = true;<br/>
 
 <span class="add">@add(<span class="name">refresh)</span></span><br/>
 <span class="in1"></span>
-if (encrypt) {<br/>
+<span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
 <span class="in2"></span>
 <span class="expand">@expand(<span class="name">encrypt)</span></span>;<br/>
 <span class="in1"></span>
-} else {<br/>
+} <span class="keyword">else</span> {<br/>
 <span class="in2"></span>
 <span class="expand">@expand(<span class="name">decrypt)</span></span>;<br/>
 <span class="in1"></span>
 }<br/>
 
-<br/>
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+</div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
 <span class="in1"></span>
-timer = null;<br/>
+<span class="var">timer</span> = <span class="keyword">null</span>;<br/>
 
 <span class="end">@end(<span class="name">refresh)</span></span><br/>
 </code>
@@ -332,31 +339,31 @@ timer = null;<br/>
 
 <span class="add">@def(<span class="name">encrypt)</span></span><br/>
 <span class="in1"></span>
-const source =<br/>
+<span class="type">const</span> <span class="var">source</span> =<br/>
 <span class="in2"></span>
-bigInt($private_message.val());<br/>
+<span class="fn">bigInt</span>(<span class="var">$private_message</span>.<span class="fn">val</span>());<br/>
 <span class="in1"></span>
-$errPublicMsgTooBig.toggleClass(<br/>
+<span class="var">$errPublicMsgTooBig</span>.<span class="fn">toggleClass</span>(<br/>
 <span class="in2"></span>
-'hidden', source.lesser(public_key)<br/>
+<span class="str">'hidden'</span>, <span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-$errPrivateMsgTooBig.toggleClass(<br/>
+<span class="var">$errPrivateMsgTooBig</span>.<span class="fn">toggleClass</span>(<br/>
 <span class="in2"></span>
-'hidden', true<br/>
+<span class="str">'hidden'</span>, <span class="keyword">true</span><br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-const encrypted = source.modPow(<br/>
+<span class="type">const</span> <span class="var">encrypted</span> = <span class="var">source</span>.<span class="fn">modPow</span>(<br/>
 <span class="in2"></span>
-e, public_key<br/>
+<span class="var">e</span>, <span class="var">public_key</span><br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-$public_message.val(<br/>
+<span class="var">$public_message</span>.<span class="fn">val</span>(<br/>
 <span class="in2"></span>
-encrypted.toString()<br/>
+<span class="var">encrypted</span>.<span class="fn">toString</span>()<br/>
 <span class="in1"></span>
 );<br/>
 
@@ -369,31 +376,31 @@ encrypted.toString()<br/>
 
 <span class="add">@def(<span class="name">decrypt)</span></span><br/>
 <span class="in1"></span>
-const source =<br/>
+<span class="type">const</span> <span class="var">source</span> =<br/>
 <span class="in2"></span>
-bigInt($public_message.val());<br/>
+<span class="fn">bigInt</span>(<span class="var">$public_message</span>.<span class="fn">val</span>());<br/>
 <span class="in1"></span>
-$errPublicMsgTooBig.toggleClass(<br/>
+<span class="var">$errPublicMsgTooBig</span>.<span class="fn">toggleClass</span>(<br/>
 <span class="in2"></span>
-'hidden', true<br/>
+<span class="str">'hidden'</span>, <span class="keyword">true</span><br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-$errPrivateMsgTooBig.toggleClass(<br/>
+<span class="var">$errPrivateMsgTooBig</span>.<span class="fn">toggleClass</span>(<br/>
 <span class="in2"></span>
-'hidden', source.lesser(public_key)<br/>
+<span class="str">'hidden'</span>, <span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-const decrypted = source.modPow(<br/>
+<span class="keyword">const</span> <span class="var">decrypted</span> = <span class="var">source</span>.<span class="fn">modPow</span>(<br/>
 <span class="in2"></span>
-private_key, public_key<br/>
+<span class="var">private_key</span>, <span class="var">public_key</span><br/>
 <span class="in1"></span>
 );<br/>
 <span class="in1"></span>
-$private_message.val(<br/>
+<span class="var">$private_message</span>.<span class="fn">val</span>(<br/>
 <span class="in2"></span>
-decrypted.toString()<br/>
+<span class="var">decrypted</span>.<span class="fn">toString</span>()<br/>
 <span class="in1"></span>
 );<br/>
 
@@ -413,19 +420,19 @@ decrypted.toString()<br/>
 
 <span class="add">@def(<span class="name">gcd)</span></span><br/>
 <span class="in1"></span>
-let ca = a;<br/>
+<span class="type">let</span> <span class="var">ca</span> = <span class="var">a</span>;<br/>
 <span class="in1"></span>
-let cb = b;<br/>
+<span class="type">let</span> <span class="var">cb</span> = <span class="var">b</span>;<br/>
 
 <br/>
 <span class="in1"></span>
-let u = bigInt.one;<br/>
+<span class="type">let</span> <span class="var">u</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
 <span class="in1"></span>
-let s = bigInt.zero;<br/>
+<span class="type">let</span> <span class="var">s</span> = <span class="fn">bigInt</span>.<span class="var">zero</span>;<br/>
 <span class="in1"></span>
-let v = s;<br/>
+<span class="type">let</span> <span class="var">v</span> = <span class="var">s</span>;<br/>
 <span class="in1"></span>
-let t = u;<br/>
+<span class="type">let</span> <span class="var">t</span> = <span class="var">u</span>;<br/>
 
 <span class="end">@end(<span class="name">gcd)</span></span><br/>
 </code>
@@ -436,7 +443,7 @@ let t = u;<br/>
 
 <span class="add">@add(<span class="name">gcd)</span></span><br/>
 <span class="in1"></span>
-while (! cb.isZero()) {<br/>
+<span class="keyword">while</span> (! <span class="var">cb</span>.<span class="fn">isZero</span>()) {<br/>
 <span class="in2"></span>
 <span class="expand">@expand(<span class="name">gcd loop)</span></span>;<br/>
 <span class="in1"></span>
@@ -451,25 +458,25 @@ while (! cb.isZero()) {<br/>
 
 <span class="add">@def(<span class="name">gcd loop)</span></span><br/>
 <span class="in1"></span>
-const dd = ca.divmod(cb);<br/>
+<span class="type">const</span> <span class="var">dd</span> = <span class="var">ca</span>.<span class="fn">divmod</span>(<span class="var">cb</span>);<br/>
 <span class="in1"></span>
-const na = cb;<br/>
+<span class="type">const</span> <span class="var">na</span> = <span class="var">cb</span>;<br/>
 
 <br/>
 <span class="in1"></span>
-const nb = dd.remainder;<br/>
+<span class="type">const</span> <span class="var">nb</span> = <span class="var">dd</span>.<span class="var">remainder</span>;<br/>
 <span class="in1"></span>
-const nu = s;<br/>
+<span class="type">const</span> <span class="var">nu</span> = <span class="var">s</span>;<br/>
 <span class="in1"></span>
-const nv = t;<br/>
+<span class="type">const</span> <span class="var">nv</span> = <span class="var">t</span>;<br/>
 <span class="in1"></span>
-const ns =<br/>
+<span class="type">const</span> <span class="var">ns</span> =<br/>
 <span class="in2"></span>
-u.subtract(dd.quotient.multiply(s));<br/>
+<span class="var">u</span>.<span class="fn">subtract</span>(<span class="var">dd</span>.<span class="var">quotient</span>.<span class="fn">multiply</span>(<span class="var">s</span>));<br/>
 <span class="in1"></span>
-const nt =<br/>
+<span class="type">const</span> <span class="var">nt</span> =<br/>
 <span class="in2"></span>
-v.subtract(dd.quotient.multiply(t));<br/>
+<span class="var">v</span>.<span class="fn">subtract</span>(<span class="var">dd</span>.<span class="var">quotient</span>.<span class="fn">multiply</span>(<span class="var">t</span>));<br/>
 
 <span class="end">@end(<span class="name">gcd loop)</span></span><br/>
 </code>
@@ -480,17 +487,17 @@ v.subtract(dd.quotient.multiply(t));<br/>
 
 <span class="add">@add(<span class="name">gcd loop)</span></span><br/>
 <span class="in1"></span>
-ca = na;<br/>
+<span class="var">ca</span> = <span class="var">na</span>;<br/>
 <span class="in1"></span>
-cb = nb;<br/>
+<span class="var">cb</span> = <span class="var">nb</span>;<br/>
 <span class="in1"></span>
-u = nu;<br/>
+<span class="var">u</span> = <span class="var">nu</span>;<br/>
 <span class="in1"></span>
-v = nv;<br/>
+<span class="var">v</span> = <span class="var">nv</span>;<br/>
 <span class="in1"></span>
-s = ns;<br/>
+<span class="var">s</span> = <span class="var">ns</span>;<br/>
 <span class="in1"></span>
-t = nt;<br/>
+<span class="var">t</span> = <span class="var">nt</span>;<br/>
 
 <span class="end">@end(<span class="name">gcd loop)</span></span><br/>
 </code>
@@ -501,11 +508,11 @@ t = nt;<br/>
 
 <span class="add">@add(<span class="name">gcd)</span></span><br/>
 <span class="in1"></span>
-return {<br/>
+<span class="keyword">return</span> {<br/>
 <span class="in2"></span>
-a: ca, u: u, v: v,<br/>
+<span class="str">a</span>: <span class="var">ca</span>, <span class="str">u</span>: <span class="var">u</span>, <span class="str">v</span>: <span class="var">v</span>,<br/>
 <span class="in2"></span>
-s: s, t: t <br/>
+<span class="str">s</span>: <span class="var">s</span>, <span class="str">t</span>: <span class="var">t</span> <br/>
 <span class="in1"></span>
 };<br/>
 
@@ -525,31 +532,31 @@ s: s, t: t <br/>
 
 <span class="add">@add(<span class="name">globals)</span></span><br/>
 <span class="in1"></span>
-const $private_message =<br/>
+<span class="type">const</span> <span class="var">$private_message</span> =<br/>
 <span class="in2"></span>
-$('#private-message');<br/>
+<span class="fn">$</span>(<span class="str">'#private-message'</span>);<br/>
 <span class="in1"></span>
-const $public_message =<br/>
+<span class="type">const</span> <span class="var">$public_message</span> =<br/>
 <span class="in2"></span>
-$('#public-message');<br/>
+<span class="fn">$</span>(<span class="str">'#public-message'</span>);<br/>
 <span class="in1"></span>
-const $direction =<br/>
+<span class="type">const</span> <span class="var">$direction</span> =<br/>
 <span class="in2"></span>
-$('#direction');<br/>
+<span class="fn">$</span>(<span class="str">'#direction'</span>);<br/>
 <span class="in1"></span>
-const $errGcdNot1 =<br/>
+<span class="type">const</span> <span class="var">$errGcdNot1</span> =<br/>
 <span class="in2"></span>
-$('#err-gcd-not-1');<br/>
+<span class="fn">$</span>(<span class="str">'#err-gcd-not-1'</span>);<br/>
 <span class="in1"></span>
-const $errPublicMsgTooBig =<br/>
+<span class="type">const</span> <span class="var">$errPublicMsgTooBig</span> =<br/>
 <span class="in2"></span>
-$('#err-public-msg-too-big');<br/>
+<span class="fn">$</span>(<span class="str">'#err-public-msg-too-big'</span>);<br/>
 <span class="in1"></span>
-const $errPrivateMsgTooBig =<br/>
+<span class="type">const</span> <span class="var">$errPrivateMsgTooBig</span> =<br/>
 <span class="in2"></span>
-$('#err-private-msg-too-big');<br/>
+<span class="fn">$</span>(<span class="str">'#err-private-msg-too-big'</span>);<br/>
 <span class="in1"></span>
-let timer;<br/>
+<span class="type">let</span> <span class="var">timer</span>;<br/>
 
 <span class="end">@end(<span class="name">globals)</span></span><br/>
 </code>
@@ -560,23 +567,23 @@ let timer;<br/>
 
 <span class="add">@add(<span class="name">setup rsa)</span></span><br/>
 <span class="in1"></span>
-const setEncrypt = (new_encrypt) =&gt; {<br/>
+<span class="type">const</span> <span class="fn">setEncrypt</span> = <span class="var">new_encrypt</span> =&gt; {<br/>
 <span class="in2"></span>
-if (encrypt === new_encrypt) { return; }<br/>
+<span class="keyword">if</span> (<span class="var">encrypt</span> === <span class="var">new_encrypt</span>) { <span class="keyword">return</span>; }<br/>
 <span class="in2"></span>
-encrypt = new_encrypt;<br/>
+<span class="var">encrypt</span> = <span class="var">new_encrypt</span>;<br/>
 <span class="in2"></span>
-if (encrypt) {<br/>
+<span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
 <span class="in3"></span>
-$direction.removeClass('flip');<br/>
+<span class="var">$direction</span>.<span class="fn">removeClass</span>(<span class="str">'flip'</span>);<br/>
 <span class="in3"></span>
-$direction.addClass('flop');<br/>
+<span class="var">$direction</span>.<span class="fn">addClass</span>(<span class="str">'flop'</span>);<br/>
 <span class="in2"></span>
 } else {<br/>
 <span class="in3"></span>
-$direction.removeClass('flop');<br/>
+<span class="var">$direction</span>.<span class="fn">removeClass</span>(<span class="str">'flop'</span>);<br/>
 <span class="in3"></span>
-$direction.addClass('flip');<br/>
+<span class="var">$direction</span>.<span class="fn">addClass</span>(<span class="str">'flip'</span>);<br/>
 <span class="in2"></span>
 }<br/>
 <span class="in1"></span>
@@ -591,23 +598,23 @@ $direction.addClass('flip');<br/>
 
 <span class="add">@add(<span class="name">setup rsa)</span></span><br/>
 <span class="in1"></span>
-const queueRefresh = (event) =&gt; {<br/>
+<span class="type">const</span> <span class="fn">queueRefresh</span> = <span class="var">event</span> =&gt; {<br/>
 <span class="in2"></span>
-event.preventDefault();<br/>
+<span class="var">event</span>.<span class="fn">preventDefault</span>();<br/>
 <span class="in2"></span>
-if (! timer) {<br/>
+<span class="keyword">if</span> (! <span class="var">timer</span>) {<br/>
 <span class="in3"></span>
-refresh();<br/>
+<span class="fn">refresh</span>();<br/>
 <span class="in2"></span>
-} else {<br/>
+} <span class="keyword">else</span> {<br/>
 <span class="in3"></span>
-clearTimeout(timer);<br/>
+<span class="fn">clearTimeout</span>(<span class="var">timer</span>);<br/>
 <span class="in3"></span>
 <span class="expand">@expand(<span class="name">set fields to pending)</span></span>;<br/>
 <span class="in2"></span>
 }<br/>
 <span class="in2"></span>
-timer = setTimeout(refresh, 500);<br/>
+<span class="var">timer</span> = <span class="fn">setTimeout</span>(<span class="var">refresh</span>, <span class="var">500</span>);<br/>
 <span class="in1"></span>
 }<br/>
 
@@ -620,25 +627,25 @@ timer = setTimeout(refresh, 500);<br/>
 
 <span class="add">@def(<span class="name">set fields to pending)</span></span><br/>
 <span class="in1"></span>
-$public_key_length.text('...');<br/>
+<span class="var">$public_key_length</span>.<span class="fn">text</span>(<span class="str">'...'</span>);<br/>
 <span class="in1"></span>
-$public_key.text('...');<br/>
+<span class="var">$public_key</span>.<span class="fn">text</span>(<span class="str">'...'</span>);<br/>
 <span class="in1"></span>
-$phi.text('...');<br/>
+<span class="var">$phi</span>.<span class="fn">text</span>(<span class="str">'...'</span>);<br/>
 <span class="in1"></span>
-$gcd.text('...');<br/>
+<span class="var">$gcd</span>.<span class="fn">text</span>(<span class="str">'...'</span>);<br/>
 <span class="in1"></span>
-$private_key.text('...');<br/>
+<span class="var">$private_key</span>.<span class="fn">text</span>(<span class="str">'...'</span>);<br/>
 
 <br/>
 <span class="in1"></span>
-if (encrypt) {<br/>
+<span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
 <span class="in2"></span>
-$public_message.val('...');<br/>
+<span class="var">$public_message</span>.<span class="fn">val</span>(<span class="str">'...'</span>);<br/>
 <span class="in1"></span>
-} else {<br/>
+} <span class="keyword">else</span> {<br/>
 <span class="in2"></span>
-$private_message.val('...');<br/>
+<span class="var">$private_message</span>.<span class="fn">val</span>(<span class="str">'...'</span>);<br/>
 <span class="in1"></span>
 }<br/>
 
@@ -651,25 +658,25 @@ $private_message.val('...');<br/>
 
 <span class="add">@add(<span class="name">setup rsa)</span></span><br/>
 <span class="in1"></span>
-$prime1.on('input', queueRefresh);<br/>
+<span class="var">$prime1</span>.<span class="fn">on</span>(<span class="str">'input'</span>, <span class="fn">queueRefresh</span>);<br/>
 <span class="in1"></span>
-$prime2.on('input', queueRefresh);<br/>
+<span class="var">$prime2</span>.<span class="fn">on</span>(<span class="str">'input'</span>, <span class="fn">queueRefresh</span>);<br/>
 <span class="in1"></span>
-$e.on('input', queueRefresh);<br/>
+<span class="var">$e</span>.<span class="fn">on</span>(<span class="str">'input'</span>, <span class="fn">queueRefresh</span>);<br/>
 <span class="in1"></span>
-$private_message.on('input', event =&gt; {<br/>
+<span class="var">$private_message</span>.<span class="fn">on</span>(<span class="str">'input'</span>, <span class="var">event</span> =&gt; {<br/>
 <span class="in2"></span>
-setEncrypt(true);<br/>
+<span class="fn">setEncrypt</span>(<span class="keyword">true</span>);<br/>
 <span class="in2"></span>
-queueRefresh(event);<br/>
+<span class="fn">queueRefresh</span>(<span class="var">event</span>);<br/>
 <span class="in1"></span>
 });<br/>
 <span class="in1"></span>
-$public_message.on('input', event =&gt; {<br/>
+<span class="var">$public_message</span>.<span class="fn">on</span>(<span class="str">'input'</span>, <span class="var">event</span> =&gt; {<br/>
 <span class="in2"></span>
-setEncrypt(false);<br/>
+<span class="fn">setEncrypt</span>(<span class="keyword">false</span>);<br/>
 <span class="in2"></span>
-queueRefresh(event);<br/>
+<span class="fn">queueRefresh</span>(<span class="var">event</span>);<br/>
 <span class="in1"></span>
 });<br/>
 
@@ -682,7 +689,7 @@ queueRefresh(event);<br/>
 
 <span class="add">@add(<span class="name">refresh)</span></span><br/>
 <span class="in1"></span>
-timer = null;<br/>
+<span class="var">timer</span> = <span class="keyword">null</span>;<br/>
 
 <span class="end">@end(<span class="name">refresh)</span></span><br/>
 </code>

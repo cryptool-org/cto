@@ -162,7 +162,7 @@
 	};
 	refresh();
 
-	const setEncrypt = (new_encrypt) => {
+	const setEncrypt = new_encrypt => {
 		if (encrypt === new_encrypt) { return; }
 		encrypt = new_encrypt;
 		if (encrypt) {
@@ -174,7 +174,7 @@
 		}
 	};
 
-	const queueRefresh = (event) => {
+	const queueRefresh = event => {
 		event.preventDefault();
 		if (! timer) {
 			refresh();

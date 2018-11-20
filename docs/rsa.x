@@ -80,13 +80,13 @@ x{globals}
 
 ```
 a{refresh}
-	const public_key =
-		prime1.multiply(prime2);
-	$public_key.text(
-		public_key.toString()
+	t{const} v{public_key} =
+		v{prime1}.f{multiply}(v{prime2});
+	v{$public_key}.f{text}(
+		v{public_key}.f{toString}()
 	);
-	$public_key_length.text(
-		public_key.bitLength()
+	v{$public_key_length}.f{text}(
+		v{public_key}.f{bitLength}()
 	);
 x{refresh}
 ```
@@ -95,17 +95,17 @@ x{refresh}
 
 ```
 a{globals}
-	const $phi = $('#phi');
+	t{const} v{$phi} = f{$}(s{'#phi'});
 x{globals}
 ```
 * Auch das Ergebnis der φ-Funktion wird auf der Webseite angezeigt
 
 ```
 a{refresh}
-	const one = bigInt.one;
-	const phi = prime1.subtract(one).
-		multiply(prime2.subtract(one));
-	$phi.text(phi.toString());
+	t{const} v{one} = f{bigInt}.v{one};
+	t{const} v{phi} = v{prime1}.f{subtract}(v{one}).
+		f{multiply}(v{prime2}.f{subtract}(v{one}));
+	v{$phi}.f{text}(v{phi}.f{toString}());
 x{refresh}
 ```
 * Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
@@ -114,7 +114,7 @@ x{refresh}
 
 ```
 a{globals}
-	const gcd = (a, b) => {
+	t{const} f{gcd} = (v{a}, v{b}) => {
 		e{gcd};
 	};
 x{globals}
@@ -125,47 +125,47 @@ x{globals}
 
 ```
 a{globals}
-	const $e = $('#base');
-	const $gcd = $('#gcd');
+	t{const} v{$e} = f{$}(s{'#base'});
+	t{const} v{$gcd} = f{$}(s{'#gcd'});
 x{globals}
 ```
-* Der Wert `e` wird wie die Primzahlen aus einem Textfeld ausgelesen
+* Der Wert `v{e}` wird wie die Primzahlen aus einem Textfeld ausgelesen
 * Der kleinste gemeinsame Teiler wird zur Kontrolle auch angezeigt
 
 ```
 a{refresh}
-	const e = bigInt($e.val());
-	const gg = gcd(phi, e);
-	$errGcdNot1.toggleClass(
-		'hidden', gg.a.equals(1)
+	t{const} v{e} = f{bigInt}(v{$e}.f{val}());
+	t{const} v{gg} = f{gcd}(v{phi}, v{e});
+	v{$errGcdNot1}.f{toggleClass}(
+		s{'hidden'}, v{gg}.v{a}.f{equals}(n{1})
 	);
-	$gcd.text(gg.a.toString());
+	v{$gcd}.f{text}(v{gg}.v{a}.f{toString}());
 x{refresh}
 ```
-* Wenn `e` mit dem Wert der φ-Funktion nicht teilerfremd sind, wird
+* Wenn `v{e}` mit dem Wert der φ-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt
 
 ```
 a{globals}
-	const $private_key = $('#private-key');
+	t{const} v{$private_key} = f{$}(s{'#private-key'});
 x{globals}
 ```
 * Der private Schlüssel wird auch auf der Webseite ausgegeben
 
 ```
 a{refresh}
-	let private_key = gg.v;
-	if (private_key.lesser(0)) {
-		private_key = private_key.add(phi);
+	t{let} v{private_key} = v{gg}.v{v};
+	k{if} (v{private_key}.f{lesser}(n{0})) {
+		v{private_key} = v{private_key}.f{add}(v{phi});
 	}
-	$private_key.text(private_key.toString());
+	v{$private_key}.f{text}(v{private_key}.f{toString}());
 x{refresh}
 ```
 * Der private Schlüssel ist das multiplikative Inverse Modulo φ
 
 ```
 a{globals}
-	let encrypt = true;
+	t{let} v{encrypt} = k{true};
 x{globals}
 ```
 * Der Algorithmus kann sowohl Ver- als auch Entschlüsseln
@@ -173,50 +173,54 @@ x{globals}
 
 ```
 a{refresh}
-	if (encrypt) {
+	k{if} (v{encrypt}) {
 		e{encrypt};
-	} else {
+	} k{else} {
 		e{decrypt};
 	}
+x{refresh}
+```
 
-	timer = null;
+```
+a{refresh}
+	v{timer} = k{null};
 x{refresh}
 ```
 
 ```
 d{encrypt}
-	const source =
-		bigInt($private_message.val());
-	$errPublicMsgTooBig.toggleClass(
-		'hidden', source.lesser(public_key)
+	t{const} v{source} =
+		f{bigInt}(v{$private_message}.f{val}());
+	v{$errPublicMsgTooBig}.f{toggleClass}(
+		s{'hidden'}, v{source}.f{lesser}(v{public_key})
 	);
-	$errPrivateMsgTooBig.toggleClass(
-		'hidden', true
+	v{$errPrivateMsgTooBig}.f{toggleClass}(
+		s{'hidden'}, k{true}
 	);
-	const encrypted = source.modPow(
-		e, public_key
+	t{const} v{encrypted} = v{source}.f{modPow}(
+		v{e}, v{public_key}
 	);
-	$public_message.val(
-		encrypted.toString()
+	v{$public_message}.f{val}(
+		v{encrypted}.f{toString}()
 	);
 x{encrypt}
 ```
 
 ```
 d{decrypt}
-	const source =
-		bigInt($public_message.val());
-	$errPublicMsgTooBig.toggleClass(
-		'hidden', true
+	t{const} v{source} =
+		f{bigInt}(v{$public_message}.f{val}());
+	v{$errPublicMsgTooBig}.f{toggleClass}(
+		s{'hidden'}, k{true}
 	);
-	$errPrivateMsgTooBig.toggleClass(
-		'hidden', source.lesser(public_key)
+	v{$errPrivateMsgTooBig}.f{toggleClass}(
+		s{'hidden'}, v{source}.f{lesser}(v{public_key})
 	);
-	const decrypted = source.modPow(
-		private_key, public_key
+	k{const} v{decrypted} = v{source}.f{modPow}(
+		v{private_key}, v{public_key}
 	);
-	$private_message.val(
-		decrypted.toString()
+	v{$private_message}.f{val}(
+		v{decrypted}.f{toString}()
 	);
 x{decrypt}
 ```
@@ -225,19 +229,19 @@ x{decrypt}
 
 ```
 d{gcd}
-	let ca = a;
-	let cb = b;
+	t{let} v{ca} = v{a};
+	t{let} v{cb} = v{b};
 
-	let u = bigInt.one;
-	let s = bigInt.zero;
-	let v = s;
-	let t = u;
+	t{let} v{u} = f{bigInt}.v{one};
+	t{let} v{s} = f{bigInt}.v{zero};
+	t{let} v{v} = v{s};
+	t{let} v{t} = v{u};
 x{gcd}
 ```
 
 ```
 a{gcd}
-	while (! cb.isZero()) {
+	k{while} (! v{cb}.f{isZero}()) {
 		e{gcd loop};
 	}
 x{gcd}
@@ -245,35 +249,35 @@ x{gcd}
 
 ```
 d{gcd loop}
-	const dd = ca.divmod(cb);
-	const na = cb;
+	t{const} v{dd} = v{ca}.f{divmod}(v{cb});
+	t{const} v{na} = v{cb};
 
-	const nb = dd.remainder;
-	const nu = s;
-	const nv = t;
-	const ns =
-		u.subtract(dd.quotient.multiply(s));
-	const nt =
-		v.subtract(dd.quotient.multiply(t));
+	t{const} v{nb} = v{dd}.v{remainder};
+	t{const} v{nu} = v{s};
+	t{const} v{nv} = v{t};
+	t{const} v{ns} =
+		v{u}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{s}));
+	t{const} v{nt} =
+		v{v}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{t}));
 x{gcd loop}
 ```
 
 ```
 a{gcd loop}
-	ca = na;
-	cb = nb;
-	u = nu;
-	v = nv;
-	s = ns;
-	t = nt;
+	v{ca} = v{na};
+	v{cb} = v{nb};
+	v{u} = v{nu};
+	v{v} = v{nv};
+	v{s} = v{ns};
+	v{t} = v{nt};
 x{gcd loop}
 ```
 
 ```
 a{gcd}
-	return {
-		a: ca, u: u, v: v,
-		s: s, t: t 
+	k{return} {
+		s{a}: v{ca}, s{u}: v{u}, s{v}: v{v},
+		s{s}: v{s}, s{t}: v{t} 
 	};
 x{gcd}
 ```
@@ -282,33 +286,33 @@ x{gcd}
 
 ```
 a{globals}
-	const $private_message =
-		$('#private-message');
-	const $public_message =
-		$('#public-message');
-	const $direction =
-		$('#direction');
-	const $errGcdNot1 =
-		$('#err-gcd-not-1');
-	const $errPublicMsgTooBig =
-		$('#err-public-msg-too-big');
-	const $errPrivateMsgTooBig =
-		$('#err-private-msg-too-big');
-	let timer;
+	t{const} v{$private_message} =
+		f{$}(s{'#private-message'});
+	t{const} v{$public_message} =
+		f{$}(s{'#public-message'});
+	t{const} v{$direction} =
+		f{$}(s{'#direction'});
+	t{const} v{$errGcdNot1} =
+		f{$}(s{'#err-gcd-not-1'});
+	t{const} v{$errPublicMsgTooBig} =
+		f{$}(s{'#err-public-msg-too-big'});
+	t{const} v{$errPrivateMsgTooBig} =
+		f{$}(s{'#err-private-msg-too-big'});
+	t{let} v{timer};
 x{globals}
 ```
 
 ```
 a{setup rsa}
-	const setEncrypt = (new_encrypt) => {
-		if (encrypt === new_encrypt) { return; }
-		encrypt = new_encrypt;
-		if (encrypt) {
-			$direction.removeClass('flip');
-			$direction.addClass('flop');
+	t{const} f{setEncrypt} = v{new_encrypt} => {
+		k{if} (v{encrypt} === v{new_encrypt}) { k{return}; }
+		v{encrypt} = v{new_encrypt};
+		k{if} (v{encrypt}) {
+			v{$direction}.f{removeClass}(s{'flip'});
+			v{$direction}.f{addClass}(s{'flop'});
 		} else {
-			$direction.removeClass('flop');
-			$direction.addClass('flip');
+			v{$direction}.f{removeClass}(s{'flop'});
+			v{$direction}.f{addClass}(s{'flip'});
 		}
 	};
 x{setup rsa}
@@ -316,54 +320,54 @@ x{setup rsa}
 
 ```
 a{setup rsa}
-	const queueRefresh = (event) => {
-		event.preventDefault();
-		if (! timer) {
-			refresh();
-		} else {
-			clearTimeout(timer);
+	t{const} f{queueRefresh} = v{event} => {
+		v{event}.f{preventDefault}();
+		k{if} (! v{timer}) {
+			f{refresh}();
+		} k{else} {
+			f{clearTimeout}(v{timer});
 			e{set fields to pending};
 		}
-		timer = setTimeout(refresh, 500);
+		v{timer} = f{setTimeout}(v{refresh}, v{500});
 	}
 x{setup rsa}
 ```
 
 ```
 d{set fields to pending}
-	$public_key_length.text('...');
-	$public_key.text('...');
-	$phi.text('...');
-	$gcd.text('...');
-	$private_key.text('...');
+	v{$public_key_length}.f{text}(s{'...'});
+	v{$public_key}.f{text}(s{'...'});
+	v{$phi}.f{text}(s{'...'});
+	v{$gcd}.f{text}(s{'...'});
+	v{$private_key}.f{text}(s{'...'});
 
-	if (encrypt) {
-		$public_message.val('...');
-	} else {
-		$private_message.val('...');
+	k{if} (v{encrypt}) {
+		v{$public_message}.f{val}(s{'...'});
+	} k{else} {
+		v{$private_message}.f{val}(s{'...'});
 	}
 x{set fields to pending}
 ```
 
 ```
 a{setup rsa}
-	$prime1.on('input', queueRefresh);
-	$prime2.on('input', queueRefresh);
-	$e.on('input', queueRefresh);
-	$private_message.on('input', event => {
-		setEncrypt(true);
-		queueRefresh(event);
+	v{$prime1}.f{on}(s{'input'}, f{queueRefresh});
+	v{$prime2}.f{on}(s{'input'}, f{queueRefresh});
+	v{$e}.f{on}(s{'input'}, f{queueRefresh});
+	v{$private_message}.f{on}(s{'input'}, v{event} => {
+		f{setEncrypt}(k{true});
+		f{queueRefresh}(v{event});
 	});
-	$public_message.on('input', event => {
-		setEncrypt(false);
-		queueRefresh(event);
+	v{$public_message}.f{on}(s{'input'}, v{event} => {
+		f{setEncrypt}(k{false});
+		f{queueRefresh}(v{event});
 	});
 x{setup rsa}
 ```
 
 ```
 a{refresh}
-	timer = null;
+	v{timer} = k{null};
 x{refresh}
 ```
 
