@@ -180,23 +180,30 @@ a{refresh}
 	}
 x{refresh}
 ```
-
-```
-a{refresh}
-	v{timer} = k{null};
-x{refresh}
-```
+* Je nachdem, in welche Richtung der Algorithmus arbeiten soll, wird
+  entweder der Klartext verschlüsselt
+* Oder der Geheimtext entschlüsselt
 
 ```
 d{encrypt}
 	t{const} v{source} =
 		f{bigInt}(v{$private_message}.f{val}());
 	v{$errPublicMsgTooBig}.f{toggleClass}(
-		s{'hidden'}, v{source}.f{lesser}(v{public_key})
+		s{'hidden'},
+		v{source}.f{lesser}(v{public_key})
 	);
-	v{$errPrivateMsgTooBig}.f{toggleClass}(
-		s{'hidden'}, k{true}
+	v{$errPrivateMsgTooBig}.f{addClass}(
+		s{'hidden'}
 	);
+x{encrypt}
+```
+* Beim Verschlüsseln wird geprüft, ob der Klartext zu groß ist
+* Dann wird eine Fehlermeldung angezeigt
+* Die passende Fehlermeldung für den Geheimtext kann immer ausgeblendet
+  werden
+
+```
+a{encrypt}
 	t{const} v{encrypted} = v{source}.f{modPow}(
 		v{e}, v{public_key}
 	);
@@ -205,17 +212,28 @@ d{encrypt}
 	);
 x{encrypt}
 ```
+* Das Verschlüsseln besteht nur aus einer Exponentiation mit Modulo
 
 ```
 d{decrypt}
 	t{const} v{source} =
 		f{bigInt}(v{$public_message}.f{val}());
-	v{$errPublicMsgTooBig}.f{toggleClass}(
-		s{'hidden'}, k{true}
+	v{$errPublicMsgTooBig}.f{addClass}(
+		s{'hidden'}
 	);
 	v{$errPrivateMsgTooBig}.f{toggleClass}(
-		s{'hidden'}, v{source}.f{lesser}(v{public_key})
+		s{'hidden'},
+		v{source}.f{lesser}(v{public_key})
 	);
+x{decrypt}
+```
+* Beim Entschlüsseln wird der Geheimtext als Grundlage verwendet
+* Auch hier wird eine Fehlermeldung ausgegeben, wenn die Zahl zu groß
+  ist
+* Die passende Meldung vom Klartext kann stets ausgeblendet werden
+
+```
+a{decrypt}
 	k{const} v{decrypted} = v{source}.f{modPow}(
 		v{private_key}, v{public_key}
 	);
@@ -224,20 +242,41 @@ d{decrypt}
 	);
 x{decrypt}
 ```
+* Auch das Entschlüsseln besteht aus einer einzigen Potentiation mit
+  Modulo
 
 # Größter gemeinsamer Teiler
+* Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus um
+  das Inverse Element zu einer Restklasse zu bestimmen
+* Daher wird der Erweiterte Euklidische Algorithmus hier direkt
+  implementiert
 
 ```
 d{gcd}
 	t{let} v{ca} = v{a};
 	t{let} v{cb} = v{b};
+x{gcd}
+```
+* Die aktuellen Werte von `v{a}` und `v{b}` werden in `v{ca}` und
+  `v{cb}` gespeichert
+* Solange `v{cb} nicht `n{0}` ist, gilt stets dass der größte gemeinsame
+  Teiler von `v{a}` und `v{b}` auch der größte gemeinsame Teiler von
+  `v{ca}` und `v{cb}` ist
+* Der Euklidische Algorithmus reduziert `v{ca}` und `v{cb}`, bis
+  `v{cb}` gleich `n{0}` wird
 
+```
+a{gcd}
 	t{let} v{u} = f{bigInt}.v{one};
-	t{let} v{s} = f{bigInt}.v{zero};
-	t{let} v{v} = v{s};
+	t{let} v{v} = f{bigInt}.v{zero};
+	t{let} v{s} = v{v};
 	t{let} v{t} = v{u};
 x{gcd}
 ```
+* Der Erweiterte Euklidische Algorithums hält vier weitere Parameter
+  `v{u}`, `v{v}`, `v{s}` und `v{t}`
+* Es gilt stets, dass `v{ca} = v{u} * v{a} + v{v} * v{b}`
+* Und `v{cb} = v{s} * v{a} + v{t} * v{b}`
 
 ```
 a{gcd}
@@ -246,32 +285,59 @@ a{gcd}
 	}
 x{gcd}
 ```
+* Solange `v{cb}` nicht `n{0}` ist, wird die Schleife ausgeführt
 
 ```
 d{gcd loop}
 	t{const} v{dd} = v{ca}.f{divmod}(v{cb});
 	t{const} v{na} = v{cb};
-
 	t{const} v{nb} = v{dd}.v{remainder};
+x{gcd loop}
+```
+* `v{ca}` wird durch `v{cb}` geteilt
+* Der neue Wert von `v{ca}` (`v{na}`) wird auf `v{cb}` gesetzt
+* Der neue Wert von `v{cb}` (`v{nb}`) ist der Rest aus der Division
+* Der größte gemeinsame Teiler von `v{ca}` und `v{cb}` ist auch der
+  größte gemeinsame Teiler von `v{na}` und `v{nb}`
+
+```
+a{gcd loop}
 	t{const} v{nu} = v{s};
 	t{const} v{nv} = v{t};
+x{gcd loop}
+```
+* Dadurch, dass `v{cb}` nach `v{na}` kopiert wurde, können die
+  Koeffizienten `v{s}` und `v{t}` nach `v{nu}` und `v{nv}` kopiert
+  werden
+
+```
+a{gcd loop}
 	t{const} v{ns} =
 		v{u}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{s}));
 	t{const} v{nt} =
 		v{v}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{t}));
 x{gcd loop}
 ```
+* Aus den aktuellen `v{u}` und `v{v}` können die neuen `v{s}` und
+  `v{t}` bestimmt werden
 
 ```
 a{gcd loop}
 	v{ca} = v{na};
 	v{cb} = v{nb};
+x{gcd loop}
+```
+* Die neuen Werte werden zu den aktuellen Werten
+
+```
+a{gcd loop}
 	v{u} = v{nu};
 	v{v} = v{nv};
 	v{s} = v{ns};
 	v{t} = v{nt};
 x{gcd loop}
 ```
+* Die neuen Werte werden zu den aktuellen Werten
 
 ```
 a{gcd}
@@ -281,6 +347,54 @@ a{gcd}
 	};
 x{gcd}
 ```
+* Zurück liefert die Funktion den größten gemeinsamen Teiler `v{a}`
+* Und die Koeffizientent
+
+## Unit-Test
+
+```
+a{globals} {
+	e{unit test};
+} x{globals}
+```
+* Unit-Test wird in einem eigenen Block bei jedem Start ausgeführt
+
+```
+d{unit test}
+	const eq = (a, b) => {
+		if (!a.equals(b)) {
+			console.error(`expected ${a}, got ${b}`);
+		}
+	};
+x{unit test}
+```
+* Funktion prüft, ob zwei große Zahlen gleich sind
+
+```
+a{unit test}
+	const g = gcd(bigInt(70), bigInt(4));
+	eq(g.a, bigInt(2));
+x{unit test}
+```
+* Der größte gemeinsame Teiler muss `n{2}` sein
+
+```
+a{unit test}
+	eq(g.u, bigInt(1));
+	eq(g.v, bigInt(-17));
+x{unit test}
+```
+* Die Koeffizienten `v{g}.v{u}` und `v{g}.v{v}` liefern
+  Linearkombination für den größten gemeinsamen Teiler
+
+```
+a{unit test}
+	eq(g.s, bigInt(-2));
+	eq(g.t, bigInt(35));
+x{unit test}
+```
+* Die Koeffizienten `v{g}.v{s}` und `v{g}.v{t}` liefern nicht-triviale
+  Linearkombination von `n{0}`
 
 # Interaktion
 

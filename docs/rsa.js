@@ -23,18 +23,19 @@
 	let cb = b;
 
 	let u = bigInt.one;
-	let s = bigInt.zero;
-	let v = s;
+	let v = bigInt.zero;
+	let s = v;
 	let t = u;
 
 	while (! cb.isZero()) {
 		
 	const dd = ca.divmod(cb);
 	const na = cb;
-
 	const nb = dd.remainder;
+
 	const nu = s;
 	const nv = t;
+
 	const ns =
 		u.subtract(dd.quotient.multiply(s));
 	const nt =
@@ -42,6 +43,7 @@
 
 	ca = na;
 	cb = nb;
+
 	u = nu;
 	v = nv;
 	s = ns;
@@ -62,7 +64,24 @@
 	const $private_key = $('#private-key');
 
 	let encrypt = true;
+ {
+	
+	const eq = (a, b) => {
+		if (!a.equals(b)) {
+			console.error(`expected ${a}, got ${b}`);
+		}
+	};
 
+	const g = gcd(bigInt(70), bigInt(4));
+	eq(g.a, bigInt(2));
+
+	eq(g.u, bigInt(1));
+	eq(g.v, bigInt(-17));
+
+	eq(g.s, bigInt(-2));
+	eq(g.t, bigInt(35));
+;
+} 
 	const $private_message =
 		$('#private-message');
 	const $public_message =
@@ -124,11 +143,13 @@
 	const source =
 		bigInt($private_message.val());
 	$errPublicMsgTooBig.toggleClass(
-		'hidden', source.lesser(public_key)
+		'hidden',
+		source.lesser(public_key)
 	);
-	$errPrivateMsgTooBig.toggleClass(
-		'hidden', true
+	$errPrivateMsgTooBig.addClass(
+		'hidden'
 	);
+
 	const encrypted = source.modPow(
 		e, public_key
 	);
@@ -140,12 +161,14 @@
 		
 	const source =
 		bigInt($public_message.val());
-	$errPublicMsgTooBig.toggleClass(
-		'hidden', true
+	$errPublicMsgTooBig.addClass(
+		'hidden'
 	);
 	$errPrivateMsgTooBig.toggleClass(
-		'hidden', source.lesser(public_key)
+		'hidden',
+		source.lesser(public_key)
 	);
+
 	const decrypted = source.modPow(
 		private_key, public_key
 	);
@@ -154,8 +177,6 @@
 	);
 ;
 	}
-
-	timer = null;
 
 	timer = null;
 ;

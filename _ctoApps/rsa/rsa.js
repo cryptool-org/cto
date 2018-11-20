@@ -23,32 +23,38 @@
 	let cb = b;
 
 	let u = bigInt.one;
-	let s = bigInt.zero;
-	let v = s;
+	let v = bigInt.zero;
+	let s = v;
 	let t = u;
 
-	let count = 0;
-
 	while (! cb.isZero()) {
-		if (++count >= 100) { alert("failed"); break; }
+		
+	const dd = ca.divmod(cb);
+	const na = cb;
+	const nb = dd.remainder;
 
-		const dd = ca.divmod(cb);
-		const na = cb;
+	const nu = s;
+	const nv = t;
 
-		const nb = dd.remainder;
-		const nu = s;
-		const nv = t;
-		const ns = u.subtract(dd.quotient.multiply(s));
-		const nt = v.subtract(dd.quotient.multiply(t));
+	const ns =
+		u.subtract(dd.quotient.multiply(s));
+	const nt =
+		v.subtract(dd.quotient.multiply(t));
 
-		ca = na;
-		cb = nb;
-		u = nu;
-		v = nv;
-		s = ns;
-		t = nt;
+	ca = na;
+	cb = nb;
+
+	u = nu;
+	v = nv;
+	s = ns;
+	t = nt;
+;
 	}
-	return { a: ca, u: u, v: v, s: s, t: t };
+
+	return {
+		a: ca, u: u, v: v,
+		s: s, t: t 
+	};
 ;
 	};
 
@@ -58,17 +64,36 @@
 	const $private_key = $('#private-key');
 
 	let encrypt = true;
+ {
+	
+	const eq = (a, b) => {
+		if (!a.equals(b)) {
+			console.error(`expected ${a}, got ${b}`);
+		}
+	};
 
-	const $private_message = $('#private-message');
-	const $public_message = $('#public-message');
-	const $direction = $('#direction');
+	const g = gcd(bigInt(70), bigInt(4));
+	eq(g.a, bigInt(2));
 
-	const $errGcdNot1 = $('#err-gcd-not-1');
-	const $errPublicMsgTooBig = $('#err-public-msg-too-big');
-	const $errPrivateMsgTooBig = $('#err-private-msg-too-big');
+	eq(g.u, bigInt(1));
+	eq(g.v, bigInt(-17));
 
-
-
+	eq(g.s, bigInt(-2));
+	eq(g.t, bigInt(35));
+;
+} 
+	const $private_message =
+		$('#private-message');
+	const $public_message =
+		$('#public-message');
+	const $direction =
+		$('#direction');
+	const $errGcdNot1 =
+		$('#err-gcd-not-1');
+	const $errPublicMsgTooBig =
+		$('#err-public-msg-too-big');
+	const $errPrivateMsgTooBig =
+		$('#err-private-msg-too-big');
 	let timer;
 ;
 		
@@ -115,32 +140,50 @@
 
 	if (encrypt) {
 		
-	const source = bigInt($private_message.val());
-	$errPublicMsgTooBig.toggleClass('hidden', source.lesser(public_key));
-	$errPrivateMsgTooBig.toggleClass('hidden', true);
+	const source =
+		bigInt($private_message.val());
+	$errPublicMsgTooBig.toggleClass(
+		'hidden',
+		source.lesser(public_key)
+	);
+	$errPrivateMsgTooBig.addClass(
+		'hidden'
+	);
 
-	const encrypted = source.modPow(e, public_key);
-	$public_message.val(encrypted.toString());
+	const encrypted = source.modPow(
+		e, public_key
+	);
+	$public_message.val(
+		encrypted.toString()
+	);
 ;
 	} else {
 		
-	const source = bigInt($public_message.val());
-	$errPublicMsgTooBig.toggleClass('hidden', true);
-	$errPrivateMsgTooBig.toggleClass('hidden', source.lesser(public_key));
+	const source =
+		bigInt($public_message.val());
+	$errPublicMsgTooBig.addClass(
+		'hidden'
+	);
+	$errPrivateMsgTooBig.toggleClass(
+		'hidden',
+		source.lesser(public_key)
+	);
 
-	const decrypted = source.modPow(private_key, public_key);
-	$private_message.val(decrypted.toString());
+	const decrypted = source.modPow(
+		private_key, public_key
+	);
+	$private_message.val(
+		decrypted.toString()
+	);
 ;
 	}
-
-	timer = null;
 
 	timer = null;
 ;
 	};
 	refresh();
 
-	const setEncrypt = (new_encrypt) => {
+	const setEncrypt = new_encrypt => {
 		if (encrypt === new_encrypt) { return; }
 		encrypt = new_encrypt;
 		if (encrypt) {
@@ -152,23 +195,25 @@
 		}
 	};
 
-	const queueRefresh = (event) => {
+	const queueRefresh = event => {
 		event.preventDefault();
 		if (! timer) {
 			refresh();
 		} else {
 			clearTimeout(timer);
-			$public_key_length.text('...');
-			$public_key.text('...');
-			$phi.text('...');
-			$gcd.text('...');
-			$private_key.text('...');
+			
+	$public_key_length.text('...');
+	$public_key.text('...');
+	$phi.text('...');
+	$gcd.text('...');
+	$private_key.text('...');
 
-			if (encrypt) {
-				$public_message.val('...');
-			} else {
-				$private_message.val('...');
-			}
+	if (encrypt) {
+		$public_message.val('...');
+	} else {
+		$private_message.val('...');
+	}
+;
 		}
 		timer = setTimeout(refresh, 500);
 	}
@@ -176,7 +221,13 @@
 	$prime1.on('input', queueRefresh);
 	$prime2.on('input', queueRefresh);
 	$e.on('input', queueRefresh);
-	$private_message.on('input', (event) => { setEncrypt(true); queueRefresh(event); });
-	$public_message.on('input', (event) => { setEncrypt(false); queueRefresh(event); });
+	$private_message.on('input', event => {
+		setEncrypt(true);
+		queueRefresh(event);
+	});
+	$public_message.on('input', event => {
+		setEncrypt(false);
+		queueRefresh(event);
+	});
 ;
 	});
