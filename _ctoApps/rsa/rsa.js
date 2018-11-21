@@ -60,19 +60,34 @@
 
 	const $e = $('#base');
 	const $gcd = $('#gcd');
+	const $errGcdNot1 =
+		$('#err-gcd-not-1');
 
 	const $private_key = $('#private-key');
 
 	let encrypt = true;
+
+	const $private_message =
+		$('#private-message');
+	const $public_message =
+		$('#public-message');
+	const $errPublicMsgTooBig =
+		$('#err-public-msg-too-big');
+	const $errPrivateMsgTooBig =
+		$('#err-private-msg-too-big');
  {
 	
 	const eq = (a, b) => {
 		if (!a.equals(b)) {
-			console.error(`expected ${a}, got ${b}`);
+			console.error(
+				`expected ${a}, got ${b}`
+			);
 		}
 	};
 
-	const g = gcd(bigInt(70), bigInt(4));
+	const g = gcd(
+		bigInt(70), bigInt(4)
+	);
 	eq(g.a, bigInt(2));
 
 	eq(g.u, bigInt(1));
@@ -82,19 +97,14 @@
 	eq(g.t, bigInt(35));
 ;
 } 
-	const $private_message =
-		$('#private-message');
-	const $public_message =
-		$('#public-message');
 	const $direction =
 		$('#direction');
-	const $errGcdNot1 =
-		$('#err-gcd-not-1');
-	const $errPublicMsgTooBig =
-		$('#err-public-msg-too-big');
-	const $errPrivateMsgTooBig =
-		$('#err-private-msg-too-big');
+
 	let timer;
+
+	const resetTimer = () => {
+		timer = null;
+	};
 ;
 		
 	const refresh = () => {
@@ -178,13 +188,15 @@
 ;
 	}
 
-	timer = null;
+	resetTimer();
 ;
 	};
 	refresh();
 
 	const setEncrypt = new_encrypt => {
-		if (encrypt === new_encrypt) { return; }
+		if (encrypt === new_encrypt) {
+			return;
+		}
 		encrypt = new_encrypt;
 		if (encrypt) {
 			$direction.removeClass('flip');
@@ -197,8 +209,10 @@
 
 	const queueRefresh = event => {
 		event.preventDefault();
+		let fn = refresh;
 		if (! timer) {
 			refresh();
+			fn = resetTimer;
 		} else {
 			clearTimeout(timer);
 			
@@ -215,12 +229,13 @@
 	}
 ;
 		}
-		timer = setTimeout(refresh, 500);
+		timer = setTimeout(fn, 500);
 	}
 
 	$prime1.on('input', queueRefresh);
 	$prime2.on('input', queueRefresh);
 	$e.on('input', queueRefresh);
+
 	$private_message.on('input', event => {
 		setEncrypt(true);
 		queueRefresh(event);

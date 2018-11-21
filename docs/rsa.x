@@ -20,7 +20,7 @@ x{file: rsa.js}
 
 ```
 d{setup rsa}
-	t{const} f{refresh} = () => {
+	k{const} f{refresh} = () => {
 		e{refresh};
 	};
 	f{refresh}();
@@ -30,13 +30,13 @@ x{setup rsa}
 
 ```
 d{globals}
-	t{const} v{$prime1} = f{$}(s{'#prime-1'});
-	t{const} v{$prime2} = f{$}(s{'#prime-2'});
-	t{const} v{$errPNotPrime} =
+	k{const} v{$prime1} = f{$}(s{'#prime-1'});
+	k{const} v{$prime2} = f{$}(s{'#prime-2'});
+	k{const} v{$errPNotPrime} =
 		f{$}(s{'#err-p-not-prime'});
-	t{const} v{$errQNotPrime} =
+	k{const} v{$errQNotPrime} =
 		f{$}(s{'#err-q-not-prime'});
-	t{const} v{$errPEqualQ} =
+	k{const} v{$errPEqualQ} =
 		f{$}(s{'#err-p-equal-q'});
 x{globals}
 ```
@@ -48,11 +48,11 @@ x{globals}
 
 ```
 d{refresh}
-	t{const} v{prime1} = f{bigInt}(v{$prime1}.f{val}());
+	k{const} v{prime1} = f{bigInt}(v{$prime1}.f{val}());
 	v{$errPNotPrime}.f{toggleClass}(
 		s{'hidden'}, v{prime1}.f{isProbablePrime}()
 	);
-	t{const} v{prime2} = f{bigInt}(v{$prime2}.f{val}());
+	k{const} v{prime2} = f{bigInt}(v{$prime2}.f{val}());
 	v{$errQNotPrime}.f{toggleClass}(
 		s{'hidden'}, v{prime2}.f{isProbablePrime}()
 	);
@@ -69,9 +69,9 @@ x{refresh}
 
 ```
 a{globals}
-	t{const} v{$public_key} =
+	k{const} v{$public_key} =
 		f{$}(s{'#public-key'});
-	t{const} v{$public_key_length} =
+	k{const} v{$public_key_length} =
 		f{$}(s{'#public-key-length'});
 x{globals}
 ```
@@ -80,7 +80,7 @@ x{globals}
 
 ```
 a{refresh}
-	t{const} v{public_key} =
+	k{const} v{public_key} =
 		v{prime1}.f{multiply}(v{prime2});
 	v{$public_key}.f{text}(
 		v{public_key}.f{toString}()
@@ -95,15 +95,15 @@ x{refresh}
 
 ```
 a{globals}
-	t{const} v{$phi} = f{$}(s{'#phi'});
+	k{const} v{$phi} = f{$}(s{'#phi'});
 x{globals}
 ```
 * Auch das Ergebnis der φ-Funktion wird auf der Webseite angezeigt
 
 ```
 a{refresh}
-	t{const} v{one} = f{bigInt}.v{one};
-	t{const} v{phi} = v{prime1}.f{subtract}(v{one}).
+	k{const} v{one} = f{bigInt}.v{one};
+	k{const} v{phi} = v{prime1}.f{subtract}(v{one}).
 		f{multiply}(v{prime2}.f{subtract}(v{one}));
 	v{$phi}.f{text}(v{phi}.f{toString}());
 x{refresh}
@@ -114,7 +114,7 @@ x{refresh}
 
 ```
 a{globals}
-	t{const} f{gcd} = (v{a}, v{b}) => {
+	k{const} f{gcd} = (v{a}, v{b}) => {
 		e{gcd};
 	};
 x{globals}
@@ -125,17 +125,21 @@ x{globals}
 
 ```
 a{globals}
-	t{const} v{$e} = f{$}(s{'#base'});
-	t{const} v{$gcd} = f{$}(s{'#gcd'});
+	k{const} v{$e} = f{$}(s{'#base'});
+	k{const} v{$gcd} = f{$}(s{'#gcd'});
+	k{const} v{$errGcdNot1} =
+		f{$}(s{'#err-gcd-not-1'});
 x{globals}
 ```
 * Der Wert `v{e}` wird wie die Primzahlen aus einem Textfeld ausgelesen
-* Der kleinste gemeinsame Teiler wird zur Kontrolle auch angezeigt
+* Der größte gemeinsame Teiler wird zur Kontrolle auch angezeigt
+* Es gibt eine Fehlermeldung, wenn der größte gemeinsame Teiler nicht
+  `n{1}` ist
 
 ```
 a{refresh}
-	t{const} v{e} = f{bigInt}(v{$e}.f{val}());
-	t{const} v{gg} = f{gcd}(v{phi}, v{e});
+	k{const} v{e} = f{bigInt}(v{$e}.f{val}());
+	k{const} v{gg} = f{gcd}(v{phi}, v{e});
 	v{$errGcdNot1}.f{toggleClass}(
 		s{'hidden'}, v{gg}.v{a}.f{equals}(n{1})
 	);
@@ -147,14 +151,14 @@ x{refresh}
 
 ```
 a{globals}
-	t{const} v{$private_key} = f{$}(s{'#private-key'});
+	k{const} v{$private_key} = f{$}(s{'#private-key'});
 x{globals}
 ```
 * Der private Schlüssel wird auch auf der Webseite ausgegeben
 
 ```
 a{refresh}
-	t{let} v{private_key} = v{gg}.v{v};
+	k{let} v{private_key} = v{gg}.v{v};
 	k{if} (v{private_key}.f{lesser}(n{0})) {
 		v{private_key} = v{private_key}.f{add}(v{phi});
 	}
@@ -165,7 +169,7 @@ x{refresh}
 
 ```
 a{globals}
-	t{let} v{encrypt} = k{true};
+	k{let} v{encrypt} = k{true};
 x{globals}
 ```
 * Der Algorithmus kann sowohl Ver- als auch Entschlüsseln
@@ -185,8 +189,24 @@ x{refresh}
 * Oder der Geheimtext entschlüsselt
 
 ```
+a{globals}
+	k{const} v{$private_message} =
+		f{$}(s{'#private-message'});
+	k{const} v{$public_message} =
+		f{$}(s{'#public-message'});
+	k{const} v{$errPublicMsgTooBig} =
+		f{$}(s{'#err-public-msg-too-big'});
+	k{const} v{$errPrivateMsgTooBig} =
+		f{$}(s{'#err-private-msg-too-big'});
+x{globals}
+```
+* Es gibt ein Textfeld für den Klartext und den Geheimtext
+* Zu jedem Feld gibt es eine Fehlermeldung, wenn die eingegebene Zahl zu
+  groß ist
+
+```
 d{encrypt}
-	t{const} v{source} =
+	k{const} v{source} =
 		f{bigInt}(v{$private_message}.f{val}());
 	v{$errPublicMsgTooBig}.f{toggleClass}(
 		s{'hidden'},
@@ -204,7 +224,7 @@ x{encrypt}
 
 ```
 a{encrypt}
-	t{const} v{encrypted} = v{source}.f{modPow}(
+	k{const} v{encrypted} = v{source}.f{modPow}(
 		v{e}, v{public_key}
 	);
 	v{$public_message}.f{val}(
@@ -216,7 +236,7 @@ x{encrypt}
 
 ```
 d{decrypt}
-	t{const} v{source} =
+	k{const} v{source} =
 		f{bigInt}(v{$public_message}.f{val}());
 	v{$errPublicMsgTooBig}.f{addClass}(
 		s{'hidden'}
@@ -253,8 +273,8 @@ x{decrypt}
 
 ```
 d{gcd}
-	t{let} v{ca} = v{a};
-	t{let} v{cb} = v{b};
+	k{let} v{ca} = v{a};
+	k{let} v{cb} = v{b};
 x{gcd}
 ```
 * Die aktuellen Werte von `v{a}` und `v{b}` werden in `v{ca}` und
@@ -267,13 +287,13 @@ x{gcd}
 
 ```
 a{gcd}
-	t{let} v{u} = f{bigInt}.v{one};
-	t{let} v{v} = f{bigInt}.v{zero};
-	t{let} v{s} = v{v};
-	t{let} v{t} = v{u};
+	k{let} v{u} = f{bigInt}.v{one};
+	k{let} v{v} = f{bigInt}.v{zero};
+	k{let} v{s} = v{v};
+	k{let} v{t} = v{u};
 x{gcd}
 ```
-* Der Erweiterte Euklidische Algorithums hält vier weitere Parameter
+* Der Erweiterte Euklidische Algorithmus hält vier weitere Parameter
   `v{u}`, `v{v}`, `v{s}` und `v{t}`
 * Es gilt stets, dass `v{ca} = v{u} * v{a} + v{v} * v{b}`
 * Und `v{cb} = v{s} * v{a} + v{t} * v{b}`
@@ -289,9 +309,9 @@ x{gcd}
 
 ```
 d{gcd loop}
-	t{const} v{dd} = v{ca}.f{divmod}(v{cb});
-	t{const} v{na} = v{cb};
-	t{const} v{nb} = v{dd}.v{remainder};
+	k{const} v{dd} = v{ca}.f{divmod}(v{cb});
+	k{const} v{na} = v{cb};
+	k{const} v{nb} = v{dd}.v{remainder};
 x{gcd loop}
 ```
 * `v{ca}` wird durch `v{cb}` geteilt
@@ -302,8 +322,8 @@ x{gcd loop}
 
 ```
 a{gcd loop}
-	t{const} v{nu} = v{s};
-	t{const} v{nv} = v{t};
+	k{const} v{nu} = v{s};
+	k{const} v{nv} = v{t};
 x{gcd loop}
 ```
 * Dadurch, dass `v{cb}` nach `v{na}` kopiert wurde, können die
@@ -312,9 +332,9 @@ x{gcd loop}
 
 ```
 a{gcd loop}
-	t{const} v{ns} =
+	k{const} v{ns} =
 		v{u}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{s}));
-	t{const} v{nt} =
+	k{const} v{nt} =
 		v{v}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{t}));
 x{gcd loop}
 ```
@@ -348,7 +368,7 @@ a{gcd}
 x{gcd}
 ```
 * Zurück liefert die Funktion den größten gemeinsamen Teiler `v{a}`
-* Und die Koeffizientent
+* Und die Koeffizienten
 
 ## Unit-Test
 
@@ -361,9 +381,11 @@ a{globals} {
 
 ```
 d{unit test}
-	const eq = (a, b) => {
-		if (!a.equals(b)) {
-			console.error(`expected ${a}, got ${b}`);
+	k{const} f{eq} = (v{a}, v{b}) => {
+		k{if} (!v{a}.f{equals}(v{b})) {
+			v{console}.f{error}(
+				s{`expected }${v{a}}s{, got }${v{b}}s{`}
+			);
 		}
 	};
 x{unit test}
@@ -372,16 +394,18 @@ x{unit test}
 
 ```
 a{unit test}
-	const g = gcd(bigInt(70), bigInt(4));
-	eq(g.a, bigInt(2));
+	k{const} v{g} = f{gcd}(
+		f{bigInt}(n{70}), f{bigInt}(n{4})
+	);
+	f{eq}(v{g}.v{a}, f{bigInt}(n{2}));
 x{unit test}
 ```
 * Der größte gemeinsame Teiler muss `n{2}` sein
 
 ```
 a{unit test}
-	eq(g.u, bigInt(1));
-	eq(g.v, bigInt(-17));
+	f{eq}(v{g}.v{u}, f{bigInt}(n{1}));
+	f{eq}(v{g}.v{v}, f{bigInt}(n{-17}));
 x{unit test}
 ```
 * Die Koeffizienten `v{g}.v{u}` und `v{g}.v{v}` liefern
@@ -389,37 +413,34 @@ x{unit test}
 
 ```
 a{unit test}
-	eq(g.s, bigInt(-2));
-	eq(g.t, bigInt(35));
+	f{eq}(v{g}.v{s}, f{bigInt}(n{-2}));
+	f{eq}(v{g}.v{t}, f{bigInt}(n{35}));
 x{unit test}
 ```
 * Die Koeffizienten `v{g}.v{s}` und `v{g}.v{t}` liefern nicht-triviale
   Linearkombination von `n{0}`
 
-# Interaktion
+# Richtung des Algorithmus anzeigen
+* Es gibt ein Element auf der Web-Seite, das die Ablaufrichtung des
+  Algorithmus anzeigt
+* Ob er ver- oder entschlüsselt
 
 ```
 a{globals}
-	t{const} v{$private_message} =
-		f{$}(s{'#private-message'});
-	t{const} v{$public_message} =
-		f{$}(s{'#public-message'});
-	t{const} v{$direction} =
+	k{const} v{$direction} =
 		f{$}(s{'#direction'});
-	t{const} v{$errGcdNot1} =
-		f{$}(s{'#err-gcd-not-1'});
-	t{const} v{$errPublicMsgTooBig} =
-		f{$}(s{'#err-public-msg-too-big'});
-	t{const} v{$errPrivateMsgTooBig} =
-		f{$}(s{'#err-private-msg-too-big'});
-	t{let} v{timer};
 x{globals}
 ```
+* Dieses Element zeigt die Richtung an, in welcher der Algorithmus
+  läuft
+* Die Richtung wird durch CSS-Klassen visualisiert
 
 ```
 a{setup rsa}
-	t{const} f{setEncrypt} = v{new_encrypt} => {
-		k{if} (v{encrypt} === v{new_encrypt}) { k{return}; }
+	k{const} f{setEncrypt} = v{new_encrypt} => {
+		k{if} (v{encrypt} === v{new_encrypt}) {
+			k{return};
+		}
 		v{encrypt} = v{new_encrypt};
 		k{if} (v{encrypt}) {
 			v{$direction}.f{removeClass}(s{'flip'});
@@ -431,21 +452,64 @@ a{setup rsa}
 	};
 x{setup rsa}
 ```
+* Durch CSS-Animationen wird der Pfeil hin- und hergedreht
+* Wenn keine Klasse oder die Klasse `s{flop}` gesetzt ist, dann zeigt
+  der Pfeil in die Verschlüsselungsrichtung
+* Wenn die Klasse `s{flip}` gesetzt ist, zeigt er in die
+  Entschlüsselungsrichtung
+* `s{flop}` ist notwendig um den Wechsel zu animieren
+
+# Timer
+* Das Berechnen von RSA kann bei sehr großen Zahlen etwas dauern
+* Daher wird nicht mit jeder Änderung eine neue Berechnung gestartet
+* Nur wenn nach der letzten Änderung ein gewisses Zeitintervall
+  verstrichen ist, wird die Berechnung gestartet
+
+```
+a{globals}
+	k{let} v{timer};
+x{globals}
+```
+* Der Timer wird global vorgehalten
+
+```
+a{globals}
+	k{const} f{resetTimer} = () => {
+		v{timer} = v{null};
+	};
+x{globals}
+```
 
 ```
 a{setup rsa}
-	t{const} f{queueRefresh} = v{event} => {
+	k{const} f{queueRefresh} = v{event} => {
 		v{event}.f{preventDefault}();
+		k{let} f{fn} = f{refresh};
 		k{if} (! v{timer}) {
 			f{refresh}();
+			f{fn} = f{resetTimer};
 		} k{else} {
 			f{clearTimeout}(v{timer});
 			e{set fields to pending};
 		}
-		v{timer} = f{setTimeout}(v{refresh}, v{500});
+		v{timer} = f{setTimeout}(f{fn}, n{500});
 	}
 x{setup rsa}
 ```
+* Wenn es noch keine Änderung gab, wird die Änderung sofort
+  durchgeführt
+* Der Timer führt in diesem Fall keine Neuberechnung durch
+* Ansonsten werden die Felder mit Platzhaltern befüllt und der
+  bestehende Timer gelöscht
+* Dann wird eine neuer Timer gestartet der die Berechnung triggert
+* Der Timeout beträgt eine halbe Sekunde
+
+```
+a{refresh}
+	f{resetTimer}();
+x{refresh}
+```
+* Nach der Neuberechnung wird der Timer gelöscht
 
 ```
 d{set fields to pending}
@@ -462,12 +526,24 @@ d{set fields to pending}
 	}
 x{set fields to pending}
 ```
+* Alle berechneten Felder werden mit Platzhaltern befüllt
+
+# Aktionen hinterlegen
+* Zum Schluss werden die definierten Funktionen als Event-Handler
+  registriert
 
 ```
 a{setup rsa}
 	v{$prime1}.f{on}(s{'input'}, f{queueRefresh});
 	v{$prime2}.f{on}(s{'input'}, f{queueRefresh});
 	v{$e}.f{on}(s{'input'}, f{queueRefresh});
+x{setup rsa}
+```
+* Wenn die Primzahlen oder die Basis geändert wird, wird die
+  Neuberechnung getriggert
+
+```
+a{setup rsa}
 	v{$private_message}.f{on}(s{'input'}, v{event} => {
 		f{setEncrypt}(k{true});
 		f{queueRefresh}(v{event});
@@ -478,10 +554,5 @@ a{setup rsa}
 	});
 x{setup rsa}
 ```
-
-```
-a{refresh}
-	v{timer} = k{null};
-x{refresh}
-```
-
+* Wenn der Klartext oder Geheimtext geändert wird, wird zusätzlich die
+  Richtung des Algorithmus angepasst
