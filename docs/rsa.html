@@ -2,12 +2,12 @@
 <html lang="de"l>
 <head>
 <meta charset="utf-8">
-<title>RSA Implementierung in JavaScript</title><link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
+<title>RSA-Implementierung in JavaScript</title><link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
 <body>
-<h1>RSA Implementierung in JavaScript</h1>
+<h1>RSA-Implementierung in JavaScript</h1>
 <div class="slides">
 <div><div>
-<h1>RSA Implementierung in JavaScript</h1>
+<h1>RSA-Implementierung in JavaScript</h1>
 </div>
 </div>
 <div><div>
@@ -201,7 +201,7 @@
 </div>
 <ul><li>
  Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
-  sind, ist das Produkt deren Vorgänger der Wert der φ-Funktion
+  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
   des öffentlichen Schlüssels</li></ul></div>
 <div><div>
 <code>
@@ -263,7 +263,7 @@
 </code>
 </div>
 <ul><li>
- Wenn <code><span class="var">e</span></code> mit dem Wert der φ-Funktion nicht teilerfremd sind, wird
+ Wenn <code><span class="var">e</span></code> und der Wert der φ-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt</li></ul></div>
 <div><div>
 <code>
@@ -296,7 +296,7 @@
 </code>
 </div>
 <ul><li>
- Der private Schlüssel ist das multiplikative Inverse Modulo φ</li></ul></div>
+ Der private Schlüssel ist das multiplikative Inverse modulo φ</li></ul></div>
 <div><div>
 <code>
 
@@ -308,8 +308,9 @@
 </code>
 </div>
 <ul><li>
- Der Algorithmus kann sowohl Ver- als auch Entschlüsseln</li><li>
- Diese Variable bestimmt, in welche Richtung der Algorithmus läuft</li></ul></div>
+ Der Algorithmus kann sowohl ver- als auch entschlüsseln</li><li>
+ Die Variable <code><span class="var">encrypt</span></code> bestimmt, in welche Richtung der Algorithmus
+  läuft</li></ul></div>
 <div><div>
 <code>
 
@@ -389,8 +390,8 @@
 <ul><li>
  Beim Verschlüsseln wird geprüft, ob der Klartext zu groß ist</li><li>
  Dann wird eine Fehlermeldung angezeigt</li><li>
- Die passende Fehlermeldung für den Geheimtext kann immer ausgeblendet
-  werden</li></ul></div>
+ Beim Entschlüsseln gibt es eine anloge Fehlermeldung, die beim
+  Verschlüsseln immer ausgeblendet wird</li></ul></div>
 <div><div>
 <code>
 
@@ -412,7 +413,8 @@
 </code>
 </div>
 <ul><li>
- Das Verschlüsseln besteht nur aus einer Exponentiation mit Modulo</li></ul></div>
+ Das Verschlüsseln besteht nur aus einer Exponentiation mit <code><span class="var">e</span></code>
+  modulo <code><span class="var">N</span></code> (dem öffentlichen Schlüssel)</li></ul></div>
 <div><div>
 <code>
 
@@ -440,10 +442,11 @@
 </code>
 </div>
 <ul><li>
- Beim Entschlüsseln wird der Geheimtext als Grundlage verwendet</li><li>
+ Beim Entschlüsseln wird der Geheimtext als Eingabe verwendet</li><li>
  Auch hier wird eine Fehlermeldung ausgegeben, wenn die Zahl zu groß
   ist</li><li>
- Die passende Meldung vom Klartext kann stets ausgeblendet werden</li></ul></div>
+ Beim Verschlüsseln gibt es eine anloge Fehlermeldung, die beim
+  Entschlüsseln immer ausgeblendet wird</li></ul></div>
 <div><div>
 <code>
 
@@ -465,16 +468,16 @@
 </code>
 </div>
 <ul><li>
- Auch das Entschlüsseln besteht aus einer einzigen Potentiation mit
-  Modulo</li></ul></div>
+ Auch das Entschlüsseln besteht aus einer einzigen Exponentiation mit
+  dem geheimen Schlüssel <code><span class="var">d</span></code> modulo <code><span class="var">N</span></code></li></ul></div>
 </div>
-<h1>Größter gemeinsamer Teiler</h1>
+<h1>Größter gemeinsamer Teiler (ggT)</h1>
 <div class="slides">
 <div><div>
-<h1>Größter gemeinsamer Teiler</h1>
+<h1>Größter gemeinsamer Teiler (ggT)</h1>
 </div>
 <ul><li>
- Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus um
+ Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus, um
   das Inverse Element zu einer Restklasse zu bestimmen</li><li>
  Daher wird der Erweiterte Euklidische Algorithmus hier direkt
   implementiert</li></ul></div>
@@ -493,7 +496,7 @@
 <ul><li>
  Die aktuellen Werte von <code><span class="var">a</span></code> und <code><span class="var">b</span></code> werden in <code><span class="var">ca</span></code> und
   <code><span class="var">cb</span></code> gespeichert</li><li>
- Solange <code><span class="var">cb</span></code> nicht <code><span class="num">0</span></code> ist, gilt stets dass der größte
+ Solange <code><span class="var">cb</span></code> nicht <code><span class="num">0</span></code> ist gilt stets, dass der größte
   gemeinsame Teiler von <code><span class="var">a</span></code> und <code><span class="var">b</span></code> auch der größte gemeinsame
   Teiler von <code><span class="var">ca</span></code> und <code><span class="var">cb</span></code> ist</li><li>
  Der Euklidische Algorithmus reduziert <code><span class="var">ca</span></code> und <code><span class="var">cb</span></code>, bis
@@ -515,7 +518,7 @@
 </code>
 </div>
 <ul><li>
- Der Erweiterte Euklidische Algorithmus hält vier weitere Parameter
+ Der Erweiterte Euklidische Algorithmus enthält vier weitere Parameter
   <code><span class="var">u</span></code>, <code><span class="var">v</span></code>, <code><span class="var">s</span></code> und <code><span class="var">t</span></code></li><li>
  Es gilt stets, dass <code><span class="var">ca</span> = <span class="var">u</span> * <span class="var">a</span> + <span class="var">v</span> * <span class="var">b</span></code></li><li>
  Und <code><span class="var">cb</span> = <span class="var">s</span> * <span class="var">a</span> + <span class="var">t</span> * <span class="var">b</span></code></li></ul></div>
@@ -683,7 +686,7 @@
 </code>
 </div>
 <ul><li>
- Funktion prüft, ob zwei große Zahlen gleich sind</li></ul></div>
+ Die Funktion prüft, ob zwei große Zahlen gleich sind</li></ul></div>
 <div><div>
 <code>
 
@@ -716,7 +719,7 @@
 </div>
 <ul><li>
  Die Koeffizienten <code><span class="var">g</span>.<span class="var">u</span></code> und <code><span class="var">g</span>.<span class="var">v</span></code> liefern
-  Linearkombination für den größten gemeinsamen Teiler</li></ul></div>
+  eine Linearkombination für den größten gemeinsamen Teiler</li></ul></div>
 <div><div>
 <code>
 
@@ -731,7 +734,9 @@
 </div>
 <ul><li>
  Die Koeffizienten <code><span class="var">g</span>.<span class="var">s</span></code> und <code><span class="var">g</span>.<span class="var">t</span></code> liefern nicht-triviale
-  Linearkombination von <code><span class="num">0</span></code></li></ul></div>
+  Linearkombination von <code><span class="num">0</span></code></li><li>
+ Also <code><span class="var">g</span>.<span class="var">s</span> * <span class="num">70</span> + <span class="var">g</span>.<span class="var">t</span> * <span class="num">4</span> == 0</code> wobei <code><span class="var">g</span>.<span class="var">s</span></code> und
+  <code><span class="var">g</span>.<span class="var">t</span></code> nicht <code><span class="num">0</span></code> sind</li></ul></div>
 </div>
 <h1>Richtung des Algorithmus anzeigen</h1>
 <div class="slides">
@@ -798,7 +803,7 @@
   der Pfeil in die Verschlüsselungsrichtung</li><li>
  Wenn die Klasse <code><span class="str">flip</span></code> gesetzt ist, zeigt er in die
   Entschlüsselungsrichtung</li><li>
- <code><span class="str">flop</span></code> ist notwendig um den Wechsel zu animieren</li></ul></div>
+ <code><span class="str">flop</span></code> ist notwendig, um den Wechsel zu animieren</li></ul></div>
 </div>
 <h1>Timer</h1>
 <div class="slides">
@@ -872,10 +877,10 @@
 <ul><li>
  Wenn es noch keine Änderung gab, wird die Änderung sofort
   durchgeführt</li><li>
- Der Timer führt in diesem Fall keine Neuberechnung durch</li><li>
+ Und nach Ablauf des Timers wird keine Neuberechnung durchgeführt</li><li>
  Ansonsten werden die Felder mit Platzhaltern befüllt und der
   bestehende Timer gelöscht</li><li>
- Dann wird eine neuer Timer gestartet der die Berechnung triggert</li><li>
+ Dann wird eine neuer Timer gestartet, der die Berechnung triggert</li><li>
  Der Timeout beträgt eine halbe Sekunde</li></ul></div>
 <div><div>
 <code>
@@ -945,8 +950,8 @@
 </code>
 </div>
 <ul><li>
- Wenn die Primzahlen oder die Basis geändert wird, wird die
-  Neuberechnung getriggert</li></ul></div>
+ Werden die Primzahlen oder die Basis geändert, wird die Neuberechnung
+  getriggert</li></ul></div>
 <div><div>
 <code>
 

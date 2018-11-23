@@ -1,4 +1,4 @@
-# RSA Implementierung in JavaScript
+# RSA-Implementierung in JavaScript
 
 ```
 d{file: rsa.js}
@@ -109,7 +109,7 @@ a{refresh}
 x{refresh}
 ```
 * Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
-  sind, ist das Produkt deren Vorgänger der Wert der φ-Funktion
+  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
   des öffentlichen Schlüssels
 
 ```
@@ -146,7 +146,7 @@ a{refresh}
 	v{$gcd}.f{text}(v{gg}.v{a}.f{toString}());
 x{refresh}
 ```
-* Wenn `v{e}` mit dem Wert der φ-Funktion nicht teilerfremd sind, wird
+* Wenn `v{e}` und der Wert der φ-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt
 
 ```
@@ -165,15 +165,16 @@ a{refresh}
 	v{$private_key}.f{text}(v{private_key}.f{toString}());
 x{refresh}
 ```
-* Der private Schlüssel ist das multiplikative Inverse Modulo φ
+* Der private Schlüssel ist das multiplikative Inverse modulo φ
 
 ```
 a{globals}
 	k{let} v{encrypt} = k{true};
 x{globals}
 ```
-* Der Algorithmus kann sowohl Ver- als auch Entschlüsseln
-* Diese Variable bestimmt, in welche Richtung der Algorithmus läuft
+* Der Algorithmus kann sowohl ver- als auch entschlüsseln
+* Die Variable `v{encrypt}` bestimmt, in welche Richtung der Algorithmus
+  läuft
 
 ```
 a{refresh}
@@ -219,8 +220,8 @@ x{encrypt}
 ```
 * Beim Verschlüsseln wird geprüft, ob der Klartext zu groß ist
 * Dann wird eine Fehlermeldung angezeigt
-* Die passende Fehlermeldung für den Geheimtext kann immer ausgeblendet
-  werden
+* Beim Entschlüsseln gibt es eine anloge Fehlermeldung, die beim
+  Verschlüsseln immer ausgeblendet wird
 
 ```
 a{encrypt}
@@ -232,7 +233,8 @@ a{encrypt}
 	);
 x{encrypt}
 ```
-* Das Verschlüsseln besteht nur aus einer Exponentiation mit Modulo
+* Das Verschlüsseln besteht nur aus einer Exponentiation mit `v{e}`
+  modulo `v{N}` (dem öffentlichen Schlüssel)
 
 ```
 d{decrypt}
@@ -247,10 +249,11 @@ d{decrypt}
 	);
 x{decrypt}
 ```
-* Beim Entschlüsseln wird der Geheimtext als Grundlage verwendet
+* Beim Entschlüsseln wird der Geheimtext als Eingabe verwendet
 * Auch hier wird eine Fehlermeldung ausgegeben, wenn die Zahl zu groß
   ist
-* Die passende Meldung vom Klartext kann stets ausgeblendet werden
+* Beim Verschlüsseln gibt es eine anloge Fehlermeldung, die beim
+  Entschlüsseln immer ausgeblendet wird
 
 ```
 a{decrypt}
@@ -262,11 +265,11 @@ a{decrypt}
 	);
 x{decrypt}
 ```
-* Auch das Entschlüsseln besteht aus einer einzigen Potentiation mit
-  Modulo
+* Auch das Entschlüsseln besteht aus einer einzigen Exponentiation mit
+  dem geheimen Schlüssel `v{d}` modulo `v{N}`
 
-# Größter gemeinsamer Teiler
-* Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus um
+# Größter gemeinsamer Teiler (ggT)
+* Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus, um
   das Inverse Element zu einer Restklasse zu bestimmen
 * Daher wird der Erweiterte Euklidische Algorithmus hier direkt
   implementiert
@@ -279,7 +282,7 @@ x{gcd}
 ```
 * Die aktuellen Werte von `v{a}` und `v{b}` werden in `v{ca}` und
   `v{cb}` gespeichert
-* Solange `v{cb}` nicht `n{0}` ist, gilt stets dass der größte
+* Solange `v{cb}` nicht `n{0}` ist gilt stets, dass der größte
   gemeinsame Teiler von `v{a}` und `v{b}` auch der größte gemeinsame
   Teiler von `v{ca}` und `v{cb}` ist
 * Der Euklidische Algorithmus reduziert `v{ca}` und `v{cb}`, bis
@@ -293,7 +296,7 @@ a{gcd}
 	k{let} v{t} = v{u};
 x{gcd}
 ```
-* Der Erweiterte Euklidische Algorithmus hält vier weitere Parameter
+* Der Erweiterte Euklidische Algorithmus enthält vier weitere Parameter
   `v{u}`, `v{v}`, `v{s}` und `v{t}`
 * Es gilt stets, dass `v{ca} = v{u} * v{a} + v{v} * v{b}`
 * Und `v{cb} = v{s} * v{a} + v{t} * v{b}`
@@ -390,7 +393,7 @@ d{unit test}
 	};
 x{unit test}
 ```
-* Funktion prüft, ob zwei große Zahlen gleich sind
+* Die Funktion prüft, ob zwei große Zahlen gleich sind
 
 ```
 a{unit test}
@@ -409,7 +412,7 @@ a{unit test}
 x{unit test}
 ```
 * Die Koeffizienten `v{g}.v{u}` und `v{g}.v{v}` liefern
-  Linearkombination für den größten gemeinsamen Teiler
+  eine Linearkombination für den größten gemeinsamen Teiler
 
 ```
 a{unit test}
@@ -419,6 +422,8 @@ x{unit test}
 ```
 * Die Koeffizienten `v{g}.v{s}` und `v{g}.v{t}` liefern nicht-triviale
   Linearkombination von `n{0}`
+* Also `v{g}.v{s} * n{70} + v{g}.v{t} * n{4} == 0` wobei `v{g}.v{s}` und
+  `v{g}.v{t}` nicht `n{0}` sind
 
 # Richtung des Algorithmus anzeigen
 * Es gibt ein Element auf der Web-Seite, das die Ablaufrichtung des
@@ -457,7 +462,7 @@ x{setup rsa}
   der Pfeil in die Verschlüsselungsrichtung
 * Wenn die Klasse `s{flip}` gesetzt ist, zeigt er in die
   Entschlüsselungsrichtung
-* `s{flop}` ist notwendig um den Wechsel zu animieren
+* `s{flop}` ist notwendig, um den Wechsel zu animieren
 
 # Timer
 * Das Berechnen von RSA kann bei sehr großen Zahlen etwas dauern
@@ -498,10 +503,10 @@ x{setup rsa}
 ```
 * Wenn es noch keine Änderung gab, wird die Änderung sofort
   durchgeführt
-* Der Timer führt in diesem Fall keine Neuberechnung durch
+* Und nach Ablauf des Timers wird keine Neuberechnung durchgeführt
 * Ansonsten werden die Felder mit Platzhaltern befüllt und der
   bestehende Timer gelöscht
-* Dann wird eine neuer Timer gestartet der die Berechnung triggert
+* Dann wird eine neuer Timer gestartet, der die Berechnung triggert
 * Der Timeout beträgt eine halbe Sekunde
 
 ```
@@ -539,8 +544,8 @@ a{setup rsa}
 	v{$e}.f{on}(s{'input'}, f{queueRefresh});
 x{setup rsa}
 ```
-* Wenn die Primzahlen oder die Basis geändert wird, wird die
-  Neuberechnung getriggert
+* Werden die Primzahlen oder die Basis geändert, wird die Neuberechnung
+  getriggert
 
 ```
 a{setup rsa}
