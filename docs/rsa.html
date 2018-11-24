@@ -176,6 +176,42 @@
 
 <span class="add">@add(<span class="name">globals)</span></span><br/>
 <span class="in1"></span>
+<span class="keyword">const</span> <span class="var">$max_msg</span> =<br/>
+<span class="in2"></span>
+<span class="fn">$</span>(<span class="str">'.max-msg'</span>);<br/>
+
+<span class="end">@end(<span class="name">globals)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Felder enthalten die größte mögliche Zahl für eine Nachricht</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh)</span></span><br/>
+<span class="in1"></span>
+<span class="keyword">const</span> <span class="var">one</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
+<span class="in1"></span>
+<span class="keyword">const</span> <span class="var">max_msg</span> =<br/>
+<span class="in2"></span>
+<span class="var">public_key</span>.<span class="fn">subtract</span>(<span class="var">one</span>);<br/>
+<span class="in1"></span>
+<span class="var">$max_msg</span>.<span class="fn">text</span>(<br/>
+<span class="in2"></span>
+<span class="var">max_msg</span>.<span class="fn">toString</span>()<br/>
+<span class="in1"></span>
+);<br/>
+
+<span class="end">@end(<span class="name">refresh)</span></span><br/>
+</code>
+</div>
+<ul><li>
+ Die größte mögliche Nachrichtenzahl wird in Fehlermeldungen benötigt</li></ul></div>
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals)</span></span><br/>
+<span class="in1"></span>
 <span class="keyword">const</span> <span class="var">$phi</span> = <span class="fn">$</span>(<span class="str">'#phi'</span>);<br/>
 
 <span class="end">@end(<span class="name">globals)</span></span><br/>
@@ -187,8 +223,6 @@
 <code>
 
 <span class="add">@add(<span class="name">refresh)</span></span><br/>
-<span class="in1"></span>
-<span class="keyword">const</span> <span class="var">one</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
 <span class="in1"></span>
 <span class="keyword">const</span> <span class="var">phi</span> = <span class="var">prime1</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<br/>
 <span class="in2"></span>

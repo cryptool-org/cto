@@ -15,6 +15,9 @@
 	const $public_key_length =
 		$('#public-key-length');
 
+	const $max_msg =
+		$('.max-msg');
+
 	const $phi = $('#phi');
 
 	const gcd = (a, b) => {
@@ -131,6 +134,12 @@
 	);
 
 	const one = bigInt.one;
+	const max_msg =
+		public_key.subtract(one);
+	$max_msg.text(
+		max_msg.toString()
+	);
+
 	const phi = prime1.subtract(one).
 		multiply(prime2.subtract(one));
 	$phi.text(phi.toString());

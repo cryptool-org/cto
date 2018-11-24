@@ -95,6 +95,26 @@ x{refresh}
 
 ```
 a{globals}
+	k{const} v{$max_msg} =
+		f{$}(s{'.max-msg'});
+x{globals}
+```
+* Felder enthalten die größte mögliche Zahl für eine Nachricht
+
+```
+a{refresh}
+	k{const} v{one} = f{bigInt}.v{one};
+	k{const} v{max_msg} =
+		v{public_key}.f{subtract}(v{one});
+	v{$max_msg}.f{text}(
+		v{max_msg}.f{toString}()
+	);
+x{refresh}
+```
+* Die größte mögliche Nachrichtenzahl wird in Fehlermeldungen benötigt
+
+```
+a{globals}
 	k{const} v{$phi} = f{$}(s{'#phi'});
 x{globals}
 ```
@@ -102,7 +122,6 @@ x{globals}
 
 ```
 a{refresh}
-	k{const} v{one} = f{bigInt}.v{one};
 	k{const} v{phi} = v{prime1}.f{subtract}(v{one}).
 		f{multiply}(v{prime2}.f{subtract}(v{one}));
 	v{$phi}.f{text}(v{phi}.f{toString}());
