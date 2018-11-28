@@ -1,4 +1,5 @@
 
+	"use strict";
 	window.addEventListener('load', () => {
 		
 	const $ = id => {
@@ -6,9 +7,10 @@
 	};
 
 	const $prime1 = $('prime-1');
-	const $prime2 = $('prime-2');
 	const $err_p_not_prime =
 		$('err-p-not-prime');
+
+	const $prime2 = $('prime-2');
 	const $err_q_not_prime =
 		$('err-q-not-prime');
 	const $err_p_equal_q =
@@ -119,6 +121,41 @@
 	};
 ;
 		
+	const queueRefresh = event => {
+		event.preventDefault();
+		
+	let fn = refresh;
+	if (! timer) {
+		refresh();
+		fn = resetTimer;
+	} else {
+		clearTimeout(timer);
+		
+	$public_key_length.innerText = '...';
+	$public_key.innerText = '...';
+	$phi.innerText = '...';
+	$gcd.innerText = '...';
+	$private_key.innerText = '...';
+
+	if (encrypt) {
+		$public_message.value = '...';
+	} else {
+		$private_message.value = '...';
+	}
+;
+	}
+	timer = setTimeout(fn, 500);
+;
+	}
+
+	$prime1.addEventListener(
+		'input', queueRefresh
+	);
+
+	$prime2.addEventListener(
+		'input', queueRefresh
+	);
+
 	const refresh = () => {
 		
 	const prime1 = bigInt($prime1.value);
@@ -226,37 +263,6 @@
 		}
 	};
 
-	const queueRefresh = event => {
-		event.preventDefault();
-		let fn = refresh;
-		if (! timer) {
-			refresh();
-			fn = resetTimer;
-		} else {
-			clearTimeout(timer);
-			
-	$public_key_length.innerText = '...';
-	$public_key.innerText = '...';
-	$phi.innerText = '...';
-	$gcd.innerText = '...';
-	$private_key.innerText = '...';
-
-	if (encrypt) {
-		$public_message.value = '...';
-	} else {
-		$private_message.value = '...';
-	}
-;
-		}
-		timer = setTimeout(fn, 500);
-	}
-
-	$prime1.addEventListener(
-		'input', queueRefresh
-	);
-	$prime2.addEventListener(
-		'input', queueRefresh
-	);
 	$e.addEventListener(
 		'input', queueRefresh
 	);

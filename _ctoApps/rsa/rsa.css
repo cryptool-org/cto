@@ -1,48 +1,53 @@
-#direction svg {
-    display: block;
-    margin: 1em auto 2em auto;
-}
-@keyframes flip {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(180deg);
-    }
-}
-#direction.flip svg {
-    animation-name: flip;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-}
-@keyframes flop {
-    from {
-        transform: rotate(180deg);
-    }
-    to {
-        transform: rotate(0deg);
-    }
-}
-#direction.flop svg {
-    animation-name: flop;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-}
-#direction svg polyline {
-    fill: #888;
-}
 
-#rsa-container h2 {
-	margin-top: 2em;
-}
+	
+	#rsa-container p {
+		margin: 0 0 10px;
+	}
 
-#rsa-container p {
-	margin: 0 0 10px;
-}
+	.hidden {
+		display: none;
+	}
 
-.hidden {
-	display: none;
-}
-#authors {
-	margin-top: 40px;
-}
+	#direction svg {
+		display: block;
+		margin: 1em auto 2em auto;
+	}
+	@keyframes flip {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(180deg);
+		}
+	}
+
+	#direction.flip svg {
+    	animation-name: flip;
+    	animation-duration: 1s;
+    	animation-fill-mode: forwards;
+	}
+	@keyframes flop {
+    	from {
+        	transform: rotate(180deg);
+    	}
+    	to {
+        	transform: rotate(0deg);
+    	}
+	}
+
+	#direction.flop svg {
+    	animation-name: flop;
+    	animation-duration: 1s;
+    	animation-fill-mode: forwards;
+	}
+	#direction svg polyline {
+    	fill: #888;
+	}
+	#rsa-container h2 {
+		margin-top: 2em;
+	}
+
+	#authors {
+		margin-top: 40px;
+	}
+
