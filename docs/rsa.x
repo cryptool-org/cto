@@ -1,12 +1,12 @@
 # RSA-Implementierung in JavaScript
 
 ```
-d{file: rsa.js}
-	f{jQuery}((f{$}) => {
+d{file: ../_ctoApps/rsa/rsa.js}
+	window.addEventListener('load', () => {
 		e{globals};
 		e{setup rsa};
 	});
-x{file: rsa.js}
+x{file: ../_ctoApps/rsa/rsa.js}
 ```
 * Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
   geladen wurde
@@ -20,24 +20,33 @@ x{file: rsa.js}
 
 ```
 d{setup rsa}
-	k{const} f{refresh} = () => {
+	const f{refresh} = () => {
 		e{refresh};
 	};
-	f{refresh}();
+	refresh();
 x{setup rsa}
 ```
 * Während des Refreshs werden alle zu berechnenden Felder neu berechnet
 
 ```
 d{globals}
-	k{const} v{$prime1} = f{$}(s{'#prime-1'});
-	k{const} v{$prime2} = f{$}(s{'#prime-2'});
-	k{const} v{$errPNotPrime} =
-		f{$}(s{'#err-p-not-prime'});
-	k{const} v{$errQNotPrime} =
-		f{$}(s{'#err-q-not-prime'});
-	k{const} v{$errPEqualQ} =
-		f{$}(s{'#err-p-equal-q'});
+	const f{$} = id => {
+		return document.getElementById(id);
+	};
+x{globals}
+```
+* Hilfsfunktion, um Element mit `id` zu ermitteln
+
+```
+a{globals}
+	const $prime1 = f{$}('prime-1');
+	const $prime2 = f{$}('prime-2');
+	const $err_p_not_prime =
+		f{$}('err-p-not-prime');
+	const $err_q_not_prime =
+		f{$}('err-q-not-prime');
+	const $err_p_equal_q =
+		f{$}('err-p-equal-q');
 x{globals}
 ```
 * In zwei Textfeldern werden die Primzahlen eingegeben
@@ -48,16 +57,16 @@ x{globals}
 
 ```
 d{refresh}
-	k{const} v{prime1} = f{bigInt}(v{$prime1}.f{val}());
-	v{$errPNotPrime}.f{toggleClass}(
-		s{'hidden'}, v{prime1}.f{isProbablePrime}()
+	const prime1 = bigInt($prime1.value);
+	$err_p_not_prime.classList.toggle(
+		'hidden', prime1.isProbablePrime()
 	);
-	k{const} v{prime2} = f{bigInt}(v{$prime2}.f{val}());
-	v{$errQNotPrime}.f{toggleClass}(
-		s{'hidden'}, v{prime2}.f{isProbablePrime}()
+	const prime2 = bigInt($prime2.value);
+	$err_q_not_prime.classList.toggle(
+		'hidden', prime2.isProbablePrime()
 	);
-	v{$errPEqualQ}.f{toggleClass}(
-		s{'hidden'}, ! v{prime1}.f{equals}(v{prime2})
+	$err_p_equal_q.classList.toggle(
+		'hidden', ! prime1.equals(prime2)
 	);
 x{refresh}
 ```
@@ -69,10 +78,10 @@ x{refresh}
 
 ```
 a{globals}
-	k{const} v{$public_key} =
-		f{$}(s{'#public-key'});
-	k{const} v{$public_key_length} =
-		f{$}(s{'#public-key-length'});
+	const $public_key =
+		f{$}('public-key');
+	const $public_key_length =
+		f{$}('public-key-length');
 x{globals}
 ```
 * In zwei Elementen wird der öffentliche Schlüssel und dessen Länge
@@ -80,14 +89,12 @@ x{globals}
 
 ```
 a{refresh}
-	k{const} v{public_key} =
-		v{prime1}.f{multiply}(v{prime2});
-	v{$public_key}.f{text}(
-		v{public_key}.f{toString}()
-	);
-	v{$public_key_length}.f{text}(
-		v{public_key}.f{bitLength}()
-	);
+	const public_key =
+		prime1.multiply(prime2);
+	$public_key.innerText =
+		public_key.toString();
+	$public_key_length.innerText =
+		public_key.bitLength();
 x{refresh}
 ```
 * Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
@@ -95,36 +102,40 @@ x{refresh}
 
 ```
 a{globals}
-	k{const} v{$max_msg} =
-		f{$}(s{'.max-msg'});
+	const $max_msgs =
+		document.getElementsByClassName(
+			'max-msg'
+		);
 x{globals}
 ```
 * Felder enthalten die größte mögliche Zahl für eine Nachricht
 
 ```
 a{refresh}
-	k{const} v{one} = f{bigInt}.v{one};
-	k{const} v{max_msg} =
-		v{public_key}.f{subtract}(v{one});
-	v{$max_msg}.f{text}(
-		v{max_msg}.f{toString}()
-	);
+	const one = f{bigInt}.one;
+	const max_msg =
+		public_key.subtract(one).toString();
+	for (
+		let i = 0; i < $max_msgs.length; ++i
+	) {
+		$max_msgs[i].innerText = max_msg;
+	}
 x{refresh}
 ```
 * Die größte mögliche Nachrichtenzahl wird in Fehlermeldungen benötigt
 
 ```
 a{globals}
-	k{const} v{$phi} = f{$}(s{'#phi'});
+	const $phi = f{$}('phi');
 x{globals}
 ```
 * Auch das Ergebnis der φ-Funktion wird auf der Webseite angezeigt
 
 ```
 a{refresh}
-	k{const} v{phi} = v{prime1}.f{subtract}(v{one}).
-		f{multiply}(v{prime2}.f{subtract}(v{one}));
-	v{$phi}.f{text}(v{phi}.f{toString}());
+	const phi = prime1.subtract(one).
+		multiply(prime2.subtract(one));
+	$phi.innerText = phi.toString();
 x{refresh}
 ```
 * Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
@@ -133,7 +144,7 @@ x{refresh}
 
 ```
 a{globals}
-	k{const} f{gcd} = (v{a}, v{b}) => {
+	const f{gcd} = (a, b) => {
 		e{gcd};
 	};
 x{globals}
@@ -144,62 +155,65 @@ x{globals}
 
 ```
 a{globals}
-	k{const} v{$e} = f{$}(s{'#base'});
-	k{const} v{$gcd} = f{$}(s{'#gcd'});
-	k{const} v{$errGcdNot1} =
-		f{$}(s{'#err-gcd-not-1'});
+	const $e = f{$}('base');
+	const $gcd = f{$}('gcd');
+	const $err_gcd_not_1 =
+		f{$}('err-gcd-not-1');
 x{globals}
 ```
-* Der Wert `v{e}` wird wie die Primzahlen aus einem Textfeld ausgelesen
+* Der Wert `e` wird wie die Primzahlen aus einem Textfeld ausgelesen
 * Der größte gemeinsame Teiler wird zur Kontrolle auch angezeigt
 * Es gibt eine Fehlermeldung, wenn der größte gemeinsame Teiler nicht
-  `n{1}` ist
+  `1` ist
 
 ```
 a{refresh}
-	k{const} v{e} = f{bigInt}(v{$e}.f{val}());
-	k{const} v{gg} = f{gcd}(v{phi}, v{e});
-	v{$errGcdNot1}.f{toggleClass}(
-		s{'hidden'}, v{gg}.v{a}.f{equals}(n{1})
+	const e = bigInt($e.value);
+	const gg = gcd(phi, e);
+	$err_gcd_not_1.classList.toggle(
+		'hidden', gg.a.equals(1)
 	);
-	v{$gcd}.f{text}(v{gg}.v{a}.f{toString}());
+	$gcd.innerText = gg.a.toString();
 x{refresh}
 ```
-* Wenn `v{e}` und der Wert der φ-Funktion nicht teilerfremd sind, wird
+* Wenn `e` und der Wert der φ-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt
 
 ```
 a{globals}
-	k{const} v{$private_key} = f{$}(s{'#private-key'});
+	const $private_key =
+		f{$}('private-key');
 x{globals}
 ```
 * Der private Schlüssel wird auch auf der Webseite ausgegeben
 
 ```
 a{refresh}
-	k{let} v{private_key} = v{gg}.v{v};
-	k{if} (v{private_key}.f{lesser}(n{0})) {
-		v{private_key} = v{private_key}.f{add}(v{phi});
+	let private_key = gg.v;
+	if (private_key.lesser(0)) {
+		private_key =
+			private_key.add(phi);
 	}
-	v{$private_key}.f{text}(v{private_key}.f{toString}());
+	$private_key.innerText =
+		private_key.toString();
 x{refresh}
 ```
 * Der private Schlüssel ist das multiplikative Inverse modulo φ
 
 ```
 a{globals}
-	k{let} v{encrypt} = k{true};
+	let encrypt = true;
 x{globals}
 ```
 * Der Algorithmus kann sowohl ver- als auch entschlüsseln
-* Die Variable `v{encrypt}` bestimmt, in welche Richtung der Algorithmus
+* Die Variable `encrypt` bestimmt, in welche Richtung der Algorithmus
   läuft
 
 ```
 a{refresh}
-	k{if} (v{encrypt}) {
+	if (encrypt) {
 		e{encrypt};
-	} k{else} {
+	} else {
 		e{decrypt};
 	}
 x{refresh}
@@ -210,14 +224,14 @@ x{refresh}
 
 ```
 a{globals}
-	k{const} v{$private_message} =
-		f{$}(s{'#private-message'});
-	k{const} v{$public_message} =
-		f{$}(s{'#public-message'});
-	k{const} v{$errPublicMsgTooBig} =
-		f{$}(s{'#err-public-msg-too-big'});
-	k{const} v{$errPrivateMsgTooBig} =
-		f{$}(s{'#err-private-msg-too-big'});
+	const $private_message =
+		f{$}('private-message');
+	const $public_message =
+		f{$}('public-message');
+	const $err_public_msg_too_big =
+		f{$}('err-public-msg-too-big');
+	const $err_private_msg_too_big =
+		f{$}('err-private-msg-too-big');
 x{globals}
 ```
 * Es gibt ein Textfeld für den Klartext und den Geheimtext
@@ -226,15 +240,15 @@ x{globals}
 
 ```
 d{encrypt}
-	k{const} v{source} =
-		f{bigInt}(v{$private_message}.f{val}());
-	v{$errPublicMsgTooBig}.f{toggleClass}(
-		s{'hidden'},
-		v{source}.f{lesser}(v{public_key})
-	);
-	v{$errPrivateMsgTooBig}.f{addClass}(
-		s{'hidden'}
-	);
+	const source =
+		bigInt($private_message.value);
+	$err_public_msg_too_big.
+		classList.toggle(
+			'hidden',
+			source.lesser(public_key)
+		);
+	$err_private_msg_too_big.
+		classList.add('hidden');
 x{encrypt}
 ```
 * Beim Verschlüsseln wird geprüft, ob der Klartext zu groß ist
@@ -244,28 +258,28 @@ x{encrypt}
 
 ```
 a{encrypt}
-	k{const} v{encrypted} = v{source}.f{modPow}(
-		v{e}, v{public_key}
-	);
-	v{$public_message}.f{val}(
-		v{encrypted}.f{toString}()
-	);
+	const encrypted =
+		source.modPow(
+			e, public_key
+		);
+	$public_message.value =
+		encrypted.toString();
 x{encrypt}
 ```
-* Das Verschlüsseln besteht nur aus einer Exponentiation mit `v{e}`
-  modulo `v{N}` (dem öffentlichen Schlüssel)
+* Das Verschlüsseln besteht nur aus einer Exponentiation mit `e`
+  modulo `N` (dem öffentlichen Schlüssel)
 
 ```
 d{decrypt}
-	k{const} v{source} =
-		f{bigInt}(v{$public_message}.f{val}());
-	v{$errPublicMsgTooBig}.f{addClass}(
-		s{'hidden'}
-	);
-	v{$errPrivateMsgTooBig}.f{toggleClass}(
-		s{'hidden'},
-		v{source}.f{lesser}(v{public_key})
-	);
+	const source =
+		bigInt($public_message.value);
+	$err_public_msg_too_big.
+		classList.add('hidden');
+	$err_private_msg_too_big.
+		classList.toggle(
+			'hidden',
+			source.lesser(public_key)
+		);
 x{decrypt}
 ```
 * Beim Entschlüsseln wird der Geheimtext als Eingabe verwendet
@@ -276,16 +290,15 @@ x{decrypt}
 
 ```
 a{decrypt}
-	k{const} v{decrypted} = v{source}.f{modPow}(
-		v{private_key}, v{public_key}
+	const decrypted = source.modPow(
+		private_key, public_key
 	);
-	v{$private_message}.f{val}(
-		v{decrypted}.f{toString}()
-	);
+	$private_message.value =
+		decrypted.toString();
 x{decrypt}
 ```
 * Auch das Entschlüsseln besteht aus einer einzigen Exponentiation mit
-  dem geheimen Schlüssel `v{d}` modulo `v{N}`
+  dem geheimen Schlüssel `d` modulo `N`
 
 # Größter gemeinsamer Teiler (ggT)
 * Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus, um
@@ -295,101 +308,103 @@ x{decrypt}
 
 ```
 d{gcd}
-	k{let} v{ca} = v{a};
-	k{let} v{cb} = v{b};
+	let ca = a;
+	let cb = b;
 x{gcd}
 ```
-* Die aktuellen Werte von `v{a}` und `v{b}` werden in `v{ca}` und
-  `v{cb}` gespeichert
-* Solange `v{cb}` nicht `n{0}` ist gilt stets, dass der größte
-  gemeinsame Teiler von `v{a}` und `v{b}` auch der größte gemeinsame
-  Teiler von `v{ca}` und `v{cb}` ist
-* Der Euklidische Algorithmus reduziert `v{ca}` und `v{cb}`, bis
-  `v{cb}` gleich `n{0}` wird
+* Die aktuellen Werte von `a` und `b` werden in `ca` und
+  `cb` gespeichert
+* Solange `cb` nicht `0` ist gilt stets, dass der größte
+  gemeinsame Teiler von `a` und `b` auch der größte gemeinsame
+  Teiler von `ca` und `cb` ist
+* Der Euklidische Algorithmus reduziert `ca` und `cb`, bis
+  `cb` gleich `0` wird
 
 ```
 a{gcd}
-	k{let} v{u} = f{bigInt}.v{one};
-	k{let} v{v} = f{bigInt}.v{zero};
-	k{let} v{s} = v{v};
-	k{let} v{t} = v{u};
+	let u = f{bigInt}.one;
+	let v = f{bigInt}.zero;
+	let s = v;
+	let t = u;
 x{gcd}
 ```
 * Der Erweiterte Euklidische Algorithmus enthält vier weitere Parameter
-  `v{u}`, `v{v}`, `v{s}` und `v{t}`
-* Es gilt stets, dass `v{ca} = v{u} * v{a} + v{v} * v{b}`
-* Und `v{cb} = v{s} * v{a} + v{t} * v{b}`
+  `u`, `v`, `s` und `t`
+* Es gilt stets, dass `ca = u * a + v * b`
+* Und `cb = s * a + t * b`
 
 ```
 a{gcd}
-	k{while} (! v{cb}.f{isZero}()) {
+	while (! cb.isZero()) {
 		e{gcd loop};
 	}
 x{gcd}
 ```
-* Solange `v{cb}` nicht `n{0}` ist, wird die Schleife ausgeführt
+* Solange `cb` nicht `0` ist, wird die Schleife ausgeführt
 
 ```
 d{gcd loop}
-	k{const} v{dd} = v{ca}.f{divmod}(v{cb});
-	k{const} v{na} = v{cb};
-	k{const} v{nb} = v{dd}.v{remainder};
+	const dd = ca.divmod(cb);
+	const na = cb;
+	const nb = dd.remainder;
 x{gcd loop}
 ```
-* `v{ca}` wird durch `v{cb}` geteilt
-* Der neue Wert von `v{ca}` (`v{na}`) wird auf `v{cb}` gesetzt
-* Der neue Wert von `v{cb}` (`v{nb}`) ist der Rest aus der Division
-* Der größte gemeinsame Teiler von `v{ca}` und `v{cb}` ist auch der
-  größte gemeinsame Teiler von `v{na}` und `v{nb}`
+* `ca` wird durch `cb` geteilt
+* Der neue Wert von `ca` (`na`) wird auf `cb` gesetzt
+* Der neue Wert von `cb` (`nb`) ist der Rest aus der Division
+* Der größte gemeinsame Teiler von `ca` und `cb` ist auch der
+  größte gemeinsame Teiler von `na` und `nb`
 
 ```
 a{gcd loop}
-	k{const} v{nu} = v{s};
-	k{const} v{nv} = v{t};
+	const nu = s;
+	const nv = t;
 x{gcd loop}
 ```
-* Dadurch, dass `v{cb}` nach `v{na}` kopiert wurde, können die
-  Koeffizienten `v{s}` und `v{t}` nach `v{nu}` und `v{nv}` kopiert
+* Dadurch, dass `cb` nach `na` kopiert wurde, können die
+  Koeffizienten `s` und `t` nach `nu` und `nv` kopiert
   werden
 
 ```
 a{gcd loop}
-	k{const} v{ns} =
-		v{u}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{s}));
-	k{const} v{nt} =
-		v{v}.f{subtract}(v{dd}.v{quotient}.f{multiply}(v{t}));
+	const ns = u.subtract(
+		dd.quotient.multiply(s)
+	);
+	const nt = v.subtract(
+		dd.quotient.multiply(t)
+	);
 x{gcd loop}
 ```
-* Aus den aktuellen `v{u}` und `v{v}` können die neuen `v{s}` und
-  `v{t}` bestimmt werden
+* Aus den aktuellen `u` und `v` können die neuen `s` und
+  `t` bestimmt werden
 
 ```
 a{gcd loop}
-	v{ca} = v{na};
-	v{cb} = v{nb};
+	ca = na;
+	cb = nb;
 x{gcd loop}
 ```
 * Die neuen Werte werden zu den aktuellen Werten
 
 ```
 a{gcd loop}
-	v{u} = v{nu};
-	v{v} = v{nv};
-	v{s} = v{ns};
-	v{t} = v{nt};
+	u = nu;
+	v = nv;
+	s = ns;
+	t = nt;
 x{gcd loop}
 ```
 * Die neuen Werte werden zu den aktuellen Werten
 
 ```
 a{gcd}
-	k{return} {
-		s{a}: v{ca}, s{u}: v{u}, s{v}: v{v},
-		s{s}: v{s}, s{t}: v{t} 
+	return {
+		s{a}: ca, s{u}: u, s{v}: v,
+		s{s}: s, s{t}: t 
 	};
 x{gcd}
 ```
-* Zurück liefert die Funktion den größten gemeinsamen Teiler `v{a}`
+* Zurück liefert die Funktion den größten gemeinsamen Teiler `a`
 * Und die Koeffizienten
 
 ## Unit-Test
@@ -403,10 +418,10 @@ a{globals} {
 
 ```
 d{unit test}
-	k{const} f{eq} = (v{a}, v{b}) => {
-		k{if} (!v{a}.f{equals}(v{b})) {
-			v{console}.f{error}(
-				s{`expected }${v{a}}s{, got }${v{b}}s{`}
+	const f{eq} = (a, b) => {
+		if (! a.equals(b)) {
+			console.error(
+				`expected ${a}, got ${b}`
 			);
 		}
 	};
@@ -416,33 +431,33 @@ x{unit test}
 
 ```
 a{unit test}
-	k{const} v{g} = f{gcd}(
-		f{bigInt}(n{70}), f{bigInt}(n{4})
+	const g = gcd(
+		bigInt(70), bigInt(4)
 	);
-	f{eq}(v{g}.v{a}, f{bigInt}(n{2}));
+	eq(g.a, bigInt(2));
 x{unit test}
 ```
-* Der größte gemeinsame Teiler muss `n{2}` sein
+* Der größte gemeinsame Teiler muss `2` sein
 
 ```
 a{unit test}
-	f{eq}(v{g}.v{u}, f{bigInt}(n{1}));
-	f{eq}(v{g}.v{v}, f{bigInt}(n{-17}));
+	eq(g.u, bigInt(1));
+	eq(g.v, bigInt(-17));
 x{unit test}
 ```
-* Die Koeffizienten `v{g}.v{u}` und `v{g}.v{v}` liefern
+* Die Koeffizienten `g.u` und `g.v` liefern
   eine Linearkombination für den größten gemeinsamen Teiler
 
 ```
 a{unit test}
-	f{eq}(v{g}.v{s}, f{bigInt}(n{-2}));
-	f{eq}(v{g}.v{t}, f{bigInt}(n{35}));
+	eq(g.s, bigInt(-2));
+	eq(g.t, bigInt(35));
 x{unit test}
 ```
-* Die Koeffizienten `v{g}.v{s}` und `v{g}.v{t}` liefern nicht-triviale
-  Linearkombination von `n{0}`
-* Also `v{g}.v{s} * n{70} + v{g}.v{t} * n{4} == 0` wobei `v{g}.v{s}` und
-  `v{g}.v{t}` nicht `n{0}` sind
+* Die Koeffizienten `g.s` und `g.t` liefern nicht-triviale
+  Linearkombination von `0`
+* Also `g.s * 70 + g.t * 4 == 0` wobei `g.s` und
+  `g.t` nicht `0` sind
 
 # Richtung des Algorithmus anzeigen
 * Es gibt ein Element auf der Web-Seite, das die Ablaufrichtung des
@@ -451,8 +466,8 @@ x{unit test}
 
 ```
 a{globals}
-	k{const} v{$direction} =
-		f{$}(s{'#direction'});
+	const $direction =
+		f{$}('direction');
 x{globals}
 ```
 * Dieses Element zeigt die Richtung an, in welcher der Algorithmus
@@ -461,17 +476,17 @@ x{globals}
 
 ```
 a{setup rsa}
-	k{const} f{setEncrypt} = v{new_encrypt} => {
-		k{if} (v{encrypt} === v{new_encrypt}) {
-			k{return};
+	const f{setEncrypt} = new_encrypt => {
+		if (encrypt === new_encrypt) {
+			return;
 		}
-		v{encrypt} = v{new_encrypt};
-		k{if} (v{encrypt}) {
-			v{$direction}.f{removeClass}(s{'flip'});
-			v{$direction}.f{addClass}(s{'flop'});
+		encrypt = new_encrypt;
+		if (encrypt) {
+			$direction.classList.remove('flip');
+			$direction.classList.add('flop');
 		} else {
-			v{$direction}.f{removeClass}(s{'flop'});
-			v{$direction}.f{addClass}(s{'flip'});
+			$direction.classList.remove('flop');
+			$direction.classList.add('flip');
 		}
 	};
 x{setup rsa}
@@ -491,32 +506,32 @@ x{setup rsa}
 
 ```
 a{globals}
-	k{let} v{timer};
+	let timer;
 x{globals}
 ```
 * Der Timer wird global vorgehalten
 
 ```
 a{globals}
-	k{const} f{resetTimer} = () => {
-		v{timer} = v{null};
+	const f{resetTimer} = () => {
+		timer = null;
 	};
 x{globals}
 ```
 
 ```
 a{setup rsa}
-	k{const} f{queueRefresh} = v{event} => {
-		v{event}.f{preventDefault}();
-		k{let} f{fn} = f{refresh};
-		k{if} (! v{timer}) {
-			f{refresh}();
+	const f{queueRefresh} = event => {
+		event.preventDefault();
+		let f{fn} = f{refresh};
+		if (! timer) {
+			refresh();
 			f{fn} = f{resetTimer};
-		} k{else} {
-			f{clearTimeout}(v{timer});
+		} else {
+			clearTimeout(timer);
 			e{set fields to pending};
 		}
-		v{timer} = f{setTimeout}(f{fn}, n{500});
+		timer = setTimeout(f{fn}, 500);
 	}
 x{setup rsa}
 ```
@@ -530,23 +545,23 @@ x{setup rsa}
 
 ```
 a{refresh}
-	f{resetTimer}();
+	resetTimer();
 x{refresh}
 ```
 * Nach der Neuberechnung wird der Timer gelöscht
 
 ```
 d{set fields to pending}
-	v{$public_key_length}.f{text}(s{'...'});
-	v{$public_key}.f{text}(s{'...'});
-	v{$phi}.f{text}(s{'...'});
-	v{$gcd}.f{text}(s{'...'});
-	v{$private_key}.f{text}(s{'...'});
+	$public_key_length.innerText = '...';
+	$public_key.innerText = '...';
+	$phi.innerText = '...';
+	$gcd.innerText = '...';
+	$private_key.innerText = '...';
 
-	k{if} (v{encrypt}) {
-		v{$public_message}.f{val}(s{'...'});
-	} k{else} {
-		v{$private_message}.f{val}(s{'...'});
+	if (encrypt) {
+		$public_message.value = '...';
+	} else {
+		$private_message.value = '...';
 	}
 x{set fields to pending}
 ```
@@ -558,9 +573,15 @@ x{set fields to pending}
 
 ```
 a{setup rsa}
-	v{$prime1}.f{on}(s{'input'}, f{queueRefresh});
-	v{$prime2}.f{on}(s{'input'}, f{queueRefresh});
-	v{$e}.f{on}(s{'input'}, f{queueRefresh});
+	$prime1.addEventListener(
+		'input', f{queueRefresh}
+	);
+	$prime2.addEventListener(
+		'input', f{queueRefresh}
+	);
+	$e.addEventListener(
+		'input', f{queueRefresh}
+	);
 x{setup rsa}
 ```
 * Werden die Primzahlen oder die Basis geändert, wird die Neuberechnung
@@ -568,15 +589,18 @@ x{setup rsa}
 
 ```
 a{setup rsa}
-	v{$private_message}.f{on}(s{'input'}, v{event} => {
-		f{setEncrypt}(k{true});
-		f{queueRefresh}(v{event});
-	});
-	v{$public_message}.f{on}(s{'input'}, v{event} => {
-		f{setEncrypt}(k{false});
-		f{queueRefresh}(v{event});
-	});
+	$private_message.
+		addEventListener('input', event => {
+			setEncrypt(true);
+			queueRefresh(event);
+		});
+	$public_message.
+		addEventListener('input', event => {
+			setEncrypt(false);
+			queueRefresh(event);
+		});
 x{setup rsa}
 ```
 * Wenn der Klartext oder Geheimtext geändert wird, wird zusätzlich die
   Richtung des Algorithmus angepasst
+
