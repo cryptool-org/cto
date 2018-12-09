@@ -824,8 +824,7 @@ d{crypt arrow}
 		<div id="direction">
 			<svg viewbox="0 0 50 50"
 				width="50" height="50">
-				<polyline
-points="0,20 15,20 15,0 35,0 35,20 50,20 25,50"
+				<polyline points=s{"0,20 15,20}b{}s{ 15,0 35,0 35,20 50,20 25,50"}
 				></polyline>
 			</svg>
 		</div>
@@ -868,7 +867,7 @@ a{container de}
 		s{Diese Seite verwendet für die}
 		s{Rechnung mit großen Zahlen die}
 		s{Bibliothek}
-		<a href="https://peterolson.github.com/BigInteger.js/"
+		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}
 		>s{BigInteger.js}</a>.
 	</p>
 x{container de}
@@ -1258,9 +1257,8 @@ x{crypt boxes en}
 a{container en}
 	<h2>s{Used library}</h2>
 	<p>
-		s{This page uses the library} <a
-href="https://peterolson.github.com/BigInteger.js/"
-		>BigInteger.js</a>
+		s{This page uses the library}
+		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}>BigInteger.js</a>
 		s{to work with big numbers.}
 	</p><p>
 		s{As a result, you can calculate}
@@ -1843,8 +1841,8 @@ x{setup rsa}
 d{bootstrap stylesheets}
 	<link 
 		rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		href=s{"https://maxcdn.bootstrapcdn.com}b{}s{/bootstrap/3.3.7/css/bootstrap.min.css"}
+		integrity=s{"sha384-BVYiiSIFeK1dGmJRAky}b{}s{cuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"}
 		crossorigin="anonymous"
 	>
 x{bootstrap stylesheets}
@@ -1854,8 +1852,8 @@ x{bootstrap stylesheets}
 a{bootstrap stylesheets}
 	<link
 		rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+		href=s{"https://maxcdn.bootstrapcdn.com}b{}s{/bootstrap/3.3.7/css/bootstrap-theme.min.css"}
+		integrity=s{"sha384-rHyoN1iRsVXV4nD0Jut}b{}s{lnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"}
 		crossorigin="anonymous"
 	>
 x{bootstrap stylesheets}
