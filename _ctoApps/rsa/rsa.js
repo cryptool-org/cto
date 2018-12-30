@@ -21,12 +21,9 @@
 	const $public_key_length =
 		$('public-key-length');
 
-	const $max_msgs =
-		document.getElementsByClassName(
-			'max-msg'
-		);
-
-	const $phi = $('phi');
+	const $e = $('base');
+	const $err_gcd_not_1 =
+		$('err-gcd-not-1');
 
 	const gcd = (a, b) => {
 		
@@ -70,25 +67,6 @@
 	};
 ;
 	};
-
-	const $e = $('base');
-	const $gcd = $('gcd');
-	const $err_gcd_not_1 =
-		$('err-gcd-not-1');
-
-	const $private_key =
-		$('private-key');
-
-	let encrypt = true;
-
-	const $private_message =
-		$('private-message');
-	const $public_message =
-		$('public-message');
-	const $err_public_msg_too_big =
-		$('err-public-msg-too-big');
-	const $err_private_msg_too_big =
-		$('err-private-msg-too-big');
  {
 	
 	const eq = (a, b) => {
@@ -111,6 +89,29 @@
 	eq(g.t, bigInt(35));
 ;
 } 
+	const $max_msgs =
+		document.getElementsByClassName(
+			'max-msg'
+		);
+
+	const $phi = $('phi');
+
+	const $gcd = $('gcd');
+
+	const $private_key =
+		$('private-key');
+
+	let encrypt = true;
+
+	const $private_message =
+		$('private-message');
+	const $public_message =
+		$('public-message');
+	const $err_public_msg_too_big =
+		$('err-public-msg-too-big');
+	const $err_private_msg_too_big =
+		$('err-private-msg-too-big');
+
 	const $direction =
 		$('direction');
 

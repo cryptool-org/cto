@@ -93,7 +93,7 @@ x{scripts}
 d{file: ../_ctoApps/rsa/rsa.js}
 	"use strict";
 	window.addEventListener('load', () => {
-		e{globals};
+		g{globals};
 		e{setup rsa};
 	});
 x{file: ../_ctoApps/rsa/rsa.js}
@@ -318,7 +318,7 @@ x{queue refresh}
   mit Timern ersetzt
 
 ```
-d{globals}
+D{globals}
 	const f{$} = id => {
 		return document.getElementById(id);
 	};
@@ -327,7 +327,7 @@ x{globals}
 * Hilfsfunktion, um Element mit `id` zu ermitteln
 
 ```
-a{globals}
+A{globals}
 	const $prime1 = f{$}('prime-1');
 	const $err_p_not_prime =
 		f{$}('err-p-not-prime');
@@ -402,7 +402,7 @@ x{primes en}
 * Die Fehlermeldungen sind in der englischen Version lokalisiert
 
 ```
-a{globals}
+A{globals}
 	const $prime2 = f{$}('prime-2');
 	const $err_q_not_prime =
 		f{$}('err-q-not-prime');
@@ -520,7 +520,7 @@ x{container en}
 * Und das Fragment wird in der englischen Version verwendet
 
 ```
-a{globals}
+A{globals}
 	const $public_key =
 		f{$}('public-key');
 	const $public_key_length =
@@ -545,6 +545,117 @@ x{refresh}
 
 # Öffentlicher Schlüssel
 * Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+
+```
+a{container de}
+	<h2>s{Öffentlicher Schlüssel}</h2>
+	<p>
+		s{Das Produkt} <i>n</i> s{wird im}
+		s{RSA-Verfahren auch Modul genannt.}
+		s{Der öffentliche Schlüssel besteht}
+		s{neben dem Modul} <i>n</i> s{noch aus}
+		s{einem Exponenten} <i>e</i>s{.}
+	</p>
+x{container de}
+```
+* Zuerst kommt eine allgemeine Beschreibung in der deutschen Version
+
+```
+a{container en}
+	<h2>s{Public key}</h2>
+	<p>
+		s{The product <i>n</i> is also called}
+		s{module in the RSA method. The public}
+		s{key consists of the module} <i>n</i>
+		s{and an exponent} <i>e</i>.
+	</p>
+x{container en}
+```
+* Und ebenso in der englischen Version
+
+```
+a{container de}
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label
+				class="col-sm-3 control-label"
+				for="base"><i>e</i></label>
+			<div class="col-sm-9"><input
+				class="form-control" id="base"
+				value="23"></div>
+		</div>
+		<div id="err-gcd-not-1"
+			class="row alert alert-danger"
+		><i>e</i> s{und} <i>n</i> s{sind nicht}
+			s{teilerfremd.}</div>
+	</form>
+x{container de}
+```
+* In einem Textfeld kann das `e` geändert werden
+* Zusätzlich gibt es eine Fehlermeldung, wenn eingegebene `e` nicht
+  teilerfremd ist
+
+```
+a{container en}
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label
+				class="col-sm-3 control-label"
+				for="base"><i>e</i></label>
+			<div class="col-sm-9"><input
+				class="form-control" id="base"
+				value="23"></div>
+		</div>
+		<div id="err-gcd-not-1"
+			class="row alert alert-danger"
+		><i>e</i> s{and} <i>n</i> s{have a common}
+			s{divisor.}</div>
+	</form>
+x{container en}
+```
+* Das Textfeld gibt es ebenfalls in der englischen Version
+* Ebenfalls mit der zugehörigen Fehlermeldung
+
+```
+A{globals}
+	const $e = f{$}('base');
+	const $err_gcd_not_1 =
+		f{$}('err-gcd-not-1');
+x{globals}
+```
+* In der Variable `$e` wird eine Referenz des Textfelds gespeichert
+* Ebenso wird eine Referenz der Fehlermeldung gespeichert
+
+```
+A{globals}
+	const f{gcd} = (a, b) => {
+		g{gcd};
+	};
+x{globals}
+```
+* Um festzustellen, ob `e` und `n` teilerfremd sind, wird der
+  Erweiterte Euklidische Algorithmus verwendet
+* Dieser liefert gleichzeitig noch das inverse Element, das für den
+  geheimen Schlüssel benötigt wird
+
+```
+i{gcd.x}
+```
+* Der Erweiterte Euklidische Algorithmus wird in einer eigenen Datei
+  implementiert
+
+
+```
+a{refresh}
+	const e = bigInt($e.value);
+	const gcd_result = gcd(phi, e);
+	$err_gcd_not_1.classList.toggle(
+		'hidden', gcd_result.a.equals(1)
+	);
+x{refresh}
+```
+* Wenn `e` und der Wert der φ-Funktion nicht teilerfremd sind, wird
+  eine entsprechende Fehlermeldung angezeigt
 
 # WORKING HERE
 
@@ -608,38 +719,6 @@ a{css}
 		margin-top: 40px;
 	}
 x{css}
-```
-
-```
-a{container de}
-	<h2>s{Öffentlicher Schlüssel}</h2>
-	<p>
-		s{Das Produkt} <i>n</i> s{wird im}
-		s{RSA-Verfahren auch Modul genannt.}
-		s{Der öffentliche Schlüssel besteht}
-		s{neben dem Modul} <i>n</i> s{noch aus}
-		s{einem Exponenten} <i>e</i>s{.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="base"><i>e</i></label>
-			<div class="col-sm-9"><input
-				class="form-control" id="base"
-				value="23"></div>
-		</div>
-		<div id="err-gcd-not-1"
-			class="row alert alert-danger"
-		><i>e</i> s{und} <i>n</i> s{sind nicht}
-			s{teilerfremd.}</div>
-	</form>
-x{container de}
 ```
 
 ```
@@ -1004,37 +1083,6 @@ x{container de}
 
 ```
 a{container en}
-	<h2>s{Public key}</h2>
-	<p>
-		s{The product <i>n</i> is also called}
-		s{module in the RSA method. The public}
-		s{key consists of the module} <i>n</i>
-		s{and an exponent} <i>e</i>.
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="base"><i>e</i></label>
-			<div class="col-sm-9"><input
-				class="form-control" id="base"
-				value="23"></div>
-		</div>
-		<div id="err-gcd-not-1"
-			class="row alert alert-danger"
-		><i>e</i> s{and} <i>n</i> s{have a common}
-			s{divisor.}</div>
-	</form>
-x{container en}
-```
-
-```
-a{container en}
 	<p>
 		s{This} <i>e</i> s{may even be}
 		s{pre-selected and the same}
@@ -1357,7 +1405,7 @@ x{container en}
 
 
 ```
-a{globals}
+A{globals}
 	const $max_msgs =
 		document.getElementsByClassName(
 			'max-msg'
@@ -1381,7 +1429,7 @@ x{refresh}
 * Die größte mögliche Nachrichtenzahl wird in Fehlermeldungen benötigt
 
 ```
-a{globals}
+A{globals}
 	const $phi = f{$}('phi');
 x{globals}
 ```
@@ -1399,44 +1447,21 @@ x{refresh}
   des öffentlichen Schlüssels
 
 ```
-a{globals}
-	const f{gcd} = (a, b) => {
-		e{gcd};
-	};
-x{globals}
-```
-* Das inverse Element kann mit dem Erweiterten Euklidischen Algorithmus
-  berechnet werden
-* Dieser wird weiter unten implementiert
-
-```
-a{globals}
-	const $e = f{$}('base');
+A{globals}
 	const $gcd = f{$}('gcd');
-	const $err_gcd_not_1 =
-		f{$}('err-gcd-not-1');
 x{globals}
 ```
-* Der Wert `e` wird wie die Primzahlen aus einem Textfeld ausgelesen
 * Der größte gemeinsame Teiler wird zur Kontrolle auch angezeigt
-* Es gibt eine Fehlermeldung, wenn der größte gemeinsame Teiler nicht
-  `1` ist
 
 ```
 a{refresh}
-	const e = bigInt($e.value);
-	const gg = gcd(phi, e);
-	$err_gcd_not_1.classList.toggle(
-		'hidden', gg.a.equals(1)
-	);
-	$gcd.innerText = gg.a.toString();
+	$gcd.innerText = gcd_result.a.toString();
 x{refresh}
 ```
-* Wenn `e` und der Wert der φ-Funktion nicht teilerfremd sind, wird
-  eine entsprechende Fehlermeldung angezeigt
+
 
 ```
-a{globals}
+A{globals}
 	const $private_key =
 		f{$}('private-key');
 x{globals}
@@ -1457,7 +1482,7 @@ x{refresh}
 * Der private Schlüssel ist das multiplikative Inverse modulo φ
 
 ```
-a{globals}
+A{globals}
 	let encrypt = true;
 x{globals}
 ```
@@ -1479,7 +1504,7 @@ x{refresh}
 * Oder der Geheimtext entschlüsselt
 
 ```
-a{globals}
+A{globals}
 	const $private_message =
 		f{$}('private-message');
 	const $public_message =
@@ -1562,166 +1587,13 @@ x{decrypt}
 * Daher wird der Erweiterte Euklidische Algorithmus hier direkt
   implementiert
 
-```
-d{gcd}
-	let ca = a;
-	let cb = b;
-x{gcd}
-```
-* Die aktuellen Werte von `a` und `b` werden in `ca` und
-  `cb` gespeichert
-* Solange `cb` nicht `0` ist gilt stets, dass der größte
-  gemeinsame Teiler von `a` und `b` auch der größte gemeinsame
-  Teiler von `ca` und `cb` ist
-* Der Euklidische Algorithmus reduziert `ca` und `cb`, bis
-  `cb` gleich `0` wird
-
-```
-a{gcd}
-	let u = f{bigInt}.one;
-	let v = f{bigInt}.zero;
-	let s = v;
-	let t = u;
-x{gcd}
-```
-* Der Erweiterte Euklidische Algorithmus enthält vier weitere Parameter
-  `u`, `v`, `s` und `t`
-* Es gilt stets, dass `ca = u * a + v * b`
-* Und `cb = s * a + t * b`
-
-```
-a{gcd}
-	while (! cb.isZero()) {
-		e{gcd loop};
-	}
-x{gcd}
-```
-* Solange `cb` nicht `0` ist, wird die Schleife ausgeführt
-
-```
-d{gcd loop}
-	const dd = ca.divmod(cb);
-	const na = cb;
-	const nb = dd.remainder;
-x{gcd loop}
-```
-* `ca` wird durch `cb` geteilt
-* Der neue Wert von `ca` (`na`) wird auf `cb` gesetzt
-* Der neue Wert von `cb` (`nb`) ist der Rest aus der Division
-* Der größte gemeinsame Teiler von `ca` und `cb` ist auch der
-  größte gemeinsame Teiler von `na` und `nb`
-
-```
-a{gcd loop}
-	const nu = s;
-	const nv = t;
-x{gcd loop}
-```
-* Dadurch, dass `cb` nach `na` kopiert wurde, können die
-  Koeffizienten `s` und `t` nach `nu` und `nv` kopiert
-  werden
-
-```
-a{gcd loop}
-	const ns = u.subtract(
-		dd.quotient.multiply(s)
-	);
-	const nt = v.subtract(
-		dd.quotient.multiply(t)
-	);
-x{gcd loop}
-```
-* Aus den aktuellen `u` und `v` können die neuen `s` und
-  `t` bestimmt werden
-
-```
-a{gcd loop}
-	ca = na;
-	cb = nb;
-x{gcd loop}
-```
-* Die neuen Werte werden zu den aktuellen Werten
-
-```
-a{gcd loop}
-	u = nu;
-	v = nv;
-	s = ns;
-	t = nt;
-x{gcd loop}
-```
-* Die neuen Werte werden zu den aktuellen Werten
-
-```
-a{gcd}
-	return {
-		s{a}: ca, s{u}: u, s{v}: v,
-		s{s}: s, s{t}: t 
-	};
-x{gcd}
-```
-* Zurück liefert die Funktion den größten gemeinsamen Teiler `a`
-* Und die Koeffizienten
-
-## Unit-Test
-
-```
-a{globals} {
-	e{unit test};
-} x{globals}
-```
-* Unit-Test wird in einem eigenen Block bei jedem Start ausgeführt
-
-```
-d{unit test}
-	const f{eq} = (a, b) => {
-		if (! a.equals(b)) {
-			console.error(
-				`expected ${a}, got ${b}`
-			);
-		}
-	};
-x{unit test}
-```
-* Die Funktion prüft, ob zwei große Zahlen gleich sind
-
-```
-a{unit test}
-	const g = gcd(
-		bigInt(70), bigInt(4)
-	);
-	eq(g.a, bigInt(2));
-x{unit test}
-```
-* Der größte gemeinsame Teiler muss `2` sein
-
-```
-a{unit test}
-	eq(g.u, bigInt(1));
-	eq(g.v, bigInt(-17));
-x{unit test}
-```
-* Die Koeffizienten `g.u` und `g.v` liefern
-  eine Linearkombination für den größten gemeinsamen Teiler
-
-```
-a{unit test}
-	eq(g.s, bigInt(-2));
-	eq(g.t, bigInt(35));
-x{unit test}
-```
-* Die Koeffizienten `g.s` und `g.t` liefern nicht-triviale
-  Linearkombination von `0`
-* Also `g.s * 70 + g.t * 4 == 0` wobei `g.s` und
-  `g.t` nicht `0` sind
-
 # Richtung des Algorithmus anzeigen
 * Es gibt ein Element auf der Web-Seite, das die Ablaufrichtung des
   Algorithmus anzeigt
 * Ob er ver- oder entschlüsselt
 
 ```
-a{globals}
+A{globals}
 	const $direction =
 		f{$}('direction');
 x{globals}
@@ -1761,14 +1633,14 @@ x{setup rsa}
   verstrichen ist, wird die Berechnung gestartet
 
 ```
-a{globals}
+A{globals}
 	let timer;
 x{globals}
 ```
 * Der Timer wird global vorgehalten
 
 ```
-a{globals}
+A{globals}
 	const f{resetTimer} = () => {
 		timer = null;
 	};
