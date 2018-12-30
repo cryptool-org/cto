@@ -214,6 +214,15 @@ x{container en}
 * Auch auf der englischen Seite wird die Erklärung eingebaut
 
 ```
+a{css}
+	#rsa-container h2 {
+		margin-top: 2em;
+	}
+x{css}
+```
+* Überschriften bekommen etwas mehr Abstand
+
+```
 a{container de}
 	<form class="form-horizontal">
 		e{primes de}
@@ -625,6 +634,16 @@ x{globals}
 ```
 * In der Variable `$e` wird eine Referenz des Textfelds gespeichert
 * Ebenso wird eine Referenz der Fehlermeldung gespeichert
+
+```
+a{setup rsa}
+	$e.addEventListener(
+		'input', f{queueRefresh}
+	);
+x{setup rsa}
+```
+* Werden die Primzahlen oder die Basis geändert, wird die Neuberechnung
+  getriggert
 
 ```
 A{globals}
@@ -1232,72 +1251,9 @@ x{container en}
 ```
 * Und warum RSA damit funktioniert
 
-
-
-
-# WORKING HERE
-
-
-
-
-```
-a{css}
-	#direction svg {
-		display: block;
-		margin: 1em auto 2em auto;
-	}
-	@keyframes flip {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(180deg);
-		}
-	}
-x{css}
-```
-
-```
-a{css}
-	#direction.flip svg {
-    	animation-name: flip;
-    	animation-duration: 1s;
-    	animation-fill-mode: forwards;
-	}
-	@keyframes flop {
-    	from {
-        	transform: rotate(180deg);
-    	}
-    	to {
-        	transform: rotate(0deg);
-    	}
-	}
-x{css}
-```
-
-```
-a{css}
-	#direction.flop svg {
-    	animation-name: flop;
-    	animation-duration: 1s;
-    	animation-fill-mode: forwards;
-	}
-	#direction svg polyline {
-    	fill: #888;
-	}
-	#rsa-container h2 {
-		margin-top: 2em;
-	}
-x{css}
-```
-
-```
-a{css}
-	#authors {
-		margin-top: 40px;
-	}
-x{css}
-```
+# Nachrichten
+* In dieser Sektion wird beschrieben, wie de Nachrichten angezeigt
+  und verarbeitet werden
 
 ```
 a{container de}
@@ -1313,112 +1269,7 @@ a{container de}
 	</form>
 x{container de}
 ```
-
-```
-d{crypt boxes de}
-	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			for="public-key">s{Klartext}</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="private-message"
-			value="7"></input></div>
-	</div>
-x{crypt boxes de}
-```
-
-```
-a{crypt boxes de}
-	<div id="err-public-msg-too-big"
-		class="row alert alert-danger">
-		s{Die Klartextzahl ist zu groß.}
-		s{Der maximale Wert ist}
-		<span class="max-msg"></span>.
-		s{Bitte wählen Sie größere Primzahlen.}
-	</div>
-x{crypt boxes de}
-```
-
-```
-a{crypt boxes de}
-	E{crypt arrow}
-x{crypt boxes de}
-```
-
-```
-d{crypt arrow}
-	<div class="row">
-		<div id="direction">
-			<svg viewbox="0 0 50 50"
-				width="50" height="50">
-				<polyline points=s{"0,20 15,20}b{}s{ 15,0 35,0 35,20 50,20 25,50"}
-				></polyline>
-			</svg>
-		</div>
-	</div>
-x{crypt arrow}
-```
-
-```
-a{crypt boxes de}
-	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			for="private-key"
-		>s{Geheimtext}</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="public-message"
-		></input></div>
-	</div>
-x{crypt boxes de}
-```
-
-```
-a{crypt boxes de}
-	<div id="err-private-msg-too-big"
-		class="row alert alert-danger"
-	>s{Die Geheimtextzahl ist zu groß.}
-		s{Der maximale Wert ist}
-		<span class="max-msg"></span>.
-		s{Bitte wählen Sie größere}
-		s{Primzahlen.}
-	</div>
-x{crypt boxes de}
-```
-
-```
-a{container de}
-	<h2>s{Verwendete Bibliothek}</h2>
-	<p>
-		s{Diese Seite verwendet für die}
-		s{Rechnung mit großen Zahlen die}
-		s{Bibliothek}
-		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}
-		>s{BigInteger.js}</a>.
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{Dadurch kann man auch in JavaScript}
-		s{mit beliebig großen Zahlen rechnen,}
-		s{also auch solchen, die real bei}
-		s{RSA-Anwendungen verwendet werden.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<div id="authors"><em>s{CTOAUTHORS:}
-		s{Timm Knape (Dank an Bernhard Esslinger}
-			s{für das Review)}</em></div>
-x{container de}
-```
+* In der deutschen Version werden die Nachrichten-Boxen erklärt
 
 ```
 a{container en}
@@ -1434,6 +1285,77 @@ a{container en}
 	</form>
 x{container en}
 ```
+* Und in der englischen Version werden de Boxen erklärt
+
+```
+d{crypt boxes de}
+	<div class="form-group">
+		<label
+			class="col-sm-3 control-label"
+			for="public-key">s{Klartext}</label>
+		<div class="col-sm-9"><input
+			class="form-control"
+			id="private-message"
+			value="7"></input></div>
+	</div>
+x{crypt boxes de}
+```
+* Die deutsche Cryptbox besteht aus einem Textfeld mit dem Klartext
+
+```
+a{crypt boxes de}
+	<div id="err-public-msg-too-big"
+		class="row alert alert-danger">
+		s{Die Klartextzahl ist zu groß.}
+		s{Der maximale Wert ist}
+		<span class="max-msg"></span>.
+		s{Bitte wählen Sie größere Primzahlen.}
+	</div>
+x{crypt boxes de}
+```
+* Und es gibt eine Fehlermeldung, wenn die eingegebene Nachricht zu
+  groß ist
+
+```
+a{crypt boxes de}
+	E{crypt arrow}
+x{crypt boxes de}
+```
+* Ein Pfeil zeigt die Richtung an, in welche der Algorithmus gerade
+  arbeitet
+* Die Richtung kann durch Eingabe in die passenden Textfelder
+  umgedreht werden
+
+```
+a{crypt boxes de}
+	<div class="form-group">
+		<label
+			class="col-sm-3 control-label"
+			for="private-key"
+		>s{Geheimtext}</label>
+		<div class="col-sm-9"><input
+			class="form-control"
+			id="public-message"
+		></input></div>
+	</div>
+x{crypt boxes de}
+```
+* Ein weiteres Textfeld enthält den Geheimtext
+
+```
+a{crypt boxes de}
+	<div id="err-private-msg-too-big"
+		class="row alert alert-danger"
+	>s{Die Geheimtextzahl ist zu groß.}
+		s{Der maximale Wert ist}
+		<span class="max-msg"></span>.
+		s{Bitte wählen Sie größere}
+		s{Primzahlen.}
+	</div>
+x{crypt boxes de}
+```
+* Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl
+  zu groß ist
 
 ```
 d{crypt boxes en}
@@ -1449,6 +1371,7 @@ d{crypt boxes en}
 	</div>
 x{crypt boxes en}
 ```
+* Auch in der englischen Version gibt es ein Textfeld mit dem Klartext
 
 ```
 a{crypt boxes en}
@@ -1461,12 +1384,15 @@ a{crypt boxes en}
 		s{primes.}</div>
 x{crypt boxes en}
 ```
+* Und eine Fehlermeldung, wenn der Klartext zu groß ist
 
 ```
 a{crypt boxes en}
 	E{crypt arrow}
 x{crypt boxes en}
 ```
+* Es kann der gleiche Pfeil verwendet werden, der die Richtung des
+  Algorithmus anzeigt
 
 ```
 a{crypt boxes en}
@@ -1482,6 +1408,7 @@ a{crypt boxes en}
 	</div>
 x{crypt boxes en}
 ```
+* Auch gibt es wieder ein Feld mit dem Geheimtext
 
 ```
 a{crypt boxes en}
@@ -1494,36 +1421,44 @@ a{crypt boxes en}
 		s{primes.}</div>
 x{crypt boxes en}
 ```
+* Und eine Fehlermeldung, falls der Geheimtext zu groß ist
 
 ```
-a{container en}
-	<h2>s{Used library}</h2>
-	<p>
-		s{This page uses the library}
-		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}>BigInteger.js</a>
-		s{to work with big numbers.}
-	</p><p>
-		s{As a result, you can calculate}
-		s{arbitrarily large numbers in}
-		s{JavaScript, even those that are}
-		s{actually used in RSA}
-		s{applications.}
-	</p>
-x{container en}
+d{crypt arrow}
+	<div class="row">
+		<div id="direction">
+			<svg viewbox="0 0 50 50"
+				width="50" height="50">
+				<polyline points=s{"0,20 15,20}b{}s{ 15,0 35,0 35,20 50,20 25,50"}
+				></polyline>
+			</svg>
+		</div>
+	</div>
+x{crypt arrow}
 ```
+* Der Pfeil ist eine einfache SVG-Grafik
+* Durch CSS-Klassen kann er rotiert werden
 
 ```
-a{container en}
-	<div id="authors"><em>s{CTOAUTHORS: Timm}
-		s{Knape (thanks to Bernhard Esslinger}
-		s{for the review)}</em></div>
-x{container en}
+a{css}
+	#direction svg {
+		display: block;
+		margin: 1em auto 2em auto;
+	}
+x{css}
 ```
+* Der Pfeil wird als eigener Block angezeigt
+* Er wird mittig Positiioniert und bekommt oben und unten feste
+  Abstände
 
-# Refresh
-* Neben den wenigen Aktionen findet die Hauptarbeit während des Refreshs
-  statt
-
+```
+a{css}
+	#direction svg polyline {
+    	fill: #888;
+	}
+x{css}
+```
+* Die Füllfarbe des Pfeils wird auch im CSS gesetzt
 
 ```
 A{globals}
@@ -1533,12 +1468,22 @@ A{globals}
 		);
 x{globals}
 ```
-* Felder enthalten die größte mögliche Zahl für eine Nachricht
+* In den Fehlermeldungen gibt es Elemente, welche die größte mögliche
+  Nachricht anzeigen
+* Sie sind mit der Klasse `max-msg` markiert
+* Alle diese Elemente werden in der Variable `$max_msgs` gesammelt
 
 ```
 a{refresh}
 	const max_msg =
 		public_key.subtract(one).toString();
+x{refresh}
+```
+* Die größte mögliche Nachrichtenzahl ist um eins kleiner als der
+  öffentliche Schlüssel
+
+```
+a{refresh}
 	for (
 		let i = 0; i < $max_msgs.length; ++i
 	) {
@@ -1546,8 +1491,41 @@ a{refresh}
 	}
 x{refresh}
 ```
-* Die größte mögliche Nachrichtenzahl wird in Fehlermeldungen benötigt
+* Die Felder in den Fehlermeldungen werden beim `refresh` auf den
+  korrekten Wert gesetzt
 
+```
+A{globals}
+	const $private_message =
+		f{$}('private-message');
+	const $public_message =
+		f{$}('public-message');
+	const $err_public_msg_too_big =
+		f{$}('err-public-msg-too-big');
+	const $err_private_msg_too_big =
+		f{$}('err-private-msg-too-big');
+x{globals}
+```
+* Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in
+  Variablen abgelegt
+* Auch Referenzen auf die Fehlermeldungen
+
+```
+a{setup rsa}
+	$private_message.
+		addEventListener('input', event => {
+			setEncrypt(true);
+			queueRefresh(event);
+		});
+	$public_message.
+		addEventListener('input', event => {
+			setEncrypt(false);
+			queueRefresh(event);
+		});
+x{setup rsa}
+```
+* Wenn der Klartext oder Geheimtext geändert wird, wird zusätzlich die
+  Richtung des Algorithmus angepasst
 
 ```
 A{globals}
@@ -1570,22 +1548,6 @@ x{refresh}
 * Je nachdem, in welche Richtung der Algorithmus arbeiten soll, wird
   entweder der Klartext verschlüsselt
 * Oder der Geheimtext entschlüsselt
-
-```
-A{globals}
-	const $private_message =
-		f{$}('private-message');
-	const $public_message =
-		f{$}('public-message');
-	const $err_public_msg_too_big =
-		f{$}('err-public-msg-too-big');
-	const $err_private_msg_too_big =
-		f{$}('err-private-msg-too-big');
-x{globals}
-```
-* Es gibt ein Textfeld für den Klartext und den Geheimtext
-* Zu jedem Feld gibt es eine Fehlermeldung, wenn die eingegebene Zahl zu
-  groß ist
 
 ```
 d{encrypt}
@@ -1649,12 +1611,6 @@ x{decrypt}
 * Auch das Entschlüsseln besteht aus einer einzigen Exponentiation mit
   dem geheimen Schlüssel `d` modulo `N`
 
-# Größter gemeinsamer Teiler (ggT)
-* Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus, um
-  das Inverse Element zu einer Restklasse zu bestimmen
-* Daher wird der Erweiterte Euklidische Algorithmus hier direkt
-  implementiert
-
 # Richtung des Algorithmus anzeigen
 * Es gibt ein Element auf der Web-Seite, das die Ablaufrichtung des
   Algorithmus anzeigt
@@ -1663,7 +1619,7 @@ x{decrypt}
 ```
 A{globals}
 	const $direction =
-		f{$}('direction');
+		$('direction');
 x{globals}
 ```
 * Dieses Element zeigt die Richtung an, in welcher der Algorithmus
@@ -1693,6 +1649,58 @@ x{setup rsa}
 * Wenn die Klasse `s{flip}` gesetzt ist, zeigt er in die
   Entschlüsselungsrichtung
 * `s{flop}` ist notwendig, um den Wechsel zu animieren
+
+```
+a{css}
+	@keyframes flip {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(180deg);
+		}
+	}
+x{css}
+```
+* Die `flip`-Animation dreht den Pfeil um 180 Grad
+
+```
+a{css}
+	#direction.flip svg {
+    	animation-name: flip;
+    	animation-duration: 1s;
+    	animation-fill-mode: forwards;
+	}
+x{css}
+```
+* Wenn die `flip`-Klasse auf dem `direction`-Element gesetzt wird,
+  wird die `flip`-Animation auf dem Pfeil gestartet
+
+```
+a{css}
+	@keyframes flop {
+    	from {
+        	transform: rotate(180deg);
+    	}
+    	to {
+        	transform: rotate(0deg);
+    	}
+	}
+x{css}
+```
+* Die `flop`-Animation dreht den Pfeil zurück
+
+```
+a{css}
+	#direction.flop svg {
+    	animation-name: flop;
+    	animation-duration: 1s;
+    	animation-fill-mode: forwards;
+	}
+x{css}
+```
+* Wenn die `flop`-Klasse auf dem `direction`-Element gesetzt wird,
+  wird die `flop`-Animation auf dem Pfeil gestartet
 
 # Timer
 * Das Berechnen von RSA kann bei sehr großen Zahlen etwas dauern
@@ -1760,37 +1768,81 @@ x{set fields to pending}
 ```
 * Alle berechneten Felder werden mit Platzhaltern befüllt
 
-# Aktionen hinterlegen
-* Zum Schluss werden die definierten Funktionen als Event-Handler
-  registriert
+# Schlussbemerkung
+* Ein paar Kleinigkeiten gibt es noch, um die Web-App fertig
+  zu stellen
 
 ```
-a{setup rsa}
-	$e.addEventListener(
-		'input', f{queueRefresh}
-	);
-x{setup rsa}
+a{container de}
+	<h2>s{Verwendete Bibliothek}</h2>
+	<p>
+		s{Diese Seite verwendet für die}
+		s{Rechnung mit großen Zahlen die}
+		s{Bibliothek}
+		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}
+		>s{BigInteger.js}</a>.
+	</p>
+x{container de}
 ```
-* Werden die Primzahlen oder die Basis geändert, wird die Neuberechnung
-  getriggert
+* In der deutschen Version werden die verwendete Bibliothek
+  erwähnt
 
 ```
-a{setup rsa}
-	$private_message.
-		addEventListener('input', event => {
-			setEncrypt(true);
-			queueRefresh(event);
-		});
-	$public_message.
-		addEventListener('input', event => {
-			setEncrypt(false);
-			queueRefresh(event);
-		});
-x{setup rsa}
+a{container de}
+	<p>
+		s{Dadurch kann man auch in JavaScript}
+		s{mit beliebig großen Zahlen rechnen,}
+		s{also auch solchen, die real bei}
+		s{RSA-Anwendungen verwendet werden.}
+	</p>
+x{container de}
 ```
-* Wenn der Klartext oder Geheimtext geändert wird, wird zusätzlich die
-  Richtung des Algorithmus angepasst
+* Und was mit ihr berechnet wird
 
+```
+a{container en}
+	<h2>s{Used library}</h2>
+	<p>
+		s{This page uses the library}
+		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}>BigInteger.js</a>
+		s{to work with big numbers.}
+	</p><p>
+		s{As a result, you can calculate}
+		s{arbitrarily large numbers in}
+		s{JavaScript, even those that are}
+		s{actually used in RSA}
+		s{applications.}
+	</p>
+x{container en}
+```
+* Das Gleiche gibt es auch für die englische Version
+
+```
+a{container en}
+	<div id="authors"><em>s{CTOAUTHORS: Timm}
+		s{Knape (thanks to Bernhard Esslinger}
+		s{for the review)}</em></div>
+x{container en}
+```
+* Die Seite endet mit dem Autor-Tag in der deutschen Version
+
+```
+a{container de}
+	<div id="authors"><em>s{CTOAUTHORS:}
+		s{Timm Knape (Dank an Bernhard Esslinger}
+			s{für das Review)}</em></div>
+x{container de}
+```
+* Auch in der englischen Version gibt es das Autor-Tag
+
+```
+a{css}
+	#authors {
+		margin-top: 40px;
+	}
+x{css}
+```
+* Das Autor-Tag wird etwas vom restlichen Text abgesetzt
 
 ```
 d{bootstrap stylesheets}
@@ -1802,6 +1854,10 @@ d{bootstrap stylesheets}
 	>
 x{bootstrap stylesheets}
 ```
+* Die Bootstrap-CSSs werden direkt von einem Content Delivery Network
+  eingebunden
+* Dies wird nur für den Test verwendet und nicht für die produktive
+  Version
 
 ```
 a{bootstrap stylesheets}
@@ -1813,3 +1869,8 @@ a{bootstrap stylesheets}
 	>
 x{bootstrap stylesheets}
 ```
+* Auch das Bootstrap-Thema wird von einem Content Delivery Network
+  eingebunden
+* Auch dies wird nur für die lokale und nicht für die produktive Version
+  verwendet
+

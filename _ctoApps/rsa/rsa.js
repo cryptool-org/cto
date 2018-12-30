@@ -101,8 +101,6 @@
 			'max-msg'
 		);
 
-	let encrypt = true;
-
 	const $private_message =
 		$('private-message');
 	const $public_message =
@@ -111,6 +109,8 @@
 		$('err-public-msg-too-big');
 	const $err_private_msg_too_big =
 		$('err-private-msg-too-big');
+
+	let encrypt = true;
 
 	const $direction =
 		$('direction');
@@ -195,6 +195,7 @@
 
 	const max_msg =
 		public_key.subtract(one).toString();
+
 	for (
 		let i = 0; i < $max_msgs.length; ++i
 	) {
@@ -253,20 +254,6 @@
 		'input', queueRefresh
 	);
 
-	const setEncrypt = new_encrypt => {
-		if (encrypt === new_encrypt) {
-			return;
-		}
-		encrypt = new_encrypt;
-		if (encrypt) {
-			$direction.classList.remove('flip');
-			$direction.classList.add('flop');
-		} else {
-			$direction.classList.remove('flop');
-			$direction.classList.add('flip');
-		}
-	};
-
 	$e.addEventListener(
 		'input', queueRefresh
 	);
@@ -281,5 +268,19 @@
 			setEncrypt(false);
 			queueRefresh(event);
 		});
+
+	const setEncrypt = new_encrypt => {
+		if (encrypt === new_encrypt) {
+			return;
+		}
+		encrypt = new_encrypt;
+		if (encrypt) {
+			$direction.classList.remove('flip');
+			$direction.classList.add('flop');
+		} else {
+			$direction.classList.remove('flop');
+			$direction.classList.add('flip');
+		}
+	};
 ;
 	});

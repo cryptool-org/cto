@@ -4,6 +4,10 @@
 		margin: 0 0 10px;
 	}
 
+	#rsa-container h2 {
+		margin-top: 2em;
+	}
+
 	.hidden {
 		display: none;
 	}
@@ -12,6 +16,11 @@
 		display: block;
 		margin: 1em auto 2em auto;
 	}
+
+	#direction svg polyline {
+    	fill: #888;
+	}
+
 	@keyframes flip {
 		from {
 			transform: rotate(0deg);
@@ -26,6 +35,7 @@
     	animation-duration: 1s;
     	animation-fill-mode: forwards;
 	}
+
 	@keyframes flop {
     	from {
         	transform: rotate(180deg);
@@ -39,12 +49,6 @@
     	animation-name: flop;
     	animation-duration: 1s;
     	animation-fill-mode: forwards;
-	}
-	#direction svg polyline {
-    	fill: #888;
-	}
-	#rsa-container h2 {
-		margin-top: 2em;
 	}
 
 	#authors {
