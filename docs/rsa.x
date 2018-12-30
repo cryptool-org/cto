@@ -633,7 +633,7 @@ A{globals}
 	};
 x{globals}
 ```
-* Um festzustellen, ob `e` und `n` teilerfremd sind, wird der
+* Um festzustellen, ob `e` und  `φ(n)` teilerfremd sind, wird der
   Erweiterte Euklidische Algorithmus verwendet
 * Dieser liefert gleichzeitig noch das inverse Element, das für den
   geheimen Schlüssel benötigt wird
@@ -648,14 +648,592 @@ i{gcd.x}
 ```
 a{refresh}
 	const e = bigInt($e.value);
+x{refresh}
+```
+* Ermittelt den Wert von `e`
+
+```
+a{container de}
+	<p>
+		s{Dieses} <i>e</i> s{kann sogar vorab}
+		s{gewählt werden und für alle}
+		s{Teilnehmer gleich sein.}
+	</p>
+x{container de}
+```
+* Ein Hinweis, dass `e` öffentlich gewählt werden kann, wird
+  ausgegeben
+
+```
+a{container en}
+	<p>
+		s{This} <i>e</i> s{may even be}
+		s{pre-selected and the same}
+		s{for all participants.}
+	</p>
+x{container en}
+```
+* Auch in der englischen Version
+
+# Geheimer Schlüssel
+* Beschreibt den nächsten Abschnitt in der HTML-Ausgabe
+* Und wie der geheime Schlüssel berechnet wird
+
+```
+a{container de}
+	<h2>s{Geheimer Schlüssel}</h2>
+	<p>
+		s{RSA benutzt für die Berechnung des}
+		s{geheimen Schlüssels die Eulersche}
+		&phi;s{-Funktion von} <i>n</i>s{.}
+		s{Diese ist definiert als}
+	</p>
+x{container de}
+```
+* Erklärt in der deutschen Version, wie der geheime Schlüssel berechnet
+  wird
+
+```
+a{container en}
+	<h2>s{Secret key}</h2>
+	<p>
+		s{RSA uses the Euler} &phi; s{function}
+		s{of} <i>n</i> s{to calculate the}
+		s{secret key. This is defined as}
+	</p>
+x{container en}
+```
+* Das gleiche wird in der englischen Version ausgegeben
+
+```
+d{phi label}
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label
+				class="col-sm-3 control-label"
+				for="phi">&phi;s{(}<i>n</i>s{) =}
+				s{(}<i>p</i> &minus; s{1)} &times;
+				s{(}<i>q</i> &minus; s{1})</label>
+			<div class="col-sm-9"><p
+				class="form-control-static"
+				id="phi"></p></div>
+		</div>
+	</form>
+x{phi label}
+```
+* Die Berechnung von φ enthält keinen deutschen oder englischen Text
+* Und kann daher für beide Lokalisierungen verwendet werden
+* Oh, so schön ist Mathematik
+
+```
+a{container de}
+	E{phi label}
+x{container de}
+```
+* φ in der deutschen Version definieren
+
+```
+a{container en}
+	E{phi label}
+x{container en}
+```
+* φ in der englischen Version definieren
+
+```
+A{globals}
+	const $phi = f{$}('phi');
+x{globals}
+```
+* Eine Referenz auf den Wert der φ-Funktion wird im Code abgelegt
+
+```
+a{refresh}
+	const one = f{bigInt}.one;
+	const phi = prime1.subtract(one).
+		multiply(prime2.subtract(one));
+	$phi.innerText = phi.toString();
+x{refresh}
+```
+* Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
+  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
+  des öffentlichen Schlüssels
+
+```
+a{refresh}
 	const gcd_result = gcd(phi, e);
 	$err_gcd_not_1.classList.toggle(
-		'hidden', gcd_result.a.equals(1)
+		'hidden', gcd_result.a.equals(one)
 	);
 x{refresh}
 ```
 * Wenn `e` und der Wert der φ-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt
+* Das Attribut `a` im `gcd_result` enthält den kleinsten gemeinsamen
+  Teiler
+* Dieser muss eins sein
+
+```
+a{container de}
+	<p>
+		s{Hier wird ausgenutzt, dass} <i>p</i> s{und}
+		<i>q</i> s{verschieden sind. Andernfalls}
+		s{würde sich die} &phi;s{-Funktion anders}
+		s{berechnen.}
+	</p><p>
+		s{Wichtig ist für RSA, dass der Wert der}
+		&phi;s{-Funktion teilerfremd zu} <i>e</i>
+		s{ist (der größte gemeinsame Teiler also}
+		s{1 ist).}
+	</p>
+x{container de}
+```
+* Einschränkungen bei der Berechnung von φ werden auf der deutschen
+  Seite ausgegeben
+
+```
+a{container en}
+	<p>
+		s{Here it is used that} <i>p</i> s{and}
+		<i>q</i> s{are different. Otherwise,}
+		s{the} &phi; s{function would calculate}
+		s{differently.}
+	</p><p>
+		s{It is important for RSA that the}
+		s{value of the} &phi; s{function is}
+		s{coprime to} <i>e</i> s{(the largest}
+		s{common divisor must be 1).}
+	</p>
+x{container en}
+```
+* Und auf der englischen Seite
+
+```
+a{container de}
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label
+				class="col-sm-3 control-label"
+				for="gcd">s{ggT(}<i>e</i>,
+				&phi;s{(}<i>n</i>s{))}</label>
+			<div class="col-sm-9"><p
+				class="form-control-static"
+				id="gcd"></p></div>
+		</div>
+	</form>
+x{container de}
+```
+* Der größte gemeinsame Teiler wird auf der Deutschen Seite
+  ausgegeben
+
+```
+a{container en}
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label
+				class="col-sm-3 control-label"
+				for="gcd">gcd(<i>e</i>,
+				&phi;(<i>n</i>))</label>
+			<div class="col-sm-9"><p
+				class="form-control-static"
+				id="gcd"></p></div>
+		</div>
+	</form>
+x{container en}
+```
+* Und auf der englischen Seite
+
+```
+A{globals}
+	const $gcd = f{$}('gcd');
+x{globals}
+```
+* Eine Referenz auf das DOM-Element wird gesichert
+
+```
+a{refresh}
+	$gcd.innerText = gcd_result.a.toString();
+x{refresh}
+```
+* Und im `refresh` wird das Feld aktualisiert
+
+```
+a{container de}
+	<p>
+		s{Um den Wert von} &phi;(<i>n</i>) s{zu}
+		s{bestimmen, reicht es nicht aus}
+		<i>n</i> s{zu kennen. Nur mit der}
+		s{Kenntnis von} <i>p</i> s{und} <i>q</i>
+		s{kann man} &phi;(<i>n</i>) s{effizient}
+		s{bestimmen.}
+	</p><p>
+		s{Der geheime Schlüssel besteht ebenfalls}
+		s{aus} <i>n</i> s{und einem} <i>d</i> s{mit der}
+		s{Eigenschaft, dass} <i>e</i> &times;
+		<i>d</i> s{ein Vielfaches von}
+		&phi;(<i>n</i>) s{plus eins ist.}
+	</p>
+x{container de}
+```
+* Auf der deutschen Seite wird beschrieben, wie der geheime Schlüssel
+  berechnet wird
+
+```
+a{container de}
+	<p>
+		s{In Formeln ausgedrückt, muss gelten:}
+	</p><p>
+		<i>e</i> &times; <i>d</i> = 1
+		(mod &phi;(<i>n</i>))
+	</p><p>
+		s{Dabei ist mit dem mod-Ausdruck die}
+		s{Gleichheit bezüglich einer Restklasse}
+		s{gemeint. Es ist genau dann} <i>x</i> =
+		<i>y</i> (mod <i>z</i>), s{wenn es ein}
+		s{ganzzahliges} <i>a</i> s{gibt mit}
+		<i>x</i> &minus; <i>y</i> = <i>z</i>
+		&times; <i>a</i>.
+	</p>
+x{container de}
+```
+* Und wieso damit die Entschlüsselung funktioniert
+
+```
+a{container de}
+	<p>
+		Für die gewählten Werte von <i>p</i>,
+		<i>q</i> und <i>e</i> ergibt sich
+		<i>d</i> als:
+	</p>
+x{container de}
+```
+* Dann wird der geheime Schlüssel ausgegeben
+
+```
+a{container en}
+	<p>
+		s{To determine the value of}
+		&phi;(<i>n</i>)s{, it is not enough}
+		s{to know} <i>n</i>s{. Only with the}
+		s{knowledge of} <i>p</i> s{and} <i>q</i>
+		s{we can efficiently determine}
+		&phi;(<i>n</i>)s{.}
+	</p><p>
+		s{The secret key also consists of}
+		<i>n</i> s{and a} <i>d</i> s{with the}
+		s{property that} <i>e</i> &times;
+		<i>d</i> s{is a multiple of}
+		&phi;(<i>n</i>) s{plus one.}
+	</p>
+x{container en}
+```
+* Auch auf der englischen Seite wird beschrieben, wie der geheime
+  Schlüssel berechnet wird
+
+```
+a{container en}
+	<p>
+		s{Expressed in formulas, the following}
+		s{must apply:}
+	</p><p>
+		e &times; d = 1 (mod &phi;(<i>n</i>))
+	</p>
+x{container en}
+```
+* Ebenfalls mit der Formel-Darstellung
+
+```
+a{container en}
+	<p>
+		s{In this case, the mod expression means}
+		s{equality with regard to a residual}
+		s{class. It is} <i>x</i> = <i>y</i> (mod
+		<i>z</i>) s{if and only if there is an}
+		s{integer a with} <i>x</i> &minus;
+		<i>y</i> = <i>z</i> &times; <i>a</i>.
+	</p><p>
+		s{For the chosen values of} <i>p</i>,
+		<i>q</i>s{, and} <i>e</i>s{, we get}
+		<i>d</i> s{as:}
+	</p>
+x{container en}
+```
+* Und warum das Ganze funktioniert
+* Auch hier wird ein Absatz ausgegeben, der auf das nächste Ergebnis
+  hinarbeitet
+
+```
+d{private key}
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label
+				class="col-sm-3 control-label"
+				for="private-key"><i>d</i>
+			</label>
+			<div class="col-sm-9"><p
+				class="form-control-static"
+				id="private-key"></div>
+		</div>
+	</form>
+x{private key}
+```
+* Das Feld mit der Ausgabe des geheimen Schlüssels kann in der
+  deutschen und englischen Version gemeinsam verwendet werden
+
+```
+a{container de}
+	E{private key}
+x{container de}
+```
+* Geheimen Schlüssel in der deutschen Version ausgeben
+
+
+```
+a{container en}
+	E{private key}
+x{container en}
+```
+* Geheimen Schlüssel in der englischen Version ausgeben
+
+```
+A{globals}
+	const $private_key =
+		f{$}('private-key');
+x{globals}
+```
+* Referenz auf den geheimen Schlüssel wird in der Anwendung gespeichert
+
+```
+a{refresh}
+	let private_key = gcd_result.v;
+	const zero = f{bigInt}.zero;
+	if (private_key.lesser(zero)) {
+		private_key =
+			private_key.add(phi);
+	}
+	$private_key.innerText =
+		private_key.toString();
+x{refresh}
+```
+* Der private Schlüssel ist das multiplikative Inverse modulo φ
+* Falls der Schlüssel negative ist, wird der Wert von φ hinzu addiert
+
+```
+a{container de}
+	<p>
+		s{Dieses} <i>d</i> s{kann immer bestimmt}
+		s{werden, wenn} <i>e</i> s{mit der oben}
+		s{beschriebenen Einschränkung gewählt}
+		s{wurde} &ndash; s{bspw. mit dem}
+		s{erweiterten Euklidischen Algorithmus.}
+	</p>
+x{container de}
+```
+* Auf der deutschen Seite wird beschrieben, wie der geheime Schlüssel
+  gewählt wird
+
+```
+a{container en}
+	<p>
+		s{This} <i>d</i> s{can always be determined}
+		s{(if} <i>e</i> s{was chosen with the}
+		s{restriction described above)}&mdash;s{for}
+		s{example with the extended Euclidean}
+		s{algorithm.}
+	</p>
+x{container en}
+```
+* Auch auf der englischen Seite wird die Beschreibung ausgegeben
+
+# Ver- und Entschlüsseln
+* Endlich (nach knapp der Hälfte der Folien) kommt die eigentliche
+  Ver- und Entschlüsselung
+* Durch die Vorarbeiten bleibt aber nicht mehr viel zu tun
+
+```
+a{container de}
+	<h2>s{Ver- und Entschlüsseln}</h2>
+	<p>
+		s{Grundsätzlich werden bei diesem}
+		s{Verfahren keine Texte, sondern nur}
+		s{Zahlen ver- und entschlüsselt, die}
+		s{zwischen} 0 s{und} <i>n</i> s{liegen.}
+	</p>
+x{container de}
+```
+* In der deutschen Version wird beschrieben, was für Nachrichten
+  verschlüsselt werden können
+
+```
+a{container de}
+	<p>
+		s{Um eine Nachricht} <i>m</i> s{mit dem}
+		s{öffentlichen Schlüssel} (<i>n</i>,
+		<i>e</i>) s{zu verschlüsseln, wird}
+	</p><p>
+		<i>m&#39;</i> :=
+			<i>m</i><sup><i>e</i></sup>
+			(mod <i>n</i>)
+	</p><p>
+		s{berechnet.}
+	</p>
+x{container de}
+```
+* Das Verschlüsseln besteht aus einer Exponentiation
+* Die Striche an den Variablen-Namen werden durch Entitäten realisiert
+  um den Source Code Parser nicht durcheinander zu bringen
+
+```
+a{container de}
+	<p>
+		s{Das Entschlüsseln mit dem privaten}
+		s{Schlüssel} (<i>n</i>, <i>d</i>)
+		s{erfolgt analog mit}
+	</p><p>
+		<i>m&#39;&#39;</i> :=
+			<i>m&#39;</i><sup><i>d</i></sup>
+			(mod <i>n</i>).
+	</p>
+x{container de}
+```
+* Auch das Entschlüsseln ist eine Exponentiation
+
+```
+a{container de}
+	<p>
+		s{Damit ist}
+	</p>
+		<i>m&#39;&#39;</i> =
+			<i>m</i><sup><i>e</i> &times;
+			<i>d</i></sup>
+			(mod <i>n</i>).
+	</p>
+x{container de}
+```
+* Durch Einsetzen kann die entschlüsselte Nachricht direkt aus der
+  ursprünglichen Nachricht berechnet werden
+
+```
+a{container de}
+	<p>
+		s{RSA nutzt nun die Eigenschaft aus,}
+		s{dass}
+	</p><p>
+		<i>x</i><sup><i>a</i></sup> =
+			<i>x</i><sup><i>b</i></sup>
+			(mod <i>n</i>)
+	</p><p>
+		s{wenn}
+	</p><p>
+		<i>a</i> =
+			<i>b</i> (mod &phi;(<i>n</i>))
+	</p>
+x{container de}
+```
+* Es wird kurz beschrieben, wann bei der Exponentiation das gleiche
+  Ergebnis herauskommt
+
+```
+a{container de}
+	<p>
+		<i>e</i> s{und} <i>d</i> s{wurden passend}
+		s{gewählt damit}
+	</p><p>
+		<i>m&#39;&#39;</i> = <i>m</i>.
+	</p><p>
+		s{Die Reihenfolge spielt keine Rolle.}
+		s{Man könnte auch erst eine Nachricht}
+		s{mit dem privaten Schlüssel}
+		s{potenzieren, und das Ergebnis dann}
+		s{mit dem öffentlichen Schlüssel}
+		s{potenzieren} &ndash; s{das verwendet}
+		s{man bei RSA-Signaturen.}
+	</p>
+x{container de}
+```
+* Damit kann die Entschlüsselung erklärt werden
+* Es wird darauf hingewiesen, dass die Reihenfolge keine Rolle spielt
+
+```
+a{container en}
+	<h2>s{Encryption and decryption}</h2>
+	<p>
+		s{Internally, this method works only with}
+		s{numbers (no text), which are between} 0
+		s{and} <i>n</i>s{.}
+	</p><p>
+		s{Encrypting a message} <i>m</i> s{(number)}
+		s{with the public key} (<i>n</i>,
+		<i>e</i>s) s{is calculated:}
+	</p><p>
+		<i>m&#39;</i> :=
+			<i>m</i><sup><i>e</i></sup>
+			(mod <i>n</i>)
+	</p>
+x{container en}
+```
+* Auch in der englischen Version wird beschrieben, wie die
+  Verschlüsselung funktioniert
+
+```
+a{container en}
+	<p>
+		s{Decrypting with the private key}
+		(<i>n</i>, <i>d</i>) s{is done}
+		s{analogously with}
+	</p><p>
+		<i>m&#39;&#39;</i> :=
+			<i>m&#39;</i><sup><i>d</i></sup>
+			(mod <i>n</i>).
+	</p><p>
+		s{This is}
+	</p><p>
+		<i>m&#39;&#39;</i> =
+			<i>m</i><sup><i>e</i> &times;
+			<i>d</i></sup> (mod <i>n</i>).
+	</p>
+x{container en}
+```
+* Und es wird beschrieben, wie die Entschlüsselung funktioniert
+
+```
+a{container en}
+	<p>
+		s{RSA now exploits the property that}
+	</p><p>
+		<i>x</i><sup><i>a</i></sup> =
+			<i>x</i><sup><i>b</i></sup>
+			(mod <i>n</i>)
+	</p><p>
+		s{if}
+	</p><p>
+		<i>a</i> =
+			<i>b</i> (mod &phi;(<i>n</i>))
+	</p>
+x{container en}
+```
+* Ebenso wird beschrieben, wann die Exponentiation das gleiche
+  Ergebnis liefern
+
+```
+a{container en}
+	<p>
+		s{As} <i>e</i> s{and} <i>d</i> s{were chosen}
+		s{appropriately, it is}
+	</p><p>
+		<i>m&#39;&#39;</i> = <i>m</i>.
+	</p><p>
+		s{The order does not matter. You could}
+		s{also first raise a message with the}
+		s{private key, and then power up the}
+		s{result with the public key}&mdash;s{this}
+		s{is what you use with RSA signatures.}
+	</p>
+x{container en}
+```
+* Und warum RSA damit funktioniert
+
+
+
 
 # WORKING HERE
 
@@ -719,245 +1297,6 @@ a{css}
 		margin-top: 40px;
 	}
 x{css}
-```
-
-```
-a{container de}
-	<p>
-		s{Dieses} <i>e</i> s{kann sogar vorab}
-		s{gewählt werden und für alle}
-		s{Teilnehmer gleich sein.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<h2>s{Geheimer Schlüssel}</h2>
-	<p>
-		s{RSA benutzt für die Berechnung des}
-		s{geheimen Schlüssels die Eulersche}
-		&phi;s{-Funktion von} <i>n</i>s{.}
-		s{Diese ist definiert als}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="phi">&phi;s{(}<i>n</i>s{) =}
-				s{(}<i>p</i> &minus; s{1)} &times;
-				s{(}<i>q</i> &minus; s{1})</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="phi"></p></div>
-		</div>
-	</form>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{Hier wird ausgenutzt, dass} <i>p</i> s{und}
-		<i>q</i> s{verschieden sind. Andernfalls}
-		s{würde sich die} &phi;s{-Funktion anders}
-		s{berechnen.}
-	</p><p>
-		s{Wichtig ist für RSA, dass der Wert der}
-		&phi;s{-Funktion teilerfremd zu} <i>e</i>
-		s{ist (der größte gemeinsame Teiler also}
-		s{1 ist).}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="gcd">s{ggT(}<i>e</i>,
-				&phi;s{(}<i>n</i>s{))}</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="gcd"></p></div>
-		</div>
-	</form>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{Um den Wert von} &phi;(<i>n</i>) s{zu}
-		s{bestimmen, reicht es nicht aus}
-		<i>n</i> s{zu kennen. Nur mit der}
-		s{Kenntnis von} <i>p</i> s{und} <i>q</i>
-		s{kann man} &phi;(<i>n</i>) s{effizient}
-		s{bestimmen.}
-	</p><p>
-		s{Der geheime Schlüssel besteht ebenfalls}
-		s{aus} <i>n</i> s{und einem} <i>d</i> s{mit der}
-		s{Eigenschaft, dass} <i>e</i> &times;
-		<i>d</i> s{ein Vielfaches von}
-		&phi;(<i>n</i>) s{plus eins ist.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{In Formeln ausgedrückt, muss gelten:}
-	</p><p>
-		<i>e</i> &times; <i>d</i> = 1
-		(mod &phi;(<i>n</i>))
-	</p><p>
-		s{Dabei ist mit dem mod-Ausdruck die}
-		s{Gleichheit bezüglich einer Restklasse}
-		s{gemeint. Es ist genau dann} <i>x</i> =
-		<i>y</i> (mod <i>z</i>), s{wenn es ein}
-		s{ganzzahliges} <i>a</i> s{gibt mit}
-		<i>x</i> &minus; <i>y</i> = <i>z</i>
-		&times; <i>a</i>.
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		Für die gewählten Werte von <i>p</i>,
-		<i>q</i> und <i>e</i> ergibt sich
-		<i>d</i> als:
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="private-key"><i>d</i>
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="private-key"></div>
-		</div>
-	</form>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{Dieses} <i>d</i> s{kann immer bestimmt}
-		s{werden, wenn} <i>e</i> s{mit der oben}
-		s{beschriebenen Einschränkung gewählt}
-		s{wurde} &ndash; s{bspw. mit dem}
-		s{erweiterten Euklidischen Algorithmus.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<h2>s{Ver- und Entschlüsseln}</h2>
-	<p>
-		s{Grundsätzlich werden bei diesem}
-		s{Verfahren keine Texte, sondern nur}
-		s{Zahlen ver- und entschlüsselt, die}
-		s{zwischen} 0 s{und} <i>n</i> s{liegen.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{Um eine Nachricht} <i>m</i> s{mit dem}
-		s{öffentlichen Schlüssel} (<i>n</i>,
-		<i>e</i>) s{zu verschlüsseln, wird}
-	</p><p>
-		<i>m&#39;</i> :=
-			<i>m</i><sup><i>e</i></sup>
-			(mod <i>n</i>)
-	</p><p>
-		s{berechnet.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{Das Entschlüsseln mit dem privaten}
-		s{Schlüssel} (<i>n</i>, <i>d</i>)
-		s{erfolgt analog mit}
-	</p><p>
-		<i>m&#39;&#39;</i> :=
-			<i>m&#39;</i><sup><i>d</i></sup>
-			(mod <i>n</i>).
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{Damit ist}
-	</p>
-		<i>m&#39;&#39;</i> =
-			<i>m</i><sup><i>e</i> &times;
-			<i>d</i></sup>
-			(mod <i>n</i>).
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		s{RSA nutzt nun die Eigenschaft aus,}
-		s{dass}
-	</p><p>
-		<i>x</i><sup><i>a</i></sup> =
-			<i>x</i><sup><i>b</i></sup>
-			(mod <i>n</i>)
-	</p><p>
-		s{wenn}
-	</p><p>
-		<i>a</i> =
-			<i>b</i> (mod &phi;(<i>n</i>))
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<p>
-		<i>e</i> s{und} <i>d</i> s{wurden passend}
-		s{gewählt damit}
-	</p><p>
-		<i>m&#39;&#39;</i> = <i>m</i>.
-	</p><p>
-		s{Die Reihenfolge spielt keine Rolle.}
-		s{Man könnte auch erst eine Nachricht}
-		s{mit dem privaten Schlüssel}
-		s{potenzieren, und das Ergebnis dann}
-		s{mit dem öffentlichen Schlüssel}
-		s{potenzieren} &ndash; s{das verwendet}
-		s{man bei RSA-Signaturen.}
-	</p>
-x{container de}
 ```
 
 ```
@@ -1083,224 +1422,6 @@ x{container de}
 
 ```
 a{container en}
-	<p>
-		s{This} <i>e</i> s{may even be}
-		s{pre-selected and the same}
-		s{for all participants.}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<h2>s{Secret key}</h2>
-	<p>
-		s{RSA uses the Euler} &phi; s{function}
-		s{of} <i>n</i> s{to calculate the}
-		s{secret key. This is defined as}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="phi">&phi;(<i>n</i>) =
-				(<i>p</i> &minus; 1) &times;
-				(<i>q</i> &minus; 1)</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="phi"></p></div>
-		</div>
-	</form>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{Here it is used that} <i>p</i> s{and}
-		<i>q</i> s{are different. Otherwise,}
-		s{the} &phi; s{function would calculate}
-		s{differently.}
-	</p><p>
-		s{It is important for RSA that the}
-		s{value of the} &phi; s{function is}
-		s{coprime to} <i>e</i> s{(the largest}
-		s{common divisor must be 1).}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="gcd">gcd(<i>e</i>,
-				&phi;(<i>n</i>))</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="gcd"></p></div>
-		</div>
-	</form>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{To determine the value of}
-		&phi;(<i>n</i>)s{, it is not enough}
-		s{to know} <i>n</i>s{. Only with the}
-		s{knowledge of} <i>p</i> s{and} <i>q</i>
-		s{we can efficiently determine}
-		&phi;(<i>n</i>)s{.}
-	</p><p>
-		s{The secret key also consists of}
-		<i>n</i> s{and a} <i>d</i> s{with the}
-		s{property that} <i>e</i> &times;
-		<i>d</i> s{is a multiple of}
-		&phi;(<i>n</i>) s{plus one.}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{Expressed in formulas, the following}
-		s{must apply:}
-	</p><p>
-		e &times; d = 1 (mod &phi;(<i>n</i>))
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{In this case, the mod expression means}
-		s{equality with regard to a residual}
-		s{class. It is} <i>x</i> = <i>y</i> (mod
-		<i>z</i>) s{if and only if there is an}
-		s{integer a with} <i>x</i> &minus;
-		<i>y</i> = <i>z</i> &times; <i>a</i>.
-	</p><p>
-		s{For the chosen values of} <i>p</i>,
-		<i>q</i>s{, and} <i>e</i>s{, we get}
-		<i>d</i> s{as:}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="private-key"><i>d</i>
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="private-key"></div>
-		</div>
-	</form>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{This} <i>d</i> s{can always be determined}
-		s{(if} <i>e</i> s{was chosen with the}
-		s{restriction described above)}&mdash;s{for}
-		s{example with the extended Euclidean}
-		s{algorithm.}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<h2>s{Encryption and decryption}</h2>
-	<p>
-		s{Internally, this method works only with}
-		s{numbers (no text), which are between} 0
-		s{and} <i>n</i>s{.}
-	</p><p>
-		s{Encrypting a message} <i>m</i> s{(number)}
-		s{with the public key} (<i>n</i>,
-		<i>e</i>s) s{is calculated:}
-	</p><p>
-		<i>m&#39;</i> :=
-			<i>m</i><sup><i>e</i></sup>
-			(mod <i>n</i>)
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{Decrypting with the private key}
-		(<i>n</i>, <i>d</i>) s{is done}
-		s{analogously with}
-	</p><p>
-		<i>m&#39;&#39;</i> :=
-			<i>m&#39;</i><sup><i>d</i></sup>
-			(mod <i>n</i>).
-	</p><p>
-		s{This is}
-	</p><p>
-		<i>m&#39;&#39;</i> =
-			<i>m</i><sup><i>e</i> &times;
-			<i>d</i></sup> (mod <i>n</i>).
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{RSA now exploits the property that}
-	</p><p>
-		<i>x</i><sup><i>a</i></sup> =
-			<i>x</i><sup><i>b</i></sup>
-			(mod <i>n</i>)
-	</p><p>
-		s{if}
-	</p><p>
-		<i>a</i> =
-			<i>b</i> (mod &phi;(<i>n</i>))
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<p>
-		s{As} <i>e</i> s{and} <i>d</i> s{were chosen}
-		s{appropriately, it is}
-	</p><p>
-		<i>m&#39;&#39;</i> = <i>m</i>.
-	</p><p>
-		s{The order does not matter. You could}
-		s{also first raise a message with the}
-		s{private key, and then power up the}
-		s{result with the public key}&mdash;s{this}
-		s{is what you use with RSA signatures.}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
 	<h2>s{Messages}</h2>
 	<p>
 		s{In the following two text boxes, you}
@@ -1416,7 +1537,6 @@ x{globals}
 
 ```
 a{refresh}
-	const one = f{bigInt}.one;
 	const max_msg =
 		public_key.subtract(one).toString();
 	for (
@@ -1428,58 +1548,6 @@ x{refresh}
 ```
 * Die größte mögliche Nachrichtenzahl wird in Fehlermeldungen benötigt
 
-```
-A{globals}
-	const $phi = f{$}('phi');
-x{globals}
-```
-* Auch das Ergebnis der φ-Funktion wird auf der Webseite angezeigt
-
-```
-a{refresh}
-	const phi = prime1.subtract(one).
-		multiply(prime2.subtract(one));
-	$phi.innerText = phi.toString();
-x{refresh}
-```
-* Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
-  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
-  des öffentlichen Schlüssels
-
-```
-A{globals}
-	const $gcd = f{$}('gcd');
-x{globals}
-```
-* Der größte gemeinsame Teiler wird zur Kontrolle auch angezeigt
-
-```
-a{refresh}
-	$gcd.innerText = gcd_result.a.toString();
-x{refresh}
-```
-
-
-```
-A{globals}
-	const $private_key =
-		f{$}('private-key');
-x{globals}
-```
-* Der private Schlüssel wird auch auf der Webseite ausgegeben
-
-```
-a{refresh}
-	let private_key = gg.v;
-	if (private_key.lesser(0)) {
-		private_key =
-			private_key.add(phi);
-	}
-	$private_key.innerText =
-		private_key.toString();
-x{refresh}
-```
-* Der private Schlüssel ist das multiplikative Inverse modulo φ
 
 ```
 A{globals}

@@ -1364,7 +1364,7 @@
 </div>
 
 <ul><li>
- Um festzustellen, ob <code>e</code> und <code>n</code> teilerfremd sind, wird der
+ Um festzustellen, ob <code>e</code> und  <code>φ(n)</code> teilerfremd sind, wird der
   Erweiterte Euklidische Algorithmus verwendet
 </li><li>
  Dieser liefert gleichzeitig noch das inverse Element, das für den
@@ -1383,6 +1383,803 @@
  Der Erweiterte Euklidische Algorithmus wird in einer eigenen Datei
   implementiert
 </li></ul></div>
+
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">e</span> = <span class="fn">bigInt</span>($<span class="var">e</span>.<span class="var">value</span>);<br/>
+
+<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Ermittelt den Wert von <code>e</code>
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Dieses</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">kann sogar vorab</span><br/>
+
+<span class="in2"></span><span class="str">gewählt werden und für alle</span><br/>
+
+<span class="in2"></span><span class="str">Teilnehmer gleich sein.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Ein Hinweis, dass <code>e</code> öffentlich gewählt werden kann, wird
+  ausgegeben
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">This</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">may even be</span><br/>
+
+<span class="in2"></span><span class="str">pre-selected and the same</span><br/>
+
+<span class="in2"></span><span class="str">for all participants.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Auch in der englischen Version
+</li></ul></div>
+
+</div>
+<h1>Geheimer Schlüssel</h1>
+<div class="slides">
+<div><div>
+<h1>Geheimer Schlüssel</h1>
+</div>
+
+<ul><li>
+ Beschreibt den nächsten Abschnitt in der HTML-Ausgabe
+</li><li>
+ Und wie der geheime Schlüssel berechnet wird
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Geheimer Schlüssel</span>&lt;/<span class="var">h2</span>&gt;<br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">RSA benutzt für die Berechnung des</span><br/>
+
+<span class="in2"></span><span class="str">geheimen Schlüssels die Eulersche</span><br/>
+
+<span class="in2"></span>&amp;<span class="var">phi</span>;<span class="str">-Funktion von</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
+
+<span class="in2"></span><span class="str">Diese ist definiert als</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Erklärt in der deutschen Version, wie der geheime Schlüssel berechnet
+  wird
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Secret key</span>&lt;/<span class="var">h2</span>&gt;<br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">RSA uses the Euler</span> &amp;<span class="var">phi</span>; <span class="str">function</span><br/>
+
+<span class="in2"></span><span class="str">of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">to calculate the</span><br/>
+
+<span class="in2"></span><span class="str">secret key. This is defined as</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Das gleiche wird in der englischen Version ausgegeben
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">phi label</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">label</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in4"></span><span class="keyword">for</span>=<span class="str">"phi"</span>&gt;&amp;<span class="var">phi</span>;<span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) =</span><br/>
+
+<span class="in4"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; <span class="str">1)</span> &amp;<span class="var">times</span>;<br/>
+
+<span class="in4"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; <span class="str">1</span>)&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+
+<span class="in4"></span><span class="var">id</span>=<span class="str">"phi"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">phi label</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die Berechnung von φ enthält keinen deutschen oder englischen Text
+</li><li>
+ Und kann daher für beide Lokalisierungen verwendet werden
+</li><li>
+ Oh, so schön ist Mathematik
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span><span class="expand">@multiple(<span class="name">phi label</span>)</span><br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ φ in der deutschen Version definieren
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span><span class="expand">@multiple(<span class="name">phi label</span>)</span><br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ φ in der englischen Version definieren
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">phi</span> = <span class="fn">$</span>(<span class="str">'phi'</span>);<br/>
+
+<span class="end">@end(<span class="name">globals</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Eine Referenz auf den Wert der φ-Funktion wird im Code abgelegt
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">one</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">phi</span> = <span class="var">prime1</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<br/>
+
+<span class="in2"></span><span class="fn">multiply</span>(<span class="var">prime2</span>.<span class="fn">subtract</span>(<span class="var">one</span>));<br/>
+
+<span class="in1"></span>$<span class="var">phi</span>.<span class="var">innerText</span> = <span class="var">phi</span>.<span class="fn">toString</span>();<br/>
+
+<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
+  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
+  des öffentlichen Schlüssels
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">gcd_result</span> = <span class="fn">gcd</span>(<span class="var">phi</span>, <span class="var">e</span>);<br/>
+
+<span class="in1"></span>$<span class="var">err_gcd_not_1</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+
+<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">gcd_result</span>.<span class="var">a</span>.<span class="fn">equals</span>(<span class="var">one</span>)<br/>
+
+<span class="in1"></span>);<br/>
+
+<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Wenn <code>e</code> und der Wert der φ-Funktion nicht teilerfremd sind, wird
+  eine entsprechende Fehlermeldung angezeigt
+</li><li>
+ Das Attribut <code>a</code> im <code>gcd_result</code> enthält den kleinsten gemeinsamen
+  Teiler
+</li><li>
+ Dieser muss eins sein
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Hier wird ausgenutzt, dass</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">verschieden sind. Andernfalls</span><br/>
+
+<span class="in2"></span><span class="str">würde sich die</span> &amp;<span class="var">phi</span>;<span class="str">-Funktion anders</span><br/>
+
+<span class="in2"></span><span class="str">berechnen.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Wichtig ist für RSA, dass der Wert der</span><br/>
+
+<span class="in2"></span>&amp;<span class="var">phi</span>;<span class="str">-Funktion teilerfremd zu</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">ist (der größte gemeinsame Teiler also</span><br/>
+
+<span class="in2"></span><span class="str">1 ist).</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Einschränkungen bei der Berechnung von φ werden auf der deutschen
+  Seite ausgegeben
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Here it is used that</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">are different. Otherwise,</span><br/>
+
+<span class="in2"></span><span class="str">the</span> &amp;<span class="var">phi</span>; <span class="str">function would calculate</span><br/>
+
+<span class="in2"></span><span class="str">differently.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">It is important for RSA that the</span><br/>
+
+<span class="in2"></span><span class="str">value of the</span> &amp;<span class="var">phi</span>; <span class="str">function is</span><br/>
+
+<span class="in2"></span><span class="str">coprime to</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">(the largest</span><br/>
+
+<span class="in2"></span><span class="str">common divisor must be 1).</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Und auf der englischen Seite
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">label</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in4"></span><span class="keyword">for</span>=<span class="str">"gcd"</span>&gt;<span class="str">ggT(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;,<br/>
+
+<span class="in4"></span>&amp;<span class="var">phi</span>;<span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span>&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+
+<span class="in4"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Der größte gemeinsame Teiler wird auf der Deutschen Seite
+  ausgegeben
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">label</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in4"></span><span class="keyword">for</span>=<span class="str">"gcd"</span>&gt;<span class="fn">gcd</span>(&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;,<br/>
+
+<span class="in4"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;))&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+
+<span class="in4"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Und auf der englischen Seite
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">gcd</span> = <span class="fn">$</span>(<span class="str">'gcd'</span>);<br/>
+
+<span class="end">@end(<span class="name">globals</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Eine Referenz auf das DOM-Element wird gesichert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+
+<span class="in1"></span>$<span class="var">gcd</span>.<span class="var">innerText</span> = <span class="var">gcd_result</span>.<span class="var">a</span>.<span class="fn">toString</span>();<br/>
+
+<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Und im <code>refresh</code> wird das Feld aktualisiert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Um den Wert von</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">zu</span><br/>
+
+<span class="in2"></span><span class="str">bestimmen, reicht es nicht aus</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">zu kennen. Nur mit der</span><br/>
+
+<span class="in2"></span><span class="str">Kenntnis von</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">kann man</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">effizient</span><br/>
+
+<span class="in2"></span><span class="str">bestimmen.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Der geheime Schlüssel besteht ebenfalls</span><br/>
+
+<span class="in2"></span><span class="str">aus</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">und einem</span> &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit der</span><br/>
+
+<span class="in2"></span><span class="str">Eigenschaft, dass</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>;<br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">ein Vielfaches von</span><br/>
+
+<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">plus eins ist.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Auf der deutschen Seite wird beschrieben, wie der geheime Schlüssel
+  berechnet wird
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">In Formeln ausgedrückt, muss gelten:</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; = <span class="num">1</span><br/>
+
+<span class="in2"></span>(<span class="var">mod</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;))<br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Dabei ist mit dem mod-Ausdruck die</span><br/>
+
+<span class="in2"></span><span class="str">Gleichheit bezüglich einer Restklasse</span><br/>
+
+<span class="in2"></span><span class="str">gemeint. Es ist genau dann</span> &lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; =<br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; (<span class="var">mod</span> &lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;), <span class="str">wenn es ein</span><br/>
+
+<span class="in2"></span><span class="str">ganzzahliges</span> &lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt; <span class="str">gibt mit</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; &lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; = &lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in2"></span>&amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;.<br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Und wieso damit die Entschlüsselung funktioniert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="var">F</span>ü<span class="var">r</span> <span class="var">die</span> <span class="var">gew</span>ä<span class="var">hlten</span> <span class="type">Werte</span> <span class="var">von</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;,<br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="var">und</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="var">ergibt</span> <span class="var">sich</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="var">als</span>:<br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Dann wird der geheime Schlüssel ausgegeben
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">To determine the value of</span><br/>
+
+<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;)<span class="str">, it is not enough</span><br/>
+
+<span class="in2"></span><span class="str">to know</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">. Only with the</span><br/>
+
+<span class="in2"></span><span class="str">knowledge of</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">we can efficiently determine</span><br/>
+
+<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;)<span class="str">.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">The secret key also consists of</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">and a</span> &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">with the</span><br/>
+
+<span class="in2"></span><span class="str">property that</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>;<br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">is a multiple of</span><br/>
+
+<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">plus one.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Auch auf der englischen Seite wird beschrieben, wie der geheime
+  Schlüssel berechnet wird
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Expressed in formulas, the following</span><br/>
+
+<span class="in2"></span><span class="str">must apply:</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="var">e</span> &amp;<span class="var">times</span>; <span class="var">d</span> = <span class="num">1</span> (<span class="var">mod</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;))<br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Ebenfalls mit der Formel-Darstellung
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">In this case, the mod expression means</span><br/>
+
+<span class="in2"></span><span class="str">equality with regard to a residual</span><br/>
+
+<span class="in2"></span><span class="str">class. It is</span> &lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; = &lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; (<span class="var">mod</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;) <span class="str">if and only if there is an</span><br/>
+
+<span class="in2"></span><span class="str">integer a with</span> &lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>;<br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; = &lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;.<br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">For the chosen values of</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;,<br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">, and</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">, we get</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">as:</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Und warum das Ganze funktioniert
+</li><li>
+ Auch hier wird ein Absatz ausgegeben, der auf das nächste Ergebnis
+  hinarbeitet
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">private key</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">label</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in4"></span><span class="keyword">for</span>=<span class="str">"private-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+
+<span class="in4"></span><span class="var">id</span>=<span class="str">"private-key"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">private key</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Das Feld mit der Ausgabe des geheimen Schlüssels kann in der
+  deutschen und englischen Version gemeinsam verwendet werden
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span><span class="expand">@multiple(<span class="name">private key</span>)</span><br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Geheimen Schlüssel in der deutschen Version ausgeben
+</li></ul></div>
+
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span><span class="expand">@multiple(<span class="name">private key</span>)</span><br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Geheimen Schlüssel in der englischen Version ausgeben
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">private_key</span> =<br/>
+
+<span class="in2"></span><span class="fn">$</span>(<span class="str">'private-key'</span>);<br/>
+
+<span class="end">@end(<span class="name">globals</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Referenz auf den geheimen Schlüssel wird in der Anwendung gespeichert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+
+<span class="in1"></span><span class="type">let</span> <span class="var">private_key</span> = <span class="var">gcd_result</span>.<span class="var">v</span>;<br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">zero</span> = <span class="fn">bigInt</span>.<span class="var">zero</span>;<br/>
+
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">private_key</span>.<span class="fn">lesser</span>(<span class="var">zero</span>)) {<br/>
+
+<span class="in2"></span><span class="var">private_key</span> =<br/>
+
+<span class="in3"></span><span class="var">private_key</span>.<span class="fn">add</span>(<span class="var">phi</span>);<br/>
+
+<span class="in1"></span>}<br/>
+
+<span class="in1"></span>$<span class="var">private_key</span>.<span class="var">innerText</span> =<br/>
+
+<span class="in2"></span><span class="var">private_key</span>.<span class="fn">toString</span>();<br/>
+
+<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Der private Schlüssel ist das multiplikative Inverse modulo φ
+</li><li>
+ Falls der Schlüssel negative ist, wird der Wert von φ hinzu addiert
+</li></ul></div>
+
+
+
+
 
 
 </div>
@@ -1517,294 +2314,6 @@
 <span class="in1"></span>}<br/>
 
 <span class="end">@end(<span class="name">css</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Dieses</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">kann sogar vorab</span><br/>
-
-<span class="in2"></span><span class="str">gewählt werden und für alle</span><br/>
-
-<span class="in2"></span><span class="str">Teilnehmer gleich sein.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Geheimer Schlüssel</span>&lt;/<span class="var">h2</span>&gt;<br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">RSA benutzt für die Berechnung des</span><br/>
-
-<span class="in2"></span><span class="str">geheimen Schlüssels die Eulersche</span><br/>
-
-<span class="in2"></span>&amp;<span class="var">phi</span>;<span class="str">-Funktion von</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
-
-<span class="in2"></span><span class="str">Diese ist definiert als</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"phi"</span>&gt;&amp;<span class="var">phi</span>;<span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) =</span><br/>
-
-<span class="in4"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; <span class="str">1)</span> &amp;<span class="var">times</span>;<br/>
-
-<span class="in4"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; <span class="str">1</span>)&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"phi"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Hier wird ausgenutzt, dass</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">verschieden sind. Andernfalls</span><br/>
-
-<span class="in2"></span><span class="str">würde sich die</span> &amp;<span class="var">phi</span>;<span class="str">-Funktion anders</span><br/>
-
-<span class="in2"></span><span class="str">berechnen.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Wichtig ist für RSA, dass der Wert der</span><br/>
-
-<span class="in2"></span>&amp;<span class="var">phi</span>;<span class="str">-Funktion teilerfremd zu</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">ist (der größte gemeinsame Teiler also</span><br/>
-
-<span class="in2"></span><span class="str">1 ist).</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"gcd"</span>&gt;<span class="str">ggT(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;,<br/>
-
-<span class="in4"></span>&amp;<span class="var">phi</span>;<span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span>&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Um den Wert von</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">zu</span><br/>
-
-<span class="in2"></span><span class="str">bestimmen, reicht es nicht aus</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">zu kennen. Nur mit der</span><br/>
-
-<span class="in2"></span><span class="str">Kenntnis von</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">kann man</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">effizient</span><br/>
-
-<span class="in2"></span><span class="str">bestimmen.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Der geheime Schlüssel besteht ebenfalls</span><br/>
-
-<span class="in2"></span><span class="str">aus</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">und einem</span> &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit der</span><br/>
-
-<span class="in2"></span><span class="str">Eigenschaft, dass</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>;<br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">ein Vielfaches von</span><br/>
-
-<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">plus eins ist.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">In Formeln ausgedrückt, muss gelten:</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; = <span class="num">1</span><br/>
-
-<span class="in2"></span>(<span class="var">mod</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;))<br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Dabei ist mit dem mod-Ausdruck die</span><br/>
-
-<span class="in2"></span><span class="str">Gleichheit bezüglich einer Restklasse</span><br/>
-
-<span class="in2"></span><span class="str">gemeint. Es ist genau dann</span> &lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; =<br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; (<span class="var">mod</span> &lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;), <span class="str">wenn es ein</span><br/>
-
-<span class="in2"></span><span class="str">ganzzahliges</span> &lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt; <span class="str">gibt mit</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; &lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; = &lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in2"></span>&amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;.<br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="var">F</span>ü<span class="var">r</span> <span class="var">die</span> <span class="var">gew</span>ä<span class="var">hlten</span> <span class="type">Werte</span> <span class="var">von</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;,<br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="var">und</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="var">ergibt</span> <span class="var">sich</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="var">als</span>:<br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"private-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"private-key"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2302,290 +2811,6 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">This</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">may even be</span><br/>
-
-<span class="in2"></span><span class="str">pre-selected and the same</span><br/>
-
-<span class="in2"></span><span class="str">for all participants.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Secret key</span>&lt;/<span class="var">h2</span>&gt;<br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">RSA uses the Euler</span> &amp;<span class="var">phi</span>; <span class="str">function</span><br/>
-
-<span class="in2"></span><span class="str">of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">to calculate the</span><br/>
-
-<span class="in2"></span><span class="str">secret key. This is defined as</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"phi"</span>&gt;&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) =<br/>
-
-<span class="in4"></span>(&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; <span class="num">1</span>) &amp;<span class="var">times</span>;<br/>
-
-<span class="in4"></span>(&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>; <span class="num">1</span>)&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"phi"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Here it is used that</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">are different. Otherwise,</span><br/>
-
-<span class="in2"></span><span class="str">the</span> &amp;<span class="var">phi</span>; <span class="str">function would calculate</span><br/>
-
-<span class="in2"></span><span class="str">differently.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">It is important for RSA that the</span><br/>
-
-<span class="in2"></span><span class="str">value of the</span> &amp;<span class="var">phi</span>; <span class="str">function is</span><br/>
-
-<span class="in2"></span><span class="str">coprime to</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">(the largest</span><br/>
-
-<span class="in2"></span><span class="str">common divisor must be 1).</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"gcd"</span>&gt;<span class="fn">gcd</span>(&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;,<br/>
-
-<span class="in4"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;))&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">To determine the value of</span><br/>
-
-<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;)<span class="str">, it is not enough</span><br/>
-
-<span class="in2"></span><span class="str">to know</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">. Only with the</span><br/>
-
-<span class="in2"></span><span class="str">knowledge of</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">we can efficiently determine</span><br/>
-
-<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;)<span class="str">.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">The secret key also consists of</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">and a</span> &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">with the</span><br/>
-
-<span class="in2"></span><span class="str">property that</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>;<br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">is a multiple of</span><br/>
-
-<span class="in2"></span>&amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;) <span class="str">plus one.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Expressed in formulas, the following</span><br/>
-
-<span class="in2"></span><span class="str">must apply:</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="var">e</span> &amp;<span class="var">times</span>; <span class="var">d</span> = <span class="num">1</span> (<span class="var">mod</span> &amp;<span class="var">phi</span>;(&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;))<br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">In this case, the mod expression means</span><br/>
-
-<span class="in2"></span><span class="str">equality with regard to a residual</span><br/>
-
-<span class="in2"></span><span class="str">class. It is</span> &lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; = &lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; (<span class="var">mod</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;) <span class="str">if and only if there is an</span><br/>
-
-<span class="in2"></span><span class="str">integer a with</span> &lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">minus</span>;<br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt; = &lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;.<br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">For the chosen values of</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;,<br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">, and</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">, we get</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">as:</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"private-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"private-key"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
 <span class="in2"></span><span class="str">This</span> &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">can always be determined</span><br/>
 
 <span class="in2"></span><span class="str">(if</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">was chosen with the</span><br/>
@@ -3015,8 +3240,6 @@
 
 <span class="add">@add(<span class="name">refresh</span>)</span><br/>
 
-<span class="in1"></span><span class="type">const</span> <span class="var">one</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
-
 <span class="in1"></span><span class="type">const</span> <span class="var">max_msg</span> =<br/>
 
 <span class="in2"></span><span class="var">public_key</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<span class="fn">toString</span>();<br/>
@@ -3040,132 +3263,6 @@
  Die größte mögliche Nachrichtenzahl wird in Fehlermeldungen benötigt
 </li></ul></div>
 
-<div><div>
-<code>
-
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">phi</span> = <span class="fn">$</span>(<span class="str">'phi'</span>);<br/>
-
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Auch das Ergebnis der φ-Funktion wird auf der Webseite angezeigt
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> <span class="var">phi</span> = <span class="var">prime1</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<br/>
-
-<span class="in2"></span><span class="fn">multiply</span>(<span class="var">prime2</span>.<span class="fn">subtract</span>(<span class="var">one</span>));<br/>
-
-<span class="in1"></span>$<span class="var">phi</span>.<span class="var">innerText</span> = <span class="var">phi</span>.<span class="fn">toString</span>();<br/>
-
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
-  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
-  des öffentlichen Schlüssels
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">gcd</span> = <span class="fn">$</span>(<span class="str">'gcd'</span>);<br/>
-
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Der größte gemeinsame Teiler wird zur Kontrolle auch angezeigt
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> <span class="var">e</span> = <span class="fn">bigInt</span>($<span class="var">e</span>.<span class="var">value</span>);<br/>
-
-<span class="in1"></span><span class="type">const</span> <span class="var">gg</span> = <span class="fn">gcd</span>(<span class="var">phi</span>, <span class="var">e</span>);<br/>
-
-<span class="in1"></span>$<span class="var">err_gcd_not_1</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-
-<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">gg</span>.<span class="var">a</span>.<span class="fn">equals</span>(<span class="num">1</span>)<br/>
-
-<span class="in1"></span>);<br/>
-
-<span class="in1"></span>$<span class="var">gcd</span>.<span class="var">innerText</span> = <span class="var">gg</span>.<span class="var">a</span>.<span class="fn">toString</span>();<br/>
-
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Wenn <code>e</code> und der Wert der φ-Funktion nicht teilerfremd sind, wird
-  eine entsprechende Fehlermeldung angezeigt
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">private_key</span> =<br/>
-
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'private-key'</span>);<br/>
-
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Der private Schlüssel wird auch auf der Webseite ausgegeben
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
-
-<span class="in1"></span><span class="type">let</span> <span class="var">private_key</span> = <span class="var">gg</span>.<span class="var">v</span>;<br/>
-
-<span class="in1"></span><span class="keyword">if</span> (<span class="var">private_key</span>.<span class="fn">lesser</span>(<span class="num">0</span>)) {<br/>
-
-<span class="in2"></span><span class="var">private_key</span> =<br/>
-
-<span class="in3"></span><span class="var">private_key</span>.<span class="fn">add</span>(<span class="var">phi</span>);<br/>
-
-<span class="in1"></span>}<br/>
-
-<span class="in1"></span>$<span class="var">private_key</span>.<span class="var">innerText</span> =<br/>
-
-<span class="in2"></span><span class="var">private_key</span>.<span class="fn">toString</span>();<br/>
-
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Der private Schlüssel ist das multiplikative Inverse modulo φ
-</li></ul></div>
 
 <div><div>
 <code>

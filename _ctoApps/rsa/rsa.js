@@ -89,17 +89,17 @@
 	eq(g.t, bigInt(35));
 ;
 } 
-	const $max_msgs =
-		document.getElementsByClassName(
-			'max-msg'
-		);
-
 	const $phi = $('phi');
 
 	const $gcd = $('gcd');
 
 	const $private_key =
 		$('private-key');
+
+	const $max_msgs =
+		document.getElementsByClassName(
+			'max-msg'
+		);
 
 	let encrypt = true;
 
@@ -170,7 +170,29 @@
 	$public_key_length.innerText =
 		public_key.bitLength();
 
+	const e = bigInt($e.value);
+
 	const one = bigInt.one;
+	const phi = prime1.subtract(one).
+		multiply(prime2.subtract(one));
+	$phi.innerText = phi.toString();
+
+	const gcd_result = gcd(phi, e);
+	$err_gcd_not_1.classList.toggle(
+		'hidden', gcd_result.a.equals(one)
+	);
+
+	$gcd.innerText = gcd_result.a.toString();
+
+	let private_key = gcd_result.v;
+	const zero = bigInt.zero;
+	if (private_key.lesser(zero)) {
+		private_key =
+			private_key.add(phi);
+	}
+	$private_key.innerText =
+		private_key.toString();
+
 	const max_msg =
 		public_key.subtract(one).toString();
 	for (
@@ -178,25 +200,6 @@
 	) {
 		$max_msgs[i].innerText = max_msg;
 	}
-
-	const phi = prime1.subtract(one).
-		multiply(prime2.subtract(one));
-	$phi.innerText = phi.toString();
-
-	const e = bigInt($e.value);
-	const gg = gcd(phi, e);
-	$err_gcd_not_1.classList.toggle(
-		'hidden', gg.a.equals(1)
-	);
-	$gcd.innerText = gg.a.toString();
-
-	let private_key = gg.v;
-	if (private_key.lesser(0)) {
-		private_key =
-			private_key.add(phi);
-	}
-	$private_key.innerText =
-		private_key.toString();
 
 	if (encrypt) {
 		
