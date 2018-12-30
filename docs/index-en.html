@@ -109,7 +109,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="public-key"><i>n</i> =
-					<i>p</i> &times; <i>q</i>
+					<i>p</i> × <i>q</i>
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -119,7 +119,7 @@
 				Bit)</p></div>
 		</div>
 	</form>
-;
+
 
 	<h2>Public key</h2>
 	<p>
@@ -152,7 +152,7 @@
 
 	<h2>Secret key</h2>
 	<p>
-		RSA uses the Euler &phi; function
+		RSA uses the Euler φ function
 		of <i>n</i> to calculate the
 		secret key. This is defined as
 	</p>
@@ -162,9 +162,9 @@
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
-				for="phi">&phi;(<i>n</i>) =
-				(<i>p</i> &minus; 1) &times;
-				(<i>q</i> &minus; 1)</label>
+				for="phi">φ(<i>n</i>) =
+				(<i>p</i> − 1) ×
+				(<i>q</i> − 1)</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="phi"></p></div>
@@ -175,11 +175,11 @@
 	<p>
 		Here it is used that <i>p</i> and
 		<i>q</i> are different. Otherwise,
-		the &phi; function would calculate
+		the φ function would calculate
 		differently.
 	</p><p>
 		It is important for RSA that the
-		value of the &phi; function is
+		value of the φ function is
 		coprime to <i>e</i> (the largest
 		common divisor must be 1).
 	</p>
@@ -189,7 +189,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="gcd">gcd(<i>e</i>,
-				&phi;(<i>n</i>))</label>
+				φ(<i>n</i>))</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="gcd"></p></div>
@@ -198,24 +198,25 @@
 
 	<p>
 		To determine the value of
-		&phi;(<i>n</i>), it is not enough
+		φ(<i>n</i>), it is not enough
 		to know <i>n</i>. Only with the
 		knowledge of <i>p</i> and <i>q</i>
 		we can efficiently determine
-		&phi;(<i>n</i>).
+		φ(<i>n</i>).
 	</p><p>
 		The secret key also consists of
 		<i>n</i> and a <i>d</i> with the
-		property that <i>e</i> &times;
+		property that <i>e</i> ×
 		<i>d</i> is a multiple of
-		&phi;(<i>n</i>) plus one.
+		φ(<i>n</i>) plus one.
 	</p>
 
 	<p>
-		Expressed in formulas, the following
-		must apply:
+		Expressed in formulas, the
+		following must apply:
 	</p><p>
-		e &times; d = 1 (mod &phi;(<i>n</i>))
+		<i>e</i> × <i>d</i> = 1
+		(mod φ(<i>n</i>))
 	</p>
 
 	<p>
@@ -223,8 +224,8 @@
 		equality with regard to a residual
 		class. It is <i>x</i> = <i>y</i> (mod
 		<i>z</i>) if and only if there is an
-		integer a with <i>x</i> &minus;
-		<i>y</i> = <i>z</i> &times; <i>a</i>.
+		integer a with <i>x</i> −
+		<i>y</i> = <i>z</i> × <i>a</i>.
 	</p><p>
 		For the chosen values of <i>p</i>,
 		<i>q</i>, and <i>e</i>, we get
@@ -248,7 +249,7 @@
 	<p>
 		This <i>d</i> can always be determined
 		(if <i>e</i> was chosen with the
-		restriction described above)&mdash;for
+		restriction described above)—for
 		example with the extended Euclidean
 		algorithm.
 	</p>
@@ -261,7 +262,7 @@
 	</p><p>
 		Encrypting a message <i>m</i> (number)
 		with the public key (<i>n</i>,
-		<i>e</i>s) is calculated:
+		<i>e</i>) is calculated:
 	</p><p>
 		<i>m&#39;</i> :=
 			<i>m</i><sup><i>e</i></sup>
@@ -280,7 +281,7 @@
 		This is
 	</p><p>
 		<i>m&#39;&#39;</i> =
-			<i>m</i><sup><i>e</i> &times;
+			<i>m</i><sup><i>e</i> ×
 			<i>d</i></sup> (mod <i>n</i>).
 	</p>
 
@@ -294,7 +295,7 @@
 		if
 	</p><p>
 		<i>a</i> =
-			<i>b</i> (mod &phi;(<i>n</i>))
+			<i>b</i> (mod φ(<i>n</i>))
 	</p>
 
 	<p>
@@ -306,7 +307,7 @@
 		The order does not matter. You could
 		also first raise a message with the
 		private key, and then power up the
-		result with the public key&mdash;this
+		result with the public key—this
 		is what you use with RSA signatures.
 	</p>
 

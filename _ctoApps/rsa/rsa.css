@@ -18,7 +18,7 @@
 	}
 
 	#direction svg polyline {
-    	fill: #888;
+		fill: #888;
 	}
 
 	@keyframes flip {
@@ -31,24 +31,24 @@
 	}
 
 	#direction.flip svg {
-    	animation-name: flip;
-    	animation-duration: 1s;
-    	animation-fill-mode: forwards;
+		animation-name: flip;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
 	}
 
 	@keyframes flop {
-    	from {
-        	transform: rotate(180deg);
-    	}
-    	to {
-        	transform: rotate(0deg);
-    	}
+		from {
+			transform: rotate(180deg);
+		}
+		to {
+			transform: rotate(0deg);
+		}
 	}
 
 	#direction.flop svg {
-    	animation-name: flop;
-    	animation-duration: 1s;
-    	animation-fill-mode: forwards;
+		animation-name: flop;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
 	}
 
 	#authors {

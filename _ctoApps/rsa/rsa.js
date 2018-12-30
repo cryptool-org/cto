@@ -1,7 +1,9 @@
 
 	"use strict";
-	window.addEventListener('load', () => {
-		
+	window.addEventListener(
+		'load',
+		() => {
+			
 	const $ = id => {
 		return document.getElementById(id);
 	};
@@ -24,6 +26,8 @@
 	const $e = $('base');
 	const $err_gcd_not_1 =
 		$('err-gcd-not-1');
+
+	const $phi = $('phi');
 
 	const gcd = (a, b) => {
 		
@@ -89,8 +93,6 @@
 	eq(g.t, bigInt(35));
 ;
 } 
-	const $phi = $('phi');
-
 	const $gcd = $('gcd');
 
 	const $private_key =
@@ -121,7 +123,7 @@
 		timer = null;
 	};
 ;
-		
+			
 	const queueRefresh = event => {
 		event.preventDefault();
 		
@@ -151,16 +153,25 @@
 
 	const refresh = () => {
 		
-	const prime1 = bigInt($prime1.value);
+	const prime1 =
+		bigInt($prime1.value);
+
 	$err_p_not_prime.classList.toggle(
-		'hidden', prime1.isProbablePrime()
+		'hidden',
+		prime1.isProbablePrime()
 	);
-	const prime2 = bigInt($prime2.value);
+
+	const prime2 =
+		bigInt($prime2.value);
+
 	$err_q_not_prime.classList.toggle(
-		'hidden', prime2.isProbablePrime()
+		'hidden',
+		prime2.isProbablePrime()
 	);
+
 	$err_p_equal_q.classList.toggle(
-		'hidden', ! prime1.equals(prime2)
+		'hidden',
+		! prime1.equals(prime2)
 	);
 
 	const public_key =
@@ -182,7 +193,8 @@
 		'hidden', gcd_result.a.equals(one)
 	);
 
-	$gcd.innerText = gcd_result.a.toString();
+	$gcd.innerText =
+		gcd_result.a.toString();
 
 	let private_key = gcd_result.v;
 	const zero = bigInt.zero;
@@ -283,4 +295,5 @@
 		}
 	};
 ;
-	});
+		}
+	);

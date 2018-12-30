@@ -111,7 +111,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="public-key"><i>n</i> =
-					<i>p</i> &times; <i>q</i>
+					<i>p</i> × <i>q</i>
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -157,7 +157,7 @@
 	<p>
 		RSA benutzt für die Berechnung des
 		geheimen Schlüssels die Eulersche
-		&phi;-Funktion von <i>n</i>.
+		φ-Funktion von <i>n</i>.
 		Diese ist definiert als
 	</p>
 
@@ -166,9 +166,9 @@
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
-				for="phi">&phi;(<i>n</i>) =
-				(<i>p</i> &minus; 1) &times;
-				(<i>q</i> &minus; 1)</label>
+				for="phi">φ(<i>n</i>) =
+				(<i>p</i> − 1) ×
+				(<i>q</i> − 1)</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="phi"></p></div>
@@ -179,11 +179,11 @@
 	<p>
 		Hier wird ausgenutzt, dass <i>p</i> und
 		<i>q</i> verschieden sind. Andernfalls
-		würde sich die &phi;-Funktion anders
+		würde sich die φ-Funktion anders
 		berechnen.
 	</p><p>
 		Wichtig ist für RSA, dass der Wert der
-		&phi;-Funktion teilerfremd zu <i>e</i>
+		φ-Funktion teilerfremd zu <i>e</i>
 		ist (der größte gemeinsame Teiler also
 		1 ist).
 	</p>
@@ -193,7 +193,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="gcd">ggT(<i>e</i>,
-				&phi;(<i>n</i>))</label>
+				φ(<i>n</i>))</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="gcd"></p></div>
@@ -201,33 +201,33 @@
 	</form>
 
 	<p>
-		Um den Wert von &phi;(<i>n</i>) zu
+		Um den Wert von φ(<i>n</i>) zu
 		bestimmen, reicht es nicht aus
 		<i>n</i> zu kennen. Nur mit der
 		Kenntnis von <i>p</i> und <i>q</i>
-		kann man &phi;(<i>n</i>) effizient
+		kann man φ(<i>n</i>) effizient
 		bestimmen.
 	</p><p>
-		Der geheime Schlüssel besteht ebenfalls
-		aus <i>n</i> und einem <i>d</i> mit der
-		Eigenschaft, dass <i>e</i> &times;
-		<i>d</i> ein Vielfaches von
-		&phi;(<i>n</i>) plus eins ist.
+		Der geheime Schlüssel besteht
+		ebenfalls aus <i>n</i> und einem
+		<i>d</i> mit der Eigenschaft, dass
+		<i>e</i> × <i>d</i> ein Vielfaches
+		von φ(<i>n</i>) + 1 ist.
 	</p>
 
 	<p>
 		In Formeln ausgedrückt, muss gelten:
 	</p><p>
-		<i>e</i> &times; <i>d</i> = 1
-		(mod &phi;(<i>n</i>))
+		<i>e</i> × <i>d</i> = 1
+		(mod φ(<i>n</i>))
 	</p><p>
 		Dabei ist mit dem mod-Ausdruck die
 		Gleichheit bezüglich einer Restklasse
 		gemeint. Es ist genau dann <i>x</i> =
 		<i>y</i> (mod <i>z</i>), wenn es ein
 		ganzzahliges <i>a</i> gibt mit
-		<i>x</i> &minus; <i>y</i> = <i>z</i>
-		&times; <i>a</i>.
+		<i>x</i> − <i>y</i> = <i>z</i>
+		× <i>a</i>.
 	</p>
 
 	<p>
@@ -254,8 +254,8 @@
 		Dieses <i>d</i> kann immer bestimmt
 		werden, wenn <i>e</i> mit der oben
 		beschriebenen Einschränkung gewählt
-		wurde &ndash; bspw. mit dem
-		erweiterten Euklidischen Algorithmus.
+		wurde – bspw. mit dem erweiterten
+		Euklidischen Algorithmus.
 	</p>
 
 	<h2>Ver- und Entschlüsseln</h2>
@@ -292,7 +292,7 @@
 		Damit ist
 	</p>
 		<i>m&#39;&#39;</i> =
-			<i>m</i><sup><i>e</i> &times;
+			<i>m</i><sup><i>e</i> ×
 			<i>d</i></sup>
 			(mod <i>n</i>).
 	</p>
@@ -308,7 +308,7 @@
 		wenn
 	</p><p>
 		<i>a</i> =
-			<i>b</i> (mod &phi;(<i>n</i>))
+			<i>b</i> (mod φ(<i>n</i>))
 	</p>
 
 	<p>
@@ -322,8 +322,8 @@
 		mit dem privaten Schlüssel
 		potenzieren, und das Ergebnis dann
 		mit dem öffentlichen Schlüssel
-		potenzieren &ndash; das verwendet
-		man bei RSA-Signaturen.
+		potenzieren – das verwendet man
+		bei RSA-Signaturen.
 	</p>
 
 	<h2>Nachrichten</h2>
