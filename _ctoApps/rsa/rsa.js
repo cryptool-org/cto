@@ -148,14 +148,6 @@
 ;
 	}
 
-	$prime1.addEventListener(
-		'input', queueRefresh
-	);
-
-	$prime2.addEventListener(
-		'input', queueRefresh
-	);
-
 	const refresh = () => {
 		
 	const prime1 = bigInt($prime1.value);
@@ -248,6 +240,14 @@
 ;
 	};
 	refresh();
+
+	$prime1.addEventListener(
+		'input', queueRefresh
+	);
+
+	$prime2.addEventListener(
+		'input', queueRefresh
+	);
 
 	const setEncrypt = new_encrypt => {
 		if (encrypt === new_encrypt) {

@@ -367,14 +367,14 @@
 </li></ul></div>
 
 </div>
-<h1>Primzahlen eingeben</h1>
+<h1>Primfaktoren eingeben</h1>
 <div class="slides">
 <div><div>
-<h1>Primzahlen eingeben</h1>
+<h1>Primfaktoren eingeben</h1>
 </div>
 
 <ul><li>
- Dieser Abschnitt beschreibt, wie die Primzahlen geändert werden
+ Dieser Abschnitt beschreibt, wie die Primfaktoren geändert werden
   können
 </li></ul></div>
 
@@ -636,8 +636,52 @@
 </li><li>
  Diese sorgt dafür, dass die Neuberechnung nicht zu häufig
   aufgerufen wird
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="fn">refresh</span> = () =&gt; {<br/>
+
+<span class="in2"></span><span class="expand">@expand(<span class="name">refresh</span>)</span>;<br/>
+
+<span class="in1"></span>};<br/>
+
+<span class="in1"></span><span class="fn">refresh</span>();<br/>
+
+<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Wenn sich die Primzahl (und andere Felder ändern), muss der
+  RSA-Algorithmus neu ausgeführt werden
 </li><li>
- Sie wird später beschrieben
+ Beim Starten wird die Funktion aufgerufen, um alle Felder zu
+  synchronisieren
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">queue refresh</span>)</span><br/>
+
+<span class="in1"></span><span class="fn">refresh</span>();<br/>
+
+<span class="end">@end(<span class="name">queue refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ In einer ersten Implementierung wird einfach nur die Funktion
+  <code>f{refresh}</code> aufgerufen
+</li><li>
+ Diese Implementierung wird später durche eine aufwändigere Version
+  mit Timern ersetzt
 </li></ul></div>
 
 <div><div>
@@ -866,6 +910,265 @@
  Bei einer Änderung wird ebenfalls eine Neuberechnung angestoßen
 </li></ul></div>
 
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">refresh</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">prime1</span> = <span class="fn">bigInt</span>($<span class="var">prime1</span>.<span class="var">value</span>);<br/>
+
+<span class="in1"></span>$<span class="var">err_p_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+
+<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">prime1</span>.<span class="fn">isProbablePrime</span>()<br/>
+
+<span class="in1"></span>);<br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">prime2</span> = <span class="fn">bigInt</span>($<span class="var">prime2</span>.<span class="var">value</span>);<br/>
+
+<span class="in1"></span>$<span class="var">err_q_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+
+<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">prime2</span>.<span class="fn">isProbablePrime</span>()<br/>
+
+<span class="in1"></span>);<br/>
+
+<span class="in1"></span>$<span class="var">err_p_equal_q</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+
+<span class="in2"></span><span class="str">'hidden'</span>, ! <span class="var">prime1</span>.<span class="fn">equals</span>(<span class="var">prime2</span>)<br/>
+
+<span class="in1"></span>);<br/>
+
+<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Für die Berechnung werden die Primfaktoren als Strings aus dem
+  DOM-Modell gelesen
+</li><li>
+ Und in große Zahlen konvertiert
+</li><li>
+ Wenn sie vermutlich keine Primzahl oder gleich sind, wird die
+  passende Fehlermeldung angezeigt
+</li><li>
+ Andernfalls werden die Fehlermeldungen ausgeblendet
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Damit der Algorithmus funktioniert,</span><br/>
+
+<span class="in2"></span><span class="str">müssen die beiden Primzahlen</span><br/>
+
+<span class="in2"></span><span class="str">verschieden sein.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Zur Demonstration beginnen wir mit</span><br/>
+
+<span class="in2"></span><span class="str">kleinen Primzahlen. Um die</span><br/>
+
+<span class="in2"></span><span class="str">Faktorisierung schwierig zu gestalten,</span><br/>
+
+<span class="in2"></span><span class="str">müssen die Primzahlen möglichst groß</span><br/>
+
+<span class="in2"></span><span class="str">gewählt werden.  Aktuell werden für</span><br/>
+
+<span class="in2"></span><span class="str">eine sichere Kommunikation Werte von</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit mehreren tausend</span><br/>
+
+<span class="in2"></span><span class="str">Binärstellen verwendet.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Nach den Eingabefeldern gibt es zwei Absätze, welche Einschränkungen
+  beschreiben
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">For the algorithm to work, the two</span><br/>
+
+<span class="in2"></span><span class="str">primes must be different.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">For demonstration we start with</span><br/>
+
+<span class="in2"></span><span class="str">small primes. To make the</span><br/>
+
+<span class="in2"></span><span class="str">factorization difficult, the</span><br/>
+
+<span class="in2"></span><span class="str">primes must be much larger.</span><br/>
+
+<span class="in2"></span><span class="str">Currently, values of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">with</span><br/>
+
+<span class="in2"></span><span class="str">several thousand binary digits</span><br/>
+
+<span class="in2"></span><span class="str">are used for secure communication.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Diese Bescreibung gibt es auch in der englischen Version
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@def(<span class="name">definition of n</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">label</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in4"></span><span class="keyword">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; =<br/>
+
+<span class="in5"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+
+<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+
+<span class="in4"></span>&gt;&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
+
+<span class="in4"></span><span class="str">(</span>&lt;<span class="var">span</span><br/>
+
+<span class="in4"></span><span class="var">id</span>=<span class="str">"public-key-length"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
+
+<span class="in4"></span><span class="str">Bit)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
+
+<span class="end">@end(<span class="name">definition of n</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ <code>n</code> ist das Produkt der beiden Primfaktoren
+</li><li>
+ Die Anzeige ist in der deutschen und englischen Version identisch
+</li><li>
+ Daher wird ein eigenes Fragment definiert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span><span class="expand">@multiple(<span class="name">definition of n</span>)</span><br/>
+
+<span class="end">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Das Fragment wird in der deutschen Version verwendet
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span><span class="expand">@multiple(<span class="name">definition of n</span>)</span>;<br/>
+
+<span class="end">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Und das Fragment wird in der englischen Version verwendet
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">globals</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">public_key</span> =<br/>
+
+<span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key'</span>);<br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">public_key_length</span> =<br/>
+
+<span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key-length'</span>);<br/>
+
+<span class="end">@end(<span class="name">globals</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ In zwei Elementen wird der öffentliche Schlüssel und dessen Länge
+  abgelegt
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> <span class="var">public_key</span> =<br/>
+
+<span class="in2"></span><span class="var">prime1</span>.<span class="fn">multiply</span>(<span class="var">prime2</span>);<br/>
+
+<span class="in1"></span>$<span class="var">public_key</span>.<span class="var">innerText</span> =<br/>
+
+<span class="in2"></span><span class="var">public_key</span>.<span class="fn">toString</span>();<br/>
+
+<span class="in1"></span>$<span class="var">public_key_length</span>.<span class="var">innerText</span> =<br/>
+
+<span class="in2"></span><span class="var">public_key</span>.<span class="fn">bitLength</span>();<br/>
+
+<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
+</li><li>
+ Die Länge des Schlüssels kann die Integer-Bibliothek direkt ermitteln
+</li></ul></div>
+
+
+
+
 
 
 
@@ -989,88 +1292,6 @@
 <span class="in1"></span>}<br/>
 
 <span class="end">@end(<span class="name">css</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Damit der Algorithmus funktioniert,</span><br/>
-
-<span class="in2"></span><span class="str">müssen die beiden Primzahlen</span><br/>
-
-<span class="in2"></span><span class="str">verschieden sein.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Zur Demonstration beginnen wir mit</span><br/>
-
-<span class="in2"></span><span class="str">kleinen Primzahlen. Um die</span><br/>
-
-<span class="in2"></span><span class="str">Faktorisierung schwierig zu gestalten,</span><br/>
-
-<span class="in2"></span><span class="str">müssen die Primzahlen möglichst groß</span><br/>
-
-<span class="in2"></span><span class="str">gewählt werden.  Aktuell werden für</span><br/>
-
-<span class="in2"></span><span class="str">eine sichere Kommunikation Werte von</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit mehreren tausend</span><br/>
-
-<span class="in2"></span><span class="str">Binärstellen verwendet.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; =<br/>
-
-<span class="in5"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span>&gt;&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
-
-<span class="in4"></span><span class="str">(</span>&lt;<span class="var">span</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"public-key-length"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
-
-<span class="in4"></span><span class="str">Bit)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1922,84 +2143,6 @@
 
 <span class="add">@add(<span class="name">container en</span>)</span><br/>
 
-<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">For the algorithm to work, the two</span><br/>
-
-<span class="in2"></span><span class="str">primes must be different.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">For demonstration we start with</span><br/>
-
-<span class="in2"></span><span class="str">small primes. To make the</span><br/>
-
-<span class="in2"></span><span class="str">factorization difficult, the</span><br/>
-
-<span class="in2"></span><span class="str">primes must be much larger.</span><br/>
-
-<span class="in2"></span><span class="str">Currently, values of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">with</span><br/>
-
-<span class="in2"></span><span class="str">several thousand binary digits</span><br/>
-
-<span class="in2"></span><span class="str">are used for secure communication.</span><br/>
-
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="keyword">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; =<br/>
-
-<span class="in5"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; &amp;<span class="var">times</span>; &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in3"></span>&gt;&lt;<span class="var">span</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"public-key"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str">(</span>&lt;<span class="var">span</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"public-key-length"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
-
-<span class="in4"></span><span class="str">Bit)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
-
-</code>
-</div>
-
-
-</div>
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Public key</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
@@ -2753,126 +2896,6 @@
   statt
 </li></ul></div>
 
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> <span class="fn">refresh</span> = () =&gt; {<br/>
-
-<span class="in2"></span><span class="expand">@expand(<span class="name">refresh</span>)</span>;<br/>
-
-<span class="in1"></span>};<br/>
-
-<span class="in1"></span><span class="fn">refresh</span>();<br/>
-
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Wenn sich die Primzahl (und andere Felder ändern), muss der
-  RSA-Algorithmus neu ausgeführt werden
-</li><li>
- Beim Starten wird die Funktion aufgerufen, um alle Felder zu
-  synchronisieren
-</li></ul></div>
-
-
-<div><div>
-<code>
-
-<span class="add">@def(<span class="name">refresh</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> <span class="var">prime1</span> = <span class="fn">bigInt</span>($<span class="var">prime1</span>.<span class="var">value</span>);<br/>
-
-<span class="in1"></span>$<span class="var">err_p_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-
-<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">prime1</span>.<span class="fn">isProbablePrime</span>()<br/>
-
-<span class="in1"></span>);<br/>
-
-<span class="in1"></span><span class="type">const</span> <span class="var">prime2</span> = <span class="fn">bigInt</span>($<span class="var">prime2</span>.<span class="var">value</span>);<br/>
-
-<span class="in1"></span>$<span class="var">err_q_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-
-<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">prime2</span>.<span class="fn">isProbablePrime</span>()<br/>
-
-<span class="in1"></span>);<br/>
-
-<span class="in1"></span>$<span class="var">err_p_equal_q</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-
-<span class="in2"></span><span class="str">'hidden'</span>, ! <span class="var">prime1</span>.<span class="fn">equals</span>(<span class="var">prime2</span>)<br/>
-
-<span class="in1"></span>);<br/>
-
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Die beiden Primzahlen werden aus dem DOM-Modell gelesen
-</li><li>
- Und in große Zahlen konvertiert
-</li><li>
- Wenn sie vermutlich keine Primzahl oder gleich sind, wird die
-  passende Fehlermeldung angezeigt
-</li><li>
- Und andernfalls ausgeblendet
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">globals</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">public_key</span> =<br/>
-
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key'</span>);<br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">public_key_length</span> =<br/>
-
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key-length'</span>);<br/>
-
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- In zwei Elementen wird der öffentliche Schlüssel und dessen Länge
-  abgelegt
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> <span class="var">public_key</span> =<br/>
-
-<span class="in2"></span><span class="var">prime1</span>.<span class="fn">multiply</span>(<span class="var">prime2</span>);<br/>
-
-<span class="in1"></span>$<span class="var">public_key</span>.<span class="var">innerText</span> =<br/>
-
-<span class="in2"></span><span class="var">public_key</span>.<span class="fn">toString</span>();<br/>
-
-<span class="in1"></span>$<span class="var">public_key_length</span>.<span class="var">innerText</span> =<br/>
-
-<span class="in2"></span><span class="var">public_key</span>.<span class="fn">bitLength</span>();<br/>
-
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
-</li><li>
- Die Länge des Schlüssels kann die Integer-Bibliothek direkt ermitteln
-</li></ul></div>
 
 <div><div>
 <code>
@@ -3771,7 +3794,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">queue refresh</span>)</span><br/>
+<span class="add">@replace(<span class="name">queue refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="fn">fn</span> = <span class="fn">refresh</span>;<br/>
 

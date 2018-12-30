@@ -166,8 +166,8 @@ x{css}
 * Für Absätze wird ein der Abstand auf `0` gesetzt
 * Nur der untere Abstand wird auf `10` Pixel gesetzt
 
-# Primzahlen eingeben
-* Dieser Abschnitt beschreibt, wie die Primzahlen geändert werden
+# Primfaktoren eingeben
+* Dieser Abschnitt beschreibt, wie die Primfaktoren geändert werden
   können
 
 ```
@@ -293,7 +293,29 @@ x{setup rsa}
 * Dazu wird die Funktion `f{queueRefresh}` verwendet
 * Diese sorgt dafür, dass die Neuberechnung nicht zu häufig
   aufgerufen wird
-* Sie wird später beschrieben
+
+```
+a{setup rsa}
+	const f{refresh} = () => {
+		e{refresh};
+	};
+	refresh();
+x{setup rsa}
+```
+* Wenn sich die Primzahl (und andere Felder ändern), muss der
+  RSA-Algorithmus neu ausgeführt werden
+* Beim Starten wird die Funktion aufgerufen, um alle Felder zu
+  synchronisieren
+
+```
+d{queue refresh}
+	refresh();
+x{queue refresh}
+```
+* In einer ersten Implementierung wird einfach nur die Funktion
+  `f{refresh}` aufgerufen
+* Diese Implementierung wird später durche eine aufwändigere Version
+  mit Timern ersetzt
 
 ```
 d{globals}
@@ -399,6 +421,133 @@ x{setup rsa}
 ```
 * Bei einer Änderung wird ebenfalls eine Neuberechnung angestoßen
 
+```
+d{refresh}
+	const prime1 = bigInt($prime1.value);
+	$err_p_not_prime.classList.toggle(
+		'hidden', prime1.isProbablePrime()
+	);
+	const prime2 = bigInt($prime2.value);
+	$err_q_not_prime.classList.toggle(
+		'hidden', prime2.isProbablePrime()
+	);
+	$err_p_equal_q.classList.toggle(
+		'hidden', ! prime1.equals(prime2)
+	);
+x{refresh}
+```
+* Für die Berechnung werden die Primfaktoren als Strings aus dem
+  DOM-Modell gelesen
+* Und in große Zahlen konvertiert
+* Wenn sie vermutlich keine Primzahl oder gleich sind, wird die
+  passende Fehlermeldung angezeigt
+* Andernfalls werden die Fehlermeldungen ausgeblendet
+
+```
+a{container de}
+	<p>
+		s{Damit der Algorithmus funktioniert,}
+		s{müssen die beiden Primzahlen}
+		s{verschieden sein.}
+	</p><p>
+		s{Zur Demonstration beginnen wir mit}
+		s{kleinen Primzahlen. Um die}
+		s{Faktorisierung schwierig zu gestalten,}
+		s{müssen die Primzahlen möglichst groß}
+		s{gewählt werden.  Aktuell werden für}
+		s{eine sichere Kommunikation Werte von}
+		<i>n</i> s{mit mehreren tausend}
+		s{Binärstellen verwendet.}
+	</p>
+x{container de}
+```
+* Nach den Eingabefeldern gibt es zwei Absätze, welche Einschränkungen
+  beschreiben
+
+```
+a{container en}
+	<p>
+		s{For the algorithm to work, the two}
+		s{primes must be different.}
+	</p><p>
+		s{For demonstration we start with}
+		s{small primes. To make the}
+		s{factorization difficult, the}
+		s{primes must be much larger.}
+		s{Currently, values of} <i>n</i> s{with}
+		s{several thousand binary digits}
+		s{are used for secure communication.}
+	</p>
+x{container en}
+```
+* Diese Bescreibung gibt es auch in der englischen Version
+
+```
+d{definition of n}
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label
+				class="col-sm-3 control-label"
+				for="public-key"><i>n</i> =
+					<i>p</i> &times; <i>q</i>
+			</label>
+			<div class="col-sm-9"><p
+				class="form-control-static"
+				><span id="public-key"></span>
+				s{(}<span
+				id="public-key-length"></span>
+				s{Bit)}</p></div>
+		</div>
+	</form>
+x{definition of n}
+```
+* `n` ist das Produkt der beiden Primfaktoren
+* Die Anzeige ist in der deutschen und englischen Version identisch
+* Daher wird ein eigenes Fragment definiert
+
+```
+a{container de}
+	E{definition of n}
+x{container de}
+```
+* Das Fragment wird in der deutschen Version verwendet
+
+```
+a{container en}
+	E{definition of n};
+x{container en}
+```
+* Und das Fragment wird in der englischen Version verwendet
+
+```
+a{globals}
+	const $public_key =
+		f{$}('public-key');
+	const $public_key_length =
+		f{$}('public-key-length');
+x{globals}
+```
+* In zwei Elementen wird der öffentliche Schlüssel und dessen Länge
+  abgelegt
+
+```
+a{refresh}
+	const public_key =
+		prime1.multiply(prime2);
+	$public_key.innerText =
+		public_key.toString();
+	$public_key_length.innerText =
+		public_key.bitLength();
+x{refresh}
+```
+* Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
+* Die Länge des Schlüssels kann die Integer-Bibliothek direkt ermitteln
+
+# Öffentlicher Schlüssel
+* Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+
+# WORKING HERE
+
 
 
 
@@ -459,45 +608,6 @@ a{css}
 		margin-top: 40px;
 	}
 x{css}
-```
-
-```
-a{container de}
-	<p>
-		s{Damit der Algorithmus funktioniert,}
-		s{müssen die beiden Primzahlen}
-		s{verschieden sein.}
-	</p><p>
-		s{Zur Demonstration beginnen wir mit}
-		s{kleinen Primzahlen. Um die}
-		s{Faktorisierung schwierig zu gestalten,}
-		s{müssen die Primzahlen möglichst groß}
-		s{gewählt werden.  Aktuell werden für}
-		s{eine sichere Kommunikation Werte von}
-		<i>n</i> s{mit mehreren tausend}
-		s{Binärstellen verwendet.}
-	</p>
-x{container de}
-```
-
-```
-a{container de}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="public-key"><i>n</i> =
-					<i>p</i> &times; <i>q</i>
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				><span id="public-key"></span>
-				s{(}<span
-				id="public-key-length"></span>
-				s{Bit)}</p></div>
-		</div>
-	</form>
-x{container de}
 ```
 
 ```
@@ -894,43 +1004,6 @@ x{container de}
 
 ```
 a{container en}
-	<p>
-		s{For the algorithm to work, the two}
-		s{primes must be different.}
-	</p><p>
-		s{For demonstration we start with}
-		s{small primes. To make the}
-		s{factorization difficult, the}
-		s{primes must be much larger.}
-		s{Currently, values of} <i>n</i> s{with}
-		s{several thousand binary digits}
-		s{are used for secure communication.}
-	</p>
-x{container en}
-```
-
-```
-a{container en}
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="public-key"><i>n</i> =
-					<i>p</i> &times; <i>q</i>
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-			><span
-				id="public-key"></span>s{(}<span
-				id="public-key-length"></span>
-				s{Bit)}</p></div>
-		</div>
-	</form>
-x{container en}
-```
-
-```
-a{container en}
 	<h2>s{Public key}</h2>
 	<p>
 		s{The product <i>n</i> is also called}
@@ -1282,64 +1355,6 @@ x{container en}
 * Neben den wenigen Aktionen findet die Hauptarbeit während des Refreshs
   statt
 
-```
-a{setup rsa}
-	const f{refresh} = () => {
-		e{refresh};
-	};
-	refresh();
-x{setup rsa}
-```
-* Wenn sich die Primzahl (und andere Felder ändern), muss der
-  RSA-Algorithmus neu ausgeführt werden
-* Beim Starten wird die Funktion aufgerufen, um alle Felder zu
-  synchronisieren
-
-
-```
-d{refresh}
-	const prime1 = bigInt($prime1.value);
-	$err_p_not_prime.classList.toggle(
-		'hidden', prime1.isProbablePrime()
-	);
-	const prime2 = bigInt($prime2.value);
-	$err_q_not_prime.classList.toggle(
-		'hidden', prime2.isProbablePrime()
-	);
-	$err_p_equal_q.classList.toggle(
-		'hidden', ! prime1.equals(prime2)
-	);
-x{refresh}
-```
-* Die beiden Primzahlen werden aus dem DOM-Modell gelesen
-* Und in große Zahlen konvertiert
-* Wenn sie vermutlich keine Primzahl oder gleich sind, wird die
-  passende Fehlermeldung angezeigt
-* Und andernfalls ausgeblendet
-
-```
-a{globals}
-	const $public_key =
-		f{$}('public-key');
-	const $public_key_length =
-		f{$}('public-key-length');
-x{globals}
-```
-* In zwei Elementen wird der öffentliche Schlüssel und dessen Länge
-  abgelegt
-
-```
-a{refresh}
-	const public_key =
-		prime1.multiply(prime2);
-	$public_key.innerText =
-		public_key.toString();
-	$public_key_length.innerText =
-		public_key.bitLength();
-x{refresh}
-```
-* Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
-* Die Länge des Schlüssels kann die Integer-Bibliothek direkt ermitteln
 
 ```
 a{globals}
@@ -1761,7 +1776,7 @@ x{globals}
 ```
 
 ```
-d{queue refresh}
+r{queue refresh}
 	let f{fn} = f{refresh};
 	if (! timer) {
 		refresh();
