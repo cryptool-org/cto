@@ -22,13 +22,13 @@
 <div><div>
 <code>
 
-<span class="add">@globdef(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@globdef(<span class="name">gcd</span>)</span><br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="var">ca</span> = <span class="var">a</span>;<br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="var">cb</span> = <span class="var">b</span>;<br/>
 
-<span class="end">@end(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd</span>)</span><br/>
 
 </code>
 </div>
@@ -48,7 +48,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">gcd</span>)</span><br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="var">u</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
 
@@ -58,7 +58,7 @@
 
 <span class="in1"></span><span class="type">let</span> <span class="var">t</span> = <span class="var">u</span>;<br/>
 
-<span class="end">@end(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd</span>)</span><br/>
 
 </code>
 </div>
@@ -67,23 +67,23 @@
  Der Erweiterte Euklidische Algorithmus enthält vier weitere Parameter
   <code>u</code>, <code>v</code>, <code>s</code> und <code>t</code>
 </li><li>
- Es gilt stets, dass <code>ca = u * a + v * b</code>
+ Es gilt stets, dass <code>ca = u × a + v × b</code>
 </li><li>
- Und <code>cb = s * a + t * b</code>
+ Und <code>cb = s × a + t × b</code>
 </li></ul></div>
 
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">gcd</span>)</span><br/>
 
 <span class="in1"></span><span class="keyword">while</span> (! <span class="var">cb</span>.<span class="fn">isZero</span>()) {<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">gcd loop</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">gcd loop</span>)</span>;<br/>
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd</span>)</span><br/>
 
 </code>
 </div>
@@ -95,7 +95,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@def(<span class="name">gcd loop</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">dd</span> = <span class="var">ca</span>.<span class="fn">divmod</span>(<span class="var">cb</span>);<br/>
 
@@ -103,7 +103,7 @@
 
 <span class="in1"></span><span class="type">const</span> <span class="var">nb</span> = <span class="var">dd</span>.<span class="var">remainder</span>;<br/>
 
-<span class="end">@end(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd loop</span>)</span><br/>
 
 </code>
 </div>
@@ -122,13 +122,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@add(<span class="name">gcd loop</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">nu</span> = <span class="var">s</span>;<br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">nv</span> = <span class="var">t</span>;<br/>
 
-<span class="end">@end(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd loop</span>)</span><br/>
 
 </code>
 </div>
@@ -142,7 +142,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@add(<span class="name">gcd loop</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">ns</span> = <span class="var">u</span>.<span class="fn">subtract</span>(<br/>
 
@@ -156,7 +156,7 @@
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd loop</span>)</span><br/>
 
 </code>
 </div>
@@ -169,13 +169,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@add(<span class="name">gcd loop</span>)</span><br/>
 
 <span class="in1"></span><span class="var">ca</span> = <span class="var">na</span>;<br/>
 
 <span class="in1"></span><span class="var">cb</span> = <span class="var">nb</span>;<br/>
 
-<span class="end">@end(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd loop</span>)</span><br/>
 
 </code>
 </div>
@@ -187,7 +187,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@add(<span class="name">gcd loop</span>)</span><br/>
 
 <span class="in1"></span><span class="var">u</span> = <span class="var">nu</span>;<br/>
 
@@ -197,7 +197,7 @@
 
 <span class="in1"></span><span class="var">t</span> = <span class="var">nt</span>;<br/>
 
-<span class="end">@end(<span class="name">gcd loop</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd loop</span>)</span><br/>
 
 </code>
 </div>
@@ -209,7 +209,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">gcd</span>)</span><br/>
 
 <span class="in1"></span><span class="keyword">return</span> {<br/>
 
@@ -219,7 +219,7 @@
 
 <span class="in1"></span>};<br/>
 
-<span class="end">@end(<span class="name">gcd</span>)</span><br/>
+<span class="macro">@end(<span class="name">gcd</span>)</span><br/>
 
 </code>
 </div>
@@ -242,11 +242,11 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span> {<br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span> {<br/>
 
-<span class="in1"></span><span class="expand">@expand(<span class="name">unit test</span>)</span>;<br/>
+<span class="in1"></span><span class="macro">@expand(<span class="name">unit test</span>)</span>;<br/>
 
-} <span class="end">@end(<span class="name">globals</span>)</span><br/>
+} <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -258,7 +258,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@def(<span class="name">unit test</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">eq</span> = (<span class="var">a</span>, <span class="var">b</span>) =&gt; {<br/>
 
@@ -274,7 +274,7 @@
 
 <span class="in1"></span>};<br/>
 
-<span class="end">@end(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@end(<span class="name">unit test</span>)</span><br/>
 
 </code>
 </div>
@@ -286,7 +286,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@add(<span class="name">unit test</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">g</span> = <span class="fn">gcd</span>(<br/>
 
@@ -296,7 +296,7 @@
 
 <span class="in1"></span><span class="fn">eq</span>(<span class="var">g</span>.<span class="var">a</span>, <span class="fn">bigInt</span>(<span class="num">2</span>));<br/>
 
-<span class="end">@end(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@end(<span class="name">unit test</span>)</span><br/>
 
 </code>
 </div>
@@ -308,13 +308,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@add(<span class="name">unit test</span>)</span><br/>
 
 <span class="in1"></span><span class="fn">eq</span>(<span class="var">g</span>.<span class="var">u</span>, <span class="fn">bigInt</span>(<span class="num">1</span>));<br/>
 
 <span class="in1"></span><span class="fn">eq</span>(<span class="var">g</span>.<span class="var">v</span>, <span class="fn">bigInt</span>(-<span class="num">17</span>));<br/>
 
-<span class="end">@end(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@end(<span class="name">unit test</span>)</span><br/>
 
 </code>
 </div>
@@ -327,13 +327,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@add(<span class="name">unit test</span>)</span><br/>
 
 <span class="in1"></span><span class="fn">eq</span>(<span class="var">g</span>.<span class="var">s</span>, <span class="fn">bigInt</span>(-<span class="num">2</span>));<br/>
 
 <span class="in1"></span><span class="fn">eq</span>(<span class="var">g</span>.<span class="var">t</span>, <span class="fn">bigInt</span>(<span class="num">35</span>));<br/>
 
-<span class="end">@end(<span class="name">unit test</span>)</span><br/>
+<span class="macro">@end(<span class="name">unit test</span>)</span><br/>
 
 </code>
 </div>
@@ -342,7 +342,7 @@
  Die Koeffizienten <code>g.s</code> und <code>g.t</code> liefern nicht-triviale
   Linearkombination von <code>0</code>
 </li><li>
- Also <code>g.s * 70 + g.t * 4 == 0</code> wobei <code>g.s</code> und
+ Also <code>g.s × 70 + g.t × 4 == 0</code> wobei <code>g.s</code> und
   <code>g.t</code> nicht <code>0</code> sind
 </li></ul></div>
 

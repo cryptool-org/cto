@@ -34,7 +34,7 @@
 		<label
 			class="col-sm-3 control-label"
 			for="prime-1">1st prime
-			<i>p</i></label>
+			<i>p</i> =</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="prime-1" value="11"></div>
@@ -47,7 +47,7 @@
 		<label
 			class="col-sm-3 control-label"
 			for="prime-2">2nd prime
-			<i>q</i></label>
+			<i>q</i> =</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="prime-2" value="13"></div>
@@ -66,14 +66,12 @@
 	<p>
 		For the algorithm to work, the two
 		primes must be different.
-	</p><p>
-		For demonstration we start with
-		small primes. To make the
-		factorization difficult, the
-		primes must be much larger.
-		Currently, values of <i>n</i> with
-		several thousand binary digits
-		are used for secure communication.
+	</p>
+
+	<h2>Public key</h2>
+	<p>
+		The product <i>n</i> is also called
+		module in the RSA method.
 	</p>
 
 	
@@ -82,7 +80,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="public-key"><i>n</i> =
-					<i>p</i> × <i>q</i>
+					<i>p</i> × <i>q</i> =
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -94,19 +92,27 @@
 	</form>
 
 
-	<h2>Public key</h2>
 	<p>
-		The product <i>n</i> is also called
-		module in the RSA method. The public
-		key consists of the module <i>n</i>
-		and an exponent <i>e</i>.
+		For demonstration we start with
+		small primes. To make the
+		factorization difficult, the
+		primes must be much larger.
+		Currently, values of <i>n</i> with
+		several thousand binary digits
+		are used for secure communication.
+	</p>
+
+	<p>
+		The public key consists of the
+		module <i>n</i> and
+		an exponent <i>e</i>.
 	</p>
 
 	<form class="form-horizontal">
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
-				for="base"><i>e</i></label>
+				for="base"><i>e</i> =</label>
 			<div class="col-sm-9"><input
 				class="form-control" id="base"
 				value="23"></div>
@@ -137,7 +143,7 @@
 				class="col-sm-3 control-label"
 				for="phi">φ(<i>n</i>) =
 				(<i>p</i> − 1) ×
-				(<i>q</i> − 1)</label>
+				(<i>q</i> − 1) =</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="phi"></p></div>
@@ -162,7 +168,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="gcd">gcd(<i>e</i>,
-				φ(<i>n</i>))</label>
+				φ(<i>n</i>)) =</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="gcd"></p></div>
@@ -187,7 +193,7 @@
 	<p>
 		Expressed in formulas, the
 		following must apply:
-	</p><p>
+	</p><p class="form">
 		<i>e</i> × <i>d</i> = 1
 		(mod φ(<i>n</i>))
 	</p>
@@ -211,6 +217,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="private-key"><i>d</i>
+				=
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -236,7 +243,7 @@
 		Encrypting a message <i>m</i> (number)
 		with the public key (<i>n</i>,
 		<i>e</i>) is calculated:
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;</i> :=
 			<i>m</i><sup><i>e</i></sup>
 			(mod <i>n</i>)
@@ -246,13 +253,13 @@
 		Decrypting with the private key
 		(<i>n</i>, <i>d</i>) is done
 		analogously with
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i> :=
-			<i>m&#39;</i><sup><i>d</i></sup>
+			(<i>m&#39;</i>)<sup><i>d</i></sup>
 			(mod <i>n</i>).
 	</p><p>
 		This is
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i> =
 			<i>m</i><sup><i>e</i> ×
 			<i>d</i></sup> (mod <i>n</i>).
@@ -260,13 +267,13 @@
 
 	<p>
 		RSA now exploits the property that
-	</p><p>
+	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup> =
 			<i>x</i><sup><i>b</i></sup>
 			(mod <i>n</i>)
 	</p><p>
 		if
-	</p><p>
+	</p><p class="form">
 		<i>a</i> =
 			<i>b</i> (mod φ(<i>n</i>))
 	</p>
@@ -274,7 +281,7 @@
 	<p>
 		As <i>e</i> and <i>d</i> were chosen
 		appropriately, it is
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i> = <i>m</i>.
 	</p><p>
 		The order does not matter. You could

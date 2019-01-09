@@ -28,8 +28,8 @@ x{gcd}
 ```
 * Der Erweiterte Euklidische Algorithmus enthält vier weitere Parameter
   `u`, `v`, `s` und `t`
-* Es gilt stets, dass `ca = u * a + v * b`
-* Und `cb = s * a + t * b`
+* Es gilt stets, dass `ca = u × a + v × b`
+* Und `cb = s × a + t × b`
 
 ```
 A{gcd}
@@ -154,6 +154,6 @@ x{unit test}
 ```
 * Die Koeffizienten `g.s` und `g.t` liefern nicht-triviale
   Linearkombination von `0`
-* Also `g.s * 70 + g.t * 4 == 0` wobei `g.s` und
+* Also `g.s × 70 + g.t × 4 == 0` wobei `g.s` und
   `g.t` nicht `0` sind
 

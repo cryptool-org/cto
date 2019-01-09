@@ -255,7 +255,8 @@ x{container en}
 d{primes de}
 	<div class="form-group">
 		<label class="col-sm-3 control-label"
-			v{for}="prime-1">s{1.  Primzahl} <i>p</i>
+			v{for}="prime-1">s{1.  Primzahl }<i>p</i>
+			s{=}
 		</label>
 		<div class="col-sm-9"><input
 			class="form-control" id="prime-1"
@@ -287,7 +288,7 @@ d{primes en}
 		<label
 			class="col-sm-3 control-label"
 			v{for}="prime-1">s{1st prime}
-			<i>p</i></label>
+			<i>p</i>s{ =}</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="prime-1" value="11"></div>
@@ -305,7 +306,7 @@ d{setup rsa}
 	const f{queueRefresh} = event => {
 		event.preventDefault();
 		e{queue refresh};
-	}
+	};
 x{setup rsa}
 ```
 * Wenn sich Textfelder ändern, muss der RSA-Algorithmus neu
@@ -334,8 +335,8 @@ x{queue refresh}
 ```
 * In einer ersten Implementierung wird einfach nur die Funktion
   `f{refresh}` aufgerufen
-* Diese Implementierung wird später durch eine aufwändigere Version
-  mit Timern ersetzt
+* Diese Implementierung wird später durch eine aufwändigere
+  Implementierung mit Timern ersetzt
 
 ```
 D{globals}
@@ -344,7 +345,7 @@ D{globals}
 	};
 x{globals}
 ```
-* Hilfsfunktion, um Element mit `id` zu ermitteln
+* Hilfsfunktion, um ein Element im DOM mit `id` zu ermitteln
 * Ganz leicht wurde sich an jQuery angelehnt
 * Es können jedoch nur Elemente nach ihrer ID aufgelöst werden
 
@@ -368,10 +369,29 @@ x{setup rsa}
 * Wenn sich die Primzahl ändert, wird eine Neuberechnung angestoßen
 
 ```
+d{refresh}
+	const prime1 =
+		bigInt($prime1.value);
+
+	$err_p_not_prime.classList.toggle(
+		'hidden',
+		prime1.isProbablePrime()
+	);
+x{refresh}
+```
+* Der erste Primfaktor wird als Zeichenkette aus dem DOM-Modell gelesen
+* Und in große Zahlen konvertiert
+* Die Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um eine
+  Primzahl handelt
+* Die Entscheidung ist nicht sicher, aber dafür sehr schnell
+* Wirkliche Auswirkungen hat es nicht, da trotzdem weiter gerechnet wird
+
+```
 a{primes de}
 	<div class="form-group">
 		<label class="col-sm-3 control-label"
 			v{for}="prime-2">s{2.  Primzahl} <i>q</i>
+			s{=}
 		</label>
 		<div class="col-sm-9"><input
 			class="form-control" id="prime-2"
@@ -402,7 +422,7 @@ a{primes en}
 		<label
 			class="col-sm-3 control-label"
 			v{for}="prime-2">s{2nd prime}
-			<i>q</i></label>
+			<i>q</i>s{ =}</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="prime-2" value="13"></div>
@@ -446,24 +466,6 @@ x{setup rsa}
 * Bei einer Änderung wird ebenfalls eine Neuberechnung angestoßen
 
 ```
-d{refresh}
-	const prime1 =
-		bigInt($prime1.value);
-
-	$err_p_not_prime.classList.toggle(
-		'hidden',
-		prime1.isProbablePrime()
-	);
-x{refresh}
-```
-* Der erste Primfaktor wird als Zeichenkette aus dem DOM-Modell gelesen
-* Und in große Zahlen konvertiert
-* Die Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um eine
-  Primzahl handelt
-* Die Entscheidung ist nicht sicher, aber dafür sehr schnell
-* Wirkliche Auswirkungen hat es nicht, da trotzdem weiter gerechnet wird
-
-```
 a{refresh}
 	const prime2 =
 		bigInt($prime2.value);
@@ -495,38 +497,45 @@ a{container de}
 		s{Damit der Algorithmus funktioniert,}
 		s{müssen die beiden Primzahlen}
 		s{verschieden sein.}
-	</p><p>
-		s{Zur Demonstration beginnen wir mit}
-		s{kleinen Primzahlen. Um die}
-		s{Faktorisierung schwierig zu gestalten,}
-		s{müssen die Primzahlen möglichst groß}
-		s{gewählt werden.  Aktuell werden für}
-		s{eine sichere Kommunikation Werte von}
-		<i>n</i> s{mit mehreren tausend}
-		s{Binärstellen verwendet.}
 	</p>
 x{container de}
 ```
-* Nach den Eingabefeldern gibt es zwei Absätze, welche Einschränkungen
-  beschreiben
+* Es wird beschrieben, dass die Primzahlen verschieden sein müssen
 
 ```
 a{container en}
 	<p>
 		s{For the algorithm to work, the two}
 		s{primes must be different.}
-	</p><p>
-		s{For demonstration we start with}
-		s{small primes. To make the}
-		s{factorization difficult, the}
-		s{primes must be much larger.}
-		s{Currently, values of} <i>n</i> s{with}
-		s{several thousand binary digits}
-		s{are used for secure communication.}
 	</p>
 x{container en}
 ```
 * Diese Beschreibung gibt es auch in der englischen Version
+
+# Öffentlicher Schlüssel
+* Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+
+```
+a{container de}
+	<h2>s{Öffentlicher Schlüssel}</h2>
+	<p>
+		s{Das Produkt} <i>n</i> s{wird im}
+		s{RSA-Verfahren auch Modul genannt.}
+	</p>
+x{container de}
+```
+* Zuerst kommt eine allgemeine Beschreibung in der deutschen Version
+
+```
+a{container en}
+	<h2>s{Public key}</h2>
+	<p>
+		s{The product <i>n</i> is also called}
+		s{module in the RSA method.}
+	</p>
+x{container en}
+```
+* Und ebenso in der englischen Version
 
 ```
 d{definition of n}
@@ -534,8 +543,8 @@ d{definition of n}
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
-				v{for}="public-key"><i>n</i> =
-					<i>p</i> × <i>q</i>
+				v{for}="public-key"><i>n</i>s{ =}
+					<i>p</i>s{ × }<i>q</i>s{ =}
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -589,35 +598,59 @@ x{refresh}
 * Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
 * Die Länge des Schlüssels kann die Integer-Bibliothek direkt liefern
 
-# Öffentlicher Schlüssel
-* Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+```
+a{container de}
+	<p>
+		s{Zur Demonstration beginnen wir mit}
+		s{kleinen Primzahlen. Um die}
+		s{Faktorisierung schwierig zu gestalten,}
+		s{müssen die Primzahlen möglichst groß}
+		s{gewählt werden.  Aktuell werden für}
+		s{eine sichere Kommunikation Werte von}
+		<i>n</i> s{mit mehreren tausend}
+		s{Binärstellen verwendet.}
+	</p>
+x{container de}
+```
+* Auch wenn mit kleinen Primzahlen begonnen wird, müssen für ernste
+  Anwendungen die Primzahlen groß sein
+
+```
+a{container en}
+	<p>
+		s{For demonstration we start with}
+		s{small primes. To make the}
+		s{factorization difficult, the}
+		s{primes must be much larger.}
+		s{Currently, values of} <i>n</i> s{with}
+		s{several thousand binary digits}
+		s{are used for secure communication.}
+	</p>
+x{container en}
+```
+* Diesen Hinweis gibt es auch in der englischen Version.
 
 ```
 a{container de}
-	<h2>s{Öffentlicher Schlüssel}</h2>
 	<p>
-		s{Das Produkt} <i>n</i> s{wird im}
-		s{RSA-Verfahren auch Modul genannt.}
 		s{Der öffentliche Schlüssel besteht}
 		s{neben dem Modul} <i>n</i> s{noch aus}
 		s{einem Exponenten} <i>e</i>s{.}
 	</p>
 x{container de}
 ```
-* Zuerst kommt eine allgemeine Beschreibung in der deutschen Version
+* Auch der Exponent ist teil des öffentlichen Schlüssels
 
 ```
 a{container en}
-	<h2>s{Public key}</h2>
 	<p>
-		s{The product <i>n</i> is also called}
-		s{module in the RSA method. The public}
-		s{key consists of the module} <i>n</i>
-		s{and an exponent} <i>e</i>.
+		s{The public key consists of the}
+		s{module} <i>n</i> s{and}
+		s{an exponent} <i>e</i>s{.}
 	</p>
 x{container en}
 ```
-* Und ebenso in der englischen Version
+* Das wird auch in der englischen Version beschrieben.
 
 ```
 a{container de}
@@ -625,7 +658,7 @@ a{container de}
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
-				v{for}="base"><i>e</i></label>
+				v{for}="base"><i>e</i>s{ =}</label>
 			<div class="col-sm-9"><input
 				class="form-control" id="base"
 				value="23"></div>
@@ -647,7 +680,7 @@ a{container en}
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
-				v{for}="base"><i>e</i></label>
+				v{for}="base"><i>e</i>s{ =}</label>
 			<div class="col-sm-9"><input
 				class="form-control" id="base"
 				value="23"></div>
@@ -752,7 +785,7 @@ d{phi label}
 				class="col-sm-3 control-label"
 				v{for}="phi">s{φ(}<i>n</i>s{) =}
 				s{(}<i>p</i>s{ − 1) ×}
-				s{(}<i>q</i>s{ − 1)}</label>
+				s{(}<i>q</i>s{ − 1) =}</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="phi"></p></div>
@@ -872,7 +905,7 @@ a{container de}
 			<label
 				class="col-sm-3 control-label"
 				v{for}="gcd">s{ggT(}<i>e</i>s{,}
-				s{φ(}<i>n</i>s{))}</label>
+				s{φ(}<i>n</i>s{)) =}</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="gcd"></p></div>
@@ -890,7 +923,7 @@ a{container en}
 			<label
 				class="col-sm-3 control-label"
 				v{for}="gcd">s{gcd(}<i>e</i>s{,}
-				s{φ(}<i>n</i>s{))}</label>
+				s{φ(}<i>n</i>s{)) =}</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="gcd"></p></div>
@@ -940,7 +973,7 @@ x{container de}
 a{container de}
 	<p>
 		s{In Formeln ausgedrückt, muss gelten:}
-	</p><p>
+	</p><p class="form">
 		<i>e</i>s{ × }<i>d</i>s{ = 1}
 		s{(mod φ(}<i>n</i>s{))}
 	</p><p>
@@ -993,7 +1026,7 @@ a{container en}
 	<p>
 		s{Expressed in formulas, the}
 		s{following must apply:}
-	</p><p>
+	</p><p class="form">
 		<i>e</i>s{ × }<i>d</i>s{ = 1}
 		s{(mod φ(}<i>n</i>s{))}
 	</p>
@@ -1022,12 +1055,22 @@ x{container en}
   hinarbeitet
 
 ```
+a{css}
+	#rsa-container p.form {
+		margin-left: 32px;
+	}
+x{css}
+```
+* Formeln werden etwas eingerückt
+
+```
 d{private key}
 	<form class="form-horizontal">
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
 				v{for}="private-key"><i>d</i>
+				s{=}
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -1130,7 +1173,7 @@ a{container de}
 		s{Um eine Nachricht} <i>m</i> s{mit dem}
 		s{öffentlichen Schlüssel} (<i>n</i>,
 		<i>e</i>) s{zu verschlüsseln, wird}
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;</i>s{ :=}
 			<i>m</i><sup><i>e</i></sup>
 			s{(mod }<i>n</i>s{)}
@@ -1149,9 +1192,9 @@ a{container de}
 		s{Das Entschlüsseln mit dem privaten}
 		s{Schlüssel (}<i>n</i>s{, }<i>d</i>s{)}
 		s{erfolgt analog mit}
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i>s{ :=}
-			<i>m&#39;</i><sup><i>d</i></sup>
+			s{(}<i>m&#39;</i>s{)}<sup><i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
 	</p>
 x{container de}
@@ -1162,7 +1205,7 @@ x{container de}
 a{container de}
 	<p>
 		s{Damit ist}
-	</p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i>s{ =}
 			<i>m</i><sup><i>e</i>s{ ×}
 			<i>d</i></sup>
@@ -1178,13 +1221,13 @@ a{container de}
 	<p>
 		s{RSA nutzt nun die Eigenschaft aus,}
 		s{dass}
-	</p><p>
+	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup>s{ =}
 			<i>x</i><sup><i>b</i></sup>
 			s{(mod }<i>n</i>s{)}
 	</p><p>
 		s{wenn}
-	</p><p>
+	</p><p class="form">
 		<i>a</i>s{ =}
 			<i>b</i>s{ (mod φ(}<i>n</i>s{))}
 	</p>
@@ -1198,7 +1241,7 @@ a{container de}
 	<p>
 		<i>e</i> s{und} <i>d</i> s{wurden passend}
 		s{gewählt damit}
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i>s{ = }<i>m</i>s{.}
 	</p><p>
 		s{Die Reihenfolge spielt keine Rolle.}
@@ -1225,7 +1268,7 @@ a{container en}
 		s{Encrypting a message }<i>m</i>s{ (number)}
 		s{with the public key (}<i>n</i>s{,}
 		<i>e</i>s{) is calculated:}
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;</i>s{ :=}
 			<i>m</i><sup><i>e</i></sup>
 			s{(mod }<i>n</i>s{)}
@@ -1241,13 +1284,13 @@ a{container en}
 		s{Decrypting with the private key}
 		s{(}<i>n</i>s{, }<i>d</i>s{) is done}
 		s{analogously with}
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i>s{ :=}
-			<i>m&#39;</i><sup><i>d</i></sup>
+			s{(}<i>m&#39;</i>s{)}<sup><i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
 	</p><p>
 		s{This is}
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i>s{ =}
 			<i>m</i><sup><i>e</i>s{ ×}
 			<i>d</i></sup>s{ (mod }<i>n</i>s{).}
@@ -1260,13 +1303,13 @@ x{container en}
 a{container en}
 	<p>
 		s{RSA now exploits the property that}
-	</p><p>
+	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup>s{ =}
 			<i>x</i><sup><i>b</i></sup>
 			s{(mod }<i>n</i>s{)}
 	</p><p>
 		s{if}
-	</p><p>
+	</p><p class="form">
 		<i>a</i>s{ =}
 			<i>b</i>s{ (mod φ(}<i>n</i>s{))}
 	</p>
@@ -1280,7 +1323,7 @@ a{container en}
 	<p>
 		s{As }<i>e</i>s{ and }<i>d</i>s{ were chosen}
 		s{appropriately, it is}
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i>s{ = }<i>m</i>s{.}
 	</p><p>
 		s{The order does not matter. You could}

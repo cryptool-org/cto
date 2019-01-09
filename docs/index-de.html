@@ -62,6 +62,7 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label"
 			for="prime-1">1.  Primzahl <i>p</i>
+			=
 		</label>
 		<div class="col-sm-9"><input
 			class="form-control" id="prime-1"
@@ -74,6 +75,7 @@
 	<div class="form-group">
 		<label class="col-sm-3 control-label"
 			for="prime-2">2.  Primzahl <i>q</i>
+			=
 		</label>
 		<div class="col-sm-9"><input
 			class="form-control" id="prime-2"
@@ -94,15 +96,12 @@
 		Damit der Algorithmus funktioniert,
 		müssen die beiden Primzahlen
 		verschieden sein.
-	</p><p>
-		Zur Demonstration beginnen wir mit
-		kleinen Primzahlen. Um die
-		Faktorisierung schwierig zu gestalten,
-		müssen die Primzahlen möglichst groß
-		gewählt werden.  Aktuell werden für
-		eine sichere Kommunikation Werte von
-		<i>n</i> mit mehreren tausend
-		Binärstellen verwendet.
+	</p>
+
+	<h2>Öffentlicher Schlüssel</h2>
+	<p>
+		Das Produkt <i>n</i> wird im
+		RSA-Verfahren auch Modul genannt.
 	</p>
 
 	
@@ -111,7 +110,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="public-key"><i>n</i> =
-					<i>p</i> × <i>q</i>
+					<i>p</i> × <i>q</i> =
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -123,10 +122,18 @@
 	</form>
 
 
-	<h2>Öffentlicher Schlüssel</h2>
 	<p>
-		Das Produkt <i>n</i> wird im
-		RSA-Verfahren auch Modul genannt.
+		Zur Demonstration beginnen wir mit
+		kleinen Primzahlen. Um die
+		Faktorisierung schwierig zu gestalten,
+		müssen die Primzahlen möglichst groß
+		gewählt werden.  Aktuell werden für
+		eine sichere Kommunikation Werte von
+		<i>n</i> mit mehreren tausend
+		Binärstellen verwendet.
+	</p>
+
+	<p>
 		Der öffentliche Schlüssel besteht
 		neben dem Modul <i>n</i> noch aus
 		einem Exponenten <i>e</i>.
@@ -136,7 +143,7 @@
 		<div class="form-group">
 			<label
 				class="col-sm-3 control-label"
-				for="base"><i>e</i></label>
+				for="base"><i>e</i> =</label>
 			<div class="col-sm-9"><input
 				class="form-control" id="base"
 				value="23"></div>
@@ -168,7 +175,7 @@
 				class="col-sm-3 control-label"
 				for="phi">φ(<i>n</i>) =
 				(<i>p</i> − 1) ×
-				(<i>q</i> − 1)</label>
+				(<i>q</i> − 1) =</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="phi"></p></div>
@@ -193,7 +200,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="gcd">ggT(<i>e</i>,
-				φ(<i>n</i>))</label>
+				φ(<i>n</i>)) =</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
 				id="gcd"></p></div>
@@ -217,7 +224,7 @@
 
 	<p>
 		In Formeln ausgedrückt, muss gelten:
-	</p><p>
+	</p><p class="form">
 		<i>e</i> × <i>d</i> = 1
 		(mod φ(<i>n</i>))
 	</p><p>
@@ -242,6 +249,7 @@
 			<label
 				class="col-sm-3 control-label"
 				for="private-key"><i>d</i>
+				=
 			</label>
 			<div class="col-sm-9"><p
 				class="form-control-static"
@@ -270,7 +278,7 @@
 		Um eine Nachricht <i>m</i> mit dem
 		öffentlichen Schlüssel (<i>n</i>,
 		<i>e</i>) zu verschlüsseln, wird
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;</i> :=
 			<i>m</i><sup><i>e</i></sup>
 			(mod <i>n</i>)
@@ -282,15 +290,15 @@
 		Das Entschlüsseln mit dem privaten
 		Schlüssel (<i>n</i>, <i>d</i>)
 		erfolgt analog mit
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i> :=
-			<i>m&#39;</i><sup><i>d</i></sup>
+			(<i>m&#39;</i>)<sup><i>d</i></sup>
 			(mod <i>n</i>).
 	</p>
 
 	<p>
 		Damit ist
-	</p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i> =
 			<i>m</i><sup><i>e</i> ×
 			<i>d</i></sup>
@@ -300,13 +308,13 @@
 	<p>
 		RSA nutzt nun die Eigenschaft aus,
 		dass
-	</p><p>
+	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup> =
 			<i>x</i><sup><i>b</i></sup>
 			(mod <i>n</i>)
 	</p><p>
 		wenn
-	</p><p>
+	</p><p class="form">
 		<i>a</i> =
 			<i>b</i> (mod φ(<i>n</i>))
 	</p>
@@ -314,7 +322,7 @@
 	<p>
 		<i>e</i> und <i>d</i> wurden passend
 		gewählt damit
-	</p><p>
+	</p><p class="form">
 		<i>m&#39;&#39;</i> = <i>m</i>.
 	</p><p>
 		Die Reihenfolge spielt keine Rolle.

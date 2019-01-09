@@ -12,6 +12,10 @@
 		display: none;
 	}
 
+	#rsa-container p.form {
+		margin-left: 32px;
+	}
+
 	#direction svg {
 		display: block;
 		margin: 1em auto 2em auto;

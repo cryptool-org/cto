@@ -36,7 +36,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">file: index-de.html</span>)</span><br/>
+<span class="macro">@def(<span class="name">file: index-de.html</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">doctype</span> <span class="var">html</span>&gt;<br/>
 
@@ -44,21 +44,21 @@
 
 <span class="in2"></span>&lt;<span class="var">head</span>&gt;<br/>
 
-<span class="in3"></span><span class="expand">@multiple(<span class="name">header</span>)</span><br/>
+<span class="in3"></span><span class="macro">@multiple(<span class="name">header</span>)</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">head</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">body</span>&gt;<br/>
 
-<span class="in3"></span><span class="expand">@multiple(<span class="name">rsa de</span>)</span><br/>
+<span class="in3"></span><span class="macro">@multiple(<span class="name">rsa de</span>)</span><br/>
 
-<span class="in3"></span><span class="expand">@multiple(<span class="name">scripts</span>)</span><br/>
+<span class="in3"></span><span class="macro">@multiple(<span class="name">scripts</span>)</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">body</span>&gt;<br/>
 
 <span class="in1"></span>&lt;/<span class="var">html</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">file: index-de.html</span>)</span><br/>
+<span class="macro">@end(<span class="name">file: index-de.html</span>)</span><br/>
 
 </code>
 </div>
@@ -77,7 +77,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">file: index-en.html</span>)</span><br/>
+<span class="macro">@def(<span class="name">file: index-en.html</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">doctype</span> <span class="var">html</span>&gt;<br/>
 
@@ -85,21 +85,21 @@
 
 <span class="in2"></span>&lt;<span class="var">head</span>&gt;<br/>
 
-<span class="in3"></span><span class="expand">@multiple(<span class="name">header</span>)</span><br/>
+<span class="in3"></span><span class="macro">@multiple(<span class="name">header</span>)</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">head</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">body</span>&gt;<br/>
 
-<span class="in3"></span><span class="expand">@multiple(<span class="name">rsa en</span>)</span><br/>
+<span class="in3"></span><span class="macro">@multiple(<span class="name">rsa en</span>)</span><br/>
 
-<span class="in3"></span><span class="expand">@multiple(<span class="name">scripts</span>)</span><br/>
+<span class="in3"></span><span class="macro">@multiple(<span class="name">scripts</span>)</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">body</span>&gt;<br/>
 
 <span class="in1"></span>&lt;/<span class="var">html</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">file: index-en.html</span>)</span><br/>
+<span class="macro">@end(<span class="name">file: index-en.html</span>)</span><br/>
 
 </code>
 </div>
@@ -112,11 +112,11 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">file: ../_ctoApps/rsa/rsa-de.html</span>)</span><br/>
+<span class="macro">@def(<span class="name">file: ../_ctoApps/rsa/rsa-de.html</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">rsa de</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">rsa de</span>)</span><br/>
 
-<span class="end">@end(<span class="name">file: ../_ctoApps/rsa/rsa-de.html</span>)</span><br/>
+<span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa-de.html</span>)</span><br/>
 
 </code>
 </div>
@@ -130,11 +130,11 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">file: ../_ctoApps/rsa/rsa-en.html</span>)</span><br/>
+<span class="macro">@def(<span class="name">file: ../_ctoApps/rsa/rsa-en.html</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">rsa en</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">rsa en</span>)</span><br/>
 
-<span class="end">@end(<span class="name">file: ../_ctoApps/rsa/rsa-en.html</span>)</span><br/>
+<span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa-en.html</span>)</span><br/>
 
 </code>
 </div>
@@ -146,13 +146,13 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">header</span>)</span><br/>
+<span class="macro">@def(<span class="name">header</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">title</span>&gt;<span class="var">RSA</span>-<span class="var">js</span>&lt;/<span class="var">title</span>&gt;<br/>
 
 <span class="in1"></span>&lt;<span class="var">meta</span> <span class="var">charset</span>=<span class="str">"utf-8"</span>&gt;<br/>
 
-<span class="in1"></span><span class="expand">@expand(<span class="name">bootstrap stylesheets</span>)</span><br/>
+<span class="in1"></span><span class="macro">@expand(<span class="name">bootstrap stylesheets</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">link</span> <span class="var">rel</span>=<span class="str">"stylesheet"</span><br/>
 
@@ -160,7 +160,7 @@
 
 <span class="in1"></span>&gt;<br/>
 
-<span class="end">@end(<span class="name">header</span>)</span><br/>
+<span class="macro">@end(<span class="name">header</span>)</span><br/>
 
 </code>
 </div>
@@ -176,11 +176,11 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">file: ../_ctoApps/rsa/rsa.css</span>)</span><br/>
+<span class="macro">@def(<span class="name">file: ../_ctoApps/rsa/rsa.css</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@expand(<span class="name">css</span>)</span><br/>
+<span class="in1"></span><span class="macro">@expand(<span class="name">css</span>)</span><br/>
 
-<span class="end">@end(<span class="name">file: ../_ctoApps/rsa/rsa.css</span>)</span><br/>
+<span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa.css</span>)</span><br/>
 
 </code>
 </div>
@@ -193,7 +193,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">scripts</span>)</span><br/>
+<span class="macro">@def(<span class="name">scripts</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">script</span><br/>
 
@@ -205,7 +205,7 @@
 
 <span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/rsa.js"</span>&gt;&lt;/<span class="var">script</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">scripts</span>)</span><br/>
+<span class="macro">@end(<span class="name">scripts</span>)</span><br/>
 
 </code>
 </div>
@@ -218,7 +218,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">file: ../_ctoApps/rsa/rsa.js</span>)</span><br/>
+<span class="macro">@def(<span class="name">file: ../_ctoApps/rsa/rsa.js</span>)</span><br/>
 
 <span class="in1"></span><span class="str">"use strict"</span>;<br/>
 
@@ -228,15 +228,15 @@
 
 <span class="in2"></span>() =&gt; {<br/>
 
-<span class="in3"></span><span class="expand">@globexpand(<span class="name">globals</span>)</span>;<br/>
+<span class="in3"></span><span class="macro">@globexpand(<span class="name">globals</span>)</span>;<br/>
 
-<span class="in3"></span><span class="expand">@expand(<span class="name">setup rsa</span>)</span>;<br/>
+<span class="in3"></span><span class="macro">@expand(<span class="name">setup rsa</span>)</span>;<br/>
 
 <span class="in2"></span>}<br/>
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">file: ../_ctoApps/rsa/rsa.js</span>)</span><br/>
+<span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa.js</span>)</span><br/>
 
 </code>
 </div>
@@ -254,17 +254,17 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">rsa de</span>)</span><br/>
+<span class="macro">@def(<span class="name">rsa de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"rsa-container"</span><br/>
 
 <span class="in2"></span><span class="var">class</span>=<span class="str">"container"</span>&gt;<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">container de</span>)</span><br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">rsa de</span>)</span><br/>
+<span class="macro">@end(<span class="name">rsa de</span>)</span><br/>
 
 </code>
 </div>
@@ -279,17 +279,17 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">rsa en</span>)</span><br/>
+<span class="macro">@def(<span class="name">rsa en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"rsa-container"</span><br/>
 
 <span class="in2"></span><span class="var">class</span>=<span class="str">"container"</span>&gt;<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">container en</span>)</span><br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">rsa en</span>)</span><br/>
+<span class="macro">@end(<span class="name">rsa en</span>)</span><br/>
 
 </code>
 </div>
@@ -301,7 +301,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">container de</span>)</span><br/>
+<span class="macro">@def(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -323,7 +323,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -335,7 +335,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">container en</span>)</span><br/>
+<span class="macro">@def(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -353,7 +353,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -365,7 +365,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">css</span>)</span><br/>
+<span class="macro">@def(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>#<span class="var">rsa</span>-<span class="var">container</span> <span class="var">p</span> {<br/>
 
@@ -373,7 +373,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -399,7 +399,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Primfaktoren</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -431,7 +431,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -446,7 +446,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="type">Prime</span> <span class="var">factors</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -478,7 +478,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -490,7 +490,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>#<span class="var">rsa</span>-<span class="var">container</span> <span class="var">h2</span> {<br/>
 
@@ -498,7 +498,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -510,15 +510,15 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">primes de</span>)</span><br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">primes de</span>)</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -530,15 +530,15 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">primes en</span>)</span><br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">primes en</span>)</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -550,13 +550,15 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">primes de</span>)</span><br/>
+<span class="macro">@def(<span class="name">primes de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">label</span> <span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 
-<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-1"</span>&gt;<span class="str">1.  Primzahl</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-1"</span>&gt;<span class="str">1.  Primzahl </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in3"></span><span class="str">=</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">label</span>&gt;<br/>
 
@@ -574,7 +576,7 @@
 
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">primes de</span>)</span><br/>
+<span class="macro">@end(<span class="name">primes de</span>)</span><br/>
 
 </code>
 </div>
@@ -593,7 +595,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>.<span class="var">hidden</span> {<br/>
 
@@ -601,7 +603,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -613,7 +615,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">primes en</span>)</span><br/>
+<span class="macro">@def(<span class="name">primes en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
@@ -623,7 +625,7 @@
 
 <span class="in3"></span><span class="var">for</span>=<span class="str">"prime-1"</span>&gt;<span class="str">1st prime</span><br/>
 
-<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 
@@ -639,7 +641,7 @@
 
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">primes en</span>)</span><br/>
+<span class="macro">@end(<span class="name">primes en</span>)</span><br/>
 
 </code>
 </div>
@@ -653,17 +655,17 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@def(<span class="name">setup rsa</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">queueRefresh</span> = <span class="var">event</span> =&gt; {<br/>
 
 <span class="in2"></span><span class="var">event</span>.<span class="fn">preventDefault</span>();<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">queue refresh</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">queue refresh</span>)</span>;<br/>
 
-<span class="in1"></span>}<br/>
+<span class="in1"></span>};<br/>
 
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 
 </code>
 </div>
@@ -681,17 +683,17 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">refresh</span> = () =&gt; {<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">refresh</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">refresh</span>)</span>;<br/>
 
 <span class="in1"></span>};<br/>
 
 <span class="in1"></span><span class="fn">refresh</span>();<br/>
 
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 
 </code>
 </div>
@@ -707,11 +709,11 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">queue refresh</span>)</span><br/>
+<span class="macro">@def(<span class="name">queue refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="fn">refresh</span>();<br/>
 
-<span class="end">@end(<span class="name">queue refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">queue refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -720,14 +722,14 @@
  In einer ersten Implementierung wird einfach nur die Funktion
   <code>f{refresh}</code> aufgerufen
 </li><li>
- Diese Implementierung wird später durch eine aufwändigere Version
-  mit Timern ersetzt
+ Diese Implementierung wird später durch eine aufwändigere
+  Implementierung mit Timern ersetzt
 </li></ul></div>
 
 <div><div>
 <code>
 
-<span class="add">@globdef(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globdef(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">$</span> = <span class="var">id</span> =&gt; {<br/>
 
@@ -735,13 +737,13 @@
 
 <span class="in1"></span>};<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
 
 <ul><li>
- Hilfsfunktion, um Element mit <code>id</code> zu ermitteln
+ Hilfsfunktion, um ein Element im DOM mit <code>id</code> zu ermitteln
 </li><li>
  Ganz leicht wurde sich an jQuery angelehnt
 </li><li>
@@ -751,7 +753,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">prime1</span> = <span class="fn">$</span>(<span class="str">'prime-1'</span>);<br/>
 
@@ -759,7 +761,7 @@
 
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-p-not-prime'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -772,7 +774,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 
 <span class="in1"></span>$<span class="var">prime1</span>.<span class="fn">addEventListener</span>(<br/>
 
@@ -780,7 +782,7 @@
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 
 </code>
 </div>
@@ -792,174 +794,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">primes de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">label</span> <span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2.  Primzahl</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in2"></span>&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span> <span class="var">id</span>=<span class="str">"prime-2"</span><br/>
-
-<span class="in3"></span><span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">primes de</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Eingabefeld für die zweite Primzahl
-</li><li>
- Auch diese wird mit einer kleinen Primzahl initialisiert
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">primes de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
-
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
-
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
-
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
-
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">sind nicht verschieden!</span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">primes de</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Für die zweite Primzahl gibt es noch eine zusätzliche Fehlermeldung
-</li><li>
- Denn beide Primzahlen dürfen nicht gleich sein
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">primes en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2nd prime</span><br/>
-
-<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
-
-<span class="in3"></span><span class="var">id</span>=<span class="str">"prime-2"</span> <span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">primes en</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- In der englischen Version wird eine andere Beschriftung verwendet
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">primes en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
-
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
-
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
-
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
-
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">are not</span><br/>
-
-<span class="in2"></span><span class="str">different!</span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="end">@end(<span class="name">primes en</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Die Fehlermeldungen sind in der englischen Version lokalisiert
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">prime2</span> = <span class="fn">$</span>(<span class="str">'prime-2'</span>);<br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_q_not_prime</span> =<br/>
-
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'err-q-not-prime'</span>);<br/>
-
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_p_equal_q</span> =<br/>
-
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'err-p-equal-q'</span>);<br/>
-
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Referenzen auf die zweite Primzahl und die Fehlermeldungen werden
-  gespeichert
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
-
-<span class="in1"></span>$<span class="var">prime2</span>.<span class="fn">addEventListener</span>(<br/>
-
-<span class="in2"></span><span class="str">'input'</span>, <span class="fn">queueRefresh</span><br/>
-
-<span class="in1"></span>);<br/>
-
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
-
-</code>
-</div>
-
-<ul><li>
- Bei einer Änderung wird ebenfalls eine Neuberechnung angestoßen
-</li></ul></div>
-
-<div><div>
-<code>
-
-<span class="add">@def(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@def(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">prime1</span> =<br/>
 
@@ -975,7 +810,7 @@
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -996,7 +831,176 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">primes de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">label</span> <span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2.  Primzahl</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in3"></span><span class="str">=</span><br/>
+
+<span class="in2"></span>&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+
+<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span> <span class="var">id</span>=<span class="str">"prime-2"</span><br/>
+
+<span class="in3"></span><span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">primes de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Eingabefeld für die zweite Primzahl
+</li><li>
+ Auch diese wird mit einer kleinen Primzahl initialisiert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">primes de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
+
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
+
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">sind nicht verschieden!</span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">primes de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Für die zweite Primzahl gibt es noch eine zusätzliche Fehlermeldung
+</li><li>
+ Denn beide Primzahlen dürfen nicht gleich sein
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">primes en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">label</span><br/>
+
+<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2nd prime</span><br/>
+
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span>&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+
+<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+
+<span class="in3"></span><span class="var">id</span>=<span class="str">"prime-2"</span> <span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">primes en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ In der englischen Version wird eine andere Beschriftung verwendet
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">primes en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
+
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
+
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">are not</span><br/>
+
+<span class="in2"></span><span class="str">different!</span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">primes en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die Fehlermeldungen sind in der englischen Version lokalisiert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">prime2</span> = <span class="fn">$</span>(<span class="str">'prime-2'</span>);<br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">err_q_not_prime</span> =<br/>
+
+<span class="in2"></span><span class="fn">$</span>(<span class="str">'err-q-not-prime'</span>);<br/>
+
+<span class="in1"></span><span class="type">const</span> $<span class="var">err_p_equal_q</span> =<br/>
+
+<span class="in2"></span><span class="fn">$</span>(<span class="str">'err-p-equal-q'</span>);<br/>
+
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Referenzen auf die zweite Primzahl und die Fehlermeldungen werden
+  gespeichert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
+
+<span class="in1"></span>$<span class="var">prime2</span>.<span class="fn">addEventListener</span>(<br/>
+
+<span class="in2"></span><span class="str">'input'</span>, <span class="fn">queueRefresh</span><br/>
+
+<span class="in1"></span>);<br/>
+
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Bei einer Änderung wird ebenfalls eine Neuberechnung angestoßen
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">prime2</span> =<br/>
 
@@ -1012,7 +1016,7 @@
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -1027,7 +1031,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span>$<span class="var">err_p_equal_q</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
 
@@ -1037,7 +1041,7 @@
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -1050,7 +1054,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -1060,40 +1064,21 @@
 
 <span class="in2"></span><span class="str">verschieden sein.</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">Zur Demonstration beginnen wir mit</span><br/>
-
-<span class="in2"></span><span class="str">kleinen Primzahlen. Um die</span><br/>
-
-<span class="in2"></span><span class="str">Faktorisierung schwierig zu gestalten,</span><br/>
-
-<span class="in2"></span><span class="str">müssen die Primzahlen möglichst groß</span><br/>
-
-<span class="in2"></span><span class="str">gewählt werden.  Aktuell werden für</span><br/>
-
-<span class="in2"></span><span class="str">eine sichere Kommunikation Werte von</span><br/>
-
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit mehreren tausend</span><br/>
-
-<span class="in2"></span><span class="str">Binärstellen verwendet.</span><br/>
-
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
 
 <ul><li>
- Nach den Eingabefeldern gibt es zwei Absätze, welche Einschränkungen
-  beschreiben
+ Es wird beschrieben, dass die Primzahlen verschieden sein müssen
 </li></ul></div>
 
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -1101,25 +1086,9 @@
 
 <span class="in2"></span><span class="str">primes must be different.</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">For demonstration we start with</span><br/>
-
-<span class="in2"></span><span class="str">small primes. To make the</span><br/>
-
-<span class="in2"></span><span class="str">factorization difficult, the</span><br/>
-
-<span class="in2"></span><span class="str">primes must be much larger.</span><br/>
-
-<span class="in2"></span><span class="str">Currently, values of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">with</span><br/>
-
-<span class="in2"></span><span class="str">several thousand binary digits</span><br/>
-
-<span class="in2"></span><span class="str">are used for secure communication.</span><br/>
-
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1128,10 +1097,69 @@
  Diese Beschreibung gibt es auch in der englischen Version
 </li></ul></div>
 
+</div>
+<h1>Öffentlicher Schlüssel</h1>
+<div class="slides">
+<div><div>
+<h1>Öffentlicher Schlüssel</h1>
+</div>
+
+<ul><li>
+ Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+</li></ul></div>
+
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">definition of n</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Öffentlicher Schlüssel</span>&lt;/<span class="var">h2</span>&gt;<br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Das Produkt</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">wird im</span><br/>
+
+<span class="in2"></span><span class="str">RSA-Verfahren auch Modul genannt.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Zuerst kommt eine allgemeine Beschreibung in der deutschen Version
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Public key</span>&lt;/<span class="var">h2</span>&gt;<br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">The product &lt;i&gt;n&lt;/i&gt; is also called</span><br/>
+
+<span class="in2"></span><span class="str">module in the RSA method.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Und ebenso in der englischen Version
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@def(<span class="name">definition of n</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
@@ -1141,9 +1169,9 @@
 
 <span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 
-<span class="in4"></span><span class="var">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; =<br/>
+<span class="in4"></span><span class="var">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
-<span class="in5"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; × &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
+<span class="in5"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
 <span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
 
@@ -1163,7 +1191,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">definition of n</span>)</span><br/>
+<span class="macro">@end(<span class="name">definition of n</span>)</span><br/>
 
 </code>
 </div>
@@ -1179,11 +1207,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">definition of n</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">definition of n</span>)</span><br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1195,11 +1223,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">definition of n</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">definition of n</span>)</span><br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1211,7 +1239,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">public_key</span> =<br/>
 
@@ -1221,7 +1249,7 @@
 
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key-length'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -1234,7 +1262,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">public_key</span> =<br/>
 
@@ -1248,7 +1276,7 @@
 
 <span class="in2"></span><span class="var">public_key</span>.<span class="fn">bitLength</span>();<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -1259,29 +1287,79 @@
  Die Länge des Schlüssels kann die Integer-Bibliothek direkt liefern
 </li></ul></div>
 
-</div>
-<h1>Öffentlicher Schlüssel</h1>
-<div class="slides">
 <div><div>
-<h1>Öffentlicher Schlüssel</h1>
+<code>
+
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Zur Demonstration beginnen wir mit</span><br/>
+
+<span class="in2"></span><span class="str">kleinen Primzahlen. Um die</span><br/>
+
+<span class="in2"></span><span class="str">Faktorisierung schwierig zu gestalten,</span><br/>
+
+<span class="in2"></span><span class="str">müssen die Primzahlen möglichst groß</span><br/>
+
+<span class="in2"></span><span class="str">gewählt werden.  Aktuell werden für</span><br/>
+
+<span class="in2"></span><span class="str">eine sichere Kommunikation Werte von</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit mehreren tausend</span><br/>
+
+<span class="in2"></span><span class="str">Binärstellen verwendet.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
 </div>
 
 <ul><li>
- Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+ Auch wenn mit kleinen Primzahlen begonnen wird, müssen für ernste
+  Anwendungen die Primzahlen groß sein
 </li></ul></div>
 
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Öffentlicher Schlüssel</span>&lt;/<span class="var">h2</span>&gt;<br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Das Produkt</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">wird im</span><br/>
+<span class="in2"></span><span class="str">For demonstration we start with</span><br/>
 
-<span class="in2"></span><span class="str">RSA-Verfahren auch Modul genannt.</span><br/>
+<span class="in2"></span><span class="str">small primes. To make the</span><br/>
+
+<span class="in2"></span><span class="str">factorization difficult, the</span><br/>
+
+<span class="in2"></span><span class="str">primes must be much larger.</span><br/>
+
+<span class="in2"></span><span class="str">Currently, values of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">with</span><br/>
+
+<span class="in2"></span><span class="str">several thousand binary digits</span><br/>
+
+<span class="in2"></span><span class="str">are used for secure communication.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Diesen Hinweis gibt es auch in der englischen Version.
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
 <span class="in2"></span><span class="str">Der öffentliche Schlüssel besteht</span><br/>
 
@@ -1291,47 +1369,43 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
 
 <ul><li>
- Zuerst kommt eine allgemeine Beschreibung in der deutschen Version
+ Auch der Exponent ist teil des öffentlichen Schlüssels
 </li></ul></div>
 
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
-
-<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Public key</span>&lt;/<span class="var">h2</span>&gt;<br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">The product &lt;i&gt;n&lt;/i&gt; is also called</span><br/>
+<span class="in2"></span><span class="str">The public key consists of the</span><br/>
 
-<span class="in2"></span><span class="str">module in the RSA method. The public</span><br/>
+<span class="in2"></span><span class="str">module</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span><br/>
 
-<span class="in2"></span><span class="str">key consists of the module</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">and an exponent</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;.<br/>
+<span class="in2"></span><span class="str">an exponent</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
 
 <ul><li>
- Und ebenso in der englischen Version
+ Das wird auch in der englischen Version beschrieben.
 </li></ul></div>
 
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
@@ -1341,7 +1415,7 @@
 
 <span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 
-<span class="in4"></span><span class="var">for</span>=<span class="str">"base"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in4"></span><span class="var">for</span>=<span class="str">"base"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 
@@ -1361,7 +1435,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1376,7 +1450,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
@@ -1386,7 +1460,7 @@
 
 <span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 
-<span class="in4"></span><span class="var">for</span>=<span class="str">"base"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in4"></span><span class="var">for</span>=<span class="str">"base"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 
@@ -1406,7 +1480,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1420,7 +1494,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">e</span> = <span class="fn">$</span>(<span class="str">'base'</span>);<br/>
 
@@ -1428,7 +1502,7 @@
 
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-gcd-not-1'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -1445,7 +1519,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 
 <span class="in1"></span>$<span class="var">e</span>.<span class="fn">addEventListener</span>(<br/>
 
@@ -1453,7 +1527,7 @@
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 
 </code>
 </div>
@@ -1466,11 +1540,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">e</span> = <span class="fn">bigInt</span>($<span class="var">e</span>.<span class="var">value</span>);<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -1482,7 +1556,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -1494,7 +1568,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1507,7 +1581,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -1519,7 +1593,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1544,7 +1618,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Geheimer Schlüssel</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -1560,7 +1634,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1573,7 +1647,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Secret key</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -1587,7 +1661,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1599,7 +1673,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">phi label</span>)</span><br/>
+<span class="macro">@def(<span class="name">phi label</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
@@ -1613,7 +1687,7 @@
 
 <span class="in4"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1) ×</span><br/>
 
-<span class="in4"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1)</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in4"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1) =</span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
 
@@ -1625,7 +1699,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">phi label</span>)</span><br/>
+<span class="macro">@end(<span class="name">phi label</span>)</span><br/>
 
 </code>
 </div>
@@ -1641,11 +1715,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">phi label</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">phi label</span>)</span><br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1657,11 +1731,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">phi label</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">phi label</span>)</span><br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1673,11 +1747,11 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">phi</span> = <span class="fn">$</span>(<span class="str">'phi'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -1689,7 +1763,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">one</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
 
@@ -1699,7 +1773,7 @@
 
 <span class="in1"></span>$<span class="var">phi</span>.<span class="var">innerText</span> = <span class="var">phi</span>.<span class="fn">toString</span>();<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -1713,15 +1787,15 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">gcd</span> = (<span class="var">a</span>, <span class="var">b</span>) =&gt; {<br/>
 
-<span class="in2"></span><span class="expand">@globexpand(<span class="name">gcd</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@globexpand(<span class="name">gcd</span>)</span>;<br/>
 
 <span class="in1"></span>};<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -1737,7 +1811,7 @@
 <div><div>
 <code>
 
-<span class="include">@include(<span class="name"><a href="gcd.html">gcd.x</a>)</span></span><br/>
+<span class="macro">@include(<span class="name"><a href="gcd.html">gcd.x</a>)</span></span><br/>
 
 </code>
 </div>
@@ -1751,7 +1825,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">gcd_result</span> = <span class="fn">gcd</span>(<span class="var">phi</span>, <span class="var">e</span>);<br/>
 
@@ -1761,7 +1835,7 @@
 
 <span class="in1"></span>);<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -1779,7 +1853,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -1803,7 +1877,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1816,7 +1890,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -1840,7 +1914,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1852,7 +1926,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
@@ -1864,7 +1938,7 @@
 
 <span class="in4"></span><span class="var">for</span>=<span class="str">"gcd"</span>&gt;<span class="str">ggT(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
 
-<span class="in4"></span><span class="str">φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in4"></span><span class="str">φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)) =</span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
 
@@ -1876,7 +1950,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -1889,7 +1963,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
@@ -1901,7 +1975,7 @@
 
 <span class="in4"></span><span class="var">for</span>=<span class="str">"gcd"</span>&gt;<span class="str">gcd(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
 
-<span class="in4"></span><span class="str">φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in4"></span><span class="str">φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)) =</span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
 
@@ -1913,7 +1987,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -1925,11 +1999,11 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">gcd</span> = <span class="fn">$</span>(<span class="str">'gcd'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -1941,13 +2015,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span>$<span class="var">gcd</span>.<span class="var">innerText</span> =<br/>
 
 <span class="in2"></span><span class="var">gcd_result</span>.<span class="var">a</span>.<span class="fn">toString</span>();<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -1959,7 +2033,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -1989,7 +2063,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2002,13 +2076,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
 <span class="in2"></span><span class="str">In Formeln ausgedrückt, muss gelten:</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = 1</span><br/>
 
@@ -2032,7 +2106,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2044,7 +2118,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2056,7 +2130,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2068,7 +2142,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2098,7 +2172,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2111,7 +2185,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2119,7 +2193,7 @@
 
 <span class="in2"></span><span class="str">following must apply:</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = 1</span><br/>
 
@@ -2127,7 +2201,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2139,7 +2213,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2165,7 +2239,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2180,7 +2254,27 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">private key</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
+
+<span class="in1"></span>#<span class="var">rsa</span>-<span class="var">container</span> <span class="var">p</span>.<span class="var">form</span> {<br/>
+
+<span class="in2"></span><span class="var">margin</span>-<span class="var">left</span>: <span class="num">32px</span>;<br/>
+
+<span class="in1"></span>}<br/>
+
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Formeln werden etwas eingerückt
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@def(<span class="name">private key</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
@@ -2191,6 +2285,8 @@
 <span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 
 <span class="in4"></span><span class="var">for</span>=<span class="str">"private-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<br/>
+
+<span class="in4"></span><span class="str">=</span><br/>
 
 <span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
 
@@ -2204,7 +2300,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">private key</span>)</span><br/>
+<span class="macro">@end(<span class="name">private key</span>)</span><br/>
 
 </code>
 </div>
@@ -2217,11 +2313,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">private key</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">private key</span>)</span><br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2234,11 +2330,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">private key</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">private key</span>)</span><br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2250,13 +2346,13 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">private_key</span> =<br/>
 
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'private-key'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -2268,7 +2364,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="var">private_key</span> = <span class="var">gcd_result</span>.<span class="var">v</span>;<br/>
 
@@ -2286,7 +2382,7 @@
 
 <span class="in2"></span><span class="var">private_key</span>.<span class="fn">toString</span>();<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -2301,7 +2397,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2317,7 +2413,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2330,7 +2426,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2346,7 +2442,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2372,7 +2468,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Ver- und Entschlüsseln</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -2388,7 +2484,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2401,7 +2497,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2411,7 +2507,7 @@
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;) <span class="str">zu verschlüsseln, wird</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 
@@ -2425,7 +2521,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2440,7 +2536,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2450,17 +2546,17 @@
 
 <span class="in2"></span><span class="str">erfolgt analog mit</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 
-<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
+<span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str">)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2472,13 +2568,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
 <span class="in2"></span><span class="str">Damit ist</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
@@ -2490,7 +2586,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2503,7 +2599,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2511,7 +2607,7 @@
 
 <span class="in2"></span><span class="str">dass</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> =</span><br/>
 
@@ -2523,7 +2619,7 @@
 
 <span class="in2"></span><span class="str">wenn</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
@@ -2531,7 +2627,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2544,7 +2640,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2552,7 +2648,7 @@
 
 <span class="in2"></span><span class="str">gewählt damit</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> = </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
 
@@ -2574,7 +2670,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2588,7 +2684,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Encryption and decryption</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -2608,7 +2704,7 @@
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">) is calculated:</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 
@@ -2618,7 +2714,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2631,7 +2727,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2641,11 +2737,11 @@
 
 <span class="in2"></span><span class="str">analogously with</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 
-<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
+<span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str">)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
 
@@ -2653,7 +2749,7 @@
 
 <span class="in2"></span><span class="str">This is</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
@@ -2663,7 +2759,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2675,13 +2771,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
 <span class="in2"></span><span class="str">RSA now exploits the property that</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> =</span><br/>
 
@@ -2693,7 +2789,7 @@
 
 <span class="in2"></span><span class="str">if</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
@@ -2701,7 +2797,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2714,7 +2810,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2722,7 +2818,7 @@
 
 <span class="in2"></span><span class="str">appropriately, it is</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&amp;#<span class="num">39</span>;&amp;#<span class="num">39</span>;&lt;/<span class="var">i</span>&gt;<span class="str"> = </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
 
@@ -2740,7 +2836,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2764,7 +2860,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Nachrichten</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -2782,11 +2878,11 @@
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">crypt boxes de</span>)</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -2798,7 +2894,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Messages</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -2816,11 +2912,11 @@
 
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">crypt boxes en</span>)</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -2832,7 +2928,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@def(<span class="name">crypt boxes de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
@@ -2852,7 +2948,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 
 </code>
 </div>
@@ -2864,7 +2960,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
 
@@ -2880,7 +2976,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 
 </code>
 </div>
@@ -2893,11 +2989,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">crypt arrow</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">crypt arrow</span>)</span><br/>
 
-<span class="end">@end(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 
 </code>
 </div>
@@ -2913,7 +3009,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
@@ -2935,7 +3031,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 
 </code>
 </div>
@@ -2947,7 +3043,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
 
@@ -2965,7 +3061,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 
 </code>
 </div>
@@ -2978,7 +3074,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@def(<span class="name">crypt boxes en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
@@ -3000,7 +3096,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 
 </code>
 </div>
@@ -3012,7 +3108,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
 
@@ -3028,7 +3124,7 @@
 
 <span class="in2"></span><span class="str">primes.</span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 
 </code>
 </div>
@@ -3040,11 +3136,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 
-<span class="in1"></span><span class="expand">@multiple(<span class="name">crypt arrow</span>)</span><br/>
+<span class="in1"></span><span class="macro">@multiple(<span class="name">crypt arrow</span>)</span><br/>
 
-<span class="end">@end(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 
 </code>
 </div>
@@ -3057,7 +3153,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
@@ -3079,7 +3175,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 
 </code>
 </div>
@@ -3091,7 +3187,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
 
@@ -3107,7 +3203,7 @@
 
 <span class="in2"></span><span class="str">primes.</span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 
 </code>
 </div>
@@ -3119,7 +3215,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">crypt arrow</span>)</span><br/>
+<span class="macro">@def(<span class="name">crypt arrow</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"row"</span>&gt;<br/>
 
@@ -3139,7 +3235,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">crypt arrow</span>)</span><br/>
+<span class="macro">@end(<span class="name">crypt arrow</span>)</span><br/>
 
 </code>
 </div>
@@ -3153,17 +3249,17 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>#<span class="var">direction</span> <span class="var">svg</span> {<br/>
 
 <span class="in2"></span><span class="var">display</span>: <span class="var">block</span>;<br/>
 
-<span class="in2"></span><span class="var">margin</span>: <span class="num">1em</span> <span class="var">auto</span> <span class="num">2em</span> <span class="var">auto</span>;<br/>
+<span class="in2"></span><span class="var">margin</span>: <span class="num">1em</span> <span class="type">auto</span> <span class="num">2em</span> <span class="type">auto</span>;<br/>
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -3178,7 +3274,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>#<span class="var">direction</span> <span class="var">svg</span> <span class="var">polyline</span> {<br/>
 
@@ -3186,7 +3282,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -3198,7 +3294,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">max_msgs</span> =<br/>
 
@@ -3208,7 +3304,7 @@
 
 <span class="in2"></span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -3225,13 +3321,13 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">max_msg</span> =<br/>
 
 <span class="in2"></span><span class="var">public_key</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<span class="fn">toString</span>();<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -3244,7 +3340,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="keyword">for</span> (<br/>
 
@@ -3256,7 +3352,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -3269,7 +3365,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">private_message</span> =<br/>
 
@@ -3287,7 +3383,7 @@
 
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-private-msg-too-big'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -3302,7 +3398,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 
 <span class="in1"></span>$<span class="var">private_message</span>.<br/>
 
@@ -3324,7 +3420,7 @@
 
 <span class="in2"></span>});<br/>
 
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 
 </code>
 </div>
@@ -3337,11 +3433,11 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="var">encrypt</span> = <span class="num">true</span>;<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -3356,19 +3452,19 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">encrypt</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">encrypt</span>)</span>;<br/>
 
 <span class="in1"></span>} <span class="keyword">else</span> {<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">decrypt</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">decrypt</span>)</span>;<br/>
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -3383,7 +3479,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">encrypt</span>)</span><br/>
+<span class="macro">@def(<span class="name">encrypt</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">source</span> =<br/>
 
@@ -3403,7 +3499,7 @@
 
 <span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
 
-<span class="end">@end(<span class="name">encrypt</span>)</span><br/>
+<span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
 
 </code>
 </div>
@@ -3420,7 +3516,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">encrypt</span>)</span><br/>
+<span class="macro">@add(<span class="name">encrypt</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">encrypted</span> =<br/>
 
@@ -3434,7 +3530,7 @@
 
 <span class="in2"></span><span class="var">encrypted</span>.<span class="fn">toString</span>();<br/>
 
-<span class="end">@end(<span class="name">encrypt</span>)</span><br/>
+<span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
 
 </code>
 </div>
@@ -3447,7 +3543,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">decrypt</span>)</span><br/>
+<span class="macro">@def(<span class="name">decrypt</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">source</span> =<br/>
 
@@ -3467,7 +3563,7 @@
 
 <span class="in2"></span>);<br/>
 
-<span class="end">@end(<span class="name">decrypt</span>)</span><br/>
+<span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
 
 </code>
 </div>
@@ -3485,7 +3581,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">decrypt</span>)</span><br/>
+<span class="macro">@add(<span class="name">decrypt</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="var">decrypted</span> = <span class="var">source</span>.<span class="fn">modPow</span>(<br/>
 
@@ -3497,7 +3593,7 @@
 
 <span class="in2"></span><span class="var">decrypted</span>.<span class="fn">toString</span>();<br/>
 
-<span class="end">@end(<span class="name">decrypt</span>)</span><br/>
+<span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
 
 </code>
 </div>
@@ -3524,13 +3620,13 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> $<span class="var">direction</span> =<br/>
 
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'direction'</span>);<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -3545,7 +3641,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">setEncrypt</span> = <span class="var">new_encrypt</span> =&gt; {<br/>
 
@@ -3573,7 +3669,7 @@
 
 <span class="in1"></span>};<br/>
 
-<span class="end">@end(<span class="name">setup rsa</span>)</span><br/>
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 
 </code>
 </div>
@@ -3593,7 +3689,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>@<span class="var">keyframes</span> <span class="var">flip</span> {<br/>
 
@@ -3611,7 +3707,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -3623,7 +3719,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>#<span class="var">direction</span>.<span class="var">flip</span> <span class="var">svg</span> {<br/>
 
@@ -3635,7 +3731,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -3648,7 +3744,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>@<span class="var">keyframes</span> <span class="var">flop</span> {<br/>
 
@@ -3666,7 +3762,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -3678,7 +3774,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>#<span class="var">direction</span>.<span class="var">flop</span> <span class="var">svg</span> {<br/>
 
@@ -3690,7 +3786,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -3719,11 +3815,11 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="var">timer</span>;<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -3735,7 +3831,7 @@
 <div><div>
 <code>
 
-<span class="add">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">resetTimer</span> = () =&gt; {<br/>
 
@@ -3743,7 +3839,7 @@
 
 <span class="in1"></span>};<br/>
 
-<span class="end">@end(<span class="name">globals</span>)</span><br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
 
 </code>
 </div>
@@ -3753,7 +3849,7 @@
 <div><div>
 <code>
 
-<span class="add">@replace(<span class="name">queue refresh</span>)</span><br/>
+<span class="macro">@replace(<span class="name">queue refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="type">let</span> <span class="fn">fn</span> = <span class="fn">refresh</span>;<br/>
 
@@ -3767,13 +3863,13 @@
 
 <span class="in2"></span><span class="fn">clearTimeout</span>(<span class="var">timer</span>);<br/>
 
-<span class="in2"></span><span class="expand">@expand(<span class="name">set fields to pending</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@expand(<span class="name">set fields to pending</span>)</span>;<br/>
 
 <span class="in1"></span>}<br/>
 
 <span class="in1"></span><span class="var">timer</span> = <span class="fn">setTimeout</span>(<span class="fn">fn</span>, <span class="num">500</span>);<br/>
 
-<span class="end">@end(<span class="name">queue refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">queue refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -3795,11 +3891,11 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 
 <span class="in1"></span><span class="fn">resetTimer</span>();<br/>
 
-<span class="end">@end(<span class="name">refresh</span>)</span><br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 
 </code>
 </div>
@@ -3811,7 +3907,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">set fields to pending</span>)</span><br/>
+<span class="macro">@def(<span class="name">set fields to pending</span>)</span><br/>
 
 <span class="in1"></span>$<span class="var">public_key_length</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
 
@@ -3835,7 +3931,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">set fields to pending</span>)</span><br/>
+<span class="macro">@end(<span class="name">set fields to pending</span>)</span><br/>
 
 </code>
 </div>
@@ -3859,7 +3955,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Verwendete Bibliothek</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -3877,7 +3973,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -3890,7 +3986,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -3904,7 +4000,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -3916,7 +4012,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Used library</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
@@ -3942,7 +4038,7 @@
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -3954,7 +4050,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container en</span>)</span><br/>
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"authors"</span>&gt;&lt;<span class="var">em</span>&gt;<span class="str">CTOAUTHORS: Timm</span><br/>
 
@@ -3962,7 +4058,7 @@
 
 <span class="in2"></span><span class="str">for the review)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container en</span>)</span><br/>
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
 
 </code>
 </div>
@@ -3974,7 +4070,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">container de</span>)</span><br/>
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"authors"</span>&gt;&lt;<span class="var">em</span>&gt;<span class="str">CTOAUTHORS:</span><br/>
 
@@ -3982,7 +4078,7 @@
 
 <span class="in3"></span><span class="str">für das Review)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 
-<span class="end">@end(<span class="name">container de</span>)</span><br/>
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
 
 </code>
 </div>
@@ -3994,7 +4090,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">css</span>)</span><br/>
+<span class="macro">@add(<span class="name">css</span>)</span><br/>
 
 <span class="in1"></span>#<span class="var">authors</span> {<br/>
 
@@ -4002,7 +4098,7 @@
 
 <span class="in1"></span>}<br/>
 
-<span class="end">@end(<span class="name">css</span>)</span><br/>
+<span class="macro">@end(<span class="name">css</span>)</span><br/>
 
 </code>
 </div>
@@ -4014,7 +4110,7 @@
 <div><div>
 <code>
 
-<span class="add">@def(<span class="name">bootstrap stylesheets</span>)</span><br/>
+<span class="macro">@def(<span class="name">bootstrap stylesheets</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">link</span> <br/>
 
@@ -4028,7 +4124,7 @@
 
 <span class="in1"></span>&gt;<br/>
 
-<span class="end">@end(<span class="name">bootstrap stylesheets</span>)</span><br/>
+<span class="macro">@end(<span class="name">bootstrap stylesheets</span>)</span><br/>
 
 </code>
 </div>
@@ -4044,7 +4140,7 @@
 <div><div>
 <code>
 
-<span class="add">@add(<span class="name">bootstrap stylesheets</span>)</span><br/>
+<span class="macro">@add(<span class="name">bootstrap stylesheets</span>)</span><br/>
 
 <span class="in1"></span>&lt;<span class="var">link</span><br/>
 
@@ -4058,7 +4154,7 @@
 
 <span class="in1"></span>&gt;<br/>
 
-<span class="end">@end(<span class="name">bootstrap stylesheets</span>)</span><br/>
+<span class="macro">@end(<span class="name">bootstrap stylesheets</span>)</span><br/>
 
 </code>
 </div>

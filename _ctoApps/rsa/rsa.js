@@ -149,7 +149,7 @@
 	}
 	timer = setTimeout(fn, 500);
 ;
-	}
+	};
 
 	const refresh = () => {
 		
