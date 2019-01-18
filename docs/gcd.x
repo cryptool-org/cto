@@ -1,4 +1,4 @@
-# Implementierung des erweiterten Euklidischen Algorithmus
+# Implementierung des Erweiterten Euklidischen Algorithmus
 * Leider bietet die verwendete Mathe-Bibliothek keinen Algorithmus, um
   das Inverse Element zu einer Restklasse zu bestimmen
 * Daher wird der Erweiterte Euklidische Algorithmus hier direkt
