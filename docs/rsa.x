@@ -1299,7 +1299,7 @@ x{container en}
 ```
 a{container en}
 	<p>
-		s{RSA now exploits the property that}
+		s{RSA exploits the property that}
 	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup>s{ =}
 			<i>x</i><sup><i>b</i></sup>
@@ -1333,7 +1333,7 @@ x{container en}
 ```
 * Und warum RSA damit funktioniert
 
-# Nachrichten
+# 6. Nachrichten
 * In dieser Sektion wird beschrieben, wie de Nachrichten angezeigt
   und verarbeitet werden
 
@@ -1351,15 +1351,15 @@ a{container de}
 	</form>
 x{container de}
 ```
-* In der deutschen Version werden die Nachrichten-Boxen erklärt
+* Hier werden die Nachrichten-Boxen erklärt
 
 ```
 a{container en}
 	<h2>s{Messages}</h2>
 	<p>
 		s{In the following two text boxes, you}
-		s{can see how the encryption and}
-		s{decryption works for concrete input}
+		s{can see how encryption and}
+		s{decryption work for concrete inputs}
 		s{(numbers).}
 	</p>
 	<form class="form-horizontal">
@@ -1367,7 +1367,7 @@ a{container en}
 	</form>
 x{container en}
 ```
-* Auch in der englischen Version werden de Boxen erklärt
+* Auch in der englischen Version werden die Nachrichten-Boxen erklärt
 
 ```
 d{crypt boxes de}
@@ -1382,7 +1382,8 @@ d{crypt boxes de}
 	</div>
 x{crypt boxes de}
 ```
-* Die deutsche Cryptbox besteht aus einem Textfeld mit dem Klartext
+* Die deutsche Geheimtext-Boxen besteht aus einem Textfeld mit dem
+  Klartext
 
 ```
 a{crypt boxes de}
@@ -1445,7 +1446,7 @@ d{crypt boxes en}
 		<label
 			class="col-sm-3 control-label"
 			v{for}="public-key"
-		>s{plaintext}</label>
+		>s{Plaintext}</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="private-message"
@@ -1473,8 +1474,8 @@ a{crypt boxes en}
 	E{crypt arrow}
 x{crypt boxes en}
 ```
-* Es kann der gleiche Pfeil verwendet werden, der die Richtung des
-  Algorithmus anzeigt
+* In beiden Sprachen kann der gleiche Pfeil verwendet werden, der die
+  Richtung des Algorithmus anzeigt
 
 ```
 a{crypt boxes en}
@@ -1482,7 +1483,7 @@ a{crypt boxes en}
 		<label
 			class="col-sm-3 control-label"
 			v{for}="private-key"
-		>s{ciphertext}</label>
+		>s{Ciphertext}</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="public-message"
@@ -1530,8 +1531,7 @@ a{css}
 x{css}
 ```
 * Der Pfeil wird als eigener Block angezeigt
-* Er wird mittig Positiioniert und bekommt oben und unten feste
-  Abstände
+* Er wird mittig positioniert und bekommt oben und unten feste Abstände
 
 ```
 a{css}
@@ -1561,8 +1561,8 @@ a{refresh}
 		public_key.subtract(one).toString();
 x{refresh}
 ```
-* Die größte mögliche Nachrichtenzahl ist um eins kleiner als der
-  öffentliche Schlüssel
+* Die größte mögliche Nachricht ist um eins kleiner als der öffentliche
+  Schlüssel
 
 ```
 a{refresh}
@@ -1588,9 +1588,9 @@ A{globals}
 		f{$}('err-private-msg-too-big');
 x{globals}
 ```
-* Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in
+* Die Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in
   Variablen abgelegt
-* Auch Referenzen auf die Fehlermeldungen
+* Ebenso die Referenzen auf die Fehlermeldungen
 
 ```
 a{setup rsa}
@@ -1606,8 +1606,8 @@ a{setup rsa}
 		});
 x{setup rsa}
 ```
-* Wenn der Klartext oder Geheimtext geändert wird, wird zusätzlich die
-  Richtung des Algorithmus angepasst
+* Wenn der Klartext oder der Geheimtext geändert wird, wird zusätzlich
+  die Richtung des Algorithmus angepasst
 
 ```
 A{globals}
@@ -1629,7 +1629,7 @@ x{refresh}
 ```
 * Je nach Richtung in die der Algorithmus arbeiten soll, wird
   entweder der Klartext verschlüsselt
-* Oder der Geheimtext entschlüsselt
+* oder der Geheimtext entschlüsselt
 
 ```
 d{encrypt}
@@ -1646,8 +1646,8 @@ x{encrypt}
 ```
 * Beim Verschlüsseln wird geprüft, ob der Klartext zu groß ist
 * Dann wird eine Fehlermeldung angezeigt
-* Beim Entschlüsseln gibt es eine anloge Fehlermeldung, die beim
-  Verschlüsseln immer ausgeblendet wird
+* Beim Entschlüsseln gibt es eine analoge Fehlermeldung, die beim
+  Verschlüsseln immer ausgeblendet ist
 
 ```
 a{encrypt}
@@ -1660,7 +1660,7 @@ a{encrypt}
 x{encrypt}
 ```
 * Das Verschlüsseln besteht nur aus einer Exponentiation mit `e`
-  modulo `N` (dem öffentlichen Schlüssel)
+  modulo `n` (dem öffentlichen Schlüssel)
 
 ```
 d{decrypt}
@@ -1679,7 +1679,7 @@ x{decrypt}
 * Auch hier wird eine Fehlermeldung ausgegeben, wenn die Zahl zu groß
   ist
 * Beim Verschlüsseln gibt es eine anloge Fehlermeldung, die beim
-  Entschlüsseln immer ausgeblendet wird
+  Entschlüsseln immer ausgeblendet ist
 
 ```
 a{decrypt}
@@ -1693,10 +1693,10 @@ x{decrypt}
 * Auch das Entschlüsseln besteht aus einer einzigen Exponentiation mit
   dem geheimen Schlüssel `d` modulo `N`
 
-# Richtung des Algorithmus anzeigen
+# 7. Richtung des Algorithmus anzeigen
 * Es gibt ein Element auf der Web-Seite, das die Ablaufrichtung des
   Algorithmus anzeigt
-* Ob er ver- oder entschlüsselt
+* Also, ob der Algorithmus ver- oder entschlüsselt
 
 ```
 A{globals}
@@ -1704,8 +1704,7 @@ A{globals}
 		f{$}('direction');
 x{globals}
 ```
-* Dieses Element zeigt die Richtung an, in welcher der Algorithmus
-  läuft
+* Dieses Element zeigt die Richtung an, in der der Algorithmus läuft
 * Die Richtung wird durch CSS-Klassen visualisiert
 
 ```
@@ -1755,8 +1754,8 @@ a{css}
 	}
 x{css}
 ```
-* Wenn die `flip`-Klasse auf dem `direction`-Element gesetzt wird,
-  wird die `flip`-Animation auf dem Pfeil gestartet
+* Wird die `flip`-Klasse auf dem `direction`-Element gesetzt, dann
+  startet die `flip`-Animation auf dem Pfeil
 
 ```
 a{css}
@@ -1784,7 +1783,7 @@ x{css}
 * Wenn die `flop`-Klasse auf dem `direction`-Element gesetzt wird,
   wird die `flop`-Animation auf dem Pfeil gestartet
 
-# Timer
+# 8. Timer
 * Das Berechnen von RSA kann bei sehr großen Zahlen etwas dauern
 * Daher wird nicht mit jeder Änderung eine neue Berechnung gestartet
 * Nur wenn nach der letzten Änderung ein gewisses Zeitintervall
@@ -1823,7 +1822,7 @@ x{queue refresh}
 * Und nach Ablauf des Timers wird keine Neuberechnung durchgeführt
 * Ansonsten werden die Felder mit Platzhaltern befüllt und der
   bestehende Timer gelöscht
-* Dann wird eine neuer Timer gestartet, der die Berechnung triggert
+* Dann wird ein neuer Timer gestartet, der die Berechnung triggert
 * Der Timeout beträgt eine halbe Sekunde
 
 ```
@@ -1831,7 +1830,7 @@ a{refresh}
 	resetTimer();
 x{refresh}
 ```
-* Nach der Neuberechnung wird der Timer gelöscht
+* Nach der Neuberechnung wird der Timer zurückgesetzt
 
 ```
 d{set fields to pending}
@@ -1850,7 +1849,7 @@ x{set fields to pending}
 ```
 * Alle berechneten Felder werden mit Platzhaltern befüllt
 
-# Schlussbemerkung
+# 9. Schlussbemerkung
 * Ein paar Kleinigkeiten gibt es noch, um die Web-App fertig
   zu stellen
 
@@ -1879,7 +1878,7 @@ a{container de}
 	</p>
 x{container de}
 ```
-* Und was mit ihr berechnet wird
+* und was mit ihr berechnet wird
 
 ```
 a{container en}
@@ -1900,20 +1899,20 @@ x{container en}
 * Das Gleiche gibt es auch für die englische Version
 
 ```
-a{container en}
-	<div id="authors"><em>s{CTOAUTHORS: Timm}
-		s{Knape (thanks to Bernhard Esslinger}
-		s{for the review)}</em></div>
-x{container en}
-```
-* Die Seite endet mit dem Autor-Tag in der deutschen Version
-
-```
 a{container de}
 	<div id="authors"><em>s{CTOAUTHORS:}
 		s{Timm Knape (Dank an Bernhard Esslinger}
 			s{für das Review)}</em></div>
 x{container de}
+```
+* Die Seite endet mit dem Autor-Tag
+
+```
+a{container en}
+	<div id="authors"><em>s{CTOAUTHORS: Timm}
+		s{Knape (thanks to Bernhard Esslinger}
+		s{for the review)}</em></div>
+x{container en}
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
 
