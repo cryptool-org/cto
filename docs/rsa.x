@@ -5,9 +5,9 @@
   Dokument mit dem Hex-Toolkit (https://github.com/itmm/hex/) generiert
   werden
 
-# Datei-Struktur
-* Zuerst wird der allgemeine Aufbau der Dateien beschrieben
-* Bevor es an den eigentlichen Code geht
+# 1. Datei-Struktur
+* Dieser Abschnitt beschreibt die Dateien die benötigt werden
+* Und wie sie aufgebaut werden
 
 ```
 d{file: index-de.html}
@@ -23,11 +23,9 @@ d{file: index-de.html}
 	</html>
 x{file: index-de.html}
 ```
-* Es gibt eine HTML-Datei, welche die RSA-Steuerung in Deutsch
-  enthält
-* Header- und Script-Fragmente werden mit der englischen Version
-  geteilt
-* Der Content-Teil wird für unsere Webseite in eine eigene Datei
+* Die Datei `index-de.html` enthält die RSA-Steuerung in Deutsch
+* Header- und Script-Fragmente werden mit der englischen Version geteilt
+* Das Fragment `{rsa de}` wird für unsere Webseite in eine eigene Datei
   zusätzlich ausgelagert
 
 ```
@@ -44,23 +42,24 @@ d{file: index-en.html}
 	</html>
 x{file: index-en.html}
 ```
-* Die englische Webseite unterscheidet sich nur im Content-Teil von der
-  deutschen Version
+* Die englische Webseite unterscheidet verwendet statt der deutschen
+  Version das Fragment `{rsa en}`
+* Der Rest ist identisch
 
 ```
 d{file: ../_ctoApps/rsa/rsa-de.html}
 	E{rsa de}
 x{file: ../_ctoApps/rsa/rsa-de.html}
 ```
-* Es gibt eine Datei mit der deutschen GUI ohne Webseiten-Rahmen
-* Die Datei wird direkt im Ziel-Ordner erzeugt
+* Die Datei `rsa-de.html` enthält die deutsche GUI ohne Webseiten-Rahmen
+* Diese Datei wird direkt im Ziel-Ordner erzeugt
 
 ```
 d{file: ../_ctoApps/rsa/rsa-en.html}
 	E{rsa en}
 x{file: ../_ctoApps/rsa/rsa-en.html}
 ```
-* Und es gibt eine Datei mit der englischen GUI ohne Webseiten-Rahmen
+* Die Datei `rsa-en.html` enthält die englische GUI ohne Webseiten-Rahmen
 
 ```
 d{header}
@@ -72,17 +71,18 @@ d{header}
 	>
 x{header}
 ```
-* Im Header wird die Zeichen-Kodierung auf UTF-8 gestellt
+* Im HTML-Header wird die Zeichen-Kodierung auf UTF-8 gestellt
 * Die Bootstrap-Stylesheets werden eingebunden
-* Und das spezifische Stylesheet wird eingebunden
+* Das app-spezifische Stylesheet `rsa.css` wird eingebunden
 
 ```
 d{file: ../_ctoApps/rsa/rsa.css}
 	e{css}
 x{file: ../_ctoApps/rsa/rsa.css}
 ```
-* Die Stylesheet enthält ein Fragment, in welchem im Laufe des Dokuments
-  neue Definitionen eingepflegt werden
+* Das Stylesheet enthält ein Fragment `{css}`
+* Wenn neue HTML-Elemente eine CSS-Anpassung benötigen, werden diese
+  hier eingepflegt
 
 ```
 d{scripts}
@@ -108,11 +108,11 @@ d{file: ../_ctoApps/rsa/rsa.js}
 	);
 x{file: ../_ctoApps/rsa/rsa.js}
 ```
-* Das Skript wird mit strenger Typ-Prüfung ausgeführt
+* Das Skript `rsa.js` wird mit strenger Typ-Prüfung ausgeführt
 * Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
   geladen wurde
-* Durch das Scoping in einer eigenen Funktion wird der globale
-  Namensraum nicht belastet
+* Der gesamte Code wird innerhalb einer JavaScript Funktion definiert
+* Dadurch entstehen keine neuen globalen Objekte
 
 ```
 d{rsa de}
@@ -122,7 +122,8 @@ d{rsa de}
 	</div>
 x{rsa de}
 ```
-* Der Inhalts-Block ist in einem eigenen `<div>` gekapselt
+* Alle HTML-Elemente des RSA-Algorithmus sind in einem eigenen
+  `<div>`-Tag gekapselt
 * Dadurch können Stylesheet-Anpassungen auf RSA-Elemente beschränkt
   werden
 
@@ -150,13 +151,13 @@ d{container de}
 	</p>
 x{container de}
 ```
-* Am Anfang gibt es eine kurze Beschreibung
+* Die Seite beginnt mit einer kurzen Beschreibung
 
 ```
 d{container en}
 	<p>
 		s{This module demonstrates step-by-step}
-		s{encryption or decryption with the RSA}
+		s{encryption and decryption with the RSA}
 		s{method. The sender uses the public}
 		s{key of the recipient for encryption;}
 		s{the recipient uses his associated}
@@ -164,25 +165,25 @@ d{container en}
 	</p>
 x{container en}
 ```
-* Die englische Version enthält die Übersetzung
+* Die englische Seite beginnt mit der gleichen Beschreibung
 
 ```
 d{css}
 	#rsa-container p {
-		margin: 0 0 10px;
+		margin: 0 0 10px 0;
 	}
 x{css}
 ```
 * Für Absätze wird der Abstand auf `0` Pixel gesetzt
 * Nur der untere Abstand wird auf `10` Pixel gesetzt
 
-# Primfaktoren eingeben
-* Dieser Abschnitt beschreibt, wie die Primfaktoren geändert werden
-  können
+# 2. Primfaktoren eingeben
+* Dieser Abschnitt beschreibt, wie die Primzahlen eingegeben und geändert
+  werden können
 
 ```
 a{container de}
-	<h2>s{Primfaktoren}</h2>
+	<h2>s{Primzahlen}</h2>
 	<p>
 		s{Die Sicherheit von RSA basiert darauf,}
 		s{dass es zwar einfach ist, das Produkt}
@@ -205,7 +206,7 @@ x{container de}
 
 ```
 a{container en}
-	<h2>Prime factors</h2>
+	<h2>Primes</h2>
 	<p>
 		s{The security of RSA is based on the}
 		s{fact that it is easy to calculate the}
@@ -222,7 +223,7 @@ a{container en}
 	</p>
 x{container en}
 ```
-* Auch auf der englischen Seite wird die Erklärung eingebaut
+* Die englische Seite enthält die gleiche Erklärung
 
 ```
 a{css}
@@ -240,7 +241,8 @@ a{container de}
 	</form>
 x{container de}
 ```
-* Die Eingabe-Elemente werden in einem Formular gekapselt
+* Die Eingabe-Elemente werden in einem Formular (dem `<form>`-Element)
+  gekapselt
 
 ```
 a{container en}
@@ -249,7 +251,8 @@ a{container en}
 	</form>
 x{container en}
 ```
-* Die englische Version enthält ein anderes Fragment als Inhalt
+* Die englische Version unterscheidet sich nur in dem übersetzten
+  Inhalt
 
 ```
 d{primes de}
@@ -267,11 +270,11 @@ d{primes de}
 	><i>p</i> s{ist keine Primzahl!}</div>
 x{primes de}
 ```
-* Formatierung des Eingabefeldes für die erste Primzahl mit Label
+* Die Formatierung des Eingabefeldes für die erste Primzahl mit Label
   wird von Bootstrap-Klassen erledigt
-* Das Feld wird mit der kleinen Primzahl `11` initialisiert
-* Zusätzlich gibt es eine Fehlermeldung
-* Die aber anfangs nicht sichtbar ist
+* Dieses Feld wird mit der kleinen Primzahl `11` initialisiert
+* Zusätzlich gibt es eine Fehlermeldung,
+* die aber anfangs nicht sichtbar ist
 
 ```
 a{css}
@@ -299,7 +302,7 @@ d{primes en}
 x{primes en}
 ```
 * Die englische Version hat ein andere Beschriftung
-* Und eine übersetzte Fehlermeldung
+* und eine übersetzte Fehlermeldung
 
 ```
 d{setup rsa}
@@ -311,7 +314,7 @@ x{setup rsa}
 ```
 * Wenn sich Textfelder ändern, muss der RSA-Algorithmus neu
   durchgeführt werden
-* Dazu wird die Funktion `f{queueRefresh}` verwendet
+* Dazu wird die Funktion `queueRefresh` verwendet
 * Diese sorgt dafür, dass die Neuberechnung nicht zu häufig
   aufgerufen wird
 
@@ -323,7 +326,7 @@ a{setup rsa}
 	refresh();
 x{setup rsa}
 ```
-* Wenn sich die Primzahl (und andere Felder ändern), muss der
+* Wenn sich die Primzahl (oder andere Felder) ändern, muss der
   RSA-Algorithmus neu ausgeführt werden
 * Beim Starten wird die Funktion aufgerufen, um alle Felder zu
   initialisieren
@@ -334,8 +337,8 @@ d{queue refresh}
 x{queue refresh}
 ```
 * In einer ersten Implementierung wird einfach nur die Funktion
-  `f{refresh}` aufgerufen
-* Diese Implementierung wird später durch eine aufwändigere
+  `refresh` aufgerufen
+* Dieser Funktionsaufruf wird später durch eine aufwändigere
   Implementierung mit Timern ersetzt
 
 ```
@@ -345,8 +348,9 @@ D{globals}
 	};
 x{globals}
 ```
-* Hilfsfunktion, um ein Element im DOM mit `id` zu ermitteln
-* Ganz leicht wurde sich an jQuery angelehnt
+* Hilfsfunktion, um ein Element im HTML Document Object Model (DOM) mit
+  `id` zu ermitteln
+* Der Name wurde von jQuery übernommen
 * Es können jedoch nur Elemente nach ihrer ID aufgelöst werden
 
 ```
@@ -356,8 +360,8 @@ A{globals}
 		f{$}('err-p-not-prime');
 x{globals}
 ```
-* Referenzen auf as Textfeld und die Fehlermeldung werden
-  zwischengespeichert
+* Referenzen auf das Textfeld mit der ID `prime-1` und auf die dazu
+  gehörende Fehlermeldung werden zwischengespeichert
 
 ```
 a{setup rsa}
@@ -400,7 +404,7 @@ a{primes de}
 x{primes de}
 ```
 * Eingabefeld für die zweite Primzahl
-* Auch diese wird mit einer kleinen Primzahl initialisiert
+* Auch diese wird mit einer kleinen Primzahl (`13`) initialisiert
 
 ```
 a{primes de}
@@ -413,8 +417,8 @@ a{primes de}
 		s{sind nicht verschieden!}</div>
 x{primes de}
 ```
-* Für die zweite Primzahl gibt es noch eine zusätzliche Fehlermeldung
-* Denn beide Primzahlen dürfen nicht gleich sein
+* Für die zweite Primzahl gibt es nicht nur eine Fehlermeldung,
+* denn die beiden Primzahlen dürfen nicht gleich sein
 
 ```
 a{primes en}
@@ -442,7 +446,7 @@ a{primes en}
 		s{different!}</div>
 x{primes en}
 ```
-* Die Fehlermeldungen sind in der englischen Version lokalisiert
+* Die Fehlermeldungen gibt es auch in der englischen Version
 
 ```
 A{globals}
@@ -463,7 +467,8 @@ a{setup rsa}
 	);
 x{setup rsa}
 ```
-* Bei einer Änderung wird ebenfalls eine Neuberechnung angestoßen
+* Bei einer Änderung der zweiten Primzahl wird ebenfalls eine
+  Neuberechnung angestoßen
 
 ```
 a{refresh}
@@ -476,8 +481,8 @@ a{refresh}
 	);
 x{refresh}
 ```
-* Auch der zweite Primfaktor wird ausgelesen
-* Dessen Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um
+* Auch de zweite Primzahl wird ausgelesen
+* Deren Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um
   eine Primzahl handelt
 
 ```
@@ -488,7 +493,7 @@ a{refresh}
 	);
 x{refresh}
 ```
-* Eine dritte Fehlermeldung wird sichtbar, wenn die Primfaktoren
+* Eine dritte Fehlermeldung wird sichtbar, wenn die Primzahlen
   gleich sind
 
 ```
@@ -512,8 +517,8 @@ x{container en}
 ```
 * Diese Beschreibung gibt es auch in der englischen Version
 
-# Öffentlicher Schlüssel
-* Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+# 3. Öffentlicher Schlüssel
+* Im zweiten Abschnitt der Seite wird zusätzlich der Exponent abgefragt
 
 ```
 a{container de}
@@ -604,8 +609,8 @@ a{container de}
 		s{Zur Demonstration beginnen wir mit}
 		s{kleinen Primzahlen. Um die}
 		s{Faktorisierung schwierig zu gestalten,}
-		s{müssen die Primzahlen möglichst groß}
-		s{gewählt werden.  Aktuell werden für}
+		s{müssen die Primzahlen viel größer}
+		s{gewählt werden. Aktuell werden für}
 		s{eine sichere Kommunikation Werte von}
 		<i>n</i> s{mit mehreren tausend}
 		s{Binärstellen verwendet.}
@@ -665,14 +670,14 @@ a{container de}
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> s{und} <i>n</i> s{sind nicht}
+		><i>e</i> s{und} <i>φ(n)</i> s{sind nicht}
 			s{teilerfremd.}</div>
 	</form>
 x{container de}
 ```
 * In einem Textfeld kann das `e` geändert werden
-* Zusätzlich gibt es eine Fehlermeldung, wenn eingegebene `e` nicht
-  teilerfremd ist
+* Zusätzlich gibt es eine Fehlermeldung, wenn das eingegebene `e` nicht
+  teilerfremd zu `φ(n)` ist
 
 ```
 a{container en}
@@ -687,8 +692,8 @@ a{container en}
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> s{and} <i>n</i> s{have a common}
-			s{divisor.}</div>
+		><i>e</i> s{and} <i>φ(n)</i> s{have a common}
+			s{divisor, they are not coprime.}</div>
 	</form>
 x{container en}
 ```
@@ -704,8 +709,8 @@ x{globals}
 ```
 * In der Variable `$e` wird eine Referenz des Textfelds gespeichert
 * Ebenso wird eine Referenz der Fehlermeldung gespeichert
-* Die Fehlermeldung können wir erst setzen, wenn `φ(n)` berechnet
-  wurde
+* Ob die Fehlermeldung angezeigt wird kann erst entschieden werden,
+  wenn `φ(n)` berechnet wurde
 
 ```
 a{setup rsa}
@@ -714,15 +719,15 @@ a{setup rsa}
 	);
 x{setup rsa}
 ```
-* Werden die Primzahlen oder die Basis geändert, wird die Neuberechnung
-  getriggert
+* Werden die Primzahlen oder der Exponent geändert, wird die
+  Neuberechnung getriggert
 
 ```
 a{refresh}
 	const e = bigInt($e.value);
 x{refresh}
 ```
-* Ermittelt den Wert von `e`
+* Liest den Wert von `e` aus dem DOM
 
 ```
 a{container de}
@@ -747,9 +752,9 @@ x{container en}
 ```
 * Auch in der englischen Version
 
-# Geheimer Schlüssel
+# 4. Geheimer Schlüssel
 * Beschreibt den nächsten Abschnitt in der HTML-Ausgabe
-* Und wie der geheime Schlüssel berechnet wird
+* und wie der geheime Schlüssel berechnet wird
 
 ```
 a{container de}
@@ -794,8 +799,7 @@ d{phi label}
 x{phi label}
 ```
 * Die Berechnung von φ enthält keinen deutschen oder englischen Text
-* Und kann daher für beide Lokalisierungen verwendet werden
-* Oh, so schön ist Mathematik
+* und kann daher für beide Lokalisierungen verwendet werden
 
 ```
 a{container de}
@@ -826,9 +830,7 @@ a{refresh}
 	$phi.innerText = phi.toString();
 x{refresh}
 ```
-* Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
-  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
-  des öffentlichen Schlüssels
+* Nur wenn die Primzahlen verschieden sind, gilt diese Rechenvorschrift
 
 ```
 A{globals}
@@ -839,7 +841,7 @@ x{globals}
 ```
 * Um festzustellen, ob `e` und  `φ(n)` teilerfremd sind, wird der
   Erweiterte Euklidische Algorithmus verwendet
-* Dieser liefert gleichzeitig noch das inverse Element, das für den
+* Dieser liefert gleichzeitig noch das inverse Element `d`, das für den
   geheimen Schlüssel benötigt wird
 
 ```
@@ -884,10 +886,10 @@ x{container de}
 ```
 a{container en}
 	<p>
-		s{Here it is used that} <i>p</i> s{and}
-		<i>q</i> s{are different. Otherwise,}
-		s{the φ function would calculate}
-		s{differently.}
+		s{The prerequisit here is that }<i>p</i>
+		s{and} <i>q</i> s{are different. }
+		s{Otherwise, the φ function would be}
+		s{calculate d differently.}
 	</p><p>
 		s{It is important for RSA that the}
 		s{value of the φ function is}
@@ -959,15 +961,14 @@ a{container de}
 		s{bestimmen.}
 	</p><p>
 		s{Der geheime Schlüssel besteht}
-		s{ebenfalls aus} <i>n</i> s{und einem}
-		<i>d</i> s{mit der Eigenschaft, dass}
-		<i>e</i>s{ × }<i>d</i> s{ein Vielfaches}
-		s{von φ(}<i>n</i>s{) + 1 ist.}
+		s{aus einem }<i>d</i>s{ mit der}
+		s{Eigenschaft, dass}
+		<i>e</i>s{ × }<i>d</i>s{ − 1 ein Vielfaches}
+		s{von φ(}<i>n</i>s{) ist.}
 	</p>
 x{container de}
 ```
-* Auf der deutschen Seite wird beschrieben, wie der geheime Schlüssel
-  berechnet wird
+* Es wird beschrieben wie der geheime Schlüssel berechnet wird
 
 ```
 a{container de}
@@ -1011,10 +1012,10 @@ a{container en}
 		s{φ(}<i>n</i>s{).}
 	</p><p>
 		s{The secret key also consists of}
-		<i>n</i>s{ and a }<i>d</i>s{ with the}
+		s{a }<i>d</i>s{ with the}
 		s{property that }<i>e</i>s{ ×}
-		<i>d</i>s{ is a multiple of}
-		s{φ(}<i>n</i>s{) plus one.}
+		<i>d</i>s{ − 1 is a multiple of}
+		s{φ(}<i>n</i>s{).}
 	</p>
 x{container en}
 ```
@@ -1051,8 +1052,7 @@ a{container en}
 x{container en}
 ```
 * Und warum das Ganze funktioniert
-* Auch hier wird ein Absatz ausgegeben, der auf das nächste Ergebnis
-  hinarbeitet
+* Hier wird auf das nächste Ergebnis hingearbeitet
 
 ```
 a{css}
@@ -1087,7 +1087,7 @@ a{container de}
 	E{private key}
 x{container de}
 ```
-* Geheimen Schlüssel in der deutschen Version ausgeben
+* Den geheimen Schlüssel in der deutschen Version ausgeben
 
 
 ```
@@ -1095,7 +1095,7 @@ a{container en}
 	E{private key}
 x{container en}
 ```
-* Geheimen Schlüssel in der englischen Version ausgeben
+* Den geheimen Schlüssel in der englischen Version ausgeben
 
 ```
 A{globals}
@@ -1103,7 +1103,8 @@ A{globals}
 		f{$}('private-key');
 x{globals}
 ```
-* Referenz auf den geheimen Schlüssel wird in der Anwendung gespeichert
+* Die Referenz auf den geheimen Schlüssel wird in der Anwendung
+  gespeichert
 
 ```
 a{refresh}
@@ -1127,13 +1128,12 @@ a{container de}
 		s{Dieses} <i>d</i> s{kann immer bestimmt}
 		s{werden, wenn} <i>e</i> s{mit der oben}
 		s{beschriebenen Einschränkung gewählt}
-		s{wurde – bspw. mit dem erweiterten}
+		s{wurde – bspw. mit dem Erweiterten}
 		s{Euklidischen Algorithmus.}
 	</p>
 x{container de}
 ```
-* Auf der deutschen Seite wird beschrieben, wie der geheime Schlüssel
-  gewählt wird
+* Es wird beschrieben, wie der geheime Schlüssel gewählt wird
 
 ```
 a{container en}
@@ -1148,9 +1148,8 @@ x{container en}
 ```
 * Auch auf der englischen Seite wird die Beschreibung ausgegeben
 
-# Ver- und Entschlüsseln
-* Endlich (nach knapp der Hälfte der Folien) kommt die eigentliche
-  Ver- und Entschlüsselung
+# 5. Ver- und Entschlüsseln
+* Endlich kommt die eigentliche Ver- und Entschlüsselung
 * Durch die Vorarbeiten bleibt aber nicht mehr viel zu tun
 
 ```
@@ -1160,12 +1159,11 @@ a{container de}
 		s{Grundsätzlich werden bei diesem}
 		s{Verfahren keine Texte, sondern nur}
 		s{Zahlen ver- und entschlüsselt, die}
-		s{zwischen 0 und }<i>n</i>s{ liegen.}
+		s{zwischen 0 und }<i>n</i>s{ − 1 liegen.}
 	</p>
 x{container de}
 ```
-* In der deutschen Version wird beschrieben, was für Nachrichten
-  verschlüsselt werden können
+* Hier wird beschrieben, was für Nachrichten verschlüsselt werden können
 
 ```
 a{container de}
@@ -1183,8 +1181,9 @@ a{container de}
 x{container de}
 ```
 * Das Verschlüsseln besteht aus einer Exponentiation
-* Die Striche an den Variablen-Namen werden durch Entitäten realisiert
-  um den Source Code Parser nicht durcheinander zu bringen
+* Die Striche an den Variablen-Namen der Nachrichten werden durch
+  HTML-Entitäten realisiert, um den Source Code Parser nicht
+  durcheinander zu bringen
 
 ```
 a{container de}
@@ -1213,14 +1212,12 @@ a{container de}
 	</p>
 x{container de}
 ```
-* Durch Einsetzen kann die entschlüsselte Nachricht direkt aus der
-  ursprünglichen Nachricht berechnet werden
+* `m`-Strich wird durch `m` hoch `e` ersetzt
 
 ```
 a{container de}
 	<p>
-		s{RSA nutzt nun die Eigenschaft aus,}
-		s{dass}
+		s{RSA nutzt die Eigenschaft aus, dass}
 	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup>s{ =}
 			<i>x</i><sup><i>b</i></sup>
@@ -1240,7 +1237,7 @@ x{container de}
 a{container de}
 	<p>
 		<i>e</i> s{und} <i>d</i> s{wurden passend}
-		s{gewählt damit}
+		s{gewählt, dass}
 	</p><p class="form">
 		<i>m&#39;&#39;</i>s{ = }<i>m</i>s{.}
 	</p><p>
@@ -1263,11 +1260,11 @@ a{container en}
 	<p>
 		s{Internally, this method works only with}
 		s{numbers (no text), which are between 0}
-		s{and} <i>n</i>s{.}
+		s{and} <i>n</i>s{ − 1.}
 	</p><p>
-		s{Encrypting a message }<i>m</i>s{ (number)}
-		s{with the public key (}<i>n</i>s{,}
-		<i>e</i>s{) is calculated:}
+		s{A message }<i>m</i>s{ (number) is}
+		s{encrypted with the public key (}
+		<i>n</i>s{,} <i>e</i>s{) by calculating:}
 	</p><p class="form">
 		<i>m&#39;</i>s{ :=}
 			<i>m</i><sup><i>e</i></sup>
@@ -1406,7 +1403,7 @@ a{crypt boxes de}
 	E{crypt arrow}
 x{crypt boxes de}
 ```
-* Ein Pfeil zeigt die Richtung an, in welche der Algorithmus gerade
+* Ein Pfeil zeigt die Richtung an, in die der Algorithmus gerade
   arbeitet
 * Die Richtung kann durch Eingabe in die passenden Textfelder
   umgedreht werden
@@ -1553,7 +1550,7 @@ A{globals}
 		);
 x{globals}
 ```
-* In den Fehlermeldungen gibt es Elemente, welche die größte mögliche
+* In den Fehlermeldungen gibt es Elemente, die die größte mögliche
   Nachricht anzeigen
 * Sie sind mit der Klasse `max-msg` markiert
 * Alle diese Elemente werden in der Variable `$max_msgs` gesammelt
@@ -1618,7 +1615,7 @@ A{globals}
 x{globals}
 ```
 * Der Algorithmus kann sowohl ver- als auch entschlüsseln
-* Die Variable `encrypt` bestimmt, in welche Richtung der Algorithmus
+* Die Variable `encrypt` bestimmt die Richtung in die der Algorithmus
   läuft
 
 ```
@@ -1630,7 +1627,7 @@ a{refresh}
 	}
 x{refresh}
 ```
-* Je nachdem, in welche Richtung der Algorithmus arbeiten soll, wird
+* Je nach Richtung in die der Algorithmus arbeiten soll, wird
   entweder der Klartext verschlüsselt
 * Oder der Geheimtext entschlüsselt
 

@@ -21,16 +21,16 @@
 </li></ul></div>
 
 </div>
-<h1>Datei-Struktur</h1>
+<h1>1. Datei-Struktur</h1>
 <div class="slides">
 <div><div>
-<h1>Datei-Struktur</h1>
+<h1>1. Datei-Struktur</h1>
 </div>
 
 <ul><li>
- Zuerst wird der allgemeine Aufbau der Dateien beschrieben
+ Dieser Abschnitt beschreibt die Dateien die benötigt werden
 </li><li>
- Bevor es an den eigentlichen Code geht
+ Und wie sie aufgebaut werden
 </li></ul></div>
 
 <div><div>
@@ -64,13 +64,11 @@
 </div>
 
 <ul><li>
- Es gibt eine HTML-Datei, welche die RSA-Steuerung in Deutsch
-  enthält
+ Die Datei <code>index-de.html</code> enthält die RSA-Steuerung in Deutsch
 </li><li>
- Header- und Script-Fragmente werden mit der englischen Version
-  geteilt
+ Header- und Script-Fragmente werden mit der englischen Version geteilt
 </li><li>
- Der Content-Teil wird für unsere Webseite in eine eigene Datei
+ Das Fragment <code>{rsa de}</code> wird für unsere Webseite in eine eigene Datei
   zusätzlich ausgelagert
 </li></ul></div>
 
@@ -105,8 +103,10 @@
 </div>
 
 <ul><li>
- Die englische Webseite unterscheidet sich nur im Content-Teil von der
-  deutschen Version
+ Die englische Webseite unterscheidet verwendet statt der deutschen
+  Version das Fragment <code>{rsa en}</code>
+</li><li>
+ Der Rest ist identisch
 </li></ul></div>
 
 <div><div>
@@ -122,9 +122,9 @@
 </div>
 
 <ul><li>
- Es gibt eine Datei mit der deutschen GUI ohne Webseiten-Rahmen
+ Die Datei <code>rsa-de.html</code> enthält die deutsche GUI ohne Webseiten-Rahmen
 </li><li>
- Die Datei wird direkt im Ziel-Ordner erzeugt
+ Diese Datei wird direkt im Ziel-Ordner erzeugt
 </li></ul></div>
 
 <div><div>
@@ -140,7 +140,7 @@
 </div>
 
 <ul><li>
- Und es gibt eine Datei mit der englischen GUI ohne Webseiten-Rahmen
+ Die Datei <code>rsa-en.html</code> enthält die englische GUI ohne Webseiten-Rahmen
 </li></ul></div>
 
 <div><div>
@@ -166,11 +166,11 @@
 </div>
 
 <ul><li>
- Im Header wird die Zeichen-Kodierung auf UTF-8 gestellt
+ Im HTML-Header wird die Zeichen-Kodierung auf UTF-8 gestellt
 </li><li>
  Die Bootstrap-Stylesheets werden eingebunden
 </li><li>
- Und das spezifische Stylesheet wird eingebunden
+ Das app-spezifische Stylesheet <code>rsa.css</code> wird eingebunden
 </li></ul></div>
 
 <div><div>
@@ -186,8 +186,10 @@
 </div>
 
 <ul><li>
- Die Stylesheet enthält ein Fragment, in welchem im Laufe des Dokuments
-  neue Definitionen eingepflegt werden
+ Das Stylesheet enthält ein Fragment <code>{css}</code>
+</li><li>
+ Wenn neue HTML-Elemente eine CSS-Anpassung benötigen, werden diese
+  hier eingepflegt
 </li></ul></div>
 
 <div><div>
@@ -242,13 +244,14 @@
 </div>
 
 <ul><li>
- Das Skript wird mit strenger Typ-Prüfung ausgeführt
+ Das Skript <code>rsa.js</code> wird mit strenger Typ-Prüfung ausgeführt
 </li><li>
  Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
   geladen wurde
 </li><li>
- Durch das Scoping in einer eigenen Funktion wird der globale
-  Namensraum nicht belastet
+ Der gesamte Code wird innerhalb einer JavaScript Funktion definiert
+</li><li>
+ Dadurch entstehen keine neuen globalen Objekte
 </li></ul></div>
 
 <div><div>
@@ -270,7 +273,8 @@
 </div>
 
 <ul><li>
- Der Inhalts-Block ist in einem eigenen <code>&lt;div&gt;</code> gekapselt
+ Alle HTML-Elemente des RSA-Algorithmus sind in einem eigenen
+  <code>&lt;div&gt;</code>-Tag gekapselt
 </li><li>
  Dadurch können Stylesheet-Anpassungen auf RSA-Elemente beschränkt
   werden
@@ -329,7 +333,7 @@
 </div>
 
 <ul><li>
- Am Anfang gibt es eine kurze Beschreibung
+ Die Seite beginnt mit einer kurzen Beschreibung
 </li></ul></div>
 
 <div><div>
@@ -341,7 +345,7 @@
 
 <span class="in2"></span><span class="str">This module demonstrates step-by-step</span><br/>
 
-<span class="in2"></span><span class="str">encryption or decryption with the RSA</span><br/>
+<span class="in2"></span><span class="str">encryption and decryption with the RSA</span><br/>
 
 <span class="in2"></span><span class="str">method. The sender uses the public</span><br/>
 
@@ -359,7 +363,7 @@
 </div>
 
 <ul><li>
- Die englische Version enthält die Übersetzung
+ Die englische Seite beginnt mit der gleichen Beschreibung
 </li></ul></div>
 
 <div><div>
@@ -369,7 +373,7 @@
 
 <span class="in1"></span>#<span class="var">rsa</span>-<span class="var">container</span> <span class="var">p</span> {<br/>
 
-<span class="in2"></span><span class="var">margin</span>: <span class="num">0</span> <span class="num">0</span> <span class="num">10px</span>;<br/>
+<span class="in2"></span><span class="var">margin</span>: <span class="num">0</span> <span class="num">0</span> <span class="num">10px</span> <span class="num">0</span>;<br/>
 
 <span class="in1"></span>}<br/>
 
@@ -385,15 +389,15 @@
 </li></ul></div>
 
 </div>
-<h1>Primfaktoren eingeben</h1>
+<h1>2. Primfaktoren eingeben</h1>
 <div class="slides">
 <div><div>
-<h1>Primfaktoren eingeben</h1>
+<h1>2. Primfaktoren eingeben</h1>
 </div>
 
 <ul><li>
- Dieser Abschnitt beschreibt, wie die Primfaktoren geändert werden
-  können
+ Dieser Abschnitt beschreibt, wie die Primzahlen eingegeben und geändert
+  werden können
 </li></ul></div>
 
 <div><div>
@@ -401,7 +405,7 @@
 
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 
-<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Primfaktoren</span>&lt;/<span class="var">h2</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Primzahlen</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -448,7 +452,7 @@
 
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 
-<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="type">Prime</span> <span class="var">factors</span>&lt;/<span class="var">h2</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="type">Primes</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
@@ -484,7 +488,7 @@
 </div>
 
 <ul><li>
- Auch auf der englischen Seite wird die Erklärung eingebaut
+ Die englische Seite enthält die gleiche Erklärung
 </li></ul></div>
 
 <div><div>
@@ -524,7 +528,8 @@
 </div>
 
 <ul><li>
- Die Eingabe-Elemente werden in einem Formular gekapselt
+ Die Eingabe-Elemente werden in einem Formular (dem <code>&lt;form&gt;</code>-Element)
+  gekapselt
 </li></ul></div>
 
 <div><div>
@@ -544,7 +549,8 @@
 </div>
 
 <ul><li>
- Die englische Version enthält ein anderes Fragment als Inhalt
+ Die englische Version unterscheidet sich nur in dem übersetzten
+  Inhalt
 </li></ul></div>
 
 <div><div>
@@ -582,14 +588,14 @@
 </div>
 
 <ul><li>
- Formatierung des Eingabefeldes für die erste Primzahl mit Label
+ Die Formatierung des Eingabefeldes für die erste Primzahl mit Label
   wird von Bootstrap-Klassen erledigt
 </li><li>
- Das Feld wird mit der kleinen Primzahl <code>11</code> initialisiert
+ Dieses Feld wird mit der kleinen Primzahl <code>11</code> initialisiert
 </li><li>
- Zusätzlich gibt es eine Fehlermeldung
+ Zusätzlich gibt es eine Fehlermeldung,
 </li><li>
- Die aber anfangs nicht sichtbar ist
+ die aber anfangs nicht sichtbar ist
 </li></ul></div>
 
 <div><div>
@@ -649,7 +655,7 @@
 <ul><li>
  Die englische Version hat ein andere Beschriftung
 </li><li>
- Und eine übersetzte Fehlermeldung
+ und eine übersetzte Fehlermeldung
 </li></ul></div>
 
 <div><div>
@@ -674,7 +680,7 @@
  Wenn sich Textfelder ändern, muss der RSA-Algorithmus neu
   durchgeführt werden
 </li><li>
- Dazu wird die Funktion <code>f{queueRefresh}</code> verwendet
+ Dazu wird die Funktion <code>queueRefresh</code> verwendet
 </li><li>
  Diese sorgt dafür, dass die Neuberechnung nicht zu häufig
   aufgerufen wird
@@ -699,7 +705,7 @@
 </div>
 
 <ul><li>
- Wenn sich die Primzahl (und andere Felder ändern), muss der
+ Wenn sich die Primzahl (oder andere Felder) ändern, muss der
   RSA-Algorithmus neu ausgeführt werden
 </li><li>
  Beim Starten wird die Funktion aufgerufen, um alle Felder zu
@@ -720,9 +726,9 @@
 
 <ul><li>
  In einer ersten Implementierung wird einfach nur die Funktion
-  <code>f{refresh}</code> aufgerufen
+  <code>refresh</code> aufgerufen
 </li><li>
- Diese Implementierung wird später durch eine aufwändigere
+ Dieser Funktionsaufruf wird später durch eine aufwändigere
   Implementierung mit Timern ersetzt
 </li></ul></div>
 
@@ -743,9 +749,10 @@
 </div>
 
 <ul><li>
- Hilfsfunktion, um ein Element im DOM mit <code>id</code> zu ermitteln
+ Hilfsfunktion, um ein Element im HTML Document Object Model (DOM) mit
+  <code>id</code> zu ermitteln
 </li><li>
- Ganz leicht wurde sich an jQuery angelehnt
+ Der Name wurde von jQuery übernommen
 </li><li>
  Es können jedoch nur Elemente nach ihrer ID aufgelöst werden
 </li></ul></div>
@@ -767,8 +774,8 @@
 </div>
 
 <ul><li>
- Referenzen auf as Textfeld und die Fehlermeldung werden
-  zwischengespeichert
+ Referenzen auf das Textfeld mit der ID <code>prime-1</code> und auf die dazu
+  gehörende Fehlermeldung werden zwischengespeichert
 </li></ul></div>
 
 <div><div>
@@ -859,7 +866,7 @@
 <ul><li>
  Eingabefeld für die zweite Primzahl
 </li><li>
- Auch diese wird mit einer kleinen Primzahl initialisiert
+ Auch diese wird mit einer kleinen Primzahl (<code>13</code>) initialisiert
 </li></ul></div>
 
 <div><div>
@@ -887,9 +894,9 @@
 </div>
 
 <ul><li>
- Für die zweite Primzahl gibt es noch eine zusätzliche Fehlermeldung
+ Für die zweite Primzahl gibt es nicht nur eine Fehlermeldung,
 </li><li>
- Denn beide Primzahlen dürfen nicht gleich sein
+ denn die beiden Primzahlen dürfen nicht gleich sein
 </li></ul></div>
 
 <div><div>
@@ -949,7 +956,7 @@
 </div>
 
 <ul><li>
- Die Fehlermeldungen sind in der englischen Version lokalisiert
+ Die Fehlermeldungen gibt es auch in der englischen Version
 </li></ul></div>
 
 <div><div>
@@ -994,7 +1001,8 @@
 </div>
 
 <ul><li>
- Bei einer Änderung wird ebenfalls eine Neuberechnung angestoßen
+ Bei einer Änderung der zweiten Primzahl wird ebenfalls eine
+  Neuberechnung angestoßen
 </li></ul></div>
 
 <div><div>
@@ -1022,9 +1030,9 @@
 </div>
 
 <ul><li>
- Auch der zweite Primfaktor wird ausgelesen
+ Auch de zweite Primzahl wird ausgelesen
 </li><li>
- Dessen Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um
+ Deren Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um
   eine Primzahl handelt
 </li></ul></div>
 
@@ -1047,7 +1055,7 @@
 </div>
 
 <ul><li>
- Eine dritte Fehlermeldung wird sichtbar, wenn die Primfaktoren
+ Eine dritte Fehlermeldung wird sichtbar, wenn die Primzahlen
   gleich sind
 </li></ul></div>
 
@@ -1098,14 +1106,14 @@
 </li></ul></div>
 
 </div>
-<h1>Öffentlicher Schlüssel</h1>
+<h1>3. Öffentlicher Schlüssel</h1>
 <div class="slides">
 <div><div>
-<h1>Öffentlicher Schlüssel</h1>
+<h1>3. Öffentlicher Schlüssel</h1>
 </div>
 
 <ul><li>
- Im zweiten Segment der Seite wird zusätzlich die Basis abgefragt
+ Im zweiten Abschnitt der Seite wird zusätzlich der Exponent abgefragt
 </li></ul></div>
 
 <div><div>
@@ -1300,9 +1308,9 @@
 
 <span class="in2"></span><span class="str">Faktorisierung schwierig zu gestalten,</span><br/>
 
-<span class="in2"></span><span class="str">müssen die Primzahlen möglichst groß</span><br/>
+<span class="in2"></span><span class="str">müssen die Primzahlen viel größer</span><br/>
 
-<span class="in2"></span><span class="str">gewählt werden.  Aktuell werden für</span><br/>
+<span class="in2"></span><span class="str">gewählt werden. Aktuell werden für</span><br/>
 
 <span class="in2"></span><span class="str">eine sichere Kommunikation Werte von</span><br/>
 
@@ -1429,7 +1437,7 @@
 
 <span class="in3"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
 
-<span class="in2"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">sind nicht</span><br/>
+<span class="in2"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;φ(<span class="var">n</span>)&lt;/<span class="var">i</span>&gt; <span class="str">sind nicht</span><br/>
 
 <span class="in3"></span><span class="str">teilerfremd.</span>&lt;/<span class="var">div</span>&gt;<br/>
 
@@ -1443,8 +1451,8 @@
 <ul><li>
  In einem Textfeld kann das <code>e</code> geändert werden
 </li><li>
- Zusätzlich gibt es eine Fehlermeldung, wenn eingegebene <code>e</code> nicht
-  teilerfremd ist
+ Zusätzlich gibt es eine Fehlermeldung, wenn das eingegebene <code>e</code> nicht
+  teilerfremd zu <code>φ(n)</code> ist
 </li></ul></div>
 
 <div><div>
@@ -1474,9 +1482,9 @@
 
 <span class="in3"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
 
-<span class="in2"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">have a common</span><br/>
+<span class="in2"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;φ(<span class="var">n</span>)&lt;/<span class="var">i</span>&gt; <span class="str">have a common</span><br/>
 
-<span class="in3"></span><span class="str">divisor.</span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in3"></span><span class="str">divisor, they are not coprime.</span>&lt;/<span class="var">div</span>&gt;<br/>
 
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 
@@ -1512,8 +1520,8 @@
 </li><li>
  Ebenso wird eine Referenz der Fehlermeldung gespeichert
 </li><li>
- Die Fehlermeldung können wir erst setzen, wenn <code>φ(n)</code> berechnet
-  wurde
+ Ob die Fehlermeldung angezeigt wird kann erst entschieden werden,
+  wenn <code>φ(n)</code> berechnet wurde
 </li></ul></div>
 
 <div><div>
@@ -1533,8 +1541,8 @@
 </div>
 
 <ul><li>
- Werden die Primzahlen oder die Basis geändert, wird die Neuberechnung
-  getriggert
+ Werden die Primzahlen oder der Exponent geändert, wird die
+  Neuberechnung getriggert
 </li></ul></div>
 
 <div><div>
@@ -1550,7 +1558,7 @@
 </div>
 
 <ul><li>
- Ermittelt den Wert von <code>e</code>
+ Liest den Wert von <code>e</code> aus dem DOM
 </li></ul></div>
 
 <div><div>
@@ -1603,16 +1611,16 @@
 </li></ul></div>
 
 </div>
-<h1>Geheimer Schlüssel</h1>
+<h1>4. Geheimer Schlüssel</h1>
 <div class="slides">
 <div><div>
-<h1>Geheimer Schlüssel</h1>
+<h1>4. Geheimer Schlüssel</h1>
 </div>
 
 <ul><li>
  Beschreibt den nächsten Abschnitt in der HTML-Ausgabe
 </li><li>
- Und wie der geheime Schlüssel berechnet wird
+ und wie der geheime Schlüssel berechnet wird
 </li></ul></div>
 
 <div><div>
@@ -1707,9 +1715,7 @@
 <ul><li>
  Die Berechnung von φ enthält keinen deutschen oder englischen Text
 </li><li>
- Und kann daher für beide Lokalisierungen verwendet werden
-</li><li>
- Oh, so schön ist Mathematik
+ und kann daher für beide Lokalisierungen verwendet werden
 </li></ul></div>
 
 <div><div>
@@ -1779,9 +1785,7 @@
 </div>
 
 <ul><li>
- Da davon ausgegangen wird, dass die beiden Primzahlen verschieden
-  sind, ist das Produkt von deren Vorgänger der Wert der φ-Funktion
-  des öffentlichen Schlüssels
+ Nur wenn die Primzahlen verschieden sind, gilt diese Rechenvorschrift
 </li></ul></div>
 
 <div><div>
@@ -1804,7 +1808,7 @@
  Um festzustellen, ob <code>e</code> und  <code>φ(n)</code> teilerfremd sind, wird der
   Erweiterte Euklidische Algorithmus verwendet
 </li><li>
- Dieser liefert gleichzeitig noch das inverse Element, das für den
+ Dieser liefert gleichzeitig noch das inverse Element <code>d</code>, das für den
   geheimen Schlüssel benötigt wird
 </li></ul></div>
 
@@ -1894,13 +1898,13 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Here it is used that</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span><br/>
+<span class="in2"></span><span class="str">The prerequisit here is that </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">are different. Otherwise,</span><br/>
+<span class="in2"></span><span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">are different. </span><br/>
 
-<span class="in2"></span><span class="str">the φ function would calculate</span><br/>
+<span class="in2"></span><span class="str">Otherwise, the φ function would be</span><br/>
 
-<span class="in2"></span><span class="str">differently.</span><br/>
+<span class="in2"></span><span class="str">calculate d differently.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
 
@@ -2053,13 +2057,13 @@
 
 <span class="in2"></span><span class="str">Der geheime Schlüssel besteht</span><br/>
 
-<span class="in2"></span><span class="str">ebenfalls aus</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">und einem</span><br/>
+<span class="in2"></span><span class="str">aus einem </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> mit der</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit der Eigenschaft, dass</span><br/>
+<span class="in2"></span><span class="str">Eigenschaft, dass</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">ein Vielfaches</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1 ein Vielfaches</span><br/>
 
-<span class="in2"></span><span class="str">von φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) + 1 ist.</span><br/>
+<span class="in2"></span><span class="str">von φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) ist.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -2069,8 +2073,7 @@
 </div>
 
 <ul><li>
- Auf der deutschen Seite wird beschrieben, wie der geheime Schlüssel
-  berechnet wird
+ Es wird beschrieben wie der geheime Schlüssel berechnet wird
 </li></ul></div>
 
 <div><div>
@@ -2162,13 +2165,13 @@
 
 <span class="in2"></span><span class="str">The secret key also consists of</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and a </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> with the</span><br/>
+<span class="in2"></span><span class="str">a </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> with the</span><br/>
 
 <span class="in2"></span><span class="str">property that </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ×</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> is a multiple of</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1 is a multiple of</span><br/>
 
-<span class="in2"></span><span class="str">φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) plus one.</span><br/>
+<span class="in2"></span><span class="str">φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -2247,8 +2250,7 @@
 <ul><li>
  Und warum das Ganze funktioniert
 </li><li>
- Auch hier wird ein Absatz ausgegeben, der auf das nächste Ergebnis
-  hinarbeitet
+ Hier wird auf das nächste Ergebnis hingearbeitet
 </li></ul></div>
 
 <div><div>
@@ -2323,7 +2325,7 @@
 </div>
 
 <ul><li>
- Geheimen Schlüssel in der deutschen Version ausgeben
+ Den geheimen Schlüssel in der deutschen Version ausgeben
 </li></ul></div>
 
 
@@ -2340,7 +2342,7 @@
 </div>
 
 <ul><li>
- Geheimen Schlüssel in der englischen Version ausgeben
+ Den geheimen Schlüssel in der englischen Version ausgeben
 </li></ul></div>
 
 <div><div>
@@ -2358,7 +2360,8 @@
 </div>
 
 <ul><li>
- Referenz auf den geheimen Schlüssel wird in der Anwendung gespeichert
+ Die Referenz auf den geheimen Schlüssel wird in der Anwendung
+  gespeichert
 </li></ul></div>
 
 <div><div>
@@ -2407,7 +2410,7 @@
 
 <span class="in2"></span><span class="str">beschriebenen Einschränkung gewählt</span><br/>
 
-<span class="in2"></span><span class="str">wurde – bspw. mit dem erweiterten</span><br/>
+<span class="in2"></span><span class="str">wurde – bspw. mit dem Erweiterten</span><br/>
 
 <span class="in2"></span><span class="str">Euklidischen Algorithmus.</span><br/>
 
@@ -2419,8 +2422,7 @@
 </div>
 
 <ul><li>
- Auf der deutschen Seite wird beschrieben, wie der geheime Schlüssel
-  gewählt wird
+ Es wird beschrieben, wie der geheime Schlüssel gewählt wird
 </li></ul></div>
 
 <div><div>
@@ -2452,15 +2454,14 @@
 </li></ul></div>
 
 </div>
-<h1>Ver- und Entschlüsseln</h1>
+<h1>5. Ver- und Entschlüsseln</h1>
 <div class="slides">
 <div><div>
-<h1>Ver- und Entschlüsseln</h1>
+<h1>5. Ver- und Entschlüsseln</h1>
 </div>
 
 <ul><li>
- Endlich (nach knapp der Hälfte der Folien) kommt die eigentliche
-  Ver- und Entschlüsselung
+ Endlich kommt die eigentliche Ver- und Entschlüsselung
 </li><li>
  Durch die Vorarbeiten bleibt aber nicht mehr viel zu tun
 </li></ul></div>
@@ -2480,7 +2481,7 @@
 
 <span class="in2"></span><span class="str">Zahlen ver- und entschlüsselt, die</span><br/>
 
-<span class="in2"></span><span class="str">zwischen 0 und </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> liegen.</span><br/>
+<span class="in2"></span><span class="str">zwischen 0 und </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1 liegen.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -2490,8 +2491,7 @@
 </div>
 
 <ul><li>
- In der deutschen Version wird beschrieben, was für Nachrichten
-  verschlüsselt werden können
+ Hier wird beschrieben, was für Nachrichten verschlüsselt werden können
 </li></ul></div>
 
 <div><div>
@@ -2529,8 +2529,9 @@
 <ul><li>
  Das Verschlüsseln besteht aus einer Exponentiation
 </li><li>
- Die Striche an den Variablen-Namen werden durch Entitäten realisiert
-  um den Source Code Parser nicht durcheinander zu bringen
+ Die Striche an den Variablen-Namen der Nachrichten werden durch
+  HTML-Entitäten realisiert, um den Source Code Parser nicht
+  durcheinander zu bringen
 </li></ul></div>
 
 <div><div>
@@ -2592,8 +2593,7 @@
 </div>
 
 <ul><li>
- Durch Einsetzen kann die entschlüsselte Nachricht direkt aus der
-  ursprünglichen Nachricht berechnet werden
+ <code>m</code>-Strich wird durch <code>m</code> hoch <code>e</code> ersetzt
 </li></ul></div>
 
 <div><div>
@@ -2603,9 +2603,7 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">RSA nutzt nun die Eigenschaft aus,</span><br/>
-
-<span class="in2"></span><span class="str">dass</span><br/>
+<span class="in2"></span><span class="str">RSA nutzt die Eigenschaft aus, dass</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
@@ -2646,7 +2644,7 @@
 
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt; <span class="str">wurden passend</span><br/>
 
-<span class="in2"></span><span class="str">gewählt damit</span><br/>
+<span class="in2"></span><span class="str">gewählt, dass</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
@@ -2694,15 +2692,15 @@
 
 <span class="in2"></span><span class="str">numbers (no text), which are between 0</span><br/>
 
-<span class="in2"></span><span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
+<span class="in2"></span><span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Encrypting a message </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (number)</span><br/>
+<span class="in2"></span><span class="str">A message </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (number) is</span><br/>
 
-<span class="in2"></span><span class="str">with the public key (</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
+<span class="in2"></span><span class="str">encrypted with the public key (</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">) is calculated:</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">) by calculating:</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 
@@ -2999,7 +2997,7 @@
 </div>
 
 <ul><li>
- Ein Pfeil zeigt die Richtung an, in welche der Algorithmus gerade
+ Ein Pfeil zeigt die Richtung an, in die der Algorithmus gerade
   arbeitet
 </li><li>
  Die Richtung kann durch Eingabe in die passenden Textfelder
@@ -3310,7 +3308,7 @@
 </div>
 
 <ul><li>
- In den Fehlermeldungen gibt es Elemente, welche die größte mögliche
+ In den Fehlermeldungen gibt es Elemente, die die größte mögliche
   Nachricht anzeigen
 </li><li>
  Sie sind mit der Klasse <code>max-msg</code> markiert
@@ -3445,7 +3443,7 @@
 <ul><li>
  Der Algorithmus kann sowohl ver- als auch entschlüsseln
 </li><li>
- Die Variable <code>encrypt</code> bestimmt, in welche Richtung der Algorithmus
+ Die Variable <code>encrypt</code> bestimmt die Richtung in die der Algorithmus
   läuft
 </li></ul></div>
 
@@ -3470,7 +3468,7 @@
 </div>
 
 <ul><li>
- Je nachdem, in welche Richtung der Algorithmus arbeiten soll, wird
+ Je nach Richtung in die der Algorithmus arbeiten soll, wird
   entweder der Klartext verschlüsselt
 </li><li>
  Oder der Geheimtext entschlüsselt

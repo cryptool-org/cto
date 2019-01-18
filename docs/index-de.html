@@ -41,7 +41,7 @@
 		privaten Schlüssel.
 	</p>
 
-	<h2>Primfaktoren</h2>
+	<h2>Primzahlen</h2>
 	<p>
 		Die Sicherheit von RSA basiert darauf,
 		dass es zwar einfach ist, das Produkt
@@ -126,8 +126,8 @@
 		Zur Demonstration beginnen wir mit
 		kleinen Primzahlen. Um die
 		Faktorisierung schwierig zu gestalten,
-		müssen die Primzahlen möglichst groß
-		gewählt werden.  Aktuell werden für
+		müssen die Primzahlen viel größer
+		gewählt werden. Aktuell werden für
 		eine sichere Kommunikation Werte von
 		<i>n</i> mit mehreren tausend
 		Binärstellen verwendet.
@@ -150,7 +150,7 @@
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> und <i>n</i> sind nicht
+		><i>e</i> und <i>φ(n)</i> sind nicht
 			teilerfremd.</div>
 	</form>
 
@@ -216,10 +216,10 @@
 		bestimmen.
 	</p><p>
 		Der geheime Schlüssel besteht
-		ebenfalls aus <i>n</i> und einem
-		<i>d</i> mit der Eigenschaft, dass
-		<i>e</i> × <i>d</i> ein Vielfaches
-		von φ(<i>n</i>) + 1 ist.
+		aus einem <i>d</i> mit der
+		Eigenschaft, dass
+		<i>e</i> × <i>d</i> − 1 ein Vielfaches
+		von φ(<i>n</i>) ist.
 	</p>
 
 	<p>
@@ -262,7 +262,7 @@
 		Dieses <i>d</i> kann immer bestimmt
 		werden, wenn <i>e</i> mit der oben
 		beschriebenen Einschränkung gewählt
-		wurde – bspw. mit dem erweiterten
+		wurde – bspw. mit dem Erweiterten
 		Euklidischen Algorithmus.
 	</p>
 
@@ -271,7 +271,7 @@
 		Grundsätzlich werden bei diesem
 		Verfahren keine Texte, sondern nur
 		Zahlen ver- und entschlüsselt, die
-		zwischen 0 und <i>n</i> liegen.
+		zwischen 0 und <i>n</i> − 1 liegen.
 	</p>
 
 	<p>
@@ -306,8 +306,7 @@
 	</p>
 
 	<p>
-		RSA nutzt nun die Eigenschaft aus,
-		dass
+		RSA nutzt die Eigenschaft aus, dass
 	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup> =
 			<i>x</i><sup><i>b</i></sup>
@@ -321,7 +320,7 @@
 
 	<p>
 		<i>e</i> und <i>d</i> wurden passend
-		gewählt damit
+		gewählt, dass
 	</p><p class="form">
 		<i>m&#39;&#39;</i> = <i>m</i>.
 	</p><p>

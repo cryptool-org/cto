@@ -32,14 +32,14 @@
 		
 	<p>
 		This module demonstrates step-by-step
-		encryption or decryption with the RSA
+		encryption and decryption with the RSA
 		method. The sender uses the public
 		key of the recipient for encryption;
 		the recipient uses his associated
 		private key to decrypt.
 	</p>
 
-	<h2>Prime factors</h2>
+	<h2>Primes</h2>
 	<p>
 		The security of RSA is based on the
 		fact that it is easy to calculate the
@@ -146,8 +146,8 @@
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> and <i>n</i> have a common
-			divisor.</div>
+		><i>e</i> and <i>φ(n)</i> have a common
+			divisor, they are not coprime.</div>
 	</form>
 
 	<p>
@@ -179,10 +179,10 @@
 
 
 	<p>
-		Here it is used that <i>p</i> and
-		<i>q</i> are different. Otherwise,
-		the φ function would calculate
-		differently.
+		The prerequisit here is that <i>p</i>
+		and <i>q</i> are different. 
+		Otherwise, the φ function would be
+		calculate d differently.
 	</p><p>
 		It is important for RSA that the
 		value of the φ function is
@@ -211,10 +211,10 @@
 		φ(<i>n</i>).
 	</p><p>
 		The secret key also consists of
-		<i>n</i> and a <i>d</i> with the
+		a <i>d</i> with the
 		property that <i>e</i> ×
-		<i>d</i> is a multiple of
-		φ(<i>n</i>) plus one.
+		<i>d</i> − 1 is a multiple of
+		φ(<i>n</i>).
 	</p>
 
 	<p>
@@ -265,11 +265,11 @@
 	<p>
 		Internally, this method works only with
 		numbers (no text), which are between 0
-		and <i>n</i>.
+		and <i>n</i> − 1.
 	</p><p>
-		Encrypting a message <i>m</i> (number)
-		with the public key (<i>n</i>,
-		<i>e</i>) is calculated:
+		A message <i>m</i> (number) is
+		encrypted with the public key (
+		<i>n</i>, <i>e</i>) by calculating:
 	</p><p class="form">
 		<i>m&#39;</i> :=
 			<i>m</i><sup><i>e</i></sup>
