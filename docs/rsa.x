@@ -410,7 +410,7 @@ x{primes de}
 a{primes de}
 	<div id="err-q-not-prime"
 		class="row alert alert-danger hidden"
-	><i>q</i>s{ist keine Primzahl!}</div>
+	><i>q</i>s{ ist keine Primzahl!}</div>
 	<div id="err-p-equal-q"
 		class="row alert alert-danger hidden"
 	><i>p</i>s{und} <i>q</i>
