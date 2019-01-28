@@ -4,55 +4,66 @@
 		class="container">
 		
 	<p>
-		Dieses Modul demonstriert schrittweise
-		die Ver- und Entschlüsselung mit dem
-		RSA-Verfahren. Der Sender verwendet
-		dabei zum Verschlüsseln den
-		öffentlichen Schlüssel des Empfängers;
-		der Empfänger verwendet zum
-		Entschlüsseln seinen zugehörigen
-		privaten Schlüssel.
+		Dieses Modul demonstriert
+		schrittweise die Ver- und
+		Entschlüsselung mit dem
+		RSA-Verfahren. Der Sender
+		verwendet dabei zum Verschlüsseln
+		den öffentlichen Schlüssel des
+		Empfängers; der Empfänger
+		verwendet zum Entschlüsseln
+		seinen zugehörigen privaten
+		Schlüssel.
 	</p>
 
 	<h2>Primzahlen</h2>
+
 	<p>
-		Die Sicherheit von RSA basiert darauf,
-		dass es zwar einfach ist, das Produkt
-		<i>n</i> zweier großer Primzahlen
-		<i>p</i> und <i>q</i> zu berechnen. Es
-		ist jedoch sehr schwer, nur aus dem
-		Produkt <i>n</i> die beiden Primzahlen
-		zu bestimmen, die das Produkt ergeben.
-		Dieses Zerlegen nennt man auch das
-		Faktorisieren von <i>n</i>.
-	</p><p>
-		Als Ausgangspunkt für RSA wählt man
-		zwei Primzahlen <i>p</i> und <i>q</i>.
+		Die Sicherheit von RSA basiert
+		darauf, dass es zwar einfach ist,
+		das Produkt <i>n</i> zweier großer
+		Primzahlen <i>p</i> und <i>q</i>
+		zu berechnen. Es ist jedoch sehr
+		schwer, nur aus dem Produkt
+		<i>n</i> die beiden Primzahlen zu
+		bestimmen, die das Produkt
+		ergeben. Dieses Zerlegen nennt man
+		auch das Faktorisieren von
+		<i>n</i>.
+	</p>
+
+	<p>
+		Als Ausgangspunkt für RSA wählt
+		man zwei Primzahlen <i>p</i> und
+		<i>q</i>.
 	</p>
 
 	<form class="form-horizontal">
 		
 	<div class="form-group">
-		<label class="col-sm-3 control-label"
-			for="prime-1">1.  Primzahl <i>p</i>
-			=
+		<label
+			class="col-sm-3 control-label"
+			for="prime-1">1. Primzahl
+			<i>p</i> =
 		</label>
 		<div class="col-sm-9"><input
-			class="form-control" id="prime-1"
-			value="11"></div>
+			class="form-control"
+			id="prime-1" value="11"></div>
 	</div>
+
 	<div id="err-p-not-prime"
 		class="row alert alert-danger hidden"
 	><i>p</i> ist keine Primzahl!</div>
 
 	<div class="form-group">
-		<label class="col-sm-3 control-label"
-			for="prime-2">2.  Primzahl <i>q</i>
-			=
+		<label
+			class="col-sm-3 control-label"
+			for="prime-2">2.  Primzahl
+			<i>q</i> =
 		</label>
 		<div class="col-sm-9"><input
-			class="form-control" id="prime-2"
-			value="13"></div>
+			class="form-control"
+			id="prime-2" value="13"></div>
 	</div>
 
 	<div id="err-q-not-prime"
@@ -66,9 +77,9 @@
 	</form>
 
 	<p>
-		Damit der Algorithmus funktioniert,
-		müssen die beiden Primzahlen
-		verschieden sein.
+		Damit der Algorithmus
+		funktioniert, müssen die beiden
+		Primzahlen verschieden sein.
 	</p>
 
 	<h2>Öffentlicher Schlüssel</h2>
@@ -80,17 +91,18 @@
 	
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="public-key"><i>n</i> =
-					<i>p</i> × <i>q</i> =
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				><span id="public-key"></span>
-				(<span
-				id="public-key-length"></span>
-				Bit)</p></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="public-key"><i>n</i> =
+			<i>p</i> × <i>q</i> =
+	</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		><span id="public-key"></span>
+		(<span id="public-key-length"
+		></span> Bit)</p></div>
+
 		</div>
 	</form>
 
@@ -98,12 +110,13 @@
 	<p>
 		Zur Demonstration beginnen wir mit
 		kleinen Primzahlen. Um die
-		Faktorisierung schwierig zu gestalten,
-		müssen die Primzahlen viel größer
-		gewählt werden. Aktuell werden für
-		eine sichere Kommunikation Werte von
-		<i>n</i> mit mehreren tausend
-		Binärstellen verwendet.
+		Faktorisierung schwierig zu
+		gestalten, müssen die Primzahlen
+		viel größer gewählt werden.
+		Aktuell werden für eine sichere
+		Kommunikation Werte von <i>n</i>
+		mit mehreren tausend Binärstellen
+		verwendet.
 	</p>
 
 	<p>

@@ -199,13 +199,15 @@
 
 <span class="in1"></span>&lt;<span class="var">script</span><br/>
 
-<span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/BigInteger.min.js"</span><br/>
+<span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/</span><span class="virt"></span><br/><span class="str">BigInteger.min.js"</span><br/>
 
 <span class="in1"></span>&gt;&lt;/<span class="var">script</span>&gt;<br/>
 
 <span class="in1"></span>&lt;<span class="var">script</span><br/>
 
-<span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/rsa.js"</span>&gt;&lt;/<span class="var">script</span>&gt;<br/>
+<span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/rsa.js"</span><br/>
+
+<span class="in1"></span>&gt;&lt;/<span class="var">script</span>&gt;<br/>
 
 <span class="macro">@end(<span class="name">scripts</span>)</span><br/>
 
@@ -309,21 +311,25 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Dieses Modul demonstriert schrittweise</span><br/>
+<span class="in2"></span><span class="str">Dieses Modul demonstriert</span><br/>
 
-<span class="in2"></span><span class="str">die Ver- und Entschlüsselung mit dem</span><br/>
+<span class="in2"></span><span class="str">schrittweise die Ver- und</span><br/>
 
-<span class="in2"></span><span class="str">RSA-Verfahren. Der Sender verwendet</span><br/>
+<span class="in2"></span><span class="str">Entschlüsselung mit dem</span><br/>
 
-<span class="in2"></span><span class="str">dabei zum Verschlüsseln den</span><br/>
+<span class="in2"></span><span class="str">RSA-Verfahren. Der Sender</span><br/>
 
-<span class="in2"></span><span class="str">öffentlichen Schlüssel des Empfängers;</span><br/>
+<span class="in2"></span><span class="str">verwendet dabei zum Verschlüsseln</span><br/>
 
-<span class="in2"></span><span class="str">der Empfänger verwendet zum</span><br/>
+<span class="in2"></span><span class="str">den öffentlichen Schlüssel des</span><br/>
 
-<span class="in2"></span><span class="str">Entschlüsseln seinen zugehörigen</span><br/>
+<span class="in2"></span><span class="str">Empfängers; der Empfänger</span><br/>
 
-<span class="in2"></span><span class="str">privaten Schlüssel.</span><br/>
+<span class="in2"></span><span class="str">verwendet zum Entschlüsseln</span><br/>
+
+<span class="in2"></span><span class="str">seinen zugehörigen privaten</span><br/>
+
+<span class="in2"></span><span class="str">Schlüssel.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -343,13 +349,15 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">This module demonstrates step-by-step</span><br/>
+<span class="in2"></span><span class="str">This module demonstrates</span><br/>
 
-<span class="in2"></span><span class="str">encryption and decryption with the RSA</span><br/>
+<span class="in2"></span><span class="str">step-by-step encryption and</span><br/>
 
-<span class="in2"></span><span class="str">method. The sender uses the public</span><br/>
+<span class="in2"></span><span class="str">decryption with the RSA method.</span><br/>
 
-<span class="in2"></span><span class="str">key of the recipient for encryption;</span><br/>
+<span class="in2"></span><span class="str">The sender uses the public key of</span><br/>
+
+<span class="in2"></span><span class="str">the recipient for encryption;</span><br/>
 
 <span class="in2"></span><span class="str">the recipient uses his associated</span><br/>
 
@@ -407,31 +415,43 @@
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Primzahlen</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die HTML-Seite beginnt mit dem Kapitel über Primzahlen
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
+
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Die Sicherheit von RSA basiert darauf,</span><br/>
+<span class="in2"></span><span class="str">Die Sicherheit von RSA basiert</span><br/>
 
-<span class="in2"></span><span class="str">dass es zwar einfach ist, das Produkt</span><br/>
+<span class="in2"></span><span class="str">darauf, dass es zwar einfach ist,</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">zweier großer Primzahlen</span><br/>
+<span class="in2"></span><span class="str">das Produkt </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> zweier großer</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">zu berechnen. Es</span><br/>
+<span class="in2"></span><span class="str">Primzahlen </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> und </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">ist jedoch sehr schwer, nur aus dem</span><br/>
+<span class="in2"></span><span class="str">zu berechnen. Es ist jedoch sehr</span><br/>
 
-<span class="in2"></span><span class="str">Produkt</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">die beiden Primzahlen</span><br/>
+<span class="in2"></span><span class="str">schwer, nur aus dem Produkt</span><br/>
 
-<span class="in2"></span><span class="str">zu bestimmen, die das Produkt ergeben.</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> die beiden Primzahlen zu</span><br/>
 
-<span class="in2"></span><span class="str">Dieses Zerlegen nennt man auch das</span><br/>
+<span class="in2"></span><span class="str">bestimmen, die das Produkt</span><br/>
 
-<span class="in2"></span><span class="str">Faktorisieren von</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
+<span class="in2"></span><span class="str">ergeben. Dieses Zerlegen nennt man</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
+<span class="in2"></span><span class="str">auch das Faktorisieren von</span><br/>
 
-<span class="in2"></span><span class="str">Als Ausgangspunkt für RSA wählt man</span><br/>
-
-<span class="in2"></span><span class="str">zwei Primzahlen</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -441,10 +461,34 @@
 </div>
 
 <ul><li>
- Auf der HTML-Seite wird nach der Überschrift eine kurze Erklärung
-  ausgegeben
+ Die Seite beschreibt, warum bei RSA mit Primzahlen gerechnet wird
 </li><li>
  Mathematische Variablen werden mit dem <code>&lt;i&gt;</code>-Tag kursiv gesetzt
+</li></ul></div>
+
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">container de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">Als Ausgangspunkt für RSA wählt</span><br/>
+
+<span class="in2"></span><span class="str">man zwei Primzahlen </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> und</span><br/>
+
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">container de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die Beschreibung erwähnt die Variablen-Namen der Primzahlen
 </li></ul></div>
 
 <div><div>
@@ -454,31 +498,41 @@
 
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="type">Primes</span>&lt;/<span class="var">h2</span>&gt;<br/>
 
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die englische Seite enthält ebenfalls eine Überschrift
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
+
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">The security of RSA is based on the</span><br/>
+<span class="in2"></span><span class="str">The security of RSA is based on</span><br/>
 
-<span class="in2"></span><span class="str">fact that it is easy to calculate the</span><br/>
+<span class="in2"></span><span class="str">the fact that it is easy to</span><br/>
 
-<span class="in2"></span><span class="str">product</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">of two large primes</span><br/>
+<span class="in2"></span><span class="str">calculate the product </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;. <span class="str">However, it is</span><br/>
+<span class="in2"></span><span class="str">of two large primes </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and</span><br/>
 
-<span class="in2"></span><span class="str">very difficult to determine only from</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">. However, it is very</span><br/>
 
-<span class="in2"></span><span class="str">the product</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">the two primes</span><br/>
+<span class="in2"></span><span class="str">difficult to determine only from</span><br/>
 
-<span class="in2"></span><span class="str">that yield the product.  This</span><br/>
+<span class="in2"></span><span class="str">the product </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> the two</span><br/>
 
-<span class="in2"></span><span class="str">decomposition is also called the</span><br/>
+<span class="in2"></span><span class="str">primes that yield the product.</span><br/>
 
-<span class="in2"></span><span class="str">factorization of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;.<br/>
+<span class="in2"></span><span class="str">This decomposition is also called</span><br/>
 
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
-
-<span class="in2"></span><span class="str">As a starting point for RSA choose</span><br/>
-
-<span class="in2"></span><span class="str">two primes</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;.<br/>
+<span class="in2"></span><span class="str">the factorization of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;.<br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -488,7 +542,29 @@
 </div>
 
 <ul><li>
- Die englische Seite enthält die gleiche Erklärung
+ Die englische Seite enthält die Übersetzung des ersten Absatzes
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">container en</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">As a starting point for RSA choose</span><br/>
+
+<span class="in2"></span><span class="str">two primes </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">container en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die englische Seite enthält die Übersetzung des zweiten Absatzes
 </li></ul></div>
 
 <div><div>
@@ -560,27 +636,23 @@
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
-<span class="in2"></span>&lt;<span class="var">label</span> <span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span>&lt;<span class="var">label</span><br/>
 
-<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-1"</span>&gt;<span class="str">1.  Primzahl </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<br/>
+<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 
-<span class="in3"></span><span class="str">=</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-1"</span>&gt;<span class="str">1. Primzahl</span><br/>
+
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span> <span class="var">id</span>=<span class="str">"prime-1"</span><br/>
+<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
 
-<span class="in3"></span><span class="var">value</span>=<span class="str">"11"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in3"></span><span class="var">id</span>=<span class="str">"prime-1"</span> <span class="var">value</span>=<span class="str">"11"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
-
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-not-prime"</span><br/>
-
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
-
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
 
 <span class="macro">@end(<span class="name">primes de</span>)</span><br/>
 
@@ -592,7 +664,25 @@
   wird von Bootstrap-Klassen erledigt
 </li><li>
  Dieses Feld wird mit der kleinen Primzahl <code>11</code> initialisiert
-</li><li>
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">primes de</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-not-prime"</span><br/>
+
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/><span class="str">hidden"</span><br/>
+
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">primes de</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
  Zusätzlich gibt es eine Fehlermeldung,
 </li><li>
  die aber anfangs nicht sichtbar ist
@@ -641,9 +731,23 @@
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
+<span class="macro">@end(<span class="name">primes en</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die englische Version hat ein andere Beschriftung
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@add(<span class="name">primes en</span>)</span><br/>
+
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-not-prime"</span><br/>
 
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
 
@@ -653,8 +757,6 @@
 </div>
 
 <ul><li>
- Die englische Version hat ein andere Beschriftung
-</li><li>
  und eine übersetzte Fehlermeldung
 </li></ul></div>
 
@@ -739,7 +841,9 @@
 
 <span class="in1"></span><span class="type">const</span> <span class="fn">$</span> = <span class="var">id</span> =&gt; {<br/>
 
-<span class="in2"></span><span class="keyword">return</span> <span class="var">document</span>.<span class="fn">getElementById</span>(<span class="var">id</span>);<br/>
+<span class="in2"></span><span class="keyword">return</span><br/>
+
+<span class="in3"></span><span class="var">document</span>.<span class="fn">getElementById</span>(<span class="var">id</span>);<br/>
 
 <span class="in1"></span>};<br/>
 
@@ -842,19 +946,21 @@
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
-<span class="in2"></span>&lt;<span class="var">label</span> <span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span>&lt;<span class="var">label</span><br/>
 
-<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2.  Primzahl</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
+<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 
-<span class="in3"></span><span class="str">=</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2.  Primzahl</span><br/>
+
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">label</span>&gt;<br/>
 
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span> <span class="var">id</span>=<span class="str">"prime-2"</span><br/>
+<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
 
-<span class="in3"></span><span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in3"></span><span class="var">id</span>=<span class="str">"prime-2"</span> <span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
@@ -876,13 +982,13 @@
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
 
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
 
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
 
@@ -938,15 +1044,15 @@
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
 
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
 
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
 
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger hidden"</span><br/>
+<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str">are not</span><br/>
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> are not</span><br/>
 
 <span class="in2"></span><span class="str">different!</span>&lt;/<span class="var">div</span>&gt;<br/>
 
@@ -1066,11 +1172,11 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Damit der Algorithmus funktioniert,</span><br/>
+<span class="in2"></span><span class="str">Damit der Algorithmus</span><br/>
 
-<span class="in2"></span><span class="str">müssen die beiden Primzahlen</span><br/>
+<span class="in2"></span><span class="str">funktioniert, müssen die beiden</span><br/>
 
-<span class="in2"></span><span class="str">verschieden sein.</span><br/>
+<span class="in2"></span><span class="str">Primzahlen verschieden sein.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -1125,7 +1231,7 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Das Produkt</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">wird im</span><br/>
+<span class="in2"></span><span class="str">Das Produkt </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> wird im</span><br/>
 
 <span class="in2"></span><span class="str">RSA-Verfahren auch Modul genannt.</span><br/>
 
@@ -1149,9 +1255,9 @@
 
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">The product &lt;i&gt;n&lt;/i&gt; is also called</span><br/>
+<span class="in2"></span><span class="str">The product </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> is also</span><br/>
 
-<span class="in2"></span><span class="str">module in the RSA method.</span><br/>
+<span class="in2"></span><span class="str">called module in the RSA method.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -1173,27 +1279,7 @@
 
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 
-<span class="in3"></span>&lt;<span class="var">label</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-
-<span class="in4"></span><span class="var">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
-
-<span class="in5"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
-
-<span class="in3"></span>&lt;/<span class="var">label</span>&gt;<br/>
-
-<span class="in3"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-
-<span class="in4"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
-
-<span class="in4"></span>&gt;&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
-
-<span class="in4"></span><span class="str">(</span>&lt;<span class="var">span</span><br/>
-
-<span class="in4"></span><span class="var">id</span>=<span class="str">"public-key-length"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
-
-<span class="in4"></span><span class="str">Bit)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in3"></span><span class="macro">@expand(<span class="name">n elements</span>)</span><br/>
 
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 
@@ -1210,6 +1296,43 @@
  Die Anzeige ist in der deutschen und englischen Version identisch
 </li><li>
  Daher wird ein eigenes Fragment definiert
+</li></ul></div>
+
+<div><div>
+<code>
+
+<span class="macro">@def(<span class="name">n elements</span>)</span><br/>
+
+<span class="in1"></span>&lt;<span class="var">label</span><br/>
+
+<span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+
+<span class="in2"></span><span class="var">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
+
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
+
+<span class="in1"></span>&lt;/<span class="var">label</span>&gt;<br/>
+
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+
+<span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+
+<span class="in2"></span>&gt;&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
+
+<span class="in2"></span><span class="str">(</span>&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key-length"</span><br/>
+
+<span class="in2"></span>&gt;&lt;/<span class="var">span</span>&gt; <span class="str">Bit)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+
+<span class="macro">@end(<span class="name">n elements</span>)</span><br/>
+
+</code>
+</div>
+
+<ul><li>
+ Die Felder bilden ein eigenes Fragment
+</li><li>
+ um den Code übersichtlicher zu
+  formatieren
 </li></ul></div>
 
 <div><div>
@@ -1306,17 +1429,19 @@
 
 <span class="in2"></span><span class="str">kleinen Primzahlen. Um die</span><br/>
 
-<span class="in2"></span><span class="str">Faktorisierung schwierig zu gestalten,</span><br/>
+<span class="in2"></span><span class="str">Faktorisierung schwierig zu</span><br/>
 
-<span class="in2"></span><span class="str">müssen die Primzahlen viel größer</span><br/>
+<span class="in2"></span><span class="str">gestalten, müssen die Primzahlen</span><br/>
 
-<span class="in2"></span><span class="str">gewählt werden. Aktuell werden für</span><br/>
+<span class="in2"></span><span class="str">viel größer gewählt werden.</span><br/>
 
-<span class="in2"></span><span class="str">eine sichere Kommunikation Werte von</span><br/>
+<span class="in2"></span><span class="str">Aktuell werden für eine sichere</span><br/>
 
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">mit mehreren tausend</span><br/>
+<span class="in2"></span><span class="str">Kommunikation Werte von </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<br/>
 
-<span class="in2"></span><span class="str">Binärstellen verwendet.</span><br/>
+<span class="in2"></span><span class="str">mit mehreren tausend Binärstellen</span><br/>
+
+<span class="in2"></span><span class="str">verwendet.</span><br/>
 
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 
@@ -1345,7 +1470,7 @@
 
 <span class="in2"></span><span class="str">primes must be much larger.</span><br/>
 
-<span class="in2"></span><span class="str">Currently, values of</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; <span class="str">with</span><br/>
+<span class="in2"></span><span class="str">Currently, values of </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> with</span><br/>
 
 <span class="in2"></span><span class="str">several thousand binary digits</span><br/>
 

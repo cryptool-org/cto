@@ -87,10 +87,11 @@ x{file: ../_ctoApps/rsa/rsa.css}
 ```
 d{scripts}
 	<script
-		src="../_ctoApps/rsa/BigInteger.min.js"
+		src=s{"../_ctoApps/rsa/}b{}s{BigInteger.min.js"}
 	></script>
 	<script
-		src="../_ctoApps/rsa/rsa.js"></script>
+		src="../_ctoApps/rsa/rsa.js"
+	></script>
 x{scripts}
 ```
 * Neben dem spezifischen JavaScript wird noch eine Bibliothek für das
@@ -140,14 +141,16 @@ x{rsa en}
 ```
 d{container de}
 	<p>
-		s{Dieses Modul demonstriert schrittweise}
-		s{die Ver- und Entschlüsselung mit dem}
-		s{RSA-Verfahren. Der Sender verwendet}
-		s{dabei zum Verschlüsseln den}
-		s{öffentlichen Schlüssel des Empfängers;}
-		s{der Empfänger verwendet zum}
-		s{Entschlüsseln seinen zugehörigen}
-		s{privaten Schlüssel.}
+		s{Dieses Modul demonstriert}
+		s{schrittweise die Ver- und}
+		s{Entschlüsselung mit dem}
+		s{RSA-Verfahren. Der Sender}
+		s{verwendet dabei zum Verschlüsseln}
+		s{den öffentlichen Schlüssel des}
+		s{Empfängers; der Empfänger}
+		s{verwendet zum Entschlüsseln}
+		s{seinen zugehörigen privaten}
+		s{Schlüssel.}
 	</p>
 x{container de}
 ```
@@ -156,10 +159,11 @@ x{container de}
 ```
 d{container en}
 	<p>
-		s{This module demonstrates step-by-step}
-		s{encryption and decryption with the RSA}
-		s{method. The sender uses the public}
-		s{key of the recipient for encryption;}
+		s{This module demonstrates}
+		s{step-by-step encryption and}
+		s{decryption with the RSA method.}
+		s{The sender uses the public key of}
+		s{the recipient for encryption;}
 		s{the recipient uses his associated}
 		s{private key to decrypt.}
 	</p>
@@ -184,46 +188,76 @@ x{css}
 ```
 a{container de}
 	<h2>s{Primzahlen}</h2>
+x{container de}
+```
+* Die HTML-Seite beginnt mit dem Kapitel über Primzahlen
+
+```
+a{container de}
 	<p>
-		s{Die Sicherheit von RSA basiert darauf,}
-		s{dass es zwar einfach ist, das Produkt}
-		<i>n</i> s{zweier großer Primzahlen}
-		<i>p</i> s{und} <i>q</i> s{zu berechnen. Es}
-		s{ist jedoch sehr schwer, nur aus dem}
-		s{Produkt} <i>n</i> s{die beiden Primzahlen}
-		s{zu bestimmen, die das Produkt ergeben.}
-		s{Dieses Zerlegen nennt man auch das}
-		s{Faktorisieren von} <i>n</i>s{.}
-	</p><p>
-		s{Als Ausgangspunkt für RSA wählt man}
-		s{zwei Primzahlen} <i>p</i> s{und} <i>q</i>s{.}
+		s{Die Sicherheit von RSA basiert}
+		s{darauf, dass es zwar einfach ist,}
+		s{das Produkt }<i>n</i>s{ zweier großer}
+		s{Primzahlen }<i>p</i>s{ und }<i>q</i>
+		s{zu berechnen. Es ist jedoch sehr}
+		s{schwer, nur aus dem Produkt}
+		<i>n</i>s{ die beiden Primzahlen zu}
+		s{bestimmen, die das Produkt}
+		s{ergeben. Dieses Zerlegen nennt man}
+		s{auch das Faktorisieren von}
+		<i>n</i>s{.}
 	</p>
 x{container de}
 ```
-* Auf der HTML-Seite wird nach der Überschrift eine kurze Erklärung
-  ausgegeben
+* Die Seite beschreibt, warum bei RSA mit Primzahlen gerechnet wird
 * Mathematische Variablen werden mit dem `<i>`-Tag kursiv gesetzt
+
+
+```
+a{container de}
+	<p>
+		s{Als Ausgangspunkt für RSA wählt}
+		s{man zwei Primzahlen }<i>p</i>s{ und}
+		<i>q</i>s{.}
+	</p>
+x{container de}
+```
+* Die Beschreibung erwähnt die Variablen-Namen der Primzahlen
 
 ```
 a{container en}
 	<h2>Primes</h2>
+x{container en}
+```
+* Die englische Seite enthält ebenfalls eine Überschrift
+
+```
+a{container en}
 	<p>
-		s{The security of RSA is based on the}
-		s{fact that it is easy to calculate the}
-		s{product} <i>n</i> s{of two large primes}
-		<i>p</i> s{and} <i>q</i>. s{However, it is}
-		s{very difficult to determine only from}
-		s{the product} <i>n</i> s{the two primes}
-		s{that yield the product.  This}
-		s{decomposition is also called the}
-		s{factorization of} <i>n</i>.
-	</p><p>
-		s{As a starting point for RSA choose}
-		s{two primes} <i>p</i> s{and} <i>q</i>.
+		s{The security of RSA is based on}
+		s{the fact that it is easy to}
+		s{calculate the product }<i>n</i>
+		s{of two large primes }<i>p</i>s{ and}
+		<i>q</i>s{. However, it is very}
+		s{difficult to determine only from}
+		s{the product }<i>n</i>s{ the two}
+		s{primes that yield the product.}
+		s{This decomposition is also called}
+		s{the factorization of} <i>n</i>.
 	</p>
 x{container en}
 ```
-* Die englische Seite enthält die gleiche Erklärung
+* Die englische Seite enthält die Übersetzung des ersten Absatzes
+
+```
+a{container en}
+	<p>
+		s{As a starting point for RSA choose}
+		s{two primes }<i>p</i>s{ and }<i>q</i>s{.}
+	</p>
+x{container en}
+```
+* Die englische Seite enthält die Übersetzung des zweiten Absatzes
 
 ```
 a{css}
@@ -257,22 +291,28 @@ x{container en}
 ```
 d{primes de}
 	<div class="form-group">
-		<label class="col-sm-3 control-label"
-			v{for}="prime-1">s{1.  Primzahl }<i>p</i>
-			s{=}
+		<label
+			class="col-sm-3 control-label"
+			v{for}="prime-1">s{1. Primzahl}
+			<i>p</i>s{ =}
 		</label>
 		<div class="col-sm-9"><input
-			class="form-control" id="prime-1"
-			value="11"></div>
+			class="form-control"
+			id="prime-1" value="11"></div>
 	</div>
-	<div id="err-p-not-prime"
-		class="row alert alert-danger hidden"
-	><i>p</i> s{ist keine Primzahl!}</div>
 x{primes de}
 ```
 * Die Formatierung des Eingabefeldes für die erste Primzahl mit Label
   wird von Bootstrap-Klassen erledigt
 * Dieses Feld wird mit der kleinen Primzahl `11` initialisiert
+
+```
+a{primes de}
+	<div id="err-p-not-prime"
+		class=s{"row alert alert-danger }b{}s{hidden"}
+	><i>p</i> s{ist keine Primzahl!}</div>
+x{primes de}
+```
 * Zusätzlich gibt es eine Fehlermeldung,
 * die aber anfangs nicht sichtbar ist
 
@@ -296,12 +336,17 @@ d{primes en}
 			class="form-control"
 			id="prime-1" value="11"></div>
 	</div>
-	<div id="err-p-not-prime"
-		class="row alert alert-danger hidden"
-	><i>p</i> s{is not prime!}</div>
 x{primes en}
 ```
 * Die englische Version hat ein andere Beschriftung
+
+```
+a{primes en}
+	<div id="err-p-not-prime"
+		class=s{"row alert alert-danger}b{}s{ hidden"}
+	><i>p</i> s{is not prime!}</div>
+x{primes en}
+```
 * und eine übersetzte Fehlermeldung
 
 ```
@@ -344,7 +389,8 @@ x{queue refresh}
 ```
 D{globals}
 	const f{$} = id => {
-		return document.getElementById(id);
+		return
+			document.getElementById(id);
 	};
 x{globals}
 ```
@@ -393,13 +439,14 @@ x{refresh}
 ```
 a{primes de}
 	<div class="form-group">
-		<label class="col-sm-3 control-label"
-			v{for}="prime-2">s{2.  Primzahl} <i>q</i>
-			s{=}
+		<label
+			class="col-sm-3 control-label"
+			v{for}="prime-2">s{2.  Primzahl}
+			<i>q</i>s{ =}
 		</label>
 		<div class="col-sm-9"><input
-			class="form-control" id="prime-2"
-			value="13"></div>
+			class="form-control"
+			id="prime-2" value="13"></div>
 	</div>
 x{primes de}
 ```
@@ -409,10 +456,10 @@ x{primes de}
 ```
 a{primes de}
 	<div id="err-q-not-prime"
-		class="row alert alert-danger hidden"
+		class=s{"row alert alert-danger}b{}s{ hidden"}
 	><i>q</i>s{ ist keine Primzahl!}</div>
 	<div id="err-p-equal-q"
-		class="row alert alert-danger hidden"
+		class=s{"row alert alert-danger}b{}s{ hidden"}
 	><i>p</i>s{und} <i>q</i>
 		s{sind nicht verschieden!}</div>
 x{primes de}
@@ -438,11 +485,11 @@ x{primes en}
 ```
 a{primes en}
 	<div id="err-q-not-prime"
-		class="row alert alert-danger hidden"
-	><i>q</i> s{is not prime!}</div>
+		class=s{"row alert alert-danger}b{}s{ hidden"}
+	><i>q</i>s{ is not prime!}</div>
 	<div id="err-p-equal-q"
-		class="row alert alert-danger hidden"
-	><i>p</i> s{and} <i>q</i> s{are not}
+		class=s{"row alert alert-danger}b{}s{ hidden"}
+	><i>p</i>s{ and }<i>q</i>s{ are not}
 		s{different!}</div>
 x{primes en}
 ```
@@ -499,9 +546,9 @@ x{refresh}
 ```
 a{container de}
 	<p>
-		s{Damit der Algorithmus funktioniert,}
-		s{müssen die beiden Primzahlen}
-		s{verschieden sein.}
+		s{Damit der Algorithmus}
+		s{funktioniert, müssen die beiden}
+		s{Primzahlen verschieden sein.}
 	</p>
 x{container de}
 ```
@@ -524,7 +571,7 @@ x{container en}
 a{container de}
 	<h2>s{Öffentlicher Schlüssel}</h2>
 	<p>
-		s{Das Produkt} <i>n</i> s{wird im}
+		s{Das Produkt }<i>n</i>s{ wird im}
 		s{RSA-Verfahren auch Modul genannt.}
 	</p>
 x{container de}
@@ -535,8 +582,8 @@ x{container de}
 a{container en}
 	<h2>s{Public key}</h2>
 	<p>
-		s{The product <i>n</i> is also called}
-		s{module in the RSA method.}
+		s{The product }<i>n</i>s{ is also}
+		s{called module in the RSA method.}
 	</p>
 x{container en}
 ```
@@ -546,17 +593,7 @@ x{container en}
 d{definition of n}
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				v{for}="public-key"><i>n</i>s{ =}
-					<i>p</i>s{ × }<i>q</i>s{ =}
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				><span id="public-key"></span>
-				s{(}<span
-				id="public-key-length"></span>
-				s{Bit)}</p></div>
+			e{n elements}
 		</div>
 	</form>
 x{definition of n}
@@ -564,6 +601,24 @@ x{definition of n}
 * `n` ist das Produkt der beiden Primfaktoren
 * Die Anzeige ist in der deutschen und englischen Version identisch
 * Daher wird ein eigenes Fragment definiert
+
+```
+d{n elements}
+	<label
+		class="col-sm-3 control-label"
+		v{for}="public-key"><i>n</i>s{ =}
+			<i>p</i>s{ × }<i>q</i>s{ =}
+	</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		><span id="public-key"></span>
+		s{(}<span id="public-key-length"
+		></span> s{Bit)}</p></div>
+x{n elements}
+```
+* Die Felder bilden ein eigenes Fragment
+* um den Code übersichtlicher zu
+  formatieren
 
 ```
 a{container de}
@@ -608,12 +663,13 @@ a{container de}
 	<p>
 		s{Zur Demonstration beginnen wir mit}
 		s{kleinen Primzahlen. Um die}
-		s{Faktorisierung schwierig zu gestalten,}
-		s{müssen die Primzahlen viel größer}
-		s{gewählt werden. Aktuell werden für}
-		s{eine sichere Kommunikation Werte von}
-		<i>n</i> s{mit mehreren tausend}
-		s{Binärstellen verwendet.}
+		s{Faktorisierung schwierig zu}
+		s{gestalten, müssen die Primzahlen}
+		s{viel größer gewählt werden.}
+		s{Aktuell werden für eine sichere}
+		s{Kommunikation Werte von }<i>n</i>
+		s{mit mehreren tausend Binärstellen}
+		s{verwendet.}
 	</p>
 x{container de}
 ```
@@ -627,7 +683,7 @@ a{container en}
 		s{small primes. To make the}
 		s{factorization difficult, the}
 		s{primes must be much larger.}
-		s{Currently, values of} <i>n</i> s{with}
+		s{Currently, values of }<i>n</i>s{ with}
 		s{several thousand binary digits}
 		s{are used for secure communication.}
 	</p>

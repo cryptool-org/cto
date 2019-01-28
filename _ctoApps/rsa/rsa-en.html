@@ -4,26 +4,31 @@
 		class="container">
 		
 	<p>
-		This module demonstrates step-by-step
-		encryption and decryption with the RSA
-		method. The sender uses the public
-		key of the recipient for encryption;
+		This module demonstrates
+		step-by-step encryption and
+		decryption with the RSA method.
+		The sender uses the public key of
+		the recipient for encryption;
 		the recipient uses his associated
 		private key to decrypt.
 	</p>
 
 	<h2>Primes</h2>
+
 	<p>
-		The security of RSA is based on the
-		fact that it is easy to calculate the
-		product <i>n</i> of two large primes
-		<i>p</i> and <i>q</i>. However, it is
-		very difficult to determine only from
-		the product <i>n</i> the two primes
-		that yield the product.  This
-		decomposition is also called the
-		factorization of <i>n</i>.
-	</p><p>
+		The security of RSA is based on
+		the fact that it is easy to
+		calculate the product <i>n</i>
+		of two large primes <i>p</i> and
+		<i>q</i>. However, it is very
+		difficult to determine only from
+		the product <i>n</i> the two
+		primes that yield the product.
+		This decomposition is also called
+		the factorization of <i>n</i>.
+	</p>
+
+	<p>
 		As a starting point for RSA choose
 		two primes <i>p</i> and <i>q</i>.
 	</p>
@@ -39,6 +44,7 @@
 			class="form-control"
 			id="prime-1" value="11"></div>
 	</div>
+
 	<div id="err-p-not-prime"
 		class="row alert alert-danger hidden"
 	><i>p</i> is not prime!</div>
@@ -70,24 +76,25 @@
 
 	<h2>Public key</h2>
 	<p>
-		The product <i>n</i> is also called
-		module in the RSA method.
+		The product <i>n</i> is also
+		called module in the RSA method.
 	</p>
 
 	
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="public-key"><i>n</i> =
-					<i>p</i> × <i>q</i> =
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				><span id="public-key"></span>
-				(<span
-				id="public-key-length"></span>
-				Bit)</p></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="public-key"><i>n</i> =
+			<i>p</i> × <i>q</i> =
+	</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		><span id="public-key"></span>
+		(<span id="public-key-length"
+		></span> Bit)</p></div>
+
 		</div>
 	</form>
 
