@@ -545,8 +545,8 @@ Es können jedoch nur Elemente nach ihrer ID aufgelöst werden
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">prime1</span> = <span class="fn">$</span>(<span class="str">'prime-1'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_p_not_prime</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$prime1</span> = <span class="fn">$</span>(<span class="str">'prime-1'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_p_not_prime</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-p-not-prime'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -558,7 +558,7 @@ Referenzen auf das Textfeld mit der ID <code><span class="var">prime-1</span></c
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
-<span class="in1"></span>$<span class="var">prime1</span>.<span class="fn">addEventListener</span>(<br/>
+<span class="in1"></span><span class="var">$prime1</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'input'</span>, <span class="fn">queueRefresh</span><br/>
 <span class="in1"></span>);<br/>
 <span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
@@ -571,9 +571,9 @@ Wenn sich die Primzahl ändert, wird eine Neuberechnung angestoßen
 <code>
 <span class="macro">@def(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">prime1</span> =<br/>
-<span class="in2"></span><span class="fn">bigInt</span>($<span class="var">prime1</span>.<span class="var">value</span>);<br/>
+<span class="in2"></span><span class="fn">bigInt</span>(<span class="var">$prime1</span>.<span class="var">value</span>);<br/>
 <br/>
-<span class="in1"></span>$<span class="var">err_p_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in1"></span><span class="var">$err_p_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
 <span class="in2"></span><span class="str">'hidden'</span>,<br/>
 <span class="in2"></span><span class="var">prime1</span>.<span class="fn">isProbablePrime</span>()<br/>
 <span class="in1"></span>);<br/>
@@ -668,10 +668,10 @@ Die Fehlermeldungen gibt es auch in der englischen Version
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">prime2</span> = <span class="fn">$</span>(<span class="str">'prime-2'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_q_not_prime</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$prime2</span> = <span class="fn">$</span>(<span class="str">'prime-2'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_q_not_prime</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-q-not-prime'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_p_equal_q</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_p_equal_q</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-p-equal-q'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -683,7 +683,7 @@ Referenzen auf die zweite Primzahl und die Fehlermeldungen werden
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
-<span class="in1"></span>$<span class="var">prime2</span>.<span class="fn">addEventListener</span>(<br/>
+<span class="in1"></span><span class="var">$prime2</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'input'</span>, <span class="fn">queueRefresh</span><br/>
 <span class="in1"></span>);<br/>
 <span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
@@ -697,9 +697,9 @@ Bei einer Änderung der zweiten Primzahl wird ebenfalls eine
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">prime2</span> =<br/>
-<span class="in2"></span><span class="fn">bigInt</span>($<span class="var">prime2</span>.<span class="var">value</span>);<br/>
+<span class="in2"></span><span class="fn">bigInt</span>(<span class="var">$prime2</span>.<span class="var">value</span>);<br/>
 <br/>
-<span class="in1"></span>$<span class="var">err_q_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in1"></span><span class="var">$err_q_not_prime</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
 <span class="in2"></span><span class="str">'hidden'</span>,<br/>
 <span class="in2"></span><span class="var">prime2</span>.<span class="fn">isProbablePrime</span>()<br/>
 <span class="in1"></span>);<br/>
@@ -715,7 +715,7 @@ Deren Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
-<span class="in1"></span>$<span class="var">err_p_equal_q</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in1"></span><span class="var">$err_p_equal_q</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
 <span class="in2"></span><span class="str">'hidden'</span>,<br/>
 <span class="in2"></span>! <span class="var">prime1</span>.<span class="fn">equals</span>(<span class="var">prime2</span>)<br/>
 <span class="in1"></span>);<br/>
@@ -854,9 +854,9 @@ Und das Fragment wird in der englischen Version verwendet
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">public_key</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$public_key</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">public_key_length</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$public_key_length</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key-length'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -870,9 +870,9 @@ Referenzen auf den öffentlichen Schlüssel im DOM und dessen Länge
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">public_key</span> =<br/>
 <span class="in2"></span><span class="var">prime1</span>.<span class="fn">multiply</span>(<span class="var">prime2</span>);<br/>
-<span class="in1"></span>$<span class="var">public_key</span>.<span class="var">innerText</span> =<br/>
+<span class="in1"></span><span class="var">$public_key</span>.<span class="var">innerText</span> =<br/>
 <span class="in2"></span><span class="var">public_key</span>.<span class="fn">toString</span>();<br/>
-<span class="in1"></span>$<span class="var">public_key_length</span>.<span class="var">innerText</span> =<br/>
+<span class="in1"></span><span class="var">$public_key_length</span>.<span class="var">innerText</span> =<br/>
 <span class="in2"></span><span class="var">public_key</span>.<span class="fn">bitLength</span>();<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
@@ -1013,13 +1013,13 @@ Ebenfalls mit der zugehörigen Fehlermeldung
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">e</span> = <span class="fn">$</span>(<span class="str">'base'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_gcd_not_1</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$e</span> = <span class="fn">$</span>(<span class="str">'base'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_gcd_not_1</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-gcd-not-1'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
 <ul><li>
-In der Variable <code>$<span class="var">e</span></code> wird eine Referenz des Textfelds gespeichert
+In der Variable <code><span class="var">$e</span></code> wird eine Referenz des Textfelds gespeichert
 </li><li>
 Ebenso wird eine Referenz der Fehlermeldung gespeichert
 </li><li>
@@ -1030,7 +1030,7 @@ Ob die Fehlermeldung angezeigt wird kann erst entschieden werden,
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
-<span class="in1"></span>$<span class="var">e</span>.<span class="fn">addEventListener</span>(<br/>
+<span class="in1"></span><span class="var">$e</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'input'</span>, <span class="fn">queueRefresh</span><br/>
 <span class="in1"></span>);<br/>
 <span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
@@ -1043,7 +1043,7 @@ Werden die Primzahlen oder der Exponent geändert, wird die
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">e</span> = <span class="fn">bigInt</span>($<span class="var">e</span>.<span class="var">value</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">e</span> = <span class="fn">bigInt</span>(<span class="var">$e</span>.<span class="var">value</span>);<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1176,7 +1176,7 @@ und kann daher für beide Lokalisierungen verwendet werden
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">phi</span> = $(<span class="str">'phi'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$phi</span> = <span class="fn">$</span>(<span class="str">'phi'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1189,7 +1189,7 @@ Eine Referenz auf den Wert der <code><span class="fn">φ</span></code>-Funktion 
 <span class="in1"></span><span class="type">const</span> <span class="var">one</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">phi</span> = <span class="var">prime1</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<br/>
 <span class="in2"></span><span class="fn">multiply</span>(<span class="var">prime2</span>.<span class="fn">subtract</span>(<span class="var">one</span>));<br/>
-<span class="in1"></span>$<span class="var">phi</span>.<span class="var">innerText</span> = <span class="var">phi</span>.<span class="fn">toString</span>();<br/>
+<span class="in1"></span><span class="var">$phi</span>.<span class="var">innerText</span> = <span class="var">phi</span>.<span class="fn">toString</span>();<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1225,7 +1225,7 @@ Der Erweiterte Euklidische Algorithmus wird in einer eigenen Datei
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">gcd_result</span> = <span class="fn">gcd</span>(<span class="var">phi</span>, <span class="var">e</span>);<br/>
-<span class="in1"></span>$<span class="var">err_gcd_not_1</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in1"></span><span class="var">$err_gcd_not_1</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
 <span class="in2"></span><span class="str">'hidden'</span>, <span class="var">gcd_result</span>.<span class="var">a</span>.<span class="fn">equals</span>(<span class="var">one</span>)<br/>
 <span class="in1"></span>);<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
@@ -1347,7 +1347,7 @@ Auch die englische Version hat eine lange <code><span class="var">class</span></
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">gcd</span> = <span class="fn">$</span>(<span class="str">'gcd'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$gcd</span> = <span class="fn">$</span>(<span class="str">'gcd'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1357,7 +1357,7 @@ Eine Referenz auf das DOM-Element wird gesichert
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
-<span class="in1"></span>$<span class="var">gcd</span>.<span class="var">innerText</span> =<br/>
+<span class="in1"></span><span class="var">$gcd</span>.<span class="var">innerText</span> =<br/>
 <span class="in2"></span><span class="var">gcd_result</span>.<span class="var">a</span>.<span class="fn">toString</span>();<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
@@ -1598,7 +1598,7 @@ Den geheimen Schlüssel in der englischen Version ausgeben
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">private_key</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$private_key</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'private-key'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -1616,7 +1616,7 @@ Die Referenz auf den geheimen Schlüssel wird in der Anwendung
 <span class="in2"></span><span class="var">private_key</span> =<br/>
 <span class="in3"></span><span class="var">private_key</span>.<span class="fn">add</span>(<span class="var">phi</span>);<br/>
 <span class="in1"></span>}<br/>
-<span class="in1"></span>$<span class="var">private_key</span>.<span class="var">innerText</span> =<br/>
+<span class="in1"></span><span class="var">$private_key</span>.<span class="var">innerText</span> =<br/>
 <span class="in2"></span><span class="var">private_key</span>.<span class="fn">toString</span>();<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
@@ -2204,7 +2204,7 @@ Die Füllfarbe des Pfeils wird auch im CSS gesetzt
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">max_msgs</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$max_msgs</span> =<br/>
 <span class="in2"></span><span class="var">document</span>.<span class="fn">getElementsByClassName</span>(<br/>
 <span class="in3"></span><span class="str">'max-msg'</span><br/>
 <span class="in2"></span>);<br/>
@@ -2216,7 +2216,7 @@ In den Fehlermeldungen gibt es Elemente, die die größte mögliche
 </li><li>
 Sie sind mit der Klasse <code><span class="var">max-msg</span></code> markiert
 </li><li>
-Alle diese Elemente werden in der Variable <code>$<span class="var">max_msgs</span></code> gesammelt
+Alle diese Elemente werden in der Variable <code><span class="var">$max_msgs</span></code> gesammelt
 </li></ul>
 </div>
 <div><div>
@@ -2236,10 +2236,10 @@ Die größte mögliche Nachricht ist um eins kleiner als der öffentliche
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="keyword">for</span> (<br/>
 <span class="in2"></span><span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>;<br/>
-<span class="in2"></span><span class="var">i</span> &lt; $<span class="var">max_msgs</span>.<span class="var">length</span>;<br/>
+<span class="in2"></span><span class="var">i</span> &lt; <span class="var">$max_msgs</span>.<span class="var">length</span>;<br/>
 <span class="in2"></span>++<span class="var">i</span><br/>
 <span class="in1"></span>) {<br/>
-<span class="in2"></span>$<span class="var">max_msgs</span>[<span class="var">i</span>].<span class="var">innerText</span> =<br/>
+<span class="in2"></span><span class="var">$max_msgs</span>[<span class="var">i</span>].<span class="var">innerText</span> =<br/>
 <span class="in3"></span><span class="var">max_msg</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
@@ -2252,13 +2252,13 @@ Die Felder in den Fehlermeldungen werden beim <code><span class="var">refresh</s
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">private_message</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$private_message</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'private-message'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">public_message</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$public_message</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'public-message'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_public_msg_too_big</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_public_msg_too_big</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-public-msg-too-big'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">err_private_msg_too_big</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_private_msg_too_big</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-private-msg-too-big'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -2272,7 +2272,7 @@ Ebenso die Referenzen auf die Fehlermeldungen
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
-<span class="in1"></span>$<span class="var">private_message</span>.<span class="fn">addEventListener</span>(<br/>
+<span class="in1"></span><span class="var">$private_message</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'input'</span>,<br/>
 <span class="in2"></span><span class="var">event</span> =&gt; {<br/>
 <span class="in3"></span><span class="fn">setEncrypt</span>(<span class="num">true</span>);<br/>
@@ -2289,7 +2289,7 @@ Wenn der Klartext geändert wird, wird zusätzlich die Richtung des
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
-<span class="in1"></span>$<span class="var">public_message</span>.<span class="fn">addEventListener</span>(<br/>
+<span class="in1"></span><span class="var">$public_message</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'input'</span>,<br/>
 <span class="in2"></span><span class="var">event</span> =&gt; {<br/>
 <span class="in3"></span><span class="fn">setEncrypt</span>(<span class="num">false</span>);<br/>
@@ -2337,13 +2337,13 @@ oder der Geheimtext entschlüsselt
 <code>
 <span class="macro">@def(<span class="name">encrypt</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">source</span> =<br/>
-<span class="in2"></span><span class="fn">bigInt</span>($<span class="var">private_message</span>.<span class="var">value</span>);<br/>
-<span class="in1"></span>$<span class="var">err_public_msg_too_big</span>.<br/>
+<span class="in2"></span><span class="fn">bigInt</span>(<span class="var">$private_message</span>.<span class="var">value</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
 <span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
 <span class="in3"></span><span class="str">'hidden'</span>,<br/>
 <span class="in3"></span><span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
 <span class="in2"></span>);<br/>
-<span class="in1"></span>$<span class="var">err_private_msg_too_big</span>.<br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
 <span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
 <span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
 </code></div>
@@ -2363,7 +2363,7 @@ Beim Entschlüsseln gibt es eine analoge Fehlermeldung, die beim
 <span class="in2"></span><span class="var">source</span>.<span class="fn">modPow</span>(<br/>
 <span class="in3"></span><span class="var">e</span>, <span class="var">public_key</span><br/>
 <span class="in2"></span>);<br/>
-<span class="in1"></span>$<span class="var">public_message</span>.<span class="var">value</span> =<br/>
+<span class="in1"></span><span class="var">$public_message</span>.<span class="var">value</span> =<br/>
 <span class="in2"></span><span class="var">encrypted</span>.<span class="fn">toString</span>();<br/>
 <span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
 </code></div>
@@ -2376,10 +2376,10 @@ Das Verschlüsseln besteht nur aus einer Exponentiation mit <code><span class="v
 <code>
 <span class="macro">@def(<span class="name">decrypt</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">source</span> =<br/>
-<span class="in2"></span><span class="fn">bigInt</span>($<span class="var">public_message</span>.<span class="var">value</span>);<br/>
-<span class="in1"></span>$<span class="var">err_public_msg_too_big</span>.<br/>
+<span class="in2"></span><span class="fn">bigInt</span>(<span class="var">$public_message</span>.<span class="var">value</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
 <span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
-<span class="in1"></span>$<span class="var">err_private_msg_too_big</span>.<br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
 <span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
 <span class="in3"></span><span class="str">'hidden'</span>,<br/>
 <span class="in3"></span><span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
@@ -2402,7 +2402,7 @@ Beim Verschlüsseln gibt es eine anloge Fehlermeldung, die beim
 <span class="in1"></span><span class="type">const</span> <span class="var">decrypted</span> = <span class="var">source</span>.<span class="fn">modPow</span>(<br/>
 <span class="in2"></span><span class="var">private_key</span>, <span class="var">public_key</span><br/>
 <span class="in1"></span>);<br/>
-<span class="in1"></span>$<span class="var">private_message</span>.<span class="var">value</span> =<br/>
+<span class="in1"></span><span class="var">$private_message</span>.<span class="var">value</span> =<br/>
 <span class="in2"></span><span class="var">decrypted</span>.<span class="fn">toString</span>();<br/>
 <span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
 </code></div>
@@ -2427,7 +2427,7 @@ Also, ob der Algorithmus ver- oder entschlüsselt
 <div><div>
 <code>
 <span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> $<span class="var">direction</span> =<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$direction</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'direction'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -2468,8 +2468,8 @@ Wenn die Klasse <code><span class="str">flip</span></code> gesetzt ist, zeigt er
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">set encrypt css</span>)</span><br/>
-<span class="in1"></span>$<span class="var">direction</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'flip'</span>);<br/>
-<span class="in1"></span>$<span class="var">direction</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'flop'</span>);<br/>
+<span class="in1"></span><span class="var">$direction</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'flip'</span>);<br/>
+<span class="in1"></span><span class="var">$direction</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'flop'</span>);<br/>
 <span class="macro">@end(<span class="name">set encrypt css</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2481,8 +2481,8 @@ Die Klasse <code><span class="str">flip</span></code> wird entfernt
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">set decrypt css</span>)</span><br/>
-<span class="in1"></span>$<span class="var">direction</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'flop'</span>);<br/>
-<span class="in1"></span>$<span class="var">direction</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'flip'</span>);<br/>
+<span class="in1"></span><span class="var">$direction</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'flop'</span>);<br/>
+<span class="in1"></span><span class="var">$direction</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'flip'</span>);<br/>
 <span class="macro">@end(<span class="name">set decrypt css</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2630,16 +2630,16 @@ Nach der Neuberechnung wird der Timer zurückgesetzt
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">set fields to pending</span>)</span><br/>
-<span class="in1"></span>$<span class="var">public_key_length</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
-<span class="in1"></span>$<span class="var">public_key</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
-<span class="in1"></span>$<span class="var">phi</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
-<span class="in1"></span>$<span class="var">gcd</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
-<span class="in1"></span>$<span class="var">private_key</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
+<span class="in1"></span><span class="var">$public_key_length</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
+<span class="in1"></span><span class="var">$public_key</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
+<span class="in1"></span><span class="var">$phi</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
+<span class="in1"></span><span class="var">$gcd</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
+<span class="in1"></span><span class="var">$private_key</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
 <br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
-<span class="in2"></span>$<span class="var">public_message</span>.<span class="var">value</span> = <span class="str">'...'</span>;<br/>
+<span class="in2"></span><span class="var">$public_message</span>.<span class="var">value</span> = <span class="str">'...'</span>;<br/>
 <span class="in1"></span>} <span class="keyword">else</span> {<br/>
-<span class="in2"></span>$<span class="var">private_message</span>.<span class="var">value</span> = <span class="str">'...'</span>;<br/>
+<span class="in2"></span><span class="var">$private_message</span>.<span class="var">value</span> = <span class="str">'...'</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">set fields to pending</span>)</span><br/>
 </code></div>
