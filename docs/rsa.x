@@ -30,7 +30,7 @@ x{file: index-de.html}
 
 ```
 d{file: index-en.html}
-	<doctype html>
+	<!doctype html>
 	<html>
 		<head>
 			E{header}
