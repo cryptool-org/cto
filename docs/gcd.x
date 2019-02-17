@@ -119,7 +119,7 @@ d{unit test}
 	const f{eq} = (a, b) => {
 		if (! a.equals(b)) {
 			console.error(
-				`expected ${a}, got ${b}`
+				s{`expected }${a}s{, got }${b}s{`}
 			);
 		}
 	};
