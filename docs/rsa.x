@@ -25,7 +25,7 @@ x{file: index-de.html}
 ```
 * Die Datei `index-de.html` enthält die RSA-Steuerung in Deutsch
 * Header- und Script-Fragmente werden mit der englischen Version geteilt
-* Das Fragment `{rsa de}` wird für unsere Webseite in eine eigene Datei
+* Das Fragment `s{rsa de}` wird für unsere Webseite in eine eigene Datei
   zusätzlich ausgelagert
 
 ```
@@ -43,7 +43,7 @@ d{file: index-en.html}
 x{file: index-en.html}
 ```
 * Die englische Webseite unterscheidet verwendet statt der deutschen
-  Version das Fragment `{rsa en}`
+  Version das Fragment `s{rsa en}`
 * Der Rest ist identisch
 
 ```
@@ -73,14 +73,14 @@ x{header}
 ```
 * Im HTML-Header wird die Zeichen-Kodierung auf UTF-8 gestellt
 * Die Bootstrap-Stylesheets werden eingebunden
-* Das app-spezifische Stylesheet `rsa.css` wird eingebunden
+* Das app-spezifische Stylesheet `s{rsa.css}` wird eingebunden
 
 ```
 d{file: ../_ctoApps/rsa/rsa.css}
 	e{css}
 x{file: ../_ctoApps/rsa/rsa.css}
 ```
-* Das Stylesheet enthält ein Fragment `{css}`
+* Das Stylesheet enthält ein Fragment `s{css}`
 * Wenn neue HTML-Elemente eine CSS-Anpassung benötigen, werden diese
   hier eingepflegt
 
@@ -109,7 +109,7 @@ d{file: ../_ctoApps/rsa/rsa.js}
 	);
 x{file: ../_ctoApps/rsa/rsa.js}
 ```
-* Das Skript `rsa.js` wird mit strenger Typ-Prüfung ausgeführt
+* Das Skript `s{rsa.js}` wird mit strenger Typ-Prüfung ausgeführt
 * Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
   geladen wurde
 * Der gesamte Code wird innerhalb einer JavaScript Funktion definiert
@@ -406,7 +406,7 @@ A{globals}
 		f{$}('err-p-not-prime');
 x{globals}
 ```
-* Referenzen auf das Textfeld mit der ID `prime-1` und auf die dazu
+* Referenzen auf das Textfeld mit der ID `v{prime-1}` und auf die dazu
   gehörende Fehlermeldung werden zwischengespeichert
 
 ```
@@ -717,39 +717,45 @@ x{container en}
 a{container de}
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				v{for}="base"><i>e</i>s{ =}</label>
-			<div class="col-sm-9"><input
-				class="form-control" id="base"
-				value="23"></div>
+			E{e group}
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> s{und} <i>φ(n)</i> s{sind nicht}
+		><i>e</i> s{und} <i>f{φ}(n)</i>
+			s{sind nicht}
 			s{teilerfremd.}</div>
 	</form>
 x{container de}
 ```
 * In einem Textfeld kann das `e` geändert werden
 * Zusätzlich gibt es eine Fehlermeldung, wenn das eingegebene `e` nicht
-  teilerfremd zu `φ(n)` ist
+  teilerfremd zu `f{φ}(n)` ist
+
+```
+d{e group}
+	<label
+		class="col-sm-3 control-label"
+		v{for}="base"><i>e</i>
+		s{=}</label>
+	<div class="col-sm-9"><input
+		class="form-control"
+		id="base" value="23"></div>
+x{e group}
+```
+* Die Felder enthalten keinen deutschen oder englischen Text
+* und können für beide Sprachen verwendet werden
 
 ```
 a{container en}
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				v{for}="base"><i>e</i>s{ =}</label>
-			<div class="col-sm-9"><input
-				class="form-control" id="base"
-				value="23"></div>
+			E{e group}
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> s{and} <i>φ(n)</i> s{have a common}
-			s{divisor, they are not coprime.}</div>
+		><i>e</i>s{ and }<i>f{φ}(n)</i>
+			s{have a common divisor,}
+			s{they are not coprime.}</div>
 	</form>
 x{container en}
 ```
@@ -766,7 +772,7 @@ x{globals}
 * In der Variable `$e` wird eine Referenz des Textfelds gespeichert
 * Ebenso wird eine Referenz der Fehlermeldung gespeichert
 * Ob die Fehlermeldung angezeigt wird kann erst entschieden werden,
-  wenn `φ(n)` berechnet wurde
+  wenn `f{φ}(n)` berechnet wurde
 
 ```
 a{setup rsa}
@@ -818,7 +824,7 @@ a{container de}
 	<p>
 		s{RSA benutzt für die Berechnung des}
 		s{geheimen Schlüssels die Eulersche}
-		s{φ-Funktion von} <i>n</i>s{.}
+		f{φ}s{-Funktion von} <i>n</i>s{.}
 		s{Diese ist definiert als}
 	</p>
 x{container de}
@@ -830,7 +836,7 @@ x{container de}
 a{container en}
 	<h2>s{Secret key}</h2>
 	<p>
-		s{RSA uses the Euler φ function}
+		s{RSA uses the Euler }f{φ}s{ function}
 		s{of} <i>n</i> s{to calculate the}
 		s{secret key. This is defined as}
 	</p>
@@ -839,44 +845,50 @@ x{container en}
 * Das gleiche wird in der englischen Version ausgegeben
 
 ```
-d{phi label}
+d{phi label group}
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				v{for}="phi">s{φ(}<i>n</i>s{) =}
-				s{(}<i>p</i>s{ − 1) ×}
-				s{(}<i>q</i>s{ − 1) =}</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="phi"></p></div>
+			e{phi label}
 		</div>
 	</form>
-x{phi label}
+x{phi label group}
 ```
-* Die Berechnung von φ enthält keinen deutschen oder englischen Text
+* Die Berechnung von `f{φ}` enthält keinen deutschen oder englischen Text
 * und kann daher für beide Lokalisierungen verwendet werden
 
 ```
+d{phi label}
+	<label
+		class="col-sm-3 control-label"
+		v{for}="phi">f{φ}s{(}<i>n</i>s{) =}
+		s{(}<i>p</i>s{ − 1) ×}
+		s{(}<i>q</i>s{ − 1) =}</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="phi"></p></div>
+x{phi label}
+```
+
+```
 a{container de}
-	E{phi label}
+	E{phi label group}
 x{container de}
 ```
-* φ in der deutschen Version definieren
+* `f{φ}` in der deutschen Version definieren
 
 ```
 a{container en}
-	E{phi label}
+	E{phi label group}
 x{container en}
 ```
-* φ in der englischen Version definieren
+* `f{φ}` in der englischen Version definieren
 
 ```
 A{globals}
-	const $phi = f{$}('phi');
+	const $phi = $('phi');
 x{globals}
 ```
-* Eine Referenz auf den Wert der φ-Funktion wird im Code abgelegt
+* Eine Referenz auf den Wert der `f{φ}`-Funktion wird im Code abgelegt
 
 ```
 a{refresh}
@@ -895,7 +907,7 @@ A{globals}
 	};
 x{globals}
 ```
-* Um festzustellen, ob `e` und  `φ(n)` teilerfremd sind, wird der
+* Um festzustellen, ob `e` und  `f{φ}(n)` teilerfremd sind, wird der
   Erweiterte Euklidische Algorithmus verwendet
 * Dieser liefert gleichzeitig noch das inverse Element `d`, das für den
   geheimen Schlüssel benötigt wird
@@ -915,7 +927,7 @@ a{refresh}
 	);
 x{refresh}
 ```
-* Wenn `e` und der Wert der φ-Funktion nicht teilerfremd sind, wird
+* Wenn `e` und der Wert der `f{φ}`-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt
 * Das Attribut `a` im `gcd_result` enthält den kleinsten gemeinsamen
   Teiler
@@ -924,49 +936,44 @@ x{refresh}
 ```
 a{container de}
 	<p>
-		s{Hier wird ausgenutzt, dass} <i>p</i> s{und}
-		<i>q</i> s{verschieden sind. Andernfalls}
-		s{würde sich die} s{φ-Funktion anders}
-		s{berechnen.}
+		s{Hier wird ausgenutzt, dass} <i>p</i>
+		s{und }<i>q</i>s{ verschieden sind.}
+		s{Andernfalls würde sich die }
+		f{φ}s{-Funktion anders berechnen.}
 	</p><p>
-		s{Wichtig ist für RSA, dass der Wert der}
-		s{φ-Funktion teilerfremd zu} <i>e</i>
-		s{ist (der größte gemeinsame Teiler also}
-		s{1 ist).}
+		s{Wichtig ist für RSA, dass der Wert}
+		s{der }f{φ}s{-Funktion teilerfremd zu}
+		<i>e</i>s{ ist (der größte}
+		s{gemeinsame Teiler also }n{1}s{ ist).}
 	</p>
 x{container de}
 ```
-* Einschränkungen bei der Berechnung von φ werden auf der deutschen
+* Einschränkungen bei der Berechnung von `f{φ}` werden auf der deutschen
   Seite ausgegeben
 
 ```
 a{container en}
 	<p>
-		s{The prerequisit here is that }<i>p</i>
-		s{and} <i>q</i> s{are different. }
-		s{Otherwise, the φ function would be}
-		s{calculate d differently.}
+		s{The prerequisit here is that}
+		<i>p</i>s{ and }<i>q</i>s{ are}
+		s{different. Otherwise, the }f{φ}
+		s{function would be calculate }d
+		s{differently.}
 	</p><p>
 		s{It is important for RSA that the}
-		s{value of the φ function is}
-		s{coprime to} <i>e</i> s{(the largest}
-		s{common divisor must be 1).}
+		s{value of the }f{φ}s{ function is}
+		s{coprime to }<i>e</i>s{ (the largest}
+		s{common divisor must be }n{1}s{).}
 	</p>
 x{container en}
 ```
-* Und auf der englischen Seite
+* Ebenso auf der englischen Seite
 
 ```
 a{container de}
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				v{for}="gcd">s{ggT(}<i>e</i>s{,}
-				s{φ(}<i>n</i>s{)) =}</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="gcd"></p></div>
+			e{ggt de}
 		</div>
 	</form>
 x{container de}
@@ -975,21 +982,42 @@ x{container de}
   ausgegeben
 
 ```
+d{ggt de}
+	<label
+		class="col-sm-3 control-label"
+		v{for}="gcd">f{ggT}s{(}<i>e</i>s{,}
+		f{φ}s{(}<i>n</i>s{)) =}</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="gcd"></p></div>
+x{ggt de}
+```
+* Die lange `class`-Definition erzwingt
+  ein eigenes Fragment für das Label
+
+```
 a{container en}
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				v{for}="gcd">s{gcd(}<i>e</i>s{,}
-				s{φ(}<i>n</i>s{)) =}</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="gcd"></p></div>
+			e{ggt en}
 		</div>
 	</form>
 x{container en}
 ```
 * Und auf der englischen Seite
+
+```
+d{ggt en}
+	<label
+		class="col-sm-3 control-label"
+		v{for}="gcd">s{gcd(}<i>e</i>s{,}
+		f{φ}s{(}<i>n</i>s{)) =}</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="gcd"></p></div>
+x{ggt en}
+```
+* Auch die englische Version hat eine lange `class`-Definition
 
 ```
 A{globals}
@@ -1009,18 +1037,26 @@ x{refresh}
 ```
 a{container de}
 	<p>
-		s{Um den Wert von φ(}<i>n</i>s{) zu}
+		s{Um den Wert von }f{φ}s{(}<i>n</i>s{) zu}
 		s{bestimmen, reicht es nicht aus}
-		<i>n</i> s{zu kennen. Nur mit der}
-		s{Kenntnis von} <i>p</i> s{und} <i>q</i>
-		s{kann man φ(}<i>n</i>s{) effizient}
+		<i>n</i>s{ zu kennen. Nur mit der}
+		s{Kenntnis von }<i>p</i>s{ und }<i>q</i>
+		s{kann man }f{φ}s{(}<i>n</i>s{) effizient}
 		s{bestimmen.}
-	</p><p>
+	</p>
+x{container de}
+```
+* Es wird beschrieben warum der geheime Schlüssel nicht leicht erraten
+  werden kann
+
+```
+a{container de}
+	<p>
 		s{Der geheime Schlüssel besteht}
 		s{aus einem }<i>d</i>s{ mit der}
 		s{Eigenschaft, dass}
-		<i>e</i>s{ × }<i>d</i>s{ − 1 ein Vielfaches}
-		s{von φ(}<i>n</i>s{) ist.}
+		<i>e</i>s{ × }<i>d</i>s{ − }n{1}s{ ein}
+		s{Vielfaches von }f{φ}s{(}<i>n</i>s{) ist.}
 	</p>
 x{container de}
 ```
@@ -1029,15 +1065,24 @@ x{container de}
 ```
 a{container de}
 	<p>
-		s{In Formeln ausgedrückt, muss gelten:}
+		s{In Formeln ausgedrückt, muss}
+		s{gelten:}
 	</p><p class="form">
-		<i>e</i>s{ × }<i>d</i>s{ = 1}
-		s{(mod φ(}<i>n</i>s{))}
-	</p><p>
-		s{Dabei ist mit dem mod-Ausdruck die}
-		s{Gleichheit bezüglich einer Restklasse}
-		s{gemeint. Es ist genau dann }<i>x</i>s{ =}
-		<i>y</i>s{ (mod }<i>z</i>s{), wenn es ein}
+		<i>e</i>s{ × }<i>d</i>s{ = }1
+		s{(mod }f{φ}s{(}<i>n</i>s{))}
+	</p>
+x{container de}
+```
+* Das gleiche wird als Formel ausgedrückt
+
+```
+a{container de}
+	<p>
+		s{Dabei ist mit dem mod-Ausdruck}
+		s{die Gleichheit bezüglich einer}
+		s{Restklasse gemeint. Es ist genau}
+		s{dann }<i>x</i>s{ =}<i>y</i>
+		s{(mod }<i>z</i>s{), wenn es ein}
 		s{ganzzahliges }<i>a</i>s{ gibt mit}
 		<i>x</i>s{ − }<i>y</i>s{ = }<i>z</i>
 		s{× }<i>a</i>s{.}
@@ -1049,9 +1094,10 @@ x{container de}
 ```
 a{container de}
 	<p>
-		s{Für die gewählten Werte von }<i>p</i>,
-		<i>q</i>s{ und }<i>e</i>s{ ergibt sich}
-		<i>d</i>s{ als:}
+		s{Für die gewählten Werte von}
+		<i>p</i>s{, }<i>q</i>s{ und }
+		<i>e</i>s{ ergibt sich} <i>d</i>
+		s{ als:}
 	</p>
 x{container de}
 ```
@@ -1061,22 +1107,29 @@ x{container de}
 a{container en}
 	<p>
 		s{To determine the value of}
-		s{φ(}<i>n</i>s{), it is not enough}
+		f{φ}s{(}<i>n</i>s{), it is not enough}
 		s{to know} <i>n</i>s{. Only with the}
 		s{knowledge of} <i>p</i> s{and} <i>q</i>
 		s{we can efficiently determine}
-		s{φ(}<i>n</i>s{).}
-	</p><p>
-		s{The secret key also consists of}
-		s{a }<i>d</i>s{ with the}
-		s{property that }<i>e</i>s{ ×}
-		<i>d</i>s{ − 1 is a multiple of}
-		s{φ(}<i>n</i>s{).}
+		f{φ}s{(}<i>n</i>s{).}
 	</p>
 x{container en}
 ```
-* Auch auf der englischen Seite wird beschrieben, wie der geheime
-  Schlüssel berechnet wird
+* Auch auf der englischen Seite wird beschrieben, warum der geheime
+  Schlüssel nur schwer erraten werden kann
+
+```
+a{container en}
+	<p>
+		s{The secret key also consists of}
+		s{a }<i>d</i>s{ with the}
+		s{property that }<i>e</i>s{ ×}
+		<i>d</i>s{ − }n{1}s{ is a multiple of}
+		f{φ}s{(}<i>n</i>s{).}
+	</p>
+x{container en}
+```
+* Und wie der geheime Schlüssel berechnet wird
 
 ```
 a{container en}
@@ -1094,20 +1147,27 @@ x{container en}
 ```
 a{container en}
 	<p>
-		s{In this case, the mod expression means}
-		s{equality with regard to a residual}
-		s{class. It is }<i>x</i>s{ = }<i>y</i>s{ (mod}
-		<i>z</i>s{) if and only if there is an}
-		s{integer a with }<i>x</i>s{ −}
-		<i>y</i>s{ = }<i>z</i>s{ × }<i>a</i>s{.}
-	</p><p>
+		s{In this case, the mod expression}
+		s{means equality with regard to a}
+		s{residual class. It is }<i>x</i>s{ =}
+		<i>y</i>s{ (mod }<i>z</i>s{) if and}
+		s{only if there is an integer a}
+		s{with }<i>x</i>s{ − }<i>y</i>s{ =}
+		<i>z</i>s{ × }<i>a</i>s{.}
+	</p>
+x{container en}
+```
+* Und warum das Ganze funktioniert
+
+```
+a{container en}
+	<p>
 		s{For the chosen values of }<i>p</i>s{,}
 		<i>q</i>s{, and }<i>e</i>s{, we get}
 		<i>d</i>s{ as:}
 	</p>
 x{container en}
 ```
-* Und warum das Ganze funktioniert
 * Hier wird auf das nächste Ergebnis hingearbeitet
 
 ```
@@ -1120,27 +1180,34 @@ x{css}
 * Formeln werden etwas eingerückt
 
 ```
-d{private key}
+d{private key group}
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				v{for}="private-key"><i>d</i>
-				s{=}
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="private-key"></div>
+			e{private key}
 		</div>
 	</form>
-x{private key}
+x{private key group}
 ```
 * Das Feld mit der Ausgabe des geheimen Schlüssels kann in der
   deutschen und englischen Version gemeinsam verwendet werden
 
 ```
+d{private key}
+	<label
+		class="col-sm-3 control-label"
+		v{for}="private-key"><i>d</i>s{ =}
+	</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="private-key"></div>
+x{private key}
+```
+* Wegen der langen `class`-Definition werden die Felder in einem eigenen
+  Fragment definiert
+
+```
 a{container de}
-	E{private key}
+	E{private key group}
 x{container de}
 ```
 * Den geheimen Schlüssel in der deutschen Version ausgeben
@@ -1148,7 +1215,7 @@ x{container de}
 
 ```
 a{container en}
-	E{private key}
+	E{private key group}
 x{container en}
 ```
 * Den geheimen Schlüssel in der englischen Version ausgeben
@@ -1174,17 +1241,18 @@ a{refresh}
 		private_key.toString();
 x{refresh}
 ```
-* Der private Schlüssel ist das multiplikative Inverse modulo `φ(n)`
-* Falls der Schlüssel negative ist, wird der Wert von `φ(n)` hinzu
+* Der private Schlüssel ist das multiplikative Inverse modulo `f{φ}(n)`
+* Falls der Schlüssel negative ist, wird der Wert von `f{φ}(n)` hinzu
   addiert
 
 ```
 a{container de}
 	<p>
-		s{Dieses} <i>d</i> s{kann immer bestimmt}
-		s{werden, wenn} <i>e</i> s{mit der oben}
-		s{beschriebenen Einschränkung gewählt}
-		s{wurde – bspw. mit dem Erweiterten}
+		s{Dieses }<i>d</i>s{ kann immer}
+		s{bestimmt werden, wenn }<i>e</i>
+		s{mit der oben beschriebenen}
+		s{Einschränkung gewählt wurde –}
+		s{bspw. mit dem Erweiterten}
 		s{Euklidischen Algorithmus.}
 	</p>
 x{container de}
@@ -1194,10 +1262,11 @@ x{container de}
 ```
 a{container en}
 	<p>
-		s{This} <i>d</i> s{can always be determined}
-		s{(if} <i>e</i> s{was chosen with the}
-		s{restriction described above)—for}
-		s{example with the extended Euclidean}
+		s{This }<i>d</i>s{ can always be}
+		s{determined (if }<i>e</i>s{ was}
+		s{chosen with the restriction}
+		s{described above)—for example}
+		s{with the extended Euclidean}
 		s{algorithm.}
 	</p>
 x{container en}
@@ -1213,9 +1282,10 @@ a{container de}
 	<h2>s{Ver- und Entschlüsseln}</h2>
 	<p>
 		s{Grundsätzlich werden bei diesem}
-		s{Verfahren keine Texte, sondern nur}
-		s{Zahlen ver- und entschlüsselt, die}
-		s{zwischen 0 und }<i>n</i>s{ − 1 liegen.}
+		s{Verfahren keine Texte, sondern}
+		s{nur Zahlen ver- und entschlüsselt,}
+		s{die zwischen }n{0}s{ und }<i>n</i>s{ − }1
+		s{liegen.}
 	</p>
 x{container de}
 ```
@@ -1224,11 +1294,12 @@ x{container de}
 ```
 a{container de}
 	<p>
-		s{Um eine Nachricht} <i>m</i> s{mit dem}
-		s{öffentlichen Schlüssel} (<i>n</i>,
-		<i>e</i>) s{zu verschlüsseln, wird}
+		s{Um eine Nachricht }<i>m</i>s{ mit}
+		s{dem öffentlichen Schlüssel}
+		s{(}<i>n</i>s{, }<i>e</i>s{) zu}
+		s{verschlüsseln, wird}
 	</p><p class="form">
-		<i>m&#39;</i>s{ :=}
+		<i>v{m'}</i>s{ :=}
 			<i>m</i><sup><i>e</i></sup>
 			s{(mod }<i>n</i>s{)}
 	</p><p>
@@ -1237,9 +1308,6 @@ a{container de}
 x{container de}
 ```
 * Das Verschlüsseln besteht aus einer Exponentiation
-* Die Striche an den Variablen-Namen der Nachrichten werden durch
-  HTML-Entitäten realisiert, um den Source Code Parser nicht
-  durcheinander zu bringen
 
 ```
 a{container de}
@@ -1248,8 +1316,8 @@ a{container de}
 		s{Schlüssel (}<i>n</i>s{, }<i>d</i>s{)}
 		s{erfolgt analog mit}
 	</p><p class="form">
-		<i>m&#39;&#39;</i>s{ :=}
-			s{(}<i>m&#39;</i>s{)}<sup><i>d</i></sup>
+		<i>v{m''}</i>s{ :=}
+			s{(}<i>v{m'}</i>s{)}<sup><i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
 	</p>
 x{container de}
@@ -1261,28 +1329,24 @@ a{container de}
 	<p>
 		s{Damit ist}
 	</p><p class="form">
-		<i>m&#39;&#39;</i>s{ =}
+		<i>v{m''}</i>s{ =}
 			<i>m</i><sup><i>e</i>s{ ×}
 			<i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
 	</p>
 x{container de}
 ```
-* `m`-Strich wird durch `m` hoch `e` ersetzt
+* `v{m'}` wird durch `m` hoch `e` ersetzt
 
 ```
 a{container de}
 	<p>
-		s{RSA nutzt die Eigenschaft aus, dass}
+		s{RSA nutzt die Eigenschaft aus,}
+		s{dass}
 	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup>s{ =}
 			<i>x</i><sup><i>b</i></sup>
 			s{(mod }<i>n</i>s{)}
-	</p><p>
-		s{wenn}
-	</p><p class="form">
-		<i>a</i>s{ =}
-			<i>b</i>s{ (mod φ(}<i>n</i>s{))}
 	</p>
 x{container de}
 ```
@@ -1292,44 +1356,70 @@ x{container de}
 ```
 a{container de}
 	<p>
-		<i>e</i> s{und} <i>d</i> s{wurden passend}
-		s{gewählt, dass}
+		s{wenn}
 	</p><p class="form">
-		<i>m&#39;&#39;</i>s{ = }<i>m</i>s{.}
-	</p><p>
-		s{Die Reihenfolge spielt keine Rolle.}
-		s{Man könnte auch erst eine Nachricht}
-		s{mit dem privaten Schlüssel}
-		s{potenzieren, und das Ergebnis dann}
-		s{mit dem öffentlichen Schlüssel}
-		s{potenzieren – das verwendet man}
-		s{bei RSA-Signaturen.}
+		<i>a</i>s{ =}
+			<i>b</i>s{ (mod }f{φ}s{(}<i>n</i>s{))}
+	</p>
+x{container de}
+```
+* Die notwendige Einschränkung wird mit ausgegeben
+
+```
+a{container de}
+	<p>
+		<i>e</i>s{ und }<i>d</i>s{ wurden}
+		s{passend gewählt, dass}
+	</p><p class="form">
+		<i>v{m''}</i>s{ = }<i>m</i>s{.}
 	</p>
 x{container de}
 ```
 * Damit kann die Entschlüsselung erklärt werden
+
+```
+a{container de}
+	<p>
+		s{Die Reihenfolge spielt keine}
+		s{Rolle. Man könnte auch erst eine}
+		s{Nachricht mit dem privaten}
+		s{Schlüssel potenzieren, und das}
+		s{Ergebnis dann mit dem öffentlichen}
+		s{Schlüssel potenzieren – das}
+		s{verwendet man bei RSA-Signaturen.}
+	</p>
+x{container de}
+```
 * Es wird darauf hingewiesen, dass die Reihenfolge keine Rolle spielt
 
 ```
 a{container en}
 	<h2>s{Encryption and decryption}</h2>
 	<p>
-		s{Internally, this method works only with}
-		s{numbers (no text), which are between 0}
-		s{and} <i>n</i>s{ − 1.}
-	</p><p>
+		s{Internally, this method works only}
+		s{with numbers (no text), which are}
+		s{between }n{0}s{ and }<i>n</i>s{ − }n{1}s{.}
+	</p>
+x{container en}
+```
+* Auch in der englischen Version wird beschrieben, wie die
+  Nachrichten dargestellt werden
+
+```
+a{container en}
+	<p>
 		s{A message }<i>m</i>s{ (number) is}
 		s{encrypted with the public key (}
-		<i>n</i>s{,} <i>e</i>s{) by calculating:}
+		<i>n</i>s{,} <i>e</i>s{) by}
+		s{calculating:}
 	</p><p class="form">
-		<i>m&#39;</i>s{ :=}
+		<i>v{m'}</i>s{ :=}
 			<i>m</i><sup><i>e</i></sup>
 			s{(mod }<i>n</i>s{)}
 	</p>
 x{container en}
 ```
-* Auch in der englischen Version wird beschrieben, wie die
-  Verschlüsselung funktioniert
+* Und wie die Verschlüsselung funktioniert
 
 ```
 a{container en}
@@ -1338,19 +1428,26 @@ a{container en}
 		s{(}<i>n</i>s{, }<i>d</i>s{) is done}
 		s{analogously with}
 	</p><p class="form">
-		<i>m&#39;&#39;</i>s{ :=}
-			s{(}<i>m&#39;</i>s{)}<sup><i>d</i></sup>
+		<i>v{m''}</i>s{ :=}
+			s{(}<i>v{m'}</i>s{)}<sup><i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
-	</p><p>
+	</p>
+x{container en}
+```
+* Und es wird beschrieben, wie die Entschlüsselung funktioniert
+
+```
+a{container en}
+	<p>
 		s{This is}
 	</p><p class="form">
-		<i>m&#39;&#39;</i>s{ =}
+		<i>v{m''}</i>s{ =}
 			<i>m</i><sup><i>e</i>s{ ×}
 			<i>d</i></sup>s{ (mod }<i>n</i>s{).}
 	</p>
 x{container en}
 ```
-* Und es wird beschrieben, wie die Entschlüsselung funktioniert
+* Und wie das Ergebnis umgeformt werden kann
 
 ```
 a{container en}
@@ -1364,7 +1461,7 @@ a{container en}
 		s{if}
 	</p><p class="form">
 		<i>a</i>s{ =}
-			<i>b</i>s{ (mod φ(}<i>n</i>s{))}
+			<i>b</i>s{ (mod }f{φ}s{(}<i>n</i>s{))}
 	</p>
 x{container en}
 ```
@@ -1374,20 +1471,28 @@ x{container en}
 ```
 a{container en}
 	<p>
-		s{As }<i>e</i>s{ and }<i>d</i>s{ were chosen}
-		s{appropriately, it is}
+		s{As }<i>e</i>s{ and }<i>d</i>s{ were}
+		s{chosen appropriately, it is}
 	</p><p class="form">
-		<i>m&#39;&#39;</i>s{ = }<i>m</i>s{.}
-	</p><p>
-		s{The order does not matter. You could}
-		s{also first raise a message with the}
-		s{private key, and then power up the}
-		s{result with the public key—this}
-		s{is what you use with RSA signatures.}
+		<i>v{m''}</i>s{ = }<i>m</i>s{.}
 	</p>
 x{container en}
 ```
 * Und warum RSA damit funktioniert
+
+```
+a{container en}
+	<p>
+		s{The order does not matter. You}
+		s{could also first raise a message}
+		s{with the private key, and then}
+		s{power up the result with the}
+		s{public key—this is what you use}
+		s{with RSA signatures.}
+	</p>
+x{container en}
+```
+* Es wird beschrieben, dass die Reihenfolge keine Rolle spielt
 
 # 6. Nachrichten
 * In dieser Sektion wird beschrieben, wie de Nachrichten angezeigt
@@ -1413,10 +1518,10 @@ x{container de}
 a{container en}
 	<h2>s{Messages}</h2>
 	<p>
-		s{In the following two text boxes, you}
-		s{can see how encryption and}
-		s{decryption work for concrete inputs}
-		s{(numbers).}
+		s{In the following two text boxes,}
+		s{you can see how encryption and}
+		s{decryption work for concrete}
+		s{inputs (numbers).}
 	</p>
 	<form class="form-horizontal">
 		e{crypt boxes en}
@@ -1430,7 +1535,8 @@ d{crypt boxes de}
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="public-key">s{Klartext}</label>
+			v{for}="public-key"
+		>s{Klartext}</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="private-message"
@@ -1448,7 +1554,8 @@ a{crypt boxes de}
 		s{Die Klartextzahl ist zu groß.}
 		s{Der maximale Wert ist}
 		<span class="max-msg"></span>.
-		s{Bitte wählen Sie größere Primzahlen.}
+		s{Bitte wählen Sie größere}
+		s{Primzahlen.}
 	</div>
 x{crypt boxes de}
 ```
@@ -1608,13 +1715,13 @@ x{globals}
 ```
 * In den Fehlermeldungen gibt es Elemente, die die größte mögliche
   Nachricht anzeigen
-* Sie sind mit der Klasse `max-msg` markiert
+* Sie sind mit der Klasse `v{max-msg}` markiert
 * Alle diese Elemente werden in der Variable `$max_msgs` gesammelt
 
 ```
 a{refresh}
-	const max_msg =
-		public_key.subtract(one).toString();
+	const max_msg = public_key.
+		subtract(one).toString();
 x{refresh}
 ```
 * Die größte mögliche Nachricht ist um eins kleiner als der öffentliche
@@ -1623,9 +1730,12 @@ x{refresh}
 ```
 a{refresh}
 	for (
-		let i = 0; i < $max_msgs.length; ++i
+		let i = 0;
+		i < $max_msgs.length;
+		++i
 	) {
-		$max_msgs[i].innerText = max_msg;
+		$max_msgs[i].innerText =
+			max_msg;
 	}
 x{refresh}
 ```
@@ -1650,20 +1760,31 @@ x{globals}
 
 ```
 a{setup rsa}
-	$private_message.
-		addEventListener('input', event => {
+	$private_message.addEventListener(
+		'input',
+		event => {
 			setEncrypt(true);
 			queueRefresh(event);
-		});
-	$public_message.
-		addEventListener('input', event => {
-			setEncrypt(false);
-			queueRefresh(event);
-		});
+		}
+	);
 x{setup rsa}
 ```
-* Wenn der Klartext oder der Geheimtext geändert wird, wird zusätzlich
-  die Richtung des Algorithmus angepasst
+* Wenn der Klartext geändert wird, wird zusätzlich die Richtung des
+  Algorithmus angepasst
+
+```
+a{setup rsa}
+	$public_message.addEventListener(
+		'input',
+		event => {
+			setEncrypt(false);
+			queueRefresh(event);
+		}
+	);
+x{setup rsa}
+```
+* Wenn der Geheimtext geändert wird, wird zusätzlich die Richtung des
+  Algorithmus angepasst
 
 ```
 A{globals}
@@ -1771,11 +1892,9 @@ a{setup rsa}
 		}
 		encrypt = new_encrypt;
 		if (encrypt) {
-			$direction.classList.remove('flip');
-			$direction.classList.add('flop');
+			e{set encrypt css};
 		} else {
-			$direction.classList.remove('flop');
-			$direction.classList.add('flip');
+			e{set decrypt css};
 		}
 	};
 x{setup rsa}
@@ -1786,6 +1905,24 @@ x{setup rsa}
 * Wenn die Klasse `s{flip}` gesetzt ist, zeigt er in die
   Entschlüsselungsrichtung
 * `s{flop}` ist notwendig, um den Wechsel zu animieren
+
+```
+d{set encrypt css}
+	$direction.classList.remove('flip');
+	$direction.classList.add('flop');
+x{set encrypt css}
+```
+* Die Klasse `s{flop}` wird gesetzt
+* Die Klasse `s{flip}` wird entfernt
+
+```
+d{set decrypt css}
+	$direction.classList.remove('flop');
+	$direction.classList.add('flip');
+x{set decrypt css}
+```
+* Die Klasse `s{flip}` wird gesetzt
+* Die Klasse `s{flop}` wird entfernt
 
 ```
 a{css}
@@ -1916,7 +2053,7 @@ a{container de}
 		s{Diese Seite verwendet für die}
 		s{Rechnung mit großen Zahlen die}
 		s{Bibliothek}
-		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}
+		<a href=s{"https://peterolson.}b{}s{github.com/BigInteger.js/"}
 		>s{BigInteger.js}</a>.
 	</p>
 x{container de}
@@ -1927,10 +2064,11 @@ x{container de}
 ```
 a{container de}
 	<p>
-		s{Dadurch kann man auch in JavaScript}
-		s{mit beliebig großen Zahlen rechnen,}
-		s{also auch solchen, die real bei}
-		s{RSA-Anwendungen verwendet werden.}
+		s{Dadurch kann man auch in}
+		s{JavaScript mit beliebig großen}
+		s{Zahlen rechnen, also auch solchen,}
+		s{die real bei RSA-Anwendungen}
+		s{verwendet werden.}
 	</p>
 x{container de}
 ```
@@ -1941,9 +2079,17 @@ a{container en}
 	<h2>s{Used library}</h2>
 	<p>
 		s{This page uses the library}
-		<a href=s{"https://peterolson.github.}b{}s{com/BigInteger.js/"}>BigInteger.js</a>
+		<a href=s{"https://peterolson.}b{}s{github.com/BigInteger.js/"}
+			>BigInteger.js</a>
 		s{to work with big numbers.}
-	</p><p>
+	</p>
+x{container en}
+```
+* Das Gleiche gibt es auch für die englische Version
+
+```
+a{container en}
+	<p>
 		s{As a result, you can calculate}
 		s{arbitrarily large numbers in}
 		s{JavaScript, even those that are}
@@ -1952,22 +2098,24 @@ a{container en}
 	</p>
 x{container en}
 ```
-* Das Gleiche gibt es auch für die englische Version
+* Es wird beschrieben, warum diese Bibliothek benötigt wird
 
 ```
 a{container de}
 	<div id="authors"><em>s{CTOAUTHORS:}
-		s{Timm Knape (Dank an Bernhard Esslinger}
-			s{für das Review)}</em></div>
+		s{Timm Knape (Dank an}
+		s{Bernhard Esslinger für das}
+		s{Review)}</em></div>
 x{container de}
 ```
 * Die Seite endet mit dem Autor-Tag
 
 ```
 a{container en}
-	<div id="authors"><em>s{CTOAUTHORS: Timm}
-		s{Knape (thanks to Bernhard Esslinger}
-		s{for the review)}</em></div>
+	<div id="authors"><em>s{CTOAUTHORS:}
+		s{Timm Knape (thanks to}
+		s{Bernhard Esslinger for the}
+		s{review)}</em></div>
 x{container en}
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
@@ -1985,8 +2133,8 @@ x{css}
 d{bootstrap stylesheets}
 	<link 
 		rel="stylesheet"
-		href=s{"https://maxcdn.bootstrapcdn.com}b{}s{/bootstrap/3.3.7/css/bootstrap.min.css"}
-		integrity=s{"sha384-BVYiiSIFeK1dGmJRAky}b{}s{cuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"}
+		href=s{"https://maxcdn.bootstrapcd}b{}s{n.com/bootstrap/3.3.7/css/bootstrap.min.}b{}s{css"}
+		integrity=s{"sha384-BVYiiSIFeK1dGm}b{}s{JRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K}b{}s{68vbdEjh4u"}
 		crossorigin="anonymous"
 	>
 x{bootstrap stylesheets}
@@ -2000,8 +2148,8 @@ x{bootstrap stylesheets}
 a{bootstrap stylesheets}
 	<link
 		rel="stylesheet"
-		href=s{"https://maxcdn.bootstrapcdn.com}b{}s{/bootstrap/3.3.7/css/bootstrap-theme.min.css"}
-		integrity=s{"sha384-rHyoN1iRsVXV4nD0Jut}b{}s{lnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"}
+		href=s{"https://maxcdn.bootstrapcd}b{}s{n.com/bootstrap/3.3.7/css/bootstrap-them}b{}s{e.min.css"}
+		integrity=s{"sha384-rHyoN1iRsVXV4n}b{}s{D0Jut}b{}s{lnGaslCJuC7uwjduW9SVrLvRYooPp}b{}s{2bWYgmgJQIXwl/Sp"}
 		crossorigin="anonymous"
 	>
 x{bootstrap stylesheets}

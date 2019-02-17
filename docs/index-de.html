@@ -154,16 +154,20 @@
 
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="base"><i>e</i> =</label>
-			<div class="col-sm-9"><input
-				class="form-control" id="base"
-				value="23"></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="base"><i>e</i>
+		=</label>
+	<div class="col-sm-9"><input
+		class="form-control"
+		id="base" value="23"></div>
+
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> und <i>φ(n)</i> sind nicht
+		><i>e</i> und <i>φ(n)</i>
+			sind nicht
 			teilerfremd.</div>
 	</form>
 
@@ -184,39 +188,43 @@
 	
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="phi">φ(<i>n</i>) =
-				(<i>p</i> − 1) ×
-				(<i>q</i> − 1) =</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="phi"></p></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="phi">φ(<i>n</i>) =
+		(<i>p</i> − 1) ×
+		(<i>q</i> − 1) =</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="phi"></p></div>
+
 		</div>
 	</form>
 
 
 	<p>
-		Hier wird ausgenutzt, dass <i>p</i> und
-		<i>q</i> verschieden sind. Andernfalls
-		würde sich die φ-Funktion anders
-		berechnen.
+		Hier wird ausgenutzt, dass <i>p</i>
+		und <i>q</i> verschieden sind.
+		Andernfalls würde sich die 
+		φ-Funktion anders berechnen.
 	</p><p>
-		Wichtig ist für RSA, dass der Wert der
-		φ-Funktion teilerfremd zu <i>e</i>
-		ist (der größte gemeinsame Teiler also
-		1 ist).
+		Wichtig ist für RSA, dass der Wert
+		der φ-Funktion teilerfremd zu
+		<i>e</i> ist (der größte
+		gemeinsame Teiler also 1 ist).
 	</p>
 
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="gcd">ggT(<i>e</i>,
-				φ(<i>n</i>)) =</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="gcd"></p></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="gcd">ggT(<i>e</i>,
+		φ(<i>n</i>)) =</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="gcd"></p></div>
+
 		</div>
 	</form>
 
@@ -227,72 +235,83 @@
 		Kenntnis von <i>p</i> und <i>q</i>
 		kann man φ(<i>n</i>) effizient
 		bestimmen.
-	</p><p>
-		Der geheime Schlüssel besteht
-		aus einem <i>d</i> mit der
-		Eigenschaft, dass
-		<i>e</i> × <i>d</i> − 1 ein Vielfaches
-		von φ(<i>n</i>) ist.
 	</p>
 
 	<p>
-		In Formeln ausgedrückt, muss gelten:
+		Der geheime Schlüssel besteht
+		aus einem <i>d</i> mit der
+		Eigenschaft, dass
+		<i>e</i> × <i>d</i> − 1 ein
+		Vielfaches von φ(<i>n</i>) ist.
+	</p>
+
+	<p>
+		In Formeln ausgedrückt, muss
+		gelten:
 	</p><p class="form">
 		<i>e</i> × <i>d</i> = 1
 		(mod φ(<i>n</i>))
-	</p><p>
-		Dabei ist mit dem mod-Ausdruck die
-		Gleichheit bezüglich einer Restklasse
-		gemeint. Es ist genau dann <i>x</i> =
-		<i>y</i> (mod <i>z</i>), wenn es ein
+	</p>
+
+	<p>
+		Dabei ist mit dem mod-Ausdruck
+		die Gleichheit bezüglich einer
+		Restklasse gemeint. Es ist genau
+		dann <i>x</i> =<i>y</i>
+		(mod <i>z</i>), wenn es ein
 		ganzzahliges <i>a</i> gibt mit
 		<i>x</i> − <i>y</i> = <i>z</i>
 		× <i>a</i>.
 	</p>
 
 	<p>
-		Für die gewählten Werte von <i>p</i>,
-		<i>q</i> und <i>e</i> ergibt sich
-		<i>d</i> als:
+		Für die gewählten Werte von
+		<i>p</i>, <i>q</i> und 
+		<i>e</i> ergibt sich <i>d</i>
+		 als:
 	</p>
 
 	
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="private-key"><i>d</i>
-				=
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="private-key"></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="private-key"><i>d</i> =
+	</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="private-key"></div>
+
 		</div>
 	</form>
 
 
 	<p>
-		Dieses <i>d</i> kann immer bestimmt
-		werden, wenn <i>e</i> mit der oben
-		beschriebenen Einschränkung gewählt
-		wurde – bspw. mit dem Erweiterten
+		Dieses <i>d</i> kann immer
+		bestimmt werden, wenn <i>e</i>
+		mit der oben beschriebenen
+		Einschränkung gewählt wurde –
+		bspw. mit dem Erweiterten
 		Euklidischen Algorithmus.
 	</p>
 
 	<h2>Ver- und Entschlüsseln</h2>
 	<p>
 		Grundsätzlich werden bei diesem
-		Verfahren keine Texte, sondern nur
-		Zahlen ver- und entschlüsselt, die
-		zwischen 0 und <i>n</i> − 1 liegen.
+		Verfahren keine Texte, sondern
+		nur Zahlen ver- und entschlüsselt,
+		die zwischen 0 und <i>n</i> − 1
+		liegen.
 	</p>
 
 	<p>
-		Um eine Nachricht <i>m</i> mit dem
-		öffentlichen Schlüssel (<i>n</i>,
-		<i>e</i>) zu verschlüsseln, wird
+		Um eine Nachricht <i>m</i> mit
+		dem öffentlichen Schlüssel
+		(<i>n</i>, <i>e</i>) zu
+		verschlüsseln, wird
 	</p><p class="form">
-		<i>m&#39;</i> :=
+		<i>m'</i> :=
 			<i>m</i><sup><i>e</i></sup>
 			(mod <i>n</i>)
 	</p><p>
@@ -304,27 +323,30 @@
 		Schlüssel (<i>n</i>, <i>d</i>)
 		erfolgt analog mit
 	</p><p class="form">
-		<i>m&#39;&#39;</i> :=
-			(<i>m&#39;</i>)<sup><i>d</i></sup>
+		<i>m''</i> :=
+			(<i>m'</i>)<sup><i>d</i></sup>
 			(mod <i>n</i>).
 	</p>
 
 	<p>
 		Damit ist
 	</p><p class="form">
-		<i>m&#39;&#39;</i> =
+		<i>m''</i> =
 			<i>m</i><sup><i>e</i> ×
 			<i>d</i></sup>
 			(mod <i>n</i>).
 	</p>
 
 	<p>
-		RSA nutzt die Eigenschaft aus, dass
+		RSA nutzt die Eigenschaft aus,
+		dass
 	</p><p class="form">
 		<i>x</i><sup><i>a</i></sup> =
 			<i>x</i><sup><i>b</i></sup>
 			(mod <i>n</i>)
-	</p><p>
+	</p>
+
+	<p>
 		wenn
 	</p><p class="form">
 		<i>a</i> =
@@ -332,18 +354,20 @@
 	</p>
 
 	<p>
-		<i>e</i> und <i>d</i> wurden passend
-		gewählt, dass
+		<i>e</i> und <i>d</i> wurden
+		passend gewählt, dass
 	</p><p class="form">
-		<i>m&#39;&#39;</i> = <i>m</i>.
-	</p><p>
-		Die Reihenfolge spielt keine Rolle.
-		Man könnte auch erst eine Nachricht
-		mit dem privaten Schlüssel
-		potenzieren, und das Ergebnis dann
-		mit dem öffentlichen Schlüssel
-		potenzieren – das verwendet man
-		bei RSA-Signaturen.
+		<i>m''</i> = <i>m</i>.
+	</p>
+
+	<p>
+		Die Reihenfolge spielt keine
+		Rolle. Man könnte auch erst eine
+		Nachricht mit dem privaten
+		Schlüssel potenzieren, und das
+		Ergebnis dann mit dem öffentlichen
+		Schlüssel potenzieren – das
+		verwendet man bei RSA-Signaturen.
 	</p>
 
 	<h2>Nachrichten</h2>
@@ -358,7 +382,8 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			for="public-key">Klartext</label>
+			for="public-key"
+		>Klartext</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="private-message"
@@ -370,7 +395,8 @@
 		Die Klartextzahl ist zu groß.
 		Der maximale Wert ist
 		<span class="max-msg"></span>.
-		Bitte wählen Sie größere Primzahlen.
+		Bitte wählen Sie größere
+		Primzahlen.
 	</div>
 
 	
@@ -417,15 +443,17 @@
 	</p>
 
 	<p>
-		Dadurch kann man auch in JavaScript
-		mit beliebig großen Zahlen rechnen,
-		also auch solchen, die real bei
-		RSA-Anwendungen verwendet werden.
+		Dadurch kann man auch in
+		JavaScript mit beliebig großen
+		Zahlen rechnen, also auch solchen,
+		die real bei RSA-Anwendungen
+		verwendet werden.
 	</p>
 
 	<div id="authors"><em>CTOAUTHORS:
-		Timm Knape (Dank an Bernhard Esslinger
-			für das Review)</em></div>
+		Timm Knape (Dank an
+		Bernhard Esslinger für das
+		Review)</em></div>
 
 	</div>
 

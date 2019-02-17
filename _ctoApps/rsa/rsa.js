@@ -206,13 +206,16 @@
 	$private_key.innerText =
 		private_key.toString();
 
-	const max_msg =
-		public_key.subtract(one).toString();
+	const max_msg = public_key.
+		subtract(one).toString();
 
 	for (
-		let i = 0; i < $max_msgs.length; ++i
+		let i = 0;
+		i < $max_msgs.length;
+		++i
 	) {
-		$max_msgs[i].innerText = max_msg;
+		$max_msgs[i].innerText =
+			max_msg;
 	}
 
 	if (encrypt) {
@@ -271,16 +274,21 @@
 		'input', queueRefresh
 	);
 
-	$private_message.
-		addEventListener('input', event => {
+	$private_message.addEventListener(
+		'input',
+		event => {
 			setEncrypt(true);
 			queueRefresh(event);
-		});
-	$public_message.
-		addEventListener('input', event => {
+		}
+	);
+
+	$public_message.addEventListener(
+		'input',
+		event => {
 			setEncrypt(false);
 			queueRefresh(event);
-		});
+		}
+	);
 
 	const setEncrypt = new_encrypt => {
 		if (encrypt === new_encrypt) {
@@ -288,11 +296,15 @@
 		}
 		encrypt = new_encrypt;
 		if (encrypt) {
-			$direction.classList.remove('flip');
-			$direction.classList.add('flop');
+			
+	$direction.classList.remove('flip');
+	$direction.classList.add('flop');
+;
 		} else {
-			$direction.classList.remove('flop');
-			$direction.classList.add('flip');
+			
+	$direction.classList.remove('flop');
+	$direction.classList.add('flip');
+;
 		}
 	};
 ;

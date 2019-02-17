@@ -117,17 +117,21 @@
 
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="base"><i>e</i> =</label>
-			<div class="col-sm-9"><input
-				class="form-control" id="base"
-				value="23"></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="base"><i>e</i>
+		=</label>
+	<div class="col-sm-9"><input
+		class="form-control"
+		id="base" value="23"></div>
+
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> and <i>φ(n)</i> have a common
-			divisor, they are not coprime.</div>
+		><i>e</i> and <i>φ(n)</i>
+			have a common divisor,
+			they are not coprime.</div>
 	</form>
 
 	<p>
@@ -146,23 +150,26 @@
 	
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="phi">φ(<i>n</i>) =
-				(<i>p</i> − 1) ×
-				(<i>q</i> − 1) =</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="phi"></p></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="phi">φ(<i>n</i>) =
+		(<i>p</i> − 1) ×
+		(<i>q</i> − 1) =</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="phi"></p></div>
+
 		</div>
 	</form>
 
 
 	<p>
-		The prerequisit here is that <i>p</i>
-		and <i>q</i> are different. 
-		Otherwise, the φ function would be
-		calculate d differently.
+		The prerequisit here is that
+		<i>p</i> and <i>q</i> are
+		different. Otherwise, the φ
+		function would be calculate d
+		differently.
 	</p><p>
 		It is important for RSA that the
 		value of the φ function is
@@ -172,13 +179,15 @@
 
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="gcd">gcd(<i>e</i>,
-				φ(<i>n</i>)) =</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="gcd"></p></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="gcd">gcd(<i>e</i>,
+		φ(<i>n</i>)) =</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="gcd"></p></div>
+
 		</div>
 	</form>
 
@@ -189,7 +198,9 @@
 		knowledge of <i>p</i> and <i>q</i>
 		we can efficiently determine
 		φ(<i>n</i>).
-	</p><p>
+	</p>
+
+	<p>
 		The secret key also consists of
 		a <i>d</i> with the
 		property that <i>e</i> ×
@@ -206,13 +217,16 @@
 	</p>
 
 	<p>
-		In this case, the mod expression means
-		equality with regard to a residual
-		class. It is <i>x</i> = <i>y</i> (mod
-		<i>z</i>) if and only if there is an
-		integer a with <i>x</i> −
-		<i>y</i> = <i>z</i> × <i>a</i>.
-	</p><p>
+		In this case, the mod expression
+		means equality with regard to a
+		residual class. It is <i>x</i> =
+		<i>y</i> (mod <i>z</i>) if and
+		only if there is an integer a
+		with <i>x</i> − <i>y</i> =
+		<i>z</i> × <i>a</i>.
+	</p>
+
+	<p>
 		For the chosen values of <i>p</i>,
 		<i>q</i>, and <i>e</i>, we get
 		<i>d</i> as:
@@ -221,37 +235,42 @@
 	
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label
-				class="col-sm-3 control-label"
-				for="private-key"><i>d</i>
-				=
-			</label>
-			<div class="col-sm-9"><p
-				class="form-control-static"
-				id="private-key"></div>
+			
+	<label
+		class="col-sm-3 control-label"
+		for="private-key"><i>d</i> =
+	</label>
+	<div class="col-sm-9"><p
+		class="form-control-static"
+		id="private-key"></div>
+
 		</div>
 	</form>
 
 
 	<p>
-		This <i>d</i> can always be determined
-		(if <i>e</i> was chosen with the
-		restriction described above)—for
-		example with the extended Euclidean
+		This <i>d</i> can always be
+		determined (if <i>e</i> was
+		chosen with the restriction
+		described above)—for example
+		with the extended Euclidean
 		algorithm.
 	</p>
 
 	<h2>Encryption and decryption</h2>
 	<p>
-		Internally, this method works only with
-		numbers (no text), which are between 0
-		and <i>n</i> − 1.
-	</p><p>
+		Internally, this method works only
+		with numbers (no text), which are
+		between 0 and <i>n</i> − 1.
+	</p>
+
+	<p>
 		A message <i>m</i> (number) is
 		encrypted with the public key (
-		<i>n</i>, <i>e</i>) by calculating:
+		<i>n</i>, <i>e</i>) by
+		calculating:
 	</p><p class="form">
-		<i>m&#39;</i> :=
+		<i>m'</i> :=
 			<i>m</i><sup><i>e</i></sup>
 			(mod <i>n</i>)
 	</p>
@@ -261,13 +280,15 @@
 		(<i>n</i>, <i>d</i>) is done
 		analogously with
 	</p><p class="form">
-		<i>m&#39;&#39;</i> :=
-			(<i>m&#39;</i>)<sup><i>d</i></sup>
+		<i>m''</i> :=
+			(<i>m'</i>)<sup><i>d</i></sup>
 			(mod <i>n</i>).
-	</p><p>
+	</p>
+
+	<p>
 		This is
 	</p><p class="form">
-		<i>m&#39;&#39;</i> =
+		<i>m''</i> =
 			<i>m</i><sup><i>e</i> ×
 			<i>d</i></sup> (mod <i>n</i>).
 	</p>
@@ -286,24 +307,27 @@
 	</p>
 
 	<p>
-		As <i>e</i> and <i>d</i> were chosen
-		appropriately, it is
+		As <i>e</i> and <i>d</i> were
+		chosen appropriately, it is
 	</p><p class="form">
-		<i>m&#39;&#39;</i> = <i>m</i>.
-	</p><p>
-		The order does not matter. You could
-		also first raise a message with the
-		private key, and then power up the
-		result with the public key—this
-		is what you use with RSA signatures.
+		<i>m''</i> = <i>m</i>.
+	</p>
+
+	<p>
+		The order does not matter. You
+		could also first raise a message
+		with the private key, and then
+		power up the result with the
+		public key—this is what you use
+		with RSA signatures.
 	</p>
 
 	<h2>Messages</h2>
 	<p>
-		In the following two text boxes, you
-		can see how encryption and
-		decryption work for concrete inputs
-		(numbers).
+		In the following two text boxes,
+		you can see how encryption and
+		decryption work for concrete
+		inputs (numbers).
 	</p>
 	<form class="form-horizontal">
 		
@@ -362,9 +386,12 @@
 	<h2>Used library</h2>
 	<p>
 		This page uses the library
-		<a href="https://peterolson.github.com/BigInteger.js/">BigInteger.js</a>
+		<a href="https://peterolson.github.com/BigInteger.js/"
+			>BigInteger.js</a>
 		to work with big numbers.
-	</p><p>
+	</p>
+
+	<p>
 		As a result, you can calculate
 		arbitrarily large numbers in
 		JavaScript, even those that are
@@ -372,9 +399,10 @@
 		applications.
 	</p>
 
-	<div id="authors"><em>CTOAUTHORS: Timm
-		Knape (thanks to Bernhard Esslinger
-		for the review)</em></div>
+	<div id="authors"><em>CTOAUTHORS:
+		Timm Knape (thanks to
+		Bernhard Esslinger for the
+		review)</em></div>
 
 	</div>
 
