@@ -5,8 +5,9 @@
 		() => {
 			
 	const $ = id => {
-		return
-			document.getElementById(id);
+		return (
+			document.getElementById(id)
+		);
 	};
 
 	const $prime1 = $('prime-1');

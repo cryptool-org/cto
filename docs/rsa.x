@@ -11,7 +11,7 @@
 
 ```
 d{file: index-de.html}
-	<doctype html>
+	<!doctype html>
 	<html>
 		<head>
 			E{header}
@@ -389,8 +389,9 @@ x{queue refresh}
 ```
 D{globals}
 	const f{$} = id => {
-		return
-			document.getElementById(id);
+		return (
+			document.getElementById(id)
+		);
 	};
 x{globals}
 ```

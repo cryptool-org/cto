@@ -34,7 +34,7 @@ Und wie sie aufgebaut werden
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">file: index-de.html</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">doctype</span> <span class="var">html</span>&gt;<br/>
+<span class="in1"></span>&lt;!<span class="var">doctype</span> <span class="var">html</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">html</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">head</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@multiple(<span class="name">header</span>)</span><br/>
@@ -527,8 +527,9 @@ Dieser Funktionsaufruf wird später durch eine aufwändigere
 <code>
 <span class="macro">@globdef(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">$</span> = <span class="var">id</span> =&gt; {<br/>
-<span class="in2"></span><span class="keyword">return</span><br/>
-<span class="in3"></span><span class="var">document</span>.<span class="fn">getElementById</span>(<span class="var">id</span>);<br/>
+<span class="in2"></span><span class="keyword">return</span> (<br/>
+<span class="in3"></span><span class="var">document</span>.<span class="fn">getElementById</span>(<span class="var">id</span>)<br/>
+<span class="in2"></span>);<br/>
 <span class="in1"></span>};<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
