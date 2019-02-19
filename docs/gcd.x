@@ -8,7 +8,7 @@
 D{gcd}
 	let ca = a;
 	let cb = b;
-x{gcd}
+@end(gcd)
 ```
 * Die aktuellen Werte von `a` und `b` werden in `ca` und
   `cb` gespeichert
@@ -24,7 +24,7 @@ A{gcd}
 	let v = f{bigInt}.zero;
 	let s = v;
 	let t = u;
-x{gcd}
+@end(gcd)
 ```
 * Der Erweiterte Euklidische Algorithmus enthält vier weitere Parameter
   `u`, `v`, `s` und `t`
@@ -34,18 +34,18 @@ x{gcd}
 ```
 A{gcd}
 	while (! cb.isZero()) {
-		e{gcd loop};
+		@put(gcd loop);
 	}
-x{gcd}
+@end(gcd)
 ```
 * Solange `cb` nicht `0` ist, wird die Schleife ausgeführt
 
 ```
-d{gcd loop}
+@def(gcd loop)
 	const dd = ca.divmod(cb);
 	const na = cb;
 	const nb = dd.remainder;
-x{gcd loop}
+@end(gcd loop)
 ```
 * `ca` wird durch `cb` geteilt
 * Der neue Wert von `ca` (`na`) wird auf `cb` gesetzt
@@ -54,43 +54,43 @@ x{gcd loop}
   größte gemeinsame Teiler von `na` und `nb`
 
 ```
-a{gcd loop}
+@add(gcd loop)
 	const nu = s;
 	const nv = t;
-x{gcd loop}
+@end(gcd loop)
 ```
 * Dadurch, dass `cb` nach `na` kopiert wurde, können die
   Koeffizienten `s` und `t` nach `nu` und `nv` kopiert
   werden
 
 ```
-a{gcd loop}
+@add(gcd loop)
 	const ns = u.subtract(
 		dd.quotient.multiply(s)
 	);
 	const nt = v.subtract(
 		dd.quotient.multiply(t)
 	);
-x{gcd loop}
+@end(gcd loop)
 ```
 * Aus den aktuellen `u` und `v` können die neuen `s` und
   `t` bestimmt werden
 
 ```
-a{gcd loop}
+@add(gcd loop)
 	ca = na;
 	cb = nb;
-x{gcd loop}
+@end(gcd loop)
 ```
 * Die neuen Werte werden zu den aktuellen Werten
 
 ```
-a{gcd loop}
+@add(gcd loop)
 	u = nu;
 	v = nv;
 	s = ns;
 	t = nt;
-x{gcd loop}
+@end(gcd loop)
 ```
 * Die neuen Werte werden zu den aktuellen Werten
 
@@ -100,7 +100,7 @@ A{gcd}
 		s{a}: ca, s{u}: u, s{v}: v,
 		s{s}: s, s{t}: t 
 	};
-x{gcd}
+@end(gcd)
 ```
 * Zurück liefert die Funktion den größten gemeinsamen Teiler `a`
 * Und die Koeffizienten
@@ -109,13 +109,13 @@ x{gcd}
 
 ```
 A{globals} {
-	e{unit test};
-} x{globals}
+	@put(unit test);
+} @end(globals)
 ```
 * Unit-Test wird in einem eigenen Block bei jedem Start ausgeführt
 
 ```
-d{unit test}
+@def(unit test)
 	const f{eq} = (a, b) => {
 		if (! a.equals(b)) {
 			console.error(
@@ -123,34 +123,34 @@ d{unit test}
 			);
 		}
 	};
-x{unit test}
+@end(unit test)
 ```
 * Die Funktion prüft, ob zwei große Zahlen gleich sind
 
 ```
-a{unit test}
+@add(unit test)
 	const g = gcd(
 		bigInt(70), bigInt(4)
 	);
 	eq(g.a, bigInt(2));
-x{unit test}
+@end(unit test)
 ```
 * Der größte gemeinsame Teiler muss `2` sein
 
 ```
-a{unit test}
+@add(unit test)
 	eq(g.u, bigInt(1));
 	eq(g.v, bigInt(-17));
-x{unit test}
+@end(unit test)
 ```
 * Die Koeffizienten `g.u` und `g.v` liefern
   eine Linearkombination für den größten gemeinsamen Teiler
 
 ```
-a{unit test}
+@add(unit test)
 	eq(g.s, bigInt(-2));
 	eq(g.t, bigInt(35));
-x{unit test}
+@end(unit test)
 ```
 * Die Koeffizienten `g.s` und `g.t` liefern nicht-triviale
   Linearkombination von `0`

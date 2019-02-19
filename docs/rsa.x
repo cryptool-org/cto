@@ -10,7 +10,7 @@
 * Und wie sie aufgebaut werden
 
 ```
-d{file: index-de.html}
+@def(file: index-de.html)
 	<!doctype html>
 	<html>
 		<head>
@@ -21,7 +21,7 @@ d{file: index-de.html}
 			E{scripts}
 		</body>
 	</html>
-x{file: index-de.html}
+@end(file: index-de.html)
 ```
 * Die Datei `index-de.html` enthält die RSA-Steuerung in Deutsch
 * Header- und Script-Fragmente werden mit der englischen Version geteilt
@@ -29,7 +29,7 @@ x{file: index-de.html}
   zusätzlich ausgelagert
 
 ```
-d{file: index-en.html}
+@def(file: index-en.html)
 	<!doctype html>
 	<html>
 		<head>
@@ -40,74 +40,74 @@ d{file: index-en.html}
 			E{scripts}
 		</body>
 	</html>
-x{file: index-en.html}
+@end(file: index-en.html)
 ```
 * Die englische Webseite unterscheidet verwendet statt der deutschen
   Version das Fragment `s{rsa en}`
 * Der Rest ist identisch
 
 ```
-d{file: ../_ctoApps/rsa/rsa-de.html}
+@def(file: ../_ctoApps/rsa/rsa-de.html)
 	E{rsa de}
-x{file: ../_ctoApps/rsa/rsa-de.html}
+@end(file: ../_ctoApps/rsa/rsa-de.html)
 ```
 * Die Datei `rsa-de.html` enthält die deutsche GUI ohne Webseiten-Rahmen
 * Diese Datei wird direkt im Ziel-Ordner erzeugt
 
 ```
-d{file: ../_ctoApps/rsa/rsa-en.html}
+@def(file: ../_ctoApps/rsa/rsa-en.html)
 	E{rsa en}
-x{file: ../_ctoApps/rsa/rsa-en.html}
+@end(file: ../_ctoApps/rsa/rsa-en.html)
 ```
 * Die Datei `rsa-en.html` enthält die englische GUI ohne Webseiten-Rahmen
 
 ```
-d{header}
+@def(header)
 	<title>RSA-js</title>
 	<meta charset="utf-8">
-	e{bootstrap stylesheets}
+	@put(bootstrap stylesheets)
 	<link rel="stylesheet"
 		href="../_ctoApps/rsa/rsa.css"
 	>
-x{header}
+@end(header)
 ```
 * Im HTML-Header wird die Zeichen-Kodierung auf UTF-8 gestellt
 * Die Bootstrap-Stylesheets werden eingebunden
 * Das app-spezifische Stylesheet `s{rsa.css}` wird eingebunden
 
 ```
-d{file: ../_ctoApps/rsa/rsa.css}
-	e{css}
-x{file: ../_ctoApps/rsa/rsa.css}
+@def(file: ../_ctoApps/rsa/rsa.css)
+	@put(css)
+@end(file: ../_ctoApps/rsa/rsa.css)
 ```
 * Das Stylesheet enthält ein Fragment `s{css}`
 * Wenn neue HTML-Elemente eine CSS-Anpassung benötigen, werden diese
   hier eingepflegt
 
 ```
-d{scripts}
+@def(scripts)
 	<script
 		src=s{"../_ctoApps/rsa/}b{}s{BigInteger.min.js"}
 	></script>
 	<script
 		src="../_ctoApps/rsa/rsa.js"
 	></script>
-x{scripts}
+@end(scripts)
 ```
 * Neben dem spezifischen JavaScript wird noch eine Bibliothek für das
   Rechnen mit großen Zahlen eingebunden
 
 ```
-d{file: ../_ctoApps/rsa/rsa.js}
+@def(file: ../_ctoApps/rsa/rsa.js)
 	"use strict";
 	window.addEventListener(
 		'load',
 		() => {
 			g{globals};
-			e{setup rsa};
+			@put(setup rsa);
 		}
 	);
-x{file: ../_ctoApps/rsa/rsa.js}
+@end(file: ../_ctoApps/rsa/rsa.js)
 ```
 * Das Skript `s{rsa.js}` wird mit strenger Typ-Prüfung ausgeführt
 * Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
@@ -116,12 +116,12 @@ x{file: ../_ctoApps/rsa/rsa.js}
 * Dadurch entstehen keine neuen globalen Objekte
 
 ```
-d{rsa de}
+@def(rsa de)
 	<div id="rsa-container"
 		class="container">
-		e{container de}
+		@put(container de)
 	</div>
-x{rsa de}
+@end(rsa de)
 ```
 * Alle HTML-Elemente des RSA-Algorithmus sind in einem eigenen
   `<div>`-Tag gekapselt
@@ -129,17 +129,17 @@ x{rsa de}
   werden
 
 ```
-d{rsa en}
+@def(rsa en)
 	<div id="rsa-container"
 		class="container">
-		e{container en}
+		@put(container en)
 	</div>
-x{rsa en}
+@end(rsa en)
 ```
 * Die englische Variante bindet ein anderes Fragment ein
 
 ```
-d{container de}
+@def(container de)
 	<p>
 		s{Dieses Modul demonstriert}
 		s{schrittweise die Ver- und}
@@ -152,12 +152,12 @@ d{container de}
 		s{seinen zugehörigen privaten}
 		s{Schlüssel.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Die Seite beginnt mit einer kurzen Beschreibung
 
 ```
-d{container en}
+@def(container en)
 	<p>
 		s{This module demonstrates}
 		s{step-by-step encryption and}
@@ -167,16 +167,16 @@ d{container en}
 		s{the recipient uses his associated}
 		s{private key to decrypt.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Die englische Seite beginnt mit der gleichen Beschreibung
 
 ```
-d{css}
+@def(css)
 	#rsa-container p {
 		margin: 0 0 10px 0;
 	}
-x{css}
+@end(css)
 ```
 * Für Absätze wird der Abstand auf `0` Pixel gesetzt
 * Nur der untere Abstand wird auf `10` Pixel gesetzt
@@ -186,14 +186,14 @@ x{css}
   werden können
 
 ```
-a{container de}
+@add(container de)
 	<h2>s{Primzahlen}</h2>
-x{container de}
+@end(container de)
 ```
 * Die HTML-Seite beginnt mit dem Kapitel über Primzahlen
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Die Sicherheit von RSA basiert}
 		s{darauf, dass es zwar einfach ist,}
@@ -207,32 +207,32 @@ a{container de}
 		s{auch das Faktorisieren von}
 		<i>n</i>s{.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Die Seite beschreibt, warum bei RSA mit Primzahlen gerechnet wird
 * Mathematische Variablen werden mit dem `<i>`-Tag kursiv gesetzt
 
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Als Ausgangspunkt für RSA wählt}
 		s{man zwei Primzahlen }<i>p</i>s{ und}
 		<i>q</i>s{.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Die Beschreibung erwähnt die Variablen-Namen der Primzahlen
 
 ```
-a{container en}
+@add(container en)
 	<h2>Primes</h2>
-x{container en}
+@end(container en)
 ```
 * Die englische Seite enthält ebenfalls eine Überschrift
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{The security of RSA is based on}
 		s{the fact that it is easy to}
@@ -245,51 +245,51 @@ a{container en}
 		s{This decomposition is also called}
 		s{the factorization of} <i>n</i>.
 	</p>
-x{container en}
+@end(container en)
 ```
 * Die englische Seite enthält die Übersetzung des ersten Absatzes
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{As a starting point for RSA choose}
 		s{two primes }<i>p</i>s{ and }<i>q</i>s{.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Die englische Seite enthält die Übersetzung des zweiten Absatzes
 
 ```
-a{css}
+@add(css)
 	#rsa-container h2 {
 		margin-top: 2em;
 	}
-x{css}
+@end(css)
 ```
 * Überschriften bekommen etwas mehr Abstand
 
 ```
-a{container de}
+@add(container de)
 	<form class="form-horizontal">
-		e{primes de}
+		@put(primes de)
 	</form>
-x{container de}
+@end(container de)
 ```
 * Die Eingabe-Elemente werden in einem Formular (dem `<form>`-Element)
   gekapselt
 
 ```
-a{container en}
+@add(container en)
 	<form class="form-horizontal">
-		e{primes en}
+		@put(primes en)
 	</form>
-x{container en}
+@end(container en)
 ```
 * Die englische Version unterscheidet sich nur in dem übersetzten
   Inhalt
 
 ```
-d{primes de}
+@def(primes de)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -300,33 +300,33 @@ d{primes de}
 			class="form-control"
 			id="prime-1" value="11"></div>
 	</div>
-x{primes de}
+@end(primes de)
 ```
 * Die Formatierung des Eingabefeldes für die erste Primzahl mit Label
   wird von Bootstrap-Klassen erledigt
 * Dieses Feld wird mit der kleinen Primzahl `11` initialisiert
 
 ```
-a{primes de}
+@add(primes de)
 	<div id="err-p-not-prime"
 		class=s{"row alert alert-danger }b{}s{hidden"}
 	><i>p</i> s{ist keine Primzahl!}</div>
-x{primes de}
+@end(primes de)
 ```
 * Zusätzlich gibt es eine Fehlermeldung,
 * die aber anfangs nicht sichtbar ist
 
 ```
-a{css}
+@add(css)
 	.hidden {
 		display: none;
 	}
-x{css}
+@end(css)
 ```
 * Mit der `hidden`-Klasse können Elemente ausgeblendet werden
 
 ```
-d{primes en}
+@def(primes en)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -336,26 +336,26 @@ d{primes en}
 			class="form-control"
 			id="prime-1" value="11"></div>
 	</div>
-x{primes en}
+@end(primes en)
 ```
 * Die englische Version hat ein andere Beschriftung
 
 ```
-a{primes en}
+@add(primes en)
 	<div id="err-p-not-prime"
 		class=s{"row alert alert-danger}b{}s{ hidden"}
 	><i>p</i> s{is not prime!}</div>
-x{primes en}
+@end(primes en)
 ```
 * und eine übersetzte Fehlermeldung
 
 ```
-d{setup rsa}
+@def(setup rsa)
 	const f{queueRefresh} = event => {
 		event.preventDefault();
-		e{queue refresh};
+		@put(queue refresh);
 	};
-x{setup rsa}
+@end(setup rsa)
 ```
 * Wenn sich Textfelder ändern, muss der RSA-Algorithmus neu
   durchgeführt werden
@@ -364,12 +364,12 @@ x{setup rsa}
   aufgerufen wird
 
 ```
-a{setup rsa}
+@add(setup rsa)
 	const f{refresh} = () => {
-		e{refresh};
+		@put(refresh);
 	};
 	refresh();
-x{setup rsa}
+@end(setup rsa)
 ```
 * Wenn sich die Primzahl (oder andere Felder) ändern, muss der
   RSA-Algorithmus neu ausgeführt werden
@@ -377,9 +377,9 @@ x{setup rsa}
   initialisieren
 
 ```
-d{queue refresh}
+@def(queue refresh)
 	refresh();
-x{queue refresh}
+@end(queue refresh)
 ```
 * In einer ersten Implementierung wird einfach nur die Funktion
   `refresh` aufgerufen
@@ -393,7 +393,7 @@ D{globals}
 			document.getElementById(id)
 		);
 	};
-x{globals}
+@end(globals)
 ```
 * Hilfsfunktion, um ein Element im HTML Document Object Model (DOM) mit
   `id` zu ermitteln
@@ -405,22 +405,22 @@ A{globals}
 	const $prime1 = f{$}('prime-1');
 	const $err_p_not_prime =
 		f{$}('err-p-not-prime');
-x{globals}
+@end(globals)
 ```
 * Referenzen auf das Textfeld mit der ID `v{prime-1}` und auf die dazu
   gehörende Fehlermeldung werden zwischengespeichert
 
 ```
-a{setup rsa}
+@add(setup rsa)
 	$prime1.addEventListener(
 		'input', f{queueRefresh}
 	);
-x{setup rsa}
+@end(setup rsa)
 ```
 * Wenn sich die Primzahl ändert, wird eine Neuberechnung angestoßen
 
 ```
-d{refresh}
+@def(refresh)
 	const prime1 =
 		bigInt($prime1.value);
 
@@ -428,7 +428,7 @@ d{refresh}
 		'hidden',
 		prime1.isProbablePrime()
 	);
-x{refresh}
+@end(refresh)
 ```
 * Der erste Primfaktor wird als Zeichenkette aus dem DOM-Modell gelesen
 * Und in große Zahlen konvertiert
@@ -438,7 +438,7 @@ x{refresh}
 * Wirkliche Auswirkungen hat es nicht, da trotzdem weiter gerechnet wird
 
 ```
-a{primes de}
+@add(primes de)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -449,13 +449,13 @@ a{primes de}
 			class="form-control"
 			id="prime-2" value="13"></div>
 	</div>
-x{primes de}
+@end(primes de)
 ```
 * Eingabefeld für die zweite Primzahl
 * Auch diese wird mit einer kleinen Primzahl (`13`) initialisiert
 
 ```
-a{primes de}
+@add(primes de)
 	<div id="err-q-not-prime"
 		class=s{"row alert alert-danger}b{}s{ hidden"}
 	><i>q</i>s{ ist keine Primzahl!}</div>
@@ -463,13 +463,13 @@ a{primes de}
 		class=s{"row alert alert-danger}b{}s{ hidden"}
 	><i>p</i>s{und} <i>q</i>
 		s{sind nicht verschieden!}</div>
-x{primes de}
+@end(primes de)
 ```
 * Für die zweite Primzahl gibt es nicht nur eine Fehlermeldung,
 * denn die beiden Primzahlen dürfen nicht gleich sein
 
 ```
-a{primes en}
+@add(primes en)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -479,12 +479,12 @@ a{primes en}
 			class="form-control"
 			id="prime-2" value="13"></div>
 	</div>
-x{primes en}
+@end(primes en)
 ```
 * In der englischen Version wird eine andere Beschriftung verwendet
 
 ```
-a{primes en}
+@add(primes en)
 	<div id="err-q-not-prime"
 		class=s{"row alert alert-danger}b{}s{ hidden"}
 	><i>q</i>s{ is not prime!}</div>
@@ -492,7 +492,7 @@ a{primes en}
 		class=s{"row alert alert-danger}b{}s{ hidden"}
 	><i>p</i>s{ and }<i>q</i>s{ are not}
 		s{different!}</div>
-x{primes en}
+@end(primes en)
 ```
 * Die Fehlermeldungen gibt es auch in der englischen Version
 
@@ -503,23 +503,23 @@ A{globals}
 		f{$}('err-q-not-prime');
 	const $err_p_equal_q =
 		f{$}('err-p-equal-q');
-x{globals}
+@end(globals)
 ```
 * Referenzen auf die zweite Primzahl und die Fehlermeldungen werden
   gespeichert
 
 ```
-a{setup rsa}
+@add(setup rsa)
 	$prime2.addEventListener(
 		'input', f{queueRefresh}
 	);
-x{setup rsa}
+@end(setup rsa)
 ```
 * Bei einer Änderung der zweiten Primzahl wird ebenfalls eine
   Neuberechnung angestoßen
 
 ```
-a{refresh}
+@add(refresh)
 	const prime2 =
 		bigInt($prime2.value);
 
@@ -527,41 +527,41 @@ a{refresh}
 		'hidden',
 		prime2.isProbablePrime()
 	);
-x{refresh}
+@end(refresh)
 ```
 * Auch de zweite Primzahl wird ausgelesen
 * Deren Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um
   eine Primzahl handelt
 
 ```
-a{refresh}
+@add(refresh)
 	$err_p_equal_q.classList.toggle(
 		'hidden',
 		! prime1.equals(prime2)
 	);
-x{refresh}
+@end(refresh)
 ```
 * Eine dritte Fehlermeldung wird sichtbar, wenn die Primzahlen
   gleich sind
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Damit der Algorithmus}
 		s{funktioniert, müssen die beiden}
 		s{Primzahlen verschieden sein.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Es wird beschrieben, dass die Primzahlen verschieden sein müssen
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{For the algorithm to work, the two}
 		s{primes must be different.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Diese Beschreibung gibt es auch in der englischen Version
 
@@ -569,42 +569,42 @@ x{container en}
 * Im zweiten Abschnitt der Seite wird zusätzlich der Exponent abgefragt
 
 ```
-a{container de}
+@add(container de)
 	<h2>s{Öffentlicher Schlüssel}</h2>
 	<p>
 		s{Das Produkt }<i>n</i>s{ wird im}
 		s{RSA-Verfahren auch Modul genannt.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Zuerst kommt eine allgemeine Beschreibung in der deutschen Version
 
 ```
-a{container en}
+@add(container en)
 	<h2>s{Public key}</h2>
 	<p>
 		s{The product }<i>n</i>s{ is also}
 		s{called module in the RSA method.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Und ebenso in der englischen Version
 
 ```
-d{definition of n}
+@def(definition of n)
 	<form class="form-horizontal">
 		<div class="form-group">
-			e{n elements}
+			@put(n elements)
 		</div>
 	</form>
-x{definition of n}
+@end(definition of n)
 ```
 * `n` ist das Produkt der beiden Primfaktoren
 * Die Anzeige ist in der deutschen und englischen Version identisch
 * Daher wird ein eigenes Fragment definiert
 
 ```
-d{n elements}
+@def(n elements)
 	<label
 		class="col-sm-3 control-label"
 		v{for}="public-key"><i>n</i>s{ =}
@@ -615,23 +615,23 @@ d{n elements}
 		><span id="public-key"></span>
 		s{(}<span id="public-key-length"
 		></span> s{Bit)}</p></div>
-x{n elements}
+@end(n elements)
 ```
 * Die Felder bilden ein eigenes Fragment
 * um den Code übersichtlicher zu
   formatieren
 
 ```
-a{container de}
+@add(container de)
 	E{definition of n}
-x{container de}
+@end(container de)
 ```
 * Das Fragment wird in der deutschen Version verwendet
 
 ```
-a{container en}
+@add(container en)
 	E{definition of n}
-x{container en}
+@end(container en)
 ```
 * Und das Fragment wird in der englischen Version verwendet
 
@@ -641,26 +641,26 @@ A{globals}
 		f{$}('public-key');
 	const $public_key_length =
 		f{$}('public-key-length');
-x{globals}
+@end(globals)
 ```
 * Referenzen auf den öffentlichen Schlüssel im DOM und dessen Länge
   werden im Code abgelegt
 
 ```
-a{refresh}
+@add(refresh)
 	const public_key =
 		prime1.multiply(prime2);
 	$public_key.innerText =
 		public_key.toString();
 	$public_key_length.innerText =
 		public_key.bitLength();
-x{refresh}
+@end(refresh)
 ```
 * Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
 * Die Länge des Schlüssels kann die Integer-Bibliothek direkt liefern
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Zur Demonstration beginnen wir mit}
 		s{kleinen Primzahlen. Um die}
@@ -672,13 +672,13 @@ a{container de}
 		s{mit mehreren tausend Binärstellen}
 		s{verwendet.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Auch wenn mit kleinen Primzahlen begonnen wird, müssen für ernste
   Anwendungen die Primzahlen groß sein
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{For demonstration we start with}
 		s{small primes. To make the}
@@ -688,34 +688,34 @@ a{container en}
 		s{several thousand binary digits}
 		s{are used for secure communication.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Diesen Hinweis gibt es auch in der englischen Version.
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Der öffentliche Schlüssel besteht}
 		s{neben dem Modul} <i>n</i> s{noch aus}
 		s{einem Exponenten} <i>e</i>s{.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Auch der Exponent ist teil des öffentlichen Schlüssels
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{The public key consists of the}
 		s{module} <i>n</i> s{and}
 		s{an exponent} <i>e</i>s{.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Das wird auch in der englischen Version beschrieben.
 
 ```
-a{container de}
+@add(container de)
 	<form class="form-horizontal">
 		<div class="form-group">
 			E{e group}
@@ -726,14 +726,14 @@ a{container de}
 			s{sind nicht}
 			s{teilerfremd.}</div>
 	</form>
-x{container de}
+@end(container de)
 ```
 * In einem Textfeld kann das `e` geändert werden
 * Zusätzlich gibt es eine Fehlermeldung, wenn das eingegebene `e` nicht
   teilerfremd zu `f{φ}(n)` ist
 
 ```
-d{e group}
+@def(e group)
 	<label
 		class="col-sm-3 control-label"
 		v{for}="base"><i>e</i>
@@ -741,13 +741,13 @@ d{e group}
 	<div class="col-sm-9"><input
 		class="form-control"
 		id="base" value="23"></div>
-x{e group}
+@end(e group)
 ```
 * Die Felder enthalten keinen deutschen oder englischen Text
 * und können für beide Sprachen verwendet werden
 
 ```
-a{container en}
+@add(container en)
 	<form class="form-horizontal">
 		<div class="form-group">
 			E{e group}
@@ -758,7 +758,7 @@ a{container en}
 			s{have a common divisor,}
 			s{they are not coprime.}</div>
 	</form>
-x{container en}
+@end(container en)
 ```
 * Das Textfeld gibt es ebenfalls in der englischen Version
 * Ebenfalls mit der zugehörigen Fehlermeldung
@@ -768,7 +768,7 @@ A{globals}
 	const $e = f{$}('base');
 	const $err_gcd_not_1 =
 		f{$}('err-gcd-not-1');
-x{globals}
+@end(globals)
 ```
 * In der Variable `$e` wird eine Referenz des Textfelds gespeichert
 * Ebenso wird eine Referenz der Fehlermeldung gespeichert
@@ -776,42 +776,42 @@ x{globals}
   wenn `f{φ}(n)` berechnet wurde
 
 ```
-a{setup rsa}
+@add(setup rsa)
 	$e.addEventListener(
 		'input', f{queueRefresh}
 	);
-x{setup rsa}
+@end(setup rsa)
 ```
 * Werden die Primzahlen oder der Exponent geändert, wird die
   Neuberechnung getriggert
 
 ```
-a{refresh}
+@add(refresh)
 	const e = bigInt($e.value);
-x{refresh}
+@end(refresh)
 ```
 * Liest den Wert von `e` aus dem DOM
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Dieses} <i>e</i> s{kann sogar vorab}
 		s{gewählt werden und für alle}
 		s{Teilnehmer gleich sein.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Ein Hinweis, dass `e` öffentlich gewählt werden kann, wird
   ausgegeben
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{This} <i>e</i> s{may even be}
 		s{pre-selected and the same}
 		s{for all participants.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Auch in der englischen Version
 
@@ -820,7 +820,7 @@ x{container en}
 * und wie der geheime Schlüssel berechnet wird
 
 ```
-a{container de}
+@add(container de)
 	<h2>s{Geheimer Schlüssel}</h2>
 	<p>
 		s{RSA benutzt für die Berechnung des}
@@ -828,37 +828,37 @@ a{container de}
 		f{φ}s{-Funktion von} <i>n</i>s{.}
 		s{Diese ist definiert als}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Erklärt in der deutschen Version, wie der geheime Schlüssel berechnet
   wird
 
 ```
-a{container en}
+@add(container en)
 	<h2>s{Secret key}</h2>
 	<p>
 		s{RSA uses the Euler }f{φ}s{ function}
 		s{of} <i>n</i> s{to calculate the}
 		s{secret key. This is defined as}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Das gleiche wird in der englischen Version ausgegeben
 
 ```
-d{phi label group}
+@def(phi label group)
 	<form class="form-horizontal">
 		<div class="form-group">
-			e{phi label}
+			@put(phi label)
 		</div>
 	</form>
-x{phi label group}
+@end(phi label group)
 ```
 * Die Berechnung von `f{φ}` enthält keinen deutschen oder englischen Text
 * und kann daher für beide Lokalisierungen verwendet werden
 
 ```
-d{phi label}
+@def(phi label)
 	<label
 		class="col-sm-3 control-label"
 		v{for}="phi">f{φ}s{(}<i>n</i>s{) =}
@@ -867,37 +867,37 @@ d{phi label}
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="phi"></p></div>
-x{phi label}
+@end(phi label)
 ```
 
 ```
-a{container de}
+@add(container de)
 	E{phi label group}
-x{container de}
+@end(container de)
 ```
 * `f{φ}` in der deutschen Version definieren
 
 ```
-a{container en}
+@add(container en)
 	E{phi label group}
-x{container en}
+@end(container en)
 ```
 * `f{φ}` in der englischen Version definieren
 
 ```
 A{globals}
 	const $phi = $('phi');
-x{globals}
+@end(globals)
 ```
 * Eine Referenz auf den Wert der `f{φ}`-Funktion wird im Code abgelegt
 
 ```
-a{refresh}
+@add(refresh)
 	const one = f{bigInt}.one;
 	const phi = prime1.subtract(one).
 		multiply(prime2.subtract(one));
 	$phi.innerText = phi.toString();
-x{refresh}
+@end(refresh)
 ```
 * Nur wenn die Primzahlen verschieden sind, gilt diese Rechenvorschrift
 
@@ -906,7 +906,7 @@ A{globals}
 	const f{gcd} = (a, b) => {
 		g{gcd};
 	};
-x{globals}
+@end(globals)
 ```
 * Um festzustellen, ob `e` und  `f{φ}(n)` teilerfremd sind, wird der
   Erweiterte Euklidische Algorithmus verwendet
@@ -921,12 +921,12 @@ i{gcd.x}
 
 
 ```
-a{refresh}
+@add(refresh)
 	const gcd_result = gcd(phi, e);
 	$err_gcd_not_1.classList.toggle(
 		'hidden', gcd_result.a.equals(one)
 	);
-x{refresh}
+@end(refresh)
 ```
 * Wenn `e` und der Wert der `f{φ}`-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt
@@ -935,7 +935,7 @@ x{refresh}
 * Dieser muss eins sein
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Hier wird ausgenutzt, dass} <i>p</i>
 		s{und }<i>q</i>s{ verschieden sind.}
@@ -947,13 +947,13 @@ a{container de}
 		<i>e</i>s{ ist (der größte}
 		s{gemeinsame Teiler also }n{1}s{ ist).}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Einschränkungen bei der Berechnung von `f{φ}` werden auf der deutschen
   Seite ausgegeben
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{The prerequisit here is that}
 		<i>p</i>s{ and }<i>q</i>s{ are}
@@ -966,24 +966,24 @@ a{container en}
 		s{coprime to }<i>e</i>s{ (the largest}
 		s{common divisor must be }n{1}s{).}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Ebenso auf der englischen Seite
 
 ```
-a{container de}
+@add(container de)
 	<form class="form-horizontal">
 		<div class="form-group">
-			e{ggt de}
+			@put(ggt de)
 		</div>
 	</form>
-x{container de}
+@end(container de)
 ```
 * Der größte gemeinsame Teiler wird auf der deutschen Seite
   ausgegeben
 
 ```
-d{ggt de}
+@def(ggt de)
 	<label
 		class="col-sm-3 control-label"
 		v{for}="gcd">f{ggT}s{(}<i>e</i>s{,}
@@ -991,24 +991,24 @@ d{ggt de}
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="gcd"></p></div>
-x{ggt de}
+@end(ggt de)
 ```
 * Die lange `class`-Definition erzwingt
   ein eigenes Fragment für das Label
 
 ```
-a{container en}
+@add(container en)
 	<form class="form-horizontal">
 		<div class="form-group">
-			e{ggt en}
+			@put(ggt en)
 		</div>
 	</form>
-x{container en}
+@end(container en)
 ```
 * Und auf der englischen Seite
 
 ```
-d{ggt en}
+@def(ggt en)
 	<label
 		class="col-sm-3 control-label"
 		v{for}="gcd">s{gcd(}<i>e</i>s{,}
@@ -1016,27 +1016,27 @@ d{ggt en}
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="gcd"></p></div>
-x{ggt en}
+@end(ggt en)
 ```
 * Auch die englische Version hat eine lange `class`-Definition
 
 ```
 A{globals}
 	const $gcd = f{$}('gcd');
-x{globals}
+@end(globals)
 ```
 * Eine Referenz auf das DOM-Element wird gesichert
 
 ```
-a{refresh}
+@add(refresh)
 	$gcd.innerText =
 		gcd_result.a.toString();
-x{refresh}
+@end(refresh)
 ```
 * Und im `refresh` wird das Feld aktualisiert
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Um den Wert von }f{φ}s{(}<i>n</i>s{) zu}
 		s{bestimmen, reicht es nicht aus}
@@ -1045,13 +1045,13 @@ a{container de}
 		s{kann man }f{φ}s{(}<i>n</i>s{) effizient}
 		s{bestimmen.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Es wird beschrieben warum der geheime Schlüssel nicht leicht erraten
   werden kann
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Der geheime Schlüssel besteht}
 		s{aus einem }<i>d</i>s{ mit der}
@@ -1059,12 +1059,12 @@ a{container de}
 		<i>e</i>s{ × }<i>d</i>s{ − }n{1}s{ ein}
 		s{Vielfaches von }f{φ}s{(}<i>n</i>s{) ist.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Es wird beschrieben wie der geheime Schlüssel berechnet wird
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{In Formeln ausgedrückt, muss}
 		s{gelten:}
@@ -1072,12 +1072,12 @@ a{container de}
 		<i>e</i>s{ × }<i>d</i>s{ = }1
 		s{(mod }f{φ}s{(}<i>n</i>s{))}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Das gleiche wird als Formel ausgedrückt
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Dabei ist mit dem mod-Ausdruck}
 		s{die Gleichheit bezüglich einer}
@@ -1088,24 +1088,24 @@ a{container de}
 		<i>x</i>s{ − }<i>y</i>s{ = }<i>z</i>
 		s{× }<i>a</i>s{.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Und wieso damit die Entschlüsselung funktioniert
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Für die gewählten Werte von}
 		<i>p</i>s{, }<i>q</i>s{ und }
 		<i>e</i>s{ ergibt sich} <i>d</i>
 		s{ als:}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Dann wird der geheime Schlüssel ausgegeben
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{To determine the value of}
 		f{φ}s{(}<i>n</i>s{), it is not enough}
@@ -1114,13 +1114,13 @@ a{container en}
 		s{we can efficiently determine}
 		f{φ}s{(}<i>n</i>s{).}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Auch auf der englischen Seite wird beschrieben, warum der geheime
   Schlüssel nur schwer erraten werden kann
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{The secret key also consists of}
 		s{a }<i>d</i>s{ with the}
@@ -1128,12 +1128,12 @@ a{container en}
 		<i>d</i>s{ − }n{1}s{ is a multiple of}
 		f{φ}s{(}<i>n</i>s{).}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Und wie der geheime Schlüssel berechnet wird
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{Expressed in formulas, the}
 		s{following must apply:}
@@ -1141,12 +1141,12 @@ a{container en}
 		<i>e</i>s{ × }<i>d</i>s{ = 1}
 		s{(mod φ(}<i>n</i>s{))}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Ebenfalls mit der Formel-Darstellung
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{In this case, the mod expression}
 		s{means equality with regard to a}
@@ -1156,44 +1156,44 @@ a{container en}
 		s{with }<i>x</i>s{ − }<i>y</i>s{ =}
 		<i>z</i>s{ × }<i>a</i>s{.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Und warum das Ganze funktioniert
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{For the chosen values of }<i>p</i>s{,}
 		<i>q</i>s{, and }<i>e</i>s{, we get}
 		<i>d</i>s{ as:}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Hier wird auf das nächste Ergebnis hingearbeitet
 
 ```
-a{css}
+@add(css)
 	#rsa-container p.form {
 		margin-left: 32px;
 	}
-x{css}
+@end(css)
 ```
 * Formeln werden etwas eingerückt
 
 ```
-d{private key group}
+@def(private key group)
 	<form class="form-horizontal">
 		<div class="form-group">
-			e{private key}
+			@put(private key)
 		</div>
 	</form>
-x{private key group}
+@end(private key group)
 ```
 * Das Feld mit der Ausgabe des geheimen Schlüssels kann in der
   deutschen und englischen Version gemeinsam verwendet werden
 
 ```
-d{private key}
+@def(private key)
 	<label
 		class="col-sm-3 control-label"
 		v{for}="private-key"><i>d</i>s{ =}
@@ -1201,23 +1201,23 @@ d{private key}
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="private-key"></div>
-x{private key}
+@end(private key)
 ```
 * Wegen der langen `class`-Definition werden die Felder in einem eigenen
   Fragment definiert
 
 ```
-a{container de}
+@add(container de)
 	E{private key group}
-x{container de}
+@end(container de)
 ```
 * Den geheimen Schlüssel in der deutschen Version ausgeben
 
 
 ```
-a{container en}
+@add(container en)
 	E{private key group}
-x{container en}
+@end(container en)
 ```
 * Den geheimen Schlüssel in der englischen Version ausgeben
 
@@ -1225,13 +1225,13 @@ x{container en}
 A{globals}
 	const $private_key =
 		f{$}('private-key');
-x{globals}
+@end(globals)
 ```
 * Die Referenz auf den geheimen Schlüssel wird in der Anwendung
   gespeichert
 
 ```
-a{refresh}
+@add(refresh)
 	let private_key = gcd_result.v;
 	const zero = f{bigInt}.zero;
 	if (private_key.lesser(zero)) {
@@ -1240,14 +1240,14 @@ a{refresh}
 	}
 	$private_key.innerText =
 		private_key.toString();
-x{refresh}
+@end(refresh)
 ```
 * Der private Schlüssel ist das multiplikative Inverse modulo `f{φ}(n)`
 * Falls der Schlüssel negative ist, wird der Wert von `f{φ}(n)` hinzu
   addiert
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Dieses }<i>d</i>s{ kann immer}
 		s{bestimmt werden, wenn }<i>e</i>
@@ -1256,12 +1256,12 @@ a{container de}
 		s{bspw. mit dem Erweiterten}
 		s{Euklidischen Algorithmus.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Es wird beschrieben, wie der geheime Schlüssel gewählt wird
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{This }<i>d</i>s{ can always be}
 		s{determined (if }<i>e</i>s{ was}
@@ -1270,7 +1270,7 @@ a{container en}
 		s{with the extended Euclidean}
 		s{algorithm.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Auch auf der englischen Seite wird die Beschreibung ausgegeben
 
@@ -1279,7 +1279,7 @@ x{container en}
 * Durch die Vorarbeiten bleibt aber nicht mehr viel zu tun
 
 ```
-a{container de}
+@add(container de)
 	<h2>s{Ver- und Entschlüsseln}</h2>
 	<p>
 		s{Grundsätzlich werden bei diesem}
@@ -1288,12 +1288,12 @@ a{container de}
 		s{die zwischen }n{0}s{ und }<i>n</i>s{ − }1
 		s{liegen.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Hier wird beschrieben, was für Nachrichten verschlüsselt werden können
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Um eine Nachricht }<i>m</i>s{ mit}
 		s{dem öffentlichen Schlüssel}
@@ -1306,12 +1306,12 @@ a{container de}
 	</p><p>
 		s{berechnet.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Das Verschlüsseln besteht aus einer Exponentiation
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Das Entschlüsseln mit dem privaten}
 		s{Schlüssel (}<i>n</i>s{, }<i>d</i>s{)}
@@ -1321,12 +1321,12 @@ a{container de}
 			s{(}<i>v{m'}</i>s{)}<sup><i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Auch das Entschlüsseln ist eine Exponentiation
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Damit ist}
 	</p><p class="form">
@@ -1335,12 +1335,12 @@ a{container de}
 			<i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
 	</p>
-x{container de}
+@end(container de)
 ```
 * `v{m'}` wird durch `m` hoch `e` ersetzt
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{RSA nutzt die Eigenschaft aus,}
 		s{dass}
@@ -1349,37 +1349,37 @@ a{container de}
 			<i>x</i><sup><i>b</i></sup>
 			s{(mod }<i>n</i>s{)}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Es wird kurz beschrieben, wann bei der Exponentiation das gleiche
   Ergebnis herauskommt
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{wenn}
 	</p><p class="form">
 		<i>a</i>s{ =}
 			<i>b</i>s{ (mod }f{φ}s{(}<i>n</i>s{))}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Die notwendige Einschränkung wird mit ausgegeben
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		<i>e</i>s{ und }<i>d</i>s{ wurden}
 		s{passend gewählt, dass}
 	</p><p class="form">
 		<i>v{m''}</i>s{ = }<i>m</i>s{.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Damit kann die Entschlüsselung erklärt werden
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Die Reihenfolge spielt keine}
 		s{Rolle. Man könnte auch erst eine}
@@ -1389,25 +1389,25 @@ a{container de}
 		s{Schlüssel potenzieren – das}
 		s{verwendet man bei RSA-Signaturen.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * Es wird darauf hingewiesen, dass die Reihenfolge keine Rolle spielt
 
 ```
-a{container en}
+@add(container en)
 	<h2>s{Encryption and decryption}</h2>
 	<p>
 		s{Internally, this method works only}
 		s{with numbers (no text), which are}
 		s{between }n{0}s{ and }<i>n</i>s{ − }n{1}s{.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Auch in der englischen Version wird beschrieben, wie die
   Nachrichten dargestellt werden
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{A message }<i>m</i>s{ (number) is}
 		s{encrypted with the public key (}
@@ -1418,12 +1418,12 @@ a{container en}
 			<i>m</i><sup><i>e</i></sup>
 			s{(mod }<i>n</i>s{)}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Und wie die Verschlüsselung funktioniert
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{Decrypting with the private key}
 		s{(}<i>n</i>s{, }<i>d</i>s{) is done}
@@ -1433,12 +1433,12 @@ a{container en}
 			s{(}<i>v{m'}</i>s{)}<sup><i>d</i></sup>
 			s{(mod }<i>n</i>s{).}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Und es wird beschrieben, wie die Entschlüsselung funktioniert
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{This is}
 	</p><p class="form">
@@ -1446,12 +1446,12 @@ a{container en}
 			<i>m</i><sup><i>e</i>s{ ×}
 			<i>d</i></sup>s{ (mod }<i>n</i>s{).}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Und wie das Ergebnis umgeformt werden kann
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{RSA exploits the property that}
 	</p><p class="form">
@@ -1464,25 +1464,25 @@ a{container en}
 		<i>a</i>s{ =}
 			<i>b</i>s{ (mod }f{φ}s{(}<i>n</i>s{))}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Ebenso wird beschrieben, wann die Exponentiation das gleiche
   Ergebnis liefern
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{As }<i>e</i>s{ and }<i>d</i>s{ were}
 		s{chosen appropriately, it is}
 	</p><p class="form">
 		<i>v{m''}</i>s{ = }<i>m</i>s{.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Und warum RSA damit funktioniert
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{The order does not matter. You}
 		s{could also first raise a message}
@@ -1491,7 +1491,7 @@ a{container en}
 		s{public key—this is what you use}
 		s{with RSA signatures.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Es wird beschrieben, dass die Reihenfolge keine Rolle spielt
 
@@ -1500,7 +1500,7 @@ x{container en}
   und verarbeitet werden
 
 ```
-a{container de}
+@add(container de)
 	<h2>s{Nachrichten}</h2>
 	<p>
 		s{In den folgenden zwei Textboxen}
@@ -1509,14 +1509,14 @@ a{container de}
 		s{Eingaben (Zahlen) funktioniert.}
 	</p>
 	<form class="form-horizontal">
-		e{crypt boxes de}
+		@put(crypt boxes de)
 	</form>
-x{container de}
+@end(container de)
 ```
 * Hier werden die Nachrichten-Boxen erklärt
 
 ```
-a{container en}
+@add(container en)
 	<h2>s{Messages}</h2>
 	<p>
 		s{In the following two text boxes,}
@@ -1525,14 +1525,14 @@ a{container en}
 		s{inputs (numbers).}
 	</p>
 	<form class="form-horizontal">
-		e{crypt boxes en}
+		@put(crypt boxes en)
 	</form>
-x{container en}
+@end(container en)
 ```
 * Auch in der englischen Version werden die Nachrichten-Boxen erklärt
 
 ```
-d{crypt boxes de}
+@def(crypt boxes de)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -1543,13 +1543,13 @@ d{crypt boxes de}
 			id="private-message"
 			value="7"></input></div>
 	</div>
-x{crypt boxes de}
+@end(crypt boxes de)
 ```
 * Die deutsche Geheimtext-Boxen besteht aus einem Textfeld mit dem
   Klartext
 
 ```
-a{crypt boxes de}
+@add(crypt boxes de)
 	<div id="err-public-msg-too-big"
 		class="row alert alert-danger">
 		s{Die Klartextzahl ist zu groß.}
@@ -1558,15 +1558,15 @@ a{crypt boxes de}
 		s{Bitte wählen Sie größere}
 		s{Primzahlen.}
 	</div>
-x{crypt boxes de}
+@end(crypt boxes de)
 ```
 * Und es gibt eine Fehlermeldung, wenn die eingegebene Nachricht zu
   groß ist
 
 ```
-a{crypt boxes de}
+@add(crypt boxes de)
 	E{crypt arrow}
-x{crypt boxes de}
+@end(crypt boxes de)
 ```
 * Ein Pfeil zeigt die Richtung an, in die der Algorithmus gerade
   arbeitet
@@ -1574,7 +1574,7 @@ x{crypt boxes de}
   umgedreht werden
 
 ```
-a{crypt boxes de}
+@add(crypt boxes de)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -1585,12 +1585,12 @@ a{crypt boxes de}
 			id="public-message"
 		></input></div>
 	</div>
-x{crypt boxes de}
+@end(crypt boxes de)
 ```
 * Ein weiteres Textfeld enthält den Geheimtext
 
 ```
-a{crypt boxes de}
+@add(crypt boxes de)
 	<div id="err-private-msg-too-big"
 		class="row alert alert-danger"
 	>s{Die Geheimtextzahl ist zu groß.}
@@ -1599,13 +1599,13 @@ a{crypt boxes de}
 		s{Bitte wählen Sie größere}
 		s{Primzahlen.}
 	</div>
-x{crypt boxes de}
+@end(crypt boxes de)
 ```
 * Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl
   zu groß ist
 
 ```
-d{crypt boxes en}
+@def(crypt boxes en)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -1616,12 +1616,12 @@ d{crypt boxes en}
 			id="private-message"
 			value="7"></input></div>
 	</div>
-x{crypt boxes en}
+@end(crypt boxes en)
 ```
 * Auch in der englischen Version gibt es ein Textfeld mit dem Klartext
 
 ```
-a{crypt boxes en}
+@add(crypt boxes en)
 	<div id="err-public-msg-too-big"
 		class="row alert alert-danger"
 	>s{Plaintext number too big. The}
@@ -1629,20 +1629,20 @@ a{crypt boxes en}
 		<span class="max-msg"></span>s{.}
 		s{Please choose bigger}
 		s{primes.}</div>
-x{crypt boxes en}
+@end(crypt boxes en)
 ```
 * Und eine Fehlermeldung, wenn der Klartext zu groß ist
 
 ```
-a{crypt boxes en}
+@add(crypt boxes en)
 	E{crypt arrow}
-x{crypt boxes en}
+@end(crypt boxes en)
 ```
 * In beiden Sprachen kann der gleiche Pfeil verwendet werden, der die
   Richtung des Algorithmus anzeigt
 
 ```
-a{crypt boxes en}
+@add(crypt boxes en)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
@@ -1653,12 +1653,12 @@ a{crypt boxes en}
 			id="public-message"
 		></input></div>
 	</div>
-x{crypt boxes en}
+@end(crypt boxes en)
 ```
 * Auch gibt es wieder ein Feld mit dem Geheimtext
 
 ```
-a{crypt boxes en}
+@add(crypt boxes en)
 	<div id="err-private-msg-too-big"
 		class="row alert alert-danger"
 	>s{Ciphertext number too big. The}
@@ -1666,12 +1666,12 @@ a{crypt boxes en}
 		<span class="max-msg"></span>s{.}
 		s{Please choose bigger}
 		s{primes.}</div>
-x{crypt boxes en}
+@end(crypt boxes en)
 ```
 * Und eine Fehlermeldung, falls der Geheimtext zu groß ist
 
 ```
-d{crypt arrow}
+@def(crypt arrow)
 	<div class="row">
 		<div id="direction">
 			<svg viewbox="0 0 50 50"
@@ -1681,28 +1681,28 @@ d{crypt arrow}
 			</svg>
 		</div>
 	</div>
-x{crypt arrow}
+@end(crypt arrow)
 ```
 * Der Pfeil ist eine einfache SVG-Grafik
 * Durch CSS-Klassen kann er rotiert werden
 
 ```
-a{css}
+@add(css)
 	#direction svg {
 		display: block;
 		margin: 1em auto 2em auto;
 	}
-x{css}
+@end(css)
 ```
 * Der Pfeil wird als eigener Block angezeigt
 * Er wird mittig positioniert und bekommt oben und unten feste Abstände
 
 ```
-a{css}
+@add(css)
 	#direction svg polyline {
 		fill: #888;
 	}
-x{css}
+@end(css)
 ```
 * Die Füllfarbe des Pfeils wird auch im CSS gesetzt
 
@@ -1712,7 +1712,7 @@ A{globals}
 		document.getElementsByClassName(
 			'max-msg'
 		);
-x{globals}
+@end(globals)
 ```
 * In den Fehlermeldungen gibt es Elemente, die die größte mögliche
   Nachricht anzeigen
@@ -1720,16 +1720,16 @@ x{globals}
 * Alle diese Elemente werden in der Variable `$max_msgs` gesammelt
 
 ```
-a{refresh}
+@add(refresh)
 	const max_msg = public_key.
 		subtract(one).toString();
-x{refresh}
+@end(refresh)
 ```
 * Die größte mögliche Nachricht ist um eins kleiner als der öffentliche
   Schlüssel
 
 ```
-a{refresh}
+@add(refresh)
 	for (
 		let i = 0;
 		i < $max_msgs.length;
@@ -1738,7 +1738,7 @@ a{refresh}
 		$max_msgs[i].innerText =
 			max_msg;
 	}
-x{refresh}
+@end(refresh)
 ```
 * Die Felder in den Fehlermeldungen werden beim `refresh` auf den
   korrekten Wert gesetzt
@@ -1753,14 +1753,14 @@ A{globals}
 		f{$}('err-public-msg-too-big');
 	const $err_private_msg_too_big =
 		f{$}('err-private-msg-too-big');
-x{globals}
+@end(globals)
 ```
 * Die Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in
   Variablen abgelegt
 * Ebenso die Referenzen auf die Fehlermeldungen
 
 ```
-a{setup rsa}
+@add(setup rsa)
 	$private_message.addEventListener(
 		'input',
 		event => {
@@ -1768,13 +1768,13 @@ a{setup rsa}
 			queueRefresh(event);
 		}
 	);
-x{setup rsa}
+@end(setup rsa)
 ```
 * Wenn der Klartext geändert wird, wird zusätzlich die Richtung des
   Algorithmus angepasst
 
 ```
-a{setup rsa}
+@add(setup rsa)
 	$public_message.addEventListener(
 		'input',
 		event => {
@@ -1782,7 +1782,7 @@ a{setup rsa}
 			queueRefresh(event);
 		}
 	);
-x{setup rsa}
+@end(setup rsa)
 ```
 * Wenn der Geheimtext geändert wird, wird zusätzlich die Richtung des
   Algorithmus angepasst
@@ -1790,27 +1790,27 @@ x{setup rsa}
 ```
 A{globals}
 	let encrypt = true;
-x{globals}
+@end(globals)
 ```
 * Der Algorithmus kann sowohl ver- als auch entschlüsseln
 * Die Variable `encrypt` bestimmt die Richtung in die der Algorithmus
   läuft
 
 ```
-a{refresh}
+@add(refresh)
 	if (encrypt) {
-		e{encrypt};
+		@put(encrypt);
 	} else {
-		e{decrypt};
+		@put(decrypt);
 	}
-x{refresh}
+@end(refresh)
 ```
 * Je nach Richtung in die der Algorithmus arbeiten soll, wird
   entweder der Klartext verschlüsselt
 * oder der Geheimtext entschlüsselt
 
 ```
-d{encrypt}
+@def(encrypt)
 	const source =
 		bigInt($private_message.value);
 	$err_public_msg_too_big.
@@ -1820,7 +1820,7 @@ d{encrypt}
 		);
 	$err_private_msg_too_big.
 		classList.add('hidden');
-x{encrypt}
+@end(encrypt)
 ```
 * Beim Verschlüsseln wird geprüft, ob der Klartext zu groß ist
 * Dann wird eine Fehlermeldung angezeigt
@@ -1828,20 +1828,20 @@ x{encrypt}
   Verschlüsseln immer ausgeblendet ist
 
 ```
-a{encrypt}
+@add(encrypt)
 	const encrypted =
 		source.modPow(
 			e, public_key
 		);
 	$public_message.value =
 		encrypted.toString();
-x{encrypt}
+@end(encrypt)
 ```
 * Das Verschlüsseln besteht nur aus einer Exponentiation mit `e`
   modulo `n` (dem öffentlichen Schlüssel)
 
 ```
-d{decrypt}
+@def(decrypt)
 	const source =
 		bigInt($public_message.value);
 	$err_public_msg_too_big.
@@ -1851,7 +1851,7 @@ d{decrypt}
 			'hidden',
 			source.lesser(public_key)
 		);
-x{decrypt}
+@end(decrypt)
 ```
 * Beim Entschlüsseln wird der Geheimtext als Eingabe verwendet
 * Auch hier wird eine Fehlermeldung ausgegeben, wenn die Zahl zu groß
@@ -1860,13 +1860,13 @@ x{decrypt}
   Entschlüsseln immer ausgeblendet ist
 
 ```
-a{decrypt}
+@add(decrypt)
 	const decrypted = source.modPow(
 		private_key, public_key
 	);
 	$private_message.value =
 		decrypted.toString();
-x{decrypt}
+@end(decrypt)
 ```
 * Auch das Entschlüsseln besteht aus einer einzigen Exponentiation mit
   dem geheimen Schlüssel `d` modulo `N`
@@ -1880,25 +1880,25 @@ x{decrypt}
 A{globals}
 	const $direction =
 		f{$}('direction');
-x{globals}
+@end(globals)
 ```
 * Dieses Element zeigt die Richtung an, in der der Algorithmus läuft
 * Die Richtung wird durch CSS-Klassen visualisiert
 
 ```
-a{setup rsa}
+@add(setup rsa)
 	const f{setEncrypt} = new_encrypt => {
 		if (encrypt === new_encrypt) {
 			return;
 		}
 		encrypt = new_encrypt;
 		if (encrypt) {
-			e{set encrypt css};
+			@put(set encrypt css);
 		} else {
-			e{set decrypt css};
+			@put(set decrypt css);
 		}
 	};
-x{setup rsa}
+@end(setup rsa)
 ```
 * Durch CSS-Animationen wird der Pfeil hin- und hergedreht
 * Wenn keine Klasse oder die Klasse `s{flop}` gesetzt ist, dann zeigt
@@ -1908,25 +1908,25 @@ x{setup rsa}
 * `s{flop}` ist notwendig, um den Wechsel zu animieren
 
 ```
-d{set encrypt css}
+@def(set encrypt css)
 	$direction.classList.remove('flip');
 	$direction.classList.add('flop');
-x{set encrypt css}
+@end(set encrypt css)
 ```
 * Die Klasse `s{flop}` wird gesetzt
 * Die Klasse `s{flip}` wird entfernt
 
 ```
-d{set decrypt css}
+@def(set decrypt css)
 	$direction.classList.remove('flop');
 	$direction.classList.add('flip');
-x{set decrypt css}
+@end(set decrypt css)
 ```
 * Die Klasse `s{flip}` wird gesetzt
 * Die Klasse `s{flop}` wird entfernt
 
 ```
-a{css}
+@add(css)
 	@keyframes flip {
 		from {
 			transform: rotate(0deg);
@@ -1935,24 +1935,24 @@ a{css}
 			transform: rotate(180deg);
 		}
 	}
-x{css}
+@end(css)
 ```
 * Die `flip`-Animation dreht den Pfeil um 180 Grad
 
 ```
-a{css}
+@add(css)
 	#direction.flip svg {
 		animation-name: flip;
 		animation-duration: 1s;
 		animation-fill-mode: forwards;
 	}
-x{css}
+@end(css)
 ```
 * Wird die `flip`-Klasse auf dem `direction`-Element gesetzt, dann
   startet die `flip`-Animation auf dem Pfeil
 
 ```
-a{css}
+@add(css)
 	@keyframes flop {
 		from {
 			transform: rotate(180deg);
@@ -1961,18 +1961,18 @@ a{css}
 			transform: rotate(0deg);
 		}
 	}
-x{css}
+@end(css)
 ```
 * Die `flop`-Animation dreht den Pfeil zurück
 
 ```
-a{css}
+@add(css)
 	#direction.flop svg {
 		animation-name: flop;
 		animation-duration: 1s;
 		animation-fill-mode: forwards;
 	}
-x{css}
+@end(css)
 ```
 * Wenn die `flop`-Klasse auf dem `direction`-Element gesetzt wird,
   wird die `flop`-Animation auf dem Pfeil gestartet
@@ -1986,7 +1986,7 @@ x{css}
 ```
 A{globals}
 	let timer;
-x{globals}
+@end(globals)
 ```
 * Der Timer wird global vorgehalten
 
@@ -1995,7 +1995,7 @@ A{globals}
 	const f{resetTimer} = () => {
 		timer = null;
 	};
-x{globals}
+@end(globals)
 ```
 
 ```
@@ -2006,10 +2006,10 @@ r{queue refresh}
 		f{fn} = f{resetTimer};
 	} else {
 		clearTimeout(timer);
-		e{set fields to pending};
+		@put(set fields to pending);
 	}
 	timer = setTimeout(f{fn}, 500);
-x{queue refresh}
+@end(queue refresh)
 ```
 * Wenn es noch keine Änderung gab, wird die Änderung sofort
   durchgeführt
@@ -2020,14 +2020,14 @@ x{queue refresh}
 * Der Timeout beträgt eine halbe Sekunde
 
 ```
-a{refresh}
+@add(refresh)
 	resetTimer();
-x{refresh}
+@end(refresh)
 ```
 * Nach der Neuberechnung wird der Timer zurückgesetzt
 
 ```
-d{set fields to pending}
+@def(set fields to pending)
 	$public_key_length.innerText = '...';
 	$public_key.innerText = '...';
 	$phi.innerText = '...';
@@ -2039,7 +2039,7 @@ d{set fields to pending}
 	} else {
 		$private_message.value = '...';
 	}
-x{set fields to pending}
+@end(set fields to pending)
 ```
 * Alle berechneten Felder werden mit Platzhaltern befüllt
 
@@ -2048,7 +2048,7 @@ x{set fields to pending}
   zu stellen
 
 ```
-a{container de}
+@add(container de)
 	<h2>s{Verwendete Bibliothek}</h2>
 	<p>
 		s{Diese Seite verwendet für die}
@@ -2057,13 +2057,13 @@ a{container de}
 		<a href=s{"https://peterolson.}b{}s{github.com/BigInteger.js/"}
 		>s{BigInteger.js}</a>.
 	</p>
-x{container de}
+@end(container de)
 ```
 * In der deutschen Version werden die verwendete Bibliothek
   erwähnt
 
 ```
-a{container de}
+@add(container de)
 	<p>
 		s{Dadurch kann man auch in}
 		s{JavaScript mit beliebig großen}
@@ -2071,12 +2071,12 @@ a{container de}
 		s{die real bei RSA-Anwendungen}
 		s{verwendet werden.}
 	</p>
-x{container de}
+@end(container de)
 ```
 * und was mit ihr berechnet wird
 
 ```
-a{container en}
+@add(container en)
 	<h2>s{Used library}</h2>
 	<p>
 		s{This page uses the library}
@@ -2084,12 +2084,12 @@ a{container en}
 			>BigInteger.js</a>
 		s{to work with big numbers.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Das Gleiche gibt es auch für die englische Version
 
 ```
-a{container en}
+@add(container en)
 	<p>
 		s{As a result, you can calculate}
 		s{arbitrarily large numbers in}
@@ -2097,48 +2097,48 @@ a{container en}
 		s{actually used in RSA}
 		s{applications.}
 	</p>
-x{container en}
+@end(container en)
 ```
 * Es wird beschrieben, warum diese Bibliothek benötigt wird
 
 ```
-a{container de}
+@add(container de)
 	<div id="authors"><em>s{CTOAUTHORS:}
 		s{Timm Knape (Dank an}
 		s{Bernhard Esslinger für das}
 		s{Review)}</em></div>
-x{container de}
+@end(container de)
 ```
 * Die Seite endet mit dem Autor-Tag
 
 ```
-a{container en}
+@add(container en)
 	<div id="authors"><em>s{CTOAUTHORS:}
 		s{Timm Knape (thanks to}
 		s{Bernhard Esslinger for the}
 		s{review)}</em></div>
-x{container en}
+@end(container en)
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
 
 ```
-a{css}
+@add(css)
 	#authors {
 		margin-top: 40px;
 	}
-x{css}
+@end(css)
 ```
 * Das Autor-Tag wird etwas vom restlichen Text abgesetzt
 
 ```
-d{bootstrap stylesheets}
+@def(bootstrap stylesheets)
 	<link 
 		rel="stylesheet"
 		href=s{"https://maxcdn.bootstrapcd}b{}s{n.com/bootstrap/3.3.7/css/bootstrap.min.}b{}s{css"}
 		integrity=s{"sha384-BVYiiSIFeK1dGm}b{}s{JRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K}b{}s{68vbdEjh4u"}
 		crossorigin="anonymous"
 	>
-x{bootstrap stylesheets}
+@end(bootstrap stylesheets)
 ```
 * Die Bootstrap-CSSs werden direkt von einem Content Delivery Network
   eingebunden
@@ -2146,14 +2146,14 @@ x{bootstrap stylesheets}
   Version
 
 ```
-a{bootstrap stylesheets}
+@add(bootstrap stylesheets)
 	<link
 		rel="stylesheet"
 		href=s{"https://maxcdn.bootstrapcd}b{}s{n.com/bootstrap/3.3.7/css/bootstrap-them}b{}s{e.min.css"}
 		integrity=s{"sha384-rHyoN1iRsVXV4n}b{}s{D0Jut}b{}s{lnGaslCJuC7uwjduW9SVrLvRYooPp}b{}s{2bWYgmgJQIXwl/Sp"}
 		crossorigin="anonymous"
 	>
-x{bootstrap stylesheets}
+@end(bootstrap stylesheets)
 ```
 * Auch das Bootstrap-Thema wird von einem Content Delivery Network
   eingebunden

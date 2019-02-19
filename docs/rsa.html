@@ -104,7 +104,7 @@ Die Datei <code><span class="var">rsa</span>-<span class="var">en</span>.<span c
 <span class="macro">@def(<span class="name">header</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">title</span>&gt;<span class="var">RSA</span>-<span class="var">js</span>&lt;/<span class="var">title</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">meta</span> <span class="var">charset</span>=<span class="str">"utf-8"</span>&gt;<br/>
-<span class="in1"></span><span class="macro">@expand(<span class="name">bootstrap stylesheets</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">bootstrap stylesheets</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">link</span> <span class="var">rel</span>=<span class="str">"stylesheet"</span><br/>
 <span class="in2"></span><span class="var">href</span>=<span class="str">"../_ctoApps/rsa/rsa.css"</span><br/>
 <span class="in1"></span>&gt;<br/>
@@ -121,7 +121,7 @@ Das app-spezifische Stylesheet <code><span class="str">rsa.css</span></code> wir
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">file: ../_ctoApps/rsa/rsa.css</span>)</span><br/>
-<span class="in1"></span><span class="macro">@expand(<span class="name">css</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">css</span>)</span><br/>
 <span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa.css</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -155,7 +155,7 @@ Neben dem spezifischen JavaScript wird noch eine Bibliothek für das
 <span class="in2"></span><span class="str">'load'</span>,<br/>
 <span class="in2"></span>() =&gt; {<br/>
 <span class="in3"></span><span class="macro">@globexpand(<span class="name">globals</span>)</span>;<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">setup rsa</span>)</span>;<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">setup rsa</span>)</span>;<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>);<br/>
 <span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa.js</span>)</span><br/>
@@ -176,7 +176,7 @@ Dadurch entstehen keine neuen globalen Objekte
 <span class="macro">@def(<span class="name">rsa de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"rsa-container"</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"container"</span>&gt;<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">container de</span>)</span><br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">rsa de</span>)</span><br/>
 </code></div>
@@ -193,7 +193,7 @@ Dadurch können Stylesheet-Anpassungen auf RSA-Elemente beschränkt
 <span class="macro">@def(<span class="name">rsa en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"rsa-container"</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"container"</span>&gt;<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">container en</span>)</span><br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">rsa en</span>)</span><br/>
 </code></div>
@@ -373,7 +373,7 @@ Die englische Seite enthält die Übersetzung des zweiten Absatzes
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">primes de</span>)</span><br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">primes de</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -386,7 +386,7 @@ Die Eingabe-Elemente werden in einem Formular (dem <code>&lt;<span class="var">f
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">primes en</span>)</span><br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">primes en</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -478,7 +478,7 @@ und eine übersetzte Fehlermeldung
 <span class="macro">@def(<span class="name">setup rsa</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">queueRefresh</span> = <span class="var">event</span> =&gt; {<br/>
 <span class="in2"></span><span class="var">event</span>.<span class="fn">preventDefault</span>();<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">queue refresh</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">queue refresh</span>)</span>;<br/>
 <span class="in1"></span>};<br/>
 <span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 </code></div>
@@ -496,7 +496,7 @@ Diese sorgt dafür, dass die Neuberechnung nicht zu häufig
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">refresh</span> = () =&gt; {<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">refresh</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">refresh</span>)</span>;<br/>
 <span class="in1"></span>};<br/>
 <span class="in1"></span><span class="fn">refresh</span>();<br/>
 <span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
@@ -796,7 +796,7 @@ Und ebenso in der englischen Version
 <span class="macro">@def(<span class="name">definition of n</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">n elements</span>)</span><br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">n elements</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">definition of n</span>)</span><br/>
@@ -1128,7 +1128,7 @@ Das gleiche wird in der englischen Version ausgegeben
 <span class="macro">@def(<span class="name">phi label group</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">phi label</span>)</span><br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">phi label</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">phi label group</span>)</span><br/>
@@ -1287,7 +1287,7 @@ Ebenso auf der englischen Seite
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">ggt de</span>)</span><br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">ggt de</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
@@ -1319,7 +1319,7 @@ Die lange <code><span class="var">class</span></code>-Definition erzwingt
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">ggt en</span>)</span><br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">ggt en</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
@@ -1548,7 +1548,7 @@ Formeln werden etwas eingerückt
 <span class="macro">@def(<span class="name">private key group</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">private key</span>)</span><br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">private key</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">private key group</span>)</span><br/>
@@ -1957,7 +1957,7 @@ In dieser Sektion wird beschrieben, wie de Nachrichten angezeigt
 <span class="in2"></span><span class="str">Eingaben (Zahlen) funktioniert.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes de</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1976,7 +1976,7 @@ Hier werden die Nachrichten-Boxen erklärt
 <span class="in2"></span><span class="str">inputs (numbers).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes en</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -2320,9 +2320,9 @@ Die Variable <code><span class="var">encrypt</span></code> bestimmt die Richtung
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">encrypt</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">encrypt</span>)</span>;<br/>
 <span class="in1"></span>} <span class="keyword">else</span> {<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">decrypt</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">decrypt</span>)</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
@@ -2446,9 +2446,9 @@ Die Richtung wird durch CSS-Klassen visualisiert
 <span class="in2"></span>}<br/>
 <span class="in2"></span><span class="var">encrypt</span> = <span class="var">new_encrypt</span>;<br/>
 <span class="in2"></span><span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">set encrypt css</span>)</span>;<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">set encrypt css</span>)</span>;<br/>
 <span class="in2"></span>} <span class="keyword">else</span> {<br/>
-<span class="in3"></span><span class="macro">@expand(<span class="name">set decrypt css</span>)</span>;<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">set decrypt css</span>)</span>;<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>};<br/>
 <span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
@@ -2598,7 +2598,7 @@ Der Timer wird global vorgehalten
 <span class="in2"></span><span class="fn">fn</span> = <span class="fn">resetTimer</span>;<br/>
 <span class="in1"></span>} <span class="keyword">else</span> {<br/>
 <span class="in2"></span><span class="fn">clearTimeout</span>(<span class="var">timer</span>);<br/>
-<span class="in2"></span><span class="macro">@expand(<span class="name">set fields to pending</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">set fields to pending</span>)</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="in1"></span><span class="var">timer</span> = <span class="fn">setTimeout</span>(<span class="fn">fn</span>, <span class="num">500</span>);<br/>
 <span class="macro">@end(<span class="name">queue refresh</span>)</span><br/>
@@ -2800,3 +2800,5 @@ Auch dies wird nur für die lokale und nicht für die produktive Version
   verwendet
 </li></ul>
 </div>
+</body>
+</html>
