@@ -37,11 +37,11 @@ Und wie sie aufgebaut werden
 <span class="in1"></span>&lt;!<span class="var">doctype</span> <span class="var">html</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">html</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">head</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">header</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">header</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">head</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">body</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">rsa de</span>)</span><br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">scripts</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">rsa de</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">scripts</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">body</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">html</span>&gt;<br/>
 <span class="macro">@end(<span class="name">file: index-de.html</span>)</span><br/>
@@ -61,11 +61,11 @@ Das Fragment <code><span class="str">rsa de</span></code> wird für unsere Webse
 <span class="in1"></span>&lt;!<span class="var">doctype</span> <span class="var">html</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">html</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">head</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">header</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">header</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">head</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">body</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">rsa en</span>)</span><br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">scripts</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">rsa en</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">scripts</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">body</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">html</span>&gt;<br/>
 <span class="macro">@end(<span class="name">file: index-en.html</span>)</span><br/>
@@ -80,7 +80,7 @@ Der Rest ist identisch
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">file: ../_ctoApps/rsa/rsa-de.html</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">rsa de</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">rsa de</span>)</span><br/>
 <span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa-de.html</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -92,7 +92,7 @@ Diese Datei wird direkt im Ziel-Ordner erzeugt
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">file: ../_ctoApps/rsa/rsa-en.html</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">rsa en</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">rsa en</span>)</span><br/>
 <span class="macro">@end(<span class="name">file: ../_ctoApps/rsa/rsa-en.html</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -154,7 +154,7 @@ Neben dem spezifischen JavaScript wird noch eine Bibliothek für das
 <span class="in1"></span><span class="var">window</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'load'</span>,<br/>
 <span class="in2"></span>() =&gt; {<br/>
-<span class="in3"></span><span class="macro">@globexpand(<span class="name">globals</span>)</span>;<br/>
+<span class="in3"></span><span class="var">g</span>{<span class="var">lobals</span>};<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">setup rsa</span>)</span>;<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>);<br/>
@@ -525,7 +525,7 @@ Dieser Funktionsaufruf wird später durch eine aufwändigere
 </div>
 <div><div>
 <code>
-<span class="macro">@globdef(<span class="name">globals</span>)</span><br/>
+<span class="var">D</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">$</span> = <span class="var">id</span> =&gt; {<br/>
 <span class="in2"></span><span class="keyword">return</span> (<br/>
 <span class="in3"></span><span class="var">document</span>.<span class="fn">getElementById</span>(<span class="var">id</span>)<br/>
@@ -544,7 +544,7 @@ Es können jedoch nur Elemente nach ihrer ID aufgelöst werden
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$prime1</span> = <span class="fn">$</span>(<span class="str">'prime-1'</span>);<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$err_p_not_prime</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-p-not-prime'</span>);<br/>
@@ -667,7 +667,7 @@ Die Fehlermeldungen gibt es auch in der englischen Version
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$prime2</span> = <span class="fn">$</span>(<span class="str">'prime-2'</span>);<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$err_q_not_prime</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-q-not-prime'</span>);<br/>
@@ -834,7 +834,7 @@ um den Code übersichtlicher zu
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">definition of n</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">definition of n</span>)</span><br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -844,7 +844,7 @@ Das Fragment wird in der deutschen Version verwendet
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">definition of n</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">definition of n</span>)</span><br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -853,7 +853,7 @@ Und das Fragment wird in der englischen Version verwendet
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$public_key</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key'</span>);<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$public_key_length</span> =<br/>
@@ -954,7 +954,7 @@ Das wird auch in der englischen Version beschrieben.
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">e group</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">e group</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-gcd-not-1"</span><br/>
 <span class="in3"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
@@ -994,7 +994,7 @@ und können für beide Sprachen verwendet werden
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in3"></span><span class="macro">@multiple(<span class="name">e group</span>)</span><br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">e group</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-gcd-not-1"</span><br/>
 <span class="in3"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
@@ -1012,7 +1012,7 @@ Ebenfalls mit der zugehörigen Fehlermeldung
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$e</span> = <span class="fn">$</span>(<span class="str">'base'</span>);<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$err_gcd_not_1</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'err-gcd-not-1'</span>);<br/>
@@ -1156,7 +1156,7 @@ und kann daher für beide Lokalisierungen verwendet werden
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">phi label group</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">phi label group</span>)</span><br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1166,7 +1166,7 @@ und kann daher für beide Lokalisierungen verwendet werden
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">phi label group</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">phi label group</span>)</span><br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1175,7 +1175,7 @@ und kann daher für beide Lokalisierungen verwendet werden
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$phi</span> = <span class="fn">$</span>(<span class="str">'phi'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -1198,9 +1198,9 @@ Nur wenn die Primzahlen verschieden sind, gilt diese Rechenvorschrift
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">gcd</span> = (<span class="var">a</span>, <span class="var">b</span>) =&gt; {<br/>
-<span class="in2"></span><span class="macro">@globexpand(<span class="name">gcd</span>)</span>;<br/>
+<span class="in2"></span><span class="var">g</span>{<span class="var">cd</span>};<br/>
 <span class="in1"></span>};<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -1214,7 +1214,7 @@ Dieser liefert gleichzeitig noch das inverse Element <code><span class="var">d</
 </div>
 <div><div>
 <code>
-<span class="macro">@include(<span class="name"><a href="gcd.html">gcd.x</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="gcd.html">gcd.x</a></span>)</span><br/>
 </code></div>
 <ul><li>
 Der Erweiterte Euklidische Algorithmus wird in einer eigenen Datei
@@ -1346,7 +1346,7 @@ Auch die englische Version hat eine lange <code><span class="var">class</span></
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$gcd</span> = <span class="fn">$</span>(<span class="str">'gcd'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -1578,7 +1578,7 @@ Wegen der langen <code><span class="var">class</span></code>-Definition werden d
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">private key group</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">private key group</span>)</span><br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1588,7 +1588,7 @@ Den geheimen Schlüssel in der deutschen Version ausgeben
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">private key group</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">private key group</span>)</span><br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1597,7 +1597,7 @@ Den geheimen Schlüssel in der englischen Version ausgeben
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$private_key</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'private-key'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
@@ -2025,7 +2025,7 @@ Und es gibt eine Fehlermeldung, wenn die eingegebene Nachricht zu
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">crypt arrow</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">crypt arrow</span>)</span><br/>
 <span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2111,7 +2111,7 @@ Und eine Fehlermeldung, wenn der Klartext zu groß ist
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
-<span class="in1"></span><span class="macro">@multiple(<span class="name">crypt arrow</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">crypt arrow</span>)</span><br/>
 <span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2203,7 +2203,7 @@ Die Füllfarbe des Pfeils wird auch im CSS gesetzt
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$max_msgs</span> =<br/>
 <span class="in2"></span><span class="var">document</span>.<span class="fn">getElementsByClassName</span>(<br/>
 <span class="in3"></span><span class="str">'max-msg'</span><br/>
@@ -2251,7 +2251,7 @@ Die Felder in den Fehlermeldungen werden beim <code><span class="var">refresh</s
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$private_message</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'private-message'</span>);<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$public_message</span> =<br/>
@@ -2305,7 +2305,7 @@ Wenn der Geheimtext geändert wird, wird zusätzlich die Richtung des
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">encrypt</span> = <span class="num">true</span>;<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -2426,7 +2426,7 @@ Also, ob der Algorithmus ver- oder entschlüsselt
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$direction</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'direction'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
@@ -2572,7 +2572,7 @@ Nur wenn nach der letzten Änderung ein gewisses Zeitintervall
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">timer</span>;<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
@@ -2582,7 +2582,7 @@ Der Timer wird global vorgehalten
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span><br/>
+<span class="var">A</span>{<span class="var">lobals</span>}<br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">resetTimer</span> = () =&gt; {<br/>
 <span class="in2"></span><span class="var">timer</span> = <span class="num">null</span>;<br/>
 <span class="in1"></span>};<br/>
@@ -2591,7 +2591,7 @@ Der Timer wird global vorgehalten
 </div>
 <div><div>
 <code>
-<span class="macro">@replace(<span class="name">queue refresh</span>)</span><br/>
+<span class="var">r</span>{<span class="var">ueue</span> <span class="var">refresh</span>}<br/>
 <span class="in1"></span><span class="type">let</span> <span class="fn">fn</span> = <span class="fn">refresh</span>;<br/>
 <span class="in1"></span><span class="keyword">if</span> (! <span class="var">timer</span>) {<br/>
 <span class="in2"></span><span class="fn">refresh</span>();<br/>

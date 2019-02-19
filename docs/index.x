@@ -10,7 +10,7 @@
 * Diese Dokumentation ist allerdings nur auf Deutsch
 
 ```
-i{rsa.x}
+@inc(rsa.x)
 ```
 * RSA-Implementierung Schritt für Schritt
 * Liefert eine Experimentierplattform mit der die unterschiedlichen

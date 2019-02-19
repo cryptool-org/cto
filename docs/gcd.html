@@ -20,7 +20,7 @@ Daher wird der Erweiterte Euklidische Algorithmus hier direkt
 </div>
 <div><div>
 <code>
-<span class="macro">@globdef(<span class="name">gcd</span>)</span><br/>
+<span class="var">D</span>{<span class="var">cd</span>}<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">ca</span> = <span class="var">a</span>;<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">cb</span> = <span class="var">b</span>;<br/>
 <span class="macro">@end(<span class="name">gcd</span>)</span><br/>
@@ -39,7 +39,7 @@ Der Euklidische Algorithmus reduziert <code><span class="var">ca</span></code> u
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">gcd</span>)</span><br/>
+<span class="var">A</span>{<span class="var">cd</span>}<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">u</span> = <span class="fn">bigInt</span>.<span class="var">one</span>;<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">v</span> = <span class="fn">bigInt</span>.<span class="var">zero</span>;<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">s</span> = <span class="var">v</span>;<br/>
@@ -57,7 +57,7 @@ Und <code><span class="var">cb</span> = <span class="var">s</span> × <span clas
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">gcd</span>)</span><br/>
+<span class="var">A</span>{<span class="var">cd</span>}<br/>
 <span class="in1"></span><span class="keyword">while</span> (! <span class="var">cb</span>.<span class="fn">isZero</span>()) {<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">gcd loop</span>)</span>;<br/>
 <span class="in1"></span>}<br/>
@@ -141,7 +141,7 @@ Die neuen Werte werden zu den aktuellen Werten
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">gcd</span>)</span><br/>
+<span class="var">A</span>{<span class="var">cd</span>}<br/>
 <span class="in1"></span><span class="keyword">return</span> {<br/>
 <span class="in2"></span><span class="str">a</span>: <span class="var">ca</span>, <span class="str">u</span>: <span class="var">u</span>, <span class="str">v</span>: <span class="var">v</span>,<br/>
 <span class="in2"></span><span class="str">s</span>: <span class="var">s</span>, <span class="str">t</span>: <span class="var">t</span> <br/>
@@ -163,7 +163,7 @@ Und die Koeffizienten
 </div>
 <div><div>
 <code>
-<span class="macro">@globadd(<span class="name">globals</span>)</span> {<br/>
+<span class="var">A</span>{<span class="var">lobals</span>} {<br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">unit test</span>)</span>;<br/>
 } <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>

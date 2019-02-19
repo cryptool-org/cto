@@ -14,11 +14,11 @@
 	<!doctype html>
 	<html>
 		<head>
-			E{header}
+			@mul(header)
 		</head>
 		<body>
-			E{rsa de}
-			E{scripts}
+			@mul(rsa de)
+			@mul(scripts)
 		</body>
 	</html>
 @end(file: index-de.html)
@@ -33,11 +33,11 @@
 	<!doctype html>
 	<html>
 		<head>
-			E{header}
+			@mul(header)
 		</head>
 		<body>
-			E{rsa en}
-			E{scripts}
+			@mul(rsa en)
+			@mul(scripts)
 		</body>
 	</html>
 @end(file: index-en.html)
@@ -48,7 +48,7 @@
 
 ```
 @def(file: ../_ctoApps/rsa/rsa-de.html)
-	E{rsa de}
+	@mul(rsa de)
 @end(file: ../_ctoApps/rsa/rsa-de.html)
 ```
 * Die Datei `rsa-de.html` enthält die deutsche GUI ohne Webseiten-Rahmen
@@ -56,7 +56,7 @@
 
 ```
 @def(file: ../_ctoApps/rsa/rsa-en.html)
-	E{rsa en}
+	@mul(rsa en)
 @end(file: ../_ctoApps/rsa/rsa-en.html)
 ```
 * Die Datei `rsa-en.html` enthält die englische GUI ohne Webseiten-Rahmen
@@ -623,14 +623,14 @@ A{globals}
 
 ```
 @add(container de)
-	E{definition of n}
+	@mul(definition of n)
 @end(container de)
 ```
 * Das Fragment wird in der deutschen Version verwendet
 
 ```
 @add(container en)
-	E{definition of n}
+	@mul(definition of n)
 @end(container en)
 ```
 * Und das Fragment wird in der englischen Version verwendet
@@ -718,7 +718,7 @@ A{globals}
 @add(container de)
 	<form class="form-horizontal">
 		<div class="form-group">
-			E{e group}
+			@mul(e group)
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
@@ -750,7 +750,7 @@ A{globals}
 @add(container en)
 	<form class="form-horizontal">
 		<div class="form-group">
-			E{e group}
+			@mul(e group)
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
@@ -872,14 +872,14 @@ A{globals}
 
 ```
 @add(container de)
-	E{phi label group}
+	@mul(phi label group)
 @end(container de)
 ```
 * `f{φ}` in der deutschen Version definieren
 
 ```
 @add(container en)
-	E{phi label group}
+	@mul(phi label group)
 @end(container en)
 ```
 * `f{φ}` in der englischen Version definieren
@@ -914,7 +914,7 @@ A{globals}
   geheimen Schlüssel benötigt wird
 
 ```
-i{gcd.x}
+@inc(gcd.x)
 ```
 * Der Erweiterte Euklidische Algorithmus wird in einer eigenen Datei
   implementiert
@@ -1208,7 +1208,7 @@ A{globals}
 
 ```
 @add(container de)
-	E{private key group}
+	@mul(private key group)
 @end(container de)
 ```
 * Den geheimen Schlüssel in der deutschen Version ausgeben
@@ -1216,7 +1216,7 @@ A{globals}
 
 ```
 @add(container en)
-	E{private key group}
+	@mul(private key group)
 @end(container en)
 ```
 * Den geheimen Schlüssel in der englischen Version ausgeben
@@ -1565,7 +1565,7 @@ A{globals}
 
 ```
 @add(crypt boxes de)
-	E{crypt arrow}
+	@mul(crypt arrow)
 @end(crypt boxes de)
 ```
 * Ein Pfeil zeigt die Richtung an, in die der Algorithmus gerade
@@ -1635,7 +1635,7 @@ A{globals}
 
 ```
 @add(crypt boxes en)
-	E{crypt arrow}
+	@mul(crypt arrow)
 @end(crypt boxes en)
 ```
 * In beiden Sprachen kann der gleiche Pfeil verwendet werden, der die
