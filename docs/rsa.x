@@ -401,7 +401,7 @@
 * Es können jedoch nur Elemente nach ihrer ID aufgelöst werden
 
 ```
-A{globals}
+@Add(globals)
 	const $prime1 = f{$}('prime-1');
 	const $err_p_not_prime =
 		f{$}('err-p-not-prime');
@@ -497,7 +497,7 @@ A{globals}
 * Die Fehlermeldungen gibt es auch in der englischen Version
 
 ```
-A{globals}
+@Add(globals)
 	const $prime2 = f{$}('prime-2');
 	const $err_q_not_prime =
 		f{$}('err-q-not-prime');
@@ -636,7 +636,7 @@ A{globals}
 * Und das Fragment wird in der englischen Version verwendet
 
 ```
-A{globals}
+@Add(globals)
 	const $public_key =
 		f{$}('public-key');
 	const $public_key_length =
@@ -764,7 +764,7 @@ A{globals}
 * Ebenfalls mit der zugehörigen Fehlermeldung
 
 ```
-A{globals}
+@Add(globals)
 	const $e = f{$}('base');
 	const $err_gcd_not_1 =
 		f{$}('err-gcd-not-1');
@@ -885,7 +885,7 @@ A{globals}
 * `f{φ}` in der englischen Version definieren
 
 ```
-A{globals}
+@Add(globals)
 	const $phi = $('phi');
 @end(globals)
 ```
@@ -902,7 +902,7 @@ A{globals}
 * Nur wenn die Primzahlen verschieden sind, gilt diese Rechenvorschrift
 
 ```
-A{globals}
+@Add(globals)
 	const f{gcd} = (a, b) => {
 		g{gcd};
 	};
@@ -1021,7 +1021,7 @@ A{globals}
 * Auch die englische Version hat eine lange `class`-Definition
 
 ```
-A{globals}
+@Add(globals)
 	const $gcd = f{$}('gcd');
 @end(globals)
 ```
@@ -1222,7 +1222,7 @@ A{globals}
 * Den geheimen Schlüssel in der englischen Version ausgeben
 
 ```
-A{globals}
+@Add(globals)
 	const $private_key =
 		f{$}('private-key');
 @end(globals)
@@ -1707,7 +1707,7 @@ A{globals}
 * Die Füllfarbe des Pfeils wird auch im CSS gesetzt
 
 ```
-A{globals}
+@Add(globals)
 	const $max_msgs =
 		document.getElementsByClassName(
 			'max-msg'
@@ -1744,7 +1744,7 @@ A{globals}
   korrekten Wert gesetzt
 
 ```
-A{globals}
+@Add(globals)
 	const $private_message =
 		f{$}('private-message');
 	const $public_message =
@@ -1788,7 +1788,7 @@ A{globals}
   Algorithmus angepasst
 
 ```
-A{globals}
+@Add(globals)
 	let encrypt = true;
 @end(globals)
 ```
@@ -1877,7 +1877,7 @@ A{globals}
 * Also, ob der Algorithmus ver- oder entschlüsselt
 
 ```
-A{globals}
+@Add(globals)
 	const $direction =
 		f{$}('direction');
 @end(globals)
@@ -1984,14 +1984,14 @@ A{globals}
   verstrichen ist, wird die Berechnung gestartet
 
 ```
-A{globals}
+@Add(globals)
 	let timer;
 @end(globals)
 ```
 * Der Timer wird global vorgehalten
 
 ```
-A{globals}
+@Add(globals)
 	const f{resetTimer} = () => {
 		timer = null;
 	};

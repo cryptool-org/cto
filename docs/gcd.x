@@ -19,7 +19,7 @@
   `cb` gleich `0` wird
 
 ```
-A{gcd}
+@Add(gcd)
 	let u = f{bigInt}.one;
 	let v = f{bigInt}.zero;
 	let s = v;
@@ -32,7 +32,7 @@ A{gcd}
 * Und `cb = s × a + t × b`
 
 ```
-A{gcd}
+@Add(gcd)
 	while (! cb.isZero()) {
 		@put(gcd loop);
 	}
@@ -95,7 +95,7 @@ A{gcd}
 * Die neuen Werte werden zu den aktuellen Werten
 
 ```
-A{gcd}
+@Add(gcd)
 	return {
 		s{a}: ca, s{u}: u, s{v}: v,
 		s{s}: s, s{t}: t 
@@ -108,7 +108,7 @@ A{gcd}
 ## Unit-Test
 
 ```
-A{globals} {
+@Add(globals) {
 	@put(unit test);
 } @end(globals)
 ```
