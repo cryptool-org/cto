@@ -387,7 +387,7 @@
   Implementierung mit Timern ersetzt
 
 ```
-D{globals}
+@Def(globals)
 	const f{$} = id => {
 		return (
 			document.getElementById(id)

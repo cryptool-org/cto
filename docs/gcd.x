@@ -5,7 +5,7 @@
   implementiert
 
 ```
-D{gcd}
+@Def(gcd)
 	let ca = a;
 	let cb = b;
 @end(gcd)
