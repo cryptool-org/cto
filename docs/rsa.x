@@ -103,7 +103,7 @@
 	window.addEventListener(
 		'load',
 		() => {
-			g{globals};
+			@Put(globals);
 			@put(setup rsa);
 		}
 	);
@@ -904,7 +904,7 @@
 ```
 @Add(globals)
 	const f{gcd} = (a, b) => {
-		g{gcd};
+		@Put(gcd);
 	};
 @end(globals)
 ```
