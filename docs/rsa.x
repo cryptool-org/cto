@@ -1999,7 +1999,7 @@
 ```
 
 ```
-r{queue refresh}
+@rep(queue refresh)
 	let f{fn} = f{refresh};
 	if (! timer) {
 		refresh();
