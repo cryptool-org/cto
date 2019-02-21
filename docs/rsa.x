@@ -25,7 +25,7 @@
 ```
 * Die Datei `index-de.html` enthält die RSA-Steuerung in Deutsch
 * Header- und Script-Fragmente werden mit der englischen Version geteilt
-* Das Fragment `s{rsa de}` wird für unsere Webseite in eine eigene Datei
+* Das Fragment `@s(rsa de)` wird für unsere Webseite in eine eigene Datei
   zusätzlich ausgelagert
 
 ```
@@ -43,7 +43,7 @@
 @end(file: index-en.html)
 ```
 * Die englische Webseite unterscheidet verwendet statt der deutschen
-  Version das Fragment `s{rsa en}`
+  Version das Fragment `@s(rsa en)`
 * Der Rest ist identisch
 
 ```
@@ -73,21 +73,21 @@
 ```
 * Im HTML-Header wird die Zeichen-Kodierung auf UTF-8 gestellt
 * Die Bootstrap-Stylesheets werden eingebunden
-* Das app-spezifische Stylesheet `s{rsa.css}` wird eingebunden
+* Das app-spezifische Stylesheet `@s(rsa.css)` wird eingebunden
 
 ```
 @def(file: ../_ctoApps/rsa/rsa.css)
 	@put(css)
 @end(file: ../_ctoApps/rsa/rsa.css)
 ```
-* Das Stylesheet enthält ein Fragment `s{css}`
+* Das Stylesheet enthält ein Fragment `@s(css)`
 * Wenn neue HTML-Elemente eine CSS-Anpassung benötigen, werden diese
   hier eingepflegt
 
 ```
 @def(scripts)
 	<script
-		src=s{"../_ctoApps/rsa/}b{}s{BigInteger.min.js"}
+		src=@s("../_ctoApps/rsa/)b{}@s(BigInteger.min.js")
 	></script>
 	<script
 		src="../_ctoApps/rsa/rsa.js"
@@ -109,7 +109,7 @@
 	);
 @end(file: ../_ctoApps/rsa/rsa.js)
 ```
-* Das Skript `s{rsa.js}` wird mit strenger Typ-Prüfung ausgeführt
+* Das Skript `@s(rsa.js)` wird mit strenger Typ-Prüfung ausgeführt
 * Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
   geladen wurde
 * Der gesamte Code wird innerhalb einer JavaScript Funktion definiert
@@ -141,16 +141,16 @@
 ```
 @def(container de)
 	<p>
-		s{Dieses Modul demonstriert}
-		s{schrittweise die Ver- und}
-		s{Entschlüsselung mit dem}
-		s{RSA-Verfahren. Der Sender}
-		s{verwendet dabei zum Verschlüsseln}
-		s{den öffentlichen Schlüssel des}
-		s{Empfängers; der Empfänger}
-		s{verwendet zum Entschlüsseln}
-		s{seinen zugehörigen privaten}
-		s{Schlüssel.}
+		@s(Dieses Modul demonstriert)
+		@s(schrittweise die Ver- und)
+		@s(Entschlüsselung mit dem)
+		@s(RSA-Verfahren. Der Sender)
+		@s(verwendet dabei zum Verschlüsseln)
+		@s(den öffentlichen Schlüssel des)
+		@s(Empfängers; der Empfänger)
+		@s(verwendet zum Entschlüsseln)
+		@s(seinen zugehörigen privaten)
+		@s(Schlüssel.)
 	</p>
 @end(container de)
 ```
@@ -159,13 +159,13 @@
 ```
 @def(container en)
 	<p>
-		s{This module demonstrates}
-		s{step-by-step encryption and}
-		s{decryption with the RSA method.}
-		s{The sender uses the public key of}
-		s{the recipient for encryption;}
-		s{the recipient uses his associated}
-		s{private key to decrypt.}
+		@s(This module demonstrates)
+		@s(step-by-step encryption and)
+		@s(decryption with the RSA method.)
+		@s(The sender uses the public key of)
+		@s(the recipient for encryption;)
+		@s(the recipient uses his associated)
+		@s(private key to decrypt.)
 	</p>
 @end(container en)
 ```
@@ -187,7 +187,7 @@
 
 ```
 @add(container de)
-	<h2>s{Primzahlen}</h2>
+	<h2>@s(Primzahlen)</h2>
 @end(container de)
 ```
 * Die HTML-Seite beginnt mit dem Kapitel über Primzahlen
@@ -195,17 +195,17 @@
 ```
 @add(container de)
 	<p>
-		s{Die Sicherheit von RSA basiert}
-		s{darauf, dass es zwar einfach ist,}
-		s{das Produkt }<i>n</i>s{ zweier großer}
-		s{Primzahlen }<i>p</i>s{ und }<i>q</i>
-		s{zu berechnen. Es ist jedoch sehr}
-		s{schwer, nur aus dem Produkt}
-		<i>n</i>s{ die beiden Primzahlen zu}
-		s{bestimmen, die das Produkt}
-		s{ergeben. Dieses Zerlegen nennt man}
-		s{auch das Faktorisieren von}
-		<i>n</i>s{.}
+		@s(Die Sicherheit von RSA basiert)
+		@s(darauf, dass es zwar einfach ist,)
+		@s(das Produkt )<i>n</i>@s( zweier großer)
+		@s(Primzahlen )<i>p</i>@s( und )<i>q</i>
+		@s(zu berechnen. Es ist jedoch sehr)
+		@s(schwer, nur aus dem Produkt)
+		<i>n</i>@s( die beiden Primzahlen zu)
+		@s(bestimmen, die das Produkt)
+		@s(ergeben. Dieses Zerlegen nennt man)
+		@s(auch das Faktorisieren von)
+		<i>n</i>@s(.)
 	</p>
 @end(container de)
 ```
@@ -216,9 +216,9 @@
 ```
 @add(container de)
 	<p>
-		s{Als Ausgangspunkt für RSA wählt}
-		s{man zwei Primzahlen }<i>p</i>s{ und}
-		<i>q</i>s{.}
+		@s(Als Ausgangspunkt für RSA wählt)
+		@s(man zwei Primzahlen )<i>p</i>@s( und)
+		<i>q</i>@s(.)
 	</p>
 @end(container de)
 ```
@@ -234,16 +234,16 @@
 ```
 @add(container en)
 	<p>
-		s{The security of RSA is based on}
-		s{the fact that it is easy to}
-		s{calculate the product }<i>n</i>
-		s{of two large primes }<i>p</i>s{ and}
-		<i>q</i>s{. However, it is very}
-		s{difficult to determine only from}
-		s{the product }<i>n</i>s{ the two}
-		s{primes that yield the product.}
-		s{This decomposition is also called}
-		s{the factorization of} <i>n</i>.
+		@s(The security of RSA is based on)
+		@s(the fact that it is easy to)
+		@s(calculate the product )<i>n</i>
+		@s(of two large primes )<i>p</i>@s( and)
+		<i>q</i>@s(. However, it is very)
+		@s(difficult to determine only from)
+		@s(the product )<i>n</i>@s( the two)
+		@s(primes that yield the product.)
+		@s(This decomposition is also called)
+		@s(the factorization of) <i>n</i>.
 	</p>
 @end(container en)
 ```
@@ -252,8 +252,8 @@
 ```
 @add(container en)
 	<p>
-		s{As a starting point for RSA choose}
-		s{two primes }<i>p</i>s{ and }<i>q</i>s{.}
+		@s(As a starting point for RSA choose)
+		@s(two primes )<i>p</i>@s( and )<i>q</i>@s(.)
 	</p>
 @end(container en)
 ```
@@ -293,8 +293,8 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-1">s{1. Primzahl}
-			<i>p</i>s{ =}
+			v{for}="prime-1">@s(1. Primzahl)
+			<i>p</i>@s( =)
 		</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -309,8 +309,8 @@
 ```
 @add(primes de)
 	<div id="err-p-not-prime"
-		class=s{"row alert alert-danger }b{}s{hidden"}
-	><i>p</i> s{ist keine Primzahl!}</div>
+		class=@s("row alert alert-danger )b{}@s(hidden")
+	><i>p</i> @s(ist keine Primzahl!)</div>
 @end(primes de)
 ```
 * Zusätzlich gibt es eine Fehlermeldung,
@@ -330,8 +330,8 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-1">s{1st prime}
-			<i>p</i>s{ =}</label>
+			v{for}="prime-1">@s(1st prime)
+			<i>p</i>@s( =)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="prime-1" value="11"></div>
@@ -343,8 +343,8 @@
 ```
 @add(primes en)
 	<div id="err-p-not-prime"
-		class=s{"row alert alert-danger}b{}s{ hidden"}
-	><i>p</i> s{is not prime!}</div>
+		class=@s("row alert alert-danger)b{}@s( hidden")
+	><i>p</i> @s(is not prime!)</div>
 @end(primes en)
 ```
 * und eine übersetzte Fehlermeldung
@@ -442,8 +442,8 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-2">s{2.  Primzahl}
-			<i>q</i>s{ =}
+			v{for}="prime-2">@s(2.  Primzahl)
+			<i>q</i>@s( =)
 		</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -457,12 +457,12 @@
 ```
 @add(primes de)
 	<div id="err-q-not-prime"
-		class=s{"row alert alert-danger}b{}s{ hidden"}
-	><i>q</i>s{ ist keine Primzahl!}</div>
+		class=@s("row alert alert-danger)b{}@s( hidden")
+	><i>q</i>@s( ist keine Primzahl!)</div>
 	<div id="err-p-equal-q"
-		class=s{"row alert alert-danger}b{}s{ hidden"}
-	><i>p</i>s{und} <i>q</i>
-		s{sind nicht verschieden!}</div>
+		class=@s("row alert alert-danger)b{}@s( hidden")
+	><i>p</i>@s(und) <i>q</i>
+		@s(sind nicht verschieden!)</div>
 @end(primes de)
 ```
 * Für die zweite Primzahl gibt es nicht nur eine Fehlermeldung,
@@ -473,8 +473,8 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-2">s{2nd prime}
-			<i>q</i>s{ =}</label>
+			v{for}="prime-2">@s(2nd prime)
+			<i>q</i>@s( =)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="prime-2" value="13"></div>
@@ -486,12 +486,12 @@
 ```
 @add(primes en)
 	<div id="err-q-not-prime"
-		class=s{"row alert alert-danger}b{}s{ hidden"}
-	><i>q</i>s{ is not prime!}</div>
+		class=@s("row alert alert-danger)b{}@s( hidden")
+	><i>q</i>@s( is not prime!)</div>
 	<div id="err-p-equal-q"
-		class=s{"row alert alert-danger}b{}s{ hidden"}
-	><i>p</i>s{ and }<i>q</i>s{ are not}
-		s{different!}</div>
+		class=@s("row alert alert-danger)b{}@s( hidden")
+	><i>p</i>@s( and )<i>q</i>@s( are not)
+		@s(different!)</div>
 @end(primes en)
 ```
 * Die Fehlermeldungen gibt es auch in der englischen Version
@@ -547,9 +547,9 @@
 ```
 @add(container de)
 	<p>
-		s{Damit der Algorithmus}
-		s{funktioniert, müssen die beiden}
-		s{Primzahlen verschieden sein.}
+		@s(Damit der Algorithmus)
+		@s(funktioniert, müssen die beiden)
+		@s(Primzahlen verschieden sein.)
 	</p>
 @end(container de)
 ```
@@ -558,8 +558,8 @@
 ```
 @add(container en)
 	<p>
-		s{For the algorithm to work, the two}
-		s{primes must be different.}
+		@s(For the algorithm to work, the two)
+		@s(primes must be different.)
 	</p>
 @end(container en)
 ```
@@ -570,10 +570,10 @@
 
 ```
 @add(container de)
-	<h2>s{Öffentlicher Schlüssel}</h2>
+	<h2>@s(Öffentlicher Schlüssel)</h2>
 	<p>
-		s{Das Produkt }<i>n</i>s{ wird im}
-		s{RSA-Verfahren auch Modul genannt.}
+		@s(Das Produkt )<i>n</i>@s( wird im)
+		@s(RSA-Verfahren auch Modul genannt.)
 	</p>
 @end(container de)
 ```
@@ -581,10 +581,10 @@
 
 ```
 @add(container en)
-	<h2>s{Public key}</h2>
+	<h2>@s(Public key)</h2>
 	<p>
-		s{The product }<i>n</i>s{ is also}
-		s{called module in the RSA method.}
+		@s(The product )<i>n</i>@s( is also)
+		@s(called module in the RSA method.)
 	</p>
 @end(container en)
 ```
@@ -607,14 +607,14 @@
 @def(n elements)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="public-key"><i>n</i>s{ =}
-			<i>p</i>s{ × }<i>q</i>s{ =}
+		v{for}="public-key"><i>n</i>@s( =)
+			<i>p</i>@s( × )<i>q</i>@s( =)
 	</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		><span id="public-key"></span>
-		s{(}<span id="public-key-length"
-		></span> s{Bit)}</p></div>
+		@s(()<span id="public-key-length"
+		></span> @s(Bit@))</p></div>
 @end(n elements)
 ```
 * Die Felder bilden ein eigenes Fragment
@@ -662,15 +662,15 @@
 ```
 @add(container de)
 	<p>
-		s{Zur Demonstration beginnen wir mit}
-		s{kleinen Primzahlen. Um die}
-		s{Faktorisierung schwierig zu}
-		s{gestalten, müssen die Primzahlen}
-		s{viel größer gewählt werden.}
-		s{Aktuell werden für eine sichere}
-		s{Kommunikation Werte von }<i>n</i>
-		s{mit mehreren tausend Binärstellen}
-		s{verwendet.}
+		@s(Zur Demonstration beginnen wir mit)
+		@s(kleinen Primzahlen. Um die)
+		@s(Faktorisierung schwierig zu)
+		@s(gestalten, müssen die Primzahlen)
+		@s(viel größer gewählt werden.)
+		@s(Aktuell werden für eine sichere)
+		@s(Kommunikation Werte von )<i>n</i>
+		@s(mit mehreren tausend Binärstellen)
+		@s(verwendet.)
 	</p>
 @end(container de)
 ```
@@ -680,13 +680,13 @@
 ```
 @add(container en)
 	<p>
-		s{For demonstration we start with}
-		s{small primes. To make the}
-		s{factorization difficult, the}
-		s{primes must be much larger.}
-		s{Currently, values of }<i>n</i>s{ with}
-		s{several thousand binary digits}
-		s{are used for secure communication.}
+		@s(For demonstration we start with)
+		@s(small primes. To make the)
+		@s(factorization difficult, the)
+		@s(primes must be much larger.)
+		@s(Currently, values of )<i>n</i>@s( with)
+		@s(several thousand binary digits)
+		@s(are used for secure communication.)
 	</p>
 @end(container en)
 ```
@@ -695,9 +695,9 @@
 ```
 @add(container de)
 	<p>
-		s{Der öffentliche Schlüssel besteht}
-		s{neben dem Modul} <i>n</i> s{noch aus}
-		s{einem Exponenten} <i>e</i>s{.}
+		@s(Der öffentliche Schlüssel besteht)
+		@s(neben dem Modul) <i>n</i> @s(noch aus)
+		@s(einem Exponenten) <i>e</i>@s(.)
 	</p>
 @end(container de)
 ```
@@ -706,9 +706,9 @@
 ```
 @add(container en)
 	<p>
-		s{The public key consists of the}
-		s{module} <i>n</i> s{and}
-		s{an exponent} <i>e</i>s{.}
+		@s(The public key consists of the)
+		@s(module) <i>n</i> @s(and)
+		@s(an exponent) <i>e</i>@s(.)
 	</p>
 @end(container en)
 ```
@@ -722,9 +722,9 @@
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> s{und} <i>f{φ}(n)</i>
-			s{sind nicht}
-			s{teilerfremd.}</div>
+		><i>e</i> @s(und) <i>f{φ}(n)</i>
+			@s(sind nicht)
+			@s(teilerfremd.)</div>
 	</form>
 @end(container de)
 ```
@@ -737,7 +737,7 @@
 	<label
 		class="col-sm-3 control-label"
 		v{for}="base"><i>e</i>
-		s{=}</label>
+		@s(=)</label>
 	<div class="col-sm-9"><input
 		class="form-control"
 		id="base" value="23"></div>
@@ -754,9 +754,9 @@
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i>s{ and }<i>f{φ}(n)</i>
-			s{have a common divisor,}
-			s{they are not coprime.}</div>
+		><i>e</i>@s( and )<i>f{φ}(n)</i>
+			@s(have a common divisor,)
+			@s(they are not coprime.)</div>
 	</form>
 @end(container en)
 ```
@@ -795,9 +795,9 @@
 ```
 @add(container de)
 	<p>
-		s{Dieses} <i>e</i> s{kann sogar vorab}
-		s{gewählt werden und für alle}
-		s{Teilnehmer gleich sein.}
+		@s(Dieses) <i>e</i> @s(kann sogar vorab)
+		@s(gewählt werden und für alle)
+		@s(Teilnehmer gleich sein.)
 	</p>
 @end(container de)
 ```
@@ -807,9 +807,9 @@
 ```
 @add(container en)
 	<p>
-		s{This} <i>e</i> s{may even be}
-		s{pre-selected and the same}
-		s{for all participants.}
+		@s(This) <i>e</i> @s(may even be)
+		@s(pre-selected and the same)
+		@s(for all participants.)
 	</p>
 @end(container en)
 ```
@@ -821,12 +821,12 @@
 
 ```
 @add(container de)
-	<h2>s{Geheimer Schlüssel}</h2>
+	<h2>@s(Geheimer Schlüssel)</h2>
 	<p>
-		s{RSA benutzt für die Berechnung des}
-		s{geheimen Schlüssels die Eulersche}
-		f{φ}s{-Funktion von} <i>n</i>s{.}
-		s{Diese ist definiert als}
+		@s(RSA benutzt für die Berechnung des)
+		@s(geheimen Schlüssels die Eulersche)
+		f{φ}@s(-Funktion von) <i>n</i>@s(.)
+		@s(Diese ist definiert als)
 	</p>
 @end(container de)
 ```
@@ -835,11 +835,11 @@
 
 ```
 @add(container en)
-	<h2>s{Secret key}</h2>
+	<h2>@s(Secret key)</h2>
 	<p>
-		s{RSA uses the Euler }f{φ}s{ function}
-		s{of} <i>n</i> s{to calculate the}
-		s{secret key. This is defined as}
+		@s(RSA uses the Euler )f{φ}@s( function)
+		@s(of) <i>n</i> @s(to calculate the)
+		@s(secret key. This is defined as)
 	</p>
 @end(container en)
 ```
@@ -861,9 +861,9 @@
 @def(phi label)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="phi">f{φ}s{(}<i>n</i>s{) =}
-		s{(}<i>p</i>s{ − 1) ×}
-		s{(}<i>q</i>s{ − 1) =}</label>
+		v{for}="phi">f{φ}@s(()<i>n</i>@s(@) =)
+		@s(()<i>p</i>@s( − 1@) ×)
+		@s(()<i>q</i>@s( − 1@) =)</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="phi"></p></div>
@@ -937,15 +937,15 @@
 ```
 @add(container de)
 	<p>
-		s{Hier wird ausgenutzt, dass} <i>p</i>
-		s{und }<i>q</i>s{ verschieden sind.}
-		s{Andernfalls würde sich die }
-		f{φ}s{-Funktion anders berechnen.}
+		@s(Hier wird ausgenutzt, dass) <i>p</i>
+		@s(und )<i>q</i>@s( verschieden sind.)
+		@s(Andernfalls würde sich die )
+		f{φ}@s(-Funktion anders berechnen.)
 	</p><p>
-		s{Wichtig ist für RSA, dass der Wert}
-		s{der }f{φ}s{-Funktion teilerfremd zu}
-		<i>e</i>s{ ist (der größte}
-		s{gemeinsame Teiler also }n{1}s{ ist).}
+		@s(Wichtig ist für RSA, dass der Wert)
+		@s(der )f{φ}@s(-Funktion teilerfremd zu)
+		<i>e</i>@s( ist (der größte)
+		@s(gemeinsame Teiler also )n{1}@s( ist@).)
 	</p>
 @end(container de)
 ```
@@ -955,16 +955,16 @@
 ```
 @add(container en)
 	<p>
-		s{The prerequisit here is that}
-		<i>p</i>s{ and }<i>q</i>s{ are}
-		s{different. Otherwise, the }f{φ}
-		s{function would be calculate }d
-		s{differently.}
+		@s(The prerequisit here is that)
+		<i>p</i>@s( and )<i>q</i>@s( are)
+		@s(different. Otherwise, the )f{φ}
+		@s(function would be calculate )d
+		@s(differently.)
 	</p><p>
-		s{It is important for RSA that the}
-		s{value of the }f{φ}s{ function is}
-		s{coprime to }<i>e</i>s{ (the largest}
-		s{common divisor must be }n{1}s{).}
+		@s(It is important for RSA that the)
+		@s(value of the )f{φ}@s( function is)
+		@s(coprime to )<i>e</i>@s( (the largest)
+		@s(common divisor must be )n{1}@s(@).)
 	</p>
 @end(container en)
 ```
@@ -986,8 +986,8 @@
 @def(ggt de)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="gcd">f{ggT}s{(}<i>e</i>s{,}
-		f{φ}s{(}<i>n</i>s{)) =}</label>
+		v{for}="gcd">f{ggT}@s(()<i>e</i>@s(,)
+		f{φ}@s(()<i>n</i>@s(@)@) =)</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="gcd"></p></div>
@@ -1011,8 +1011,8 @@
 @def(ggt en)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="gcd">s{gcd(}<i>e</i>s{,}
-		f{φ}s{(}<i>n</i>s{)) =}</label>
+		v{for}="gcd">@s(gcd()<i>e</i>@s(,)
+		f{φ}@s(()<i>n</i>@s(@)@) =)</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="gcd"></p></div>
@@ -1038,12 +1038,12 @@
 ```
 @add(container de)
 	<p>
-		s{Um den Wert von }f{φ}s{(}<i>n</i>s{) zu}
-		s{bestimmen, reicht es nicht aus}
-		<i>n</i>s{ zu kennen. Nur mit der}
-		s{Kenntnis von }<i>p</i>s{ und }<i>q</i>
-		s{kann man }f{φ}s{(}<i>n</i>s{) effizient}
-		s{bestimmen.}
+		@s(Um den Wert von )f{φ}@s(()<i>n</i>@s(@) zu)
+		@s(bestimmen, reicht es nicht aus)
+		<i>n</i>@s( zu kennen. Nur mit der)
+		@s(Kenntnis von )<i>p</i>@s( und )<i>q</i>
+		@s(kann man )f{φ}@s(()<i>n</i>@s(@) effizient)
+		@s(bestimmen.)
 	</p>
 @end(container de)
 ```
@@ -1053,11 +1053,11 @@
 ```
 @add(container de)
 	<p>
-		s{Der geheime Schlüssel besteht}
-		s{aus einem }<i>d</i>s{ mit der}
-		s{Eigenschaft, dass}
-		<i>e</i>s{ × }<i>d</i>s{ − }n{1}s{ ein}
-		s{Vielfaches von }f{φ}s{(}<i>n</i>s{) ist.}
+		@s(Der geheime Schlüssel besteht)
+		@s(aus einem )<i>d</i>@s( mit der)
+		@s(Eigenschaft, dass)
+		<i>e</i>@s( × )<i>d</i>@s( − )n{1}@s( ein)
+		@s(Vielfaches von )f{φ}@s(()<i>n</i>@s(@) ist.)
 	</p>
 @end(container de)
 ```
@@ -1066,11 +1066,11 @@
 ```
 @add(container de)
 	<p>
-		s{In Formeln ausgedrückt, muss}
-		s{gelten:}
+		@s(In Formeln ausgedrückt, muss)
+		@s(gelten:)
 	</p><p class="form">
-		<i>e</i>s{ × }<i>d</i>s{ = }1
-		s{(mod }f{φ}s{(}<i>n</i>s{))}
+		<i>e</i>@s( × )<i>d</i>@s( = )1
+		@s((mod )f{φ}@s(()<i>n</i>@s(@)@))
 	</p>
 @end(container de)
 ```
@@ -1079,14 +1079,14 @@
 ```
 @add(container de)
 	<p>
-		s{Dabei ist mit dem mod-Ausdruck}
-		s{die Gleichheit bezüglich einer}
-		s{Restklasse gemeint. Es ist genau}
-		s{dann }<i>x</i>s{ =}<i>y</i>
-		s{(mod }<i>z</i>s{), wenn es ein}
-		s{ganzzahliges }<i>a</i>s{ gibt mit}
-		<i>x</i>s{ − }<i>y</i>s{ = }<i>z</i>
-		s{× }<i>a</i>s{.}
+		@s(Dabei ist mit dem mod-Ausdruck)
+		@s(die Gleichheit bezüglich einer)
+		@s(Restklasse gemeint. Es ist genau)
+		@s(dann )<i>x</i>@s( =)<i>y</i>
+		@s((mod )<i>z</i>@s(@), wenn es ein)
+		@s(ganzzahliges )<i>a</i>@s( gibt mit)
+		<i>x</i>@s( − )<i>y</i>@s( = )<i>z</i>
+		@s(× )<i>a</i>@s(.)
 	</p>
 @end(container de)
 ```
@@ -1095,10 +1095,10 @@
 ```
 @add(container de)
 	<p>
-		s{Für die gewählten Werte von}
-		<i>p</i>s{, }<i>q</i>s{ und }
-		<i>e</i>s{ ergibt sich} <i>d</i>
-		s{ als:}
+		@s(Für die gewählten Werte von)
+		<i>p</i>@s(, )<i>q</i>@s( und )
+		<i>e</i>@s( ergibt sich) <i>d</i>
+		@s( als:)
 	</p>
 @end(container de)
 ```
@@ -1107,12 +1107,12 @@
 ```
 @add(container en)
 	<p>
-		s{To determine the value of}
-		f{φ}s{(}<i>n</i>s{), it is not enough}
-		s{to know} <i>n</i>s{. Only with the}
-		s{knowledge of} <i>p</i> s{and} <i>q</i>
-		s{we can efficiently determine}
-		f{φ}s{(}<i>n</i>s{).}
+		@s(To determine the value of)
+		f{φ}@s(()<i>n</i>@s(@), it is not enough)
+		@s(to know) <i>n</i>@s(. Only with the)
+		@s(knowledge of) <i>p</i> @s(and) <i>q</i>
+		@s(we can efficiently determine)
+		f{φ}@s(()<i>n</i>@s(@).)
 	</p>
 @end(container en)
 ```
@@ -1122,11 +1122,11 @@
 ```
 @add(container en)
 	<p>
-		s{The secret key also consists of}
-		s{a }<i>d</i>s{ with the}
-		s{property that }<i>e</i>s{ ×}
-		<i>d</i>s{ − }n{1}s{ is a multiple of}
-		f{φ}s{(}<i>n</i>s{).}
+		@s(The secret key also consists of)
+		@s(a )<i>d</i>@s( with the)
+		@s(property that )<i>e</i>@s( ×)
+		<i>d</i>@s( − )n{1}@s( is a multiple of)
+		f{φ}@s(()<i>n</i>@s(@).)
 	</p>
 @end(container en)
 ```
@@ -1135,11 +1135,11 @@
 ```
 @add(container en)
 	<p>
-		s{Expressed in formulas, the}
-		s{following must apply:}
+		@s(Expressed in formulas, the)
+		@s(following must apply:)
 	</p><p class="form">
-		<i>e</i>s{ × }<i>d</i>s{ = 1}
-		s{(mod φ(}<i>n</i>s{))}
+		<i>e</i>@s( × )<i>d</i>@s( = 1)
+		@s((mod φ()<i>n</i>@s(@)@))
 	</p>
 @end(container en)
 ```
@@ -1148,13 +1148,13 @@
 ```
 @add(container en)
 	<p>
-		s{In this case, the mod expression}
-		s{means equality with regard to a}
-		s{residual class. It is }<i>x</i>s{ =}
-		<i>y</i>s{ (mod }<i>z</i>s{) if and}
-		s{only if there is an integer a}
-		s{with }<i>x</i>s{ − }<i>y</i>s{ =}
-		<i>z</i>s{ × }<i>a</i>s{.}
+		@s(In this case, the mod expression)
+		@s(means equality with regard to a)
+		@s(residual class. It is )<i>x</i>@s( =)
+		<i>y</i>@s( (mod )<i>z</i>@s(@) if and)
+		@s(only if there is an integer a)
+		@s(with )<i>x</i>@s( − )<i>y</i>@s( =)
+		<i>z</i>@s( × )<i>a</i>@s(.)
 	</p>
 @end(container en)
 ```
@@ -1163,9 +1163,9 @@
 ```
 @add(container en)
 	<p>
-		s{For the chosen values of }<i>p</i>s{,}
-		<i>q</i>s{, and }<i>e</i>s{, we get}
-		<i>d</i>s{ as:}
+		@s(For the chosen values of )<i>p</i>@s(,)
+		<i>q</i>@s(, and )<i>e</i>@s(, we get)
+		<i>d</i>@s( as:)
 	</p>
 @end(container en)
 ```
@@ -1196,7 +1196,7 @@
 @def(private key)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="private-key"><i>d</i>s{ =}
+		v{for}="private-key"><i>d</i>@s( =)
 	</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
@@ -1249,12 +1249,12 @@
 ```
 @add(container de)
 	<p>
-		s{Dieses }<i>d</i>s{ kann immer}
-		s{bestimmt werden, wenn }<i>e</i>
-		s{mit der oben beschriebenen}
-		s{Einschränkung gewählt wurde –}
-		s{bspw. mit dem Erweiterten}
-		s{Euklidischen Algorithmus.}
+		@s(Dieses )<i>d</i>@s( kann immer)
+		@s(bestimmt werden, wenn )<i>e</i>
+		@s(mit der oben beschriebenen)
+		@s(Einschränkung gewählt wurde –)
+		@s(bspw. mit dem Erweiterten)
+		@s(Euklidischen Algorithmus.)
 	</p>
 @end(container de)
 ```
@@ -1263,12 +1263,12 @@
 ```
 @add(container en)
 	<p>
-		s{This }<i>d</i>s{ can always be}
-		s{determined (if }<i>e</i>s{ was}
-		s{chosen with the restriction}
-		s{described above)—for example}
-		s{with the extended Euclidean}
-		s{algorithm.}
+		@s(This )<i>d</i>@s( can always be)
+		@s(determined (if )<i>e</i>@s( was)
+		@s(chosen with the restriction)
+		@s(described above@)—for example)
+		@s(with the extended Euclidean)
+		@s(algorithm.)
 	</p>
 @end(container en)
 ```
@@ -1280,13 +1280,13 @@
 
 ```
 @add(container de)
-	<h2>s{Ver- und Entschlüsseln}</h2>
+	<h2>@s(Ver- und Entschlüsseln)</h2>
 	<p>
-		s{Grundsätzlich werden bei diesem}
-		s{Verfahren keine Texte, sondern}
-		s{nur Zahlen ver- und entschlüsselt,}
-		s{die zwischen }n{0}s{ und }<i>n</i>s{ − }1
-		s{liegen.}
+		@s(Grundsätzlich werden bei diesem)
+		@s(Verfahren keine Texte, sondern)
+		@s(nur Zahlen ver- und entschlüsselt,)
+		@s(die zwischen )n{0}@s( und )<i>n</i>@s( − )1
+		@s(liegen.)
 	</p>
 @end(container de)
 ```
@@ -1295,16 +1295,16 @@
 ```
 @add(container de)
 	<p>
-		s{Um eine Nachricht }<i>m</i>s{ mit}
-		s{dem öffentlichen Schlüssel}
-		s{(}<i>n</i>s{, }<i>e</i>s{) zu}
-		s{verschlüsseln, wird}
+		@s(Um eine Nachricht )<i>m</i>@s( mit)
+		@s(dem öffentlichen Schlüssel)
+		@s(()<i>n</i>@s(, )<i>e</i>@s(@) zu)
+		@s(verschlüsseln, wird)
 	</p><p class="form">
-		<i>v{m'}</i>s{ :=}
+		<i>v{m'}</i>@s( :=)
 			<i>m</i><sup><i>e</i></sup>
-			s{(mod }<i>n</i>s{)}
+			@s((mod )<i>n</i>@s(@))
 	</p><p>
-		s{berechnet.}
+		@s(berechnet.)
 	</p>
 @end(container de)
 ```
@@ -1313,13 +1313,13 @@
 ```
 @add(container de)
 	<p>
-		s{Das Entschlüsseln mit dem privaten}
-		s{Schlüssel (}<i>n</i>s{, }<i>d</i>s{)}
-		s{erfolgt analog mit}
+		@s(Das Entschlüsseln mit dem privaten)
+		@s(Schlüssel ()<i>n</i>@s(, )<i>d</i>@s(@))
+		@s(erfolgt analog mit)
 	</p><p class="form">
-		<i>v{m''}</i>s{ :=}
-			s{(}<i>v{m'}</i>s{)}<sup><i>d</i></sup>
-			s{(mod }<i>n</i>s{).}
+		<i>v{m''}</i>@s( :=)
+			@s(()<i>v{m'}</i>@s(@))<sup><i>d</i></sup>
+			@s((mod )<i>n</i>@s(@).)
 	</p>
 @end(container de)
 ```
@@ -1328,12 +1328,12 @@
 ```
 @add(container de)
 	<p>
-		s{Damit ist}
+		@s(Damit ist)
 	</p><p class="form">
-		<i>v{m''}</i>s{ =}
-			<i>m</i><sup><i>e</i>s{ ×}
+		<i>v{m''}</i>@s( =)
+			<i>m</i><sup><i>e</i>@s( ×)
 			<i>d</i></sup>
-			s{(mod }<i>n</i>s{).}
+			@s((mod )<i>n</i>@s(@).)
 	</p>
 @end(container de)
 ```
@@ -1342,12 +1342,12 @@
 ```
 @add(container de)
 	<p>
-		s{RSA nutzt die Eigenschaft aus,}
-		s{dass}
+		@s(RSA nutzt die Eigenschaft aus,)
+		@s(dass)
 	</p><p class="form">
-		<i>x</i><sup><i>a</i></sup>s{ =}
+		<i>x</i><sup><i>a</i></sup>@s( =)
 			<i>x</i><sup><i>b</i></sup>
-			s{(mod }<i>n</i>s{)}
+			@s((mod )<i>n</i>@s(@))
 	</p>
 @end(container de)
 ```
@@ -1357,10 +1357,10 @@
 ```
 @add(container de)
 	<p>
-		s{wenn}
+		@s(wenn)
 	</p><p class="form">
-		<i>a</i>s{ =}
-			<i>b</i>s{ (mod }f{φ}s{(}<i>n</i>s{))}
+		<i>a</i>@s( =)
+			<i>b</i>@s( (mod )f{φ}@s(()<i>n</i>@s(@)@))
 	</p>
 @end(container de)
 ```
@@ -1369,10 +1369,10 @@
 ```
 @add(container de)
 	<p>
-		<i>e</i>s{ und }<i>d</i>s{ wurden}
-		s{passend gewählt, dass}
+		<i>e</i>@s( und )<i>d</i>@s( wurden)
+		@s(passend gewählt, dass)
 	</p><p class="form">
-		<i>v{m''}</i>s{ = }<i>m</i>s{.}
+		<i>v{m''}</i>@s( = )<i>m</i>@s(.)
 	</p>
 @end(container de)
 ```
@@ -1381,13 +1381,13 @@
 ```
 @add(container de)
 	<p>
-		s{Die Reihenfolge spielt keine}
-		s{Rolle. Man könnte auch erst eine}
-		s{Nachricht mit dem privaten}
-		s{Schlüssel potenzieren, und das}
-		s{Ergebnis dann mit dem öffentlichen}
-		s{Schlüssel potenzieren – das}
-		s{verwendet man bei RSA-Signaturen.}
+		@s(Die Reihenfolge spielt keine)
+		@s(Rolle. Man könnte auch erst eine)
+		@s(Nachricht mit dem privaten)
+		@s(Schlüssel potenzieren, und das)
+		@s(Ergebnis dann mit dem öffentlichen)
+		@s(Schlüssel potenzieren – das)
+		@s(verwendet man bei RSA-Signaturen.)
 	</p>
 @end(container de)
 ```
@@ -1395,11 +1395,11 @@
 
 ```
 @add(container en)
-	<h2>s{Encryption and decryption}</h2>
+	<h2>@s(Encryption and decryption)</h2>
 	<p>
-		s{Internally, this method works only}
-		s{with numbers (no text), which are}
-		s{between }n{0}s{ and }<i>n</i>s{ − }n{1}s{.}
+		@s(Internally, this method works only)
+		@s(with numbers (no text@), which are)
+		@s(between )n{0}@s( and )<i>n</i>@s( − )n{1}@s(.)
 	</p>
 @end(container en)
 ```
@@ -1409,14 +1409,14 @@
 ```
 @add(container en)
 	<p>
-		s{A message }<i>m</i>s{ (number) is}
-		s{encrypted with the public key (}
-		<i>n</i>s{,} <i>e</i>s{) by}
-		s{calculating:}
+		@s(A message )<i>m</i>@s( (number@) is)
+		@s(encrypted with the public key ()
+		<i>n</i>@s(,) <i>e</i>@s(@) by)
+		@s(calculating:)
 	</p><p class="form">
-		<i>v{m'}</i>s{ :=}
+		<i>v{m'}</i>@s( :=)
 			<i>m</i><sup><i>e</i></sup>
-			s{(mod }<i>n</i>s{)}
+			@s((mod )<i>n</i>@s(@))
 	</p>
 @end(container en)
 ```
@@ -1425,13 +1425,13 @@
 ```
 @add(container en)
 	<p>
-		s{Decrypting with the private key}
-		s{(}<i>n</i>s{, }<i>d</i>s{) is done}
-		s{analogously with}
+		@s(Decrypting with the private key)
+		@s(()<i>n</i>@s(, )<i>d</i>@s(@) is done)
+		@s(analogously with)
 	</p><p class="form">
-		<i>v{m''}</i>s{ :=}
-			s{(}<i>v{m'}</i>s{)}<sup><i>d</i></sup>
-			s{(mod }<i>n</i>s{).}
+		<i>v{m''}</i>@s( :=)
+			@s(()<i>v{m'}</i>@s(@))<sup><i>d</i></sup>
+			@s((mod )<i>n</i>@s(@).)
 	</p>
 @end(container en)
 ```
@@ -1440,11 +1440,11 @@
 ```
 @add(container en)
 	<p>
-		s{This is}
+		@s(This is)
 	</p><p class="form">
-		<i>v{m''}</i>s{ =}
-			<i>m</i><sup><i>e</i>s{ ×}
-			<i>d</i></sup>s{ (mod }<i>n</i>s{).}
+		<i>v{m''}</i>@s( =)
+			<i>m</i><sup><i>e</i>@s( ×)
+			<i>d</i></sup>@s( (mod )<i>n</i>@s(@).)
 	</p>
 @end(container en)
 ```
@@ -1453,16 +1453,16 @@
 ```
 @add(container en)
 	<p>
-		s{RSA exploits the property that}
+		@s(RSA exploits the property that)
 	</p><p class="form">
-		<i>x</i><sup><i>a</i></sup>s{ =}
+		<i>x</i><sup><i>a</i></sup>@s( =)
 			<i>x</i><sup><i>b</i></sup>
-			s{(mod }<i>n</i>s{)}
+			@s((mod )<i>n</i>@s(@))
 	</p><p>
-		s{if}
+		@s(if)
 	</p><p class="form">
-		<i>a</i>s{ =}
-			<i>b</i>s{ (mod }f{φ}s{(}<i>n</i>s{))}
+		<i>a</i>@s( =)
+			<i>b</i>@s( (mod )f{φ}@s(()<i>n</i>@s(@)@))
 	</p>
 @end(container en)
 ```
@@ -1472,10 +1472,10 @@
 ```
 @add(container en)
 	<p>
-		s{As }<i>e</i>s{ and }<i>d</i>s{ were}
-		s{chosen appropriately, it is}
+		@s(As )<i>e</i>@s( and )<i>d</i>@s( were)
+		@s(chosen appropriately, it is)
 	</p><p class="form">
-		<i>v{m''}</i>s{ = }<i>m</i>s{.}
+		<i>v{m''}</i>@s( = )<i>m</i>@s(.)
 	</p>
 @end(container en)
 ```
@@ -1484,12 +1484,12 @@
 ```
 @add(container en)
 	<p>
-		s{The order does not matter. You}
-		s{could also first raise a message}
-		s{with the private key, and then}
-		s{power up the result with the}
-		s{public key—this is what you use}
-		s{with RSA signatures.}
+		@s(The order does not matter. You)
+		@s(could also first raise a message)
+		@s(with the private key, and then)
+		@s(power up the result with the)
+		@s(public key—this is what you use)
+		@s(with RSA signatures.)
 	</p>
 @end(container en)
 ```
@@ -1501,12 +1501,12 @@
 
 ```
 @add(container de)
-	<h2>s{Nachrichten}</h2>
+	<h2>@s(Nachrichten)</h2>
 	<p>
-		s{In den folgenden zwei Textboxen}
-		s{können Sie sehen, wie das Ver-}
-		s{und Entschlüsseln für konkrete}
-		s{Eingaben (Zahlen) funktioniert.}
+		@s(In den folgenden zwei Textboxen)
+		@s(können Sie sehen, wie das Ver-)
+		@s(und Entschlüsseln für konkrete)
+		@s(Eingaben (Zahlen@) funktioniert.)
 	</p>
 	<form class="form-horizontal">
 		@put(crypt boxes de)
@@ -1517,12 +1517,12 @@
 
 ```
 @add(container en)
-	<h2>s{Messages}</h2>
+	<h2>@s(Messages)</h2>
 	<p>
-		s{In the following two text boxes,}
-		s{you can see how encryption and}
-		s{decryption work for concrete}
-		s{inputs (numbers).}
+		@s(In the following two text boxes,)
+		@s(you can see how encryption and)
+		@s(decryption work for concrete)
+		@s(inputs (numbers@).)
 	</p>
 	<form class="form-horizontal">
 		@put(crypt boxes en)
@@ -1537,7 +1537,7 @@
 		<label
 			class="col-sm-3 control-label"
 			v{for}="public-key"
-		>s{Klartext}</label>
+		>@s(Klartext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="private-message"
@@ -1552,11 +1552,11 @@
 @add(crypt boxes de)
 	<div id="err-public-msg-too-big"
 		class="row alert alert-danger">
-		s{Die Klartextzahl ist zu groß.}
-		s{Der maximale Wert ist}
+		@s(Die Klartextzahl ist zu groß.)
+		@s(Der maximale Wert ist)
 		<span class="max-msg"></span>.
-		s{Bitte wählen Sie größere}
-		s{Primzahlen.}
+		@s(Bitte wählen Sie größere)
+		@s(Primzahlen.)
 	</div>
 @end(crypt boxes de)
 ```
@@ -1579,7 +1579,7 @@
 		<label
 			class="col-sm-3 control-label"
 			v{for}="private-key"
-		>s{Geheimtext}</label>
+		>@s(Geheimtext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="public-message"
@@ -1593,11 +1593,11 @@
 @add(crypt boxes de)
 	<div id="err-private-msg-too-big"
 		class="row alert alert-danger"
-	>s{Die Geheimtextzahl ist zu groß.}
-		s{Der maximale Wert ist}
+	>@s(Die Geheimtextzahl ist zu groß.)
+		@s(Der maximale Wert ist)
 		<span class="max-msg"></span>.
-		s{Bitte wählen Sie größere}
-		s{Primzahlen.}
+		@s(Bitte wählen Sie größere)
+		@s(Primzahlen.)
 	</div>
 @end(crypt boxes de)
 ```
@@ -1610,7 +1610,7 @@
 		<label
 			class="col-sm-3 control-label"
 			v{for}="public-key"
-		>s{Plaintext}</label>
+		>@s(Plaintext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="private-message"
@@ -1624,11 +1624,11 @@
 @add(crypt boxes en)
 	<div id="err-public-msg-too-big"
 		class="row alert alert-danger"
-	>s{Plaintext number too big. The}
-		s{maximum value is}
-		<span class="max-msg"></span>s{.}
-		s{Please choose bigger}
-		s{primes.}</div>
+	>@s(Plaintext number too big. The)
+		@s(maximum value is)
+		<span class="max-msg"></span>@s(.)
+		@s(Please choose bigger)
+		@s(primes.)</div>
 @end(crypt boxes en)
 ```
 * Und eine Fehlermeldung, wenn der Klartext zu groß ist
@@ -1647,7 +1647,7 @@
 		<label
 			class="col-sm-3 control-label"
 			v{for}="private-key"
-		>s{Ciphertext}</label>
+		>@s(Ciphertext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="public-message"
@@ -1661,11 +1661,11 @@
 @add(crypt boxes en)
 	<div id="err-private-msg-too-big"
 		class="row alert alert-danger"
-	>s{Ciphertext number too big. The}
-		s{maximum value is}
-		<span class="max-msg"></span>s{.}
-		s{Please choose bigger}
-		s{primes.}</div>
+	>@s(Ciphertext number too big. The)
+		@s(maximum value is)
+		<span class="max-msg"></span>@s(.)
+		@s(Please choose bigger)
+		@s(primes.)</div>
 @end(crypt boxes en)
 ```
 * Und eine Fehlermeldung, falls der Geheimtext zu groß ist
@@ -1676,7 +1676,7 @@
 		<div id="direction">
 			<svg viewbox="0 0 50 50"
 				width="50" height="50">
-				<polyline points=s{"0,20}b{}s{ 15,20 15,0 35,0 35,20 50,20 25,50"}
+				<polyline points=@s("0,20)b{}@s( 15,20 15,0 35,0 35,20 50,20 25,50")
 				></polyline>
 			</svg>
 		</div>
@@ -1901,11 +1901,11 @@
 @end(setup rsa)
 ```
 * Durch CSS-Animationen wird der Pfeil hin- und hergedreht
-* Wenn keine Klasse oder die Klasse `s{flop}` gesetzt ist, dann zeigt
+* Wenn keine Klasse oder die Klasse `@s(flop)` gesetzt ist, dann zeigt
   der Pfeil in die Verschlüsselungsrichtung
-* Wenn die Klasse `s{flip}` gesetzt ist, zeigt er in die
+* Wenn die Klasse `@s(flip)` gesetzt ist, zeigt er in die
   Entschlüsselungsrichtung
-* `s{flop}` ist notwendig, um den Wechsel zu animieren
+* `@s(flop)` ist notwendig, um den Wechsel zu animieren
 
 ```
 @def(set encrypt css)
@@ -1913,8 +1913,8 @@
 	$direction.classList.add('flop');
 @end(set encrypt css)
 ```
-* Die Klasse `s{flop}` wird gesetzt
-* Die Klasse `s{flip}` wird entfernt
+* Die Klasse `@s(flop)` wird gesetzt
+* Die Klasse `@s(flip)` wird entfernt
 
 ```
 @def(set decrypt css)
@@ -1922,8 +1922,8 @@
 	$direction.classList.add('flip');
 @end(set decrypt css)
 ```
-* Die Klasse `s{flip}` wird gesetzt
-* Die Klasse `s{flop}` wird entfernt
+* Die Klasse `@s(flip)` wird gesetzt
+* Die Klasse `@s(flop)` wird entfernt
 
 ```
 @add(css)
@@ -2049,13 +2049,13 @@
 
 ```
 @add(container de)
-	<h2>s{Verwendete Bibliothek}</h2>
+	<h2>@s(Verwendete Bibliothek)</h2>
 	<p>
-		s{Diese Seite verwendet für die}
-		s{Rechnung mit großen Zahlen die}
-		s{Bibliothek}
-		<a href=s{"https://peterolson.}b{}s{github.com/BigInteger.js/"}
-		>s{BigInteger.js}</a>.
+		@s(Diese Seite verwendet für die)
+		@s(Rechnung mit großen Zahlen die)
+		@s(Bibliothek)
+		<a href=@s("https://peterolson.)b{}@s(github.com/BigInteger.js/")
+		>@s(BigInteger.js)</a>.
 	</p>
 @end(container de)
 ```
@@ -2065,11 +2065,11 @@
 ```
 @add(container de)
 	<p>
-		s{Dadurch kann man auch in}
-		s{JavaScript mit beliebig großen}
-		s{Zahlen rechnen, also auch solchen,}
-		s{die real bei RSA-Anwendungen}
-		s{verwendet werden.}
+		@s(Dadurch kann man auch in)
+		@s(JavaScript mit beliebig großen)
+		@s(Zahlen rechnen, also auch solchen,)
+		@s(die real bei RSA-Anwendungen)
+		@s(verwendet werden.)
 	</p>
 @end(container de)
 ```
@@ -2077,12 +2077,12 @@
 
 ```
 @add(container en)
-	<h2>s{Used library}</h2>
+	<h2>@s(Used library)</h2>
 	<p>
-		s{This page uses the library}
-		<a href=s{"https://peterolson.}b{}s{github.com/BigInteger.js/"}
+		@s(This page uses the library)
+		<a href=@s("https://peterolson.)b{}@s(github.com/BigInteger.js/")
 			>BigInteger.js</a>
-		s{to work with big numbers.}
+		@s(to work with big numbers.)
 	</p>
 @end(container en)
 ```
@@ -2091,11 +2091,11 @@
 ```
 @add(container en)
 	<p>
-		s{As a result, you can calculate}
-		s{arbitrarily large numbers in}
-		s{JavaScript, even those that are}
-		s{actually used in RSA}
-		s{applications.}
+		@s(As a result, you can calculate)
+		@s(arbitrarily large numbers in)
+		@s(JavaScript, even those that are)
+		@s(actually used in RSA)
+		@s(applications.)
 	</p>
 @end(container en)
 ```
@@ -2103,20 +2103,20 @@
 
 ```
 @add(container de)
-	<div id="authors"><em>s{CTOAUTHORS:}
-		s{Timm Knape (Dank an}
-		s{Bernhard Esslinger für das}
-		s{Review)}</em></div>
+	<div id="authors"><em>@s(CTOAUTHORS:)
+		@s(Timm Knape (Dank an)
+		@s(Bernhard Esslinger für das)
+		@s(Review@))</em></div>
 @end(container de)
 ```
 * Die Seite endet mit dem Autor-Tag
 
 ```
 @add(container en)
-	<div id="authors"><em>s{CTOAUTHORS:}
-		s{Timm Knape (thanks to}
-		s{Bernhard Esslinger for the}
-		s{review)}</em></div>
+	<div id="authors"><em>@s(CTOAUTHORS:)
+		@s(Timm Knape (thanks to)
+		@s(Bernhard Esslinger for the)
+		@s(review@))</em></div>
 @end(container en)
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
@@ -2134,8 +2134,8 @@
 @def(bootstrap stylesheets)
 	<link 
 		rel="stylesheet"
-		href=s{"https://maxcdn.bootstrapcd}b{}s{n.com/bootstrap/3.3.7/css/bootstrap.min.}b{}s{css"}
-		integrity=s{"sha384-BVYiiSIFeK1dGm}b{}s{JRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K}b{}s{68vbdEjh4u"}
+		href=@s("https://maxcdn.bootstrapcd)b{}@s(n.com/bootstrap/3.3.7/css/bootstrap.min.)b{}@s(css")
+		integrity=@s("sha384-BVYiiSIFeK1dGm)b{}@s(JRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K)b{}@s(68vbdEjh4u")
 		crossorigin="anonymous"
 	>
 @end(bootstrap stylesheets)
@@ -2149,8 +2149,8 @@
 @add(bootstrap stylesheets)
 	<link
 		rel="stylesheet"
-		href=s{"https://maxcdn.bootstrapcd}b{}s{n.com/bootstrap/3.3.7/css/bootstrap-them}b{}s{e.min.css"}
-		integrity=s{"sha384-rHyoN1iRsVXV4n}b{}s{D0Jut}b{}s{lnGaslCJuC7uwjduW9SVrLvRYooPp}b{}s{2bWYgmgJQIXwl/Sp"}
+		href=@s("https://maxcdn.bootstrapcd)b{}@s(n.com/bootstrap/3.3.7/css/bootstrap-them)b{}@s(e.min.css")
+		integrity=@s("sha384-rHyoN1iRsVXV4n)b{}@s(D0Jut)b{}@s(lnGaslCJuC7uwjduW9SVrLvRYooPp)b{}@s(2bWYgmgJQIXwl/Sp")
 		crossorigin="anonymous"
 	>
 @end(bootstrap stylesheets)

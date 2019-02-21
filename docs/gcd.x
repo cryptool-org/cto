@@ -97,8 +97,8 @@
 ```
 @Add(gcd)
 	return {
-		s{a}: ca, s{u}: u, s{v}: v,
-		s{s}: s, s{t}: t 
+		@s(a): ca, @s(u): u, @s(v): v,
+		@s(s): s, @s(t): t 
 	};
 @end(gcd)
 ```
@@ -119,7 +119,7 @@
 	const f{eq} = (a, b) => {
 		if (! a.equals(b)) {
 			console.error(
-				s{`expected }${a}s{, got }${b}s{`}
+				@s(`expected )${a}@s(, got )${b}@s(`)
 			);
 		}
 	};

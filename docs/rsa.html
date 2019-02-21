@@ -821,7 +821,7 @@ Daher wird ein eigenes Fragment definiert
 <span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span>&gt;&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
 <span class="in2"></span><span class="str">(</span>&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key-length"</span><br/>
-<span class="in2"></span>&gt;&lt;/<span class="var">span</span>&gt; <span class="str">Bit)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span>&gt;&lt;/<span class="var">span</span>&gt; <span class="str">Bit@)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">n elements</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1144,9 +1144,9 @@ und kann daher für beide Lokalisierungen verwendet werden
 <span class="macro">@def(<span class="name">phi label</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-<span class="in2"></span><span class="var">for</span>=<span class="str">"phi"</span>&gt;<span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) =</span><br/>
-<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1) ×</span><br/>
-<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1) =</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span><span class="var">for</span>=<span class="str">"phi"</span>&gt;<span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) =</span><br/>
+<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1@) ×</span><br/>
+<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1@) =</span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"phi"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
@@ -1252,7 +1252,7 @@ Dieser muss eins sein
 <span class="in2"></span><span class="str">Wichtig ist für RSA, dass der Wert</span><br/>
 <span class="in2"></span><span class="str">der </span><span class="fn">φ</span><span class="str">-Funktion teilerfremd zu</span><br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ist (der größte</span><br/>
-<span class="in2"></span><span class="str">gemeinsame Teiler also </span><span class="num">1</span><span class="str"> ist).</span><br/>
+<span class="in2"></span><span class="str">gemeinsame Teiler also </span><span class="num">1</span><span class="str"> ist@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1274,7 +1274,7 @@ Einschränkungen bei der Berechnung von <code><span class="fn">φ</span></code> 
 <span class="in2"></span><span class="str">It is important for RSA that the</span><br/>
 <span class="in2"></span><span class="str">value of the </span><span class="fn">φ</span><span class="str"> function is</span><br/>
 <span class="in2"></span><span class="str">coprime to </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (the largest</span><br/>
-<span class="in2"></span><span class="str">common divisor must be </span><span class="num">1</span><span class="str">).</span><br/>
+<span class="in2"></span><span class="str">common divisor must be </span><span class="num">1</span><span class="str">@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1303,7 +1303,7 @@ Der größte gemeinsame Teiler wird auf der deutschen Seite
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"gcd"</span>&gt;<span class="fn">ggT</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
-<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)) =</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@) =</span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
@@ -1334,7 +1334,7 @@ Und auf der englischen Seite
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"gcd"</span>&gt;<span class="str">gcd(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
-<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)) =</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@) =</span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
 <span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
@@ -1369,11 +1369,11 @@ Und im <code><span class="var">refresh</span></code> wird das Feld aktualisiert
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-<span class="in2"></span><span class="str">Um den Wert von </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) zu</span><br/>
+<span class="in2"></span><span class="str">Um den Wert von </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) zu</span><br/>
 <span class="in2"></span><span class="str">bestimmen, reicht es nicht aus</span><br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> zu kennen. Nur mit der</span><br/>
 <span class="in2"></span><span class="str">Kenntnis von </span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> und </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
-<span class="in2"></span><span class="str">kann man </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) effizient</span><br/>
+<span class="in2"></span><span class="str">kann man </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) effizient</span><br/>
 <span class="in2"></span><span class="str">bestimmen.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
@@ -1391,7 +1391,7 @@ Es wird beschrieben warum der geheime Schlüssel nicht leicht erraten
 <span class="in2"></span><span class="str">aus einem </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> mit der</span><br/>
 <span class="in2"></span><span class="str">Eigenschaft, dass</span><br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − </span><span class="num">1</span><span class="str"> ein</span><br/>
-<span class="in2"></span><span class="str">Vielfaches von </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">) ist.</span><br/>
+<span class="in2"></span><span class="str">Vielfaches von </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) ist.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1407,7 +1407,7 @@ Es wird beschrieben wie der geheime Schlüssel berechnet wird
 <span class="in2"></span><span class="str">gelten:</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = </span><span class="num">1</span><br/>
-<span class="in2"></span><span class="str">(mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span><br/>
+<span class="in2"></span><span class="str">(mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1423,7 +1423,7 @@ Das gleiche wird als Formel ausgedrückt
 <span class="in2"></span><span class="str">die Gleichheit bezüglich einer</span><br/>
 <span class="in2"></span><span class="str">Restklasse gemeint. Es ist genau</span><br/>
 <span class="in2"></span><span class="str">dann </span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt;<br/>
-<span class="in2"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<span class="str">), wenn es ein</span><br/>
+<span class="in2"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<span class="str">@), wenn es ein</span><br/>
 <span class="in2"></span><span class="str">ganzzahliges </span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str"> gibt mit</span><br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − </span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = </span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<br/>
 <span class="in2"></span><span class="str">× </span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
@@ -1454,11 +1454,11 @@ Dann wird der geheime Schlüssel ausgegeben
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">To determine the value of</span><br/>
-<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">), it is not enough</span><br/>
+<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@), it is not enough</span><br/>
 <span class="in2"></span><span class="str">to know</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">. Only with the</span><br/>
 <span class="in2"></span><span class="str">knowledge of</span> &lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">and</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
 <span class="in2"></span><span class="str">we can efficiently determine</span><br/>
-<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
+<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1475,7 +1475,7 @@ Auch auf der englischen Seite wird beschrieben, warum der geheime
 <span class="in2"></span><span class="str">a </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> with the</span><br/>
 <span class="in2"></span><span class="str">property that </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ×</span><br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − </span><span class="num">1</span><span class="str"> is a multiple of</span><br/>
-<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
+<span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1491,7 +1491,7 @@ Und wie der geheime Schlüssel berechnet wird
 <span class="in2"></span><span class="str">following must apply:</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = 1</span><br/>
-<span class="in2"></span><span class="str">(mod φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span><br/>
+<span class="in2"></span><span class="str">(mod φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1506,7 +1506,7 @@ Ebenfalls mit der Formel-Darstellung
 <span class="in2"></span><span class="str">In this case, the mod expression</span><br/>
 <span class="in2"></span><span class="str">means equality with regard to a</span><br/>
 <span class="in2"></span><span class="str">residual class. It is </span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<span class="str">) if and</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) if and</span><br/>
 <span class="in2"></span><span class="str">only if there is an integer a</span><br/>
 <span class="in2"></span><span class="str">with </span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − </span>&lt;<span class="var">i</span>&gt;<span class="var">y</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">z</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
@@ -1651,7 +1651,7 @@ Es wird beschrieben, wie der geheime Schlüssel gewählt wird
 <span class="in2"></span><span class="str">This </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> can always be</span><br/>
 <span class="in2"></span><span class="str">determined (if </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> was</span><br/>
 <span class="in2"></span><span class="str">chosen with the restriction</span><br/>
-<span class="in2"></span><span class="str">described above)—for example</span><br/>
+<span class="in2"></span><span class="str">described above@)—for example</span><br/>
 <span class="in2"></span><span class="str">with the extended Euclidean</span><br/>
 <span class="in2"></span><span class="str">algorithm.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
@@ -1696,12 +1696,12 @@ Hier wird beschrieben, was für Nachrichten verschlüsselt werden können
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">Um eine Nachricht </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str"> mit</span><br/>
 <span class="in2"></span><span class="str">dem öffentlichen Schlüssel</span><br/>
-<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">) zu</span><br/>
+<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) zu</span><br/>
 <span class="in2"></span><span class="str">verschlüsseln, wird</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
-<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span><br/>
+<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">berechnet.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
@@ -1716,12 +1716,12 @@ Das Verschlüsseln besteht aus einer Exponentiation
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">Das Entschlüsseln mit dem privaten</span><br/>
-<span class="in2"></span><span class="str">Schlüssel (</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span><br/>
+<span class="in2"></span><span class="str">Schlüssel (</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
 <span class="in2"></span><span class="str">erfolgt analog mit</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
-<span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
-<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
+<span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
+<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1738,7 +1738,7 @@ Auch das Entschlüsseln ist eine Exponentiation
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ×</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
-<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
+<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1755,7 +1755,7 @@ Auch das Entschlüsseln ist eine Exponentiation
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
-<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span><br/>
+<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1771,7 +1771,7 @@ Es wird kurz beschrieben, wann bei der Exponentiation das gleiche
 <span class="in2"></span><span class="str">wenn</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
-<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span><br/>
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1818,7 +1818,7 @@ Es wird darauf hingewiesen, dass die Reihenfolge keine Rolle spielt
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Encryption and decryption</span>&lt;/<span class="var">h2</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">Internally, this method works only</span><br/>
-<span class="in2"></span><span class="str">with numbers (no text), which are</span><br/>
+<span class="in2"></span><span class="str">with numbers (no text@), which are</span><br/>
 <span class="in2"></span><span class="str">between </span><span class="num">0</span><span class="str"> and </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − </span><span class="num">1</span><span class="str">.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
@@ -1832,14 +1832,14 @@ Auch in der englischen Version wird beschrieben, wie die
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-<span class="in2"></span><span class="str">A message </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (number) is</span><br/>
+<span class="in2"></span><span class="str">A message </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (number@) is</span><br/>
 <span class="in2"></span><span class="str">encrypted with the public key (</span><br/>
-<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">) by</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) by</span><br/>
 <span class="in2"></span><span class="str">calculating:</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
-<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span><br/>
+<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1852,12 +1852,12 @@ Und wie die Verschlüsselung funktioniert
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">Decrypting with the private key</span><br/>
-<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">) is done</span><br/>
+<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) is done</span><br/>
 <span class="in2"></span><span class="str">analogously with</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
-<span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
-<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
+<span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
+<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1873,7 +1873,7 @@ Und es wird beschrieben, wie die Entschlüsselung funktioniert
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ×</span><br/>
-<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> (mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">).</span><br/>
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> (mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1889,12 +1889,12 @@ Und wie das Ergebnis umgeformt werden kann
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
-<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span><br/>
+<span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">if</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
-<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">))</span><br/>
+<span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
@@ -1954,7 +1954,7 @@ In dieser Sektion wird beschrieben, wie de Nachrichten angezeigt
 <span class="in2"></span><span class="str">In den folgenden zwei Textboxen</span><br/>
 <span class="in2"></span><span class="str">können Sie sehen, wie das Ver-</span><br/>
 <span class="in2"></span><span class="str">und Entschlüsseln für konkrete</span><br/>
-<span class="in2"></span><span class="str">Eingaben (Zahlen) funktioniert.</span><br/>
+<span class="in2"></span><span class="str">Eingaben (Zahlen@) funktioniert.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes de</span>)</span><br/>
@@ -1973,7 +1973,7 @@ Hier werden die Nachrichten-Boxen erklärt
 <span class="in2"></span><span class="str">In the following two text boxes,</span><br/>
 <span class="in2"></span><span class="str">you can see how encryption and</span><br/>
 <span class="in2"></span><span class="str">decryption work for concrete</span><br/>
-<span class="in2"></span><span class="str">inputs (numbers).</span><br/>
+<span class="in2"></span><span class="str">inputs (numbers@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes en</span>)</span><br/>
@@ -2730,7 +2730,7 @@ Es wird beschrieben, warum diese Bibliothek benötigt wird
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"authors"</span>&gt;&lt;<span class="var">em</span>&gt;<span class="str">CTOAUTHORS:</span><br/>
 <span class="in2"></span><span class="str">Timm Knape (Dank an</span><br/>
 <span class="in2"></span><span class="str">Bernhard Esslinger für das</span><br/>
-<span class="in2"></span><span class="str">Review)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span><span class="str">Review@)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2743,7 +2743,7 @@ Die Seite endet mit dem Autor-Tag
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"authors"</span>&gt;&lt;<span class="var">em</span>&gt;<span class="str">CTOAUTHORS:</span><br/>
 <span class="in2"></span><span class="str">Timm Knape (thanks to</span><br/>
 <span class="in2"></span><span class="str">Bernhard Esslinger for the</span><br/>
-<span class="in2"></span><span class="str">review)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span><span class="str">review@)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
 <ul><li>
