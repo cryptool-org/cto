@@ -20,8 +20,8 @@
 
 ```
 @Add(gcd)
-	let u = f{bigInt}.one;
-	let v = f{bigInt}.zero;
+	let u = @f(bigInt).one;
+	let v = @f(bigInt).zero;
 	let s = v;
 	let t = u;
 @end(gcd)
@@ -116,7 +116,7 @@
 
 ```
 @def(unit test)
-	const f{eq} = (a, b) => {
+	const @f(eq) = (a, b) => {
 		if (! a.equals(b)) {
 			console.error(
 				@s(`expected )${a}@s(, got )${b}@s(`)

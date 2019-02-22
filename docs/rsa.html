@@ -175,7 +175,7 @@ Dadurch entstehen keine neuen globalen Objekte
 <code>
 <span class="macro">@def(<span class="name">rsa de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"rsa-container"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"container"</span>&gt;<br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"container"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">rsa de</span>)</span><br/>
@@ -192,7 +192,7 @@ Dadurch können Stylesheet-Anpassungen auf RSA-Elemente beschränkt
 <code>
 <span class="macro">@def(<span class="name">rsa en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"rsa-container"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"container"</span>&gt;<br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"container"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">rsa en</span>)</span><br/>
@@ -372,7 +372,7 @@ Die englische Seite enthält die Übersetzung des zweiten Absatzes
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">primes de</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
@@ -385,7 +385,7 @@ Die Eingabe-Elemente werden in einem Formular (dem <code>&lt;<span class="var">f
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">primes en</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
@@ -398,14 +398,14 @@ Die englische Version unterscheidet sich nur in dem übersetzten
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">primes de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"prime-1"</span>&gt;<span class="str">1. Primzahl</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in2"></span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"prime-1"</span> <span class="var">value</span>=<span class="str">"11"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes de</span>)</span><br/>
@@ -421,7 +421,7 @@ Dieses Feld wird mit der kleinen Primzahl <code><span class="num">11</span></cod
 <code>
 <span class="macro">@add(<span class="name">primes de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-not-prime"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/><span class="str">hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/><span class="str">hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes de</span>)</span><br/>
 </code></div>
@@ -446,13 +446,13 @@ Mit der <code><span class="var">hidden</span></code>-Klasse können Elemente aus
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">primes en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"prime-1"</span>&gt;<span class="str">1st prime</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"prime-1"</span> <span class="var">value</span>=<span class="str">"11"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes en</span>)</span><br/>
@@ -465,7 +465,7 @@ Die englische Version hat ein andere Beschriftung
 <code>
 <span class="macro">@add(<span class="name">primes en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-not-prime"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes en</span>)</span><br/>
 </code></div>
@@ -595,14 +595,14 @@ Wirkliche Auswirkungen hat es nicht, da trotzdem weiter gerechnet wird
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">primes de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2.  Primzahl</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in2"></span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"prime-2"</span> <span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes de</span>)</span><br/>
@@ -617,10 +617,10 @@ Auch diese wird mit einer kleinen Primzahl (<code><span class="num">13</span></c
 <code>
 <span class="macro">@add(<span class="name">primes de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
 <span class="in2"></span><span class="str">sind nicht verschieden!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes de</span>)</span><br/>
@@ -634,13 +634,13 @@ denn die beiden Primzahlen dürfen nicht gleich sein
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">primes en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"prime-2"</span>&gt;<span class="str">2nd prime</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"prime-2"</span> <span class="var">value</span>=<span class="str">"13"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes en</span>)</span><br/>
@@ -653,10 +653,10 @@ In der englischen Version wird eine andere Beschriftung verwendet
 <code>
 <span class="macro">@add(<span class="name">primes en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><br/><span class="str"> hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> are not</span><br/>
 <span class="in2"></span><span class="str">different!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes en</span>)</span><br/>
@@ -794,8 +794,8 @@ Und ebenso in der englischen Version
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">definition of n</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">n elements</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
@@ -813,12 +813,12 @@ Daher wird ein eigenes Fragment definiert
 <code>
 <span class="macro">@def(<span class="name">n elements</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"public-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in1"></span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span>&gt;&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key"</span>&gt;&lt;/<span class="var">span</span>&gt;<br/>
 <span class="in2"></span><span class="str">(</span>&lt;<span class="var">span</span> <span class="var">id</span>=<span class="str">"public-key-length"</span><br/>
 <span class="in2"></span>&gt;&lt;/<span class="var">span</span>&gt; <span class="str">Bit@)</span>&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
@@ -952,12 +952,12 @@ Das wird auch in der englischen Version beschrieben.
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@mul(<span class="name">e group</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-gcd-not-1"</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
 <span class="in2"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt; <span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="fn">φ</span>(<span class="var">n</span>)&lt;/<span class="var">i</span>&gt;<br/>
 <span class="in3"></span><span class="str">sind nicht</span><br/>
 <span class="in3"></span><span class="str">teilerfremd.</span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -975,11 +975,11 @@ Zusätzlich gibt es eine Fehlermeldung, wenn das eingegebene <code><span class="
 <code>
 <span class="macro">@def(<span class="name">e group</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"base"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<br/>
 <span class="in2"></span><span class="str">=</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"base"</span> <span class="var">value</span>=<span class="str">"23"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">e group</span>)</span><br/>
 </code></div>
@@ -992,12 +992,12 @@ und können für beide Sprachen verwendet werden
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@mul(<span class="name">e group</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-gcd-not-1"</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
 <span class="in2"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and </span>&lt;<span class="var">i</span>&gt;<span class="fn">φ</span>(<span class="var">n</span>)&lt;/<span class="var">i</span>&gt;<br/>
 <span class="in3"></span><span class="str">have a common divisor,</span><br/>
 <span class="in3"></span><span class="str">they are not coprime.</span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -1126,8 +1126,8 @@ Das gleiche wird in der englischen Version ausgegeben
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">phi label group</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">phi label</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
@@ -1143,12 +1143,12 @@ und kann daher für beide Lokalisierungen verwendet werden
 <code>
 <span class="macro">@def(<span class="name">phi label</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"phi"</span>&gt;<span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) =</span><br/>
 <span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1@) ×</span><br/>
 <span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − 1@) =</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"phi"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">phi label</span>)</span><br/>
 </code></div>
@@ -1285,8 +1285,8 @@ Ebenso auf der englischen Seite
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">ggt de</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
@@ -1301,24 +1301,24 @@ Der größte gemeinsame Teiler wird auf der deutschen Seite
 <code>
 <span class="macro">@def(<span class="name">ggt de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"gcd"</span>&gt;<span class="fn">ggT</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
 <span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@) =</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">ggt de</span>)</span><br/>
 </code></div>
 <ul><li>
-Die lange <code><span class="var">class</span></code>-Definition erzwingt
+Die lange <code><span class="keyword">class</span></code>-Definition erzwingt
   ein eigenes Fragment für das Label
 </li></ul>
 </div>
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">ggt en</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
@@ -1332,16 +1332,16 @@ Und auf der englischen Seite
 <code>
 <span class="macro">@def(<span class="name">ggt en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"gcd"</span>&gt;<span class="str">gcd(</span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
 <span class="in2"></span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@) =</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"gcd"</span>&gt;&lt;/<span class="var">p</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">ggt en</span>)</span><br/>
 </code></div>
 <ul><li>
-Auch die englische Version hat eine lange <code><span class="var">class</span></code>-Definition
+Auch die englische Version hat eine lange <code><span class="keyword">class</span></code>-Definition
 </li></ul>
 </div>
 <div><div>
@@ -1405,7 +1405,7 @@ Es wird beschrieben wie der geheime Schlüssel berechnet wird
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">In Formeln ausgedrückt, muss</span><br/>
 <span class="in2"></span><span class="str">gelten:</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = </span><span class="num">1</span><br/>
 <span class="in2"></span><span class="str">(mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
@@ -1489,7 +1489,7 @@ Und wie der geheime Schlüssel berechnet wird
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">Expressed in formulas, the</span><br/>
 <span class="in2"></span><span class="str">following must apply:</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> × </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = 1</span><br/>
 <span class="in2"></span><span class="str">(mod φ(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
@@ -1546,8 +1546,8 @@ Formeln werden etwas eingerückt
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">private key group</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">private key</span>)</span><br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
@@ -1562,16 +1562,16 @@ Das Feld mit der Ausgabe des geheimen Schlüssels kann in der
 <code>
 <span class="macro">@def(<span class="name">private key</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">label</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"private-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in1"></span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"form-control-static"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"form-control-static"</span><br/>
 <span class="in2"></span><span class="var">id</span>=<span class="str">"private-key"</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">private key</span>)</span><br/>
 </code></div>
 <ul><li>
-Wegen der langen <code><span class="var">class</span></code>-Definition werden die Felder in einem eigenen
+Wegen der langen <code><span class="keyword">class</span></code>-Definition werden die Felder in einem eigenen
   Fragment definiert
 </li></ul>
 </div>
@@ -1698,7 +1698,7 @@ Hier wird beschrieben, was für Nachrichten verschlüsselt werden können
 <span class="in2"></span><span class="str">dem öffentlichen Schlüssel</span><br/>
 <span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) zu</span><br/>
 <span class="in2"></span><span class="str">verschlüsseln, wird</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
@@ -1718,7 +1718,7 @@ Das Verschlüsseln besteht aus einer Exponentiation
 <span class="in2"></span><span class="str">Das Entschlüsseln mit dem privaten</span><br/>
 <span class="in2"></span><span class="str">Schlüssel (</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
 <span class="in2"></span><span class="str">erfolgt analog mit</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
@@ -1734,7 +1734,7 @@ Auch das Entschlüsseln ist eine Exponentiation
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">Damit ist</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ×</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
@@ -1752,7 +1752,7 @@ Auch das Entschlüsseln ist eine Exponentiation
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">RSA nutzt die Eigenschaft aus,</span><br/>
 <span class="in2"></span><span class="str">dass</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
@@ -1769,7 +1769,7 @@ Es wird kurz beschrieben, wann bei der Exponentiation das gleiche
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">wenn</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
@@ -1785,7 +1785,7 @@ Die notwendige Einschränkung wird mit ausgegeben
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> und </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> wurden</span><br/>
 <span class="in2"></span><span class="str">passend gewählt, dass</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
@@ -1836,7 +1836,7 @@ Auch in der englischen Version wird beschrieben, wie die
 <span class="in2"></span><span class="str">encrypted with the public key (</span><br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span> &lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) by</span><br/>
 <span class="in2"></span><span class="str">calculating:</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
@@ -1854,7 +1854,7 @@ Und wie die Verschlüsselung funktioniert
 <span class="in2"></span><span class="str">Decrypting with the private key</span><br/>
 <span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">@) is done</span><br/>
 <span class="in2"></span><span class="str">analogously with</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
@@ -1870,7 +1870,7 @@ Und es wird beschrieben, wie die Entschlüsselung funktioniert
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">This is</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ×</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> (mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@).</span><br/>
@@ -1886,13 +1886,13 @@ Und wie das Ergebnis umgeformt werden kann
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">RSA exploits the property that</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">x</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
 <span class="in3"></span><span class="str">(mod </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">if</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">a</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">b</span>&lt;/<span class="var">i</span>&gt;<span class="str"> (mod </span><span class="fn">φ</span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">@)@)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
@@ -1909,7 +1909,7 @@ Ebenso wird beschrieben, wann die Exponentiation das gleiche
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">As </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> were</span><br/>
 <span class="in2"></span><span class="str">chosen appropriately, it is</span><br/>
-<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="var">class</span>=<span class="str">"form"</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> = </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str">.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
@@ -1956,7 +1956,7 @@ In dieser Sektion wird beschrieben, wie de Nachrichten angezeigt
 <span class="in2"></span><span class="str">und Entschlüsseln für konkrete</span><br/>
 <span class="in2"></span><span class="str">Eingaben (Zahlen@) funktioniert.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes de</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
@@ -1975,7 +1975,7 @@ Hier werden die Nachrichten-Boxen erklärt
 <span class="in2"></span><span class="str">decryption work for concrete</span><br/>
 <span class="in2"></span><span class="str">inputs (numbers@).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
-<span class="in1"></span>&lt;<span class="var">form</span> <span class="var">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes en</span>)</span><br/>
 <span class="in1"></span>&lt;/<span class="var">form</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
@@ -1987,13 +1987,13 @@ Auch in der englischen Version werden die Nachrichten-Boxen erklärt
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">crypt boxes de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"public-key"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Klartext</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"private-message"</span><br/>
 <span class="in3"></span><span class="var">value</span>=<span class="str">"7"</span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -2008,10 +2008,10 @@ Die deutsche Geheimtext-Boxen besteht aus einem Textfeld mit dem
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span>&gt;<br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span>&gt;<br/>
 <span class="in2"></span><span class="str">Die Klartextzahl ist zu groß.</span><br/>
 <span class="in2"></span><span class="str">Der maximale Wert ist</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="var">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
 <span class="in2"></span><span class="str">Bitte wählen Sie größere</span><br/>
 <span class="in2"></span><span class="str">Primzahlen.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -2039,13 +2039,13 @@ Die Richtung kann durch Eingabe in die passenden Textfelder
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"private-key"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Geheimtext</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"public-message"</span><br/>
 <span class="in2"></span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -2059,10 +2059,10 @@ Ein weiteres Textfeld enthält den Geheimtext
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
 <span class="in1"></span>&gt;<span class="str">Die Geheimtextzahl ist zu groß.</span><br/>
 <span class="in2"></span><span class="str">Der maximale Wert ist</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="var">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
 <span class="in2"></span><span class="str">Bitte wählen Sie größere</span><br/>
 <span class="in2"></span><span class="str">Primzahlen.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -2076,13 +2076,13 @@ Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">crypt boxes en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"public-key"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Plaintext</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"private-message"</span><br/>
 <span class="in3"></span><span class="var">value</span>=<span class="str">"7"</span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -2096,10 +2096,10 @@ Auch in der englischen Version gibt es ein Textfeld mit dem Klartext
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
 <span class="in1"></span>&gt;<span class="str">Plaintext number too big. The</span><br/>
 <span class="in2"></span><span class="str">maximum value is</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="var">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str">.</span><br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str">.</span><br/>
 <span class="in2"></span><span class="str">Please choose bigger</span><br/>
 <span class="in2"></span><span class="str">primes.</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
@@ -2122,13 +2122,13 @@ In beiden Sprachen kann der gleiche Pfeil verwendet werden, der die
 <div><div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"private-key"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Ciphertext</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="var">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"public-message"</span><br/>
 <span class="in2"></span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -2142,10 +2142,10 @@ Auch gibt es wieder ein Feld mit dem Geheimtext
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
-<span class="in2"></span><span class="var">class</span>=<span class="str">"row alert alert-danger"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
 <span class="in1"></span>&gt;<span class="str">Ciphertext number too big. The</span><br/>
 <span class="in2"></span><span class="str">maximum value is</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="var">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str">.</span><br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str">.</span><br/>
 <span class="in2"></span><span class="str">Please choose bigger</span><br/>
 <span class="in2"></span><span class="str">primes.</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
@@ -2157,7 +2157,7 @@ Und eine Fehlermeldung, falls der Geheimtext zu groß ist
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">crypt arrow</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">class</span>=<span class="str">"row"</span>&gt;<br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"row"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"direction"</span>&gt;<br/>
 <span class="in3"></span>&lt;<span class="var">svg</span> <span class="var">viewbox</span>=<span class="str">"0 0 50 50"</span><br/>
 <span class="in4"></span><span class="var">width</span>=<span class="str">"50"</span> <span class="var">height</span>=<span class="str">"50"</span>&gt;<br/>

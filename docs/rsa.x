@@ -293,7 +293,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-1">@s(1. Primzahl)
+			@v(for)="prime-1">@s(1. Primzahl)
 			<i>p</i>@s( =)
 		</label>
 		<div class="col-sm-9"><input
@@ -330,7 +330,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-1">@s(1st prime)
+			@v(for)="prime-1">@s(1st prime)
 			<i>p</i>@s( =)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -351,7 +351,7 @@
 
 ```
 @def(setup rsa)
-	const f{queueRefresh} = event => {
+	const @f(queueRefresh) = event => {
 		event.preventDefault();
 		@put(queue refresh);
 	};
@@ -365,7 +365,7 @@
 
 ```
 @add(setup rsa)
-	const f{refresh} = () => {
+	const @f(refresh) = () => {
 		@put(refresh);
 	};
 	refresh();
@@ -388,7 +388,7 @@
 
 ```
 @Def(globals)
-	const f{$} = id => {
+	const @f($) = id => {
 		return (
 			document.getElementById(id)
 		);
@@ -402,18 +402,18 @@
 
 ```
 @Add(globals)
-	const $prime1 = f{$}('prime-1');
+	const $prime1 = @f($)('prime-1');
 	const $err_p_not_prime =
-		f{$}('err-p-not-prime');
+		@f($)('err-p-not-prime');
 @end(globals)
 ```
-* Referenzen auf das Textfeld mit der ID `v{prime-1}` und auf die dazu
+* Referenzen auf das Textfeld mit der ID `@v(prime-1)` und auf die dazu
   gehörende Fehlermeldung werden zwischengespeichert
 
 ```
 @add(setup rsa)
 	$prime1.addEventListener(
-		'input', f{queueRefresh}
+		'input', @f(queueRefresh)
 	);
 @end(setup rsa)
 ```
@@ -442,7 +442,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-2">@s(2.  Primzahl)
+			@v(for)="prime-2">@s(2.  Primzahl)
 			<i>q</i>@s( =)
 		</label>
 		<div class="col-sm-9"><input
@@ -473,7 +473,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="prime-2">@s(2nd prime)
+			@v(for)="prime-2">@s(2nd prime)
 			<i>q</i>@s( =)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -498,11 +498,11 @@
 
 ```
 @Add(globals)
-	const $prime2 = f{$}('prime-2');
+	const $prime2 = @f($)('prime-2');
 	const $err_q_not_prime =
-		f{$}('err-q-not-prime');
+		@f($)('err-q-not-prime');
 	const $err_p_equal_q =
-		f{$}('err-p-equal-q');
+		@f($)('err-p-equal-q');
 @end(globals)
 ```
 * Referenzen auf die zweite Primzahl und die Fehlermeldungen werden
@@ -511,7 +511,7 @@
 ```
 @add(setup rsa)
 	$prime2.addEventListener(
-		'input', f{queueRefresh}
+		'input', @f(queueRefresh)
 	);
 @end(setup rsa)
 ```
@@ -607,7 +607,7 @@
 @def(n elements)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="public-key"><i>n</i>@s( =)
+		@v(for)="public-key"><i>n</i>@s( =)
 			<i>p</i>@s( × )<i>q</i>@s( =)
 	</label>
 	<div class="col-sm-9"><p
@@ -638,9 +638,9 @@
 ```
 @Add(globals)
 	const $public_key =
-		f{$}('public-key');
+		@f($)('public-key');
 	const $public_key_length =
-		f{$}('public-key-length');
+		@f($)('public-key-length');
 @end(globals)
 ```
 * Referenzen auf den öffentlichen Schlüssel im DOM und dessen Länge
@@ -722,7 +722,7 @@
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i> @s(und) <i>f{φ}(n)</i>
+		><i>e</i> @s(und) <i>@f(φ)(n)</i>
 			@s(sind nicht)
 			@s(teilerfremd.)</div>
 	</form>
@@ -730,13 +730,13 @@
 ```
 * In einem Textfeld kann das `e` geändert werden
 * Zusätzlich gibt es eine Fehlermeldung, wenn das eingegebene `e` nicht
-  teilerfremd zu `f{φ}(n)` ist
+  teilerfremd zu `@f(φ)(n)` ist
 
 ```
 @def(e group)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="base"><i>e</i>
+		@v(for)="base"><i>e</i>
 		@s(=)</label>
 	<div class="col-sm-9"><input
 		class="form-control"
@@ -754,7 +754,7 @@
 		</div>
 		<div id="err-gcd-not-1"
 			class="row alert alert-danger"
-		><i>e</i>@s( and )<i>f{φ}(n)</i>
+		><i>e</i>@s( and )<i>@f(φ)(n)</i>
 			@s(have a common divisor,)
 			@s(they are not coprime.)</div>
 	</form>
@@ -765,20 +765,20 @@
 
 ```
 @Add(globals)
-	const $e = f{$}('base');
+	const $e = @f($)('base');
 	const $err_gcd_not_1 =
-		f{$}('err-gcd-not-1');
+		@f($)('err-gcd-not-1');
 @end(globals)
 ```
 * In der Variable `$e` wird eine Referenz des Textfelds gespeichert
 * Ebenso wird eine Referenz der Fehlermeldung gespeichert
 * Ob die Fehlermeldung angezeigt wird kann erst entschieden werden,
-  wenn `f{φ}(n)` berechnet wurde
+  wenn `@f(φ)(n)` berechnet wurde
 
 ```
 @add(setup rsa)
 	$e.addEventListener(
-		'input', f{queueRefresh}
+		'input', @f(queueRefresh)
 	);
 @end(setup rsa)
 ```
@@ -825,7 +825,7 @@
 	<p>
 		@s(RSA benutzt für die Berechnung des)
 		@s(geheimen Schlüssels die Eulersche)
-		f{φ}@s(-Funktion von) <i>n</i>@s(.)
+		@f(φ)@s(-Funktion von) <i>n</i>@s(.)
 		@s(Diese ist definiert als)
 	</p>
 @end(container de)
@@ -837,7 +837,7 @@
 @add(container en)
 	<h2>@s(Secret key)</h2>
 	<p>
-		@s(RSA uses the Euler )f{φ}@s( function)
+		@s(RSA uses the Euler )@f(φ)@s( function)
 		@s(of) <i>n</i> @s(to calculate the)
 		@s(secret key. This is defined as)
 	</p>
@@ -854,14 +854,14 @@
 	</form>
 @end(phi label group)
 ```
-* Die Berechnung von `f{φ}` enthält keinen deutschen oder englischen Text
+* Die Berechnung von `@f(φ)` enthält keinen deutschen oder englischen Text
 * und kann daher für beide Lokalisierungen verwendet werden
 
 ```
 @def(phi label)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="phi">f{φ}@s(()<i>n</i>@s(@) =)
+		@v(for)="phi">@f(φ)@s(()<i>n</i>@s(@) =)
 		@s(()<i>p</i>@s( − 1@) ×)
 		@s(()<i>q</i>@s( − 1@) =)</label>
 	<div class="col-sm-9"><p
@@ -875,25 +875,25 @@
 	@mul(phi label group)
 @end(container de)
 ```
-* `f{φ}` in der deutschen Version definieren
+* `@f(φ)` in der deutschen Version definieren
 
 ```
 @add(container en)
 	@mul(phi label group)
 @end(container en)
 ```
-* `f{φ}` in der englischen Version definieren
+* `@f(φ)` in der englischen Version definieren
 
 ```
 @Add(globals)
 	const $phi = $('phi');
 @end(globals)
 ```
-* Eine Referenz auf den Wert der `f{φ}`-Funktion wird im Code abgelegt
+* Eine Referenz auf den Wert der `@f(φ)`-Funktion wird im Code abgelegt
 
 ```
 @add(refresh)
-	const one = f{bigInt}.one;
+	const one = @f(bigInt).one;
 	const phi = prime1.subtract(one).
 		multiply(prime2.subtract(one));
 	$phi.innerText = phi.toString();
@@ -903,12 +903,12 @@
 
 ```
 @Add(globals)
-	const f{gcd} = (a, b) => {
+	const @f(gcd) = (a, b) => {
 		@Put(gcd);
 	};
 @end(globals)
 ```
-* Um festzustellen, ob `e` und  `f{φ}(n)` teilerfremd sind, wird der
+* Um festzustellen, ob `e` und  `@f(φ)(n)` teilerfremd sind, wird der
   Erweiterte Euklidische Algorithmus verwendet
 * Dieser liefert gleichzeitig noch das inverse Element `d`, das für den
   geheimen Schlüssel benötigt wird
@@ -928,7 +928,7 @@
 	);
 @end(refresh)
 ```
-* Wenn `e` und der Wert der `f{φ}`-Funktion nicht teilerfremd sind, wird
+* Wenn `e` und der Wert der `@f(φ)`-Funktion nicht teilerfremd sind, wird
   eine entsprechende Fehlermeldung angezeigt
 * Das Attribut `a` im `gcd_result` enthält den kleinsten gemeinsamen
   Teiler
@@ -940,16 +940,16 @@
 		@s(Hier wird ausgenutzt, dass) <i>p</i>
 		@s(und )<i>q</i>@s( verschieden sind.)
 		@s(Andernfalls würde sich die )
-		f{φ}@s(-Funktion anders berechnen.)
+		@f(φ)@s(-Funktion anders berechnen.)
 	</p><p>
 		@s(Wichtig ist für RSA, dass der Wert)
-		@s(der )f{φ}@s(-Funktion teilerfremd zu)
+		@s(der )@f(φ)@s(-Funktion teilerfremd zu)
 		<i>e</i>@s( ist (der größte)
-		@s(gemeinsame Teiler also )n{1}@s( ist@).)
+		@s(gemeinsame Teiler also )1@s( ist@).)
 	</p>
 @end(container de)
 ```
-* Einschränkungen bei der Berechnung von `f{φ}` werden auf der deutschen
+* Einschränkungen bei der Berechnung von `@f(φ)` werden auf der deutschen
   Seite ausgegeben
 
 ```
@@ -957,14 +957,14 @@
 	<p>
 		@s(The prerequisit here is that)
 		<i>p</i>@s( and )<i>q</i>@s( are)
-		@s(different. Otherwise, the )f{φ}
+		@s(different. Otherwise, the )@f(φ)
 		@s(function would be calculate )d
 		@s(differently.)
 	</p><p>
 		@s(It is important for RSA that the)
-		@s(value of the )f{φ}@s( function is)
+		@s(value of the )@f(φ)@s( function is)
 		@s(coprime to )<i>e</i>@s( (the largest)
-		@s(common divisor must be )n{1}@s(@).)
+		@s(common divisor must be )1@s(@).)
 	</p>
 @end(container en)
 ```
@@ -986,8 +986,8 @@
 @def(ggt de)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="gcd">f{ggT}@s(()<i>e</i>@s(,)
-		f{φ}@s(()<i>n</i>@s(@)@) =)</label>
+		@v(for)="gcd">@f(ggT)@s(()<i>e</i>@s(,)
+		@f(φ)@s(()<i>n</i>@s(@)@) =)</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="gcd"></p></div>
@@ -1011,8 +1011,8 @@
 @def(ggt en)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="gcd">@s(gcd()<i>e</i>@s(,)
-		f{φ}@s(()<i>n</i>@s(@)@) =)</label>
+		@v(for)="gcd">@s(gcd()<i>e</i>@s(,)
+		@f(φ)@s(()<i>n</i>@s(@)@) =)</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
 		id="gcd"></p></div>
@@ -1022,7 +1022,7 @@
 
 ```
 @Add(globals)
-	const $gcd = f{$}('gcd');
+	const $gcd = @f($)('gcd');
 @end(globals)
 ```
 * Eine Referenz auf das DOM-Element wird gesichert
@@ -1038,11 +1038,11 @@
 ```
 @add(container de)
 	<p>
-		@s(Um den Wert von )f{φ}@s(()<i>n</i>@s(@) zu)
+		@s(Um den Wert von )@f(φ)@s(()<i>n</i>@s(@) zu)
 		@s(bestimmen, reicht es nicht aus)
 		<i>n</i>@s( zu kennen. Nur mit der)
 		@s(Kenntnis von )<i>p</i>@s( und )<i>q</i>
-		@s(kann man )f{φ}@s(()<i>n</i>@s(@) effizient)
+		@s(kann man )@f(φ)@s(()<i>n</i>@s(@) effizient)
 		@s(bestimmen.)
 	</p>
 @end(container de)
@@ -1056,8 +1056,8 @@
 		@s(Der geheime Schlüssel besteht)
 		@s(aus einem )<i>d</i>@s( mit der)
 		@s(Eigenschaft, dass)
-		<i>e</i>@s( × )<i>d</i>@s( − )n{1}@s( ein)
-		@s(Vielfaches von )f{φ}@s(()<i>n</i>@s(@) ist.)
+		<i>e</i>@s( × )<i>d</i>@s( − )1@s( ein)
+		@s(Vielfaches von )@f(φ)@s(()<i>n</i>@s(@) ist.)
 	</p>
 @end(container de)
 ```
@@ -1070,7 +1070,7 @@
 		@s(gelten:)
 	</p><p class="form">
 		<i>e</i>@s( × )<i>d</i>@s( = )1
-		@s((mod )f{φ}@s(()<i>n</i>@s(@)@))
+		@s((mod )@f(φ)@s(()<i>n</i>@s(@)@))
 	</p>
 @end(container de)
 ```
@@ -1108,11 +1108,11 @@
 @add(container en)
 	<p>
 		@s(To determine the value of)
-		f{φ}@s(()<i>n</i>@s(@), it is not enough)
+		@f(φ)@s(()<i>n</i>@s(@), it is not enough)
 		@s(to know) <i>n</i>@s(. Only with the)
 		@s(knowledge of) <i>p</i> @s(and) <i>q</i>
 		@s(we can efficiently determine)
-		f{φ}@s(()<i>n</i>@s(@).)
+		@f(φ)@s(()<i>n</i>@s(@).)
 	</p>
 @end(container en)
 ```
@@ -1125,8 +1125,8 @@
 		@s(The secret key also consists of)
 		@s(a )<i>d</i>@s( with the)
 		@s(property that )<i>e</i>@s( ×)
-		<i>d</i>@s( − )n{1}@s( is a multiple of)
-		f{φ}@s(()<i>n</i>@s(@).)
+		<i>d</i>@s( − )1@s( is a multiple of)
+		@f(φ)@s(()<i>n</i>@s(@).)
 	</p>
 @end(container en)
 ```
@@ -1196,7 +1196,7 @@
 @def(private key)
 	<label
 		class="col-sm-3 control-label"
-		v{for}="private-key"><i>d</i>@s( =)
+		@v(for)="private-key"><i>d</i>@s( =)
 	</label>
 	<div class="col-sm-9"><p
 		class="form-control-static"
@@ -1224,7 +1224,7 @@
 ```
 @Add(globals)
 	const $private_key =
-		f{$}('private-key');
+		@f($)('private-key');
 @end(globals)
 ```
 * Die Referenz auf den geheimen Schlüssel wird in der Anwendung
@@ -1233,7 +1233,7 @@
 ```
 @add(refresh)
 	let private_key = gcd_result.v;
-	const zero = f{bigInt}.zero;
+	const zero = @f(bigInt).zero;
 	if (private_key.lesser(zero)) {
 		private_key =
 			private_key.add(phi);
@@ -1242,8 +1242,8 @@
 		private_key.toString();
 @end(refresh)
 ```
-* Der private Schlüssel ist das multiplikative Inverse modulo `f{φ}(n)`
-* Falls der Schlüssel negative ist, wird der Wert von `f{φ}(n)` hinzu
+* Der private Schlüssel ist das multiplikative Inverse modulo `@f(φ)(n)`
+* Falls der Schlüssel negative ist, wird der Wert von `@f(φ)(n)` hinzu
   addiert
 
 ```
@@ -1285,7 +1285,7 @@
 		@s(Grundsätzlich werden bei diesem)
 		@s(Verfahren keine Texte, sondern)
 		@s(nur Zahlen ver- und entschlüsselt,)
-		@s(die zwischen )n{0}@s( und )<i>n</i>@s( − )1
+		@s(die zwischen )0@s( und )<i>n</i>@s( − )1
 		@s(liegen.)
 	</p>
 @end(container de)
@@ -1300,7 +1300,7 @@
 		@s(()<i>n</i>@s(, )<i>e</i>@s(@) zu)
 		@s(verschlüsseln, wird)
 	</p><p class="form">
-		<i>v{m'}</i>@s( :=)
+		<i>@v(m')</i>@s( :=)
 			<i>m</i><sup><i>e</i></sup>
 			@s((mod )<i>n</i>@s(@))
 	</p><p>
@@ -1317,8 +1317,8 @@
 		@s(Schlüssel ()<i>n</i>@s(, )<i>d</i>@s(@))
 		@s(erfolgt analog mit)
 	</p><p class="form">
-		<i>v{m''}</i>@s( :=)
-			@s(()<i>v{m'}</i>@s(@))<sup><i>d</i></sup>
+		<i>@v(m'')</i>@s( :=)
+			@s(()<i>@v(m')</i>@s(@))<sup><i>d</i></sup>
 			@s((mod )<i>n</i>@s(@).)
 	</p>
 @end(container de)
@@ -1330,14 +1330,14 @@
 	<p>
 		@s(Damit ist)
 	</p><p class="form">
-		<i>v{m''}</i>@s( =)
+		<i>@v(m'')</i>@s( =)
 			<i>m</i><sup><i>e</i>@s( ×)
 			<i>d</i></sup>
 			@s((mod )<i>n</i>@s(@).)
 	</p>
 @end(container de)
 ```
-* `v{m'}` wird durch `m` hoch `e` ersetzt
+* `@v(m')` wird durch `m` hoch `e` ersetzt
 
 ```
 @add(container de)
@@ -1360,7 +1360,7 @@
 		@s(wenn)
 	</p><p class="form">
 		<i>a</i>@s( =)
-			<i>b</i>@s( (mod )f{φ}@s(()<i>n</i>@s(@)@))
+			<i>b</i>@s( (mod )@f(φ)@s(()<i>n</i>@s(@)@))
 	</p>
 @end(container de)
 ```
@@ -1372,7 +1372,7 @@
 		<i>e</i>@s( und )<i>d</i>@s( wurden)
 		@s(passend gewählt, dass)
 	</p><p class="form">
-		<i>v{m''}</i>@s( = )<i>m</i>@s(.)
+		<i>@v(m'')</i>@s( = )<i>m</i>@s(.)
 	</p>
 @end(container de)
 ```
@@ -1399,7 +1399,7 @@
 	<p>
 		@s(Internally, this method works only)
 		@s(with numbers (no text@), which are)
-		@s(between )n{0}@s( and )<i>n</i>@s( − )n{1}@s(.)
+		@s(between )0@s( and )<i>n</i>@s( − )1@s(.)
 	</p>
 @end(container en)
 ```
@@ -1414,7 +1414,7 @@
 		<i>n</i>@s(,) <i>e</i>@s(@) by)
 		@s(calculating:)
 	</p><p class="form">
-		<i>v{m'}</i>@s( :=)
+		<i>@v(m')</i>@s( :=)
 			<i>m</i><sup><i>e</i></sup>
 			@s((mod )<i>n</i>@s(@))
 	</p>
@@ -1429,8 +1429,8 @@
 		@s(()<i>n</i>@s(, )<i>d</i>@s(@) is done)
 		@s(analogously with)
 	</p><p class="form">
-		<i>v{m''}</i>@s( :=)
-			@s(()<i>v{m'}</i>@s(@))<sup><i>d</i></sup>
+		<i>@v(m'')</i>@s( :=)
+			@s(()<i>@v(m')</i>@s(@))<sup><i>d</i></sup>
 			@s((mod )<i>n</i>@s(@).)
 	</p>
 @end(container en)
@@ -1442,7 +1442,7 @@
 	<p>
 		@s(This is)
 	</p><p class="form">
-		<i>v{m''}</i>@s( =)
+		<i>@v(m'')</i>@s( =)
 			<i>m</i><sup><i>e</i>@s( ×)
 			<i>d</i></sup>@s( (mod )<i>n</i>@s(@).)
 	</p>
@@ -1462,7 +1462,7 @@
 		@s(if)
 	</p><p class="form">
 		<i>a</i>@s( =)
-			<i>b</i>@s( (mod )f{φ}@s(()<i>n</i>@s(@)@))
+			<i>b</i>@s( (mod )@f(φ)@s(()<i>n</i>@s(@)@))
 	</p>
 @end(container en)
 ```
@@ -1475,7 +1475,7 @@
 		@s(As )<i>e</i>@s( and )<i>d</i>@s( were)
 		@s(chosen appropriately, it is)
 	</p><p class="form">
-		<i>v{m''}</i>@s( = )<i>m</i>@s(.)
+		<i>@v(m'')</i>@s( = )<i>m</i>@s(.)
 	</p>
 @end(container en)
 ```
@@ -1536,7 +1536,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="public-key"
+			@v(for)="public-key"
 		>@s(Klartext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1578,7 +1578,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="private-key"
+			@v(for)="private-key"
 		>@s(Geheimtext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1609,7 +1609,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="public-key"
+			@v(for)="public-key"
 		>@s(Plaintext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1646,7 +1646,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			v{for}="private-key"
+			@v(for)="private-key"
 		>@s(Ciphertext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1716,7 +1716,7 @@
 ```
 * In den Fehlermeldungen gibt es Elemente, die die größte mögliche
   Nachricht anzeigen
-* Sie sind mit der Klasse `v{max-msg}` markiert
+* Sie sind mit der Klasse `@v(max-msg)` markiert
 * Alle diese Elemente werden in der Variable `$max_msgs` gesammelt
 
 ```
@@ -1746,13 +1746,13 @@
 ```
 @Add(globals)
 	const $private_message =
-		f{$}('private-message');
+		@f($)('private-message');
 	const $public_message =
-		f{$}('public-message');
+		@f($)('public-message');
 	const $err_public_msg_too_big =
-		f{$}('err-public-msg-too-big');
+		@f($)('err-public-msg-too-big');
 	const $err_private_msg_too_big =
-		f{$}('err-private-msg-too-big');
+		@f($)('err-private-msg-too-big');
 @end(globals)
 ```
 * Die Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in
@@ -1879,7 +1879,7 @@
 ```
 @Add(globals)
 	const $direction =
-		f{$}('direction');
+		@f($)('direction');
 @end(globals)
 ```
 * Dieses Element zeigt die Richtung an, in der der Algorithmus läuft
@@ -1887,7 +1887,7 @@
 
 ```
 @add(setup rsa)
-	const f{setEncrypt} = new_encrypt => {
+	const @f(setEncrypt) = new_encrypt => {
 		if (encrypt === new_encrypt) {
 			return;
 		}
@@ -1992,7 +1992,7 @@
 
 ```
 @Add(globals)
-	const f{resetTimer} = () => {
+	const @f(resetTimer) = () => {
 		timer = null;
 	};
 @end(globals)
@@ -2000,15 +2000,15 @@
 
 ```
 @rep(queue refresh)
-	let f{fn} = f{refresh};
+	let @f(fn) = @f(refresh);
 	if (! timer) {
 		refresh();
-		f{fn} = f{resetTimer};
+		@f(fn) = @f(resetTimer);
 	} else {
 		clearTimeout(timer);
 		@put(set fields to pending);
 	}
-	timer = setTimeout(f{fn}, 500);
+	timer = setTimeout(@f(fn), 500);
 @end(queue refresh)
 ```
 * Wenn es noch keine Änderung gab, wird die Änderung sofort
