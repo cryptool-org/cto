@@ -6,7 +6,7 @@
   werden
 
 # 1. Datei-Struktur
-* Dieser Abschnitt beschreibt die Dateien die benötigt werden
+* Dieser Abschnitt beschreibt die Dateien, die benötigt werden
 * Und wie sie aufgebaut werden
 
 ```
@@ -42,8 +42,8 @@
 	</html>
 @end(file: index-en.html)
 ```
-* Die englische Webseite unterscheidet verwendet statt der deutschen
-  Version das Fragment `@s(rsa en)`
+* Die englische Webseite verwendet statt der deutschen Version das
+  Fragment `@s(rsa en)`
 * Der Rest ist identisch
 
 ```
@@ -73,7 +73,7 @@
 ```
 * Im HTML-Header wird die Zeichen-Kodierung auf UTF-8 gestellt
 * Die Bootstrap-Stylesheets werden eingebunden
-* Das app-spezifische Stylesheet `@s(rsa.css)` wird eingebunden
+* Das App-spezifische Stylesheet `@s(rsa.css)` wird eingebunden
 
 ```
 @def(file: ../_ctoApps/rsa/rsa.css)
@@ -112,7 +112,7 @@
 * Das Skript `@s(rsa.js)` wird mit strenger Typ-Prüfung ausgeführt
 * Der gesamte Code wird abgearbeitet, nachdem die Webseite vollständig
   geladen wurde
-* Der gesamte Code wird innerhalb einer JavaScript Funktion definiert
+* Der gesamte Code wird innerhalb einer JavaScript-Funktion definiert
 * Dadurch entstehen keine neuen globalen Objekte
 
 ```
@@ -338,7 +338,7 @@
 	</div>
 @end(primes en)
 ```
-* Die englische Version hat ein andere Beschriftung
+* Die englische Version hat eine andere Beschriftung
 
 ```
 @add(primes en)
@@ -358,7 +358,7 @@
 @end(setup rsa)
 ```
 * Wenn sich Textfelder ändern, muss der RSA-Algorithmus neu
-  durchgeführt werden
+  ausgeführt werden
 * Dazu wird die Funktion `queueRefresh` verwendet
 * Diese sorgt dafür, dass die Neuberechnung nicht zu häufig
   aufgerufen wird
@@ -373,8 +373,8 @@
 ```
 * Wenn sich die Primzahl (oder andere Felder) ändern, muss der
   RSA-Algorithmus neu ausgeführt werden
-* Beim Starten wird die Funktion aufgerufen, um alle Felder zu
-  initialisieren
+* Beim Starten wird die Funktion `@f(refresh)` aufgerufen, um alle Felder
+  zu initialisieren
 
 ```
 @def(queue refresh)
@@ -398,7 +398,8 @@
 * Hilfsfunktion, um ein Element im HTML Document Object Model (DOM) mit
   `id` zu ermitteln
 * Der Name wurde von jQuery übernommen
-* Es können jedoch nur Elemente nach ihrer ID aufgelöst werden
+* Elemente können nur nach ihrer ID aufgelöst werden, nicht nach anderen
+  XPath-Ausdrücken, die jQuery anbietet
 
 ```
 @Add(globals)
@@ -431,7 +432,7 @@
 @end(refresh)
 ```
 * Der erste Primfaktor wird als Zeichenkette aus dem DOM-Modell gelesen
-* Und in große Zahlen konvertiert
+* und in große Zahlen konvertiert
 * Die Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um eine
   Primzahl handelt
 * Die Entscheidung ist nicht sicher, aber dafür sehr schnell
@@ -529,7 +530,7 @@
 	);
 @end(refresh)
 ```
-* Auch de zweite Primzahl wird ausgelesen
+* Auch die zweite Primzahl wird ausgelesen
 * Deren Fehlermeldung wird sichtbar, wenn es sich vermutlich nicht um
   eine Primzahl handelt
 
@@ -617,7 +618,7 @@
 		></span> @s(Bit@))</p></div>
 @end(n elements)
 ```
-* Die Felder bilden ein eigenes Fragment
+* Die Felder bilden ein eigenes Fragment,
 * um den Code übersichtlicher zu
   formatieren
 
@@ -701,7 +702,7 @@
 	</p>
 @end(container de)
 ```
-* Auch der Exponent ist teil des öffentlichen Schlüssels
+* Auch der Exponent `e` ist Teil des öffentlichen Schlüssels
 
 ```
 @add(container en)
@@ -772,7 +773,7 @@
 ```
 * In der Variable `$e` wird eine Referenz des Textfelds gespeichert
 * Ebenso wird eine Referenz der Fehlermeldung gespeichert
-* Ob die Fehlermeldung angezeigt wird kann erst entschieden werden,
+* Ob die Fehlermeldung angezeigt wird, kann erst entschieden werden,
   wenn `@f(φ)(n)` berechnet wurde
 
 ```
@@ -782,7 +783,7 @@
 	);
 @end(setup rsa)
 ```
-* Werden die Primzahlen oder der Exponent geändert, wird die
+* Werden die Primzahlen oder der Exponent `e` geändert, wird die
   Neuberechnung getriggert
 
 ```
@@ -932,7 +933,7 @@
   eine entsprechende Fehlermeldung angezeigt
 * Das Attribut `a` im `gcd_result` enthält den kleinsten gemeinsamen
   Teiler
-* Dieser muss eins sein
+* Dieser muss `1` sein
 
 ```
 @add(container de)
@@ -958,7 +959,7 @@
 		@s(The prerequisit here is that)
 		<i>p</i>@s( and )<i>q</i>@s( are)
 		@s(different. Otherwise, the )@f(φ)
-		@s(function would be calculate )d
+		@s(function would be calculated)
 		@s(differently.)
 	</p><p>
 		@s(It is important for RSA that the)
@@ -1047,7 +1048,7 @@
 	</p>
 @end(container de)
 ```
-* Es wird beschrieben warum der geheime Schlüssel nicht leicht erraten
+* Es wird beschrieben, warum der geheime Schlüssel nicht leicht erraten
   werden kann
 
 ```
@@ -1061,7 +1062,7 @@
 	</p>
 @end(container de)
 ```
-* Es wird beschrieben wie der geheime Schlüssel berechnet wird
+* Es wird beschrieben, wie der geheime Schlüssel berechnet wird
 
 ```
 @add(container de)
@@ -1243,7 +1244,7 @@
 @end(refresh)
 ```
 * Der private Schlüssel ist das multiplikative Inverse modulo `@f(φ)(n)`
-* Falls der Schlüssel negative ist, wird der Wert von `@f(φ)(n)` hinzu
+* Falls der Schlüssel negativ ist, wird der Wert von `@f(φ)(n)` hinzu
   addiert
 
 ```
@@ -1266,7 +1267,7 @@
 		@s(This )<i>d</i>@s( can always be)
 		@s(determined (if )<i>e</i>@s( was)
 		@s(chosen with the restriction)
-		@s(described above@)—for example)
+		@s(described above@) — for example)
 		@s(with the extended Euclidean)
 		@s(algorithm.)
 	</p>
@@ -1488,7 +1489,7 @@
 		@s(could also first raise a message)
 		@s(with the private key, and then)
 		@s(power up the result with the)
-		@s(public key—this is what you use)
+		@s(public key — this is what you use)
 		@s(with RSA signatures.)
 	</p>
 @end(container en)
@@ -1496,7 +1497,7 @@
 * Es wird beschrieben, dass die Reihenfolge keine Rolle spielt
 
 # 6. Nachrichten
-* In dieser Sektion wird beschrieben, wie de Nachrichten angezeigt
+* In diesem Abschnitt wird beschrieben, wie de Nachrichten angezeigt
   und verarbeitet werden
 
 ```
@@ -1545,8 +1546,7 @@
 	</div>
 @end(crypt boxes de)
 ```
-* Die deutsche Geheimtext-Boxen besteht aus einem Textfeld mit dem
-  Klartext
+* Die deutsche Klartext-Box besteht aus einem Textfeld mit dem Klartext
 
 ```
 @add(crypt boxes de)
@@ -1805,7 +1805,7 @@
 	}
 @end(refresh)
 ```
-* Je nach Richtung in die der Algorithmus arbeiten soll, wird
+* Je nach Richtung, in die der Algorithmus arbeiten soll, wird
   entweder der Klartext verschlüsselt
 * oder der Geheimtext entschlüsselt
 
@@ -1997,6 +1997,9 @@
 	};
 @end(globals)
 ```
+* Eine spezielle Funktion setzt nur den Timer zurück
+* Dieser Callback wird verwendet, wenn kein `@f(refresh)` nach dem
+  Ablauf des Timers getriggert werden muss
 
 ```
 @rep(queue refresh)
