@@ -37,6 +37,11 @@ function BarcodeStandardChange() {
     document.getElementById("BarcodeImage").style.visibility = "hidden";
 }
 
+function BarcodeDataChange() {
+    var barcodeResult = document.getElementById("BarcodeResult")
+    barcodeResult.innerHTML = "<font color='#000000'>${{ barcode.CONTENT_RESULT_DEFAULT }}$</font>"
+}
+
 function BarcodeGenerate() {
     var barcodeStandard = document.getElementById("BarcodeStandard").value;
     var barcodeData = document.getElementById("BarcodeData").value;
@@ -49,4 +54,5 @@ function BarcodeDetailsSet(_details) {
 
 function BarcodeImageValid(_valid) {
     document.getElementById("BarcodeImage").style.visibility = _valid ? "visible" : "hidden";
+    document.getElementById("BarcodeResult").innerHTML = _valid ? "<font color='#005000'>${{ barcode.CONTENT_RESULT_SUCCESS }}$</font>" : "<font color='#800000'>${{ barcode.CONTENT_RESULT_FAIL }}$</font>"
 }

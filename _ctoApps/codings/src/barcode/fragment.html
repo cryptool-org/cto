@@ -1,31 +1,47 @@
-<p>${{ barcode.DESCRIPTION }}$</p>
-
- <table style="width:50%">
-    <tr>
-        <td>Barcode Standard<td>
-        <td align="left">
-            <select id="BarcodeStandard" onchange="BarcodeStandardChange()">
-                <option value="CODABAR">CODABAR</option>
-                <option value="CODE128">CODE128</option>
-                <option value="CODE39">CODE39</option>
-                <option value="EAN13">EAN13</option>
-                <option value="EAN8">EAN8</option>
-                <option value="UPC">UPC</option>
+<div class="barcode">
+    <table class="barcode">
+        <tr>
+            <td class="barcode_description" colspan="2">${{ barcode.DESCRIPTION }}$</td>
+        </tr>
+        <tr>
+            <td class="barcode_label">${{ barcode.LABEL_STANDARD }}$</td>
+            <td class="barcode_content">
+                <select class="barcode_select" id="BarcodeStandard" onchange="BarcodeStandardChange()">
+                    <option value="CODABAR">CODABAR</option>
+                    <option value="CODE128">CODE128</option>
+                    <option value="CODE39">CODE39</option>
+                    <option value="EAN13">EAN13</option>
+                    <option value="EAN8">EAN8</option>
+                    <option value="UPC">UPC</option>
             </select>
-        </td>
-    </tr>
-    <tr>
-        <td>Barcode Details</td>
-        <td id="BarcodeDetails">${{ barcode.DETAILS_CODABAR }}$</td>
-    </tr>
-    <tr>
-        <td>Barcode Data</td>
-        <td><input id="BarcodeData" value="DATA"></td>
-    </tr>
-    <tr>
-        <td>Barcode Generation</td>
-        <td><button onclick="BarcodeGenerate()">Generate</button>
-    </tr>
-</table>
-
-<canvas id="BarcodeImage"></canvas>
+            </td>
+        </tr>
+        <tr>
+            <td class="barcode_label">${{ barcode.LABEL_DETAILS }}$</td>
+            <td class="barcode_content" id="BarcodeDetails">
+                ${{ barcode.DETAILS_CODABAR }}$
+            </td>
+        </tr>
+        <tr>
+            <td class="barcode_label">${{ barcode.LABEL_DATA }}$</td>
+            <td class="barcode_content">
+                <input class="barcode_input" id="BarcodeData" value="" onkeyup="BarcodeDataChange()">
+            </td>
+        </tr>
+        <tr>
+            <td class="barcode_label">${{ barcode.LABEL_GENERATION }}$</td>
+            <td class="barcode_content">
+                <button class="barcode_button" onclick="BarcodeGenerate()">${{ barcode.BUTTON_GENERATION }}$</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="barcode_canvas" colspan="2">
+                <canvas id="BarcodeImage"></canvas>
+            </td>
+        </tr>
+        <tr>
+            <td class="barcode_label">${{ barcode.LABEL_RESULT }}$</td>
+            <td class="barcode_content" id="BarcodeResult">${{ barcode.CONTENT_RESULT_DEFAULT }}$</td>
+        </tr>
+    </table>
+</div>
