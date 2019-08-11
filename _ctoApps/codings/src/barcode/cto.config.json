@@ -4,6 +4,7 @@
     "./barcode.css"
   ],
   "scripts": [
+    "./JsBarcode.all.min-%lang%.js",
     "./barcode-%lang%.js",
     "./barcodeutitilities-%lang%.js",
     "./barcodegenerator-%lang%.js"
