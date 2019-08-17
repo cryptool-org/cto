@@ -1,7 +1,6 @@
 "use strict";
 
 window.addEventListener('load', function() {
-    @@include('../common/base.js');
     @@include('./barcodeutilities.js');
     @@include('./barcodegenerator.js');
 });

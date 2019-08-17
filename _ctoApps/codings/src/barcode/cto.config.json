@@ -4,11 +4,9 @@
     "./barcode.css"
   ],
   "scripts": [
-    "./JsBarcode.all.min-%lang%.js",
+    "./barcodeutilities-%lang%.js",
     "./barcode-%lang%.js",
-    "./barcodeutitilities-%lang%.js",
     "./barcodegenerator-%lang%.js"
   ],
   "html": "fragment-%lang%.html"
 }
-
