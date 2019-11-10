@@ -1,6 +1,9 @@
 .aestetics .hidden {
 	display: none;
 }
+.aestetics p {
+	margin: 0 0 10px;
+}
 .aestetics {
 	position: relative;
 }
@@ -256,11 +259,9 @@
 .aestetics .badge-aes256, .aestetics .badge-aes192, .aestetics .badge-aes128, .aestetics .badge-rijndael, .aestetics .badge-unknown {
 	display: inline-block;
 	padding: 2px 9px 3px;
-	font-size: 12px;
-	line-height: 1;
+	line-height: normal;
 	border-radius: 100px;
 	margin-right: 6px;
-	transform: translateY(-2px);
 }
 /*noinspection CssUnusedSymbol*/
 .aestetics .badge-aes256, .aestetics .badge-aes192, .aestetics .badge-aes128 {
@@ -354,6 +355,8 @@
 	top: 5%;
 	width: 90%;
 	height: 90%;
+    width: 26em;
+    height: 10em;
 	font-family: monospace;
 	font-size: 17px;
 }
@@ -363,3 +366,4 @@
 .aestetics .flex-grow {
 	flex-grow: 2;
 }
+
