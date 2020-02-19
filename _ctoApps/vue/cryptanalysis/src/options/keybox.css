@@ -1,0 +1,66 @@
+#keyBox {
+    width: 100%;
+    float: left;
+}
+
+#keyBox select {
+    display: block;
+    float: left;
+}
+
+#keyBox .select select {
+    padding-left: 1em;
+    margin-left: 0.5em;
+    width: 15%;
+}
+
+#keyBox .select p {
+    float: left;
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+#keyBox label {
+    width: 15em; /*35%*/
+    float: left;
+}
+
+#keyBox .keyBoxOptions {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: .2em 0;
+}
+
+#keyBox #key {
+    width: 95%;
+    float: left;
+}
+
+#keyBox #key:focus {
+    border: 0.1em solid #229222;
+}
+
+#keyBox #key.error {
+    border: 0.1em solid crimson;
+}
+
+#keyBox .form-control-feedback {
+    top: 2em;
+    right: 2.5em;
+}
+
+#keyBox .form-control {
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+@media screen and (max-width: 560px) {
+    #keyBox .form-control-feedback {
+        right: 1.3em;
+    }
+}

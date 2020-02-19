@@ -1,0 +1,19 @@
+
+.containerFluid #alphabetOptions {
+    float: left;
+    margin: 0 0.5em;
+    border: 0.1em solid #ccc;
+}
+.containerFluid #alphabetOptions ul {
+    list-style-type:none;
+    margin: 0.5em;
+    text-indent: 0;
+    /* padding-left: 0; */;
+}
+.containerFluid #alphabetOptions li {
+    display: inline-block;
+    margin-right: 0.7em;
+}
+.containerFluid #alphabetOptions label {
+    display: inline;
+}

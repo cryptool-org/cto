@@ -1,0 +1,103 @@
+{
+  "de" : {
+    "ciphername": "Caesar-Chiffre / Rot-13",
+
+    "accept" : "&Uuml;bernehmen",
+    "alphabet" : "Schlüssel-Alphabet zusammenfügen",
+    "alphabetClose" : "Schlüssel-Alphabet schließen",
+    "alphabetlength" : "Alphabet-Länge",
+    "alphabetOptions" : "Schlüssel und Alphabet",
+    "options" : "Optionen",
+    "alpha_uppercase" : "Großbuchstaben",
+    "alpha_blanks" : "Leerzeichen",
+    "alpha_digits" : "Ziffern",
+    "alpha_puctuationmarks" : "Satzzeichen",
+    "alpha_lowercase" : "Kleinbuchstaben",
+    "alpha_umlauts" : "Umlaute",
+
+    "casesensitive" : "Case-sensitiv",
+    "characters" : "Zeichen",
+    "cleanspace" : "In 5er Blöcken anzeigen",
+    "ciphertext" : "Geheimtext",
+    "ciphertextabc" : "Geheimtext-Alphabet",
+
+    "encrypt" : "Verschlüsseln",
+
+    "decrypt" : "Entschlüsseln",
+    "default_text" : "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern",
+
+    "key" : "Schlüssel",
+    "length" : "Länge",
+
+    "plaintext" : "Klartext",
+    "plaintextabc" : "Klartext-Alphabet",
+
+    "ownAlphabet" : "Öffnen Sie Ihr eignes Alphabet",
+    "ownButton" : "Eigenes Alphabet definieren",
+    "ownButtonClose" : "Eigenes Alphabet schließen",
+    "run" : "Caesar starten",
+
+    "sings" : "Zeichen",
+    "signstext" : "Nicht im Alphabet enthaltene Zeichen beibehalten",
+    "substitution" : "Substitution",
+    "substitution_matrix" : "Substitutionsmatrix",
+    "substitution_options" : "Substitutionseinstellungen (an/aus)",
+
+    "uppercase" : "COM_CTO_CAESAR_UPPERCASE",
+    "whitespace": "Ohne Leerzeichen",
+    "warningLength": "WARNUNG - Alphabet-Länge muss gleich sein",
+    "warningChars": "Die Alphabete müssen die gleichen Buchstaben enthalten",
+    "warningClash": "WARNUNG - Buchstaben-Konflikt"
+  },
+
+  "en" : {
+    "ciphername": "Caesar Cipher / Rot-13",
+
+    "accept" : "Accept",
+    "alphabet" : "Parse key alphabet",
+    "alphabetClose" : "Close parsing key alphabet",
+    "alphabetlength" : "Alphabet length",
+    "alphabetOptions" : "Key and alphabet",
+    "options" : "Options",
+    "alpha_uppercase" : "Upper case",
+    "alpha_blanks" : "Blanks",
+    "alpha_digits" : "Digits",
+    "alpha_puctuationmarks" : "Punctuation marks",
+    "alpha_lowercase" : "Lower case",
+    "alpha_umlauts" : "Umlauts",
+
+    "casesensitive" : "Case sensitive",
+    "characters" : "characters",
+    "cleanspace" : "Blocks of 5",
+    "ciphertext" : "Ciphertext",
+    "ciphertextabc" : "Ciphertext alphabet",
+
+    "encrypt" : "Encrypt",
+
+    "decrypt" : "Decrypt",
+    "default_text" : "The quick brown fox jumps over the lazy dog",
+
+    "key" : "Key",
+    "length" : "Length",
+
+    "plaintext" : "Plaintext",
+    "plaintextabc" : "Plaintext alphabet",
+
+    "ownAlphabet" : "Open your own alphabet",
+    "ownButton" : "Define own alphabet",
+    "ownButtonClose" : "Close own alphabet",
+    "run" : "Run caesar",
+
+    "sings" : "Signs",
+    "signstext" : "Keep non-alphabet characters",
+    "substitution" : "Substitution",
+    "substitution_matrix" : "Substitution matrix",
+    "substitution_options" : "Substitution options (on/off)",
+
+    "uppercase" : "COM_CTO_CAESAR_UPPERCASE",
+    "whitespace": "No whitespaces",
+    "warningChars": "Both alphabet must contained the same chars",
+    "warningLength": "WARNING - Alphabet length must equal",
+    "warningClash": "WARNING - Letter clash"
+  }
+}

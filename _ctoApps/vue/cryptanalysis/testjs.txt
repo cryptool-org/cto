@@ -1,0 +1,68 @@
+function encrypt(block, expandedKey) {
+  var i;  
+  if (!block || block.length*bytesPerBlock != blockSizeInBits)
+     return; 
+  if (!expandedKey)
+     return;
+
+  block = packBytes(block);
+  addRoundKey(block, expandedKey);
+  for (i=1; i<Nr; i++) 
+    Round(block, expandedKey.slice(Nb*i, Nb*(i+1)));
+  FinalRound(block, expandedKey.slice(Nb*Nr)); 
+  return unpackBytes(block);
+}
+
+#####  AES-Verschlüsselung (ECB).
+?HX?c6d8be7f4a161f0ab7f47c9a94a93fe8ee29d23a47a73fb1263a7f71730d
+724b1ab7f3ac6e1bd2dbbf1c26d3181e0b5526abd079c27d7596a8eb80ba97c5
+189b43f0a23830053cc62d39c303bd170d76b26aba991a13654cb8edf9bcc9e9
+ada6a9fe9de118207f8e7a79409a86e72f7076296fa0df2eaab14d42d635aee7
+d7e30fbc0fbdb625751a5dab8d1fcd184ec6a35effc7a63b6856474ee55b9042
+8f61e25f12c3456696d8283fd1a58b51bead86a60330cac707afaed870c0438e
+036db23c7c384ae7748930f1185bca82c4a880360ae7ac80782750df1ffda3cb
+77a42aed4c32742fa51fc5afcf62421ac3a341ed8147fdb11f485ef6dec292f8
+407c28d02dbab9de6835c30d41ca9356a4607dcbe27bbcf8476ffeb706b88a56
+38f434ebe8ce37de657b228055aa71aaec9dd42ee24d2aefe14b6e958df771d3
+48e83acf61b045d7bcf77500c5eb739e4513cdf5a2ef2a032a47e0f63f6bfef8
+70252bc0e1b74134b4d317fe30ef2a74836c48bb0f42f67608bf09641b0f3b1c
+01a9?H
+#####  Ende der verschlüsselten Nachricht
+
+hx = 'AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB';
+
+#####  AES-Verschlüsselung (ECB). 
+?HX?eb1abfa46c34ee3d27fb03e50cf1a93e5a3f983fb20a3e9d4eefc5e2e18e
+cd4a0f993a2e25eb3284ff5858bcc9a090e1d30ab4328e90f73d6a2a4e93ec24
+88d63f7eccb14cd9020dffccf1c915a32eaa73eb62adff968037b29764408216
+bb86f81d77e3e1f3559c64b2e17068b93a048c1d0ab81ef8d835a51a0e29887b
+a942ebd763319029184cefe1874698796707d119e333f028fb2bd1d22b125479
+fe390f5a169e8e6a466d7b3f18232b338dc5723c63dad06ea982452f876f2cf7
+fca542c297dbef78935be26bb0ea25fb2ccb27958c6486f0b44d28e45dced32e
+2264d04c732d1256ff6bf9c86ef1fdcbcd2d2e49becb4360730f2450210139c1
+7cf6c1a12e07be781ae0d8a773813cf493fe5018ac2904bfdcfaf04455f7a050
+15bb788f23bf5c7935068e143ca32174209ba94b98d6914fb1c748cc26748f4b
+bac95ac0e485524de3bd6a9e9336c55e05438a0bf1bc091109dc82f0f7308526
+9f48ac555f01a1bf865ac7a5e76bcf01731ac44cd145d6528ebac178268eaa68
+5cd1?H
+#####  Ende der verschlüsselten Nachricht
+
+hx = 'AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB';
+
+#####  AES-Verschlüsselung (ECB). 
+?HX?80a6d462416bd8b2db83e273bf261f587faace8d653d91c2adfd48ec8b1f
+bfbcbb7198d7a20d8b3eb70b519c8d4e21ad1a6d7f8932ba215173f702334e96
+54f7cec4797d868f20a22c6b856af7990c40e6de17ad476b939fe217ad192b2b
+10a9d503750c39103608ce6d8768d3a411a0c75b3950385dcabd67dc616619c8
+6d9c6f305072baee013da31d34f1f619c1d4e2c1838f6f4aefc18ccbaafe791a
+dd53ea3b80c107eacc86ae3d865ade8b57e5d7ffec8692506d948850c0bce3a2
+23132e64419199ebd2602d81edae732b909f0c5555781b17853a0be636ffa81c
+536401df62ce9dcff2cabcc7a2d90050b453c6e86f078e443898ff59c29d0344
+740fed062833ae255e0f3d409d6766000b29aa99c4c75c1627de90de9b6e4b14
+0c41aad835bc13198dc503c91a2fdbdc120af735c59995eafd36ea6d64a25248
+89d85b9762a7efc17d4b5b01befabf41690a71bd82eee65789ae49102897f50e
+d9400961d8c3281798d5257d64af8f3e49b06e4079cbf118df510b0cf325a5cc
+d297?H
+#####  Ende der verschlüsselten Nachricht
+			
+hx = 'AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB AA BB';

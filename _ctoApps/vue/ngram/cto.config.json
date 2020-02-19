@@ -1,0 +1,25 @@
+{
+  "name": "N-Gram Analysis",
+  "meta": {
+    "description": "Create and solve ciphers",
+    "keywords": "N-Gram Analysis with Vue",
+    "author": "© D.Kuche 2017"
+  },
+  "styles" : [
+    "dist/build.css"
+  ],
+  "scripts": [
+    {"file" : "../../vendor/jquery-3.1.1.min.js", "type" : "text/javascript"},
+    {"file" : "env.js", "type" : "text/javascript"},
+    {"file" : "../../loaders/jQueryAppLoader.js", "type" : "text/javascript"}
+  ],
+  "body": [	
+	{"file" : "dist/build.js", "content" : ""}
+  ],
+  "tag" :  {
+    "name" : "#app",
+    "btnText"   : "See in action",
+    "ovlTitle"  : "N-Gram Analysis",
+    "ovlFooter" : "CrypTool Online"
+  }
+}
