@@ -1,0 +1,11 @@
+{
+  "NUMBER_TO_FACTORIZE": "Zu faktorisierende Zahl",
+  "EXAMPLE_NUMBERS": "Beispielzahlen zum Faktorisieren",
+  "FACTORIZE_BUTTON": "Faktorisieren",
+  "FACTORS_OUTPUT": "Gefundene Faktoren",
+  "FACTORIZED_NUMBER": "Faktorisierte Zahl:",
+  "FACTORIZATION_STATUS": "Status der Faktorisierung",
+  "ERROR_MESSAGE": "Ein Fehler ist aufgetreten",
+  "FACTORIZATION_STARTING": "Starte Faktorisierung...",
+  "FACTORIZATION_COMPLETED": "Faktorisierung abgeschlossen!"
+}
