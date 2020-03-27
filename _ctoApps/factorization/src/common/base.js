@@ -7,13 +7,30 @@ function hideOutputPanels() {
 
 hideOutputPanels(); //hide on startup
 
+function setBitCountInfo(numberInputVal) {
+    let bitInfo = "${{ base.MISSING_INPUT_NUMBER }}$";
+    if (numberInputVal) {
+        const bits = getBitCount(numberInputVal);
+        if (bits !== null) {
+            bitInfo = `${{ base.INPUT_NUMBER_BIT_COUNT_INFO }}$`;
+        }
+    }
+    
+    jQuery('#number-input-bits-count-info').html(bitInfo);
+}
+
+setBitCountInfo(null);
+
 function onNumberInputChange() {
     hideOutputPanels(); //Hide output panels (if visible) on input change
 
     let inputEmpty = true;
-    if (jQuery('#number-input').val()) {
+    const numberInputVal = jQuery('#number-input').val();
+    if (numberInputVal) {
         inputEmpty = false;
     }
+    setBitCountInfo(numberInputVal);
+
     //Hide "factorize" button if input is empty:
     jQuery('#factorize-button').prop("disabled", inputEmpty);
 }
@@ -70,4 +87,17 @@ const factorizer = new Factorizer(algo, state);
 
 function factorize() {
     factorizer.factorize(state.$numberInput.val());
+}
+
+function getBitCount(numberExpression) {
+    try {
+        const parser = exprEval.Parser;
+        const bitCount = parser.evaluate(`floor(log2(${numberExpression}))+1`);
+        if (bitCount < 0) {
+            return 0;
+        }
+        return bitCount;
+    } catch (e) {
+        return null;
+    }
 }

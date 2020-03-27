@@ -7,5 +7,7 @@
   "FACTORIZATION_STATUS": "Status of factorization",
   "ERROR_MESSAGE": "An error occured",
   "FACTORIZATION_STARTING": "Starting factorization...",
-  "FACTORIZATION_COMPLETED": "Factorizing completed!"
+  "FACTORIZATION_COMPLETED": "Factorizing completed!",
+  "MISSING_INPUT_NUMBER": "Missing input number",
+  "INPUT_NUMBER_BIT_COUNT_INFO": "Input number consists of ${bits} bits"
 }

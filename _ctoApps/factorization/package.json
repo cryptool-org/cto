@@ -25,6 +25,7 @@
     "through2": "^2.0.3"
   },
   "dependencies": {
+    "expr-eval": "^2.0.2",
     "tiny-worker": "^2.3.0"
   }
 }

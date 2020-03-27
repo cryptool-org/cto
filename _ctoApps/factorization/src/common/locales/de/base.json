@@ -7,5 +7,7 @@
   "FACTORIZATION_STATUS": "Status der Faktorisierung",
   "ERROR_MESSAGE": "Ein Fehler ist aufgetreten",
   "FACTORIZATION_STARTING": "Starte Faktorisierung...",
-  "FACTORIZATION_COMPLETED": "Faktorisierung abgeschlossen!"
+  "FACTORIZATION_COMPLETED": "Faktorisierung abgeschlossen!",
+  "MISSING_INPUT_NUMBER": "Fehlende Eingabezahl",
+  "INPUT_NUMBER_BIT_COUNT_INFO": "Eingabezahl besteht aus ${bits} Bits"
 }
