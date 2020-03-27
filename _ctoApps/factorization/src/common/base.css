@@ -33,3 +33,15 @@
 #number-input {
     width: 250px;
 }
+
+#factors-output, #example-numbers {
+    text-indent: 0;
+}
+
+#factors-output li { 
+    margin-top: 0;
+}
+
+#factorize-button {
+    margin-left: 1em;
+}
