@@ -30,9 +30,6 @@
     border: 1px solid transparent;
     border-radius: 4px;
 }
-#number-input {
-    width: 250px;
-}
 
 #factors-output, #example-numbers {
     text-indent: 0;
@@ -44,4 +41,8 @@
 
 #factorize-button {
     margin-left: 1em;
+}
+
+#number-input-bits-count-info {
+    font-size: 0.9em
 }
