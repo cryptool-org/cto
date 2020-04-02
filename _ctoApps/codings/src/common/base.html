@@ -17,6 +17,10 @@
         <br><br>
     }
 
+    @@if (name === "huffman") {
+    <p>${{ base.HUF_REFERENCE }}$</p><br>
+    }
+
     <form id="parameters">
         <div class="form-group">
             <label for="plain">${{ base.PLAIN_TEXT }}$</label>
@@ -31,7 +35,14 @@
             <label for="cipher">${{ base.ENCRYPTED_TEXT }}$</label>
             <textarea id="cipher" class="form-control" rows="6">@@encrypted</textarea>
         </div>
-        <br>
+        @@if (name === "huffman") {
+        <div class="form-group">
+            <label for="plain">${{ base.ASCII }}$</label>
+            <textarea id="ascii_encode" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+        <div class="form-group" id="calculated">
+        </div>
+        }
     </form>
 @@include('./options.html', {
     "name": "@@name"

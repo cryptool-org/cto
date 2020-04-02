@@ -1,0 +1,7 @@
+{
+  "TITLE": "Huffman-Kodierung",
+  "DESCRIPTION": "<h1>Die Huffman-Kodierung</h1>",
+  "SAMPLE_PLAIN": "aababcabcd",
+  "SAMPLE_ENCRYPTED": "0010010111010111110",
+  "SAMPLE_KEY": "Geheimer Schluessel"
+}
