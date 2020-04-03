@@ -1,0 +1,7 @@
+{
+  "TITLE": "Morsecode",
+  "DESCRIPTION": "<h1>Morsecode</h1>",
+  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
+  "SAMPLE_ENCRYPTED": "- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --. .-.-.- ",
+  "SAMPLE_KEY": "Secret Key"
+}

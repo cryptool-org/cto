@@ -1,0 +1,10 @@
+{
+  "name": "huffman",
+  "styles": [
+    "./huffman.css"
+  ],
+  "scripts": [
+    "./huffman-de.js"
+  ],
+  "html": "fragment-%lang%.html"
+}
