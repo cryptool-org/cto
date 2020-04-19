@@ -3,7 +3,7 @@
 class Msieve {
 
     constructor() {
-        this.worker = new Worker('./worker/msieveWorker.js');
+        this.worker = new Worker("@@msieveWorkerPath");
         
         this.workerReadinessPromise = new Promise((resolve, reject) => {
             this.worker.addEventListener('message', e => {

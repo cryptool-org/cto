@@ -1,48 +1,66 @@
 "use strict";
 
 function hideOutputPanels() {
-    $('#status-panel').hide();
-    $('#factors-output-panel').hide();
+    jQuery('#status-panel').hide();
+    jQuery('#factors-output-panel').hide();
 }
 
 hideOutputPanels(); //hide on startup
+
+function setBitCountInfo(numberInputVal) {
+    let bitInfo = "${{ base.MISSING_INPUT_NUMBER }}$";
+    if (numberInputVal) {
+        const bits = getBitCount(numberInputVal);
+        if (bits !== null) {
+            bitInfo = `${{ base.INPUT_NUMBER_BIT_COUNT_INFO }}$`;
+        }
+    }
+    
+    jQuery('#number-input-bits-count-info').html(bitInfo);
+}
+
+setBitCountInfo(null);
 
 function onNumberInputChange() {
     hideOutputPanels(); //Hide output panels (if visible) on input change
 
     let inputEmpty = true;
-    if ($('#number-input').val()) {
+    const numberInputVal = jQuery('#number-input').val();
+    if (numberInputVal) {
         inputEmpty = false;
     }
+    setBitCountInfo(numberInputVal);
+
     //Hide "factorize" button if input is empty:
-    $('#factorize-button').prop("disabled", inputEmpty);
+    jQuery('#factorize-button').prop("disabled", inputEmpty);
 }
 
-$('#number-input').on('input', function() {
+jQuery('#number-input').on('input', function() {
     onNumberInputChange();
 });
 
-$('.example-input').on('click', function () {
-    const exampleNumber = $(this).text();
-    $('#number-input').val(exampleNumber);
+jQuery('.example-input').on('click', function (event) {
+    event.preventDefault();
+    const exampleNumber = jQuery(this).text();
+    jQuery('#number-input').val(exampleNumber);
     onNumberInputChange();
 });
 
-$('#factorize-button').on('click', event => {
+jQuery('#factorize-button').on('click', event => {
     event.preventDefault();
     factorize();
 });
 
 const state = new function State() {
-    this.$numberInput = $('#number-input');
-    this.$exampleInputs = $('.example-input');
-    this.$factorizeButton = $('#factorize-button');
-    this.$statusPanel = $('#status-panel');
-    this.$progressbar = $('#progressbar');
-    this.$statusText = $('#status-text');
-    this.$factorsOutputPanel = $('#factors-output-panel');
-    this.$factorsOutput = $('#factors-output');
-    this.$factoredNumber = $('#factored-number');
+    this.$numberInput = jQuery('#number-input');
+    this.$exampleInputs = jQuery('.example-input');
+    this.$factorizeButton = jQuery('#factorize-button');
+    this.$statusPanel = jQuery('#status-panel');
+    this.$progressbar = jQuery('#progressbar');
+    this.$statusText = jQuery('#status-text');
+    this.$factorsOutputPanel = jQuery('#factors-output-panel');
+    this.$factorsOutput = jQuery('#factors-output');
+    this.$factoredNumber = jQuery('#factored-number');
 
     this.disableInputs = () => {
         this.$factorizeButton.prop("disabled", true);
@@ -69,4 +87,17 @@ const factorizer = new Factorizer(algo, state);
 
 function factorize() {
     factorizer.factorize(state.$numberInput.val());
+}
+
+function getBitCount(numberExpression) {
+    try {
+        const parser = exprEval.Parser;
+        const bitCount = parser.evaluate(`floor(log2(${numberExpression}))+1`);
+        if (bitCount < 0) {
+            return 0;
+        }
+        return bitCount;
+    } catch (e) {
+        return null;
+    }
 }

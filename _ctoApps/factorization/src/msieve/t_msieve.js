@@ -5,7 +5,7 @@ const mockedState = require('../../src/test/mocked_state.js');
 var Worker = require("tiny-worker");    //Use "tiny-worker" for running msieve worker in unit test
 
 @@include('../common/factorizer.js')
-@@include('../common/msieve.js')
+@@include('../common/msieve.js', { "msieveWorkerPath": "./worker/msieveWorker.js" })
 
 describe('Msieve', () => {
     let state;
