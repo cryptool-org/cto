@@ -1,0 +1,16 @@
+{
+  "DESCRIPTION": "Description",
+  "PLAIN_TEXT": "Plaintext:",
+  "ENCRYPTED_TEXT": "Encoded text:",
+  "KEY": "Key:",
+  "OPTIONS": "Options:",
+  "ALPHABETS": "Alphabets:",
+  "KEY_ALPHABETS": "Alphabets for the key:",
+  "ADD_ALPHABET": "Add alphabet",
+  "MORSETEXT": "Here you can listen to different Morse codes. Give it a try; can you understand the message? To decode it you can use the Morse code module below.",
+  "EASY": "Easy: &emsp;&emsp;&emsp;&emsp;&nbsp;<a target='_blank' href='./morse/english/1.mp3'><strong>Radio message 1</strong></a>",
+  "INTERMEDIATE": "Intermediate: &nbsp;&nbsp;&nbsp;<a target='_blank' href='./morse/english/2.mp3'><strong>Radio message 2</strong></a>",
+  "HARD": "Hard: &emsp;&emsp;&emsp;&emsp;&nbsp;<a target='_blank' href='./morse/english/3.mp3'><strong>Radio message 3</strong></a>",
+  "ASCII": "ASCII encoded text:",
+  "HUF_REFERENCE": "Example of: <a href='https://de.wikipedia.org/wiki/Huffman-Kodierung'>Wikipedia</a>"
+}

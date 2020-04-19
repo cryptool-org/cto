@@ -1,10 +1,10 @@
 {
-  "name": "@@name",
+  "name": "base64",
   "styles": [
-    "./@@name.css"
+    "./base64.css"
   ],
   "scripts": [
-    "./@@name-%lang%.js"
+    "./base64-%lang%.js"
   ],
   "html": "fragment-%lang%.html"
 }

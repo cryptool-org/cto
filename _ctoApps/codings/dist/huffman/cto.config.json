@@ -1,10 +1,10 @@
 {
-  "name": "@@name",
+  "name": "huffman",
   "styles": [
-    "./@@name.css"
+    "./huffman.css"
   ],
   "scripts": [
-    "./@@name-%lang%.js"
+    "./huffman-%lang%.js"
   ],
   "html": "fragment-%lang%.html"
 }

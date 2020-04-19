@@ -1,0 +1,16 @@
+{
+  "DESCRIPTION": "Beschreibung",
+  "PLAIN_TEXT": "Klartext:",
+  "ENCRYPTED_TEXT": "Kodierter Text:",
+  "KEY": "Schlüssel:",
+  "OPTIONS": "Optionen:",
+  "ALPHABETS": "Alphabete:",
+  "KEY_ALPHABETS": "Schlüssel-Alphabete:",
+  "ADD_ALPHABET": "Alphabet hinzufügen",
+  "MORSETEXT": "Hier können Sie sich einige Morsecodes anhören. Versuchen Sie einmal, ob Sie den Inhalt verstehen können. Zum Dekodieren können Sie das untenstehende Morsecode-Modul verwenden.",
+  "EASY": "Leicht: &emsp;&nbsp;&nbsp;<a target='_blank' href='./morse/deutsch/1.mp3'><strong>Funkspruch 1</strong></a>",
+  "INTERMEDIATE": "Mittel: &emsp;&nbsp;&nbsp;&nbsp;<a target='_blank' href='./morse/deutsch/2.mp3'><strong>Funkspruch 2</strong></a>",
+  "HARD": "Schwer: &emsp;<a target='_blank' href='./morse/deutsch/3.mp3'><strong>Funkspruch 3</strong></a>",
+  "ASCII": "ASCII kodierter Text:",
+  "HUF_REFERENCE": "Beispiel von: <a href='https://de.wikipedia.org/wiki/Huffman-Kodierung'>Wikipedia</a>"
+}

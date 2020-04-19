@@ -1,0 +1,20 @@
+{
+  "TITLE": "Barcode-Generator",
+  "DESCRIPTION": "Mit diesem Barcode-Generator können Sie Barcodes basierend af einer Auswahl verschiedener Standards generieren. Wählen Sie den gewünschten Barcode-Standard aus, geben Sie die zu codierenden Daten ein, und starten Sie die Generierung.<br><b>Bitte beachten Sie</b>: Die einzelnen Barcode-Standards unterstützen nur einen limitierten Zeichensatz, und manche benötigen ein spezifisches Format. Details zum jeweiligen Barcode-Standard finden Sie hinter dem Link im <i>Details</i>-Feld.",
+  "DETAILS_CODABAR": "<a href='https://de.wikipedia.org/wiki/Codabar'><b>CODABAR</b> auf Wikipedia</a>",
+  "DETAILS_CODE128": "<a href='https://de.wikipedia.org/wiki/Code128'><b>CODE128</b> auf Wikipedia</a>",
+  "DETAILS_CODE39": "<a href='https://de.wikipedia.org/wiki/Code_39'><b>CODE39</b> auf Wikipedia</a>",
+  "DETAILS_EAN13": "<a href='https://de.wikipedia.org/wiki/European_Article_Number'><b>EAN13</b> auf Wikipedia</a>",
+  "DETAILS_EAN8": "<a href='https://en.wikipedia.org/wiki/EAN-8'><b>EAN8</b> auf Wikipedia</a>",
+  "DETAILS_UPC": "<a href='https://de.wikipedia.org/wiki/Universal_Product_Code'><b>UPC</b> auf Wikipedia</a>",
+  "DETAILS_INVALID": "Der gewählte Barcode-Standard ist ungültig.",
+  "LABEL_STANDARD": "Standard",
+  "LABEL_DETAILS": "Details",
+  "LABEL_DATA": "Daten",
+  "LABEL_GENERATION": "Generierung",
+  "LABEL_RESULT": "Ergebnis",
+  "BUTTON_GENERATION": "Generierung starten",
+  "CONTENT_RESULT_DEFAULT": "-",
+  "CONTENT_RESULT_SUCCESS": "Die Generierung war erfolgreich.",
+  "CONTENT_RESULT_FAIL": "Die Generierung ist fehlgeschlagen."
+}

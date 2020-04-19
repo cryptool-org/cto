@@ -1,0 +1,12 @@
+{
+  "name": "barcode",
+  "styles": [
+    "./barcode.css"
+  ],
+  "scripts": [
+    "./barcodeutilities-%lang%.js",
+    "./barcode-%lang%.js",
+    "./barcodegenerator-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html"
+}

@@ -1,10 +1,10 @@
 {
-  "name": "@@name",
+  "name": "morsecode",
   "styles": [
-    "./@@name.css"
+    "./morsecode.css"
   ],
   "scripts": [
-    "./@@name-%lang%.js"
+    "./morsecode-%lang%.js"
   ],
   "html": "fragment-%lang%.html"
 }

@@ -1,10 +1,10 @@
 {
-  "name": "@@name",
+  "name": "bacon",
   "styles": [
-    "./@@name.css"
+    "./bacon.css"
   ],
   "scripts": [
-    "./@@name-%lang%.js"
+    "./bacon-%lang%.js"
   ],
   "html": "fragment-%lang%.html"
 }

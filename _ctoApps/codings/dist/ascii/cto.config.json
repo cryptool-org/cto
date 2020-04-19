@@ -1,10 +1,11 @@
 {
-  "name": "@@name",
+  "name": "ascii",
   "styles": [
-    "./@@name.css"
+    "./ascii.css"
   ],
   "scripts": [
-    "./@@name-%lang%.js"
+    "./ascii-%lang%.js"
   ],
   "html": "fragment-%lang%.html"
 }
+
