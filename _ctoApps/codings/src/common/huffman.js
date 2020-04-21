@@ -26,12 +26,24 @@ function Huffman() {
         return freqs;
     };
 
+	const tuple_cmp_ns = (a,b) => {
+		if (a[0] != b[0]) {
+			return a[0] - b[0];
+		}
+		return a[1].localeCompare(b[1]);
+	};
+	const tuple_cmp_nn = (a,b) => {
+		if (a[0] != b[0]) {
+			return a[0] - b[0];
+		}
+		return a[1] - b[1]
+	};
     this.sortfreq = function (freqs){
         var letters = [];
         for (var ch in freqs){
             letters.push([freqs[ch],ch]);
         }
-        return letters.sort();
+        return letters.sort(tuple_cmp_ns);
     };
 
     this.buildtree = function (tuples){
@@ -42,7 +54,7 @@ function Huffman() {
             tuples=rest;
             var end=[combfreq,leasttwo];
             tuples.push(end)
-            tuples.sort();
+            tuples.sort(tuple_cmp_nn);
         }
         return tuples;
     };
@@ -137,7 +149,6 @@ function Huffman() {
         var rel_freq = this.get_relative_frequencies(str, freq);
 
         var arr = Object.entries(codes);
-        console.log("****************************");
         for(var i=0; i<arr.length; i++) {
             result = result + (rel_freq[i] * arr[i][1].length);
         }
@@ -203,6 +214,7 @@ function Huffman() {
     this.encrypt = function (alphabets, input) {
         if (input.length > 1){
             var freq = this.frequency(input, tree);
+			console.log('freq:', this.sortfreq(freq));
             tree= this.trimtree(this.buildtree(this.sortfreq(freq)));
             this.assigncodes(tree);
             var result = this.encode(input);
@@ -214,6 +226,8 @@ function Huffman() {
             return result;
         }
         else{
+            document.getElementById("ascii_encode").value = '';
+            document.getElementById("calculated").innerHTML = '';
             return "";
         }
     };
