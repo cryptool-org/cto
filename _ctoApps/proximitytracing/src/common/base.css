@@ -1,0 +1,136 @@
+@@include('./shepherd.css')
+
+.spacer {
+    height: 2em;
+}
+
+.cryptool-container {
+    padding: 0;
+}
+
+@media (min-width: 600px) {
+    .size-warning {
+        display: none;
+    }
+}
+
+@media (max-width: 599px) {
+    .cryptool-container {
+        display: none;
+    }
+}
+
+.modal-footer .btn {
+    margin-top: 5px;
+}
+
+@media (min-width: 992px) {
+    .row.equal-height-md {
+        display: flex;
+    }
+
+    .panel.equal-height-md {
+        height: 100%;
+    }
+}
+
+.layout-arrow {
+    font-size: 3em;
+}
+
+.row.equal-height {
+    display: flex;
+}
+
+.panel.equal-height {
+    height: 100%;
+}
+
+.cryptool-container .pagination {
+    margin: 5px;
+    float: right;
+    width: auto;
+}
+
+.popover {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tooltip {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tooltip-inner {
+    text-align: left;
+}
+
+.pager li>a {
+    color: #428bca;
+}
+
+.tab-content .cryptool-container ul {
+    text-indent: 0;
+    padding-left: 0;
+    margin: 5px;
+}
+
+.cryptool-container .table-responsive {
+    overflow-y: hidden;
+}
+
+.cryptool-container .panel {
+    border-width: thick;
+}
+
+.cryptool-container td {
+    white-space: nowrap;
+}
+
+.cryptool-container .clickable-table tr {
+    cursor:pointer;
+}
+
+#mainbody {
+    z-index: unset;
+}
+
+.modal {
+    background-color: unset;
+}
+
+#day-pager-text {
+    line-height: 35px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.walkthrough-button {
+    padding: 5px;
+    margin: 5px;
+}
+
+.walkthrough-button .glyphicon {
+    vertical-align: middle;
+    top: 0;
+}
+
+#walkthrough .affix {
+    top: 0;
+    width: 60%;
+    z-index: 1000 !important;
+}
+
+.capitalize {
+    display: inline-block;
+}
+
+.capitalize:first-letter, .popover-title:first-letter {
+    text-transform: uppercase;
+}
+
+#report-button-column {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,38 @@
+<div class="panel panel-success equal-height" id="contact-list-panel">
+    <div class="panel-heading">${{ base.contactList.header }}$</div>
+    <div class="panel-body">
+        <p>${{ base.contactList.description.para1 }}$</p>
+        <p>${{ base.contactList.description.para2 }}$</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed" id="contact-list-table">
+            <thead>
+                <tr>
+                    <th>
+                        <span data-toggle="tooltip" title="${{ base.contactList.dayTooltip }}$">
+                            ${{ base.contactList.day }}$
+                        </span>
+                    </th>
+                    <th>
+                        <span data-toggle="tooltip"
+                            title="${{ base.contactList.durationTooltip }}$">
+                            ${{ base.contactList.duration }}$
+                        </span>
+                    </th>
+                    <th>
+                        <span data-toggle="tooltip" data-html="true" class="capitalize broadcast-id"
+                            title="${{ base.contactList.broadcastIdTooltip }}$">
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <nav>
+        <ul class="pagination" id="contact-list-pagination">
+        </ul>
+    </nav>
+</div>

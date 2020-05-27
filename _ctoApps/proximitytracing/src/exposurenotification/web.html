@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>${{ exposurenotification.TITLE }}$</title>
+        <link rel="stylesheet" href="../bootstrap.css">
+        <link rel="stylesheet" href="./exposurenotification.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>${{ exposurenotification.TITLE }}$</h1>
+            <div class="spacer"></div>
+        </div>
+        @@include('./fragment.html')
+        <script src="../jquery.js"></script>
+        <script src="../bootstrap.js"></script>
+        <script src="./exposurenotification${{ lang.suffix }}$.js"></script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "TITLE": "Exposure Notification von Google/Apple",
+  "temporaryExposureKey": "Temporary-Exposure-Key",
+  "temporaryExposureKeys": "Temporary-Exposure-Keys",
+  "rollingProximityID": "Rolling-Proximity-ID",
+  "walkthrough": {
+    "welcome": {
+      "para1": "Diese Seite demonstriert das kryptographische Protokoll <strong>Exposure Notification</strong> von Apple und Google, welches für dezentrales, App-basiertes <strong>Umgebungs-Tracing</strong> genutzt wird."
+    }
+  },
+  "broadcastHistory": {
+    "dayKeyPopover": "Dieser Schlüssel ist eine geheime Information, die nur für den ausgewählten Tag zum Erstellen von Rolling-Proximity-IDs verwendet wird.\n\nDer Temporary-Exposure-Key für die ausgewählte Person am ausgewählten Tag:"
+  }
+}
