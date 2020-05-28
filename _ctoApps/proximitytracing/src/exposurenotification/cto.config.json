@@ -1,0 +1,3 @@
+@@include('../common/cto.config.json', {
+  "name": "exposurenotification"
+})

@@ -1,0 +1,47 @@
+<div class="panel panel-success equal-height" id="matching-list-panel">
+    <div class="panel-heading">${{ base.matchingList.header }}$</div>
+    <div id="alt-matching-panel-content">
+        <div class="panel-body">
+            <p>${{ base.matchingList.altDescription }}$</p>
+        </div>
+    </div>
+    <div id="matching-panel-content">
+        <div class="panel-body">
+            <p>${{ base.matchingList.description.para1 }}$</p>
+            <p>${{ base.matchingList.description.para2 }}$</p>
+            <p>${{ base.matchingList.description.para3 }}$</p>
+        </div>
+
+        <button type="button" id="match-button" class="btn btn-block" data-toggle="tooltip" 
+            data-html="true"
+            title="${{ base.matchingList.matchButtonTooltip }}$">
+            ${{ base.matchingList.matchButtonCaption }}$
+        </button>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="matching-list-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <span data-toggle="tooltip" data-html="true"
+                                title="${{ base.matchingList.dayTooltip }}$">
+                                ${{ base.matchingList.day }}$
+                            </span>
+                        </th>
+                        <th>
+                            <span data-toggle="tooltip" class="capitalize broadcast-id"
+                                data-html="true"
+                                title="${{ base.matchingList.broadcastIdTooltip }}$">
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pagination" id="matching-list-pagination">
+            </ul>
+        </nav>
+    </div>
+</div>

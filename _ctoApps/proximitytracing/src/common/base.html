@@ -1,0 +1,55 @@
+@@include('./size_warning.html')
+<div class="cryptool-container container" id="@@ROOT_ID">
+    @@include('./walkthrough.html', {
+        "PROTOCOL": "@@PROTOCOL"
+    })
+   
+    <div class="row equal-height-md">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            @@include('./broadcast_history.html', {
+                "PROTOCOL": "@@PROTOCOL",
+                "ROOT_ID": "@@ROOT_ID"
+            })
+        </div>
+        <div class="col-md-1 hidden-sm hidden-xs">
+            <div class="text-center">
+                <span class="glyphicon glyphicon-arrow-right layout-arrow" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+            <div class="text-center">
+                <span class="glyphicon glyphicon-arrow-down layout-arrow" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-12 col-xs-12">
+            @@include('./contact_list.html')
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="row">
+        <div class="col-md-6 hidden-sm hidden-xs">
+            <div class="text-center">
+                <span class="glyphicon glyphicon-arrow-down layout-arrow" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="col-md-offset-0 col-md-6 col-sm-offset-6 col-sm-6 col-xs-offset-6 col-xs-6">
+            <div class="text-center">
+                <span class="glyphicon glyphicon-arrow-up layout-arrow" aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="row equal-height">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @@include('./server_list.html')
+        </div>
+        <div class="col-md-1 col-sm-1">
+            <div class="text-center">
+                <span class="glyphicon glyphicon-arrow-right layout-arrow" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            @@include('./matching_list.html')
+        </div>
+    </div>
+</div>
