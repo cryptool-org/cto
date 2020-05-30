@@ -7,7 +7,7 @@
             const row = jQuery(`<tr><td>${entry.day.toUTCDateString()}</td><td>${toHex(entry.broadcastId)}</td></tr>`);
     
             if (entry.isMatch) {
-                row.addClass("success");
+                row.addClass("danger");
             }
             $matchingListTable.append(row);
         });
@@ -22,7 +22,7 @@
     let matchingList;
     clearInspectServerEntry();
     
-    const $matchButton = jQueryFind("#match-button");
+    const $matchCheckbox = jQueryFind("#match-checkbox");
     let isMatchFilterOn = false;
     
     function inspectServerEntry(day, dayKey) {
@@ -51,9 +51,9 @@
         updatedMatches();
     }
     
-    $matchButton.on('click', event => {
+    $matchCheckbox.change(function() {
         event.preventDefault();
-        isMatchFilterOn = !isMatchFilterOn;
+        isMatchFilterOn = this.checked;
         setMatchFilterStatus(isMatchFilterOn);
     });
     
@@ -66,12 +66,10 @@
     
     function setMatchFilterStatus(active) {
         if (!active) {
-            $matchButton.removeClass("btn-success");
-            $matchButton.addClass("btn-danger");
+            $matchCheckbox.prop("checked", false);
             clearFilter();
         } else {
-            $matchButton.addClass("btn-success");
-            $matchButton.removeClass("btn-danger");
+            $matchCheckbox.prop("checked", true);
             filterMatches();
         }
     }

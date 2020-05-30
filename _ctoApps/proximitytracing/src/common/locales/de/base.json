@@ -152,7 +152,7 @@
             "para2": "Jede <strong class='broadcast-id'></strong> kann zusammen mit dem Tag gegen die Kontaktliste von Alice abgeglichen werden, um herauszufinden, ob ein Kontakt auftrat.",
             "para3": "Anzahl der Übereinstimmungen mit Alices Kontaktliste: <strong><span id='matching-counter'></span></strong>"
         },
-        "matchButtonTooltip": "Durch Aktivieren des Filters werden alle Einträge in dieser Liste ausgeblendet, die nicht mit einem <strong class='broadcast-id'></strong>-Eintrag in Alices Kontaktliste übereinstimmen.\nRot: Filter aus\nGrün: Filter an",
+        "matchButtonTooltip": "Durch Aktivieren des Filters werden alle Einträge in dieser Liste ausgeblendet, die nicht mit einem <strong class='broadcast-id'></strong>-Eintrag in Alices Kontaktliste übereinstimmen.",
         "matchButtonCaption": "Filtere passende <strong class='broadcast-ids'></strong>",
         "dayTooltip": "Der Tag an welchem diese <strong class='broadcast-id'></strong> ausgestrahlt wurde.",
         "day": "Tag",

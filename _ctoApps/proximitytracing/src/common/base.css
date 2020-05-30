@@ -134,3 +134,19 @@
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
+#match-checkbox-container {
+    margin-left: 5px;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+.checkbox-lg input[type=checkbox] {
+    width: 24px;
+    height: 24px;
+}
+
+.checkbox-lg span {
+    margin: 6px 0 0 10px;
+    display: inline-block;
+}
