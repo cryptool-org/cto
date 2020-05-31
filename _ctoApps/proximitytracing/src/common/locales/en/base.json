@@ -148,8 +148,8 @@
         "header": "Matching public server entry against contact list",
         "altDescription": "Select an entry from the public server to look, whether it's in Alice's contact list.",
         "description": {
-            "para1": "All <strong class='broadcast-ids'></strong> which can be derived from the <strong class='day-key'></strong> of one server entry.",
-            "para2": "Each <strong class='broadcast-id'></strong> can be matched together with the day against Alice's contact list in order to find out whether contact occured.",
+            "para1": "Here all <strong class='broadcast-ids'></strong> are shown, which Alice's app derived from the <strong class='day-key'></strong> of one server entry",
+            "para2": "Each entry in this generated list (day and <strong class='broadcast-id'></strong>) is matched against Alice's contact list in order to find out whether a contact with an infected person occured.",
             "para3": "Number of matches with Alice's contact list: <strong><span id='matching-counter'></span></strong>"
         },
         "matchButtonTooltip": "Turning on the filter will hide all entries in this list which do not match a <strong class='broadcast-id'></strong> entry in Alice's contact list.",

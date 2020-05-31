@@ -9,5 +9,10 @@
   },
   "broadcastHistory": {
     "dayKeyPopover": "This key is a secret piece of information which is only used for the selected day to create EphIDs.\n\nThe day key is derived from the secret initial key by using a SHA256 hash function.\n\nThe day key for the selected person on the selected day:"
+  },
+  "matchingList": {
+    "description": {
+      "para1Addition": "for <strong>DP-3T</strong>, these are 96 EphIDs per day, and that for all days starting from the day of the key"
+    }
   }
 }

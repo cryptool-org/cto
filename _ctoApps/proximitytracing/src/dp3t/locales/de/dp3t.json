@@ -9,5 +9,10 @@
   },
   "broadcastHistory": {
     "dayKeyPopover": "Dieser Schlüssel ist eine geheime Information, die nur für den ausgewählten Tag zum Erstellen von EphIDs verwendet wird.\n\nDer Tagesschlüssel wird mithilfe einer SHA256-Hash-Funktion vom geheimen initialen Schlüssel abgeleitet.\n\nDer Tagesschlüssel für die ausgewählte Person am ausgewählten Tag:"
+  },
+  "matchingList": {
+    "description": {
+      "para1Addition": "das sind bei <strong>DP-3T</strong> jeweils 96 <strong>EphIDs</strong> pro Tag und das für alle Tage ab dem Tag des Schlüssels"
+    }
   }
 }

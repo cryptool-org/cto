@@ -7,7 +7,11 @@
     </div>
     <div id="matching-panel-content">
         <div class="panel-body">
-            <p>${{ base.matchingList.description.para1 }}$</p>
+            <p>
+                ${{ base.matchingList.description.para1 }}$
+                @@if (PROTOCOL === 'DP-3T') {(${{ dp3t.matchingList.description.para1Addition }}$).}
+                @@if (PROTOCOL === 'Exposure Notification') {(${{ exposurenotification.matchingList.description.para1Addition }}$).}
+            </p>
             <p>${{ base.matchingList.description.para2 }}$</p>
             <p>${{ base.matchingList.description.para3 }}$</p>
         </div>
