@@ -34,7 +34,7 @@
         </div>
         <div class="col-md-offset-0 col-md-6 col-sm-offset-6 col-sm-6 col-xs-offset-6 col-xs-6">
             <div class="text-center">
-                <span class="glyphicon glyphicon-arrow-up layout-arrow" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-arrow-down layout-arrow" aria-hidden="true"></span>
             </div>
         </div>
     </div>
@@ -49,7 +49,9 @@
             </div>
         </div>
         <div class="col-md-5 col-sm-5 col-xs-12">
-            @@include('./matching_list.html')
+            @@include('./matching_list.html', {
+                "PROTOCOL": "@@PROTOCOL"
+            })
         </div>
     </div>
 </div>

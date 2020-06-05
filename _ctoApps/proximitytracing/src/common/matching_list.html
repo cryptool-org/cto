@@ -7,16 +7,22 @@
     </div>
     <div id="matching-panel-content">
         <div class="panel-body">
-            <p>${{ base.matchingList.description.para1 }}$</p>
+            <p>
+                ${{ base.matchingList.description.para1 }}$
+                @@if (PROTOCOL === 'DP-3T') {(${{ dp3t.matchingList.description.para1Addition }}$).}
+                @@if (PROTOCOL === 'Exposure Notification') {(${{ exposurenotification.matchingList.description.para1Addition }}$).}
+            </p>
             <p>${{ base.matchingList.description.para2 }}$</p>
             <p>${{ base.matchingList.description.para3 }}$</p>
         </div>
 
-        <button type="button" id="match-button" class="btn btn-block" data-toggle="tooltip" 
-            data-html="true"
-            title="${{ base.matchingList.matchButtonTooltip }}$">
-            ${{ base.matchingList.matchButtonCaption }}$
-        </button>
+        <div class="checkbox checkbox-lg" id="match-checkbox-container" 
+            data-toggle="tooltip" data-html="true" title="${{ base.matchingList.matchButtonTooltip }}$">
+            <label>
+                <input id="match-checkbox" type="checkbox" value="">
+                <span>${{ base.matchingList.matchButtonCaption }}$</span>
+            </label>
+        </div>
         <div class="table-responsive">
             <table class="table table-hover table-condensed" id="matching-list-table">
                 <thead>

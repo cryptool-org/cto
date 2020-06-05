@@ -10,5 +10,10 @@
   },
   "broadcastHistory": {
     "dayKeyPopover": "This key is a secret piece of information which is only used for the selected day to create rolling proximity IDs.\n\nThe temporary exposure key for the selected person on the selected day:"
+  },
+  "matchingList": {
+    "description": {
+      "para1Addition": "for <strong>Exposure Notification</strong>, these are 144 <strong>temporary exposure keys</strong> for the day of the key"
+    }
   }
 }
