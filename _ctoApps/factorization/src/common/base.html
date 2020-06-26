@@ -1,4 +1,4 @@
-<div class="cryptool-container container" style="padding-top: 0">
+<div id="factorization-root" class="cryptool-container container input-mode" style="padding-top: 0">
     <div class="row">
         <div class="col-12 col-sm-12 col-md-7 col-xl-7">
             <div class="panel panel-default" id="input-panel">
@@ -22,16 +22,18 @@
                 </div>
             </div>
 
-            <div class="panel panel-default" id="status-panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">${{ base.FACTORIZATION_STATUS }}$</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped active" id="progressbar" role="progressbar" 
-                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            <div id="status-panel-container">
+                <div class="panel panel-default" id="status-panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">${{ base.FACTORIZATION_STATUS }}$</h3>
                     </div>
-                    <div id="status-text"></div>
+                    <div class="panel-body">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" id="progressbar" role="progressbar" 
+                                aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                        </div>
+                        <div id="status-text"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,12 +56,12 @@
 
     <div class="panel panel-default" id="factors-output-panel">
         <div class="panel-heading">
-            <h3 class="panel-title">${{ base.FACTORS_OUTPUT }}$</h3>
+            <h3 class="panel-title">${{ base.FACTORS_OUTPUT }}$: <span id="count-factors-found"></span></h3>
         </div>
         <div class="panel-body">
             <div>
                 <span>${{ base.FACTORIZED_NUMBER }}$</span>
-                "<span id="factored-number"></span>"
+                <span id="factored-number"></span>
             </div>
             <div class="spacer"></div>
             <ul class="list-group" id="factors-output" />

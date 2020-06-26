@@ -9,5 +9,6 @@
   "FACTORIZATION_STARTING": "Starting factorization...",
   "FACTORIZATION_COMPLETED": "Factorizing completed!",
   "MISSING_INPUT_NUMBER": "Missing input number",
+  "INVALID_INPUT_NUMBER": "Invalid input number (Only integer values > 1 will be factored)",
   "INPUT_NUMBER_BIT_COUNT_INFO": "Input number consists of ${bits} bits"
 }

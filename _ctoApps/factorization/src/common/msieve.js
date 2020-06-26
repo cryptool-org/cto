@@ -39,6 +39,7 @@ class Msieve {
 
     setupWorker(onProgress, resolve, reject) {
         let factors = [];
+        let numberInput = null;
         this.handleWorkerMessage = function (e) {
             switch (e.data.type) {
                 case 'state':
@@ -48,11 +49,14 @@ class Msieve {
                 case 'factor':
                     factors.push(e.data.factorNumber);
                     break;
+                case 'input':
+                    numberInput = e.data.inputNumber;
+                    break;
                 case 'finish':
                     if (factors.length == 0) {
                         reject(new Error());
                     } else {
-                        resolve(factors);
+                        resolve({ factors, numberInput });
                     }
                     break;
                 case 'error':
