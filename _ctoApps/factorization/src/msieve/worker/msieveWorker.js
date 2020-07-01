@@ -31,7 +31,10 @@ function doSieve(input) {
         };
         msieve.publishFactor = function (factorType, factorNumber) {
             self.postMessage({ type: 'factor', factorType, factorNumber });
-        }
+        };
+        msieve.publishInputNumber = function (inputNumber) {
+            self.postMessage({ type: 'input', inputNumber });
+        };
 
         const result = msieve.ccall("sieve", 'number', ['string'], [input]);
         self.postMessage({ type: 'finish', result });

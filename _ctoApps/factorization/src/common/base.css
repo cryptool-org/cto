@@ -46,3 +46,12 @@
 #number-input-bits-count-info {
     font-size: 0.9em
 }
+
+@media (max-width: 991px) {
+    #factorization-root:not(.input-mode) #examples-panel {
+        display: none;
+    }
+    #factorization-root.input-mode #status-panel-container {
+        display: none;
+    }
+}
