@@ -1,7 +1,0 @@
-{
-  "TITLE": "Bacon-Kodierung",
-  "DESCRIPTION": "<h1>Die Bacon-Kodierung</h1>",
-  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
-  "SAMPLE_ENCRYPTED": "baaab baaba aaaaa abbaa ababa aabaa babba baaab aabaa babab abbba aabaa aaabb abaaa baaba abaaa abbab abbaa baaab babbb baabb aabba abbbb baabb aabaa baaaa aaabb baabb baaaa aaaba aabbb aaaaa aabab baaaa abaaa abaab aaaaa babaa abaaa baaaa aaabb baabb abbab abbaa abaaa aabaa aaabb aabaa baaaa ababb aaaaa abbaa abbaa aaaab aabaa babaa baabb abbaa aaabb aabaa baaaa baaba ",
-  "SAMPLE_KEY": "Geheimer Schluessel"
-}
