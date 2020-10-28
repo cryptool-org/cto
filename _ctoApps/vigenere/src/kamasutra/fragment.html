@@ -12,14 +12,14 @@
 })
 
 <script>
+
     var alphaA = document.getElementById("inputField").value;
     var alphaB = alphaA.substr((alphaA.length/2));
     alphaA = alphaA.substr(0,(alphaA.length/2));
     document.getElementById("alphaDisplay").innerHTML = alphaA;
     document.getElementById("alphaDisplay").innerHTML += "\n" + alphaB;
 
-
-
+    
     this.updateDisplay = function () {
         alphaA = document.getElementById("inputField").value;
         alphaB = alphaA.substr((alphaA.length/2));
@@ -47,4 +47,5 @@
         evokeUpdate();
         return false;
     }
+
 </script>

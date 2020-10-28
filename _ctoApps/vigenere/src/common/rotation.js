@@ -2,8 +2,6 @@
 
 function Rotation() {
 
-
-
     this.encrypt = function (val, idx, key, alphabets, from) {
         var blocksize = document.getElementById("textParam").value;
         var degree = document.getElementById("dropdown").value;

@@ -1,7 +1,0 @@
-{
-  "TITLE": "Enigma Encryption",
-  "DESCRIPTION": "<h1>The Enigma Encryption</h1>",
-  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
-  "SAMPLE_ENCRYPTED": "Llg hybmo zjsye jhh nsetu fzxb xfw pcqc wyk.",
-  "SAMPLE_KEY": "0=B;3=X;2=Y;2;AD CN ET FL GI JV KZ PU QY WX"
-}
