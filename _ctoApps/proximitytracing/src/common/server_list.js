@@ -1,4 +1,5 @@
 (() => {
+
     const $serverListTable = jQueryFind("#server-list-table");
 
     function markRow(row) {
@@ -43,4 +44,5 @@
         serverListPagination.setEntries(serverList);
         proxtrac.matchingList.clearInspectServerEntry();
     }
+
 })();

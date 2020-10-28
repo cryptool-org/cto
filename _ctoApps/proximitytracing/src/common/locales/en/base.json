@@ -2,7 +2,7 @@
     "DATE_LOCALE": "ISO",
     "walkthrough": {
         "showLastMessage": "Show last message",
-        "showWelcomePanel": "Show welcome panel",
+        "showWelcomeCard": "Show welcome panel",
         "startWalkthrough": "Start walkthrough",
         "startTour": "Start tour",
         "proceedNextStep": "Proceed with next step",

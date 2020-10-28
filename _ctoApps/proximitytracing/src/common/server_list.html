@@ -1,12 +1,17 @@
-<div class="panel panel-danger equal-height" id="server-list-panel">
-    <div class="panel-heading">${{ base.serverList.header }}$</div>
-    <div class="panel-body">
+<div class="card h-100 border-danger equal-height" id="server-list-card">
+
+    <div class="card-header bg-danger text-white">
+        <i class="fa fa-list-ul mr-2"></i>
+        ${{ base.serverList.header }}$
+    </div>
+
+    <div class="card-body">
         <p>${{ base.serverList.description.para1 }}$</p>
         <p>${{ base.serverList.description.para2 }}$</p>
     </div>
 
     <div class="table-responsive">
-        <table class="table table-hover table-condensed clickable-table" id="server-list-table">
+        <table class="table table-sm table-hover table-condensed clickable-table" id="server-list-table">
             <thead>
                 <tr>
                     <th>
@@ -26,8 +31,7 @@
             </tbody>
         </table>
     </div>
-    <nav>
-        <ul class="pagination" id="server-list-pagination">
-        </ul>
-    </nav>
+
+    <nav><ul class="pagination" id="server-list-pagination"></ul></nav>
+
 </div>

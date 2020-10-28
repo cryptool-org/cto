@@ -29,7 +29,7 @@
         display: flex;
     }
 
-    .panel.equal-height-md {
+    .card.equal-height-md {
         height: 100%;
     }
 }
@@ -42,7 +42,7 @@
     display: flex;
 }
 
-.panel.equal-height {
+.card.equal-height {
     height: 100%;
 }
 
@@ -80,8 +80,12 @@
     overflow-y: hidden;
 }
 
-.cryptool-container .panel {
+.cryptool-container .card {
     border-width: thick;
+}
+
+.cryptool-container .card .card-header {
+    border-radius: 0px;
 }
 
 .cryptool-container td {
@@ -107,13 +111,7 @@
 }
 
 .walkthrough-button {
-    padding: 5px;
-    margin: 5px;
-}
-
-.walkthrough-button .glyphicon {
-    vertical-align: middle;
-    top: 0;
+    margin-bottom: 5px;
 }
 
 #walkthrough .affix {
@@ -146,7 +144,26 @@
     height: 24px;
 }
 
-.checkbox-lg span {
-    margin: 6px 0 0 10px;
-    display: inline-block;
+.checkbox-lg .custom-control-input~.custom-control-label::before {
+    transform: scale(1.5);
+}
+
+.checkbox-lg .custom-control-input~.custom-control-label::after {
+    transform: scale(1.5);
+}
+
+.checkbox-lg label.custom-control-label {
+    font-size: 1rem;
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+#contact-list-card .card-body,
+#server-list-card .card-body {
+    flex: none;
+}
+
+.cryptool-container .card-body p:last-of-type,
+.cryptool-container .alert p:last-of-type {
+    margin-bottom: 0;
 }

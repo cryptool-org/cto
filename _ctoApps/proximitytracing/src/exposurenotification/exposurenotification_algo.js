@@ -4,6 +4,7 @@
 //Specification: https://www.apple.com/covid19/contacttracing/
 
 const ExposureNotification = (() => {
+    
     //Length of an epoch (in minutes):
     const EPOCH_LENGTH = 10;
 
@@ -109,4 +110,5 @@ const ExposureNotification = (() => {
     }
 
     return ExposureNotification;
+
 })();

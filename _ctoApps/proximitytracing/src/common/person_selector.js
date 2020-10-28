@@ -1,4 +1,5 @@
 function registerPersonSelector(persons, onPersonChanged) {
+
     const $dropdownEntries = jQueryFind("#persons-dropdown-entries");
     const $currentPerson = jQueryFind(".current-person");
 
@@ -8,7 +9,7 @@ function registerPersonSelector(persons, onPersonChanged) {
     }
 
     persons.forEach(person => {
-        const dropdownEntry = jQuery(`<li><a href="javascript:void(0)" class="person-selector">${person.getName()}</a></li>`);
+        const dropdownEntry = jQuery(`<li><a href="javascript:void(0)" class="dropdown-item person-selector">${person.getName()}</a></li>`);
         $dropdownEntries.append(dropdownEntry);
         dropdownEntry.on('click', function (event) {
             event.preventDefault();
@@ -17,4 +18,5 @@ function registerPersonSelector(persons, onPersonChanged) {
     });
 
     changePerson(persons[0]);
+    
 }

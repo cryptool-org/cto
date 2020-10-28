@@ -16,7 +16,7 @@
         title: "${{ base.broadcastHistory.header }}$",
         text: "${{ base.tour.step1.description }}$",
         attachTo: {
-            element: '#@@ROOT_ID #broadcast-history-panel',
+            element: '#@@ROOT_ID #broadcast-history-card',
             on: 'right'
         },
         buttons: [
@@ -40,7 +40,7 @@
         title: "${{ base.contactList.header }}$",
         text: "${{ base.tour.step2.description }}$",
         attachTo: {
-            element: '#@@ROOT_ID #contact-list-panel',
+            element: '#@@ROOT_ID #contact-list-card',
             on: 'left'
         },
         buttons: [
@@ -64,7 +64,7 @@
         title: "${{ base.serverList.header }}$",
         text: "${{ base.tour.step3.description }}$",
         attachTo: {
-            element: '#@@ROOT_ID #server-list-panel',
+            element: '#@@ROOT_ID #server-list-card',
             on: 'top'
         },
         buttons: [
@@ -88,7 +88,7 @@
         title: "${{ base.matchingList.header }}$",
         text: "${{ base.tour.step4.description }}$",
         attachTo: {
-            element: '#@@ROOT_ID #matching-list-panel',
+            element: '#@@ROOT_ID #matching-list-card',
             on: 'top'
         },
         buttons: [
@@ -261,7 +261,7 @@
         }
     }
 
-    function showWelcomePanel() {
+    function showWelcomeCard() {
         currentStep = null;
         showWalkthroughComponent("#walkthrough-welcome");
     }
@@ -292,7 +292,7 @@
 
     $helpButton.on('click', function (event) {
         event.preventDefault();
-        showWelcomePanel();
+        showWelcomeCard();
     });
 
     $collapseUpButton.on('click', function (event) {
@@ -404,8 +404,8 @@
         }
     };
 
-    //Start with walkthrough welcome panel:
-    showWelcomePanel();
+    //Start with walkthrough welcome card:
+    showWelcomeCard();
     jQueryFind('#walkthrough .hide').removeClass('hide');
 
     $('.modal').on('show.bs.modal', function (e) {
@@ -414,4 +414,5 @@
             return e.preventDefault();
         }
     });
+    
 })();

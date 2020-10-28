@@ -1,11 +1,17 @@
-<div class="panel panel-primary equal-height" id="broadcast-history-panel">
-    <div class="panel-heading">${{ base.broadcastHistory.header }}$</div>
-    <div class="panel-body">
+<div class="card h-100 border-primary" id="broadcast-history-card">
+
+    <div class="card-header bg-primary text-white">
+        <i class="fa fa-list-ul mr-2"></i>
+        ${{ base.broadcastHistory.header }}$
+    </div>
+
+    <div class="card-body">
+
         <div class="row">
             <div class="col-md-5" id="person-selection">
                 <label for="person-dropdown">${{ base.broadcastHistory.person }}$:</label>
                 <span class="dropdown" id="person-dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+                    <button class="btn btn-outline-dark dropdown-toggle btn-sm" type="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="true">
                         <span class="current-person"></span>
                         <span class="caret"></span>
@@ -16,57 +22,51 @@
             <div class="col-md-7" id="person-initial-key">
                 <div class="pull-right">
                     <label for="person-initial-key">${{ base.broadcastHistory.initialKey }}$:</label>
-                    <button type="button" class="btn btn-default btn-info" id="person-initial-key-button"
+                    <button type="button" class="btn btn-primary btn-sm" id="person-initial-key-button"
                         title="${{ base.broadcastHistory.initialKey }}$" data-container="body" data-trigger="focus" data-toggle="popover"
                         data-placement="bottom" data-content="${{ base.broadcastHistory.initialKeyPopover }}$">
                     </button>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <nav>
-                <ul class="pager" id="day-selection">
-                    <li class="previous" id="previous-day-pager">
-                        <a href="javascript:void(0)"><span aria-hidden="true">&larr;</span> ${{ base.broadcastHistory.previousDay }}$</a>
-                    </li>
-                    <li id="day-pager-text" class="current-day"></li>
-                    <li class="next" id="next-day-pager">
-                        <a href="javascript:void(0)">${{ base.broadcastHistory.nextDay }}$ <span aria-hidden="true">&rarr;</span></a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+
+        <div id="page-selection" class="row pager py-2"><div class="col d-flex">
+            <button id="previous-day-pager" class="previous btn btn-outline-dark btn-sm">&larr; ${{ base.broadcastHistory.previousDay }}$</button>
+            <div id="day-pager-text" class="current-day d-inline-block text-center flex-grow-1"></div>
+            <button id="next-day-pager" class="next btn btn-outline-dark btn-sm">${{ base.broadcastHistory.nextDay }}$ &rarr;</button>
+        </div></div>
+
         <div class="row">
             <div class="col-md-12">
                 <label for="secret-day-key" class="capitalize day-key">:</label>
-                <button type="button" class="btn btn-default btn-info" id="secret-day-key" 
+                <button type="button" class="btn btn-primary btn-sm" id="secret-day-key" 
                     title="<span class='@@ROOT_ID-popover'><span class='day-key'></span></span>" data-html="true"
                     data-container="body" data-trigger="focus" data-toggle="popover" data-placement="bottom"
                     data-content="@@if (PROTOCOL === 'DP-3T') {${{ dp3t.broadcastHistory.dayKeyPopover }}$}@@if (PROTOCOL === 'Exposure Notification') {${{ exposurenotification.broadcastHistory.dayKeyPopover }}$}">
                 </button>
             </div>
-        </div>        
+        </div>     
+
         <div class="row">
             <div class="col-md-12" id="report-button-column">
                 <span data-toggle="modal" data-target="#@@ROOT_ID #add-server-list-modal" data-placement="top">
                     <button type="button" id="report-infected-button" class="btn btn-danger btn-block"
                         data-toggle="tooltip"
                         title="${{ base.broadcastHistory.reportTooltip }}$">
+                        <i class="fa fa-ambulance mr-1"></i>
                         ${{ base.broadcastHistory.reportCaption }}$
                     </button>
                 </span>
             </div>
         </div>
 
-        <p>
-            ${{ base.broadcastHistory.description.para1 }}$
-        </p>
-        <p>
-            ${{ base.broadcastHistory.description.para2 }}$
-        </p>
+        <p>${{ base.broadcastHistory.description.para1 }}$</p>
+        <p>${{ base.broadcastHistory.description.para2 }}$</p>
+
     </div>
+
     <div class="table-responsive">
-        <table class="table table-hover table-condensed clickable-table" id="broadcast-history-table">
+        <table class="table table-sm table-hover table-condensed clickable-table" id="broadcast-history-table">
             <thead>
                 <tr>
                     <th>
@@ -81,31 +81,26 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
-    <nav>
-        <ul class="pagination" id="broadcast-history-pagination">
-        </ul>
-    </nav>
+
+    <nav><ul class="pagination" id="broadcast-history-pagination"></ul></nav>
+    
 </div>
 
 <div>
-    <div class="modal fade" id="add-contact-list-modal" tabindex="-1" role="dialog"
-        aria-labelledby="add-contact-list-modal-label">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="add-contact-list-modal" tabindex="-1" role="dialog" aria-labelledby="add-contact-list-modal-label">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h5 class="modal-title" id="add-contact-list-modal-label">${{ base.broadcastHistory.addContactModal.title }}$</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="add-contact-list-modal-label">${{ base.broadcastHistory.addContactModal.title }}$</h4>
                 </div>
                 <div class="modal-body">
-                    <p>
-                        ${{ base.broadcastHistory.addContactModal.question }}$
-                    </p>
+                    <p>${{ base.broadcastHistory.addContactModal.question }}$</p>
                     <form class="form-horizontal">
                         <div class="form-group">
                             <label for="contact-duration-select" class="col-sm-4 control-label">${{ base.broadcastHistory.addContactModal.duration }}$</label>
@@ -132,8 +127,14 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">${{ base.broadcastHistory.addContactModal.cancel }}$</button>
-                    <button type="button" class="btn btn-primary" id="add-contact-list-button">${{ base.broadcastHistory.addContactModal.add }}$</button>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">
+                        <i class="fa fa-times mr-1"></i>
+                        ${{ base.broadcastHistory.addContactModal.cancel }}$
+                    </button>
+                    <button type="button" class="btn btn-primary" id="add-contact-list-button">
+                        <i class="fa fa-plus-circle mr-1"></i>
+                        ${{ base.broadcastHistory.addContactModal.add }}$
+                    </button>
                 </div>
             </div>
         </div>
@@ -141,25 +142,27 @@
     <div>
         <div class="modal fade" id="add-server-list-modal" tabindex="-1" role="dialog"
             aria-labelledby="add-server-list-modal-label">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <h5 class="modal-title" id="add-server-list-modal-label">${{ base.broadcastHistory.reportModal.title }}$</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="add-server-list-modal-label">${{ base.broadcastHistory.reportModal.title }}$</h4>
                     </div>
                     <div class="modal-body">
-                        <p>
-                            ${{ base.broadcastHistory.reportModal.question }}$
-                        </p>
-                        <p>
-                            ${{ base.broadcastHistory.reportModal.info }}$
-                        </p>
+                        <p>${{ base.broadcastHistory.reportModal.question }}$</p>
+                        <p>${{ base.broadcastHistory.reportModal.info }}$</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">${{ base.broadcastHistory.reportModal.cancel }}$</button>
-                        <button type="button" class="btn btn-primary" id="add-server-list-button">${{ base.broadcastHistory.reportModal.add }}$</button>
+                        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">
+                            <i class="fa fa-times mr-1"></i>
+                            ${{ base.broadcastHistory.reportModal.cancel }}$
+                        </button>
+                        <button type="button" class="btn btn-primary" id="add-server-list-button">
+                            <i class="fa fa-plus-circle mr-1"></i>
+                            ${{ base.broadcastHistory.reportModal.add }}$
+                        </button>
                     </div>
                 </div>
             </div>

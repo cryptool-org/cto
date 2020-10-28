@@ -4,6 +4,7 @@
 //Specification: https://github.com/DP-3T/documents
 
 const Dp3t = (() => {
+    
     //Fixed global default broadcast key for ephID generation:
     const BROADCAST_KEY = "broadcast key";
 
@@ -159,4 +160,5 @@ const Dp3t = (() => {
     }
 
     return Dp3t;
+
 })();

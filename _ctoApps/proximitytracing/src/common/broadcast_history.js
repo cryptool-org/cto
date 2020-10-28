@@ -57,7 +57,7 @@
     });
     
     function markRowAsContact(row) {
-        row.addClass("success");
+        row.addClass("table-success");
     }
     
     function showBroadcastHistoryPage(pageEntries) {

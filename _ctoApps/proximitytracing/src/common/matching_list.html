@@ -1,12 +1,19 @@
-<div class="panel panel-success equal-height" id="matching-list-panel">
-    <div class="panel-heading">${{ base.matchingList.header }}$</div>
-    <div id="alt-matching-panel-content">
-        <div class="panel-body">
+<div class="card h-100 border-success equal-height" id="matching-list-card">
+
+    <div class="card-header bg-success text-white">
+        <i class="fa fa-list-ul mr-2"></i>
+        ${{ base.matchingList.header }}$
+    </div>
+
+    <div id="alt-matching-card-content">
+        <div class="card-body">
             <p>${{ base.matchingList.altDescription }}$</p>
         </div>
     </div>
-    <div id="matching-panel-content">
-        <div class="panel-body">
+
+    <div id="matching-card-content">
+
+        <div class="card-body">
             <p>
                 ${{ base.matchingList.description.para1 }}$
                 @@if (PROTOCOL === 'DP-3T') {(${{ dp3t.matchingList.description.para1Addition }}$).}
@@ -16,15 +23,15 @@
             <p>${{ base.matchingList.description.para3 }}$</p>
         </div>
 
-        <div class="checkbox checkbox-lg" id="match-checkbox-container" 
-            data-toggle="tooltip" data-html="true" title="${{ base.matchingList.matchButtonTooltip }}$">
-            <label>
-                <input id="match-checkbox" type="checkbox" value="">
-                <span>${{ base.matchingList.matchButtonCaption }}$</span>
-            </label>
+        <div class="checkbox checkbox-lg px-3 pb-3" id="match-checkbox-container" data-toggle="tooltip" data-html="true" title="${{ base.matchingList.matchButtonTooltip }}$">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="match-checkbox">
+                <label class="custom-control-label" for="match-checkbox">${{ base.matchingList.matchButtonCaption }}$</label>
+            </div>
         </div>
+
         <div class="table-responsive">
-            <table class="table table-hover table-condensed" id="matching-list-table">
+            <table class="table table-sm table-hover table-condensed" id="matching-list-table">
                 <thead>
                     <tr>
                         <th>
@@ -45,9 +52,12 @@
                 </tbody>
             </table>
         </div>
+
         <nav>
             <ul class="pagination" id="matching-list-pagination">
             </ul>
         </nav>
+
     </div>
+
 </div>

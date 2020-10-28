@@ -1,4 +1,5 @@
 (() => {
+
     const $matchingListTable = jQueryFind("#matching-list-table");
     
     function showMatchingListPage(pageEntries) {
@@ -7,7 +8,7 @@
             const row = jQuery(`<tr><td>${entry.day.toUTCDateString()}</td><td>${toHex(entry.broadcastId)}</td></tr>`);
     
             if (entry.isMatch) {
-                row.addClass("danger");
+                row.addClass("table-danger");
             }
             $matchingListTable.append(row);
         });
@@ -16,8 +17,8 @@
     const $matchingListPagination = jQueryFind('#matching-list-pagination');
     const matchingListPagination = new Pagination($matchingListPagination, TABLE_PAGE_SIZE, showMatchingListPage);
     
-    const $matchingPanelContent = jQueryFind("#matching-panel-content");
-    const $altMatchingPanelContent = jQueryFind("#alt-matching-panel-content");
+    const $matchingCardContent = jQueryFind("#matching-card-content");
+    const $altMatchingCardContent = jQueryFind("#alt-matching-card-content");
     
     let matchingList;
     clearInspectServerEntry();
@@ -38,16 +39,16 @@
         isMatchFilterOn = false;
         setMatchFilterStatus(isMatchFilterOn);
     
-        $matchingPanelContent.show();
-        $altMatchingPanelContent.hide();
+        $matchingCardContent.show();
+        $altMatchingCardContent.hide();
     }
     
     function clearInspectServerEntry() {
         matchingList = [];
         matchingListPagination.setEntries([], false);
     
-        $matchingPanelContent.hide();
-        $altMatchingPanelContent.show();
+        $matchingCardContent.hide();
+        $altMatchingCardContent.show();
         updatedMatches();
     }
     
@@ -110,4 +111,5 @@
     proxtrac.matchingList.inspectServerEntry = inspectServerEntry;
     proxtrac.matchingList.clearInspectServerEntry = clearInspectServerEntry;
     proxtrac.matchingList.updatedMatches = updatedMatches;
+    
 })();

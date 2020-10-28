@@ -48,7 +48,7 @@ class Pagination {
             const self = this;
 
             //Create "left arrow":
-            this.previousItemEntry = jQuery(`<li><a href="javascript:void(0)">&laquo;</a></li>`);
+            this.previousItemEntry = jQuery(`<li class="page-item"><a class="page-link" href="javascript:void(0)">&laquo;</a></li>`);
             this.previousItemEntry.on('click', function (event) {
                 event.preventDefault();
                 if (self.currentPageIndex > 0) {
@@ -57,7 +57,7 @@ class Pagination {
             });
 
             //Create "right arrow":
-            this.nextItemEntry = jQuery(`<li><a href="javascript:void(0)">&raquo;</a></li>`);
+            this.nextItemEntry = jQuery(`<li class="page-item"><a class="page-link" href="javascript:void(0)">&raquo;</a></li>`);
             this.nextItemEntry.on('click', function (event) {
                 event.preventDefault();
                 if (self.currentPageIndex < self.pages - 1) {
@@ -67,7 +67,7 @@ class Pagination {
 
             this.paginationComponent.append(this.previousItemEntry);
             for (let pageIndex = 0; pageIndex < pages; pageIndex++) {
-                const pageItem = jQuery(`<li><a href="javascript:void(0)">${pageIndex + 1}</a></li>`);
+                const pageItem = jQuery(`<li class="page-item"><a class="page-link" href="javascript:void(0)">${pageIndex + 1}</a></li>`);
                 this.paginationComponent.append(pageItem);
                 this.pageItems.push(pageItem);
                 pageItem.on('click', function (event) {
@@ -77,7 +77,7 @@ class Pagination {
 
                 if (pageIndex === 0 || pageIndex === pages - 2) {
                     //Add ellipses item after first page and before last page:
-                    const ellipsesItem = jQuery('<li><a href="javascript:void(0)">...</a></li>');
+                    const ellipsesItem = jQuery('<li class="page-item"><a class="page-link" href="javascript:void(0)">...</a></li>');
                     ellipsesItem.addClass("disabled");
                     this.paginationComponent.append(ellipsesItem);
                     this.ellipsesItems.push(ellipsesItem);
@@ -117,8 +117,8 @@ class Pagination {
 
     _hideDispensableEntries(pageIndex) {
         const countPageEntries = this.pageItems.length;
-        this.pageItems.forEach(item => item.removeClass("hidden"));
-        this.ellipsesItems.forEach(item => item.addClass("hidden"));
+        this.pageItems.forEach(item => item.removeClass("d-none"));
+        this.ellipsesItems.forEach(item => item.addClass("d-none"));
 
         const MAX_PAGE_ENTRIES = 7;
         if (countPageEntries > MAX_PAGE_ENTRIES) {
@@ -126,14 +126,14 @@ class Pagination {
 
             if (pageIndex - 1 > 1) {
                 this.pageItems.slice(1, pageIndex - 1)
-                    .forEach(item => item.addClass("hidden"));
-                this.ellipsesItems[0].removeClass("hidden");
+                    .forEach(item => item.addClass("d-none"));
+                this.ellipsesItems[0].removeClass("d-none");
             }
 
             if (countPageEntries - 1 > pageIndex + 2) {
                 this.pageItems.slice(pageIndex + 2, countPageEntries - 1)
-                    .forEach(item => item.addClass("hidden"));
-                this.ellipsesItems[1].removeClass("hidden");
+                    .forEach(item => item.addClass("d-none"));
+                this.ellipsesItems[1].removeClass("d-none");
             }
         }
     }

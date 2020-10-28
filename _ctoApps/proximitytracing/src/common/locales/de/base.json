@@ -2,7 +2,7 @@
     "DATE_LOCALE": "de-DE",
     "walkthrough": {
         "showLastMessage": "Zeige die letzte Nachricht",
-        "showWelcomePanel": "Zeige Begrüßungspanel",
+        "showWelcomeCard": "Zeige Begrüßungspanel",
         "startWalkthrough": "Anleitung starten",
         "startTour": "Tour starten",
         "proceedNextStep": "Mit dem nächsten Schritt fortfahren",

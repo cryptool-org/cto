@@ -1,4 +1,5 @@
 (() => {
+
     const $contactListTable = jQueryFind("#contact-list-table");
     
     function showContactListPage(pageEntries) {
@@ -6,7 +7,7 @@
         pageEntries.forEach(contact => {
             const row = jQuery(`<tr><td>${contact.day.toUTCDateString()}</td><td>${contact.duration}</td><td>${toHex(contact.broadcastId)}</td></tr>`);
             if (contact.isMatch) {
-                row.addClass("danger");
+                row.addClass("table-danger");
             }
             $contactListTable.append(row)
         });
@@ -28,4 +29,5 @@
         contactList.forEach(contact => contact.isMatch = matchOperator(contact));
         contactListPagination.update();
     };
+    
 })();
