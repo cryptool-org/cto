@@ -52,21 +52,21 @@ function encode_round(pos, ch, wheels, state) {
 	const id = 'enc-' + pos;
 	const header_template = "${{ enigmatic.ENCODING_INPUT_CHAR }}$";
 	const header_text = header_template.replace(/\$1/, ch).replace(/\$3/, pos);
-	const panel = jQuery.parseHTML(
-        "<div class='panel panel-default'>" +
-            "<div class='panel-heading' data-toggle='collapse' data-target='#" + id + "-panel'>" +
-                "<h4 class='panel-title'></h4>" +
-            "</div>" +
-            "<div id='" + id + "-panel' class='panel-collapse collapse'>" +
-                "<div class='panel-body'>" +
-                "</div>" +
-            "</div>" +
-        "</div>"
+	const card = jQuery.parseHTML(
+		'<div class="card">' +
+			'<div class="card-header" id="' + id + '-card-header">' +
+				'<button class="btn btn-link btn-block text-left text-body collapsed" type="button" data-toggle="collapse" data-target="#' + id + '-card-collapse" aria-expanded="true" aria-controls="' + id + '-card-collapse">' +
+				'</button>' +
+			'</div>' +
+			'<div id="' + id + '-card-collapse" class="collapse" aria-labelledby="' + id + '-card-header">' +
+				'<div class="card-body"></div>' +
+			'</div>' +
+		'</div>'
 	);
-	jQuery(panel).appendTo(jQuery('#rounds'));
+	jQuery(card).appendTo(jQuery('#rounds'));
 
-    const $panel = jQuery('#' + id + '-panel');
-    const $container = $panel.find('.panel-body');
+    const $card = jQuery('#' + id + '-card-collapse');
+    const $container = $card.find('.card-body');
 	const orig_wheels = wheels;
 	wheels = advance_wheels(wheels, state);
     const wheel_advancement_template = "${{ enigmatic.WHEEL_ADVANCEMENT }}$";
@@ -104,12 +104,12 @@ function encode_round(pos, ch, wheels, state) {
 
     state.output += ch;
 
-    $panel.parent().find('.panel-title').text(header_text.replace(/\$2/, ch));
+    $card.parent().find('.card-header button').text(header_text.replace(/\$2/, ch));
 	return wheels;
 }
 
 function encode(input, wheels, state) {
-	const $computation = jQuery('#rounds-panel').find('.panel-body');
+	const $computation = jQuery('#rounds-card-collapse').find('.card-body');
     $computation.empty();
 
     state.output = '';

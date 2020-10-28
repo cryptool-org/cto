@@ -6,21 +6,7 @@ let htmlmin = require('gulp-htmlmin');
 let uglify = require('gulp-uglify');
 let minifyCSS = require('gulp-csso');
 let babel = require('gulp-babel');
-let Ssh = require('gulp-ssh');
-let fs = require('fs');
-let through = require('through2');
-let path = require('path');
 let i18n = require('gulp-i18n-localize');
-
-let ssh = new Ssh({
-    ignoreErrors: true,
-    sshConfig: {
-        host: 'cryptool.org',
-        username: process.env.SSH_USER ? process.env.SSH_USER : 'knapetm',
-        privateKey: fs.existsSync(process.env.HOME + '/.ssh/id_rsa') ?
-            fs.readFileSync(process.env.HOME + '/.ssh/id_rsa') : ''
-    }
-});
 
 function dest() {
     return gulp.dest('dist/enigmatic');
@@ -63,7 +49,7 @@ gulp.task('config', function() {
 
 gulp.task('bootstrap', function () {
     return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
-        .pipe(dest())
+        .pipe(gulp.dest("dist"))
 });
 
 gulp.task('bootstrap-fonts', function () {
@@ -73,46 +59,7 @@ gulp.task('bootstrap-fonts', function () {
 
 gulp.task('jquery', function() {
     return gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(dest())
+        .pipe(gulp.dest("dist"))
 });
 
 gulp.task('default', ['html', 'js', 'css', 'config', 'bootstrap', 'bootstrap-fonts', 'jquery']);
-
-let remote_dir = '/var/www/cryptool-dev/_ctoApps/enigmatic';
-function get_remote_path(p) { return remote_dir + path.basename(p); }
-
-function dirs_to_deploy() {
-    return gulp.src(['dist/*']);
-}
-
-function files_to_deploy() {
-    return gulp.src(['dist/enigmatic/enigmatic*', 'dist/enigmatic/cto.config.json']);
-}
-
-gulp.task('prepare-deploy', function() {
-    return dirs_to_deploy()
-        .pipe(through.obj(function (chunk, encoding, cb) {
-            let remote_path = get_remote_path(chunk);
-            let old_path = remote_path + '_old';
-            ssh.shell([
-                'rm -Rf "' + old_path + '"',
-                'mv "' + remote_path + '" "' + old_path + '" || true'
-            ]);
-            cb(null, chunk);
-        }))
-});
-
-gulp.task('do-deploy', [/*'prepare-deploy'*/], function() {
-    return files_to_deploy()
-        .pipe(ssh.dest(remote_dir))
-});
-
-gulp.task('post-deploy', ['do-deploy'], function() {
-    return dirs_to_deploy()
-        .pipe(through.obj(function (chunk, encoding, cb) {
-            ssh.exec('chgrp -R www-data "' + get_remote_path(chunk.path) + '"');
-            cb(null, chunk);
-        }));
-
-});
-gulp.task('deploy', ['default', 'post-deploy']);
