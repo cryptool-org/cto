@@ -23,52 +23,48 @@
 
 </style>
 
-<script src="../common/base.js">
-</script>
-
 <script>
 
-     for(var i = 3; i <= 15; i++) {
-         var opt = document.createElement('option');
-         opt.value = i;
-         opt.innerHTML = i;
-         document.getElementById('depth').appendChild(opt);
-     }
+    for(var i = 3; i <= 15; i++) {
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        document.getElementById('depth').appendChild(opt);
+    }
 
-     for(var i = 0; i <= 7; i++) {
-         var opt = document.createElement('option');
-         opt.value = i;
-         opt.innerHTML = i;
-         document.getElementById('offset').appendChild(opt);
-     }
+    for(var i = 0; i <= 7; i++) {
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        document.getElementById('offset').appendChild(opt);
+    }
 
-     document.getElementById('depth').value = 5;
-     document.getElementById('offset').value = 0;
+    document.getElementById('depth').value = 5;
+    document.getElementById('offset').value = 0;
 
-     this.updateOffset = function () {
-         var off = document.getElementById("offset");
-         while (off.firstChild) {
-             off.removeChild(off.firstChild);
-         }
+    this.updateOffset = function () {
+        var off = document.getElementById("offset");
+        while (off.firstChild) {
+            off.removeChild(off.firstChild);
+        }
 
-         var depth = document.getElementById("depth");
-         var depthValue = depth.options[depth.selectedIndex].value;
+        var depth = document.getElementById("depth");
+        var depthValue = depth.options[depth.selectedIndex].value;
 
-         for(var i = 0; i <= ((depthValue - 1)*2) - 1; i++) {
-             var opt = document.createElement('option');
-             opt.value = i;
-             opt.innerHTML = i;
-             document.getElementById('offset').appendChild(opt);
-         }
-     }
-     this.setDepth = function (input) {
-         this.updateOffset();
+        for(var i = 0; i <= ((depthValue - 1)*2) - 1; i++) {
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = i;
+            document.getElementById('offset').appendChild(opt);
+        }
+    }
+    this.setDepth = function (input) {
+        this.updateOffset();
+        evokeUpdate();
+    }
 
-         evokeUpdate();
-     }
-
-     this.setFenceOffset = function (input) {
-
-         evokeUpdate();
-     }
+    this.setFenceOffset = function (input) {
+        evokeUpdate();
+    }
+    
 </script>

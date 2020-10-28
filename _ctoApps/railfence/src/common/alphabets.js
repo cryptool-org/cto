@@ -230,8 +230,8 @@ function setupAlphabets(state) {
         const $container = jQuery('<div class="form-group">' +
             '<div class="input-group">' +
                 '<input type="text" class="form-control alphabet">' +
-                '<span class="input-group-btn">' +
-                    '<button class="btn btn-default">…</button>' +
+                '<span class="input-group-append">' + 
+                    '<button class="btn btn-outline-primary" type="button"><i class="fa fa-wrench"></i></button>' +
                 '</span>' +
             '</div>' +
             '<span class="offset">' + offset + '</span>' +

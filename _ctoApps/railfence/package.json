@@ -1,5 +1,5 @@
 {
-  "name": "Railfence",
+  "name": "cto-railfence",
   "version": "1.0.0",
   "description": "Simple transposition cipher in JavaScript",
   "private": false,
@@ -9,7 +9,7 @@
   ],
   "devDependencies": {
     "babel-preset-env": "^1.4.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.5.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-csso": "^2.0.0",
