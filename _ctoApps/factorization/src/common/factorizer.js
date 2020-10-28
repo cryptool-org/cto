@@ -9,7 +9,7 @@ class Factorizer {
     initFactorization() {
         this.state.disableInputs();
         this.state.setProgress("${{ base.FACTORIZATION_STARTING }}$", 0);
-        this.state.$factorsOutputPanel.hide();
+        this.state.$factorsOutputCard.hide();
     }
 
     showFactors(numberInput, factors) {
@@ -18,7 +18,7 @@ class Factorizer {
         this.state.$factorsOutput.html(factorEntries.join("\n"));
         this.state.$factoredNumber.text(numberInput);
         this.state.$countFactorsFound.text(factorEntries.length);
-        this.state.$factorsOutputPanel.show();
+        this.state.$factorsOutputCard.show();
     }
 
     factorize(numberInput) {

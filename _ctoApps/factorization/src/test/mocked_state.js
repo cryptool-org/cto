@@ -3,7 +3,7 @@
 exports.create = () => ({
     $numberInput: { val: () => (this.testInputNumber) },
     $factorsOutput: {},
-    $factorsOutputPanel: { hide: () => {} },
+    $factorsOutputCard: { hide: () => {} },
     $factoredNumber: {},
     setTestInput: number => {
         this.testInputNumber = number;

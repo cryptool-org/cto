@@ -1,11 +1,11 @@
 "use strict";
 
-function hideOutputPanels() {
-    jQuery('#status-panel').hide();
-    jQuery('#factors-output-panel').hide();
+function hideOutputCards() {
+    jQuery('#status-card').hide();
+    jQuery('#factors-output-card').hide();
 }
 
-hideOutputPanels(); //hide on startup
+hideOutputCards(); //hide on startup
 
 function setMissingInputNumberInfo() {
     jQuery('#number-input-bits-count-info').html("${{ base.MISSING_INPUT_NUMBER }}$");
@@ -26,7 +26,7 @@ function setBitCountInfo(numberInputVal) {
 setMissingInputNumberInfo();
 
 function onNumberInputChange() {
-    hideOutputPanels(); //Hide output panels (if visible) on input change
+    hideOutputCards(); //Hide output cards (if visible) on input change
 
     let disableFactorizeButton = true;
     const factorizeButton = jQuery('#factorize-button');
@@ -72,11 +72,11 @@ const state = new function State() {
     this.$factorizeButton = jQuery('#factorize-button');
     this.$progressbar = jQuery('#progressbar');
     this.$statusText = jQuery('#status-text');
-    this.$factorsOutputPanel = jQuery('#factors-output-panel');
+    this.$factorsOutputCard = jQuery('#factors-output-card');
     this.$factorsOutput = jQuery('#factors-output');
     this.$countFactorsFound = jQuery('#count-factors-found');
     this.$factoredNumber = jQuery('#factored-number');
-    this.$statusPanel = jQuery('#status-panel');
+    this.$statusCard = jQuery('#status-card');
     this.$factorizationRoot = jQuery('#factorization-root');
 
     this.disableInputs = () => {
@@ -96,7 +96,7 @@ const state = new function State() {
             this.$progressbar.css('width', `${progress * 100}%`);
         }
         this.$statusText.html(statusText);
-        this.$statusPanel.show();
+        this.$statusCard.show();
     };
 };
 

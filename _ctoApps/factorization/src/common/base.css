@@ -39,19 +39,15 @@
     margin-top: 0;
 }
 
-#factorize-button {
-    margin-left: 1em;
-}
-
 #number-input-bits-count-info {
     font-size: 0.9em
 }
 
 @media (max-width: 991px) {
-    #factorization-root:not(.input-mode) #examples-panel {
+    #factorization-root:not(.input-mode) #examples-card {
         display: none;
     }
-    #factorization-root.input-mode #status-panel-container {
+    #factorization-root.input-mode #status-card-container {
         display: none;
     }
 }
