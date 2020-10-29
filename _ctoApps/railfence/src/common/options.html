@@ -1,37 +1,49 @@
-<div class="panel panel-default">
-    <div class="panel-heading" style="padding-top: 0; padding-bottom: 0">
-        <h3 class="panel-title">${{ base.OPTIONS }}$</h3>
+<div class="card mt-3">
+
+    <div class="card-header">
+        <i class="fa fa-cog mr-2"></i>
+        ${{ base.OPTIONS }}$
     </div>
-    <div class="panel-body" id="options-body">
-            @@if (name === "railfence" || name === "redefence") {
-            <div>
-                <label id="depthLabel">&nbsp ${{ options.DEPTH }}$&nbsp</label>
-                <select id="depth" onchange="setDepth(this.value)"></select>
-                <label id="offsetLabel">&nbsp Offset:&nbsp</label>
-                <select id="offset" onchange="setFenceOffset()"></select>
-                @@if (name === "redefence") {
-                    <label id="orderLabel">&nbsp ${{ options.ORDER }}$&nbsp</label>
-                    <input type="text" id="order" value="2 1 4 3 5" size="35" onKeyUp="setFenceOffset()"/>
-                }
-            </div>
-            <br>
+
+    <div class="card-body d-flex flex-wrap" id="options-body">
+
+        @@if (name === "railfence" || name === "redefence") {
+        <form class="w-100 ml-10px form-inline mb-2" onsubmit="return false">
+
+            <label id="depthLabel" class="mr-1">${{ options.DEPTH }}$</label>
+            <select id="depth" onchange="setDepth(this.value)" class="custom-select d-inline-block mr-3"></select>
+
+            <label id="offsetLabel" class="mr-1">Offset:</label>
+            <select id="offset" class="custom-select d-inline-block mr-3" onchange="setFenceOffset()"></select>
+
+            @@if (name === "redefence") {
+            <label id="orderLabel" class="mr-1">${{ options.ORDER }}$</label> 
+            <input type="text" id="order" size="35" value="2 1 4 3 5" onkeyup="setFenceOffset()" class="form-control">
             }
-    <label class="checkbox-inline">
-        <input type="checkbox" id="deleteWhitespace">
-        ${{ options.FILTER_WHITESPACE }}$
-    </label><label class="checkbox-inline">
-        <input type="checkbox" id="groupBy5s">
-        ${{ options.GROUP_BY_5S }}$
-    </label><label class="checkbox-inline">
-        <input type="checkbox" id="deleteNonLetters">
-        ${{ options.FILTER_NON_LETTERS }}$
-    </label><label class="checkbox-inline">
-        <input type="checkbox" id="convertToUpcase">
-        ${{ options.CONVERT_TO_UPCASE }}$
-    </label>
-    <label class="checkbox-inline" style="display:none;">
-        <input type="checkbox" id="skipNonLetterKeys"  checked="checked">
-        ${{ options.FILTER_NON_LETTER_KEYS }}$
-    </label>
+
+        </form>
+        }
+
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="deleteWhitespace">
+            <label class="custom-control-label" for="deleteWhitespace">${{ options.FILTER_WHITESPACE }}$</label>
+        </div>
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="groupBy5s">
+            <label class="custom-control-label" for="groupBy5s">${{ options.GROUP_BY_5S }}$</label>
+        </div>
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="deleteNonLetters">
+            <label class="custom-control-label" for="deleteNonLetters">${{ options.FILTER_NON_LETTERS }}$</label>
+        </div>
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="convertToUpcase">
+            <label class="custom-control-label" for="convertToUpcase">${{ options.CONVERT_TO_UPCASE }}$</label>
+        </div>
+        <div class="custom-control custom-checkbox ml-10px" style="display: none;">
+            <input type="checkbox" class="custom-control-input" id="skipNonLetterKeys" checked>
+            <label class="custom-control-label" for="skipNonLetterKeys">${{ options.FILTER_NON_LETTER_KEYS }}$</label>
+        </div>
+
     </div>
 </div>

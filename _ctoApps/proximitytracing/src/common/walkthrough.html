@@ -1,0 +1,149 @@
+<div id="walkthrough">
+
+    <div align="right">
+        <button type="button" id="collapse-up-button" class="btn btn-primary hide walkthrough-button" data-toggle="tooltip" title="${{ base.walkthrough.showLastMessage }}$">
+            <i class="fa fa-caret-square-o-up" aria-hidden="true"></i>
+        </button>
+        <button type="button" id="help-button" class="btn btn-info hide walkthrough-button" data-toggle="tooltip" title="${{ base.walkthrough.showWelcomeCard }}$">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+        </button>
+    </div>
+    
+    <div class="alert alert-primary" id="walkthrough-welcome" role="alert">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.welcome.header }}$</h4>
+        <p>
+        @@if (PROTOCOL === 'DP-3T') {
+            ${{ dp3t.walkthrough.welcome.para1 }}$
+        }
+        @@if (PROTOCOL === 'Exposure Notification') {
+            ${{ exposurenotification.walkthrough.welcome.para1 }}$
+        }
+        </p>
+        <p>${{ base.walkthrough.welcome.para2 }}$</p>
+        <p>${{ base.walkthrough.welcome.para3 }}$</p>
+        <p>
+            <button type="button" class="btn btn-info" id="start-tour-button" role="button">
+                <i class="fa fa-play mr-1"></i>
+                ${{ base.walkthrough.startTour }}$
+            </button>
+            <button type="button" class="btn btn-success" id="start-walkthrough-button" role="button">
+                <i class="fa fa-play mr-1"></i>
+                ${{ base.walkthrough.startWalkthrough }}$
+            </button>
+        </p>
+    </div>
+
+    <div class="alert alert-info hide" id="walkthrough-step1" role="alert" data-spy="affix" data-offset-top="500">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.step1.task.header }}$</h4>
+        <p>${{ base.walkthrough.step1.task.para1 }}$</p>
+        <p>${{ base.walkthrough.step1.task.para2 }}$</p>
+        <p>
+            <button type="button" class="btn btn-primary" id="complete-walkthrough-step1-button">
+                <i class="fa fa-check mr-1"></i>
+                ${{ base.walkthrough.completeStep }}$
+            </button>
+        </p>
+    </div>
+
+    <div class="alert alert-success hide" id="walkthrough-step1-success" role="alert" data-spy="affix" data-offset-top="500">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.step1.success.header }}$</h4>
+        <p>${{ base.walkthrough.step1.success.para1 }}$</p>
+        <p>${{ base.walkthrough.step1.success.para2 }}$</p>
+        <p>${{ base.walkthrough.step1.success.para3 }}$</p>
+        <p>
+            <button type="button" class="btn btn-primary" id="proceed-walkthrough-step2-button">
+                <i class="fa fa-arrow-circle-right mr-1"></i>
+                ${{ base.walkthrough.proceedNextStep }}$
+            </button>
+            <button type="button" class="btn btn-danger cancel-walkthrough-button">
+                <i class="fa fa-times mr-1"></i>
+                ${{ base.walkthrough.cancelWalkthrough }}$
+            </button>
+        </p>
+    </div>
+
+    <div class="alert alert-info hide" id="walkthrough-step2" role="alert" data-spy="affix" data-offset-top="500">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.step2.task.header }}$</h4>
+        <p>${{ base.walkthrough.step2.task.para1 }}$</p>
+        <p>${{ base.walkthrough.step2.task.para2 }}$</p>
+        <p>${{ base.walkthrough.step2.task.para3 }}$</p>
+        <p>
+            <button type="button" class="btn btn-primary complete-walkthrough-step2-button">
+                <i class="fa fa-check mr-1"></i>
+                ${{ base.walkthrough.completeStep }}$
+            </button>
+        </p>
+    </div>
+
+    <div class="alert alert-danger hide" id="walkthrough-step2-error" role="alert" data-spy="affix" data-offset-top="500">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.step2.error.header }}$</h4>
+        <p>${{ base.walkthrough.step2.error.para1 }}$</p>
+        <p>${{ base.walkthrough.step2.error.para2 }}$</p>
+        <p>
+            <button type="button" class="btn btn-primary complete-walkthrough-step2-button">
+                <i class="fa fa-check mr-1"></i>
+                ${{ base.walkthrough.completeStep }}$
+            </button>
+        </p>
+    </div>
+
+    <div class="alert alert-success hide" id="walkthrough-step2-success" role="alert" data-spy="affix" data-offset-top="500">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.step2.success.header }}$</h4>
+        <p>${{ base.walkthrough.step2.success.para1 }}$</p>
+        <p>${{ base.walkthrough.step2.success.para2 }}$</p>
+        <p>${{ base.walkthrough.step2.success.para3 }}$</p>
+        <p>
+            <button type="button" class="btn btn-primary" id="proceed-walkthrough-step3-button">
+                <i class="fa fa-arrow-circle-right mr-1"></i>
+                ${{ base.walkthrough.proceedNextStep }}$
+            </button>
+            <button type="button" class="btn btn-danger cancel-walkthrough-button">
+                <i class="fa fa-times mr-1"></i>
+                ${{ base.walkthrough.cancelWalkthrough }}$
+            </button>
+        </p>
+    </div>
+
+    <div class="alert alert-info hide" id="walkthrough-step3" role="alert" data-spy="affix" data-offset-top="500">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.step3.task.header }}$</h4>
+        <p>${{ base.walkthrough.step3.task.para1 }}$</p>
+        <p>${{ base.walkthrough.step3.task.para2 }}$</p>
+        <p>${{ base.walkthrough.step3.task.para3 }}$</p>
+        <p>
+            <button type="button" class="btn btn-primary" id="complete-walkthrough-step3-button">
+                <i class="fa fa-check mr-1"></i>
+                ${{ base.walkthrough.completeStep }}$
+            </button>
+        </p>
+    </div>
+
+    <div class="alert alert-success hide" id="walkthrough-step3-success" role="alert" data-spy="affix" data-offset-top="500">
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4>${{ base.walkthrough.step3.success.header }}$</h4>
+        <p>${{ base.walkthrough.step3.success.para1 }}$</p>
+        <p>${{ base.walkthrough.step3.success.para2 }}$</p>
+        <p>${{ base.walkthrough.step3.success.para3 }}$</p>
+        <p>
+            <button type="button" class="btn btn-success cancel-walkthrough-button">
+                <i class="fa fa-check mr-1"></i>
+                ${{ base.walkthrough.walkthroughCompleted }}$
+            </button>
+        </p>
+    </div>
+
+</div>

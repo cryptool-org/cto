@@ -240,69 +240,80 @@ jQuery(function ($) {
 		const wheel_pattern = "${{ enigmatic.WHEEL }}$";
 		const expanded_wheel_pattern = wheel_pattern.replace(/\$\$/, state.wheels.length);
 		const $wheel = $.parseHTML(
-            "<div class='panel panel-default'>" +
-                "<div class='panel-heading' data-toggle='collapse' data-target='#" + id + "-panel'>" +
-                    "<h4 class='panel-title'>" + expanded_wheel_pattern + "</h4>" +
-                "</div>" +
-                "<div id='" + id + "-panel' class='panel-collapse collapse in'>" +
-                    "<div class='panel-body'>" +
-                        "<div id='" + id + "-presets'>" +
-                            "<div class='form-group'>" +
-                            "<label for='"+ id + "-presets' class='col-lg-3'>${{ enigmatic.WHEEL_PRESET }}$</label>" +
-                            "<div class='btn-group btn-group-sm col-lg-9' role='group'>" +
-                                "<button type='button' class='btn btn-default' id='" + id + "-i' href='#'>I</button>" +
-                                "<button type='button' class='btn btn-default' id='" + id + "-ii' href='#'>II</button>" +
-                                "<button type='button' class='btn btn-default' id='" + id + "-iii' href='#'>III</button>" +
-                                "<button type='button' class='btn btn-default' id='" + id + "-iv' href='#'>IV</button>" +
-                                "<button type='button' class='btn btn-default' id='" + id + "-v' href='#'>V</button>" +
-                            "</div>" +
-                            "</div>" +
-                        "</div>" +
-                        "<div id='" + id + "-wheel' class='wheel'>" +
-                            "<div class='form-group'>" + 
-                            "<label for='" + id + "-wheel' class='col-lg-3'>${{ enigmatic.WHEEL_PERMUTATION }}$</label>" +
-                            "<div class='col-lg-9'>" +
-                                "<div class='from referable'></div>" +
-                                "<div class='alert alert-danger hidden'></div>" +
-                                "<input class='to enigmatic-editable form-control'>" +
-                            "</div>" +
-                            "</div>" + 
-                        "</div>" +
-                        "<div id='" + id + "-overflows'>" +
-                            "<div class='form-group'>" +
-                            "<label for='" + id + "-overflows' class='col-lg-3'>${{ enigmatic.WHEEL_OVERFLOWS }}$</label>" +
-                            "<div class='col-lg-9'>" +
-                            "<input class='form-control enigmatic-editable'>" +
-                            "</div>" +
-                            "</div>" +
-                        "</div>" +
-                        "<div id='" + id + "-ring'>" +
-                            "<div class='form-group'>" + 
-                            "<label for='"+ id + "-ring' class='col-lg-3'>${{ enigmatic.WHEEL_OFFSET }}$</label>" +
-                            "<div class='col-lg-9'>" + 
-                            "<div class='alert alert-danger hidden'></div>" +
-                            "<input class='form-control enigmatic-editable'>" +
-                            "</div>" + 
-                            "</div>" + 
-                        "</div>" +
-						"<div id='" + id + "-anomal'>" +
-							"<div class='form-group'>" +
-							"<label for='" + id + "-anomal' class='col-lg-3'>${{ enigmatic.WHEEL_ANOMAL }}$</label>"+
-							"<div class='col-lg-9'>" +
-							"<input class='form-control' type='checkbox'" + (anomal ? " checked" : "") + ">" +
-							"</div>" +
-							"</div>" + 
-						"</div>" +
-                        "<div id='" + id + "-delete'>" +
-                            "<div class='form-group'>" +
-                            "<div class='col-lg-9 col-lg-offset-3'>" +
-                            "<button class='btn btn-danger'>${{ enigmatic.WHEEL_DELETE }}$</button>" +
-                            "</div>" +
-                            "</div>" +
-                        "</div>" +
-                    "</div>" +
-                "</div>" +
-            "</div>"
+
+			'<div class="card">' +
+				'<div class="card-header" id="' + id + '-card-header">' +
+					'<button class="btn btn-link btn-block text-left text-body" type="button" data-toggle="collapse" data-target="#' + id + '-card-collapse" aria-expanded="true" aria-controls="' + id + '-card-collapse">' +
+						expanded_wheel_pattern +
+					'</button>' +
+				'</div>' +
+				'<div id="' + id + '-card-collapse" class="collapse show" aria-labelledby="' + id + '-card-header">' +
+					'<div class="card-body">' +
+						
+						'<div id="' + id + '-presets">' +
+							'<div class="form-group form-inline">' +
+								'<label for="' + id + '-presets" class="col-lg-3">${{ enigmatic.WHEEL_PRESET }}$</label>' +
+								'<div class="btn-group btn-group-sm col-lg-9" role="group">' +
+									'<button type="button" class="btn btn-outline-dark" id="' + id + '-i" href="#">I</button>' +
+									'<button type="button" class="btn btn-outline-dark" id="' + id + '-ii" href="#">II</button>' +
+									'<button type="button" class="btn btn-outline-dark" id="' + id + '-iii" href="#">III</button>' +
+									'<button type="button" class="btn btn-outline-dark" id="' + id + '-iv" href="#">IV</button>' +
+									'<button type="button" class="btn btn-outline-dark" id="' + id + '-v" href="#">V</button>' +
+								'</div>' +
+							'</div>' +
+						'</div>' +
+
+						'<div id="' + id + '-wheel" class="wheel">' +
+							'<div class="form-group form-inline">' + 
+								'<label for="' + id + '-wheel" class="col-lg-3">${{ enigmatic.WHEEL_PERMUTATION }}$</label>' +
+								'<div class="col-lg-9">' +
+									'<div class="from referable"></div>' +
+									'<div class="alert alert-danger hidden"></div>' +
+									'<input class="to enigmatic-editable form-control w-100">' +
+								'</div>' +
+							'</div>' + 
+						'</div>' +
+
+						'<div id="' + id + '-overflows">' +
+							'<div class="form-group form-inline">' +
+								'<label for="' + id + '-overflows" class="col-lg-3">${{ enigmatic.WHEEL_OVERFLOWS }}$</label>' +
+								'<div class="col-lg-9">' +
+									'<input class="form-control enigmatic-editable w-100">' +
+								'</div>' +
+							'</div>' +
+						'</div>' +
+
+						'<div id="' + id + '-ring">' +
+							'<div class="form-group form-inline">' + 
+								'<label for="' + id + '-ring" class="col-lg-3">${{ enigmatic.WHEEL_OFFSET }}$</label>' +
+								'<div class="col-lg-9">' + 
+									'<div class="alert alert-danger hidden"></div>' +
+									'<input class="form-control enigmatic-editable w-100">' +
+								'</div>' + 
+							'</div>' + 
+						'</div>' +
+
+						'<div id="' + id + '-anomal">' +
+							'<div class="form-group form-inline">' +
+								'<div class="col-lg-3">&nbsp;</div>' +
+								'<div class="col-lg-9 custom-control custom-checkbox">' +
+									'<input type="checkbox" class="custom-control-input" id="' + id + '-anomal-input" ' + (anomal ? ' checked' : '') + '>' +
+									'<label class="custom-control-label" for="' + id + '-anomal-input">${{ enigmatic.WHEEL_ANOMAL }}$</label>' +
+								'</div>' +
+							'</div>' + 
+						'</div>' +
+
+						'<div id="' + id + '-delete">' +
+							'<div class="form-group form-inline mb-0">' +
+								'<div class="col-lg-9 col-lg-offset-3">' +
+									'<button class="btn btn-danger"><i class="fa fa-trash mr-1"></i>${{ enigmatic.WHEEL_DELETE }}$</button>' +
+								'</div>' +
+							'</div>' +
+						'</div>' +
+
+					'</div>' +
+				'</div>' +
+			'</div>'
 		);
 
 		$($wheel).insertBefore($('#add-wheel'));
@@ -319,7 +330,7 @@ jQuery(function ($) {
             if (pos > 1) {
                 $('#wheel-' + (pos - 1) + '-delete').removeClass('unavailable');
             }
-            $('#' + id + '-panel').parent().remove();
+            $('#' + id + '-card-collapse').parent().remove();
             state.wheels.pop();
             const $input = $('#key').find('input');
             if ($input.val().length > pos) { $input.val($input.val().substring(0, pos)); }

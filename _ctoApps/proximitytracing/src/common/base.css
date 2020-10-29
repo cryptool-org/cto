@@ -1,0 +1,169 @@
+@@include('./shepherd.css')
+
+.spacer {
+    height: 2em;
+}
+
+.cryptool-container {
+    padding: 0;
+}
+
+@media (min-width: 600px) {
+    .size-warning {
+        display: none;
+    }
+}
+
+@media (max-width: 599px) {
+    .cryptool-container {
+        display: none;
+    }
+}
+
+.modal-footer .btn {
+    margin-top: 5px;
+}
+
+@media (min-width: 992px) {
+    .row.equal-height-md {
+        display: flex;
+    }
+
+    .card.equal-height-md {
+        height: 100%;
+    }
+}
+
+.layout-arrow {
+    font-size: 3em;
+}
+
+.row.equal-height {
+    display: flex;
+}
+
+.card.equal-height {
+    height: 100%;
+}
+
+.cryptool-container .pagination {
+    margin: 5px;
+    float: right;
+    width: auto;
+}
+
+.popover {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tooltip {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tooltip-inner {
+    text-align: left;
+}
+
+.pager li>a {
+    color: #428bca;
+}
+
+.tab-content .cryptool-container ul {
+    text-indent: 0;
+    padding-left: 0;
+    margin: 5px;
+}
+
+.cryptool-container .table-responsive {
+    overflow-y: hidden;
+}
+
+.cryptool-container .card {
+    border-width: thick;
+}
+
+.cryptool-container .card .card-header {
+    border-radius: 0px;
+}
+
+.cryptool-container td {
+    white-space: nowrap;
+}
+
+.cryptool-container .clickable-table tr {
+    cursor:pointer;
+}
+
+#mainbody {
+    z-index: unset;
+}
+
+.modal {
+    background-color: unset;
+}
+
+#day-pager-text {
+    line-height: 35px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.walkthrough-button {
+    margin-bottom: 5px;
+}
+
+#walkthrough .affix {
+    top: 0;
+    width: 60%;
+    z-index: 1000 !important;
+}
+
+.capitalize {
+    display: inline-block;
+}
+
+.capitalize:first-letter, .popover-title:first-letter {
+    text-transform: uppercase;
+}
+
+#report-button-column {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#match-checkbox-container {
+    margin-left: 5px;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+.checkbox-lg input[type=checkbox] {
+    width: 24px;
+    height: 24px;
+}
+
+.checkbox-lg .custom-control-input~.custom-control-label::before {
+    transform: scale(1.5);
+}
+
+.checkbox-lg .custom-control-input~.custom-control-label::after {
+    transform: scale(1.5);
+}
+
+.checkbox-lg label.custom-control-label {
+    font-size: 1rem;
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+#contact-list-card .card-body,
+#server-list-card .card-body {
+    flex: none;
+}
+
+.cryptool-container .card-body p:last-of-type,
+.cryptool-container .alert p:last-of-type {
+    margin-bottom: 0;
+}

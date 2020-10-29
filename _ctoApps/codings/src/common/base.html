@@ -1,17 +1,19 @@
-<div class="cryptool-container container" style="padding-top: 0">
+<div class="cryptool-container">
+
     @@if (name === "morsecode") {
         <p>${{ base.MORSETEXT }}$</p>
-        <br>
-
-        <table>
+        <table class="table table-bordered">
             <tr>
-                <td>${{ base.EASY }}$</td>
+                <td>${{ base.MORSE_EASY_CAPTION }}$</td>
+                <td>${{ base.MORSE_EASY_LINK }}$</td>
             </tr>
             <tr>
-                <td>${{ base.INTERMEDIATE }}$</td>
+                <td>${{ base.MORSE_INTERMEDIATE_CAPTION }}$</td>
+                <td>${{ base.MORSE_INTERMEDIATE_LINK }}$</td>
             </tr>
             <tr>
-                <td>${{ base.HARD }}$</td>
+                <td>${{ base.MORSE_HARD_CAPTION }}$</td>
+                <td>${{ base.MORSE_HARD_LINK }}$</td>
             </tr>
         </table>
         <br><br>
@@ -22,7 +24,7 @@
             <label for="plain">${{ base.PLAIN_TEXT }}$</label>
             <textarea class="form-control" rows="6" id="plain">@@plain</textarea>
         </div><div class="row">
-            <div id="direction">
+            <div id="direction" class="w-100 text-center">
                 <svg viewbox="0 0 50 50" width="50" height="50">
                     <polyline points="0,20 15,20 15,0 35,0 35,20 50,20 25,50"></polyline>
                 </svg>
@@ -36,14 +38,16 @@
             <label for="plain">${{ base.ASCII }}$</label>
             <textarea id="ascii_encode" class="form-control" rows="6" readonly="readonly"></textarea>
         </div>
-        <div class="form-group" id="calculated">
-        </div>
+        <hr>
+        <div class="form-group" id="calculated"></div>
         }
     </form>
+
 @@include('./options.html', {
     "name": "@@name"
     })
 @@include('./alphabets.html', {
     "different_key_alphabet": @@different_key_alphabet
 })
+
 </div>

@@ -1,50 +1,59 @@
-<div class="panel panel-default">
-    <div class="panel-heading" style="padding-top: 0; padding-bottom: 0">
-        <h3 class="panel-title">${{ base.OPTIONS }}$</h3>
+<div class="card mt-3">
+
+    <div class="card-header">
+        <i class="fa fa-cog mr-2"></i>
+        ${{ base.OPTIONS }}$
     </div>
-    <div class="panel-body" id="options-body">
+
+    <div class="card-body d-flex flex-wrap" id="options-body">
+
         @@if (dropdown === true && numInput === false) {
-            <div>
-                <label id="dropdownLabel">&nbsp ${{ options.MULTIPLIER }}$&nbsp</label>
-            <select id="dropdown" onchange="setMult(this.value)">
-            </select>
-            </div>
-            <br>
+            <form class="w-100 ml-10px form-inline mb-2" onsubmit="return false">
+                <label id="dropdownLabel" class="mr-1">${{ options.MULTIPLIER }}$</label>
+                <select id="dropdown" onchange="setMult(this.value)" class="custom-select d-inline-block mr-3"></select>
+            </form>
         }
+
         @@if (dropdown === true && numInput === true) {
-        <div>
-            <label id="dropdownLabel">&nbsp ${{ options.MULTIPLIER }}$&nbsp</label>
-            <select id="dropdown" onchange="setMult(this.value)">
-            </select>
+        <form class="w-100 ml-10px form-inline mb-2" onsubmit="return false">
+            <label id="dropdownLabel" class="mr-1">${{ options.MULTIPLIER }}$</label>
+            <select id="dropdown" onchange="setMult(this.value)" class="custom-select d-inline-block mr-3"></select>
             @@if (numInput === true) {
-            <label id="textParamLabel">&nbsp ${{ options.BLOCKSIZE }}$&nbsp</label>
-            <input type="text" id="textParam" size="2" value="5" onkeyup="useParam(this.value)"/>
+            <label id="textParamLabel" class="mr-1">${{ options.BLOCKSIZE }}$</label> 
+            <input type="text" id="textParam" size="2" value="5" onkeyup="useParam(this.value)" class="form-control">
             }
-        </div>
-        <br>
+        </form>
         }
-    <label class="checkbox-inline">
-        <input type="checkbox" id="deleteWhitespace">
-        ${{ options.FILTER_WHITESPACE }}$
-    </label><label class="checkbox-inline">
-        <input type="checkbox" id="groupBy5s">
-        ${{ options.GROUP_BY_5S }}$
-    </label><label class="checkbox-inline">
-        <input type="checkbox" id="deleteNonLetters">
-        ${{ options.FILTER_NON_LETTERS }}$
-    </label><label class="checkbox-inline">
-        <input type="checkbox" id="convertToUpcase">
-        ${{ options.CONVERT_TO_UPCASE }}$
-    </label>
+
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="deleteWhitespace">
+            <label class="custom-control-label" for="deleteWhitespace">${{ options.FILTER_WHITESPACE }}$</label>
+        </div>
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="groupBy5s">
+            <label class="custom-control-label" for="groupBy5s">${{ options.GROUP_BY_5S }}$</label>
+        </div>
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="deleteNonLetters">
+            <label class="custom-control-label" for="deleteNonLetters">${{ options.FILTER_NON_LETTERS }}$</label>
+        </div>
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="convertToUpcase">
+            <label class="custom-control-label" for="convertToUpcase">${{ options.CONVERT_TO_UPCASE }}$</label>
+        </div>
+    
         @@if(name === "rotation" || name === "hill" || name === "multiplikativ" || name === "trithemius" || name === "kamasutra"){
-        <label class="checkbox-inline" style="display:none;">
-            <input type="checkbox" id="skipNonLetterKeys"  checked="checked">
-            ${{ options.FILTER_NON_LETTER_KEYS }}$
-        </label>}
+        <div class="custom-control custom-checkbox ml-10px" style="display: none;">
+            <input type="checkbox" class="custom-control-input" id="skipNonLetterKeys" checked>
+            <label class="custom-control-label" for="skipNonLetterKeys">${{ options.FILTER_NON_LETTER_KEYS }}$</label>
+        </div>
+        }
         @@if(name !== "rotation" && name !== "hill" && name !== "multiplikativ" && name !== "trithemius" && name !== "kamasutra"){
-        <label class="checkbox-inline">
-            <input type="checkbox" id="skipNonLetterKeys" checked="checked">
-            ${{ options.FILTER_NON_LETTER_KEYS }}$
-        </label>}
+        <div class="custom-control custom-checkbox ml-10px">
+            <input type="checkbox" class="custom-control-input" id="skipNonLetterKeys" checked>
+            <label class="custom-control-label" for="skipNonLetterKeys">${{ options.FILTER_NON_LETTER_KEYS }}$</label>
+        </div>
+        }
+
     </div>
 </div>

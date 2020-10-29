@@ -1,0 +1,349 @@
+<div class="cryptool-container">
+
+    <div class="row">
+        <div class="col">
+            <label for="taxscore">${{ taxman.SCORE }}$</label>
+            <input type="number" class="form-control" id="taxscore" value="0" readonly>
+        </div>
+        <div class="col">
+            <label for="tax">Taxman:</label>
+            <input type="number" class="form-control" id="tax" value="0" readonly>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="form-inline">
+        <label for="sizeSelect" class="mr-2">${{ taxman.SIZE }}$</label>
+        <select id="sizeSelect" onchange="changeSize()" class="custom-select custom-select-sm">
+            <option value="20" id="s20" selected>20</option>
+            <option value="30" id="s30">30</option>
+            <option value="40" id="s40">40</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="showmove" id="showmove" checked>
+            <label class="custom-control-label" for="showmove">${{ taxman.SHOW }}$</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="autoend" id="autoend" checked>
+            <label class="custom-control-label" for="showmove">${{ taxman.AUTOGIVEUP }}$</label>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn btn-danger mr-2" onclick="done()">
+        <i class="fa fa-meh-o mr-1"></i>${{ taxman.GIVEUP }}$
+    </button>
+
+    <button type="button" class="btn btn-primary" id="restartbutton" onclick="restart(); return false;">
+        <i class="fa fa-repeat mr-1"></i>${{ taxman.RESTART }}$
+    </button>
+
+    <div id="highscore" style="visibility: hidden; color: red;">'.$lang_HIGHSCOREAD.'<br></div>
+
+    <div id="boardslot">
+        <table class="table-bordered">
+            <tbody>
+                <tr>
+                    <td style="padding: 1em" class="taxman" id="n1" onmouseover="mousein(1)" onmouseout="mouseout(1)" onclick="mouseclick(1)">1</td>
+                    <td style="padding: 1em" class="taxman" id="n2" onmouseover="mousein(2)" onmouseout="mouseout(2)" onclick="mouseclick(2)">2</td>
+                    <td style="padding: 1em" class="taxman" id="n3" onmouseover="mousein(3)" onmouseout="mouseout(3)" onclick="mouseclick(3)">3</td>
+                    <td style="padding: 1em" class="taxman" id="n4" onmouseover="mousein(4)" onmouseout="mouseout(4)" onclick="mouseclick(4)">4</td>
+                    <td style="padding: 1em" class="taxman" id="n5" onmouseover="mousein(5)" onmouseout="mouseout(5)" onclick="mouseclick(5)">5</td>
+                    <td style="padding: 1em" class="taxman" id="n6" onmouseover="mousein(6)" onmouseout="mouseout(6)" onclick="mouseclick(6)">6</td>
+                    <td style="padding: 1em" class="taxman" id="n7" onmouseover="mousein(7)" onmouseout="mouseout(7)" onclick="mouseclick(7)">7</td>
+                    <td style="padding: 1em" class="taxman" id="n8" onmouseover="mousein(8)" onmouseout="mouseout(8)" onclick="mouseclick(8)">8</td>
+                    <td style="padding: 1em" class="taxman" id="n9" onmouseover="mousein(9)" onmouseout="mouseout(9)" onclick="mouseclick(9)">9</td>
+                    <td style="padding: 1em" class="taxman" id="n10" onmouseover="mousein(10)" onmouseout="mouseout(10)" onclick="mouseclick(10)">10</td></tr>
+                <tr>
+                    <td style="padding: 1em" class="taxman" id="n11" onmouseover="mousein(11)" onmouseout="mouseout(11)" onclick="mouseclick(11)">11</td>
+                    <td style="padding: 1em" class="taxman" id="n12" onmouseover="mousein(12)" onmouseout="mouseout(12)" onclick="mouseclick(12)">12</td>
+                    <td style="padding: 1em" class="taxman" id="n13" onmouseover="mousein(13)" onmouseout="mouseout(13)" onclick="mouseclick(13)">13</td>
+                    <td style="padding: 1em" class="taxman" id="n14" onmouseover="mousein(14)" onmouseout="mouseout(14)" onclick="mouseclick(14)">14</td>
+                    <td style="padding: 1em" class="taxman" id="n15" onmouseover="mousein(15)" onmouseout="mouseout(15)" onclick="mouseclick(15)">15</td>
+                    <td style="padding: 1em" class="taxman" id="n16" onmouseover="mousein(16)" onmouseout="mouseout(16)" onclick="mouseclick(16)">16</td>
+                    <td style="padding: 1em" class="taxman" id="n17" onmouseover="mousein(17)" onmouseout="mouseout(17)" onclick="mouseclick(17)">17</td>
+                    <td style="padding: 1em" class="taxman" id="n18" onmouseover="mousein(18)" onmouseout="mouseout(18)" onclick="mouseclick(18)">18</td>
+                    <td style="padding: 1em" class="taxman" id="n19" onmouseover="mousein(19)" onmouseout="mouseout(19)" onclick="mouseclick(19)">19</td>
+                    <td style="padding: 1em" class="taxman" id="n20" onmouseover="mousein(20)" onmouseout="mouseout(20)" onclick="mouseclick(20)">20</td>
+                </tr>
+                <tr id="row3" style="display: none">
+                    <td style="padding: 1em" class="taxman" id="n21" onmouseover="mousein(21)" onmouseout="mouseout(21)" onclick="mouseclick(21)">21</td>
+                    <td style="padding: 1em" class="taxman" id="n22" onmouseover="mousein(22)" onmouseout="mouseout(22)" onclick="mouseclick(22)">22</td>
+                    <td style="padding: 1em" class="taxman" id="n23" onmouseover="mousein(23)" onmouseout="mouseout(23)" onclick="mouseclick(23)">23</td>
+                    <td style="padding: 1em" class="taxman" id="n24" onmouseover="mousein(24)" onmouseout="mouseout(24)" onclick="mouseclick(24)">24</td>
+                    <td style="padding: 1em" class="taxman" id="n25" onmouseover="mousein(25)" onmouseout="mouseout(25)" onclick="mouseclick(25)">25</td>
+                    <td style="padding: 1em" class="taxman" id="n26" onmouseover="mousein(26)" onmouseout="mouseout(26)" onclick="mouseclick(26)">26</td>
+                    <td style="padding: 1em" class="taxman" id="n27" onmouseover="mousein(27)" onmouseout="mouseout(27)" onclick="mouseclick(27)">27</td>
+                    <td style="padding: 1em" class="taxman" id="n28" onmouseover="mousein(28)" onmouseout="mouseout(28)" onclick="mouseclick(28)">28</td>
+                    <td style="padding: 1em" class="taxman" id="n29" onmouseover="mousein(29)" onmouseout="mouseout(29)" onclick="mouseclick(29)">29</td>
+                    <td style="padding: 1em" class="taxman" id="n30" onmouseover="mousein(30)" onmouseout="mouseout(30)" onclick="mouseclick(30)">30</td>
+                </tr>
+                <tr id="row4" style="display: none">
+                    <td style="padding: 1em" class="taxman" id="n31" onmouseover="mousein(31)" onmouseout="mouseout(31)" onclick="mouseclick(31)">31</td>
+                    <td style="padding: 1em" class="taxman" id="n32" onmouseover="mousein(32)" onmouseout="mouseout(32)" onclick="mouseclick(32)">32</td>
+                    <td style="padding: 1em" class="taxman" id="n33" onmouseover="mousein(33)" onmouseout="mouseout(33)" onclick="mouseclick(33)">33</td>
+                    <td style="padding: 1em" class="taxman" id="n34" onmouseover="mousein(34)" onmouseout="mouseout(34)" onclick="mouseclick(34)">34</td>
+                    <td style="padding: 1em" class="taxman" id="n35" onmouseover="mousein(35)" onmouseout="mouseout(35)" onclick="mouseclick(35)">35</td>
+                    <td style="padding: 1em" class="taxman" id="n36" onmouseover="mousein(36)" onmouseout="mouseout(36)" onclick="mouseclick(36)">36</td>
+                    <td style="padding: 1em" class="taxman" id="n37" onmouseover="mousein(37)" onmouseout="mouseout(37)" onclick="mouseclick(37)">37</td>
+                    <td style="padding: 1em" class="taxman" id="n38" onmouseover="mousein(38)" onmouseout="mouseout(38)" onclick="mouseclick(38)">38</td>
+                    <td style="padding: 1em" class="taxman" id="n39" onmouseover="mousein(39)" onmouseout="mouseout(39)" onclick="mouseclick(39)">39</td>
+                    <td style="padding: 1em" class="taxman" id="n40" onmouseover="mousein(40)" onmouseout="mouseout(40)" onclick="mouseclick(40)">40</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <label for="choices">${{ taxman.CHOICE }}$</label>
+    <input type="text" class="form-control" name="choices" id="choices" readonly>
+
+</div>
+
+<script>
+
+    if(document.getElementById("s20").checked)
+       checkSize = 20;
+    else {
+        if(document.getElementById("s30").checked)
+            checkSize = 30;
+        else
+            checkSize = 40;
+    }
+
+    game = newgame(checkSize);
+    game.size = checkSize;
+    //service layer
+    var aufgegeben=false;
+
+
+    function Utf8decode (text)
+    {
+        text = text.replace(/ae/g, "ä");
+        text = text.replace(/AE/g, "Ä");
+        text = text.replace(/oe/g, "ö");
+        text = text.replace(/OE/g, "Ö");
+        text = text.replace(/ue/g, "ü");
+        text = text.replace(/UE/g, "Ü");
+        text = text.replace(/ss/g, "ß");
+        return text;
+    }
+
+
+    function factors(n) {
+        result = {};
+        for (var f = 1; f <= n; f++) {
+            if (n % f == 0) {
+                var g = Math.floor(n / f);
+                result[f] = true;
+                result[g] = true;
+                if (f >= g) break;
+            }
+        }
+        return result;
+    }
+
+    function intersection(a, b) {
+        result = {};
+        for (var f in a) {
+            if (f in b) {
+                result[f] = true;
+            }
+        }
+        return result;
+    }
+
+    function difference(a, b) {
+        result = {};
+        for (var f in a) {
+            if (!(f in b)) {
+                result[f] = true;
+            }
+        }
+        return result;
+    }
+
+    function legalmove(move, available) {
+        if (!(move in available)) return false;
+        var remaining = intersection(factors(move), available);
+        for (var f in remaining) {
+            if (f != move) return true;
+        }
+        return false;
+    }
+
+    function newgame(n) {
+        var result = {};
+        result.available = {};
+        result.taken = {};
+        for (var i = 1; i <= n; i++) {
+            result.available[i] = true;
+        }
+        result.size = n;
+        result.score = 0;
+        result.tax = 0;
+        result.legal = function(move) {
+            return legalmove(move, this.available);
+        }
+        result.move = function(m) {
+            for (var f in factors(m)) {
+                if (f in this.available) {
+                    delete this.available[f];
+                    if (f == m) {
+                        this.taken[f] = true;
+                        this.score += parseInt(f);
+                    }
+                    else {
+                        this.tax += parseInt(f);
+                    }
+                }
+            }
+        }
+        result.finish = function() {
+            for (var f in this.available) {
+                delete this.available[f];
+                this.tax += parseInt(f);
+            }
+        }
+        return result;
+    }
+
+
+    //gui
+
+
+    function cell(n) {
+        return document.getElementById("n" + n);
+    }
+
+    function scorecell() {
+        return document.getElementById("taxscore");
+    }
+
+    function taxcell() {
+        return document.getElementById("tax");
+    }
+
+    function newsizecell() {
+        return document.getElementById("newsize");
+    }
+
+    hover = null;
+    function recolor() {
+        var taxed = {};
+        var highlight = null;
+        if (hover !== null && game.legal(hover)) {
+            highlight = hover;
+            taxed = intersection(factors(hover), game.available);
+        }
+        for (var i = 1; i <= game.size; i++) {
+            color = "none";
+            if (i in game.taken) color = "rgb(204, 221, 255)";
+            else if (!(i in game.available)) color = "pink";
+            else if (highlight == i) color = "rgb(102, 153, 255)";
+            else if (i in taxed && document.getElementById("showmove").checked) color = "rgb(255, 80, 80)";
+            cell(i).style.background = color;
+        }
+        scorecell().value = game.score;
+        taxcell().value = game.tax;
+    }
+
+    function mousein(n) {
+        hover = n;
+        recolor();
+    }
+
+    function mouseout(n) {
+        hover = null;
+        recolor();
+    }
+
+    function mouseclick(n) {
+        if (game.legal(n)) {
+            game.move(n);
+            // add history entry
+            var tmp = document.getElementById("choices").value;
+            if (tmp!="") tmp+="-"+n;
+            else tmp=n;
+            document.getElementById("choices").value = tmp;
+            //check if game is over
+            if (isgameover()&&document.getElementById("autoend").checked) done();
+        }
+        recolor();
+    }
+
+    function done() {
+        if (aufgegeben==false)
+        {
+            game.finish();
+            if(game.score >= game.tax && game.score > 0) {
+                scorecell().style.backgroundColor = "rgb(153, 255, 153)";
+            }
+            else {
+                scorecell().style.backgroundColor = "pink";
+            }
+            recolor();
+        }
+        aufgegeben=true;
+    }
+
+    //checks if the game is over
+    function isgameover()
+    {
+        var gameover=true;
+        for (var i = 1; i <= game.size; i++)
+        {
+            if (game.legal(i))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function restart() {
+        var size = 40;
+
+        if(document.getElementById("s20").checked)
+            size = 20;
+        else {
+            if(document.getElementById("s30").checked)
+                size = 30;
+        }
+
+        document.getElementById("choices").value = "";
+        document.getElementById("taxscore").style.backgroundColor = "";
+        game = newgame(size);
+        recolor();
+        aufgegeben=false;
+    }
+
+    function changeSize() {
+        var e = document.getElementById("sizeSelect");
+        var size = e.options[e.selectedIndex].value;
+
+        switch(size) {
+            case "20":
+                document.getElementById("row3").style.display = "none";
+                document.getElementById("row4").style.display = "none";
+                break;
+            case "30":
+                document.getElementById("row3").style.display = "table-row";
+                document.getElementById("row4").style.display = "none";
+                break;
+            case "40":
+                document.getElementById("row3").style.display = "table-row";
+                document.getElementById("row4").style.display = "table-row";
+        }
+
+        restart();
+    }
+
+</script>

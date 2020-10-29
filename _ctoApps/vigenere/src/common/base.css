@@ -7,6 +7,9 @@
 .cryptool-container textarea, .cryptool-container input[type="text"] {
     font-family: monospace;
 }
+.cryptool-container .input-group .input-group-append .btn {
+    padding: 0 0.75rem;
+}
 .cryptool-container svg {
     display: block;
     margin: 1em auto;
@@ -52,7 +55,7 @@
 #alphabet-details {
     background: transparent;
 }
-.checkbox-inline {
+.ml-10px {
     margin-left: 10px;
 }
 #options-body {
@@ -71,4 +74,8 @@
     margin-bottom: 20px;
     border: 1px solid transparent;
     border-radius: 4px;
+}
+
+.cryptool-container .form-group:last-of-type {
+    margin-bottom: 0;
 }

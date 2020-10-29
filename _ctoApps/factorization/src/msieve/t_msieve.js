@@ -18,17 +18,31 @@ describe('Msieve', () => {
 
     describe('Basic factorization functionality', () => {
         it('simple factorization', async () => {
-            const factors = await factorizer.factorize('10');
-            assert.deepEqual(['2', '5'], factors);
+            const result = await factorizer.factorize('10');
+            assert.deepEqual({ factors: ['2', '5'], numberInput: '10' }, result);
         });
 
         it('complex factorization', async () => {
-            const factors = await factorizer.factorize('(2^283-1)/2');
-            const expectedFactors = [
-                '3', '3', '7', '283', '2351', '4513', '1681003',
-                '13264529', '4375578271', '35273039401', '111349165273',
-                '165768537521', '646675035253258729'];
-            assert.deepEqual(expectedFactors, factors);
+            const result = await factorizer.factorize('(2^283-1)/2');
+            const expectedResult = {
+                factors: [
+                  '3',
+                  '3',
+                  '7',
+                  '283',
+                  '2351',
+                  '4513',
+                  '1681003',
+                  '13264529',
+                  '4375578271',
+                  '35273039401',
+                  '111349165273',
+                  '165768537521',
+                  '646675035253258729'
+                ],
+                numberInput: '7770675568902916283677847627294075626569627356208558085007249638955617140820833992703'
+              };
+            assert.deepEqual(expectedResult, result);
         }).timeout(60000);
     });
 });

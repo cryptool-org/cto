@@ -23,26 +23,23 @@
 
 </style>
 
-<script src="../common/base.js">
-</script>
-
 <script>
 
-
-     this.setTurns = function () {
-         var turns = document.getElementById("turns").value;
-         if(turns == "" || turns == 0) {
-             turns = 1;
-             document.getElementById("turns").value = turns;
-         }
-         if(turns > 50) {
-             turns = 50;
-             document.getElementById("turns").value = turns;
-         }
-         if(turns.length > 2) {
-             turns = 5;
-             document.getElementById("turns").value = turns;
-         }
-         evokeUpdate();
+    this.setTurns = function () {
+        var turns = document.getElementById("turns").value;
+        if(turns == "" || turns == 0) {
+            turns = 1;
+            document.getElementById("turns").value = turns;
+        }
+        if(turns > 50) {
+            turns = 50;
+            document.getElementById("turns").value = turns;
+        }
+        if(turns.length > 2) {
+            turns = 5;
+            document.getElementById("turns").value = turns;
+        }
+        evokeUpdate();
      }
+     
 </script>

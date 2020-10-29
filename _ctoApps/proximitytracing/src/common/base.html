@@ -1,0 +1,64 @@
+@@include('./size_warning.html')
+<div class="cryptool-container" id="@@ROOT_ID">
+
+    @@include('./walkthrough.html', {
+        "PROTOCOL": "@@PROTOCOL"
+    })
+   
+    <div class="row equal-height-lg">
+        <div class="col-12 col-lg-6">
+            @@include('./broadcast_history.html', {
+                "PROTOCOL": "@@PROTOCOL",
+                "ROOT_ID": "@@ROOT_ID"
+            })
+        </div>
+        <div class="col-lg-1 d-none d-lg-flex text-center">
+            <i class="fa fa-arrow-right fa-3x" aria-hidden="true"></i>
+        </div>
+        <div class="col-12 d-flex align-items-center flex-column text-center d-lg-none">
+            <div class="spacer"></div>
+            <i class="fa fa-arrow-down fa-3x" aria-hidden="true"></i>
+            <div class="spacer"></div>
+        </div>
+        <div class="col-12 col-lg-5">
+            @@include('./contact_list.html')
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="row">
+        <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center text-center">
+            <i class="fa fa-arrow-down fa-3x" aria-hidden="true"></i>
+        </div>
+        <div class="col-lg-offset-0 col-lg-6 col-md-offset-6 col-md-6 col-xs-offset-6 col-xs-6 flex-column align-items-center text-center">
+            <i class="fa fa-arrow-down fa-3x" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="row equal-height">
+
+        <div class="col-12 col-md-6">
+            @@include('./server_list.html')
+        </div>
+
+        <div class="col-12 col-md-1 d-none d-md-flex text-center">
+            <i class="fa fa-arrow-right fa-3x" aria-hidden="true"></i>
+        </div>
+        <div class="col-12 d-flex align-items-center flex-column text-center d-md-none">
+            <div class="spacer"></div>
+            <i class="fa fa-arrow-down fa-3x" aria-hidden="true"></i>
+            <div class="spacer"></div>
+        </div>
+
+        <div class="col-12 col-md-5">
+            @@include('./matching_list.html', {
+                "PROTOCOL": "@@PROTOCOL"
+            })
+        </div>
+        
+    </div>
+
+</div>

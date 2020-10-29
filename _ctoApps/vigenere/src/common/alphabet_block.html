@@ -1,22 +1,30 @@
 @@if (name !== "hill") {
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">@@alphabet_title</h3>
+<div class="card mt-3">
+
+    <div class="card-header">
+        <i class="fa fa-font mr-2"></i>
+        @@alphabet_title
     </div>
-    <div class="panel-body" id="@@alphabet_id">
+    
+    <div class="card-body" id="@@alphabet_id">
 @@for(var i = 0; i < alphabets.length; ++i) {
         <div class="form-group">
             <div class="input-group">
                 <input type="text" class="form-control alphabet" value="` + alphabets[i] + `">
-                <span class="input-group-btn"><button class="btn btn-default">…</button></span>
+                <span class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button"><i class="fa fa-wrench"></i></button>
+                </span>
             </div>
             <span class="offset">0</span>
             <div class="alert alert-danger alert-hidden"></div>
         </div>
 }
     </div>
-    <div class="panel-footer">
-        <button class="btn btn-default pull-right" id="@@add_alphabet_id">${{ base.ADD_ALPHABET }}$</button>
+    <div class="card-footer">
+        <button class="btn btn-primary pull-right" id="@@add_alphabet_id">
+            <i class="fa fa-plus-circle mr-1"></i>
+            ${{ base.ADD_ALPHABET }}$
+        </button>
         <div class="clearfix"></div>
     </div>
 </div>
@@ -24,24 +32,30 @@
 
 <!--workaround for Hill cipher-->
 @@if (name === "hill") {
-<div class="panel panel-default" style="display: none">
-    <div class="panel-heading">
-        <h3 class="panel-title">@@alphabet_title</h3>
+<div class="card mt-3" style="display: none">
+    <div class="card-header">
+        <i class="fa fa-font mr-2"></i>
+        @@alphabet_title
     </div>
-    <div class="panel-body" id="@@alphabet_id">
+    <div class="card-body" id="@@alphabet_id">
         @@for(var i = 0; i < alphabets.length; ++i) {
         <div class="form-group">
             <div class="input-group">
                 <input type="text" class="form-control alphabet" value="` + alphabets[i] + `">
-                <span class="input-group-btn"><button class="btn btn-default">…</button></span>
+                <span class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button"><i class="fa fa-wrench"></i></button>
+                </span>
             </div>
             <span class="offset">0</span>
             <div class="alert alert-danger alert-hidden"></div>
         </div>
         }
     </div>
-    <div class="panel-footer">
-        <button class="btn btn-default pull-right" id="@@add_alphabet_id">${{ base.ADD_ALPHABET }}$</button>
+    <div class="card-footer">
+        <button class="btn btn-primary pull-right" id="@@add_alphabet_id">
+            <i class="fa fa-plus-circle mr-1"></i>
+            ${{ base.ADD_ALPHABET }}$
+        </button>
         <div class="clearfix"></div>
     </div>
 </div>

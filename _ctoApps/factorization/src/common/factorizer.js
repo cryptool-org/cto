@@ -9,7 +9,7 @@ class Factorizer {
     initFactorization() {
         this.state.disableInputs();
         this.state.setProgress("${{ base.FACTORIZATION_STARTING }}$", 0);
-        this.state.$factorsOutputPanel.hide();
+        this.state.$factorsOutputCard.hide();
     }
 
     showFactors(numberInput, factors) {
@@ -17,7 +17,8 @@ class Factorizer {
         const factorEntries = factors.map(factor => `<li class="list-group-item factor">${factor}</li>`);
         this.state.$factorsOutput.html(factorEntries.join("\n"));
         this.state.$factoredNumber.text(numberInput);
-        this.state.$factorsOutputPanel.show();
+        this.state.$countFactorsFound.text(factorEntries.length);
+        this.state.$factorsOutputCard.show();
     }
 
     factorize(numberInput) {
@@ -25,7 +26,7 @@ class Factorizer {
             this.initFactorization();
             const promise = this.algo(numberInput, this.state.setProgress);
             promise
-                .then(factors => this.showFactors(numberInput, factors))
+                .then(result => this.showFactors(result.numberInput, result.factors))
                 .catch(error => {
                     const info = "${{ base.ERROR_MESSAGE }}$";
                     const errorMessage = error.message

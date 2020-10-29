@@ -9,5 +9,6 @@
   "FACTORIZATION_STARTING": "Starte Faktorisierung...",
   "FACTORIZATION_COMPLETED": "Faktorisierung abgeschlossen!",
   "MISSING_INPUT_NUMBER": "Fehlende Eingabezahl",
+  "INVALID_INPUT_NUMBER": "Ungültige Eingabezahl (Nur Ganzzahlen > 1 werden faktorisiert)",
   "INPUT_NUMBER_BIT_COUNT_INFO": "Eingabezahl besteht aus ${bits} Bits"
 }
