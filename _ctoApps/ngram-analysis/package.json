@@ -1,0 +1,11 @@
+{
+  "name": "cto-ngram-analysis",
+  "version": "0.0.1",
+  "description": "CTO plugin to analyze n-grams",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.2.2",
+    "gulp-i18n-localize": "^1.4.0",
+    "gulp-rename": "^2.0.0"
+  }
+}

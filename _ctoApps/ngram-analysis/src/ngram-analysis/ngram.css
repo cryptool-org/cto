@@ -1,0 +1,15 @@
+#matrix hr {
+    margin-top: 2.5rem;
+}
+
+@media(min-width: 992px) {
+
+    #matrix > .table-responsive {
+        padding-right: calc(15px / 2);
+    }
+    
+    #matrix > .table-responsive:nth-of-type(2) {
+        padding-left: calc(15px / 2);
+    }
+
+}

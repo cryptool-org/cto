@@ -1,0 +1,14 @@
+{
+    "author": "Autorin",
+    "textarea_caption": "Ihr Text (Geheimtext)",
+    "textarea_content": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern",
+    "input_table_length": "Länge der Tabellen",
+    "input_ngram_amount": "-gramm",
+    "case_sensitive_checkbox": "Case-sensitiv",
+    "analyze_button_caption": "Analysieren",
+    "table_heading_rank": "Rank",
+    "table_heading_gram": "-gramm",
+    "table_heading_absolute": "Abs.",
+    "table_heading_relative": "Rel.",
+    "tables_heading_overall": "N-Gramm-Tabellen"
+}

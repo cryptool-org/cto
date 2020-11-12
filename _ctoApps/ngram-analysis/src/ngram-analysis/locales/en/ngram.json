@@ -1,0 +1,14 @@
+{
+    "author": "Author",
+    "textarea_caption": "Your Text (Ciphertext)",
+    "textarea_content": "The quick brown fox jumps over the lazy dog",
+    "input_table_length": "Length of the tables",
+    "input_ngram_amount": "-gram",
+    "case_sensitive_checkbox": "Case sensitive",
+    "analyze_button_caption": "Analyse",
+    "table_heading_rank": "Rank",
+    "table_heading_gram": "-gram",
+    "table_heading_absolute": "Abs.",
+    "table_heading_relative": "Rel.",
+    "tables_heading_overall": "N-gram tables"
+}

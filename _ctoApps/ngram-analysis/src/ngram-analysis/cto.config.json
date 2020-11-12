@@ -1,0 +1,10 @@
+{
+  "name": "ngram-analysis",
+  "styles": [
+    "ngram.css"
+  ],
+  "scripts": [
+    "ngram-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html"
+}
