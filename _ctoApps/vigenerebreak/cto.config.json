@@ -1,0 +1,11 @@
+{
+  "name": "vigenere-break",
+  "styles": ["./vigenere-break.css"],
+  "scripts": [
+    "./resources/cloudfare.js",
+    "./resources/canvasjs.min.js",
+    "./resources/canvasChart.js",
+    "./vigenerebreak-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html"
+}

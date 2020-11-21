@@ -1,0 +1,11 @@
+{
+  "name": "autocorrelation",
+  "styles": ["./autocorrelation.css"],
+  "scripts": [
+    "./resources/cloudfare.js",
+    "./resources/canvasjs.min.js",
+    "./resources/canvasChart.js",
+    "./autocorrelation-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html"
+}

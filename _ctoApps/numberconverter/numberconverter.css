@@ -1,0 +1,16 @@
+.tab-content .form-control {
+  background-color: lightgray;
+}
+
+.tab-content .form-control:focus {
+  box-shadow: inset 0 1px 1px rgb(204, 204, 204); /*eliminate blue border from bs*/
+  border-color: yellowgreen;
+}
+
+.tab-content .form-control::placeholder {
+  color: lightslategray;
+}
+
+.tab-content .table-striped tbody tr th:first-child {
+  font-weight: normal;
+}

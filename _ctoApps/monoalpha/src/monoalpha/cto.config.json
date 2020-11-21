@@ -1,0 +1,21 @@
+{
+  "name": "monoalphabetic substitution",
+  "styles": [
+    "./monoalpha.css",
+    "./resources/codemirror/lib/codemirror.css",
+    "./resources/codemirror/theme/shadowfox.css",
+    "./resources/codemirror/theme/eclipse.css",
+    "./resources/codemirror/theme/yeti.css",
+    "./resources/codemirror/theme/solarized.css",
+    "./resources/fonts/css/font-awesome.min.css"
+  ],
+  "scripts": [
+    "./resources/codemirror/lib/codemirror.js",
+    "./resources/codemirror/mode/python/python.js",
+    "./resources/cloudfare.js",
+    "./resources/pyodide.js",
+    "./monoalpha-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html",
+  "bootstrap": 4
+}

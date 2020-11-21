@@ -1,0 +1,77 @@
+.length-label {
+  font-size: small;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.gcarlin {
+  color: red;
+}
+#code .card-body {
+  padding: 0%;
+}
+.tab-content .card-body {
+  padding: 0%;
+}
+#key,
+#fontsize {
+  border-radius: 7px;
+}
+#cmdLine {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: small;
+  text-align: left;
+  border: solid black 1px !important;
+}
+.badge {
+  font-size: small !important;
+  padding: 0% !important;
+}
+.inlineSection {
+  /* 
+  hide whitespace nodes in all modern browsers except webkit. Any value is fine, as words won't overlap 
+  */
+  word-spacing: -1em;
+  /* Webkit Fix */
+  display: table;
+}
+
+textarea#yourcode {
+  overflow: hidden;
+  height: auto;
+}
+
+.CodeMirror {
+  font-size: 12px;
+  border: black solid 1px;
+  border-radius: 1%;
+}
+
+#minus,
+#plus {
+  text-align: center;
+}
+
+#cryptCheckboxWrapper .custom-control-label::before,
+#cryptCheckboxWrapper
+  .custom-control-input:checked
+  ~ .custom-control-label::before {
+  color: #fff;
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+#cryptCheckboxWrapper .custom-control-label::after {
+  background-color: #fff;
+}
+#modeSwitch {
+  color: var(--text-color-invert);
+}
+#dropdownTheme > .dropdown-item:active {
+  background-color: var(--green);
+}
+
+#dropdownTheme > .dropdown-item:hover {
+  background-color: var(--green);
+}

@@ -1,0 +1,51 @@
+{
+  "LANG": "de",
+  "CIPHER-TAB": "Chiffre",
+  "BACKGROUND-TAB": "Hintergrund",
+  "SECURITY-TAB": "Sicherheit",
+  "DESCRIPTION-TAB": "Beschreibung",
+  "INTERNAL-WORKING-TAB": "Interne Funktionsweise",
+  "ENCIPHER": "Verschlüsseln",
+  "DECIPHER": "Entschlüsseln",
+  "INPUT-LABEL": "Eingabe",
+  "INIT-TEXT": "Hallo, das ist ein Test. Bitte geben Sie Ihren Text hier ein.",
+  "KEY": "Schlüssel",
+  "SHOW-CODE": "Code anzeigen / ändern",
+  "HIDE-CODE": "Code ausblenden",
+  "FIVE-BLOCKS": "5er-Blöcke",
+  "LENGTH": "Länge",
+
+  "DEFINE-ALPHABET": "Eigenes Alphabet definieren",
+  "CLOSE-DEFINE-ALPHABET": "Eigenes Alphabet schließen",
+  "KEEP-ALPHABET": "Nicht im Alphabet enthaltene Zeichen beibehalten",
+  "PLAINTEXT-ALPHABET-LABEL": "Klartext-Alphabet",
+  "CIPHERTEXT-ALPHABET-LABEL": "Geheimtext-Alphabet",
+  "UPPERCASE": "Großbuchstaben",
+  "BLANKS": "Leerzeichen",
+  "DIGITS": "Ziffern",
+  "SPECIALCHARACTERS": "Sonderzeichen",
+  "PUNCTUATION-MARKS": "Satzzeichen",
+  "LOWERCASE": "Kleinbuchstaben",
+  "UMLAUTS": "Umlaute",
+
+  "CREATE-ALPHABET": "Vorkonstruierte Alphabete nutzen",
+  "DEFINE-OWN-ALPHABET": "Eigenes Alphabet definieren",
+
+  "WARNING-SECTION": "Sie sind dabei, den Code in den Standardcode zu ändern. Sind Sie sicher?<button type='button' id='confirmCodeChange'class='ml-5 mt-md-0 mt-sm-3 btn btn-warning'>Ja<i class='ml-2 fa fa-check' aria-hidden='true'></i>  </button><button type='button' id='denyCodeChange' class='btn btn-warning ml-3 mt-md-0 mt-sm-3'>Nein<i class='ml-2 fa fa-times' aria-hidden='tru'></i></button>",
+  "FONTSIZE": "Schriftgröße",
+
+  "RUN": "Start",
+  "BACK-TO-DEFALUT": "Zurück zu Standard",
+  "THEME": "Ein Design wählen",
+  "OUTPUT-LABEL": "Ausgabe",
+
+  "PYTHON-LOADING": "Lade Python, bitte warten...",
+  "FONTSIZE-LABEL": "Schriftgröße",
+  "OPTIONS": "Optionen",
+  "REFERENCE-LABEL": "Referenzen",
+  "REFERENCE-CAESAR-LINK": "https://de.wikipedia.org/wiki/Caesar-Verschl%C3%BCsselung",
+
+  "BACKGROUND": "Hintergrund",
+  "DESCRIPTION": "Beschreibung des Verfahrens",
+  "SECURITY": "Sicherheitsbetrachtung"
+}

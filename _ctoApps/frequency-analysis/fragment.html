@@ -1,0 +1,213 @@
+
+      <ul class="nav nav-tabs ">
+          <li class ="nav-item">
+              <a class="nav-link active" href="#analyse" data-toggle="tab">
+                ${{ freqencyanalysis.ANALYSIS }}$  
+              </a>
+          </li>
+          <li class ="nav-item"> 
+              <a class="nav-link" href="#description" data-toggle="tab"> 
+                ${{ freqencyanalysis.DESCRIPTION }}$ 
+              </a>
+          </li>
+          <li class ="nav-item"> 
+              <a class="nav-link" href="#background" data-toggle="tab"> 
+                ${{ freqencyanalysis.BACKGROUND }}$ 
+
+              </a>
+          </li>
+          <li class ="nav-item"> 
+              <a class="nav-link" href="#frequencies" data-toggle="tab"> 
+                ${{ freqencyanalysis.LANGUAGE-FREQUENCY }}$ 
+              </a>
+          </li>
+      </ul>
+  
+      <div class="tab-content mt-3">
+          <div id ="analyse" class ="tab-pane active"><!--here the anaylse-content-->
+              
+              <form class="">
+                  <div class="row">
+                    <label class = 'mt-2 mr-5 mr-sm-0 col-lg-3 col-md-4 col-sm-12 col-12'>
+                      ${{ freqencyanalysis.TEXT-TO-ANALYSE }}$ 
+                    </label>
+                      <span class="btn-group dropright  col-lg-2 col-md-3 col-sm-5 col-7  mb-1" id= "buttonContainer">
+                          ${{ freqencyanalysis.LANGUAGECHOOSE-BUTTON }}$ 
+                      
+                        <span class="dropdown-menu dropdown-menu-right">
+                        <a id="eng" class="dropdown-item" >${{ freqencyanalysis.LANGUAGE-CHOOSE-ENG }}$</a>
+                        <a id="ger" class="dropdown-item" >${{ freqencyanalysis.LANGUAGE-CHOOSE-GER }}$</a>
+                        
+                        </span>
+                      </span>
+                  </div>
+
+                      <textarea spellcheck="false" class="form-control" id="ciphertext" rows="4"></textarea>
+                  
+                  <div class="float-right"><small id="amountOfChars">${{ freqencyanalysis.TEXTLENGTH }}$</small></div>
+              </form>    
+              
+                  
+             <br>
+             
+              <div class="row mt-2">
+                <div class = "col-xl-3 col-lg-4 col-md-5 col-sm-5 col-12 form-inline">
+                    <label for ="numberOfNgram">${{ freqencyanalysis.NGRAM }}$:</label>
+                 
+                      <button class="btn btn-success ml-1"  id="min">-</button>
+                      <input class="text-center form-control" id="numberOfNgram" value="1" maxlength="2"  type="text" size="1">
+                      <button class="btn btn-success"  id="plus">+</button>
+               
+                </div>
+                <span class="d-flex justify-content-left col-xl-5 col-lg-6 col-md-7 mt-md-2 mt-3 col-12" >
+                  <div class="mr-1">${{ freqencyanalysis.NUMBER-OF-BARS }}$:</div>
+                  <span class=" ">
+                  <input type="range" class="custom-range " id="sliderForDiagram" min="1" >
+                  </span>
+                  <span class="ml-2 font-weight-bold text-success  valueRange"></span>
+              </span> 
+          
+          
+
+          
+          <div class="custom-control custom-radio col-xl-2 col-lg-3 ml-lg-3 ml-xl-0 mt-xl-2 mt-lg-3 col-md-4 col-5 ml-md-3 ml-3 mt-md-2 mt-3" style="display: inline-block">
+            <input type="radio" id="sortByFreq" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label ml-1" for="sortByFreq">${{ freqencyanalysis.FREQ-SORT }}$</label>
+        </div>
+        
+       
+        <div class="custom-control custom-radio col-xl-2 mt-xl-2 col-lg-3  mt-lg-3  col-md-4 col-5 mt-md-2 mt-3" style="display: inline-block">
+            <input type="radio" id="sortByAlphabet" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label ml-1" for="sortByAlphabet">${{ freqencyanalysis.ALPHABET-SORT }}$</label>
+            </div>
+            
+        </div>
+              
+                    
+          
+             <hr>
+             <div style="height: 350px; " class="chartContainer mt-2">
+              <canvas id="myChart"></canvas>
+            </div>
+           <hr>
+           <br>
+           <div class = "card">
+                <div class="card-header">
+                <i class="ml-1 fa fa-download mr-2" aria-hidden="true"></i> ${{ freqencyanalysis.NGRAM-DOWNLOAD }}$
+                    </div>  
+                <div class ="card-body">
+                    <div class = "row ml-auto">
+                  
+                      <label for="example-number-input" class="mt-2">${{ freqencyanalysis.NGRAM-DOWNLOAD-SIZE }}$:  </label>
+                      <span class = "col-md-2 col-sm-3 col-5">
+                          <input style="width: 75px;" class="text-center form-control" type="number" value="1" id="numberInput" min="1">
+                          
+                            <span class="invalid-feedback">
+                                ${{ freqencyanalysis.NGRAM-DOWNLOAD-INVALID-INPUT }}$
+                            </span>
+                    
+                      </span>
+                      <a id="download_link" class= "ml-sm-3 ml-1 mt-3 mt-sm-0 btn btn-success" download="my_analysis_result.csv" href=”” >${{ freqencyanalysis.DOWNLOAD-BUTTON }}$</a>
+                      
+                    </div>  
+                      
+                </div>
+              </div>
+              <br />
+              <hr />
+              <p style="text-align:center;">${{ freqencyanalysis.AUTHOR }}$: Jean Michel Polak</p>
+              <br />
+              
+              
+          
+           
+          </div>
+          <div class ="tab-pane" id="description"><!--here the Description part-->
+            <!--distance to tab-->
+            <p class = "mt-4">${{ freqencyanalysis.DESCRIPTION-FIRST-PARAGRAPH }}$</p>
+            <p>${{ freqencyanalysis.DESCRIPTION-SECOND-PARAGRAPH }}$</p>
+          </div>
+
+          <div class ="tab-pane" id="background"><!--here the Background part-->
+            <!--distance to tab-->            
+            <p class = "mt-4">${{ freqencyanalysis.BACKGROUND-FIRST-PARAGRAPH }}$</p>
+            <p>${{ freqencyanalysis.BACKGROUND-SECOND-PARAGRAPH }}$</p>
+            <p>${{ freqencyanalysis.BACKGROUND-THIRD-PARAGRAPH }}$</p>
+
+          <br> 
+          </div>
+
+          <div id="frequencies" class ="tab-pane"><!--here the Frequencies-->
+             <p>${{ freqencyanalysis.FREQUENY-TAB-LABEL }}$</p>
+            
+            <h3 class  = "mt-5">
+              ${{ freqencyanalysis.FREQUENY-ENGLISH-TABLE-LABEL }}$
+              </h3>
+              <div class = "row">
+                  <span class="d-flex justify-content-left float-left col-md-5 col-sm-12 mt-3 " >
+                      <div class=""> ${{ freqencyanalysis.NGRAM }}$: </div>
+                      <span class=" ml-2">
+                      <input type="range" class="custom-range " id="sliderForEnglishTable" min="1" max="5" value="1">
+                      </span>
+                      <span class="font-weight-bold text-success ml-2 " id="valueForEnglish" ></span>
+                  </span>
+                 
+                  <div class="custom-control custom-radio tableFreqSort ml-md-0 ml-sm-3 ml-3 mt-3 col-md-3 col-sm-5 col-5 " style="display: inline-block">
+                            <input type="radio" id="sortEngFreqByPer" name="customRadioENG" class="custom-control-input">
+                            <label class="custom-control-label ml-1" for="sortEngFreqByPer">${{ freqencyanalysis.FREQ-SORT }}$</label>
+                </div>
+                  <div class="custom-control custom-radio tableAlphabetSort ml-md-0 ml-sm-0 ml-3 mt-3 col-6 col-md-4 col-sm-5 col-5" style="display: inline-block">
+                            <input type="radio" id="sortEngFreqByAlphabet" name="customRadioENG" class="custom-control-input">
+                            <label class="custom-control-label ml-1" for="sortEngFreqByAlphabet">${{ freqencyanalysis.ALPHABET-SORT }}$</label>
+                </div>
+              </div>
+              <div class = "mt-3 table-responsive-sm table-responsive-md table-responsive-lg">
+                  <table id ="englishTable" class="table table-sm table-striped"></table>
+              </div> 
+                
+                
+              
+              <br>
+                  <hr>
+                <br>
+                
+                    <h3>
+                      ${{ freqencyanalysis.FREQUENY-GERMAN-TABLE-LABEL }}$
+                  </h3>
+                  <div class = "row">
+                      <span class="d-flex justify-content-left  col-md-5 col-sm-12 mt-3" >
+                          <div>${{ freqencyanalysis.NGRAM }}$: </div>
+                          <span class=" ml-2">
+                          <input type="range" class="custom-range " id="sliderForGermanTable" min="1" max="4" value="1">
+                          </span>
+                          <span class="font-weight-bold text-success ml-2 " id ="valueForGerman"></span>
+                      </span>
+                      
+                        <div class="custom-control custom-radio tableFreqSort ml-md-0 ml-sm-3 ml-3 mt-3 col-5 col-md-3 col-sm-5" style="display: inline-block">
+                            <input type="radio" id="sortGerFreqByPer" name="customRadioGER" class="custom-control-input">
+                            <label class="custom-control-label ml-1" for="sortGerFreqByPer">${{ freqencyanalysis.FREQ-SORT }}$</label>
+                        </div>
+                        
+                        <div class="custom-control custom-radio tableAlphabetSort ml-md-0 ml-sm-0 ml-3 mt-3 col-6 col-md-4 col-sm-5" style="display: inline-block">
+                            <input type="radio" id="sortGerFreqByAlphabet" name="customRadioGER" class="custom-control-input">
+                            <label class="custom-control-label ml-1" for="sortGerFreqByAlphabet">${{ freqencyanalysis.ALPHABET-SORT }}$</label>
+                        </div>
+                  </div>
+                  <div class = "mt-3 table-responsive-sm table-responsive-md table-responsive-lg">
+                    <table id="germanTable" class="table table-sm table-striped mb-5">
+                  </div>     
+                        
+                    </table>
+              
+              <br><br>
+              <hr>
+              <h4>${{ freqencyanalysis.REFERENCES }}$</h4>
+              <div>&#9679  ${{ freqencyanalysis.REFERENCES-FREQ-SOURCE }}$ </div>
+              <br>
+
+          </div>
+
+      </div>
+  
+  
+<!-- </div> -->

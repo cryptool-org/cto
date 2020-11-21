@@ -1,0 +1,45 @@
+.tab-content input[type="text"] {
+  border-radius: 7px;
+  color: #000;
+  height: 35px;
+  width: 35px;
+}
+
+#autoCorrResult,
+.autocorrelationsBox {
+  text-align: center;
+  font-size: medium;
+}
+
+.tab-content #buttons {
+  text-align: center;
+}
+
+.tab-content #maxval {
+  text-align: center;
+}
+
+.tab-content tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tab-content thead {
+  background-color: #f2f2f2;
+}
+
+#tableSelect:active {
+  background-color: rgb(36, 128, 0);
+}
+#chartSelect:active {
+  background-color: rgb(36, 128, 0);
+}
+
+.tab-content button.active {
+  background-color: rgb(94, 255, 0) !important;
+  border-color: rgb(94, 255, 0) !important;
+}
+
+#chooseAKeysize {
+  text-align: center;
+  font-size: small;
+}

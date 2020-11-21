@@ -1,0 +1,42 @@
+{
+  "LANG": "de",
+  "CIPHER-TAB": "Chiffre",
+  "BACKGROUND-TAB": "Hintergrund",
+  "SECURITY-TAB": "Sicherheit",
+  "DESCRIPTION-TAB": "Beschreibung",
+  "INTERNAL-WORKING-TAB": "Interne Funktionsweise",
+  "ENCIPHER": "Verschlüsseln",
+  "DECIPHER": "Entschlüsseln",
+  "INPUT-LABEL": "Eingabe",
+  "INIT-TEXT": "Hallo, das ist ein Test. Bitte geben Sie Ihren Text hier ein.",
+  "KEY": "Schlüssel",
+  "SHOW-CODE": "Code anzeigen / ändern",
+  "HIDE-CODE": "Code ausblenden",
+  "FIVE-BLOCKS": "5er-Blöcke",
+  "RUN": "Start",
+  "LENGTH": "Länge",
+  "BACK-TO-DEFALUT": "Zurück zu Standard",
+  "THEME": "Ein Thema wählen",
+  "OUTPUT-LABEL": "Ausgabe",
+  "OPTIONS": "Optionen",
+  "FONTSIZE": "Schriftgröße",
+  "PYTHON-LOADING": "Lade Python, bitte warten...",
+
+  "PLAINTEXT-ALPHABET": "Klartext-Alphabet",
+  "CIPHERTEXT-ALPHABET": "Geheimtext-Alphabet",
+  "KEYWORDS": "Schlüsselwörter verwenden",
+  "WARNING-SECTION": "Sie sind dabei, den Code in den Standardcode zu ändern. Sind Sie sicher?<button type='button' id='confirmCodeChange'class='ml-5 mt-md-0 mt-sm-3 btn btn-warning'>Ja<i class='ml-2 fa fa-check' aria-hidden='true'></i>  </button><button type='button' id='denyCodeChange' class='btn btn-warning ml-3 mt-md-0 mt-sm-3'>Nein<i class='ml-2 fa fa-times' aria-hidden='tru'></i></button>",
+
+  "DEFINE-ALPHABET": "Eigenes Alphabet definieren",
+  "CLOSE-DEFINE-ALPHABET": "Eigenes Alphabet schließen",
+
+  "KEEP-ALP": "Nicht im Alphabet enthaltene Zeichen beibehalten",
+
+  "K1-LABEL": "Eingabe 1. Schlüsselwort (Anfang des Klartext-Alphabets)",
+  "K2-LABEL": "Eingabe 1. Schlüsselwort (Anfang des Geheimtext-Alphabets)",
+  "K3-LABEL": "Eingabe 1. Schlüsselwort (Anfang des Klartext- und Geheimtext-Alphabets)",
+  "K4-LABEL": "Eingabe 2. Schlüsselwort (Anfang des Geheimtext-Alphabets)",
+
+  "LETTERCLASHWARNING": "Warnung, Buchstabenkonflikt für",
+  "ALPHABETLENGTHWARNING": "Alphabetlänge muss gleich sein"
+}

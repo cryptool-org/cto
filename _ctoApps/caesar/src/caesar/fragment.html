@@ -1,0 +1,327 @@
+
+   
+    <div class="form-group mt-3">
+      <label>${{caesar.INPUT-LABEL}}$</label>
+      <textarea spellcheck="false" rows="4" class="form-control" id="input">
+        ${{caesar.INIT-TEXT}}$</textarea
+      >
+      <span id="input-len" class ="float-right length-label"></span>
+    </div>
+    <!--encipher // decipher-->
+    <div class = "row mt-2 mb-2 ml-auto" id = "modeSwitch">
+      <label class="mr-2 left-switch-label" for="cryptCheckbox">${{caesar.ENCIPHER}}$</label>
+         <div class="custom-control custom-switch" id = "cryptCheckboxWrapper">
+       
+        <input type="checkbox" class="custom-control-input" id="cryptCheckbox">
+        <label class="custom-control-label right-switch-label" for="cryptCheckbox">${{caesar.DECIPHER}}$</label>
+        </div>
+    </div>
+    <!--begin tab cards-->
+    <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs" id="cmdOptions" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="#choseOptions" role="tab" aria-controls="choseOptions" aria-selected="true"><i class="fa fa-cog mr-2"></i>${{caesar.OPTIONS}}$</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="#choseAlphabet" role="tab" aria-controls="choseAlphabet" aria-selected="false"><i class="fa fa-font mr-2" aria-hidden="true"></i>Alphabet</a>
+            </li>
+           
+          </ul>
+        </div>
+        <div class="card-body">
+          
+           <div class="tab-content mt-1">
+            <div class="tab-pane active" id="choseOptions" role="tabpanel">
+            <!--start options tab-->
+              <p class="card-text">
+                <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+                    <input type="checkbox" class="custom-control-input" id="addFiveBlocksCodeCheckbox">
+                    <label class="custom-control-label" for="addFiveBlocksCodeCheckbox">${{caesar.FIVE-BLOCKS}}$</label>
+                </div>
+            <!--checkbox 5block-->
+            <!--checkbox nonalp-->
+            <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+        <input type="checkbox" class="custom-control-input" id="KeepNonAlphabetCharacters">
+        <label class="custom-control-label" for="KeepNonAlphabetCharacters">${{caesar.KEEP-ALPHABET}}$</label>
+    </div>
+         
+    
+            </p>
+
+        </div>
+             <!--start alphabet tab-->
+            <div class="tab-pane" id="choseAlphabet" role="tabpanel" aria-labelledby="choseAlphabet-tab">  
+              <p class="card-text"><label>${{caesar.PLAINTEXT-ALPHABET-LABEL}}$</label>
+      <textarea
+        rows="1"
+        wrap="soft"
+        class="mt-1 form-control"
+        id="plaintextAlp"
+        spellcheck="false"
+        disabled
+      >
+ABCDEFGHIJKLMNOPQRSTUVWXYZ</textarea
+      >
+      <textarea
+        rows="1"
+        wrap="soft"
+        class="mt-1 form-control mb-2"
+        id="cipherAlp"
+        spellcheck="false"
+        disabled
+      >
+BCDEFGHIJKLMNOPQRSTUVWXYZA</textarea
+      >
+      <label>${{caesar.CIPHERTEXT-ALPHABET-LABEL}}$</label>
+      <!--alphabet templates-->
+      <div class="alphabetTemplates">
+        <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+            <input type="checkbox" class="custom-control-input" id="uppercaseAlphabet">
+            <label class="custom-control-label" for="uppercaseAlphabet">${{caesar.UPPERCASE}}$</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+            <input type="checkbox" class="custom-control-input" id="lowercaseAlphabet">
+            <label class="custom-control-label" for="lowercaseAlphabet">${{caesar.LOWERCASE}}$</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+            <input type="checkbox" class="custom-control-input" id="digitsAlphabet">
+            <label class="custom-control-label" for="digitsAlphabet">${{caesar.DIGITS}}$</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+            <input type="checkbox" class="custom-control-input" id="punctuationAlphabet">
+            <label class="custom-control-label" for="punctuationAlphabet">${{caesar.PUNCTUATION-MARKS}}$</label>
+        </div>
+
+         <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+            <input type="checkbox" class="custom-control-input" id="specialCharacters">
+            <label class="custom-control-label" for="specialCharacters">${{caesar.SPECIALCHARACTERS}}$</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+            <input type="checkbox" class="custom-control-input" id="umlautsAlphabet">
+            <label class="custom-control-label" for="umlautsAlphabet">${{caesar.UMLAUTS}}$</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+            <input type="checkbox" class="custom-control-input" id="blanksAlphabet">
+            <label class="custom-control-label" for="blanksAlphabet">${{caesar.BLANKS}}$ </label>
+        </div>
+       
+        
+      </div>
+      <!--end alphabet templates-->
+      <!--radiobuttons-->
+  <hr style="border:1px solid grey;">
+      <div>
+        
+        
+        <div class="custom-control custom-radio mr-3" style="display: inline-block">
+            <input type="radio" id="putTogetherAlphabet" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label ml-1" for="putTogetherAlphabet">${{caesar.CREATE-ALPHABET}}$</label>
+        </div>
+
+        <div class="custom-control custom-radio mr-3" style="display: inline-block">
+            <input type="radio" id="defineOwnAlphabet" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label ml-1" for="defineOwnAlphabet">${{caesar.DEFINE-OWN-ALPHABET}}$</label>
+        </div>
+
+        </div>
+        </p>
+            
+            </div>
+      
+          </div>
+        </div>
+      </div>
+   
+
+    
+    <!--begin row --> 
+    
+    <div class="row mt-3">
+      <!--key Section-->
+     <div id="keyBox" style="" class="form-inline col-lg-3 col-md-4 col-sm-5 col-6">
+        <span class="mr-2">${{caesar.KEY}}$:</span>
+        <button class="btn btn-success " id="minus">-</button>
+        
+        <input
+         class = "text-center form-control"
+          id="key"
+          value="1"
+          maxlength="2"
+          type="text"
+          size="1"
+          style = "width:35px"
+          
+        />
+        <button class="btn btn-success " id="plus">+</button>
+      </div>
+      <!--key Section-->
+      <!--buttion show hide code-->
+      <span class="button-edit-responsive col-lg-4 col-md-5 pl-md-0 col-sm-7 col-6 ">
+        <button type = "button" class="btn btn-success col-md-10 col-12" id="operationForCode">
+          
+        <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>${{caesar.PYTHON-LOADING}}$
+        </button>
+
+      </span>
+      <!--buttion show hide code-->
+      <!--buttion alphabet defien-->
+        
+    </div>
+    
+    
+  
+    
+    <div class="mt-4 textareaWrapper" id="">
+      <pre class="mt-1 mb-2 p-2 alert alert-dark" id="cmdLine">
+python caesar.py <span class="badge badge-light">--key</span> <span id="-k">1</span> <span class="badge badge-light">--alphabet</span> <span id="-a">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span> <span class="badge badge-light" id="mod">--encrypt</span> <span class="badge badge-light" id="fiveblock"hidden></span> <span class="badge badge-light">--message</span> <span id="-m">'${{caesar.INIT-TEXT}}$'</span> <span class="badge badge-light" id="keepNonAlp">--keep-non-alp</span></pre>
+      <textarea class="CodeMirror mt-2" id="yourcode">
+import argparse
+import string
+import sys
+
+def caesar(key, b_encrypt, b_block_of_five, text, alphabet, b_keep_chars):
+    ciphertext = ""
+    #iterate throw text
+    for old_character in text:
+        new_character = ""
+        #if character is in alphabet append to ciphertext
+        if(old_character in alphabet): 
+            index = alphabet.index(old_character) 
+            #if text get encrypted
+            if(b_encrypt):
+                new_index = (index + key) % len(alphabet)
+            #if text is to be encrypted
+            else:
+                new_index = (index - key) % len(alphabet)
+            new_character = alphabet[new_index] 
+        #if the symbol is not in alphabet then look if block_of_five is true, if yes then skip spaces,
+        #if block_of_five is false take all symbols
+        elif(not b_keep_chars):
+            continue
+        else:
+            if(b_block_of_five and b_encrypt):
+                if(old_character != " "): 
+                    new_character = old_character 
+                else: 
+                    continue 
+            else:
+                new_character = old_character
+        
+        ciphertext = ciphertext + new_character 
+        #if blocks_of_five is true then after 5 characters append a space
+        if(b_block_of_five and b_encrypt):
+            if(len(ciphertext.replace(" ","")) % 5 == 0): 
+                ciphertext = ciphertext + " " 
+    #Output 
+    print(ciphertext)
+
+if __name__ == '__main__':
+
+    # add arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--key", help="key for encipher/ decipher", type=int)
+    parser.add_argument('-e','--encrypt', dest='crypt_modus', action='store_true')
+    parser.add_argument('-d','--decrypt', dest='crypt_modus', action='store_false')
+    parser.add_argument('-f','--blocks-of-five', dest='blocks_of_five', action='store_true')
+    parser.add_argument("-m", "--message", help="message for encipher/ decipher", type=str, required=True)
+    parser.add_argument("-ka", "--keep-non-alp", help="keep non-alphabet characters", dest='keep_chars', action='store_true')
+    parser.add_argument("-a", "--alphabet", help="defined alphabet", type=str)
+
+    if len(sys.argv) == 1:
+        sys.exit(1)
+        
+    args = parser.parse_args()
+  
+    caesar(args.key, args.crypt_modus, args.blocks_of_five, args.message, args.alphabet, args.keep_chars)
+    </textarea>
+    </div>
+    <!-- alert-->
+    <div
+      id="alertCodeCahnge"
+      class="alert alert-warning mt-2"
+      role="alert"
+      hidden=""
+    ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+ ${{caesar.WARNING-SECTION}}$
+    </div>
+    <!-- alert end -->
+<div class="textareaWrapper">
+      <div class="row mt-1">
+        <div class="resposive-button-code col-lg-5 col-md-5 col-sm-6 col-6">
+          <button class="btn btn-success mr-1" id="run-code" type="button">
+            <i class="mr-2 fa fa-play" aria-hidden="true"></i>${{caesar.RUN}}$
+
+          </button>
+          <button
+            class="btn btn-success"
+            id="changeToDefault"
+            type="button"
+          >
+            ${{caesar.BACK-TO-DEFALUT}}$
+          </button>
+          <!--<button class="btn btn-success ml-auto mr-0" id="themeConfi" >Theme</button>-->
+        </div>
+
+        <div class ="resposive-button-code col-lg-4 col-md-5 col-sm-6 col-6">
+            <span>${{caesar.THEME}}$:</span>
+            <div
+            class="btn-group dropdown ml-1"
+            >
+            <button
+                id="themeConfi"
+                type="button"
+                class="btn btn-success dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+            >
+                shadowfox
+            </button>
+            <div
+                class="dropdown-menu"
+                id="dropdownTheme"
+                aria-labelledby="dropdownMenuButton"
+            >
+                <a  class="dropdown-item">eclipse</a>
+                <a  class="dropdown-item">shadowfox</a>
+                <a  class="dropdown-item">yeti</a>
+                <a  class="dropdown-item">solarized</a>
+            </div>
+            </div>
+        </div>
+            <div class="col-lg-3 col-md-3 col-12 mt-lg-0 mt-3">
+            <span>${{caesar.FONTSIZE}}$:</span>
+            <input
+                class ="text-center"
+                type="number"
+                id="fontsize"
+                name="fontsize"
+                step="1"
+                value="12"
+                style="height: 35px; width: 65px"
+            />
+            </div>
+       
+      </div>
+    </div>
+    <div class="form-group mt-3 ml-auto mr-auto">
+      <label>${{caesar.OUTPUT-LABEL}}$</label>
+      <textarea
+        rows="4"
+        class="form-control"
+        spellcheck="false"
+        id="output"
+      ></textarea>
+            <span id="output-len" class ="float-right length-label">${{caesar.LENGTH}}$: </span>
+
+    </div>
+    <!--AUTHOR JEAN MICHEL POLAK-->
+   
+
+  
