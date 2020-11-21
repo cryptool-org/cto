@@ -1,0 +1,52 @@
+{
+  "ANALYSIS": "Analysis",
+  "DESCRIPTION": "Description",
+  "BACKGROUND": "Background",
+  "LANGUAGE-FREQUENCY": "Language frequency",
+  "TEXT-TO-ANALYSE": "Text to analyze",
+
+  "LANGUAGECHOOSE-BUTTON": "<button id='dropdownButton' type='button' class='btn btn-success dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Restrict to English alphabet</button>",
+
+  "NGRAM": "N-gram",
+  "NUMBER-OF-BARS": "Number of bars",
+  "FREQ-SORT": "Sort by frequency",
+  "ALPHABET-SORT": "Sort alphabetically",
+  "NGRAM-DOWNLOAD": "N-gram download",
+  "NGRAM-DOWNLOAD-SIZE": "N-gram size",
+  "NGRAM-DOWNLOAD-INVALID-INPUT": "Invalid input",
+  "AUTHOR": "Author",
+  "TEXTLENGTH": "Text length",
+  "LANG": "en",
+  "LANGUAGE-CHOOSE-ENG": "English",
+  "LANGUAGE-CHOOSE-GER": "German",
+  "DOWNLOAD-BUTTON": "Download",
+
+  "JS-INIT-INPUT": "Hello, this is a test. Please enter your text here.",
+  "JS-INIT-LANG": "English",
+  "JS-DOWNLOAD-HEADER": "-gram, Amount",
+  "JS-DOWNLOAD-NGRAM": "-grams",
+  "JS-AMOUNT-OF-ALL": "Amount of all",
+  "JS-AMOUNT": "Amount of",
+
+  "JS-LANGUAGE-GER": "German",
+  "JS-LANGUAGE-ENG": "English",
+  "JS-PERCENT": "Percent",
+  "JS-ABSOLUT-AMOUNT": "Absolut amount",
+  "JS-DIAGRAM-LABEL": "Hits per shift",
+
+  "DESCRIPTION-FIRST-PARAGRAPH": "This tool allows you to analyze the frequency of letters in your text and display them clearly in a diagram. The analysis can be performed for unigrams (single letters), bigrams (two-letter groups), trigrams (three-letter groups) or longer.",
+  "DESCRIPTION-SECOND-PARAGRAPH": "You can choose between the German and English alphabet. Only the letters from the selected alphabet are analyzed. You can also download the result of the analysis in CSV-format.",
+
+  "BACKGROUND-FIRST-PARAGRAPH": "In each language, the individual letters occur in a sufficiently long, natural text at a frequency characteristic of the language. In English the most common letter is E with a frequency of about 12%, followed by the letter T with about 9%.",
+
+  "BACKGROUND-SECOND-PARAGRAPH": "A monoalphabetic substitution cipher can be easily broken with a frequency analysis. Such a cipher can be recognized by the fact that never two plaintext characters are mapped by the same ciphertext character. ",
+  "BACKGROUND-THIRD-PARAGRAPH": "Each plaintext character is assigned one or more ciphertext characters (in this case the frequency analysis is much more difficult). To crack the cipher, the occurring ciphertext characters are counted and compared with the average frequency of plaintext letters in the corresponding national language.",
+
+  "FREQUENY-TAB-LABEL": "In this tab you will find the frequency of 26 and 30 single letters for German and English respectively. If you move the slider for N-grams, you can also display the 26 or 30 most frequent N-grams for N = 2, 3, 4 and 5 (Default is 1).",
+
+  "FREQUENY-ENGLISH-TABLE-LABEL": "Frequency for the English language",
+  "FREQUENY-GERMAN-TABLE-LABEL": "Frequency for the German language",
+
+  "REFERENCES": "Reference",
+  "REFERENCES-FREQ-SOURCE": "Frequencies were used from: <a target='_blank' href = 'http://practicalcryptography.com/cryptanalysis/letter-frequencies-various-languages/'>practicalcryptography</a></div>"
+}

@@ -1,0 +1,38 @@
+{
+  "ANALYSIS": "Analysis",
+  "DESCRIPTION": "Description",
+  "CIPHERTEXT-INPUT-LABEL": "Ciphertext",
+  "NGRAM": "N-gram",
+  "GRAM": "gram",
+  "AMOUNT": "Amount",
+  "AUTHOR": "Author",
+  "TEXTLENGTH": "Text length",
+  "LANG": "en",
+  "VIEW-OPTION": "View as",
+  "VIEW-OPTION-TABLE": "Table",
+  "VIEW-OPTION-DIAGRAM": "Diagram",
+  "BUTTON-LEFT-SHIFT": "Left",
+  "BUTTON-RIGHT-SHIFT": "Right",
+  "OUTPUT-LABEL": "Output",
+  "REFERENCES": "References",
+
+  "REFERENCE-WIKI": " Vigenère: <a href='https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher' target='_blank' rel='noopener'>https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher</a>",
+  "REFERENCE-CHART": "used for diagram",
+
+  "DESCRIPTION-FIRST-PARAGRAPH": "This tool illustrates how to break a Vigenère encryption. As a first step, please enter a text encoded with Vigenère. Then you can select the length of the N-grams to perform the analysis. This analysis is based on the English alphabet, so non-alphabetic characters like '?', commas and spaces are filtered out.",
+  "DESCRIPTION-SECOND-PARAGRAPH": "The possible key lengths are then displayed in the diagram, and the divisors of the autocorrelation results are also calculated and included in the diagram.",
+  "DESCRIPTION-THIRD-PARAGRAPH": "The second view available is a table, in which all N-grams for which the distance between them, has at least one common divisor. These dividers are displayed in the table shown in colour and with a cross. The most likely key length has the most entries. The possible keys are shown below the diagram, these are ordered according to their probability.",
+  "DESCRIPTION-FOURTH-PARAGRAPH": "Press one of the key lengths and two letter distributions are displayed. The upper distribution is the one from the english language, in the lower distribution will depend on the the letters of the encrypted text in n groups. The first  letter represents the first group. Let's assume you have decided on key length 7, then the first letter is placed in the first group , 7th, 14th and so on in the first Group. Now with the help of a letter frequency distribution each Group considered individually. For example, if in the third group the letter 'G' is the most common, it most likely corresponds in plain language to the 'E'.",
+  "DESCRIPTION-FIFTH-PARAGRAPH": "Whenever the distributions are shifted, the corresponding autocorrelation value calculated and displayed, it is desirable to find the minimum value. Each time the text is moved, the ciphertext is decrypted with the existing key.",
+  "DESCRIPTION-SIXTH-PARAGRAPH": "For the automatic release of a Vigenère encryption you are invites to use the software CrypTool2 (<a href='https://www.cryptool.org/en/cryptool2'>https://www.cryptool.org/en/cryptool2</a>) .",
+
+  "CHOOSE-KEYSIZE-LABEL": "Choose a keysize. Here are the possible keysizes sorted by their probability in descending order.",
+  "LETTER-BUTTON-DESCRIPTION-FIRST": "You believe the keysize is ",
+  "LETTER-BUTTON-DESCRIPTION-SECOND": " Since we don't know what each letter of the keyword is, we'll take the key ",
+  "LETTER-BUTTON-DESCRIPTION-THIRD": " The first table below shows the normal English letter frequency. Click a letter to see the letter frequency of the ciphertext. For example, click the first button and you'll see the letter frequency for letters ",
+  "LETTER-BUTTON-DESCRIPTION-FOURTH": "Try to adjust the frequency of the ciphertext so that it matches the normal English frequency and the autocorrelation value is the minimum.",
+  "ENGLISH-TABLE-LABEL": "Normal English letter frequency in %",
+  "POSSIBLE-KEYSIZE-TABLE-LABEL": "Possible keylengths",
+  "CIPHERTEXT-TABLE-LABEL": "Letter frequency of the ciphertext in %",
+  "AUTOCORRELAION-LABEL": "Autocorrelation value of the two distributions:"
+}

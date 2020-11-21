@@ -1,0 +1,58 @@
+{
+  "LANG": "de",
+  "CIPHER-TAB": "Chiffre",
+  "BACKGROUND-TAB": "Hintergrund",
+
+  "DESCRIPTION-TAB": "Beschreibung",
+  "INTERNAL-WORKING-TAB": "Interne Funktionsweise",
+  "ENCIPHER": "Verschlüsseln",
+  "DECIPHER": "Entschlüsseln",
+  "INPUT-LABEL": "Eingabe",
+  "INIT-TEXT": "Hallo, das ist ein Test. Bitte geben Sie Ihren Text hier ein",
+  "KEY": "Chiffre",
+  "KEY-LABEL": "Schlüssel",
+  "PERMUTATION": "dazugehörige Permutation",
+  "LENGTH": "Länge",
+  "PLACEHOLDER": "Bitte Schlüssel eingeben",
+  "NON-ALPHABETIC-TEXT": "nicht im Alphabet enthaltende Zeichen wurden gelöscht",
+  "DEFINE-ALPHABET": "Eigenes Alphabet definieren",
+  "CLOSE-DEFINE-ALPHABET": "Eigenes Alphabet schließen",
+
+  "ALPHABET-LABEL": "Alphabet",
+  "UPPERCASE": "Großbuchstaben",
+  "BLANKS": "Leerzeichen",
+  "DIGITS": "Ziffern",
+  "PUNCTUATION-MARKS": "Satzzeichen",
+  "LOWERCASE": "Kleinbuchstaben",
+  "UMLAUTS": "Umlaute",
+  "SPECIALCHARACTERS": "Sonderzeichen",
+
+  "CREATE-ALPHABET": "Vorkonstruierte Alphabete nutzen",
+  "DEFINE-OWN-ALPHABET": "Eigenes Alphabet definieren",
+
+  "OPTIONS": "Optionen",
+  "SHOW-GRID": "Zeige Raster",
+
+  "SHOW-CODE": "Code anzeigen / ändern",
+  "HIDE-CODE": "Code ausblenden",
+  "FIVE-BLOCKS": "5er-Blöcke",
+  "CASESENSITIVE": "Groß-/Klein-Buchstaben unterscheiden",
+
+  "REMOVE-SPACES": "Leerzeichen herausfiltern",
+  "REPLACE-SPACES": "Ersetze Leerzeichen mit",
+
+  "MAX-TEN-ROWS": "Es werden nur die ersten 10 Reihen angezeigt",
+  "WARNING-SECTION": "Sie sind dabei, den Code in den Standardcode zu ändern. Sind Sie sicher?<button type='button' id='confirmCodeChange'class='ml-5 mt-md-0 mt-sm-3 btn btn-warning'>Ja<i class='ml-2 fa fa-check' aria-hidden='true'></i>  </button><button type='button' id='denyCodeChange' class='btn btn-warning ml-3 mt-md-0 mt-sm-3'>Nein<i class='ml-2 fa fa-times' aria-hidden='tru'></i></button>",
+
+  "FONTSIZE": "Schriftgöße",
+
+  "RUN": "Start",
+  "BACK-TO-DEFALUT": "Zurück zu Standard",
+  "THEME": "Ein Design wählen",
+  "OUTPUT-LABEL": "Ausgabe",
+
+  "PYTHON-LOADING": "Lade Python, bitte warten...",
+  "FONTSIZE-LABEL": "Schriftgröße",
+
+  "REFERENCE-LABEL": "Referenzen"
+}

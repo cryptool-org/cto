@@ -1,0 +1,35 @@
+{
+  "LANG": "en",
+  "ALPHABETLENGTH": "26",
+
+  "TAB-AUTOCORRELATION": "Autocorrelation",
+  "TAB-DESCRIPTION": "Description",
+  "TAB-BACKGROUND": "Background",
+  "LABEL-TEXT-TO-ANALYSE": "Text to analyze",
+  "LANGUAGECHOOSE-BUTTON": "Restrict to English alphabet",
+  "LANGUAGE-CHOOSE-ENG": "English",
+  "LANGUAGE-CHOOSE-GER": "German",
+  "TEXTLENGTH": "Text length",
+  "SHIFT-BY-STRING": "Shift by",
+  "NUMBER-OF-BARS": "Number of bars",
+  "AUTHOR": "Author",
+  "JS-INIT-LANG": "English",
+  "JS-INIT-INPUT": "Hello, this is a test. Please enter your text here.",
+  "DIAGRAM-LABEL": "Hits per shift",
+
+  "DESCRIPTION-FIRST-PARAGRAPH": "Autocorrelation compares a text with moved copies of the same text. In each case the matching character is determined. The number of hits per shift is then displayed in the diagram. You can choose between the German and English alphabet. Only the letters of the selected alphabet are analyzed. The number of shifts depends on the length of the text.",
+  "DESCRIPTION-SECOND-PARAGRAPH": "You want to analyse the sentence 'Hello, how are you?' with a shift of 2. Characters not belonging to the alphabet such as '?', comma and spaces are filtered out.",
+  "DESCRIPTION-EXAMPLE-FIRST-LINE": "Orginaltext:       Hello, how are you doing?",
+  "DESCRIPTION-EXAMPLE-SECOND-LINE": "Modified:         Hellohowar<span class = 'example'>e</span>youd<span class = 'example'>o</span>ing",
+  "DESCRIPTION-EXAMPLE-THIRD-LINE": "Shifted by 9:              H<span class = 'example'>e</span>lloh<span class = 'example'>o</span>wareyoudoing",
+  "DESCRIPTION-EXAMPLE-RESULT": "The shift by 9 therefore has 2 matches.",
+
+  "BACKGROUND-FIRST-PARAGRAPH": "Autocorrelation is based on the assumption that, on the one hand, certain characters occur repeatedly in plaintext, and on the other hand, these characters are occasionally encoded by the same letters of the keyword. This leads to the assumption that the probability of matches between ciphertext and shifted ciphertext would have to be the highest if the key length were shifted by a multiple of the key length.",
+  "BACKGROUND-SECOND-PARAGRAPH": "For example, the Vigenère cipher can be cracked. The periodically recurring maximum values of the number of matching characters, indicate the key length of the Vigenère cipher.",
+  "BACKGROUND-THIRD-PARAGRAPH": "Autocorrelation analysis is more efficient and much more illustrative than the Friedman or Kasiski test. It is versatile and is also used in signal processing.",
+  "BACKGROUND-FOURTH-PARAGRAPH": "Since the autocorrelation is a complex calculation, it is recommended that larger texts be processed with a locally installed program like CrypTool2 (<a href='https://www.cryptool.org/en/cryptool2' target='_blank'>https://www.cryptool.org/en/cryptool2</a>).",
+
+  "REFERENCES": "Reference",
+  "REFERENCES-AUTOCORRELATION": "Autocorrelation: <a href='https://en.wikipedia.org/wiki/Autocorrelation' target='_blank'>https://en.wikipedia.org/wiki/Autocorrelation</a>",
+  "REFERENCES-CHART": "used for diagram"
+}

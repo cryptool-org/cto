@@ -1,0 +1,11 @@
+{
+  "name": "frequency-analysis",
+  "styles": ["./freq_analysis.css"],
+  "scripts": [
+    "./resources/cloudfare.js",
+    "./resources/canvasjs.min.js",
+    "./resources/canvasChart.js",
+    "./freq_analysis-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html"
+}

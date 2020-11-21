@@ -1,0 +1,328 @@
+
+  
+  
+  <div class="form-group mt-3">
+    <label>${{monoalpha.INPUT-LABEL}}$</label>
+    <textarea spellcheck="false" rows="4" class="form-control" id="input">
+${{monoalpha.INIT-TEXT}}$</textarea
+    >
+    <span id="input-len" class ="float-right length-label"></span>
+  </div>             
+      <!--encipher // decipher-->
+    <div class = "row mt-2 mb-2 ml-auto"id = "modeSwitch">
+    <label class="mr-2 left-switch-label" for="cryptCheckbox" >${{monoalpha.ENCIPHER}}$</label>  
+    <div class="custom-control custom-switch" id = "cryptCheckboxWrapper">
+    
+        <input type="checkbox" class="custom-control-input" id="cryptCheckbox">
+        <label class=" custom-control-label right-switch-label" for="cryptCheckbox">${{monoalpha.DECIPHER}}$</label>
+    </div>
+    </div>
+  <!--card-->
+  <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs" id="cmdOptions" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="#choseOptions" role="tab" aria-controls="choseOptions" aria-selected="true"><i class="fa fa-cog mr-2"></i>${{monoalpha.OPTIONS}}$</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="#choseAlphabet" role="tab" aria-controls="choseAlphabet" aria-selected="false"><i class="fa fa-font mr-2" aria-hidden="true"></i>Alphabet</a>
+            </li>
+           
+          </ul>
+        </div>
+    <div class="card-body">
+          <!--options-->
+           <div class="tab-content">
+            <div class="tab-pane active" id="choseOptions" role="tabpanel">
+              <p class="card-text">
+
+    <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+        <input type="checkbox" class="custom-control-input" id="addFiveBlocksCodeCheckbox">
+        <label class="custom-control-label" for="addFiveBlocksCodeCheckbox">${{monoalpha.FIVE-BLOCKS}}$</label>
+    </div>
+    <div class="custom-control custom-checkbox mr-3" style="display: inline-block">
+        <input type="checkbox" class="custom-control-input" id="KeepNonAlphabetCharacters">
+        <label class="custom-control-label" for="KeepNonAlphabetCharacters">${{monoalpha.KEEP-ALP}}$</label>
+    </div>
+
+    
+            </p>
+
+        </div>
+             <!--options-->
+            <div class="tab-pane" id="choseAlphabet" role="tabpanel" aria-labelledby="choseAlphabet-tab">  
+              <p class="card-text">
+              <div hidden id = "placeholderForButton"><button class="ml-md-2 btn btn-success defineAlphabet" id="">
+        ${{monoalpha.DEFINE-ALPHABET}}$
+      </button></div> 
+
+    
+    <div class="form-group row ml-auto mb-1">
+    <label  class="col-form-label">${{monoalpha.PLAINTEXT-ALPHABET}}$</label>
+    <div class="col-lg-5 col-md-7 col-sm-7 col-8 "id ="buttonDefineAlpWrapper">
+      <button class="ml-md-2 btn btn-success defineAlphabet" id="">
+        ${{monoalpha.DEFINE-ALPHABET}}$
+      </button>
+    </div>
+  </div>
+
+  <div
+    class=""
+    id="checkboxWrapper"
+    data-toggle="popover"
+    data-placement="top"
+    data-content=""
+  >
+    <textarea
+      rows="1"
+      wrap="soft"
+      class="form-control alphabet"
+      id="plaintextAlp"
+      spellcheck="false"
+      disabled
+    >
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</textarea
+    >
+  </div>
+  <textarea
+    rows="1"
+    wrap="soft"
+    class="mt-1 form-control mb-2 alphabet"
+    id="cipherAlp"
+    spellcheck="false"
+    disabled
+  >
+BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzA</textarea
+  >
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+      <label>${{monoalpha.CIPHERTEXT-ALPHABET}}$</label>
+      
+    </div>
+    <div
+    
+      class="row ml-auto mt-3 mt-md-0 col-lg-7 col-md-7 col-sm-12 col-12"
+      id="defineKeyWordContainer"
+    >
+      
+      <div class="custom-control custom-checkbox resposive-keyword mr-2" style="display: inline-block">
+        <input type="checkbox" class="custom-control-input" id="keywordCheckBox">
+        <label class="custom-control-label" for="keywordCheckBox">${{monoalpha.KEYWORDS}}$</label>
+    </div>
+      
+      <div class="custom-control custom-radio mr-2 keyword mt-lg-0" style="display: inline-block" hidden>
+        <input type="radio" id="k1" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label ml-1" for="k1">K1</label>
+    </div>
+      
+    
+      <div class="custom-control custom-radio mr-2  keyword mt-lg-0" style="display: inline-block" hidden>
+        <input type="radio" id="k2" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label ml-1" for="k2">K2</label>
+    </div>
+      <div class="custom-control custom-radio mr-2  keyword mt-lg-0" style="display: inline-block" hidden>
+        <input type="radio" id="k3" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label ml-1" for="k3">K3</label>
+    </div>
+      <div class="custom-control custom-radio mr-2  keyword mt-lg-0" style="display: inline-block" hidden>
+        <input type="radio" id="k4" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label ml-1" for="k4">K4</label>
+    </div>
+   
+  </div>
+  </div>
+   <div class="row mt-2" id="keyOneInputBox" hidden>
+    <!-- <div class="col-lg-2"></div> -->
+    <div class="col-xl-5 col-lg-7 col-md-5 col-sm-12 col-12 keyAlp1">${{monoalpha.K2-LABEL}}$:</div>
+    <div class="col-xl-6 col-lg-5 col-md-7 col-sm-10 col-12"><input class="col-12" type="text"  id="inputKey1" /></div>
+  </div>
+
+  <div class="row mt-2" id="keyTwoInputBox" hidden>
+    <!-- <div class="col-lg-2"></div> -->
+    <div class="col-xl-5 col-lg-7 col-md-5 col-sm-12 col-12">${{monoalpha.K4-LABEL}}$:</div>
+    <div class="col-xl-6 col-lg-5 col-md-7 col-sm-10 col-12"><input class="col-12" type="text"  id="inputKey2" /></div>
+    
+  </div>
+        </p>
+            
+            </div>
+    
+          </div>
+        </div>
+      </div>
+ 
+    <!--card-->
+    
+  
+ 
+
+  <div class="row mt-3">
+    <!--key SECTION-->
+     <div id="keyBox" style="" class="form-inline col-lg-3 col-md-4 col-sm-5 col-6">
+        <span class="mr-2">${{monoalpha.KEY}}$:</span>
+        <button class="btn btn-success " id="minus">-</button>
+        
+        <input
+         class = "text-center form-control"
+          id="key"
+          value="1"
+          maxlength="2"
+          type="text"
+          size="1"
+          style = "width:35px"
+          
+        />
+        <button class="btn btn-success " id="plus">+</button>
+      </div>
+      <!--key SECTION-->
+    
+  
+        <span class="button-edit-responsive col-lg-4 col-md-5 pl-md-0 col-sm-7 col-6 ">
+        <button type = "button" class="btn btn-success col-md-10 col-12" id="operationForCode">
+          
+        <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>${{monoalpha.PYTHON-LOADING}}$
+        </button>
+
+      </span></div>
+  <div class="mt-4 textareaWrapper" id="">
+    <pre
+      class="mt-2 mb-2 p-2 alert alert-dark"
+      id="cmdLine"
+    ><!-- if id starts with - then it has no param -> booelean -->python monoalpha.py <span class = "badge badge-light">--plainAlphabet</span> <span id = "-pa">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</span> <span class = "badge badge-light">--cipherAlphabet</span> <span id = "-ca">'BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzA'</span> <span class = "badge badge-light" id = "mod">--encrypt</span> <span class = "badge badge-light" id = "fiveblock" hidden></span> <span class = "badge badge-light">--message</span> <span id = "-m">'${{monoalpha.INIT-TEXT}}$'</span> <span class="badge badge-light" id="keepNonAlp">--keep-non-alp</span></pre>
+
+    <textarea class="CodeMirror" id="yourcode">
+import argparse
+import sys
+
+def mon_Sub(plainAlp, cipherAlp, message, b_blocks_of_five, b_crypt_mode, b_keep_char):   
+    inputAlphabet = ''
+    outputAlphabet = ''
+    if(b_crypt_mode):  # encrypt
+        inputAlphabet = plainAlp
+        outputAlphabet = cipherAlp
+    else:              # decrypt
+        inputAlphabet = cipherAlp
+        outputAlphabet = plainAlp
+
+    decrypted_message = ""
+    # iterate throw message
+    for character in message:
+        # if the character is in the plaintextalphabet
+        if character in inputAlphabet:
+            new_char_index = inputAlphabet.index(character)
+            new_char = outputAlphabet[new_char_index]
+        # if character is not in plaintextalphabet
+        elif(not b_keep_char):
+            continue
+        else:
+            if(b_blocks_of_five and b_crypt_mode):
+                # if b_blocks_of_five is true skip spaces in message
+                if(character != " "):
+                    new_char = character
+                else:
+                    continue
+            else:
+                # if b_blocks_of_five is false then take all chars, even spaces
+                new_char = character
+        decrypted_message += new_char
+
+        if(b_blocks_of_five and b_crypt_mode):
+            # if b_blocks_of_five is true, then there are no spaces in decrypted_message, so if length is % 5 == 0 append space
+            if(len(decrypted_message.replace(" ", "")) % 5 == 0):
+                decrypted_message = decrypted_message + " "
+
+    return decrypted_message
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-ca", "--cipherAlphabet", help="set ciphertext alphabet", type=str)
+    parser.add_argument("-pa", "--plainAlphabet", help="set plaintext alphabet", type=str)
+    parser.add_argument("-e", "--encrypt", dest="crypt_mode", action="store_true")
+    parser.add_argument("-d", "--decrypt", dest="crypt_mode", action="store_false")
+    parser.add_argument("-bf", "--blocks-of-five", dest="blocks_of_five", action="store_true")
+    parser.add_argument("-m", "--message", help="text to decrypt / encrypt", type=str, required=True)
+    parser.add_argument("-ka", "--keep-non-alp", help="keep non-alphabet characters", dest="keep_char", action="store_true")
+
+    if len(sys.argv) == 1:
+        sys.exit(1)
+
+    args = parser.parse_args()
+
+    print(mon_Sub(args.plainAlphabet, args.cipherAlphabet,
+            args.message, args.blocks_of_five, args.crypt_mode, args.keep_char))
+            </textarea>
+  </div>
+
+   <div
+      id="alertCodeCahnge"
+      class="alert alert-warning mt-2"
+      role="alert"
+      hidden=""
+    ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+ ${{monoalpha.WARNING-SECTION}}$
+    </div>
+  <div class="textareaWrapper">
+    <div class="row mt-1">
+      <div class="resposive-button-code col-lg-5 col-md-5 col-sm-6 col-6">
+        <button class="btn btn-success mr-1" id="run-code" type="button">
+          <i class="mr-2 fa fa-play" aria-hidden="true"></i>${{monoalpha.RUN}}$
+        </button>
+        <button class="btn btn-success" id="changeToDefault" type="button">
+          ${{monoalpha.BACK-TO-DEFALUT}}$
+        </button>
+        <!--<button class="btn btn-success ml-auto mr-0" id="themeConfi" >Theme</button>-->
+      </div>
+
+      <div class="resposive-button-code col-lg-4 col-md-5 col-sm-6 col-6">
+        <span>${{monoalpha.THEME}}$:</span>
+        <div class="btn-group dropdown ml-1">
+          <button
+            id="themeConfi"
+            type="button"
+            class="btn btn-success dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            shadowfox
+          </button>
+          <div
+            class="dropdown-menu"
+            id="dropdownTheme"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <a id="" class="dropdown-item">eclipse</a>
+            <a id="" class="dropdown-item">shadowfox</a>
+            <a id="" class="dropdown-item">yeti</a>
+            <a id="" class="dropdown-item">solarized</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-12 mt-lg-0 mt-3">
+        <span>${{monoalpha.FONTSIZE}}$:</span>
+        <input
+          class="text-center"
+          type="number"
+          id="fontsize"
+          name="fontsize"
+          step="1"
+          value="12"
+          style="height: 35px; width: 65px"
+        />
+      </div>
+    </div>
+  </div>
+
+<div class="form-group mt-3 ml-auto mr-auto">
+    <label>${{monoalpha.OUTPUT-LABEL}}$</label>
+    <textarea
+      rows="4"
+      class="form-control"
+      spellcheck="false"
+      id="output"
+    ></textarea>
+    <span id="output-len" class ="float-right length-label">${{monoalpha.LENGTH}}$: </span>
+  </div>
+     
+

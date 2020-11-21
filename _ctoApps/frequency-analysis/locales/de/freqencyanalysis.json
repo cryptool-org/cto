@@ -1,0 +1,49 @@
+{
+  "ANALYSIS": "Analyse",
+  "DESCRIPTION": "Beschreibung",
+  "BACKGROUND": "Hintergrund",
+  "LANGUAGE-FREQUENCY": "Buchstabenhäufigkeit",
+  "TEXT-TO-ANALYSE": "Zu analysierender Text",
+  "LANGUAGECHOOSE-BUTTON": "<button id='dropdownButton' type='button' class='btn btn-success dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Beschränkung auf das deutsche Alphabet</button>",
+
+  "NGRAM": "N-Gramm",
+  "NUMBER-OF-BARS": "Anzahl der Balken",
+  "FREQ-SORT": "Nach Häufigkeit sortieren",
+  "ALPHABET-SORT": "Alphabetisch sortieren",
+  "NGRAM-DOWNLOAD": "N-Gramm herunterladen",
+  "NGRAM-DOWNLOAD-SIZE": "N-Gramm-Länge",
+  "NGRAM-DOWNLOAD-INVALID-INPUT": "Ungültige Eingabe",
+  "AUTHOR": "Autor",
+  "TEXTLENGTH": "Textlänge",
+  "LANG": "de",
+  "LANGUAGE-CHOOSE-ENG": "Englisch",
+  "LANGUAGE-CHOOSE-GER": "Deutsch",
+  "DOWNLOAD-BUTTON": "Herunterladen",
+
+  "JS-INIT-INPUT": "Hallo, das ist ein Test. Bitte geben Sie Ihren Text hier ein.",
+  "JS-INIT-LANG": "Deutsch",
+  "JS-DOWNLOAD-HEADER": "-Gramm, Menge",
+
+  "JS-DOWNLOAD-NGRAM": "-Gramme",
+  "JS-AMOUNT-OF-ALL": "Menge aller",
+  "JS-AMOUNT": "Menge der",
+  "JS-LANGUAGE-GER": "Deutsch",
+  "JS-LANGUAGE-ENG": "Englisch",
+  "JS-PERCENT": "Prozent",
+  "JS-ABSOLUT-AMOUNT": "Absolute Menge",
+  "JS-DIAGRAM-LABEL": "Treffer pro Verschiebung",
+
+  "DESCRIPTION-FIRST-PARAGRAPH": "Mit diesem Tool können Sie die Häufigkeit von Buchstaben in Ihrem Text analysieren und diese in einem Diagramm übersichtlich darstellen lassen. Die Analyse kann für Unigramme (Einzelbuchstaben), Bigramme (Zwei-Buchstaben-Gruppen), Trigramme (Drei-Buchstaben-Gruppen) oder länger durchgeführt werden.",
+  "DESCRIPTION-SECOND-PARAGRAPH": "Sie können zwischen dem deutschen und englischen Alphabet wählen. Es werden nur die Buchstaben des gewählten Alphabets analysiert. Es ist auch möglich das Ergebnis der Analyse im CSV-Format herunterzuladen.",
+
+  "BACKGROUND-FIRST-PARAGRAPH": "In jeder Sprache kommen die einzelnen Buchstaben in einem ausreichend langen, natürlichen Text mit einer für die Sprache charakteristischen Häufigkeit vor. Im Deutschen ist der häufigste Buchstabe E mit einer Häufigkeit von etwa 16%, gefolgt von dem Buchstaben N mit etwa 10%.",
+  "BACKGROUND-SECOND-PARAGRAPH": "Eine monoalphabetische Substitutions-Chiffre lässt sich mit einer Häufigkeitsanalyse leicht knacken. Eine solche Chiffre erkennt man daran, dass niemals zwei Klartextzeichen durch dasselbe Chiffrezeichen abgebildet werden. ",
+  "BACKGROUND-THIRD-PARAGRAPH": "Jedem Klartextzeichen werden ein oder mehrere Geheimtextzeichen zugeordnet (in diesem Fall ist die Häufigkeitsanalyse wesentlich schwieriger). Um die Chiffre zu knacken, werden die vorkommenden Geheimtextzeichen gezählt und mit der durchschnittlichen Häufigkeit von Klartextbuchstaben in der entsprechenden Landessprache verglichen.",
+
+  "FREQUENY-TAB-LABEL": "In diesem Reiter finden Sie für Deutsch und Englisch die Häufigkeit der 26 beziehungsweise 30 Einzelbuchstaben. Wenn Sie den Slider für N-Gramm verschieben, können Sie sich aber auch die 26 beziehungsweise 30 häufigsten N-Gramme für N = 2, 3, 4 und 5 anzeigen lassen (Default ist 1).",
+  "FREQUENY-ENGLISH-TABLE-LABEL": "Häufigkeit in der englischen Sprache",
+  "FREQUENY-GERMAN-TABLE-LABEL": "Häufigkeit in der deutschen Sprache",
+
+  "REFERENCES": "Referenz",
+  "REFERENCES-FREQ-SOURCE": "Die hier vorzufindenen Häufigkeiten finden Sie hier:  <a target='_blank' href = 'http://practicalcryptography.com/cryptanalysis/letter-frequencies-various-languages/'>practicalcryptography</a></div>"
+}

@@ -1,0 +1,31 @@
+{
+  "LANG": "en",
+
+  "TAB-CONVERTER": "Converter",
+  "TAB-DESCRIPTION": "Description",
+  "TAB-BACKGROUND": "Background",
+  "LABEL-CONVERTER-CONTAINER": "Enter an integer. It will be converted to different representations.",
+  "DECIMAL-LABEL": "Decimal",
+  "OCTAL-LABEL": "Hexadecimal",
+  "HEXA-LABEL": "Octal",
+  "BINARY-LABEL": "Binary",
+  "TOO-BIG-FOR-REGISTRY": "Number too big to fit in register",
+  "2-COMPLEMENT": "2-complement",
+  "ANY-BITS-AMOUNT": "any",
+  "LENGTH": "length",
+  "LABEL-EXAMPLE-TABLE": "A few examples",
+  "LABEL-TWO-COMPLIMENT-EXAMPLE-TABLE": "A few examples for 2-complement",
+  "HIDE-TABLE-INNER": "Hide table",
+  "SHOW-TABLE-BUTTON-EXAMPLE-TABLE": "Show examples",
+  "SHOW-COMPLEMENT-TABLE-BUTTON-EXAMPLE-TABLE": "Show examples for 2-complement",
+  "AUTHOR": "Author",
+  "DESCRIPTION-FIRST-PARAGRAPH": "The number converter can convert an integer from one numeral system to another numeral system. Four numeric systems are available: decimal system, binary system, octal system and hexadecimal system.",
+  "DESCRIPTION-SECOND-PARAGRAPH": "If you enter a suitable number in the text field of a numeral system, the number - converted - appears immediately in the other text fields. If you change a number, all fields are immediately recalculated.",
+  "DESCRIPTION-THIRD-PARAGRAPH": "You can also display the binary number in two's complement. The two's complement is a representation of negative Integer numbers in the dual system, which does not need additional characters like + and -. Here you can set the number of bits used to display the binary number.",
+
+  "BACKGROUND-FIRST-PARAGRAPH": "A numeral system is a system for representing numbers. The representation format is not necessarily fixed, many numeral systems are realized in a payment script or payment words. A number is generated according to syntactic rules as a sequence of numerals, also called numbers are shown.",
+
+  "REFERENCES": "Reference",
+  "REFERENCE-SYSTEM": "Numeral system: <a href='https://en.wikipedia.org/wiki/Numeral_system' target='_blanked'>https://en.wikipedia.org/wiki/Numeral_system</a>",
+  "REFERENCE-COMPLEMENT": "Two's complement: <a href='https://en.wikipedia.org/wiki/Two%27s_complement' target='_blanked'>https://en.wikipedia.org/wiki/Two%27s_complement</a>"
+}

@@ -1,0 +1,38 @@
+{
+  "LANG": "en",
+
+  "ENCIPHER": "Encipher",
+  "DECIPHER": "Decipher",
+  "INPUT-LABEL": "Input",
+  "INIT-TEXT": "Hello this is a test. Please enter your text here.",
+  "KEY": "Key",
+  "SHOW-CODE": "Show / modify code",
+  "HIDE-CODE": "Hide code",
+  "FIVE-BLOCKS": "Blocks of five",
+  "RUN": "Run",
+  "BACK-TO-DEFALUT": "Back to default",
+  "THEME": "Select a theme",
+  "OUTPUT-LABEL": "Output",
+  "OPTIONS": "Options",
+  "FONTSIZE": "Fontsize",
+  "LENGTH": "length",
+  "WARNING-SECTION": "You are about to change the code to default. Are you sure?<button type='button' id='confirmCodeChange'class='ml-5 mt-md-0 mt-sm-3 btn btn-warning'>Yes<i class='ml-2 fa fa-check' aria-hidden='true'></i></button><button type='button' id='denyCodeChange' class='btn btn-warning ml-3 mt-md-0 mt-sm-3'>No<i class='ml-2 fa fa-times' aria-hidden='true'></i></button>",
+  "PLAINTEXT-ALPHABET": "Plaintext alphabet",
+  "CIPHERTEXT-ALPHABET": "Ciphertext alphabet",
+
+  "KEYWORDS": "Use keywords",
+
+  "DEFINE-ALPHABET": "Define own alphabet",
+  "CLOSE-DEFINE-ALPHABET": "Close own alphabet",
+
+  "KEEP-ALP": "Keep non-alphabet characters",
+
+  "K1-LABEL": "Enter 1st keyword (beginning of plaintext alphabet)",
+  "K2-LABEL": "Enter 1st keyword (beginning of ciphertext alphabet)",
+  "K3-LABEL": "Enter 1st keyword (beginning of plaintext and ciphertext alphabet)",
+  "K4-LABEL": "Enter 2nd keyword (beginning of ciphertext alphabet)",
+
+  "PYTHON-LOADING": "Python is loading, please wait...",
+  "LETTERCLASHWARNING": "Warning, letter clash",
+  "ALPHABETLENGTHWARNING": "Alphabetlength must be equal"
+}
