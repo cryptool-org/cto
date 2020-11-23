@@ -1,0 +1,134 @@
+<!-- text input -->
+<div class="form-group mt-3">
+    <label>Eingabe</label>
+    <textarea spellcheck="false" rows="4" class="form-control" id="input">Hallo, das ist ein Test. Bitte geben Sie Ihren Text hier ein.</textarea>
+    <span id="input-len" class="float-right length-label"></span>
+</div>
+
+<!-- encipher / decipher -->
+<div id="modeSwitch" class="row mt-2 mb-2 ml-auto">
+    <label for="cryptCheckbox" class="mr-2 left-switch-label">Verschlüsseln</label>
+    <div id="cryptCheckboxWrapper" class="custom-control custom-switch">
+        <input id="cryptCheckbox" type="checkbox" class="custom-control-input">
+        <label for="cryptCheckbox" class="custom-control-label right-switch-label">Entschlüsseln</label>
+    </div>
+</div>
+
+<!-- tabs card -->
+<div class="card">
+
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="cmdOptions" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#choseOptions" role="tab" aria-controls="choseOptions" aria-selected="true"><i class="fa fa-cog mr-2"></i>Optionen</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="#choseAlphabet" role="tab" aria-controls="choseAlphabet" aria-selected="false"><i class="fa fa-font mr-2" aria-hidden="true"></i>Alphabet</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body">
+        <div class="tab-content p-0">
+
+            <!-- options tab -->
+            <div class="tab-pane active" id="choseOptions" role="tabpanel">
+                <p class="card-text">
+                    <!-- checkbox blocks of five -->
+                    <div class="custom-control custom-checkbox mr-3 d-inline-block">
+                        <input type="checkbox" class="custom-control-input" id="addFiveBlocksCodeCheckbox">
+                        <label class="custom-control-label" for="addFiveBlocksCodeCheckbox">5er-Blöcke</label>
+                    </div>
+                    <!-- checkbox keep non alphabet chars -->
+                    <div class="custom-control custom-checkbox mr-3 d-inline-block">
+                        <input type="checkbox" class="custom-control-input" id="KeepNonAlphabetCharacters" checked>
+                        <label class="custom-control-label" for="KeepNonAlphabetCharacters">Nicht im Alphabet enthaltene Zeichen beibehalten</label>
+                    </div>
+                </p>
+            </div>
+
+            <!-- alphabet tab -->
+            <div class="tab-pane" id="choseAlphabet" role="tabpanel" aria-labelledby="choseAlphabet-tab">
+                <p class="card-text">
+
+                    <!-- alphabet templates -->
+                    <label class="mb-0">Klartext-Alphabet</label>
+                    <textarea rows="1" wrap="soft" class="mt-1 form-control" id="plaintextAlp" spellcheck="false" disabled>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</textarea>
+                    <label class="mb-0 mt-2">Geheimtext-Alphabet</label>
+                    <textarea rows="1" wrap="soft" class="mt-1 form-control mb-2" id="cipherAlp" spellcheck="false" disabled>BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzA</textarea>
+
+                    <div id="alphabetTemplates" class="form-check form-check-inline">
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="uppercaseAlphabet" checked>
+                            <label class="custom-control-label" for="uppercaseAlphabet">Großbuchstaben</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="lowercaseAlphabet" checked>
+                            <label class="custom-control-label" for="lowercaseAlphabet">Kleinbuchstaben</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="digitsAlphabet">
+                            <label class="custom-control-label" for="digitsAlphabet">Ziffern</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="punctuationAlphabet">
+                            <label class="custom-control-label" for="punctuationAlphabet">Satzzeichen</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="umlautsAlphabet">
+                            <label class="custom-control-label" for="umlautsAlphabet">Umlaute</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="blanksAlphabet">
+                            <label class="custom-control-label" for="blanksAlphabet">Leerzeichen</label>
+                        </div>
+
+                    </div> <!-- end alphabet templates -->
+
+                    <!-- radiobuttons -->
+                    <hr>
+                    <div class="form-check form-check-inline">
+
+                        <div class="custom-control custom-radio mr-3">
+                            <input type="radio" id="putTogetherAlphabet" name="customRadio" class="custom-control-input" checked>
+                            <label class="custom-control-label ml-1" for="putTogetherAlphabet">Konstruiertes Alphabet nutzen</label>
+                        </div>
+
+                        <div class="custom-control custom-radio mr-3">
+                            <input type="radio" id="defineOwnAlphabet" name="customRadio" class="custom-control-input">
+                            <label class="custom-control-label ml-1" for="defineOwnAlphabet">Eigenes Alphabet definieren</label>
+                        </div>
+
+                    </div>
+
+                </p>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+<!-- key Section -->
+<div class="row mt-3">
+    <div id="keyBox" class="form-inline col-lg-3 col-md-4 col-sm-5 col-6">
+        <span class="mr-2">Schlüssel:</span>
+        <button class="btn btn-success " id="minus">-</button>
+        <input id="key" class="text-center form-control" value="1" maxlength="2" type="text" size="2">
+        <button class="btn btn-success " id="plus">+</button>
+    </div>
+</div>
+
+<div class="form-group mt-3 ml-auto mr-auto">
+    <label>Ausgabe</label>
+    <textarea id="output" rows="4" class="form-control" spellcheck="false"></textarea>
+</div>
+
+<!-- ORIGINAL AUTHOR JEAN MICHEL POLAK -->
+
+<script src="https://cdn.jsdelivr.net/npm/@arguiot/broadcast.js@1.0.2/dist/broadcast.min.js"></script>
