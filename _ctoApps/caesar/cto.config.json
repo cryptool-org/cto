@@ -1,0 +1,10 @@
+{
+  "name": "caesar",
+  "styles": [
+    "./caesar.css"
+  ],
+  "scripts": [
+    "./caesar-%lang%.js"
+  ],
+  "html": "fragment-%lang%.html"
+}
