@@ -1,0 +1,11 @@
+{
+  "name": "cto-caesar-js",
+  "version": "0.0.1",
+  "description": "CTO plugin for the Caesar Cipher with JavaScript",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.2.2",
+    "gulp-i18n-localize": "^1.4.0",
+    "gulp-rename": "^2.0.0"
+  }
+}

@@ -206,7 +206,7 @@ class CaesarController {
 		}, "controller")
 
 		// Hydrate
-		this.input.value = "Hello this is a test. Please enter your text here."
+		this.input.value = "${{ caesar.INIT-TEXT }}$"
 
 		//show tabs
 		$("#cmdOptions a").on("click", function (e) {
