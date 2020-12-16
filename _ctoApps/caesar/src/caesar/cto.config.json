@@ -1,10 +1,16 @@
 {
-  "name": "caesar",
-  "styles": [
-    "./caesar.css"
-  ],
-  "scripts": [
-    "./caesar-%lang%.js"
-  ],
-  "html": "fragment-%lang%.html"
+
+    "name": "caesar",
+
+    "styles": [
+        "./caesar.css"
+    ],
+
+    "scripts": [
+        "https://cdn.jsdelivr.net/npm/@arguiot/broadcast.js@1.0.2/dist/broadcast.min.js",
+        "./caesar-%lang%.js"
+    ],
+
+    "html": "fragment-%lang%.html"
+
 }
