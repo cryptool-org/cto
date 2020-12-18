@@ -18,7 +18,7 @@ String.prototype.encrypt = function (key, b_encrypt, b_block_of_five, alphabet, 
 				const new_index = (index + key) % alphabet.length
 				new_character = alphabet[new_index]
 			} else {
-				new_index = (index - key) % alphabet.length
+				const new_index = (index - key) % alphabet.length
 				new_character = alphabet[new_index]
 			}
 		}
