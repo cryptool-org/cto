@@ -131,7 +131,8 @@ Wenn neue HTML-Elemente eine CSS-Anpassung benötigen, werden diese  hier eingep
 <code>
 <span class="macro">@def(<span class="name">scripts</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">script</span><br/>
-<span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/</span><span class="virt"></span><span class="str">BigInteger.min.js"</span><br/>
+<span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">BigInteger.min.js"</span><br/>
 <span class="in1"></span>&gt;&lt;/<span class="var">script</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">script</span><br/>
 <span class="in2"></span><span class="var">src</span>=<span class="str">"../_ctoApps/rsa/rsa.js"</span><br/>
@@ -410,7 +411,8 @@ Dieses Feld wird mit der kleinen Primzahl <code><span class="num">11</span></cod
 <code>
 <span class="macro">@add(<span class="name">primes de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-not-prime"</span><br/>
-<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><span class="str">hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes de</span>)</span><br/>
 </code></div>
@@ -454,7 +456,8 @@ Die englische Version hat eine andere Beschriftung
 <code>
 <span class="macro">@add(<span class="name">primes en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-not-prime"</span><br/>
-<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt; <span class="str">is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes en</span>)</span><br/>
 </code></div>
@@ -597,10 +600,12 @@ Auch diese wird mit einer kleinen Primzahl (<code><span class="num">13</span></c
 <code>
 <span class="macro">@add(<span class="name">primes de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
-<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><span class="str"> hidden"</span><br/>
-<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">hidden"</span><br/>
+<span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt; <span class="str"> ist keine Primzahl!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
-<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str">und</span> &lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<br/>
 <span class="in2"></span><span class="str">sind nicht verschieden!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes de</span>)</span><br/>
@@ -633,10 +638,12 @@ In der englischen Version wird eine andere Beschriftung verwendet
 <code>
 <span class="macro">@add(<span class="name">primes en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-q-not-prime"</span><br/>
-<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> is not prime!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-p-equal-q"</span><br/>
-<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger</span><span class="virt"></span><span class="str"> hidden"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger </span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">hidden"</span><br/>
 <span class="in1"></span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">p</span>&lt;/<span class="var">i</span>&gt;<span class="str"> and </span>&lt;<span class="var">i</span>&gt;<span class="var">q</span>&lt;/<span class="var">i</span>&gt;<span class="str"> are not</span><br/>
 <span class="in2"></span><span class="str">different!</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">primes en</span>)</span><br/>
@@ -2110,7 +2117,9 @@ Und eine Fehlermeldung, falls der Geheimtext zu groß ist
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"direction"</span>&gt;<br/>
 <span class="in3"></span>&lt;<span class="var">svg</span> <span class="var">viewbox</span>=<span class="str">"0 0 50 50"</span><br/>
 <span class="in4"></span><span class="var">width</span>=<span class="str">"50"</span> <span class="var">height</span>=<span class="str">"50"</span>&gt;<br/>
-<span class="in4"></span>&lt;<span class="var">polyline</span> <span class="var">points</span>=<span class="str">"0,20</span><span class="virt"></span><span class="str"> 15,20 15,0 35,0 35,20 50,20 25,50"</span><br/>
+<span class="in4"></span>&lt;<span class="var">polyline</span> <span class="var">points</span>=<span class="str">"0,20 </span><span class="virt"></span><br/>
+<span class="in5"></span><span class="str">15,20 15,0 35,0 35, </span><span class="virt"></span><br/>
+<span class="in5"></span><span class="str">20 50,20 25,50"</span><br/>
 <span class="in4"></span>&gt;&lt;/<span class="var">polyline</span>&gt;<br/>
 <span class="in3"></span>&lt;/<span class="var">svg</span>&gt;<br/>
 <span class="in2"></span>&lt;/<span class="var">div</span>&gt;<br/>
@@ -2601,7 +2610,8 @@ Ein paar Kleinigkeiten gibt es noch, um die Web-App fertig  zu stellen
 <span class="in2"></span><span class="str">Diese Seite verwendet für die</span><br/>
 <span class="in2"></span><span class="str">Rechnung mit großen Zahlen die</span><br/>
 <span class="in2"></span><span class="str">Bibliothek</span><br/>
-<span class="in2"></span>&lt;<span class="var">a</span> <span class="var">href</span>=<span class="str">"https://peterolson.</span><span class="virt"></span><span class="str">github.com/BigInteger.js/"</span><br/>
+<span class="in2"></span>&lt;<span class="var">a</span> <span class="var">href</span>=<span class="str">"https://peterolson.</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">github.com/BigInteger.js/"</span><br/>
 <span class="in2"></span>&gt;<span class="str">BigInteger.js</span>&lt;/<span class="var">a</span>&gt;.<br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
@@ -2632,7 +2642,8 @@ und was mit ihr berechnet wird
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Used library</span>&lt;/<span class="var">h2</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
 <span class="in2"></span><span class="str">This page uses the library</span><br/>
-<span class="in2"></span>&lt;<span class="var">a</span> <span class="var">href</span>=<span class="str">"https://peterolson.</span><span class="virt"></span><span class="str">github.com/BigInteger.js/"</span><br/>
+<span class="in2"></span>&lt;<span class="var">a</span> <span class="var">href</span>=<span class="str">"https://peterolson.</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">github.com/BigInteger.js/"</span><br/>
 <span class="in3"></span>&gt;<span class="type">BigInteger</span>.<span class="var">js</span>&lt;/<span class="var">a</span>&gt;<br/>
 <span class="in2"></span><span class="str">to work with big numbers.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
@@ -2701,8 +2712,12 @@ Das Autor-Tag wird etwas vom restlichen Text abgesetzt
 <span class="macro">@def(<span class="name">bootstrap stylesheets</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">link</span> <br/>
 <span class="in2"></span><span class="var">rel</span>=<span class="str">"stylesheet"</span><br/>
-<span class="in2"></span><span class="var">href</span>=<span class="str">"https://maxcdn.bootstrapcd</span><span class="virt"></span><span class="str">n.com/bootstrap/3.3.7/css/bootstrap.min.</span><span class="virt"></span><span class="str">css"</span><br/>
-<span class="in2"></span><span class="var">integrity</span>=<span class="str">"sha384-BVYiiSIFeK1dGm</span><span class="virt"></span><span class="str">JRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K</span><span class="virt"></span><span class="str">68vbdEjh4u"</span><br/>
+<span class="in2"></span><span class="var">href</span>=<span class="str">"https://maxcdn.bootstrapcd</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">n.com/bootstrap/3.3.7/css/</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">bootstrap.min.css"</span><br/>
+<span class="in2"></span><span class="var">integrity</span>=<span class="str">"sha384-BVYiiSIFeK1dGm</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">JRAkycuHAHRg32OmUcww7on3RY</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">dg4Va+PmSTsz/K68vbdEjh4u"</span><br/>
 <span class="in2"></span><span class="var">crossorigin</span>=<span class="str">"anonymous"</span><br/>
 <span class="in1"></span>&gt;<br/>
 <span class="macro">@end(<span class="name">bootstrap stylesheets</span>)</span><br/>
@@ -2718,8 +2733,12 @@ Dies wird nur für den Test verwendet und nicht für die produktive  Version
 <span class="macro">@add(<span class="name">bootstrap stylesheets</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">link</span><br/>
 <span class="in2"></span><span class="var">rel</span>=<span class="str">"stylesheet"</span><br/>
-<span class="in2"></span><span class="var">href</span>=<span class="str">"https://maxcdn.bootstrapcd</span><span class="virt"></span><span class="str">n.com/bootstrap/3.3.7/css/bootstrap-them</span><span class="virt"></span><span class="str">e.min.css"</span><br/>
-<span class="in2"></span><span class="var">integrity</span>=<span class="str">"sha384-rHyoN1iRsVXV4n</span><span class="virt"></span><span class="str">D0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgm</span><span class="virt"></span><span class="str">gJQIXwl/Sp"</span><br/>
+<span class="in2"></span><span class="var">href</span>=<span class="str">"https://maxcdn.bootstrapcd</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">n.com/bootstrap/3.3.7/css/</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">bootstrap-theme.min.css"</span><br/>
+<span class="in2"></span><span class="var">integrity</span>=<span class="str">"sha384-rHyoN1iRsVXV4n</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">D0JutlnGaslCJuC7uwjduW9S</span><span class="virt"></span><br/>
+<span class="in3"></span><span class="str">VrLvRYooPp2bWYgmgJQIXwl/Sp"</span><br/>
 <span class="in2"></span><span class="var">crossorigin</span>=<span class="str">"anonymous"</span><br/>
 <span class="in1"></span>&gt;<br/>
 <span class="macro">@end(<span class="name">bootstrap stylesheets</span>)</span><br/>

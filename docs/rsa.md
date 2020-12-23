@@ -87,7 +87,8 @@
 ```
 @def(scripts)
 	<script
-		src=@s("../_ctoApps/rsa/)@b()@s(BigInteger.min.js")
+		src=@s("../_ctoApps/rsa/)@b()
+			@s(BigInteger.min.js")
 	></script>
 	<script
 		src="../_ctoApps/rsa/rsa.js"
@@ -309,7 +310,8 @@
 ```
 @add(primes de)
 	<div id="err-p-not-prime"
-		class=@s("row alert alert-danger )@b()@s(hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i> @s(ist keine Primzahl!)</div>
 @end(primes de)
 ```
@@ -343,7 +345,8 @@
 ```
 @add(primes en)
 	<div id="err-p-not-prime"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i> @s(is not prime!)</div>
 @end(primes en)
 ```
@@ -458,10 +461,12 @@
 ```
 @add(primes de)
 	<div id="err-q-not-prime"
-		class=@s("row alert alert-danger)@b()@s( hidden")
-	><i>q</i>@s( ist keine Primzahl!)</div>
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
+	><i>q</i> @s( ist keine Primzahl!)</div>
 	<div id="err-p-equal-q"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i>@s(und) <i>q</i>
 		@s(sind nicht verschieden!)</div>
 @end(primes de)
@@ -487,10 +492,12 @@
 ```
 @add(primes en)
 	<div id="err-q-not-prime"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>q</i>@s( is not prime!)</div>
 	<div id="err-p-equal-q"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i>@s( and )<i>q</i>@s( are not)
 		@s(different!)</div>
 @end(primes en)
@@ -1676,7 +1683,9 @@
 		<div id="direction">
 			<svg viewbox="0 0 50 50"
 				width="50" height="50">
-				<polyline points=@s("0,20)@b()@s( 15,20 15,0 35,0 35,20 50,20 25,50")
+				<polyline points=@s("0,20 )@b()
+					@s(15,20 15,0 35,0 35, )@b()
+					@s(20 50,20 25,50")
 				></polyline>
 			</svg>
 		</div>
@@ -2057,7 +2066,8 @@
 		@s(Diese Seite verwendet für die)
 		@s(Rechnung mit großen Zahlen die)
 		@s(Bibliothek)
-		<a href=@s("https://peterolson.)@b()@s(github.com/BigInteger.js/")
+		<a href=@s("https://peterolson.)@b()
+			@s(github.com/BigInteger.js/")
 		>@s(BigInteger.js)</a>.
 	</p>
 @end(container de)
@@ -2083,7 +2093,8 @@
 	<h2>@s(Used library)</h2>
 	<p>
 		@s(This page uses the library)
-		<a href=@s("https://peterolson.)@b()@s(github.com/BigInteger.js/")
+		<a href=@s("https://peterolson.)@b()
+			@s(github.com/BigInteger.js/")
 			>BigInteger.js</a>
 		@s(to work with big numbers.)
 	</p>
@@ -2137,8 +2148,12 @@
 @def(bootstrap stylesheets)
 	<link 
 		rel="stylesheet"
-		href=@s("https://maxcdn.bootstrapcd)@b()@s(n.com/bootstrap/3.3.7/css/bootstrap.min.)@b()@s(css")
-		integrity=@s("sha384-BVYiiSIFeK1dGm)@b()@s(JRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K)@b()@s(68vbdEjh4u")
+		href=@s("https://maxcdn.bootstrapcd)@b()
+			@s(n.com/bootstrap/3.3.7/css/)@b()
+			@s(bootstrap.min.css")
+		integrity=@s("sha384-BVYiiSIFeK1dGm)@b()
+			@s(JRAkycuHAHRg32OmUcww7on3RY)@b()
+			@s(dg4Va+PmSTsz/K68vbdEjh4u")
 		crossorigin="anonymous"
 	>
 @end(bootstrap stylesheets)
@@ -2152,8 +2167,12 @@
 @add(bootstrap stylesheets)
 	<link
 		rel="stylesheet"
-		href=@s("https://maxcdn.bootstrapcd)@b()@s(n.com/bootstrap/3.3.7/css/bootstrap-them)@b()@s(e.min.css")
-		integrity=@s("sha384-rHyoN1iRsVXV4n)@b()@s(D0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgm)@b()@s(gJQIXwl/Sp")
+		href=@s("https://maxcdn.bootstrapcd)@b()
+			@s(n.com/bootstrap/3.3.7/css/)@b()
+			@s(bootstrap-theme.min.css")
+		integrity=@s("sha384-rHyoN1iRsVXV4n)@b()
+			@s(D0JutlnGaslCJuC7uwjduW9S)@b()
+			@s(VrLvRYooPp2bWYgmgJQIXwl/Sp")
 		crossorigin="anonymous"
 	>
 @end(bootstrap stylesheets)
