@@ -915,7 +915,7 @@
   geheimen Schlüssel benötigt wird
 
 ```
-@inc(gcd.x)
+@inc(gcd.md)
 ```
 * Der Erweiterte Euklidische Algorithmus wird in einer eigenen Datei
   implementiert
