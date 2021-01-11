@@ -1917,7 +1917,7 @@ In diesem Abschnitt wird beschrieben, wie de Nachrichten angezeigt  und verarbei
 <span class="in2"></span><span class="str">In den folgenden zwei Textboxen</span><br/>
 <span class="in2"></span><span class="str">können Sie sehen, wie das Ver-</span><br/>
 <span class="in2"></span><span class="str">und Entschlüsseln für konkrete</span><br/>
-<span class="in2"></span><span class="str">Eingaben (Zahlen) funktioniert.</span><br/>
+<span class="in2"></span><span class="str">Eingaben (Zahlen) </span><span class="str">funktioniert.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes de</span>)</span><br/>
@@ -2914,7 +2914,6 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 <span class="in3"></span><span class="type">const</span> <span class="var">ns</span> = <span class="var">num</span>.<span class="fn">toString</span>();<br/>
 <span class="in3"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">ns</span>.<span class="var">length</span>; <span class="var">i</span> += <span class="num">3</span>) {<br/>
 <span class="in4"></span><span class="type">let</span> <span class="var">b</span> = +<span class="var">ns</span>.<span class="fn">substr</span>(<span class="var">i</span>, <span class="num">3</span>);<br/>
-<span class="in4"></span><span class="var">console</span>.<span class="fn">log</span>(<span class="str">'got '</span>, <span class="var">b</span>);<br/>
 <span class="in4"></span><span class="var">utf8</span>.<span class="fn">push</span>(<span class="var">b</span>);<br/>
 <span class="in3"></span>}<br/>
 <span class="in2"></span>}<br/>
@@ -2922,7 +2921,6 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 <span class="in2"></span><span class="keyword">try</span> {<br/>
 <span class="in3"></span><span class="keyword">return</span> <span class="keyword">new</span> <span class="fn">TextDecoder</span>(<span class="str">'utf-8'</span>, {<span class="str">'fatal'</span>: <span class="num">true</span>}).<span class="fn">decode</span>(<span class="keyword">new</span> <span class="fn">Uint8Array</span>(<span class="var">utf8</span>));<br/>
 <span class="in2"></span>} <span class="keyword">catch</span> (<span class="var">e</span>) {<br/>
-<span class="in3"></span><span class="var">console</span>.<span class="fn">log</span>(<span class="str">'cant decode'</span>, <span class="var">e</span>);<br/>
 <span class="in3"></span><span class="keyword">return</span> <span class="str">''</span>;<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>}<br/>

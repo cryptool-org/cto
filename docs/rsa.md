@@ -1515,7 +1515,7 @@
 		@s(In den folgenden zwei Textboxen)
 		@s(können Sie sehen, wie das Ver-)
 		@s(und Entschlüsseln für konkrete)
-		@s(Eingaben (Zahlen@) funktioniert.)
+		@s(Eingaben (Zahlen@) )@s(funktioniert.)
 	</p>
 	<form class="form-horizontal">
 		@put(crypt boxes de)

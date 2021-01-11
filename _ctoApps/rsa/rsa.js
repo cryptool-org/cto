@@ -186,7 +186,6 @@
 			const ns = num.toString();
 			for (let i = 0; i < ns.length; i += 3) {
 				let b = +ns.substr(i, 3);
-				console.log('got ', b);
 				utf8.push(b);
 			}
 		}
@@ -194,7 +193,6 @@
 		try {
 			return new TextDecoder('utf-8', {'fatal': true}).decode(new Uint8Array(utf8));
 		} catch (e) {
-			console.log('cant decode', e);
 			return '';
 		}
 	}
