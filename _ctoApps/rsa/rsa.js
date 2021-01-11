@@ -124,6 +124,26 @@
 	const resetTimer = () => {
 		timer = null;
 	};
+
+	const split_args = str => {
+		let result = [];
+		let num = '';
+		for (let c of str) {
+			if (c >= '0' && c <= '9') {
+				num += c;
+			} else {
+				if (num.length) {
+					result.push(bigInt(num));
+					num = '';
+				}
+			}
+		}
+		if (num.length) {
+			result.push(bigInt(num));
+			num = '';
+		}
+		return result;
+	};
 ;
 			
 	const queueRefresh = event => {
@@ -221,40 +241,53 @@
 
 	if (encrypt) {
 		
-	const source =
-		bigInt($private_message.value);
+	let some_too_big = false;
+	let result = ''; let sep = '';
+	for (let num of split_args($private_message.value)) {
+		if (num.greaterOrEquals(public_key)) {
+			some_too_big = true;
+		}
+		const encrypted = num.modPow(
+			e, public_key
+		);
+		result += sep + encrypted.toString();
+		sep = ', ';
+	}
+
+	$err_private_msg_too_big.
+		classList.add('hidden');
 	$err_public_msg_too_big.
 		classList.toggle(
 			'hidden',
-			source.lesser(public_key)
+			! some_too_big
 		);
-	$err_private_msg_too_big.
-		classList.add('hidden');
-
-	const encrypted =
-		source.modPow(
-			e, public_key
-		);
-	$public_message.value =
-		encrypted.toString();
+	$public_message.value = result;
 ;
 	} else {
 		
-	const source =
-		bigInt($public_message.value);
+	let some_too_big = false;
+	let result = ''; let sep = '';
+
+	for (let num of split_args($public_message.value)) {
+		if (num.greaterOrEquals(public_key)) {
+			some_too_big = true;
+		}
+		const decrypted = num.modPow(
+			private_key, public_key
+		);
+		result += sep + decrypted.toString();
+		sep = ', ';
+	}
+
 	$err_public_msg_too_big.
 		classList.add('hidden');
 	$err_private_msg_too_big.
 		classList.toggle(
 			'hidden',
-			source.lesser(public_key)
+			! some_too_big
 		);
-
-	const decrypted = source.modPow(
-		private_key, public_key
-	);
 	$private_message.value =
-		decrypted.toString();
+		result;
 ;
 	}
 

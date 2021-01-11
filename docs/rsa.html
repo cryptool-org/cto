@@ -2749,5 +2749,109 @@ Auch das Bootstrap-Thema wird von einem Content Delivery Network  eingebunden
 Auch dies wird nur für die lokale und nicht für die produktive Version  verwendet
 </li></ul>
 </div>
+</div>
+<h2>Mehrere Zahlen auf einmal ver- und entschlüsseln</h2>
+<div class="slides">
+<div class="page">
+<div class="slide slide-header"><div class="slide-nr">177</div><div class="headers">
+<h2>Mehrere Zahlen auf einmal ver- und entschlüsseln</h2>
+</div></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">178</div>
+<code>
+<span class="macro">@Add(<span class="name">globals</span>)</span><br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">split_args</span> = <span class="var">str</span> =&gt; {<br/>
+<span class="in2"></span><span class="type">let</span> <span class="var">result</span> = [];<br/>
+<span class="in2"></span><span class="type">let</span> <span class="var">num</span> = <span class="str">''</span>;<br/>
+<span class="in2"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">c</span> <span class="var">of</span> <span class="var">str</span>) {<br/>
+<span class="in3"></span><span class="keyword">if</span> (<span class="var">c</span> &gt;= <span class="str">'0'</span> &amp;&amp; <span class="var">c</span> &lt;= <span class="str">'9'</span>) {<br/>
+<span class="in4"></span><span class="var">num</span> += <span class="var">c</span>;<br/>
+<span class="in3"></span>} <span class="keyword">else</span> {<br/>
+<span class="in4"></span><span class="keyword">if</span> (<span class="var">num</span>.<span class="var">length</span>) {<br/>
+<span class="in5"></span><span class="var">result</span>.<span class="fn">push</span>(<span class="fn">bigInt</span>(<span class="var">num</span>));<br/>
+<span class="in5"></span><span class="var">num</span> = <span class="str">''</span>;<br/>
+<span class="in4"></span>}<br/>
+<span class="in3"></span>}<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">num</span>.<span class="var">length</span>) {<br/>
+<span class="in3"></span><span class="var">result</span>.<span class="fn">push</span>(<span class="fn">bigInt</span>(<span class="var">num</span>));<br/>
+<span class="in3"></span><span class="var">num</span> = <span class="str">''</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">result</span>;<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@End(<span class="name">globals</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">179</div>
+<code>
+<span class="macro">@rep(<span class="name">encrypt</span>)</span><br/>
+<span class="in1"></span><span class="type">let</span> <span class="var">some_too_big</span> = <span class="num">false</span>;<br/>
+<span class="in1"></span><span class="type">let</span> <span class="var">result</span> = <span class="str">''</span>; <span class="type">let</span> <span class="var">sep</span> = <span class="str">''</span>;<br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">num</span> <span class="var">of</span> <span class="fn">split_args</span>(<span class="var">$private_message</span>.<span class="var">value</span>)) {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">num</span>.<span class="fn">greaterOrEquals</span>(<span class="var">public_key</span>)) {<br/>
+<span class="in3"></span><span class="var">some_too_big</span> = <span class="num">true</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="type">const</span> <span class="var">encrypted</span> = <span class="var">num</span>.<span class="fn">modPow</span>(<br/>
+<span class="in3"></span><span class="var">e</span>, <span class="var">public_key</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in2"></span><span class="var">result</span> += <span class="var">sep</span> + <span class="var">encrypted</span>.<span class="fn">toString</span>();<br/>
+<span class="in2"></span><span class="var">sep</span> = <span class="str">', '</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">180</div>
+<code>
+<span class="macro">@add(<span class="name">encrypt</span>)</span><br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
+<span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
+<span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in3"></span><span class="str">'hidden'</span>,<br/>
+<span class="in3"></span>! <span class="var">some_too_big</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in1"></span><span class="var">$public_message</span>.<span class="var">value</span> = <span class="var">result</span>;<br/>
+<span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">181</div>
+<code>
+<span class="macro">@rep(<span class="name">decrypt</span>)</span><br/>
+<span class="in1"></span><span class="type">let</span> <span class="var">some_too_big</span> = <span class="num">false</span>;<br/>
+<span class="in1"></span><span class="type">let</span> <span class="var">result</span> = <span class="str">''</span>; <span class="type">let</span> <span class="var">sep</span> = <span class="str">''</span>;<br/>
+<br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">num</span> <span class="var">of</span> <span class="fn">split_args</span>(<span class="var">$public_message</span>.<span class="var">value</span>)) {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">num</span>.<span class="fn">greaterOrEquals</span>(<span class="var">public_key</span>)) {<br/>
+<span class="in3"></span><span class="var">some_too_big</span> = <span class="num">true</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="type">const</span> <span class="var">decrypted</span> = <span class="var">num</span>.<span class="fn">modPow</span>(<br/>
+<span class="in3"></span><span class="var">private_key</span>, <span class="var">public_key</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in2"></span><span class="var">result</span> += <span class="var">sep</span> + <span class="var">decrypted</span>.<span class="fn">toString</span>();<br/>
+<span class="in2"></span><span class="var">sep</span> = <span class="str">', '</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">182</div>
+<code>
+<span class="macro">@add(<span class="name">decrypt</span>)</span><br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
+<span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
+<span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in3"></span><span class="str">'hidden'</span>,<br/>
+<span class="in3"></span>! <span class="var">some_too_big</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in1"></span><span class="var">$private_message</span>.<span class="var">value</span> =<br/>
+<span class="in2"></span><span class="var">result</span>;<br/>
+<span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
 </body>
 </html>
