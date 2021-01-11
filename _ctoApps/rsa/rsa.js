@@ -22,6 +22,7 @@
 
 	const $public_key =
 		$('public-key');
+	let public_key;
 	const $public_key_length =
 		$('public-key-length');
 
@@ -144,6 +145,64 @@
 		}
 		return result;
 	};
+
+	const chrs_per_num = () => {
+		let chrs_per_num = 0;
+		let mod = public_key;
+		while (mod.greaterOrEquals(1000)) {
+			mod = mod.divide(1000);
+			++chrs_per_num;
+		}
+		if (mod.greaterOrEquals(255)) {
+			++chrs_per_num;
+		}
+		return chrs_per_num;
+	};
+	const str2nums = str => {
+		let utf8 = new TextEncoder('utf-8').encode(str);
+		let result = [];
+		const cpn = chrs_per_num();
+		if (! cpn) { return result; };
+
+		for (let i = 0; i < utf8.length; ) {
+			let num = ''
+			for (let j = 0; j < cpn && i < utf8.length; ++j, ++i) {
+				const v = utf8[i] & 0xff;
+				if (v < 10) { num += '0'; }
+				if (v < 100) { num += '0'; }
+				num += v;
+			}
+			result.push(bigInt(num));
+		}
+		return result;
+	};
+
+	const nums2str = nums => {
+		let utf8 = []
+		const cpn = chrs_per_num();
+		if (! cpn) { return ''; }
+
+		for (let num of nums) {
+			const ns = num.toString();
+			for (let i = 0; i < ns.length; i += 3) {
+				let b = +ns.substr(i, 3);
+				console.log('got ', b);
+				utf8.push(b);
+			}
+		}
+
+		try {
+			return new TextDecoder('utf-8', {'fatal': true}).decode(new Uint8Array(utf8));
+		} catch (e) {
+			console.log('cant decode', e);
+			return '';
+		}
+	}
+
+	const $private_txt =
+		$('private-txt');
+	const $private_txt_row =
+		$private_txt.parentElement.parentElement;
 ;
 			
 	const queueRefresh = event => {
@@ -196,7 +255,7 @@
 		! prime1.equals(prime2)
 	);
 
-	const public_key =
+	public_key =
 		prime1.multiply(prime2);
 	$public_key.innerText =
 		public_key.toString();
@@ -288,10 +347,18 @@
 		);
 	$private_message.value =
 		result;
+
+	$private_txt.value =
+		nums2str(split_args(result));
 ;
 	}
 
 	resetTimer();
+
+	$private_txt_row.classList.toggle(
+		'hidden',
+		public_key.lesser(1000)
+	);
 ;
 	};
 	refresh();
@@ -312,6 +379,10 @@
 		'input',
 		event => {
 			setEncrypt(true);
+			
+	$private_txt.value =
+		nums2str(split_args($private_message.value));
+;
 			queueRefresh(event);
 		}
 	);
@@ -341,6 +412,17 @@
 ;
 		}
 	};
+
+	$private_txt.addEventListener(
+		'input',
+		event => {
+			setEncrypt(true);
+			$private_message.value =
+				str2nums($private_txt.value);
+				
+			queueRefresh(event);
+		}
+	);
 ;
 		}
 	);

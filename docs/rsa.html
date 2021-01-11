@@ -839,6 +839,7 @@ Und das Fragment wird in der englischen Version verwendet
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$public_key</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key'</span>);<br/>
+<span class="in1"></span><span class="type">let</span> <span class="var">public_key</span>;<br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$public_key_length</span> =<br/>
 <span class="in2"></span><span class="fn">$</span>(<span class="str">'public-key-length'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
@@ -850,7 +851,7 @@ Referenzen auf den öffentlichen Schlüssel im DOM und dessen Länge  werden im 
 <div class="page"><div class="slide"><div class="slide-nr">56</div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">public_key</span> =<br/>
+<span class="in1"></span><span class="var">public_key</span> =<br/>
 <span class="in2"></span><span class="var">prime1</span>.<span class="fn">multiply</span>(<span class="var">prime2</span>);<br/>
 <span class="in1"></span><span class="var">$public_key</span>.<span class="var">innerText</span> =<br/>
 <span class="in2"></span><span class="var">public_key</span>.<span class="fn">toString</span>();<br/>
@@ -1949,10 +1950,11 @@ Auch in der englischen Version werden die Nachrichten-Boxen erklärt
 <div class="page"><div class="slide"><div class="slide-nr">127</div>
 <code>
 <span class="macro">@def(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">text box de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-<span class="in3"></span><span class="var">for</span>=<span class="str">"public-key"</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"private-message"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Klartext</span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
@@ -2000,7 +2002,7 @@ Die Richtung kann durch Eingabe in die passenden Textfelder  umgedreht werden
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-<span class="in3"></span><span class="var">for</span>=<span class="str">"private-key"</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"public-message"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Geheimtext</span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
@@ -2033,10 +2035,11 @@ Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl  zu groß ist
 <div class="page"><div class="slide"><div class="slide-nr">132</div>
 <code>
 <span class="macro">@def(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">text box en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-<span class="in3"></span><span class="var">for</span>=<span class="str">"public-key"</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"private-message"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Plaintext</span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
@@ -2081,7 +2084,7 @@ In beiden Sprachen kann der gleiche Pfeil verwendet werden, der die  Richtung de
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-<span class="in3"></span><span class="var">for</span>=<span class="str">"private-key"</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"public-message"</span><br/>
 <span class="in2"></span>&gt;<span class="str">Ciphertext</span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
@@ -2230,6 +2233,7 @@ Ebenso die Referenzen auf die Fehlermeldungen
 <span class="in2"></span><span class="str">'input'</span>,<br/>
 <span class="in2"></span><span class="var">event</span> =&gt; {<br/>
 <span class="in3"></span><span class="fn">setEncrypt</span>(<span class="num">true</span>);<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">update text field</span>)</span>;<br/>
 <span class="in3"></span><span class="fn">queueRefresh</span>(<span class="var">event</span>);<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>);<br/>
@@ -2849,6 +2853,170 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 <span class="in2"></span>);<br/>
 <span class="in1"></span><span class="var">$private_message</span>.<span class="var">value</span> =<br/>
 <span class="in2"></span><span class="var">result</span>;<br/>
+<span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+</div>
+<h2>Text direkt verschlüsseln</h2>
+<div class="slides">
+<div class="page">
+<div class="slide slide-header"><div class="slide-nr">183</div><div class="headers">
+<h2>Text direkt verschlüsseln</h2>
+</div></div>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">184</div>
+<code>
+<span class="macro">@Add(<span class="name">globals</span>)</span><br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">chrs_per_num</span> = () =&gt; {<br/>
+<span class="in2"></span><span class="type">let</span> <span class="var">chrs_per_num</span> = <span class="num">0</span>;<br/>
+<span class="in2"></span><span class="type">let</span> <span class="var">mod</span> = <span class="var">public_key</span>;<br/>
+<span class="in2"></span><span class="keyword">while</span> (<span class="var">mod</span>.<span class="fn">greaterOrEquals</span>(<span class="num">1000</span>)) {<br/>
+<span class="in3"></span><span class="var">mod</span> = <span class="var">mod</span>.<span class="fn">divide</span>(<span class="num">1000</span>);<br/>
+<span class="in3"></span>++<span class="var">chrs_per_num</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">mod</span>.<span class="fn">greaterOrEquals</span>(<span class="num">255</span>)) {<br/>
+<span class="in3"></span>++<span class="var">chrs_per_num</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">chrs_per_num</span>;<br/>
+<span class="in1"></span>};<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">str2nums</span> = <span class="var">str</span> =&gt; {<br/>
+<span class="in2"></span><span class="type">let</span> <span class="var">utf8</span> = <span class="keyword">new</span> <span class="fn">TextEncoder</span>(<span class="str">'utf-8'</span>).<span class="fn">encode</span>(<span class="var">str</span>);<br/>
+<span class="in2"></span><span class="type">let</span> <span class="var">result</span> = [];<br/>
+<span class="in2"></span><span class="type">const</span> <span class="var">cpn</span> = <span class="fn">chrs_per_num</span>();<br/>
+<span class="in2"></span><span class="keyword">if</span> (! <span class="var">cpn</span>) { <span class="keyword">return</span> <span class="var">result</span>; };<br/>
+<br/>
+<span class="in2"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">utf8</span>.<span class="var">length</span>; ) {<br/>
+<span class="in3"></span><span class="type">let</span> <span class="var">num</span> = <span class="str">''</span><br/>
+<span class="in3"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">j</span> = <span class="num">0</span>; <span class="var">j</span> &lt; <span class="var">cpn</span> &amp;&amp; <span class="var">i</span> &lt; <span class="var">utf8</span>.<span class="var">length</span>; ++<span class="var">j</span>, ++<span class="var">i</span>) {<br/>
+<span class="in4"></span><span class="type">const</span> <span class="var">v</span> = <span class="var">utf8</span>[<span class="var">i</span>] &amp; <span class="num">0xff</span>;<br/>
+<span class="in4"></span><span class="keyword">if</span> (<span class="var">v</span> &lt; <span class="num">10</span>) { <span class="var">num</span> += <span class="str">'0'</span>; }<br/>
+<span class="in4"></span><span class="keyword">if</span> (<span class="var">v</span> &lt; <span class="num">100</span>) { <span class="var">num</span> += <span class="str">'0'</span>; }<br/>
+<span class="in4"></span><span class="var">num</span> += <span class="var">v</span>;<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span><span class="var">result</span>.<span class="fn">push</span>(<span class="fn">bigInt</span>(<span class="var">num</span>));<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">result</span>;<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@End(<span class="name">globals</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">185</div>
+<code>
+<span class="macro">@Add(<span class="name">globals</span>)</span><br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">nums2str</span> = <span class="var">nums</span> =&gt; {<br/>
+<span class="in2"></span><span class="type">let</span> <span class="var">utf8</span> = []<br/>
+<span class="in2"></span><span class="type">const</span> <span class="var">cpn</span> = <span class="fn">chrs_per_num</span>();<br/>
+<span class="in2"></span><span class="keyword">if</span> (! <span class="var">cpn</span>) { <span class="keyword">return</span> <span class="str">''</span>; }<br/>
+<br/>
+<span class="in2"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">num</span> <span class="var">of</span> <span class="var">nums</span>) {<br/>
+<span class="in3"></span><span class="type">const</span> <span class="var">ns</span> = <span class="var">num</span>.<span class="fn">toString</span>();<br/>
+<span class="in3"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">ns</span>.<span class="var">length</span>; <span class="var">i</span> += <span class="num">3</span>) {<br/>
+<span class="in4"></span><span class="type">let</span> <span class="var">b</span> = +<span class="var">ns</span>.<span class="fn">substr</span>(<span class="var">i</span>, <span class="num">3</span>);<br/>
+<span class="in4"></span><span class="var">console</span>.<span class="fn">log</span>(<span class="str">'got '</span>, <span class="var">b</span>);<br/>
+<span class="in4"></span><span class="var">utf8</span>.<span class="fn">push</span>(<span class="var">b</span>);<br/>
+<span class="in3"></span>}<br/>
+<span class="in2"></span>}<br/>
+<br/>
+<span class="in2"></span><span class="keyword">try</span> {<br/>
+<span class="in3"></span><span class="keyword">return</span> <span class="keyword">new</span> <span class="fn">TextDecoder</span>(<span class="str">'utf-8'</span>, {<span class="str">'fatal'</span>: <span class="num">true</span>}).<span class="fn">decode</span>(<span class="keyword">new</span> <span class="fn">Uint8Array</span>(<span class="var">utf8</span>));<br/>
+<span class="in2"></span>} <span class="keyword">catch</span> (<span class="var">e</span>) {<br/>
+<span class="in3"></span><span class="var">console</span>.<span class="fn">log</span>(<span class="str">'cant decode'</span>, <span class="var">e</span>);<br/>
+<span class="in3"></span><span class="keyword">return</span> <span class="str">''</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">globals</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">186</div>
+<code>
+<span class="macro">@def(<span class="name">text box de</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">label</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"private-txt"</span><br/>
+<span class="in2"></span>&gt;<span class="str">Texteingabe</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in3"></span><span class="var">id</span>=<span class="str">"private-txt"</span><br/>
+<span class="in3"></span><span class="var">value</span>=<span class="str">""</span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="macro">@end(<span class="name">text box de</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">187</div>
+<code>
+<span class="macro">@def(<span class="name">text box en</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">label</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in3"></span><span class="var">for</span>=<span class="str">"private-txt"</span><br/>
+<span class="in2"></span>&gt;<span class="str">text entry</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
+<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in3"></span><span class="var">id</span>=<span class="str">"private-txt"</span><br/>
+<span class="in3"></span><span class="var">value</span>=<span class="str">""</span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="macro">@end(<span class="name">text box en</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">188</div>
+<code>
+<span class="macro">@Add(<span class="name">globals</span>)</span><br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$private_txt</span> =<br/>
+<span class="in2"></span><span class="fn">$</span>(<span class="str">'private-txt'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$private_txt_row</span> =<br/>
+<span class="in2"></span><span class="var">$private_txt</span>.<span class="var">parentElement</span>.<span class="var">parentElement</span>;<br/>
+<span class="macro">@end(<span class="name">globals</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">189</div>
+<code>
+<span class="macro">@add(<span class="name">refresh</span>)</span><br/>
+<span class="in1"></span><span class="var">$private_txt_row</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in2"></span><span class="str">'hidden'</span>,<br/>
+<span class="in2"></span><span class="var">public_key</span>.<span class="fn">lesser</span>(<span class="num">1000</span>)<br/>
+<span class="in1"></span>);<br/>
+<span class="macro">@end(<span class="name">refresh</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">190</div>
+<code>
+<span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
+<span class="in1"></span><span class="var">$private_txt</span>.<span class="fn">addEventListener</span>(<br/>
+<span class="in2"></span><span class="str">'input'</span>,<br/>
+<span class="in2"></span><span class="var">event</span> =&gt; {<br/>
+<span class="in3"></span><span class="fn">setEncrypt</span>(<span class="num">true</span>);<br/>
+<span class="in3"></span><span class="var">$private_message</span>.<span class="var">value</span> =<br/>
+<span class="in4"></span><span class="fn">str2nums</span>(<span class="var">$private_txt</span>.<span class="var">value</span>);<br/>
+<span class="in4"></span><br/>
+<span class="in3"></span><span class="fn">queueRefresh</span>(<span class="var">event</span>);<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>);<br/>
+<span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">191</div>
+<code>
+<span class="macro">@def(<span class="name">update text field</span>)</span><br/>
+<span class="in1"></span><span class="var">$private_txt</span>.<span class="var">value</span> =<br/>
+<span class="in2"></span><span class="fn">nums2str</span>(<span class="fn">split_args</span>(<span class="var">$private_message</span>.<span class="var">value</span>));<br/>
+<span class="macro">@end(<span class="name">update text field</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">192</div>
+<code>
+<span class="macro">@add(<span class="name">decrypt</span>)</span><br/>
+<span class="in1"></span><span class="var">$private_txt</span>.<span class="var">value</span> =<br/>
+<span class="in2"></span><span class="fn">nums2str</span>(<span class="fn">split_args</span>(<span class="var">result</span>));<br/>
 <span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
 </code></div>
 <ul></ul>

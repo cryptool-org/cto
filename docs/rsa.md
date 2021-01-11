@@ -647,6 +647,7 @@
 @Add(globals)
 	const $public_key =
 		@f($)('public-key');
+	let public_key;
 	const $public_key_length =
 		@f($)('public-key-length');
 @end(globals)
@@ -656,7 +657,7 @@
 
 ```
 @add(refresh)
-	const public_key =
+	public_key =
 		prime1.multiply(prime2);
 	$public_key.innerText =
 		public_key.toString();
@@ -1541,10 +1542,11 @@
 
 ```
 @def(crypt boxes de)
+	@put(text box de)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="public-key"
+			@v(for)="private-message"
 		>@s(Klartext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1585,7 +1587,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="private-key"
+			@v(for)="public-message"
 		>@s(Geheimtext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1613,10 +1615,11 @@
 
 ```
 @def(crypt boxes en)
+	@put(text box en)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="public-key"
+			@v(for)="private-message"
 		>@s(Plaintext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1653,7 +1656,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="private-key"
+			@v(for)="public-message"
 		>@s(Ciphertext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1774,6 +1777,7 @@
 		'input',
 		event => {
 			setEncrypt(true);
+			@put(update text field);
 			queueRefresh(event);
 		}
 	);
@@ -2267,6 +2271,144 @@
 		);
 	$private_message.value =
 		result;
+@end(decrypt)
+```
+
+## Text direkt verschlüsseln
+
+```
+@Add(globals)
+	const chrs_per_num = () => {
+		let chrs_per_num = 0;
+		let mod = public_key;
+		while (mod.greaterOrEquals(1000)) {
+			mod = mod.divide(1000);
+			++chrs_per_num;
+		}
+		if (mod.greaterOrEquals(255)) {
+			++chrs_per_num;
+		}
+		return chrs_per_num;
+	};
+	const str2nums = str => {
+		let utf8 = new TextEncoder('utf-8').encode(str);
+		let result = [];
+		const cpn = chrs_per_num();
+		if (! cpn) { return result; };
+
+		for (let i = 0; i < utf8.length; ) {
+			let num = ''
+			for (let j = 0; j < cpn && i < utf8.length; ++j, ++i) {
+				const v = utf8[i] & 0xff;
+				if (v < 10) { num += '0'; }
+				if (v < 100) { num += '0'; }
+				num += v;
+			}
+			result.push(bigInt(num));
+		}
+		return result;
+	};
+@End(globals)
+```
+
+```
+@Add(globals)
+	const nums2str = nums => {
+		let utf8 = []
+		const cpn = chrs_per_num();
+		if (! cpn) { return ''; }
+
+		for (let num of nums) {
+			const ns = num.toString();
+			for (let i = 0; i < ns.length; i += 3) {
+				let b = +ns.substr(i, 3);
+				utf8.push(b);
+			}
+		}
+
+		try {
+			return new TextDecoder('utf-8', {'fatal': true}).decode(new Uint8Array(utf8));
+		} catch (e) {
+			return '';
+		}
+	}
+@End(globals)
+```
+
+```
+@def(text box de)
+	<div class="form-group">
+		<label
+			class="col-sm-3 control-label"
+			@v(for)="private-txt"
+		>@s(Texteingabe)</label>
+		<div class="col-sm-9"><input
+			class="form-control"
+			id="private-txt"
+			value=""></input></div>
+	</div>
+@end(text box de)
+```
+
+```
+@def(text box en)
+	<div class="form-group">
+		<label
+			class="col-sm-3 control-label"
+			@v(for)="private-txt"
+		>@s(text entry)</label>
+		<div class="col-sm-9"><input
+			class="form-control"
+			id="private-txt"
+			value=""></input></div>
+	</div>
+@end(text box en)
+```
+
+```
+@Add(globals)
+	const $private_txt =
+		@f($)('private-txt');
+	const $private_txt_row =
+		$private_txt.parentElement.parentElement;
+@end(globals)
+```
+
+```
+@add(refresh)
+	$private_txt_row.classList.toggle(
+		'hidden',
+		public_key.lesser(1000)
+	);
+@end(refresh)
+```
+
+```
+@add(setup rsa)
+	$private_txt.addEventListener(
+		'input',
+		event => {
+			setEncrypt(true);
+			$private_message.value =
+				str2nums($private_txt.value);
+				
+			queueRefresh(event);
+		}
+	);
+@end(setup rsa)
+```
+
+```
+@def(update text field)
+	$private_txt.value =
+		nums2str(split_args($private_message.value));
+@end(update text field)
+```
+
+```
+@add(decrypt)
+	$private_txt.value =
+		nums2str(split_args(result));
 @end(decrypt)
 ```
 
