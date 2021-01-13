@@ -87,7 +87,8 @@
 ```
 @def(scripts)
 	<script
-		src=@s("../_ctoApps/rsa/)@b()@s(BigInteger.min.js")
+		src=@s("../_ctoApps/rsa/)@b()
+			@s(BigInteger.min.js")
 	></script>
 	<script
 		src="../_ctoApps/rsa/rsa.js"
@@ -309,7 +310,8 @@
 ```
 @add(primes de)
 	<div id="err-p-not-prime"
-		class=@s("row alert alert-danger )@b()@s(hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i> @s(ist keine Primzahl!)</div>
 @end(primes de)
 ```
@@ -343,7 +345,8 @@
 ```
 @add(primes en)
 	<div id="err-p-not-prime"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i> @s(is not prime!)</div>
 @end(primes en)
 ```
@@ -458,10 +461,12 @@
 ```
 @add(primes de)
 	<div id="err-q-not-prime"
-		class=@s("row alert alert-danger)@b()@s( hidden")
-	><i>q</i>@s( ist keine Primzahl!)</div>
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
+	><i>q</i> @s( ist keine Primzahl!)</div>
 	<div id="err-p-equal-q"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i>@s(und) <i>q</i>
 		@s(sind nicht verschieden!)</div>
 @end(primes de)
@@ -487,10 +492,12 @@
 ```
 @add(primes en)
 	<div id="err-q-not-prime"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>q</i>@s( is not prime!)</div>
 	<div id="err-p-equal-q"
-		class=@s("row alert alert-danger)@b()@s( hidden")
+		class=@s("row alert alert-danger )@b()
+			@s(hidden")
 	><i>p</i>@s( and )<i>q</i>@s( are not)
 		@s(different!)</div>
 @end(primes en)
@@ -640,6 +647,7 @@
 @Add(globals)
 	const $public_key =
 		@f($)('public-key');
+	let public_key;
 	const $public_key_length =
 		@f($)('public-key-length');
 @end(globals)
@@ -649,7 +657,7 @@
 
 ```
 @add(refresh)
-	const public_key =
+	public_key =
 		prime1.multiply(prime2);
 	$public_key.innerText =
 		public_key.toString();
@@ -915,7 +923,7 @@
   geheimen Schlüssel benötigt wird
 
 ```
-@inc(gcd.x)
+@inc(gcd.md)
 ```
 * Der Erweiterte Euklidische Algorithmus wird in einer eigenen Datei
   implementiert
@@ -1507,7 +1515,7 @@
 		@s(In den folgenden zwei Textboxen)
 		@s(können Sie sehen, wie das Ver-)
 		@s(und Entschlüsseln für konkrete)
-		@s(Eingaben (Zahlen@) funktioniert.)
+		@s(Eingaben (Zahlen@) )@s(funktioniert.)
 	</p>
 	<form class="form-horizontal">
 		@put(crypt boxes de)
@@ -1534,10 +1542,11 @@
 
 ```
 @def(crypt boxes de)
+	@put(text box de)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="public-key"
+			@v(for)="private-message"
 		>@s(Klartext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1578,7 +1587,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="private-key"
+			@v(for)="public-message"
 		>@s(Geheimtext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1606,10 +1615,11 @@
 
 ```
 @def(crypt boxes en)
+	@put(text box en)
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="public-key"
+			@v(for)="private-message"
 		>@s(Plaintext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1646,7 +1656,7 @@
 	<div class="form-group">
 		<label
 			class="col-sm-3 control-label"
-			@v(for)="private-key"
+			@v(for)="public-message"
 		>@s(Ciphertext)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
@@ -1676,7 +1686,9 @@
 		<div id="direction">
 			<svg viewbox="0 0 50 50"
 				width="50" height="50">
-				<polyline points=@s("0,20)@b()@s( 15,20 15,0 35,0 35,20 50,20 25,50")
+				<polyline points=@s("0,20 )@b()
+					@s(15,20 15,0 35,0 35, )@b()
+					@s(20 50,20 25,50")
 				></polyline>
 			</svg>
 		</div>
@@ -1765,6 +1777,7 @@
 		'input',
 		event => {
 			setEncrypt(true);
+			@put(update text field);
 			queueRefresh(event);
 		}
 	);
@@ -2057,7 +2070,8 @@
 		@s(Diese Seite verwendet für die)
 		@s(Rechnung mit großen Zahlen die)
 		@s(Bibliothek)
-		<a href=@s("https://peterolson.)@b()@s(github.com/BigInteger.js/")
+		<a href=@s("https://peterolson.)@b()
+			@s(github.com/BigInteger.js/")
 		>@s(BigInteger.js)</a>.
 	</p>
 @end(container de)
@@ -2083,7 +2097,8 @@
 	<h2>@s(Used library)</h2>
 	<p>
 		@s(This page uses the library)
-		<a href=@s("https://peterolson.)@b()@s(github.com/BigInteger.js/")
+		<a href=@s("https://peterolson.)@b()
+			@s(github.com/BigInteger.js/")
 			>BigInteger.js</a>
 		@s(to work with big numbers.)
 	</p>
@@ -2137,8 +2152,12 @@
 @def(bootstrap stylesheets)
 	<link 
 		rel="stylesheet"
-		href=@s("https://maxcdn.bootstrapcd)@b()@s(n.com/bootstrap/3.3.7/css/bootstrap.min.)@b()@s(css")
-		integrity=@s("sha384-BVYiiSIFeK1dGm)@b()@s(JRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K)@b()@s(68vbdEjh4u")
+		href=@s("https://maxcdn.bootstrapcd)@b()
+			@s(n.com/bootstrap/3.3.7/css/)@b()
+			@s(bootstrap.min.css")
+		integrity=@s("sha384-BVYiiSIFeK1dGm)@b()
+			@s(JRAkycuHAHRg32OmUcww7on3RY)@b()
+			@s(dg4Va+PmSTsz/K68vbdEjh4u")
 		crossorigin="anonymous"
 	>
 @end(bootstrap stylesheets)
@@ -2152,8 +2171,12 @@
 @add(bootstrap stylesheets)
 	<link
 		rel="stylesheet"
-		href=@s("https://maxcdn.bootstrapcd)@b()@s(n.com/bootstrap/3.3.7/css/bootstrap-them)@b()@s(e.min.css")
-		integrity=@s("sha384-rHyoN1iRsVXV4n)@b()@s(D0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgm)@b()@s(gJQIXwl/Sp")
+		href=@s("https://maxcdn.bootstrapcd)@b()
+			@s(n.com/bootstrap/3.3.7/css/)@b()
+			@s(bootstrap-theme.min.css")
+		integrity=@s("sha384-rHyoN1iRsVXV4n)@b()
+			@s(D0JutlnGaslCJuC7uwjduW9S)@b()
+			@s(VrLvRYooPp2bWYgmgJQIXwl/Sp")
 		crossorigin="anonymous"
 	>
 @end(bootstrap stylesheets)
@@ -2162,4 +2185,230 @@
   eingebunden
 * Auch dies wird nur für die lokale und nicht für die produktive Version
   verwendet
+
+## Mehrere Zahlen auf einmal ver- und entschlüsseln
+
+```
+@Add(globals)
+	const split_args = str => {
+		let result = [];
+		let num = '';
+		for (let c of str) {
+			if (c >= '0' && c <= '9') {
+				num += c;
+			} else {
+				if (num.length) {
+					result.push(bigInt(num));
+					num = '';
+				}
+			}
+		}
+		if (num.length) {
+			result.push(bigInt(num));
+			num = '';
+		}
+		return result;
+	};
+@End(globals)
+```
+
+```
+@rep(encrypt)
+	let some_too_big = false;
+	let result = ''; let sep = '';
+	for (let num of split_args($private_message.value)) {
+		if (num.greaterOrEquals(public_key)) {
+			some_too_big = true;
+		}
+		const encrypted = num.modPow(
+			e, public_key
+		);
+		result += sep + encrypted.toString();
+		sep = ', ';
+	}
+@end(encrypt)
+```
+
+```
+@add(encrypt)
+	$err_private_msg_too_big.
+		classList.add('hidden');
+	$err_public_msg_too_big.
+		classList.toggle(
+			'hidden',
+			! some_too_big
+		);
+	$public_message.value = result;
+@end(encrypt)
+```
+
+```
+@rep(decrypt)
+	let some_too_big = false;
+	let result = ''; let sep = '';
+
+	for (let num of split_args($public_message.value)) {
+		if (num.greaterOrEquals(public_key)) {
+			some_too_big = true;
+		}
+		const decrypted = num.modPow(
+			private_key, public_key
+		);
+		result += sep + decrypted.toString();
+		sep = ', ';
+	}
+@end(decrypt)
+```
+
+```
+@add(decrypt)
+	$err_public_msg_too_big.
+		classList.add('hidden');
+	$err_private_msg_too_big.
+		classList.toggle(
+			'hidden',
+			! some_too_big
+		);
+	$private_message.value =
+		result;
+@end(decrypt)
+```
+
+## Text direkt verschlüsseln
+
+```
+@Add(globals)
+	const chrs_per_num = () => {
+		let chrs_per_num = 0;
+		let mod = public_key;
+		while (mod.greaterOrEquals(1000)) {
+			mod = mod.divide(1000);
+			++chrs_per_num;
+		}
+		if (mod.greaterOrEquals(255)) {
+			++chrs_per_num;
+		}
+		return chrs_per_num;
+	};
+	const str2nums = str => {
+		let utf8 = new TextEncoder('utf-8').encode(str);
+		let result = [];
+		const cpn = chrs_per_num();
+		if (! cpn) { return result; };
+
+		for (let i = 0; i < utf8.length; ) {
+			let num = ''
+			for (let j = 0; j < cpn && i < utf8.length; ++j, ++i) {
+				const v = utf8[i] & 0xff;
+				if (v < 10) { num += '0'; }
+				if (v < 100) { num += '0'; }
+				num += v;
+			}
+			result.push(bigInt(num));
+		}
+		return result;
+	};
+@End(globals)
+```
+
+```
+@Add(globals)
+	const nums2str = nums => {
+		let utf8 = []
+		const cpn = chrs_per_num();
+		if (! cpn) { return ''; }
+
+		for (let num of nums) {
+			const ns = num.toString();
+			for (let i = 0; i < ns.length; i += 3) {
+				let b = +ns.substr(i, 3);
+				utf8.push(b);
+			}
+		}
+
+		try {
+			return new TextDecoder('utf-8', {'fatal': true}).decode(new Uint8Array(utf8));
+		} catch (e) {
+			return '';
+		}
+	}
+@End(globals)
+```
+
+```
+@def(text box de)
+	<div class="form-group">
+		<label
+			class="col-sm-3 control-label"
+			@v(for)="private-txt"
+		>@s(Texteingabe)</label>
+		<div class="col-sm-9"><input
+			class="form-control"
+			id="private-txt"
+			value=""></input></div>
+	</div>
+@end(text box de)
+```
+
+```
+@def(text box en)
+	<div class="form-group">
+		<label
+			class="col-sm-3 control-label"
+			@v(for)="private-txt"
+		>@s(text entry)</label>
+		<div class="col-sm-9"><input
+			class="form-control"
+			id="private-txt"
+			value=""></input></div>
+	</div>
+@end(text box en)
+```
+
+```
+@Add(globals)
+	const $private_txt =
+		@f($)('private-txt');
+	const $private_txt_row =
+		$private_txt.parentElement.parentElement;
+@end(globals)
+```
+
+```
+@add(refresh)
+	$private_txt_row.classList.toggle(
+		'hidden',
+		public_key.lesser(1000)
+	);
+@end(refresh)
+```
+
+```
+@add(setup rsa)
+	$private_txt.addEventListener(
+		'input',
+		event => {
+			setEncrypt(true);
+			$private_message.value =
+				str2nums($private_txt.value);
+				
+			queueRefresh(event);
+		}
+	);
+@end(setup rsa)
+```
+
+```
+@def(update text field)
+	$private_txt.value =
+		nums2str(split_args($private_message.value));
+@end(update text field)
+```
+
+```
+@add(decrypt)
+	$private_txt.value =
+		nums2str(split_args(result));
+@end(decrypt)
+```
 

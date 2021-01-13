@@ -22,6 +22,7 @@
 
 	const $public_key =
 		$('public-key');
+	let public_key;
 	const $public_key_length =
 		$('public-key-length');
 
@@ -124,6 +125,82 @@
 	const resetTimer = () => {
 		timer = null;
 	};
+
+	const split_args = str => {
+		let result = [];
+		let num = '';
+		for (let c of str) {
+			if (c >= '0' && c <= '9') {
+				num += c;
+			} else {
+				if (num.length) {
+					result.push(bigInt(num));
+					num = '';
+				}
+			}
+		}
+		if (num.length) {
+			result.push(bigInt(num));
+			num = '';
+		}
+		return result;
+	};
+
+	const chrs_per_num = () => {
+		let chrs_per_num = 0;
+		let mod = public_key;
+		while (mod.greaterOrEquals(1000)) {
+			mod = mod.divide(1000);
+			++chrs_per_num;
+		}
+		if (mod.greaterOrEquals(255)) {
+			++chrs_per_num;
+		}
+		return chrs_per_num;
+	};
+	const str2nums = str => {
+		let utf8 = new TextEncoder('utf-8').encode(str);
+		let result = [];
+		const cpn = chrs_per_num();
+		if (! cpn) { return result; };
+
+		for (let i = 0; i < utf8.length; ) {
+			let num = ''
+			for (let j = 0; j < cpn && i < utf8.length; ++j, ++i) {
+				const v = utf8[i] & 0xff;
+				if (v < 10) { num += '0'; }
+				if (v < 100) { num += '0'; }
+				num += v;
+			}
+			result.push(bigInt(num));
+		}
+		return result;
+	};
+
+	const nums2str = nums => {
+		let utf8 = []
+		const cpn = chrs_per_num();
+		if (! cpn) { return ''; }
+
+		for (let num of nums) {
+			const ns = num.toString();
+			for (let i = 0; i < ns.length; i += 3) {
+				let b = +ns.substr(i, 3);
+				utf8.push(b);
+			}
+		}
+
+		try {
+			return new TextDecoder('utf-8', {'fatal': true}).decode(new Uint8Array(utf8));
+		} catch (e) {
+			return '';
+		}
+	}
+
+	const $private_txt =
+		$('private-txt');
+	const $private_txt_row =
+		$private_txt.parentElement.parentElement;
 ;
 			
 	const queueRefresh = event => {
@@ -176,7 +253,7 @@
 		! prime1.equals(prime2)
 	);
 
-	const public_key =
+	public_key =
 		prime1.multiply(prime2);
 	$public_key.innerText =
 		public_key.toString();
@@ -221,44 +298,65 @@
 
 	if (encrypt) {
 		
-	const source =
-		bigInt($private_message.value);
+	let some_too_big = false;
+	let result = ''; let sep = '';
+	for (let num of split_args($private_message.value)) {
+		if (num.greaterOrEquals(public_key)) {
+			some_too_big = true;
+		}
+		const encrypted = num.modPow(
+			e, public_key
+		);
+		result += sep + encrypted.toString();
+		sep = ', ';
+	}
+
+	$err_private_msg_too_big.
+		classList.add('hidden');
 	$err_public_msg_too_big.
 		classList.toggle(
 			'hidden',
-			source.lesser(public_key)
+			! some_too_big
 		);
-	$err_private_msg_too_big.
-		classList.add('hidden');
-
-	const encrypted =
-		source.modPow(
-			e, public_key
-		);
-	$public_message.value =
-		encrypted.toString();
+	$public_message.value = result;
 ;
 	} else {
 		
-	const source =
-		bigInt($public_message.value);
+	let some_too_big = false;
+	let result = ''; let sep = '';
+
+	for (let num of split_args($public_message.value)) {
+		if (num.greaterOrEquals(public_key)) {
+			some_too_big = true;
+		}
+		const decrypted = num.modPow(
+			private_key, public_key
+		);
+		result += sep + decrypted.toString();
+		sep = ', ';
+	}
+
 	$err_public_msg_too_big.
 		classList.add('hidden');
 	$err_private_msg_too_big.
 		classList.toggle(
 			'hidden',
-			source.lesser(public_key)
+			! some_too_big
 		);
-
-	const decrypted = source.modPow(
-		private_key, public_key
-	);
 	$private_message.value =
-		decrypted.toString();
+		result;
+
+	$private_txt.value =
+		nums2str(split_args(result));
 ;
 	}
 
 	resetTimer();
+
+	$private_txt_row.classList.toggle(
+		'hidden',
+		public_key.lesser(1000)
+	);
 ;
 	};
 	refresh();
@@ -279,6 +377,10 @@
 		'input',
 		event => {
 			setEncrypt(true);
+			
+	$private_txt.value =
+		nums2str(split_args($private_message.value));
+;
 			queueRefresh(event);
 		}
 	);
@@ -308,6 +410,17 @@
 ;
 		}
 	};
+
+	$private_txt.addEventListener(
+		'input',
+		event => {
+			setEncrypt(true);
+			$private_message.value =
+				str2nums($private_txt.value);
+				
+			queueRefresh(event);
+		}
+	);
 ;
 		}
 	);
