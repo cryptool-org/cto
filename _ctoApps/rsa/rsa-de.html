@@ -41,14 +41,9 @@
 	<form class="form-horizontal">
 		
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			for="prime-1">1. Primzahl
-			<i>p</i> =
-		</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="prime-1" value="11"></div>
+		<label for="prime-1">1. Primzahl
+			<i>p</i> =</label>
+		<input class="form-control" id="prime-1" value="11">
 	</div>
 
 	<div id="err-p-not-prime"
@@ -56,14 +51,9 @@
 	><i>p</i> ist keine Primzahl!</div>
 
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			for="prime-2">2.  Primzahl
-			<i>q</i> =
-		</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="prime-2" value="13"></div>
+		<label for="prime-2">2.  Primzahl
+			<i>q</i> =</label>
+		<input class="form-control" id="prime-2" value="13">
 	</div>
 
 	<div id="err-q-not-prime"
@@ -89,22 +79,13 @@
 	</p>
 
 	
-	<form class="form-horizontal">
-		<div class="form-group">
-			
-	<label
-		class="col-sm-3 control-label"
-		for="public-key"><i>n</i> =
-			<i>p</i> × <i>q</i> =
-	</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		><span id="public-key"></span>
-		(<span id="public-key-length"
-		></span> Bit)</p></div>
+	<p class="form">
+		
+	<i>n</i> = <i>p</i> × <i>q</i> =
+	<span id="public-key"></span>
+		(<span id="public-key-length"></span> Bit)
 
-		</div>
-	</form>
+	</p>
 
 
 	<p>
@@ -128,13 +109,9 @@
 	<form class="form-horizontal">
 		<div class="form-group">
 			
-	<label
-		class="col-sm-3 control-label"
-		for="base"><i>e</i>
+	<label for="base"><i>e</i>
 		=</label>
-	<div class="col-sm-9"><input
-		class="form-control"
-		id="base" value="23"></div>
+	<input class="form-control" id="base" value="23">
 
 		</div>
 		<div id="err-gcd-not-1"
@@ -159,20 +136,12 @@
 	</p>
 
 	
-	<form class="form-horizontal">
-		<div class="form-group">
-			
-	<label
-		class="col-sm-3 control-label"
-		for="phi">φ(<i>n</i>) =
-		(<i>p</i> − 1) ×
-		(<i>q</i> − 1) =</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		id="phi"></p></div>
+	<p class="form">
+		
+	φ(<i>n</i>) =  (<i>p</i> − 1) ×
+		(<i>q</i> − 1) = <span id="phi"></span>
 
-		</div>
-	</form>
+	</p>
 
 
 	<p>
@@ -187,19 +156,13 @@
 		gemeinsame Teiler also 1 ist).
 	</p>
 
-	<form class="form-horizontal">
-		<div class="form-group">
-			
-	<label
-		class="col-sm-3 control-label"
-		for="gcd">ggT(<i>e</i>,
-		φ(<i>n</i>)) =</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		id="gcd"></p></div>
+	<p class="form">
+		
+	ggT(<i>e</i>,
+		φ(<i>n</i>)) =
+	<span id="gcd"></span>
 
-		</div>
-	</form>
+	</p>
 
 	<p>
 		Um den Wert von φ(<i>n</i>) zu
@@ -245,18 +208,12 @@
 	</p>
 
 	
-	<form class="form-horizontal">
-		<div class="form-group">
-			
-	<label class="col-sm-3 control-label"
-		for="private-key"><i>d</i> =
-	</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		id="private-key"></div>
+	<p class="form">
+		
+	<i>d</i> =
+	<span id="private-key"></span>
 
-		</div>
-	</form>
+	</p>
 
 
 	<p>
@@ -346,21 +303,13 @@
 		
 	
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			for="private-txt"
-		>Texteingabe</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="private-txt"
-			value=""></input></div>
+		<label for="private-txt">Texteingabe =</label>
+		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-3 control-label" for="private-message"
-		>Klartext (Eingabe bspw. 6, 13, 111)</label>
-		<div class="col-sm-9"><input class="form-control"
-			id="private-message" value="7"></input></div>
+		<label for="private-message">Klartext (Eingabe bspw. 6, 13, 111) =</label>
+		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 
 	<div id="err-private-msg-too-big"
@@ -391,14 +340,8 @@
 
 
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			for="public-message"
-		>Geheimtext (Eingabe bspw. 128, 52, 67)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="public-message"
-		></input></div>
+		<label for="public-message">Geheimtext (Eingabe bspw. 128, 52, 67) =</label>
+		<input class="form-control" id="public-message"></input>
 	</div>
 
 	<div id="err-public-msg-too-big"
