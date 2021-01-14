@@ -20,15 +20,12 @@
 	const $err_p_equal_q =
 		$('err-p-equal-q');
 
-	const $public_key =
-		$('public-key');
+	const $public_key = $('public-key');
 	let public_key;
-	const $public_key_length =
-		$('public-key-length');
+	const $public_key_length = $('public-key-length');
 
 	const $e = $('base');
-	const $err_gcd_not_1 =
-		$('err-gcd-not-1');
+	const $err_gcd_not_1 = $('err-gcd-not-1');
 
 	const $phi = $('phi');
 
@@ -195,10 +192,8 @@
 		}
 	}
 
-	const $private_txt =
-		$('private-txt');
-	const $private_txt_row =
-		$private_txt.parentElement.parentElement;
+	const $private_txt = $('private-txt');
+	const $private_txt_row = $private_txt.parentElement;
 ;
 			
 	const queueRefresh = event => {
@@ -251,18 +246,14 @@
 		! prime1.equals(prime2)
 	);
 
-	public_key =
-		prime1.multiply(prime2);
-	$public_key.innerText =
-		public_key.toString();
-	$public_key_length.innerText =
-		public_key.bitLength();
+	public_key = prime1.multiply(prime2);
+	$public_key.innerText = public_key.toString();
+	$public_key_length.innerText = public_key.bitLength();
 
 	const e = bigInt($e.value);
 
 	const one = bigInt.one;
-	const phi = prime1.subtract(one).
-		multiply(prime2.subtract(one));
+	const phi = prime1.subtract(one).multiply(prime2.subtract(one));
 	$phi.innerText = phi.toString();
 
 	const gcd_result = gcd(phi, e);
@@ -270,8 +261,7 @@
 		'hidden', gcd_result.a.equals(one)
 	);
 
-	$gcd.innerText =
-		gcd_result.a.toString();
+	$gcd.innerText = gcd_result.a.toString();
 
 	let private_key = gcd_result.v;
 	const zero = bigInt.zero;
@@ -359,9 +349,7 @@
 		'input', queueRefresh
 	);
 
-	$e.addEventListener(
-		'input', queueRefresh
-	);
+	$e.addEventListener('input', queueRefresh);
 
 	$private_message.addEventListener(
 		'input',

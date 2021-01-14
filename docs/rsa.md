@@ -292,14 +292,9 @@
 ```
 @def(primes de)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="prime-1">@s(1. Primzahl)
-			<i>p</i>@s( =)
-		</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="prime-1" value="11"></div>
+		<label @v(for)="prime-1">@s(1. Primzahl)
+			<i>p</i>@s( =)</label>
+		<input class="form-control" id="prime-1" value="11">
 	</div>
 @end(primes de)
 ```
@@ -330,13 +325,9 @@
 ```
 @def(primes en)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="prime-1">@s(1st prime)
+		<label @v(for)="prime-1">@s(1st prime)
 			<i>p</i>@s( =)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="prime-1" value="11"></div>
+		<input class="form-control" id="prime-1" value="11">
 	</div>
 @end(primes en)
 ```
@@ -444,14 +435,9 @@
 ```
 @add(primes de)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="prime-2">@s(2.  Primzahl)
-			<i>q</i>@s( =)
-		</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="prime-2" value="13"></div>
+		<label @v(for)="prime-2">@s(2.  Primzahl)
+			<i>q</i>@s( =)</label>
+		<input class="form-control" id="prime-2" value="13">
 	</div>
 @end(primes de)
 ```
@@ -477,13 +463,9 @@
 ```
 @add(primes en)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="prime-2">@s(2nd prime)
+		<label @v(for)="prime-2">@s(2nd prime)
 			<i>q</i>@s( =)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="prime-2" value="13"></div>
+		<input class="form-control" id="prime-2" value="13">
 	</div>
 @end(primes en)
 ```
@@ -600,11 +582,9 @@
 
 ```
 @def(definition of n)
-	<form class="form-horizontal">
-		<div class="form-group">
-			@put(n elements)
-		</div>
-	</form>
+	<p class="form">
+		@put(n elements)
+	</p>
 @end(definition of n)
 ```
 * `n` ist das Produkt der beiden Primfaktoren
@@ -613,16 +593,9 @@
 
 ```
 @def(n elements)
-	<label
-		class="col-sm-3 control-label"
-		@v(for)="public-key"><i>n</i>@s( =)
-			<i>p</i>@s( × )<i>q</i>@s( =)
-	</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		><span id="public-key"></span>
-		@s(()<span id="public-key-length"
-		></span> @s(Bit@))</p></div>
+	<i>n</i>@s( = )<i>p</i>@s( × )<i>q</i>@s( =)
+	<span id="public-key"></span>
+		@s(()<span id="public-key-length"></span> @s(Bit@))
 @end(n elements)
 ```
 * Die Felder bilden ein eigenes Fragment,
@@ -645,11 +618,9 @@
 
 ```
 @Add(globals)
-	const $public_key =
-		@f($)('public-key');
+	const $public_key = @f($)('public-key');
 	let public_key;
-	const $public_key_length =
-		@f($)('public-key-length');
+	const $public_key_length = @f($)('public-key-length');
 @end(globals)
 ```
 * Referenzen auf den öffentlichen Schlüssel im DOM und dessen Länge
@@ -657,12 +628,9 @@
 
 ```
 @add(refresh)
-	public_key =
-		prime1.multiply(prime2);
-	$public_key.innerText =
-		public_key.toString();
-	$public_key_length.innerText =
-		public_key.bitLength();
+	public_key = prime1.multiply(prime2);
+	$public_key.innerText = public_key.toString();
+	$public_key_length.innerText = public_key.bitLength();
 @end(refresh)
 ```
 * Der öffentliche Schlüssel ist das Produkt der beiden Primzahlen
@@ -743,13 +711,9 @@
 
 ```
 @def(e group)
-	<label
-		class="col-sm-3 control-label"
-		@v(for)="base"><i>e</i>
+	<label @v(for)="base"><i>e</i>
 		@s(=)</label>
-	<div class="col-sm-9"><input
-		class="form-control"
-		id="base" value="23"></div>
+	<input class="form-control" id="base" value="23">
 @end(e group)
 ```
 * Die Felder enthalten keinen deutschen oder englischen Text
@@ -775,8 +739,7 @@
 ```
 @Add(globals)
 	const $e = @f($)('base');
-	const $err_gcd_not_1 =
-		@f($)('err-gcd-not-1');
+	const $err_gcd_not_1 = @f($)('err-gcd-not-1');
 @end(globals)
 ```
 * In der Variable `$e` wird eine Referenz des Textfelds gespeichert
@@ -786,9 +749,7 @@
 
 ```
 @add(setup rsa)
-	$e.addEventListener(
-		'input', @f(queueRefresh)
-	);
+	$e.addEventListener('input', @f(queueRefresh));
 @end(setup rsa)
 ```
 * Werden die Primzahlen oder der Exponent `e` geändert, wird die
@@ -856,11 +817,9 @@
 
 ```
 @def(phi label group)
-	<form class="form-horizontal">
-		<div class="form-group">
-			@put(phi label)
-		</div>
-	</form>
+	<p class="form">
+		@put(phi label)
+	</p>
 @end(phi label group)
 ```
 * Die Berechnung von `@f(φ)` enthält keinen deutschen oder englischen Text
@@ -868,14 +827,8 @@
 
 ```
 @def(phi label)
-	<label
-		class="col-sm-3 control-label"
-		@v(for)="phi">@f(φ)@s(()<i>n</i>@s(@) =)
-		@s(()<i>p</i>@s( − 1@) ×)
-		@s(()<i>q</i>@s( − 1@) =)</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		id="phi"></p></div>
+	@f(φ)@s(()<i>n</i>@s(@) = ) @s(()<i>p</i>@s( − 1@) ×)
+		@s(()<i>q</i>@s( − 1@) = )<span id="phi"></span>
 @end(phi label)
 ```
 
@@ -903,8 +856,7 @@
 ```
 @add(refresh)
 	const one = @f(bigInt).one;
-	const phi = prime1.subtract(one).
-		multiply(prime2.subtract(one));
+	const phi = prime1.subtract(one).multiply(prime2.subtract(one));
 	$phi.innerText = phi.toString();
 @end(refresh)
 ```
@@ -981,11 +933,9 @@
 
 ```
 @add(container de)
-	<form class="form-horizontal">
-		<div class="form-group">
-			@put(ggt de)
-		</div>
-	</form>
+	<p class="form">
+		@put(ggt de)
+	</p>
 @end(container de)
 ```
 * Der größte gemeinsame Teiler wird auf der deutschen Seite
@@ -993,13 +943,9 @@
 
 ```
 @def(ggt de)
-	<label
-		class="col-sm-3 control-label"
-		@v(for)="gcd">@f(ggT)@s(()<i>e</i>@s(,)
-		@f(φ)@s(()<i>n</i>@s(@)@) =)</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		id="gcd"></p></div>
+	@f(ggT)@s(()<i>e</i>@s(,)
+		@f(φ)@s(()<i>n</i>@s(@)@) =)
+	<span id="gcd"></span>
 @end(ggt de)
 ```
 * Die lange `class`-Definition erzwingt
@@ -1007,24 +953,18 @@
 
 ```
 @add(container en)
-	<form class="form-horizontal">
-		<div class="form-group">
-			@put(ggt en)
-		</div>
-	</form>
+	<p class="form">
+		@put(ggt en)
+	</p>
 @end(container en)
 ```
 * Und auf der englischen Seite
 
 ```
 @def(ggt en)
-	<label
-		class="col-sm-3 control-label"
-		@v(for)="gcd">@s(gcd()<i>e</i>@s(,)
-		@f(φ)@s(()<i>n</i>@s(@)@) =)</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		id="gcd"></p></div>
+	@s(gcd()<i>e</i>@s(,)
+		@f(φ)@s(()<i>n</i>@s(@)@) =)
+	<span id="gcd"></span>
 @end(ggt en)
 ```
 * Auch die englische Version hat eine lange `class`-Definition
@@ -1038,8 +978,7 @@
 
 ```
 @add(refresh)
-	$gcd.innerText =
-		gcd_result.a.toString();
+	$gcd.innerText = gcd_result.a.toString();
 @end(refresh)
 ```
 * Und im `refresh` wird das Feld aktualisiert
@@ -1191,11 +1130,9 @@
 
 ```
 @def(private key group)
-	<form class="form-horizontal">
-		<div class="form-group">
-			@put(private key)
-		</div>
-	</form>
+	<p class="form">
+		@put(private key)
+	</p>
 @end(private key group)
 ```
 * Das Feld mit der Ausgabe des geheimen Schlüssels kann in der
@@ -1203,12 +1140,8 @@
 
 ```
 @def(private key)
-	<label class="col-sm-3 control-label"
-		@v(for)="private-key"><i>d</i>@s( =)
-	</label>
-	<div class="col-sm-9"><p
-		class="form-control-static"
-		id="private-key"></div>
+	<i>d</i>@s( =)
+	<span id="private-key"></span>
 @end(private key)
 ```
 * Wegen der langen `class`-Definition werden die Felder in einem eigenen
@@ -1533,10 +1466,8 @@
 @def(crypt boxes de)
 	@put(text box de)
 	<div class="form-group">
-		<label class="col-sm-3 control-label" @v(for)="private-message"
-		>@s(Klartext) (Eingabe bspw. 6, 13, 111)</label>
-		<div class="col-sm-9"><input class="form-control"
-			id="private-message" value="7"></input></div>
+		<label @v(for)="private-message">@s(Klartext) (Eingabe bspw. 6, 13, 111) =</label>
+		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 @end(crypt boxes de)
 ```
@@ -1580,14 +1511,8 @@
 ```
 @add(crypt boxes de)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="public-message"
-		>@s(Geheimtext) (Eingabe bspw. 128, 52, 67)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="public-message"
-		></input></div>
+		<label @v(for)="public-message">@s(Geheimtext) (Eingabe bspw. 128, 52, 67) =</label>
+		<input class="form-control" id="public-message"></input>
 	</div>
 @end(crypt boxes de)
 ```
@@ -1621,14 +1546,9 @@
 @def(crypt boxes en)
 	@put(text box en)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="private-message"
-		>@s(Plaintext) (sample input 6. 13, 111)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="private-message"
-			value="7"></input></div>
+		<label @v(for)="private-message"
+		>@s(Plaintext) (sample input 6. 13, 111) =</label>
+		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 @end(crypt boxes en)
 ```
@@ -1667,14 +1587,9 @@
 ```
 @add(crypt boxes en)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="public-message"
-		>@s(Ciphertext) (sample input 128, 52, 67)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="public-message"
-		></input></div>
+		<label @v(for)="public-message"
+		>@s(Ciphertext) (sample input 128, 52, 67) =</label>
+		<input class="form-control" id="public-message"></input>
 	</div>
 @end(crypt boxes en)
 ```
@@ -2164,14 +2079,9 @@
 
 ```
 @def(bootstrap stylesheets)
-	<link 
-		rel="stylesheet"
-		href=@s("https://maxcdn.bootstrapcd)@b()
-			@s(n.com/bootstrap/3.3.7/css/)@b()
-			@s(bootstrap.min.css")
-		integrity=@s("sha384-BVYiiSIFeK1dGm)@b()
-			@s(JRAkycuHAHRg32OmUcww7on3RY)@b()
-			@s(dg4Va+PmSTsz/K68vbdEjh4u")
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 		crossorigin="anonymous"
 	>
 @end(bootstrap stylesheets)
@@ -2180,25 +2090,6 @@
   eingebunden
 * Dies wird nur für den Test verwendet und nicht für die produktive
   Version
-
-```
-@add(bootstrap stylesheets)
-	<link
-		rel="stylesheet"
-		href=@s("https://maxcdn.bootstrapcd)@b()
-			@s(n.com/bootstrap/3.3.7/css/)@b()
-			@s(bootstrap-theme.min.css")
-		integrity=@s("sha384-rHyoN1iRsVXV4n)@b()
-			@s(D0JutlnGaslCJuC7uwjduW9S)@b()
-			@s(VrLvRYooPp2bWYgmgJQIXwl/Sp")
-		crossorigin="anonymous"
-	>
-@end(bootstrap stylesheets)
-```
-* Auch das Bootstrap-Thema wird von einem Content Delivery Network
-  eingebunden
-* Auch dies wird nur für die lokale und nicht für die produktive Version
-  verwendet
 
 ## Mehrere Zahlen auf einmal ver- und entschlüsseln
 
@@ -2351,14 +2242,8 @@
 ```
 @def(text box de)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="private-txt"
-		>@s(Texteingabe)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="private-txt"
-			value=""></input></div>
+		<label @v(for)="private-txt">@s(Texteingabe) =</label>
+		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 @end(text box de)
 ```
@@ -2366,24 +2251,16 @@
 ```
 @def(text box en)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="private-txt"
-		>@s(text entry)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="private-txt"
-			value=""></input></div>
+		<label @v(for)="private-txt">@s(text entry) =</label>
+		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 @end(text box en)
 ```
 
 ```
 @Add(globals)
-	const $private_txt =
-		@f($)('private-txt');
-	const $private_txt_row =
-		$private_txt.parentElement.parentElement;
+	const $private_txt = @f($)('private-txt');
+	const $private_txt_row = $private_txt.parentElement;
 @end(globals)
 ```
 
