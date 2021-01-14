@@ -1529,8 +1529,7 @@ Das Feld mit der Ausgabe des geheimen Schlüssels kann in der  deutschen und eng
 <div class="page"><div class="slide"><div class="slide-nr">101</div>
 <code>
 <span class="macro">@def(<span class="name">private key</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">label</span><br/>
-<span class="in2"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
+<span class="in1"></span>&lt;<span class="var">label</span> <span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in2"></span><span class="var">for</span>=<span class="str">"private-key"</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str"> =</span><br/>
 <span class="in1"></span>&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">p</span><br/>
@@ -1565,8 +1564,7 @@ Den geheimen Schlüssel in der englischen Version ausgeben
 <div class="page"><div class="slide"><div class="slide-nr">104</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">$private_key</span> =<br/>
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'private-key'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$private_key</span> = <span class="fn">$</span>(<span class="str">'private-key'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -1644,11 +1642,9 @@ Durch die Vorarbeiten bleibt aber nicht mehr viel zu tun
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Ver- und Entschlüsseln</span>&lt;/<span class="var">h2</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-<span class="in2"></span><span class="str">Grundsätzlich werden bei diesem</span><br/>
-<span class="in2"></span><span class="str">Verfahren keine Texte, sondern</span><br/>
-<span class="in2"></span><span class="str">nur Zahlen ver- und entschlüsselt,</span><br/>
-<span class="in2"></span><span class="str">die zwischen </span><span class="num">0</span><span class="str"> und </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − </span><span class="num">1</span><br/>
-<span class="in2"></span><span class="str">liegen.</span><br/>
+<span class="in2"></span><span class="str">Grundsätzlich werden bei diesem Verfahren keine Texte, sondern</span><br/>
+<span class="in2"></span><span class="str">nur Zahlen ver- und entschlüsselt, die zwischen </span><span class="num">0</span><br/>
+<span class="in2"></span><span class="str">und </span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str"> − </span><span class="num">1</span><span class="str"> liegen.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
@@ -1660,10 +1656,8 @@ Hier wird beschrieben, was für Nachrichten verschlüsselt werden können
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-<span class="in2"></span><span class="str">Um eine Nachricht </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str"> mit</span><br/>
-<span class="in2"></span><span class="str">dem öffentlichen Schlüssel</span><br/>
-<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">) zu</span><br/>
-<span class="in2"></span><span class="str">verschlüsseln, wird</span><br/>
+<span class="in2"></span><span class="str">Um eine Nachricht </span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;<span class="str"> mit dem öffentlichen Schlüssel</span><br/>
+<span class="in2"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;<span class="str">) zu verschlüsseln, wird</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span>&lt;<span class="var">i</span>&gt;<span class="var">m</span>&lt;/<span class="var">i</span>&gt;&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">e</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
@@ -1681,9 +1675,8 @@ Das Verschlüsseln besteht aus einer Exponentiation
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-<span class="in2"></span><span class="str">Das Entschlüsseln mit dem privaten</span><br/>
-<span class="in2"></span><span class="str">Schlüssel (</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">, </span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span><br/>
-<span class="in2"></span><span class="str">erfolgt analog mit</span><br/>
+<span class="in2"></span><span class="str">Das Entschlüsseln mit dem privaten Schlüssel (</span>&lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt;<span class="str">,</span><br/>
+<span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span><span class="str"> erfolgt analog mit</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;&lt;<span class="var">p</span> <span class="keyword">class</span>=<span class="str">"form"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">i</span>&gt;<span class="var">m''</span>&lt;/<span class="var">i</span>&gt;<span class="str"> :=</span><br/>
 <span class="in3"></span><span class="str">(</span>&lt;<span class="var">i</span>&gt;<span class="var">m'</span>&lt;/<span class="var">i</span>&gt;<span class="str">)</span>&lt;<span class="var">sup</span>&gt;&lt;<span class="var">i</span>&gt;<span class="var">d</span>&lt;/<span class="var">i</span>&gt;&lt;/<span class="var">sup</span>&gt;<br/>
@@ -1914,10 +1907,8 @@ In diesem Abschnitt wird beschrieben, wie de Nachrichten angezeigt  und verarbei
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Nachrichten</span>&lt;/<span class="var">h2</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-<span class="in2"></span><span class="str">In den folgenden zwei Textboxen</span><br/>
-<span class="in2"></span><span class="str">können Sie sehen, wie das Ver-</span><br/>
-<span class="in2"></span><span class="str">und Entschlüsseln für konkrete</span><br/>
-<span class="in2"></span><span class="str">Eingaben (Zahlen) </span><span class="str">funktioniert.</span><br/>
+<span class="in2"></span><span class="str">In den folgenden zwei Textboxen können Sie sehen, wie das Ver-</span><br/>
+<span class="in2"></span><span class="str">und Entschlüsseln für konkrete Eingaben (Zahlen) </span><span class="str">funktioniert.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes de</span>)</span><br/>
@@ -1933,10 +1924,8 @@ Hier werden die Nachrichten-Boxen erklärt
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Messages</span>&lt;/<span class="var">h2</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
-<span class="in2"></span><span class="str">In the following two text boxes,</span><br/>
-<span class="in2"></span><span class="str">you can see how encryption and</span><br/>
-<span class="in2"></span><span class="str">decryption work for concrete</span><br/>
-<span class="in2"></span><span class="str">inputs (numbers).</span><br/>
+<span class="in2"></span><span class="str">In the following two text boxes, you can see how encryption and</span><br/>
+<span class="in2"></span><span class="str">decryption work for concrete inputs (numbers).</span><br/>
 <span class="in1"></span>&lt;/<span class="var">p</span>&gt;<br/>
 <span class="in1"></span>&lt;<span class="var">form</span> <span class="keyword">class</span>=<span class="str">"form-horizontal"</span>&gt;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">crypt boxes en</span>)</span><br/>
@@ -1952,14 +1941,10 @@ Auch in der englischen Version werden die Nachrichten-Boxen erklärt
 <span class="macro">@def(<span class="name">crypt boxes de</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">text box de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">label</span><br/>
-<span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
-<span class="in3"></span><span class="var">for</span>=<span class="str">"private-message"</span><br/>
-<span class="in2"></span>&gt;<span class="str">Klartext</span>&lt;/<span class="var">label</span>&gt;<br/>
-<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
-<span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
-<span class="in3"></span><span class="var">id</span>=<span class="str">"private-message"</span><br/>
-<span class="in3"></span><span class="var">value</span>=<span class="str">"7"</span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">label</span> <span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span> <span class="var">for</span>=<span class="str">"private-message"</span><br/>
+<span class="in2"></span>&gt;<span class="str">Klartext</span> (<span class="type">Eingabe</span> <span class="var">bspw</span>. <span class="num">6</span>, <span class="num">13</span>, <span class="num">111</span>)&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span> <span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
+<span class="in3"></span><span class="var">id</span>=<span class="str">"private-message"</span> <span class="var">value</span>=<span class="str">"7"</span>&gt;&lt;/<span class="var">input</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 </code></div>
@@ -1970,13 +1955,14 @@ Die deutsche Klartext-Box besteht aus einem Textfeld mit dem Klartext
 <div class="page"><div class="slide"><div class="slide-nr">128</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
 <span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span>&gt;<br/>
-<span class="in2"></span><span class="str">Die Klartextzahl ist zu groß.</span><br/>
+<span class="in2"></span><span class="str">Eine Klartextzahl ist zu groß.</span><br/>
 <span class="in2"></span><span class="str">Der maximale Wert ist</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;, <span class="var">da</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; =<br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg-n"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
 <span class="in2"></span><span class="str">Bitte wählen Sie größere</span><br/>
-<span class="in2"></span><span class="str">Primzahlen.</span><br/>
+<span class="in2"></span><span class="str">Primzahlen, um ein größeres &lt;i&gt;n&lt;/i&gt; zu erzeugen.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 </code></div>
@@ -1985,6 +1971,17 @@ Und es gibt eine Fehlermeldung, wenn die eingegebene Nachricht zu  groß ist
 </li></ul>
 </div>
 <div class="page"><div class="slide"><div class="slide-nr">129</div>
+<code>
+<span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-invalid"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span>&gt;<br/>
+<span class="in2"></span><span class="str">Bitte ganze Zahlen eingeben.</span><br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">130</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 <span class="in1"></span><span class="macro">@mul(<span class="name">crypt arrow</span>)</span><br/>
@@ -1996,14 +1993,14 @@ Ein Pfeil zeigt die Richtung an, in die der Algorithmus gerade  arbeitet
 Die Richtung kann durch Eingabe in die passenden Textfelder  umgedreht werden
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">130</div>
+<div class="page"><div class="slide"><div class="slide-nr">131</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"public-message"</span><br/>
-<span class="in2"></span>&gt;<span class="str">Geheimtext</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span>&gt;<span class="str">Geheimtext</span> (<span class="type">Eingabe</span> <span class="var">bspw</span>. <span class="num">128</span>, <span class="num">52</span>, <span class="num">67</span>)&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"public-message"</span><br/>
@@ -2015,16 +2012,17 @@ Die Richtung kann durch Eingabe in die passenden Textfelder  umgedreht werden
 Ein weiteres Textfeld enthält den Geheimtext
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">131</div>
+<div class="page"><div class="slide"><div class="slide-nr">132</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
 <span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
-<span class="in1"></span>&gt;<span class="str">Die Geheimtextzahl ist zu groß.</span><br/>
+<span class="in1"></span>&gt;<span class="str">Eine Geheimtextzahl ist zu groß.</span><br/>
 <span class="in2"></span><span class="str">Der maximale Wert ist</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;, <span class="var">da</span> &lt;<span class="var">i</span>&gt;<span class="var">n</span>&lt;/<span class="var">i</span>&gt; =<br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg-n"</span>&gt;&lt;/<span class="var">span</span>&gt;.<br/>
 <span class="in2"></span><span class="str">Bitte wählen Sie größere</span><br/>
-<span class="in2"></span><span class="str">Primzahlen.</span><br/>
+<span class="in2"></span><span class="str">Primzahlen, um ein größeres &lt;i&gt;n&lt;/i&gt; zu erzeugen.</span><br/>
 <span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
 </code></div>
@@ -2032,7 +2030,17 @@ Ein weiteres Textfeld enthält den Geheimtext
 Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl  zu groß ist
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">132</div>
+<div class="page"><div class="slide"><div class="slide-nr">133</div>
+<code>
+<span class="macro">@add(<span class="name">crypt boxes de</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-invalid"</span> <span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span>&gt;<br/>
+<span class="in2"></span><span class="str">Bitte ganze Zahlen eingeben.</span><br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="macro">@end(<span class="name">crypt boxes de</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">134</div>
 <code>
 <span class="macro">@def(<span class="name">crypt boxes en</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">text box en</span>)</span><br/>
@@ -2040,7 +2048,7 @@ Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl  zu groß ist
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"private-message"</span><br/>
-<span class="in2"></span>&gt;<span class="str">Plaintext</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span>&gt;<span class="str">Plaintext</span> (<span class="var">sample</span> <span class="var">input</span> <span class="num">6</span>. <span class="num">13</span>, <span class="num">111</span>)&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"private-message"</span><br/>
@@ -2052,23 +2060,34 @@ Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl  zu groß ist
 Auch in der englischen Version gibt es ein Textfeld mit dem Klartext
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">133</div>
+<div class="page"><div class="slide"><div class="slide-nr">135</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
 <span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
-<span class="in1"></span>&gt;<span class="str">Plaintext number too big. The</span><br/>
+<span class="in1"></span>&gt;<span class="str">A plaintext number is too big. The</span><br/>
 <span class="in2"></span><span class="str">maximum value is</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str">.</span><br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str"> as &lt;i&gt;n&lt;/i&gt; = &lt;span class="max-msg-n"&gt;&lt;/span&gt;.</span><br/>
 <span class="in2"></span><span class="str">Please choose bigger</span><br/>
-<span class="in2"></span><span class="str">primes.</span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span><span class="str">primes to get a bigger &lt;i&gt;n&lt;/i&gt;.</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 </code></div>
 <ul><li>
 Und eine Fehlermeldung, wenn der Klartext zu groß ist
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">134</div>
+<div class="page"><div class="slide"><div class="slide-nr">136</div>
+<code>
+<span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-invalid"</span><br/>
+<span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span>&gt;<br/>
+<span class="in2"></span><span class="str">Please enter integers.</span><br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">137</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 <span class="in1"></span><span class="macro">@mul(<span class="name">crypt arrow</span>)</span><br/>
@@ -2078,14 +2097,14 @@ Und eine Fehlermeldung, wenn der Klartext zu groß ist
 In beiden Sprachen kann der gleiche Pfeil verwendet werden, der die  Richtung des Algorithmus anzeigt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">135</div>
+<div class="page"><div class="slide"><div class="slide-nr">138</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">label</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"col-sm-3 control-label"</span><br/>
 <span class="in3"></span><span class="var">for</span>=<span class="str">"public-message"</span><br/>
-<span class="in2"></span>&gt;<span class="str">Ciphertext</span>&lt;/<span class="var">label</span>&gt;<br/>
+<span class="in2"></span>&gt;<span class="str">Ciphertext</span> (<span class="var">sample</span> <span class="var">input</span> <span class="num">128</span>, <span class="num">52</span>, <span class="num">67</span>)&lt;/<span class="var">label</span>&gt;<br/>
 <span class="in2"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"col-sm-9"</span>&gt;&lt;<span class="var">input</span><br/>
 <span class="in3"></span><span class="keyword">class</span>=<span class="str">"form-control"</span><br/>
 <span class="in3"></span><span class="var">id</span>=<span class="str">"public-message"</span><br/>
@@ -2097,23 +2116,33 @@ In beiden Sprachen kann der gleiche Pfeil verwendet werden, der die  Richtung de
 Auch gibt es wieder ein Feld mit dem Geheimtext
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">136</div>
+<div class="page"><div class="slide"><div class="slide-nr">139</div>
 <code>
 <span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
-<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-private-msg-too-big"</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-too-big"</span><br/>
 <span class="in2"></span><span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span><br/>
-<span class="in1"></span>&gt;<span class="str">Ciphertext number too big. The</span><br/>
+<span class="in1"></span>&gt;<span class="str">A ciphertext number is too big. The</span><br/>
 <span class="in2"></span><span class="str">maximum value is</span><br/>
-<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str">.</span><br/>
+<span class="in2"></span>&lt;<span class="var">span</span> <span class="keyword">class</span>=<span class="str">"max-msg"</span>&gt;&lt;/<span class="var">span</span>&gt;<span class="str"> as &lt;i&gt;n&lt;/i&gt; = &lt;span class="max-msg-n"&gt;&lt;/span&gt;.</span><br/>
 <span class="in2"></span><span class="str">Please choose bigger</span><br/>
-<span class="in2"></span><span class="str">primes.</span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span><span class="str">primes to get a bigger &lt;i&gt;n&lt;/i&gt;.</span>&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
 </code></div>
 <ul><li>
 Und eine Fehlermeldung, falls der Geheimtext zu groß ist
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">137</div>
+<div class="page"><div class="slide"><div class="slide-nr">140</div>
+<code>
+<span class="macro">@add(<span class="name">crypt boxes en</span>)</span><br/>
+<span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"err-public-msg-invalid"</span> <span class="keyword">class</span>=<span class="str">"row alert alert-danger"</span>&gt;<br/>
+<span class="in2"></span><span class="str">Please enter integers.</span><br/>
+<span class="in1"></span>&lt;/<span class="var">div</span>&gt;<br/>
+<span class="macro">@end(<span class="name">crypt boxes en</span>)</span><br/>
+</code></div>
+<ul></ul>
+</div>
+<div class="page"><div class="slide"><div class="slide-nr">141</div>
 <code>
 <span class="macro">@def(<span class="name">crypt arrow</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"row"</span>&gt;<br/>
@@ -2135,7 +2164,7 @@ Der Pfeil ist eine einfache SVG-Grafik
 Durch CSS-Klassen kann er rotiert werden
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">138</div>
+<div class="page"><div class="slide"><div class="slide-nr">142</div>
 <code>
 <span class="macro">@add(<span class="name">css</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#direction</span> <span class="var">svg</span> {<br/>
@@ -2150,7 +2179,7 @@ Der Pfeil wird als eigener Block angezeigt
 Er wird mittig positioniert und bekommt oben und unten feste Abstände
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">139</div>
+<div class="page"><div class="slide"><div class="slide-nr">143</div>
 <code>
 <span class="macro">@add(<span class="name">css</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#direction</span> <span class="var">svg</span> <span class="var">polyline</span> {<br/>
@@ -2162,13 +2191,11 @@ Er wird mittig positioniert und bekommt oben und unten feste Abstände
 Die Füllfarbe des Pfeils wird auch im CSS gesetzt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">140</div>
+<div class="page"><div class="slide"><div class="slide-nr">144</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">$max_msgs</span> =<br/>
-<span class="in2"></span><span class="var">document</span>.<span class="fn">getElementsByClassName</span>(<br/>
-<span class="in3"></span><span class="str">'max-msg'</span><br/>
-<span class="in2"></span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$max_msgs</span> = <span class="var">document</span>.<span class="fn">getElementsByClassName</span>(<span class="str">'max-msg'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$max_msg_ns</span> = <span class="var">document</span>.<span class="fn">getElementsByClassName</span>(<span class="str">'max-msg-n'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2179,27 +2206,24 @@ Sie sind mit der Klasse <code><span class="var">max-msg</span></code> markiert
 Alle diese Elemente werden in der Variable <code><span class="var">$max_msgs</span></code> gesammelt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">141</div>
+<div class="page"><div class="slide"><div class="slide-nr">145</div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">max_msg</span> = <span class="var">public_key</span>.<br/>
-<span class="in2"></span><span class="fn">subtract</span>(<span class="var">one</span>).<span class="fn">toString</span>();<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">max_msg</span> = <span class="var">public_key</span>.<span class="fn">subtract</span>(<span class="var">one</span>).<span class="fn">toString</span>();<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
 <ul><li>
 Die größte mögliche Nachricht ist um eins kleiner als der öffentliche  Schlüssel
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">142</div>
+<div class="page"><div class="slide"><div class="slide-nr">146</div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
-<span class="in1"></span><span class="keyword">for</span> (<br/>
-<span class="in2"></span><span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>;<br/>
-<span class="in2"></span><span class="var">i</span> &lt; <span class="var">$max_msgs</span>.<span class="var">length</span>;<br/>
-<span class="in2"></span>++<span class="var">i</span><br/>
-<span class="in1"></span>) {<br/>
-<span class="in2"></span><span class="var">$max_msgs</span>[<span class="var">i</span>].<span class="var">innerText</span> =<br/>
-<span class="in3"></span><span class="var">max_msg</span>;<br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">$max_msgs</span>.<span class="var">length</span>; ++<span class="var">i</span>) {<br/>
+<span class="in2"></span><span class="var">$max_msgs</span>[<span class="var">i</span>].<span class="var">innerText</span> = <span class="var">max_msg</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">$max_msg_ns</span>.<span class="var">length</span>; ++<span class="var">i</span>) {<br/>
+<span class="in2"></span><span class="var">$max_msg_ns</span>[<span class="var">i</span>].<span class="var">innerText</span> = <span class="var">public_key</span>.<span class="fn">toString</span>();<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">refresh</span>)</span><br/>
 </code></div>
@@ -2207,17 +2231,15 @@ Die größte mögliche Nachricht ist um eins kleiner als der öffentliche  Schl�
 Die Felder in den Fehlermeldungen werden beim <code><span class="var">refresh</span></code> auf den  korrekten Wert gesetzt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">143</div>
+<div class="page"><div class="slide"><div class="slide-nr">147</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">$private_message</span> =<br/>
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'private-message'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">$public_message</span> =<br/>
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'public-message'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">$err_public_msg_too_big</span> =<br/>
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'err-public-msg-too-big'</span>);<br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">$err_private_msg_too_big</span> =<br/>
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'err-private-msg-too-big'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$private_message</span> = <span class="fn">$</span>(<span class="str">'private-message'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$public_message</span> = <span class="fn">$</span>(<span class="str">'public-message'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_public_msg_too_big</span> = <span class="fn">$</span>(<span class="str">'err-public-msg-too-big'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_public_msg_invalid</span> = <span class="fn">$</span>(<span class="str">'err-public-msg-invalid'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_private_msg_too_big</span> = <span class="fn">$</span>(<span class="str">'err-private-msg-too-big'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$err_private_msg_invalid</span> = <span class="fn">$</span>(<span class="str">'err-private-msg-invalid'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2226,7 +2248,7 @@ Die Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in  Variable
 Ebenso die Referenzen auf die Fehlermeldungen
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">144</div>
+<div class="page"><div class="slide"><div class="slide-nr">148</div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 <span class="in1"></span><span class="var">$private_message</span>.<span class="fn">addEventListener</span>(<br/>
@@ -2243,7 +2265,7 @@ Ebenso die Referenzen auf die Fehlermeldungen
 Wenn der Klartext geändert wird, wird zusätzlich die Richtung des  Algorithmus angepasst
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">145</div>
+<div class="page"><div class="slide"><div class="slide-nr">149</div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 <span class="in1"></span><span class="var">$public_message</span>.<span class="fn">addEventListener</span>(<br/>
@@ -2259,7 +2281,7 @@ Wenn der Klartext geändert wird, wird zusätzlich die Richtung des  Algorithmus
 Wenn der Geheimtext geändert wird, wird zusätzlich die Richtung des  Algorithmus angepasst
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">146</div>
+<div class="page"><div class="slide"><div class="slide-nr">150</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">encrypt</span> = <span class="num">true</span>;<br/>
@@ -2271,7 +2293,7 @@ Der Algorithmus kann sowohl ver- als auch entschlüsseln
 Die Variable <code><span class="var">encrypt</span></code> bestimmt die Richtung in die der Algorithmus  läuft
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">147</div>
+<div class="page"><div class="slide"><div class="slide-nr">151</div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">encrypt</span>) {<br/>
@@ -2287,18 +2309,16 @@ Je nach Richtung, in die der Algorithmus arbeiten soll, wird  entweder der Klart
 oder der Geheimtext entschlüsselt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">148</div>
+<div class="page"><div class="slide"><div class="slide-nr">152</div>
 <code>
 <span class="macro">@def(<span class="name">encrypt</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">source</span> =<br/>
-<span class="in2"></span><span class="fn">bigInt</span>(<span class="var">$private_message</span>.<span class="var">value</span>);<br/>
-<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-<span class="in3"></span><span class="str">'hidden'</span>,<br/>
-<span class="in3"></span><span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
-<span class="in2"></span>);<br/>
-<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">source</span> = <span class="fn">bigInt</span>(<span class="var">$private_message</span>.<span class="var">value</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_invalid</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
+<span class="in1"></span>);<br/>
+<span class="in1"></span><span class="var">$err_private_msg_invalid</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
 <span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2309,7 +2329,7 @@ Dann wird eine Fehlermeldung angezeigt
 Beim Entschlüsseln gibt es eine analoge Fehlermeldung, die beim  Verschlüsseln immer ausgeblendet ist
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">149</div>
+<div class="page"><div class="slide"><div class="slide-nr">153</div>
 <code>
 <span class="macro">@add(<span class="name">encrypt</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">encrypted</span> =<br/>
@@ -2324,18 +2344,17 @@ Beim Entschlüsseln gibt es eine analoge Fehlermeldung, die beim  Verschlüsseln
 Das Verschlüsseln besteht nur aus einer Exponentiation mit <code><span class="var">e</span></code>  modulo <code><span class="var">n</span></code> (dem öffentlichen Schlüssel)
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">150</div>
+<div class="page"><div class="slide"><div class="slide-nr">154</div>
 <code>
 <span class="macro">@def(<span class="name">decrypt</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">source</span> =<br/>
-<span class="in2"></span><span class="fn">bigInt</span>(<span class="var">$public_message</span>.<span class="var">value</span>);<br/>
-<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
-<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-<span class="in3"></span><span class="str">'hidden'</span>,<br/>
-<span class="in3"></span><span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
-<span class="in2"></span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">source</span> = <span class="fn">bigInt</span>(<span class="var">$public_message</span>.<span class="var">value</span>);<br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_private_msg_invalid</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in2"></span><span class="str">'hidden'</span>, <span class="var">source</span>.<span class="fn">lesser</span>(<span class="var">public_key</span>)<br/>
+<span class="in1"></span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_invalid</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<br/>
 <span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2346,7 +2365,7 @@ Auch hier wird eine Fehlermeldung ausgegeben, wenn die Zahl zu groß  ist
 Beim Verschlüsseln gibt es eine anloge Fehlermeldung, die beim  Entschlüsseln immer ausgeblendet ist
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">151</div>
+<div class="page"><div class="slide"><div class="slide-nr">155</div>
 <code>
 <span class="macro">@add(<span class="name">decrypt</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">decrypted</span> = <span class="var">source</span>.<span class="fn">modPow</span>(<br/>
@@ -2364,7 +2383,7 @@ Auch das Entschlüsseln besteht aus einer einzigen Exponentiation mit  dem gehei
 <h1>7. Richtung des Algorithmus anzeigen</h1>
 <div class="slides">
 <div class="page">
-<div class="slide slide-header"><div class="slide-nr">152</div><div class="headers">
+<div class="slide slide-header"><div class="slide-nr">156</div><div class="headers">
 <h1>7. Richtung des Algorithmus anzeigen</h1>
 </div></div>
 <ul><li>
@@ -2373,11 +2392,10 @@ Es gibt ein Element auf der Web-Seite, das die Ablaufrichtung des  Algorithmus a
 Also, ob der Algorithmus ver- oder entschlüsselt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">153</div>
+<div class="page"><div class="slide"><div class="slide-nr">157</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">$direction</span> =<br/>
-<span class="in2"></span><span class="fn">$</span>(<span class="str">'direction'</span>);<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">$direction</span> = <span class="fn">$</span>(<span class="str">'direction'</span>);<br/>
 <span class="macro">@end(<span class="name">globals</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2386,7 +2404,7 @@ Dieses Element zeigt die Richtung an, in der der Algorithmus läuft
 Die Richtung wird durch CSS-Klassen visualisiert
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">154</div>
+<div class="page"><div class="slide"><div class="slide-nr">158</div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">setEncrypt</span> = <span class="var">new_encrypt</span> =&gt; {<br/>
@@ -2400,6 +2418,10 @@ Die Richtung wird durch CSS-Klassen visualisiert
 <span class="in3"></span><span class="macro">@put(<span class="name">set decrypt css</span>)</span>;<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>};<br/>
+<span class="in1"></span><span class="var">$direction</span>.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, <span class="var">evt</span> =&gt; {<br/>
+<span class="in2"></span><span class="fn">setEncrypt</span>(! <span class="var">encrypt</span>);<br/>
+<span class="in2"></span><span class="var">evt</span>.<span class="fn">preventDefault</span>();<br/>
+<span class="in1"></span>});<br/>
 <span class="macro">@end(<span class="name">setup rsa</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -2412,7 +2434,7 @@ Wenn die Klasse <code><span class="str">flip</span></code> gesetzt ist, zeigt er
 <code><span class="str">flop</span></code> ist notwendig, um den Wechsel zu animieren
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">155</div>
+<div class="page"><div class="slide"><div class="slide-nr">159</div>
 <code>
 <span class="macro">@def(<span class="name">set encrypt css</span>)</span><br/>
 <span class="in1"></span><span class="var">$direction</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'flip'</span>);<br/>
@@ -2425,7 +2447,7 @@ Die Klasse <code><span class="str">flop</span></code> wird gesetzt
 Die Klasse <code><span class="str">flip</span></code> wird entfernt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">156</div>
+<div class="page"><div class="slide"><div class="slide-nr">160</div>
 <code>
 <span class="macro">@def(<span class="name">set decrypt css</span>)</span><br/>
 <span class="in1"></span><span class="var">$direction</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'flop'</span>);<br/>
@@ -2438,7 +2460,7 @@ Die Klasse <code><span class="str">flip</span></code> wird gesetzt
 Die Klasse <code><span class="str">flop</span></code> wird entfernt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">157</div>
+<div class="page"><div class="slide"><div class="slide-nr">161</div>
 <code>
 <span class="macro">@add(<span class="name">css</span>)</span><br/>
 <span class="in1"></span>@<span class="var">keyframes</span> <span class="var">flip</span> {<br/>
@@ -2455,7 +2477,7 @@ Die Klasse <code><span class="str">flop</span></code> wird entfernt
 Die <code><span class="var">flip</span></code>-Animation dreht den Pfeil um 180 Grad
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">158</div>
+<div class="page"><div class="slide"><div class="slide-nr">162</div>
 <code>
 <span class="macro">@add(<span class="name">css</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#direction</span>.<span class="var">flip</span> <span class="var">svg</span> {<br/>
@@ -2469,7 +2491,7 @@ Die <code><span class="var">flip</span></code>-Animation dreht den Pfeil um 180 
 Wird die <code><span class="var">flip</span></code>-Klasse auf dem <code><span class="var">direction</span></code>-Element gesetzt, dann  startet die <code><span class="var">flip</span></code>-Animation auf dem Pfeil
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">159</div>
+<div class="page"><div class="slide"><div class="slide-nr">163</div>
 <code>
 <span class="macro">@add(<span class="name">css</span>)</span><br/>
 <span class="in1"></span>@<span class="var">keyframes</span> <span class="var">flop</span> {<br/>
@@ -2486,7 +2508,7 @@ Wird die <code><span class="var">flip</span></code>-Klasse auf dem <code><span c
 Die <code><span class="var">flop</span></code>-Animation dreht den Pfeil zurück
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">160</div>
+<div class="page"><div class="slide"><div class="slide-nr">164</div>
 <code>
 <span class="macro">@add(<span class="name">css</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#direction</span>.<span class="var">flop</span> <span class="var">svg</span> {<br/>
@@ -2504,7 +2526,7 @@ Wenn die <code><span class="var">flop</span></code>-Klasse auf dem <code><span c
 <h1>8. Timer</h1>
 <div class="slides">
 <div class="page">
-<div class="slide slide-header"><div class="slide-nr">161</div><div class="headers">
+<div class="slide slide-header"><div class="slide-nr">165</div><div class="headers">
 <h1>8. Timer</h1>
 </div></div>
 <ul><li>
@@ -2515,7 +2537,7 @@ Daher wird nicht mit jeder Änderung eine neue Berechnung gestartet
 Nur wenn nach der letzten Änderung ein gewisses Zeitintervall  verstrichen ist, wird die Berechnung gestartet
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">162</div>
+<div class="page"><div class="slide"><div class="slide-nr">166</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">timer</span>;<br/>
@@ -2525,7 +2547,7 @@ Nur wenn nach der letzten Änderung ein gewisses Zeitintervall  verstrichen ist,
 Der Timer wird global vorgehalten
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">163</div>
+<div class="page"><div class="slide"><div class="slide-nr">167</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="fn">resetTimer</span> = () =&gt; {<br/>
@@ -2539,7 +2561,7 @@ Eine spezielle Funktion setzt nur den Timer zurück
 Dieser Callback wird verwendet, wenn kein <code><span class="fn">refresh</span></code> nach dem  Ablauf des Timers getriggert werden muss
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">164</div>
+<div class="page"><div class="slide"><div class="slide-nr">168</div>
 <code>
 <span class="macro">@rep(<span class="name">queue refresh</span>)</span><br/>
 <span class="in1"></span><span class="type">let</span> <span class="fn">fn</span> = <span class="fn">refresh</span>;<br/>
@@ -2565,7 +2587,7 @@ Dann wird ein neuer Timer gestartet, der die Berechnung triggert
 Der Timeout beträgt eine halbe Sekunde
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">165</div>
+<div class="page"><div class="slide"><div class="slide-nr">169</div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="fn">resetTimer</span>();<br/>
@@ -2575,7 +2597,7 @@ Der Timeout beträgt eine halbe Sekunde
 Nach der Neuberechnung wird der Timer zurückgesetzt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">166</div>
+<div class="page"><div class="slide"><div class="slide-nr">170</div>
 <code>
 <span class="macro">@def(<span class="name">set fields to pending</span>)</span><br/>
 <span class="in1"></span><span class="var">$public_key_length</span>.<span class="var">innerText</span> = <span class="str">'...'</span>;<br/>
@@ -2599,14 +2621,14 @@ Alle berechneten Felder werden mit Platzhaltern befüllt
 <h1>9. Schlussbemerkung</h1>
 <div class="slides">
 <div class="page">
-<div class="slide slide-header"><div class="slide-nr">167</div><div class="headers">
+<div class="slide slide-header"><div class="slide-nr">171</div><div class="headers">
 <h1>9. Schlussbemerkung</h1>
 </div></div>
 <ul><li>
 Ein paar Kleinigkeiten gibt es noch, um die Web-App fertig  zu stellen
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">168</div>
+<div class="page"><div class="slide"><div class="slide-nr">172</div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Verwendete Bibliothek</span>&lt;/<span class="var">h2</span>&gt;<br/>
@@ -2624,7 +2646,7 @@ Ein paar Kleinigkeiten gibt es noch, um die Web-App fertig  zu stellen
 In der deutschen Version werden die verwendete Bibliothek  erwähnt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">169</div>
+<div class="page"><div class="slide"><div class="slide-nr">173</div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
@@ -2640,7 +2662,7 @@ In der deutschen Version werden die verwendete Bibliothek  erwähnt
 und was mit ihr berechnet wird
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">170</div>
+<div class="page"><div class="slide"><div class="slide-nr">174</div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">h2</span>&gt;<span class="str">Used library</span>&lt;/<span class="var">h2</span>&gt;<br/>
@@ -2657,7 +2679,7 @@ und was mit ihr berechnet wird
 Das Gleiche gibt es auch für die englische Version
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">171</div>
+<div class="page"><div class="slide"><div class="slide-nr">175</div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">p</span>&gt;<br/>
@@ -2673,33 +2695,33 @@ Das Gleiche gibt es auch für die englische Version
 Es wird beschrieben, warum diese Bibliothek benötigt wird
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">172</div>
+<div class="page"><div class="slide"><div class="slide-nr">176</div>
 <code>
 <span class="macro">@add(<span class="name">container de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"authors"</span>&gt;&lt;<span class="var">em</span>&gt;<span class="str">CTOAUTHORS:</span><br/>
 <span class="in2"></span><span class="str">Timm Knape (Dank an</span><br/>
 <span class="in2"></span><span class="str">Bernhard Esslinger für das</span><br/>
-<span class="in2"></span><span class="str">Review)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span><span class="str">Review)</span> <span class="var">letzter</span> <span class="type">Update</span> <span class="num">2021</span>-<span class="num">01</span>-<span class="num">14</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container de</span>)</span><br/>
 </code></div>
 <ul><li>
 Die Seite endet mit dem Autor-Tag
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">173</div>
+<div class="page"><div class="slide"><div class="slide-nr">177</div>
 <code>
 <span class="macro">@add(<span class="name">container en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="var">id</span>=<span class="str">"authors"</span>&gt;&lt;<span class="var">em</span>&gt;<span class="str">CTOAUTHORS:</span><br/>
 <span class="in2"></span><span class="str">Timm Knape (thanks to</span><br/>
 <span class="in2"></span><span class="str">Bernhard Esslinger for the</span><br/>
-<span class="in2"></span><span class="str">review)</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
+<span class="in2"></span><span class="str">review)</span> <span class="var">updated</span> <span class="num">2021</span>-<span class="num">01</span>-<span class="num">14</span>&lt;/<span class="var">em</span>&gt;&lt;/<span class="var">div</span>&gt;<br/>
 <span class="macro">@end(<span class="name">container en</span>)</span><br/>
 </code></div>
 <ul><li>
 Auch in der englischen Version gibt es das Autor-Tag
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">174</div>
+<div class="page"><div class="slide"><div class="slide-nr">178</div>
 <code>
 <span class="macro">@add(<span class="name">css</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#authors</span> {<br/>
@@ -2711,7 +2733,7 @@ Auch in der englischen Version gibt es das Autor-Tag
 Das Autor-Tag wird etwas vom restlichen Text abgesetzt
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">175</div>
+<div class="page"><div class="slide"><div class="slide-nr">179</div>
 <code>
 <span class="macro">@def(<span class="name">bootstrap stylesheets</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">link</span> <br/>
@@ -2732,7 +2754,7 @@ Die Bootstrap-CSSs werden direkt von einem Content Delivery Network  eingebunden
 Dies wird nur für den Test verwendet und nicht für die produktive  Version
 </li></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">176</div>
+<div class="page"><div class="slide"><div class="slide-nr">180</div>
 <code>
 <span class="macro">@add(<span class="name">bootstrap stylesheets</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">link</span><br/>
@@ -2757,20 +2779,24 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 <h2>Mehrere Zahlen auf einmal ver- und entschlüsseln</h2>
 <div class="slides">
 <div class="page">
-<div class="slide slide-header"><div class="slide-nr">177</div><div class="headers">
+<div class="slide slide-header"><div class="slide-nr">181</div><div class="headers">
 <h2>Mehrere Zahlen auf einmal ver- und entschlüsseln</h2>
 </div></div>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">178</div>
+<div class="page"><div class="slide"><div class="slide-nr">182</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
-<span class="in1"></span><span class="type">const</span> <span class="var">split_args</span> = <span class="var">str</span> =&gt; {<br/>
+<span class="in1"></span><span class="type">const</span> <span class="var">split_args</span> = (<span class="var">str</span>, <span class="var">$err</span>) =&gt; {<br/>
+<span class="in2"></span><span class="var">$err</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
 <span class="in2"></span><span class="type">let</span> <span class="var">result</span> = [];<br/>
 <span class="in2"></span><span class="type">let</span> <span class="var">num</span> = <span class="str">''</span>;<br/>
 <span class="in2"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">c</span> <span class="var">of</span> <span class="var">str</span>) {<br/>
 <span class="in3"></span><span class="keyword">if</span> (<span class="var">c</span> &gt;= <span class="str">'0'</span> &amp;&amp; <span class="var">c</span> &lt;= <span class="str">'9'</span>) {<br/>
 <span class="in4"></span><span class="var">num</span> += <span class="var">c</span>;<br/>
 <span class="in3"></span>} <span class="keyword">else</span> {<br/>
+<span class="in4"></span><span class="keyword">if</span> (<span class="var">c</span> &gt; <span class="str">' '</span> &amp;&amp; <span class="var">c</span> != <span class="str">','</span> &amp;&amp; <span class="var">c</span> != <span class="str">';'</span>) {<br/>
+<span class="in5"></span><span class="var">$err</span>.<span class="var">classList</span>.<span class="fn">remove</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in4"></span>}<br/>
 <span class="in4"></span><span class="keyword">if</span> (<span class="var">num</span>.<span class="var">length</span>) {<br/>
 <span class="in5"></span><span class="var">result</span>.<span class="fn">push</span>(<span class="fn">bigInt</span>(<span class="var">num</span>));<br/>
 <span class="in5"></span><span class="var">num</span> = <span class="str">''</span>;<br/>
@@ -2787,12 +2813,12 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">179</div>
+<div class="page"><div class="slide"><div class="slide-nr">183</div>
 <code>
 <span class="macro">@rep(<span class="name">encrypt</span>)</span><br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">some_too_big</span> = <span class="num">false</span>;<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">result</span> = <span class="str">''</span>; <span class="type">let</span> <span class="var">sep</span> = <span class="str">''</span>;<br/>
-<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">num</span> <span class="var">of</span> <span class="fn">split_args</span>(<span class="var">$private_message</span>.<span class="var">value</span>)) {<br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">num</span> <span class="var">of</span> <span class="fn">split_args</span>(<span class="var">$private_message</span>.<span class="var">value</span>, <span class="var">$err_private_msg_invalid</span>)) {<br/>
 <span class="in2"></span><span class="keyword">if</span> (<span class="var">num</span>.<span class="fn">greaterOrEquals</span>(<span class="var">public_key</span>)) {<br/>
 <span class="in3"></span><span class="var">some_too_big</span> = <span class="num">true</span>;<br/>
 <span class="in2"></span>}<br/>
@@ -2806,28 +2832,26 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">180</div>
+<div class="page"><div class="slide"><div class="slide-nr">184</div>
 <code>
 <span class="macro">@add(<span class="name">encrypt</span>)</span><br/>
-<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
-<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-<span class="in3"></span><span class="str">'hidden'</span>,<br/>
-<span class="in3"></span>! <span class="var">some_too_big</span><br/>
-<span class="in2"></span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_invalid</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in2"></span><span class="str">'hidden'</span>, ! <span class="var">some_too_big</span><br/>
+<span class="in1"></span>);<br/>
 <span class="in1"></span><span class="var">$public_message</span>.<span class="var">value</span> = <span class="var">result</span>;<br/>
 <span class="macro">@end(<span class="name">encrypt</span>)</span><br/>
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">181</div>
+<div class="page"><div class="slide"><div class="slide-nr">185</div>
 <code>
 <span class="macro">@rep(<span class="name">decrypt</span>)</span><br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">some_too_big</span> = <span class="num">false</span>;<br/>
 <span class="in1"></span><span class="type">let</span> <span class="var">result</span> = <span class="str">''</span>; <span class="type">let</span> <span class="var">sep</span> = <span class="str">''</span>;<br/>
 <br/>
-<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">num</span> <span class="var">of</span> <span class="fn">split_args</span>(<span class="var">$public_message</span>.<span class="var">value</span>)) {<br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">let</span> <span class="var">num</span> <span class="var">of</span> <span class="fn">split_args</span>(<span class="var">$public_message</span>.<span class="var">value</span>, <span class="var">$err_public_msg_invalid</span>)) {<br/>
 <span class="in2"></span><span class="keyword">if</span> (<span class="var">num</span>.<span class="fn">greaterOrEquals</span>(<span class="var">public_key</span>)) {<br/>
 <span class="in3"></span><span class="var">some_too_big</span> = <span class="num">true</span>;<br/>
 <span class="in2"></span>}<br/>
@@ -2841,18 +2865,15 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">182</div>
+<div class="page"><div class="slide"><div class="slide-nr">186</div>
 <code>
 <span class="macro">@add(<span class="name">decrypt</span>)</span><br/>
-<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
-<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<br/>
-<span class="in2"></span><span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
-<span class="in3"></span><span class="str">'hidden'</span>,<br/>
-<span class="in3"></span>! <span class="var">some_too_big</span><br/>
-<span class="in2"></span>);<br/>
-<span class="in1"></span><span class="var">$private_message</span>.<span class="var">value</span> =<br/>
-<span class="in2"></span><span class="var">result</span>;<br/>
+<span class="in1"></span><span class="var">$err_private_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_private_msg_invalid</span>.<span class="var">classList</span>.<span class="fn">add</span>(<span class="str">'hidden'</span>);<br/>
+<span class="in1"></span><span class="var">$err_public_msg_too_big</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
+<span class="in2"></span><span class="str">'hidden'</span>, ! <span class="var">some_too_big</span><br/>
+<span class="in1"></span>);<br/>
+<span class="in1"></span><span class="var">$private_message</span>.<span class="var">value</span> = <span class="var">result</span>;<br/>
 <span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
 </code></div>
 <ul></ul>
@@ -2861,11 +2882,11 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 <h2>Text direkt verschlüsseln</h2>
 <div class="slides">
 <div class="page">
-<div class="slide slide-header"><div class="slide-nr">183</div><div class="headers">
+<div class="slide slide-header"><div class="slide-nr">187</div><div class="headers">
 <h2>Text direkt verschlüsseln</h2>
 </div></div>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">184</div>
+<div class="page"><div class="slide"><div class="slide-nr">188</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">chrs_per_num</span> = () =&gt; {<br/>
@@ -2902,7 +2923,7 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">185</div>
+<div class="page"><div class="slide"><div class="slide-nr">189</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">nums2str</span> = <span class="var">nums</span> =&gt; {<br/>
@@ -2928,7 +2949,7 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">186</div>
+<div class="page"><div class="slide"><div class="slide-nr">190</div>
 <code>
 <span class="macro">@def(<span class="name">text box de</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
@@ -2945,7 +2966,7 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">187</div>
+<div class="page"><div class="slide"><div class="slide-nr">191</div>
 <code>
 <span class="macro">@def(<span class="name">text box en</span>)</span><br/>
 <span class="in1"></span>&lt;<span class="var">div</span> <span class="keyword">class</span>=<span class="str">"form-group"</span>&gt;<br/>
@@ -2962,7 +2983,7 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">188</div>
+<div class="page"><div class="slide"><div class="slide-nr">192</div>
 <code>
 <span class="macro">@Add(<span class="name">globals</span>)</span><br/>
 <span class="in1"></span><span class="type">const</span> <span class="var">$private_txt</span> =<br/>
@@ -2973,7 +2994,7 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">189</div>
+<div class="page"><div class="slide"><div class="slide-nr">193</div>
 <code>
 <span class="macro">@add(<span class="name">refresh</span>)</span><br/>
 <span class="in1"></span><span class="var">$private_txt_row</span>.<span class="var">classList</span>.<span class="fn">toggle</span>(<br/>
@@ -2984,16 +3005,14 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">190</div>
+<div class="page"><div class="slide"><div class="slide-nr">194</div>
 <code>
 <span class="macro">@add(<span class="name">setup rsa</span>)</span><br/>
 <span class="in1"></span><span class="var">$private_txt</span>.<span class="fn">addEventListener</span>(<br/>
 <span class="in2"></span><span class="str">'input'</span>,<br/>
 <span class="in2"></span><span class="var">event</span> =&gt; {<br/>
 <span class="in3"></span><span class="fn">setEncrypt</span>(<span class="num">true</span>);<br/>
-<span class="in3"></span><span class="var">$private_message</span>.<span class="var">value</span> =<br/>
-<span class="in4"></span><span class="fn">str2nums</span>(<span class="var">$private_txt</span>.<span class="var">value</span>);<br/>
-<span class="in4"></span><br/>
+<span class="in3"></span><span class="var">$private_message</span>.<span class="var">value</span> = <span class="fn">str2nums</span>(<span class="var">$private_txt</span>.<span class="var">value</span>);<br/>
 <span class="in3"></span><span class="fn">queueRefresh</span>(<span class="var">event</span>);<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>);<br/>
@@ -3001,20 +3020,20 @@ Auch dies wird nur für die lokale und nicht für die produktive Version  verwen
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">191</div>
+<div class="page"><div class="slide"><div class="slide-nr">195</div>
 <code>
 <span class="macro">@def(<span class="name">update text field</span>)</span><br/>
 <span class="in1"></span><span class="var">$private_txt</span>.<span class="var">value</span> =<br/>
-<span class="in2"></span><span class="fn">nums2str</span>(<span class="fn">split_args</span>(<span class="var">$private_message</span>.<span class="var">value</span>));<br/>
+<span class="in2"></span><span class="fn">nums2str</span>(<span class="fn">split_args</span>(<span class="var">$private_message</span>.<span class="var">value</span>, <span class="var">$err_private_msg_invalid</span>));<br/>
 <span class="macro">@end(<span class="name">update text field</span>)</span><br/>
 </code></div>
 <ul></ul>
 </div>
-<div class="page"><div class="slide"><div class="slide-nr">192</div>
+<div class="page"><div class="slide"><div class="slide-nr">196</div>
 <code>
 <span class="macro">@add(<span class="name">decrypt</span>)</span><br/>
 <span class="in1"></span><span class="var">$private_txt</span>.<span class="var">value</span> =<br/>
-<span class="in2"></span><span class="fn">nums2str</span>(<span class="fn">split_args</span>(<span class="var">result</span>));<br/>
+<span class="in2"></span><span class="fn">nums2str</span>(<span class="fn">split_args</span>(<span class="var">result</span>, <span class="var">$err_private_msg_invalid</span>));<br/>
 <span class="macro">@end(<span class="name">decrypt</span>)</span><br/>
 </code></div>
 <ul></ul>

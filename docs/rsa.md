@@ -1203,8 +1203,7 @@
 
 ```
 @def(private key)
-	<label
-		class="col-sm-3 control-label"
+	<label class="col-sm-3 control-label"
 		@v(for)="private-key"><i>d</i>@s( =)
 	</label>
 	<div class="col-sm-9"><p
@@ -1232,8 +1231,7 @@
 
 ```
 @Add(globals)
-	const $private_key =
-		@f($)('private-key');
+	const $private_key = @f($)('private-key');
 @end(globals)
 ```
 * Die Referenz auf den geheimen Schlüssel wird in der Anwendung
@@ -1291,11 +1289,9 @@
 @add(container de)
 	<h2>@s(Ver- und Entschlüsseln)</h2>
 	<p>
-		@s(Grundsätzlich werden bei diesem)
-		@s(Verfahren keine Texte, sondern)
-		@s(nur Zahlen ver- und entschlüsselt,)
-		@s(die zwischen )0@s( und )<i>n</i>@s( − )1
-		@s(liegen.)
+		@s(Grundsätzlich werden bei diesem Verfahren keine Texte, sondern)
+		@s(nur Zahlen ver- und entschlüsselt, die zwischen )0
+		@s(und )<i>n</i>@s( − )1@s( liegen.)
 	</p>
 @end(container de)
 ```
@@ -1304,10 +1300,8 @@
 ```
 @add(container de)
 	<p>
-		@s(Um eine Nachricht )<i>m</i>@s( mit)
-		@s(dem öffentlichen Schlüssel)
-		@s(()<i>n</i>@s(, )<i>e</i>@s(@) zu)
-		@s(verschlüsseln, wird)
+		@s(Um eine Nachricht )<i>m</i>@s( mit dem öffentlichen Schlüssel)
+		@s(()<i>n</i>@s(, )<i>e</i>@s(@) zu verschlüsseln, wird)
 	</p><p class="form">
 		<i>@v(m')</i>@s( :=)
 			<i>m</i><sup><i>e</i></sup>
@@ -1322,9 +1316,8 @@
 ```
 @add(container de)
 	<p>
-		@s(Das Entschlüsseln mit dem privaten)
-		@s(Schlüssel ()<i>n</i>@s(, )<i>d</i>@s(@))
-		@s(erfolgt analog mit)
+		@s(Das Entschlüsseln mit dem privaten Schlüssel ()<i>n</i>@s(,)
+		<i>d</i>@s(@))@s( erfolgt analog mit)
 	</p><p class="form">
 		<i>@v(m'')</i>@s( :=)
 			@s(()<i>@v(m')</i>@s(@))<sup><i>d</i></sup>
@@ -1512,10 +1505,8 @@
 @add(container de)
 	<h2>@s(Nachrichten)</h2>
 	<p>
-		@s(In den folgenden zwei Textboxen)
-		@s(können Sie sehen, wie das Ver-)
-		@s(und Entschlüsseln für konkrete)
-		@s(Eingaben (Zahlen@) )@s(funktioniert.)
+		@s(In den folgenden zwei Textboxen können Sie sehen, wie das Ver-)
+		@s(und Entschlüsseln für konkrete Eingaben (Zahlen@) )@s(funktioniert.)
 	</p>
 	<form class="form-horizontal">
 		@put(crypt boxes de)
@@ -1528,10 +1519,8 @@
 @add(container en)
 	<h2>@s(Messages)</h2>
 	<p>
-		@s(In the following two text boxes,)
-		@s(you can see how encryption and)
-		@s(decryption work for concrete)
-		@s(inputs (numbers@).)
+		@s(In the following two text boxes, you can see how encryption and)
+		@s(decryption work for concrete inputs (numbers@).)
 	</p>
 	<form class="form-horizontal">
 		@put(crypt boxes en)
@@ -1544,14 +1533,10 @@
 @def(crypt boxes de)
 	@put(text box de)
 	<div class="form-group">
-		<label
-			class="col-sm-3 control-label"
-			@v(for)="private-message"
-		>@s(Klartext)</label>
-		<div class="col-sm-9"><input
-			class="form-control"
-			id="private-message"
-			value="7"></input></div>
+		<label class="col-sm-3 control-label" @v(for)="private-message"
+		>@s(Klartext) (Eingabe bspw. 6, 13, 111)</label>
+		<div class="col-sm-9"><input class="form-control"
+			id="private-message" value="7"></input></div>
 	</div>
 @end(crypt boxes de)
 ```
@@ -1559,18 +1544,28 @@
 
 ```
 @add(crypt boxes de)
-	<div id="err-public-msg-too-big"
+	<div id="err-private-msg-too-big"
 		class="row alert alert-danger">
-		@s(Die Klartextzahl ist zu groß.)
+		@s(Eine Klartextzahl ist zu groß.)
 		@s(Der maximale Wert ist)
-		<span class="max-msg"></span>.
+		<span class="max-msg"></span>, da <i>n</i> =
+		<span class="max-msg-n"></span>.
 		@s(Bitte wählen Sie größere)
-		@s(Primzahlen.)
+		@s(Primzahlen, um ein größeres <i>n</i> zu erzeugen.)
 	</div>
 @end(crypt boxes de)
 ```
 * Und es gibt eine Fehlermeldung, wenn die eingegebene Nachricht zu
   groß ist
+
+```
+@add(crypt boxes de)
+	<div id="err-private-msg-invalid"
+		class="row alert alert-danger">
+		@s(Bitte ganze Zahlen eingeben.)
+	</div>
+@end(crypt boxes de)
+```
 
 ```
 @add(crypt boxes de)
@@ -1588,7 +1583,7 @@
 		<label
 			class="col-sm-3 control-label"
 			@v(for)="public-message"
-		>@s(Geheimtext)</label>
+		>@s(Geheimtext) (Eingabe bspw. 128, 52, 67)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="public-message"
@@ -1600,18 +1595,27 @@
 
 ```
 @add(crypt boxes de)
-	<div id="err-private-msg-too-big"
+	<div id="err-public-msg-too-big"
 		class="row alert alert-danger"
-	>@s(Die Geheimtextzahl ist zu groß.)
+	>@s(Eine Geheimtextzahl ist zu groß.)
 		@s(Der maximale Wert ist)
-		<span class="max-msg"></span>.
+		<span class="max-msg"></span>, da <i>n</i> =
+		<span class="max-msg-n"></span>.
 		@s(Bitte wählen Sie größere)
-		@s(Primzahlen.)
+		@s(Primzahlen, um ein größeres <i>n</i> zu erzeugen.)
 	</div>
 @end(crypt boxes de)
 ```
 * Auch hier gibt es eine Fehlermeldung, falls die eingegebene Zahl
   zu groß ist
+
+```
+@add(crypt boxes de)
+	<div id="err-public-msg-invalid" class="row alert alert-danger">
+		@s(Bitte ganze Zahlen eingeben.)
+	</div>
+@end(crypt boxes de)
+```
 
 ```
 @def(crypt boxes en)
@@ -1620,7 +1624,7 @@
 		<label
 			class="col-sm-3 control-label"
 			@v(for)="private-message"
-		>@s(Plaintext)</label>
+		>@s(Plaintext) (sample input 6. 13, 111)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="private-message"
@@ -1632,16 +1636,25 @@
 
 ```
 @add(crypt boxes en)
-	<div id="err-public-msg-too-big"
+	<div id="err-private-msg-too-big"
 		class="row alert alert-danger"
-	>@s(Plaintext number too big. The)
+	>@s(A plaintext number is too big. The)
 		@s(maximum value is)
-		<span class="max-msg"></span>@s(.)
+		<span class="max-msg"></span>@s( as <i>n</i> = <span class="max-msg-n"></span>.)
 		@s(Please choose bigger)
-		@s(primes.)</div>
+		@s(primes to get a bigger <i>n</i>.)</div>
 @end(crypt boxes en)
 ```
 * Und eine Fehlermeldung, wenn der Klartext zu groß ist
+
+```
+@add(crypt boxes en)
+	<div id="err-private-msg-invalid"
+		class="row alert alert-danger">
+		@s(Please enter integers.)
+	</div>
+@end(crypt boxes en)
+```
 
 ```
 @add(crypt boxes en)
@@ -1657,7 +1670,7 @@
 		<label
 			class="col-sm-3 control-label"
 			@v(for)="public-message"
-		>@s(Ciphertext)</label>
+		>@s(Ciphertext) (sample input 128, 52, 67)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="public-message"
@@ -1669,16 +1682,24 @@
 
 ```
 @add(crypt boxes en)
-	<div id="err-private-msg-too-big"
+	<div id="err-public-msg-too-big"
 		class="row alert alert-danger"
-	>@s(Ciphertext number too big. The)
+	>@s(A ciphertext number is too big. The)
 		@s(maximum value is)
-		<span class="max-msg"></span>@s(.)
+		<span class="max-msg"></span>@s( as <i>n</i> = <span class="max-msg-n"></span>.)
 		@s(Please choose bigger)
-		@s(primes.)</div>
+		@s(primes to get a bigger <i>n</i>.)</div>
 @end(crypt boxes en)
 ```
 * Und eine Fehlermeldung, falls der Geheimtext zu groß ist
+
+```
+@add(crypt boxes en)
+	<div id="err-public-msg-invalid" class="row alert alert-danger">
+		@s(Please enter integers.)
+	</div>
+@end(crypt boxes en)
+```
 
 ```
 @def(crypt arrow)
@@ -1720,10 +1741,8 @@
 
 ```
 @Add(globals)
-	const $max_msgs =
-		document.getElementsByClassName(
-			'max-msg'
-		);
+	const $max_msgs = document.getElementsByClassName('max-msg');
+	const $max_msg_ns = document.getElementsByClassName('max-msg-n');
 @end(globals)
 ```
 * In den Fehlermeldungen gibt es Elemente, die die größte mögliche
@@ -1733,8 +1752,7 @@
 
 ```
 @add(refresh)
-	const max_msg = public_key.
-		subtract(one).toString();
+	const max_msg = public_key.subtract(one).toString();
 @end(refresh)
 ```
 * Die größte mögliche Nachricht ist um eins kleiner als der öffentliche
@@ -1742,13 +1760,11 @@
 
 ```
 @add(refresh)
-	for (
-		let i = 0;
-		i < $max_msgs.length;
-		++i
-	) {
-		$max_msgs[i].innerText =
-			max_msg;
+	for (let i = 0; i < $max_msgs.length; ++i) {
+		$max_msgs[i].innerText = max_msg;
+	}
+	for (let i = 0; i < $max_msg_ns.length; ++i) {
+		$max_msg_ns[i].innerText = public_key.toString();
 	}
 @end(refresh)
 ```
@@ -1757,14 +1773,12 @@
 
 ```
 @Add(globals)
-	const $private_message =
-		@f($)('private-message');
-	const $public_message =
-		@f($)('public-message');
-	const $err_public_msg_too_big =
-		@f($)('err-public-msg-too-big');
-	const $err_private_msg_too_big =
-		@f($)('err-private-msg-too-big');
+	const $private_message = @f($)('private-message');
+	const $public_message = @f($)('public-message');
+	const $err_public_msg_too_big = @f($)('err-public-msg-too-big');
+	const $err_public_msg_invalid = @f($)('err-public-msg-invalid');
+	const $err_private_msg_too_big = @f($)('err-private-msg-too-big');
+	const $err_private_msg_invalid = @f($)('err-private-msg-invalid');
 @end(globals)
 ```
 * Die Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in
@@ -1824,15 +1838,13 @@
 
 ```
 @def(encrypt)
-	const source =
-		bigInt($private_message.value);
-	$err_public_msg_too_big.
-		classList.toggle(
-			'hidden',
-			source.lesser(public_key)
-		);
-	$err_private_msg_too_big.
-		classList.add('hidden');
+	const source = bigInt($private_message.value);
+	$err_public_msg_too_big.classList.add('hidden');
+	$err_public_msg_invalid.classList.add('hidden');
+	$err_private_msg_too_big.classList.toggle(
+		'hidden', source.lesser(public_key)
+	);
+	$err_private_msg_invalid.classList.add('hidden');
 @end(encrypt)
 ```
 * Beim Verschlüsseln wird geprüft, ob der Klartext zu groß ist
@@ -1855,15 +1867,14 @@
 
 ```
 @def(decrypt)
-	const source =
-		bigInt($public_message.value);
-	$err_public_msg_too_big.
-		classList.add('hidden');
-	$err_private_msg_too_big.
-		classList.toggle(
-			'hidden',
-			source.lesser(public_key)
-		);
+	const source = bigInt($public_message.value);
+	$err_private_msg_too_big.classList.add('hidden');
+	$err_private_msg_invalid.classList.add('hidden');
+	$err_public_msg_too_big.classList.toggle(
+		'hidden', source.lesser(public_key)
+	);
+	$err_public_msg_invalid.classList.add('hidden');
+
 @end(decrypt)
 ```
 * Beim Entschlüsseln wird der Geheimtext als Eingabe verwendet
@@ -1891,8 +1902,7 @@
 
 ```
 @Add(globals)
-	const $direction =
-		@f($)('direction');
+	const $direction = @f($)('direction');
 @end(globals)
 ```
 * Dieses Element zeigt die Richtung an, in der der Algorithmus läuft
@@ -1911,6 +1921,10 @@
 			@put(set decrypt css);
 		}
 	};
+	$direction.addEventListener('click', evt => {
+		setEncrypt(! encrypt);
+		evt.preventDefault();
+	});
 @end(setup rsa)
 ```
 * Durch CSS-Animationen wird der Pfeil hin- und hergedreht
@@ -2124,7 +2138,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (Dank an)
 		@s(Bernhard Esslinger für das)
-		@s(Review@))</em></div>
+		@s(Review@)) letzter Update 2021-01-14</em></div>
 @end(container de)
 ```
 * Die Seite endet mit dem Autor-Tag
@@ -2134,7 +2148,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (thanks to)
 		@s(Bernhard Esslinger for the)
-		@s(review@))</em></div>
+		@s(review@)) updated 2021-01-14</em></div>
 @end(container en)
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
@@ -2190,13 +2204,17 @@
 
 ```
 @Add(globals)
-	const split_args = str => {
+	const split_args = (str, $err) => {
+		$err.classList.add('hidden');
 		let result = [];
 		let num = '';
 		for (let c of str) {
 			if (c >= '0' && c <= '9') {
 				num += c;
 			} else {
+				if (c > ' ' && c != ',' && c != ';') {
+					$err.classList.remove('hidden');
+				}
 				if (num.length) {
 					result.push(bigInt(num));
 					num = '';
@@ -2216,7 +2234,7 @@
 @rep(encrypt)
 	let some_too_big = false;
 	let result = ''; let sep = '';
-	for (let num of split_args($private_message.value)) {
+	for (let num of split_args($private_message.value, $err_private_msg_invalid)) {
 		if (num.greaterOrEquals(public_key)) {
 			some_too_big = true;
 		}
@@ -2231,13 +2249,11 @@
 
 ```
 @add(encrypt)
-	$err_private_msg_too_big.
-		classList.add('hidden');
-	$err_public_msg_too_big.
-		classList.toggle(
-			'hidden',
-			! some_too_big
-		);
+	$err_public_msg_too_big.classList.add('hidden');
+	$err_public_msg_invalid.classList.add('hidden');
+	$err_private_msg_too_big.classList.toggle(
+		'hidden', ! some_too_big
+	);
 	$public_message.value = result;
 @end(encrypt)
 ```
@@ -2247,7 +2263,7 @@
 	let some_too_big = false;
 	let result = ''; let sep = '';
 
-	for (let num of split_args($public_message.value)) {
+	for (let num of split_args($public_message.value, $err_public_msg_invalid)) {
 		if (num.greaterOrEquals(public_key)) {
 			some_too_big = true;
 		}
@@ -2262,15 +2278,12 @@
 
 ```
 @add(decrypt)
-	$err_public_msg_too_big.
-		classList.add('hidden');
-	$err_private_msg_too_big.
-		classList.toggle(
-			'hidden',
-			! some_too_big
-		);
-	$private_message.value =
-		result;
+	$err_private_msg_too_big.classList.add('hidden');
+	$err_private_msg_invalid.classList.add('hidden');
+	$err_public_msg_too_big.classList.toggle(
+		'hidden', ! some_too_big
+	);
+	$private_message.value = result;
 @end(decrypt)
 ```
 
@@ -2389,9 +2402,7 @@
 		'input',
 		event => {
 			setEncrypt(true);
-			$private_message.value =
-				str2nums($private_txt.value);
-				
+			$private_message.value = str2nums($private_txt.value);
 			queueRefresh(event);
 		}
 	);
@@ -2401,14 +2412,14 @@
 ```
 @def(update text field)
 	$private_txt.value =
-		nums2str(split_args($private_message.value));
+		nums2str(split_args($private_message.value, $err_private_msg_invalid));
 @end(update text field)
 ```
 
 ```
 @add(decrypt)
 	$private_txt.value =
-		nums2str(split_args(result));
+		nums2str(split_args(result, $err_private_msg_invalid));
 @end(decrypt)
 ```
 

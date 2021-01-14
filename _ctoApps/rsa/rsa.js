@@ -98,27 +98,21 @@
 } 
 	const $gcd = $('gcd');
 
-	const $private_key =
-		$('private-key');
+	const $private_key = $('private-key');
 
-	const $max_msgs =
-		document.getElementsByClassName(
-			'max-msg'
-		);
+	const $max_msgs = document.getElementsByClassName('max-msg');
+	const $max_msg_ns = document.getElementsByClassName('max-msg-n');
 
-	const $private_message =
-		$('private-message');
-	const $public_message =
-		$('public-message');
-	const $err_public_msg_too_big =
-		$('err-public-msg-too-big');
-	const $err_private_msg_too_big =
-		$('err-private-msg-too-big');
+	const $private_message = $('private-message');
+	const $public_message = $('public-message');
+	const $err_public_msg_too_big = $('err-public-msg-too-big');
+	const $err_public_msg_invalid = $('err-public-msg-invalid');
+	const $err_private_msg_too_big = $('err-private-msg-too-big');
+	const $err_private_msg_invalid = $('err-private-msg-invalid');
 
 	let encrypt = true;
 
-	const $direction =
-		$('direction');
+	const $direction = $('direction');
 
 	let timer;
 
@@ -126,13 +120,17 @@
 		timer = null;
 	};
 
-	const split_args = str => {
+	const split_args = (str, $err) => {
+		$err.classList.add('hidden');
 		let result = [];
 		let num = '';
 		for (let c of str) {
 			if (c >= '0' && c <= '9') {
 				num += c;
 			} else {
+				if (c > ' ' && c != ',' && c != ';') {
+					$err.classList.remove('hidden');
+				}
 				if (num.length) {
 					result.push(bigInt(num));
 					num = '';
@@ -284,23 +282,20 @@
 	$private_key.innerText =
 		private_key.toString();
 
-	const max_msg = public_key.
-		subtract(one).toString();
+	const max_msg = public_key.subtract(one).toString();
 
-	for (
-		let i = 0;
-		i < $max_msgs.length;
-		++i
-	) {
-		$max_msgs[i].innerText =
-			max_msg;
+	for (let i = 0; i < $max_msgs.length; ++i) {
+		$max_msgs[i].innerText = max_msg;
+	}
+	for (let i = 0; i < $max_msg_ns.length; ++i) {
+		$max_msg_ns[i].innerText = public_key.toString();
 	}
 
 	if (encrypt) {
 		
 	let some_too_big = false;
 	let result = ''; let sep = '';
-	for (let num of split_args($private_message.value)) {
+	for (let num of split_args($private_message.value, $err_private_msg_invalid)) {
 		if (num.greaterOrEquals(public_key)) {
 			some_too_big = true;
 		}
@@ -311,13 +306,11 @@
 		sep = ', ';
 	}
 
-	$err_private_msg_too_big.
-		classList.add('hidden');
-	$err_public_msg_too_big.
-		classList.toggle(
-			'hidden',
-			! some_too_big
-		);
+	$err_public_msg_too_big.classList.add('hidden');
+	$err_public_msg_invalid.classList.add('hidden');
+	$err_private_msg_too_big.classList.toggle(
+		'hidden', ! some_too_big
+	);
 	$public_message.value = result;
 ;
 	} else {
@@ -325,7 +318,7 @@
 	let some_too_big = false;
 	let result = ''; let sep = '';
 
-	for (let num of split_args($public_message.value)) {
+	for (let num of split_args($public_message.value, $err_public_msg_invalid)) {
 		if (num.greaterOrEquals(public_key)) {
 			some_too_big = true;
 		}
@@ -336,18 +329,15 @@
 		sep = ', ';
 	}
 
-	$err_public_msg_too_big.
-		classList.add('hidden');
-	$err_private_msg_too_big.
-		classList.toggle(
-			'hidden',
-			! some_too_big
-		);
-	$private_message.value =
-		result;
+	$err_private_msg_too_big.classList.add('hidden');
+	$err_private_msg_invalid.classList.add('hidden');
+	$err_public_msg_too_big.classList.toggle(
+		'hidden', ! some_too_big
+	);
+	$private_message.value = result;
 
 	$private_txt.value =
-		nums2str(split_args(result));
+		nums2str(split_args(result, $err_private_msg_invalid));
 ;
 	}
 
@@ -379,7 +369,7 @@
 			setEncrypt(true);
 			
 	$private_txt.value =
-		nums2str(split_args($private_message.value));
+		nums2str(split_args($private_message.value, $err_private_msg_invalid));
 ;
 			queueRefresh(event);
 		}
@@ -410,14 +400,16 @@
 ;
 		}
 	};
+	$direction.addEventListener('click', evt => {
+		setEncrypt(! encrypt);
+		evt.preventDefault();
+	});
 
 	$private_txt.addEventListener(
 		'input',
 		event => {
 			setEncrypt(true);
-			$private_message.value =
-				str2nums($private_txt.value);
-				
+			$private_message.value = str2nums($private_txt.value);
 			queueRefresh(event);
 		}
 	);
