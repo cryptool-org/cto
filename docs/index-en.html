@@ -263,8 +263,7 @@
 	<form class="form-horizontal">
 		<div class="form-group">
 			
-	<label
-		class="col-sm-3 control-label"
+	<label class="col-sm-3 control-label"
 		for="private-key"><i>d</i> =
 	</label>
 	<div class="col-sm-9"><p
@@ -351,10 +350,8 @@
 
 	<h2>Messages</h2>
 	<p>
-		In the following two text boxes,
-		you can see how encryption and
-		decryption work for concrete
-		inputs (numbers).
+		In the following two text boxes, you can see how encryption and
+		decryption work for concrete inputs (numbers).
 	</p>
 	<form class="form-horizontal">
 		
@@ -374,20 +371,25 @@
 		<label
 			class="col-sm-3 control-label"
 			for="private-message"
-		>Plaintext</label>
+		>Plaintext (sample input 6. 13, 111)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="private-message"
 			value="7"></input></div>
 	</div>
 
-	<div id="err-public-msg-too-big"
+	<div id="err-private-msg-too-big"
 		class="row alert alert-danger"
-	>Plaintext number too big. The
+	>A plaintext number is too big. The
 		maximum value is
-		<span class="max-msg"></span>.
+		<span class="max-msg"></span> as <i>n</i> = <span class="max-msg-n"></span>.
 		Please choose bigger
-		primes.</div>
+		primes to get a bigger <i>n</i>.</div>
+
+	<div id="err-private-msg-invalid"
+		class="row alert alert-danger">
+		Please enter integers.
+	</div>
 
 	
 	<div class="row">
@@ -405,20 +407,24 @@
 		<label
 			class="col-sm-3 control-label"
 			for="public-message"
-		>Ciphertext</label>
+		>Ciphertext (sample input 128, 52, 67)</label>
 		<div class="col-sm-9"><input
 			class="form-control"
 			id="public-message"
 		></input></div>
 	</div>
 
-	<div id="err-private-msg-too-big"
+	<div id="err-public-msg-too-big"
 		class="row alert alert-danger"
-	>Ciphertext number too big. The
+	>A ciphertext number is too big. The
 		maximum value is
-		<span class="max-msg"></span>.
+		<span class="max-msg"></span> as <i>n</i> = <span class="max-msg-n"></span>.
 		Please choose bigger
-		primes.</div>
+		primes to get a bigger <i>n</i>.</div>
+
+	<div id="err-public-msg-invalid" class="row alert alert-danger">
+		Please enter integers.
+	</div>
 
 	</form>
 
@@ -441,7 +447,7 @@
 	<div id="authors"><em>CTOAUTHORS:
 		Timm Knape (thanks to
 		Bernhard Esslinger for the
-		review)</em></div>
+		review) updated 2021-01-14</em></div>
 
 	</div>
 
