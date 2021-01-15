@@ -12,7 +12,7 @@
         "welcome": {
             "header": "Willkommen!",
             "para2": "Die App von <strong>Alice</strong> zeichnet auf, welche Smartphones ihr nahegekommen sind. Alice möchte über Kontakt mit infizierten Personen informiert werden.",
-            "para3": "Die beste Erfahrung mit dieser Seite kann durch Nutzung eines Desktop-PCs erzielt werden.<br/>Falls Sie ein Smartphone verwenden, werfen Sie einen Blick auf die <a href='https://corona-tracing.cryptool.org/'>Corona-Tracing Visualisierungsseite</a>."
+            "para3": "Die beste Erfahrung mit dieser Seite kann durch Nutzung eines Desktop-PCs erzielt werden.<br/>Falls Sie ein Smartphone verwenden, werfen Sie einen Blick auf die <a href='https://corona-tracing.cryptool.org/' target='_blank'>Corona-Tracing Visualisierungsseite</a>."
         },
         "step1": {
             "task": {

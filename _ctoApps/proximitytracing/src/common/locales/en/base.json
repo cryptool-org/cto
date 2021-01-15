@@ -12,7 +12,7 @@
         "welcome": {
             "header": "Welcome!",
             "para2": "<strong>Alice</strong>'s app records which smartphones have come close to her. Alice likes to be informed about contact with infected people.",
-            "para3": "The best experience for this page can be achieved by using a desktop PC.<br/>If you use a smartphone, take a look at the <a href='https://corona-tracing.cryptool.org/'>Corona-Tracing visualization page</a>."
+            "para3": "The best experience for this page can be achieved by using a desktop PC.<br/>If you use a smartphone, take a look at the <a href='https://corona-tracing.cryptool.org/' target='_blank'>Corona-Tracing visualization page</a>."
         },
         "step1": {
             "task": {
