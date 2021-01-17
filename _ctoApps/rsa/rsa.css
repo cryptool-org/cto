@@ -11,6 +11,12 @@
 	.hidden {
 		display: none;
 	}
+	#rsa-container .row.alert.alert-danger {
+		display: inline-block;
+	}
+	#rsa-container .row.alert.alert-danger.hidden {
+		display: none;
+	}
 
 	#rsa-container p.form {
 		margin-left: 32px;

@@ -318,6 +318,12 @@
 	.hidden {
 		display: none;
 	}
+	#rsa-container .row.alert.alert-danger {
+		display: inline-block;
+	}
+	#rsa-container .row.alert.alert-danger.hidden {
+		display: none;
+	}
 @end(css)
 ```
 * Mit der `hidden`-Klasse können Elemente ausgeblendet werden
@@ -574,7 +580,7 @@
 	<h2>@s(Public key)</h2>
 	<p>
 		@s(The product )<i>n</i>@s( is also)
-		@s(called module in the RSA method.)
+		@s(called modulus in the RSA method.)
 	</p>
 @end(container en)
 ```
@@ -684,7 +690,7 @@
 @add(container en)
 	<p>
 		@s(The public key consists of the)
-		@s(module) <i>n</i> @s(and)
+		@s(modulus) <i>n</i> @s(and)
 		@s(an exponent) <i>e</i>@s(.)
 	</p>
 @end(container en)
@@ -1466,7 +1472,7 @@
 @def(crypt boxes de)
 	@put(text box de)
 	<div class="form-group">
-		<label @v(for)="private-message">@s(Klartext) (Eingabe bspw. 6, 13, 111) =</label>
+		<label @v(for)="private-message">@s(Klartext) (Eingabe bspw. 6, 13, 111)</label>
 		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 @end(crypt boxes de)
@@ -1511,7 +1517,7 @@
 ```
 @add(crypt boxes de)
 	<div class="form-group">
-		<label @v(for)="public-message">@s(Geheimtext) (Eingabe bspw. 128, 52, 67) =</label>
+		<label @v(for)="public-message">@s(Geheimtext) (Eingabe bspw. 128, 52, 67)</label>
 		<input class="form-control" id="public-message"></input>
 	</div>
 @end(crypt boxes de)
@@ -1547,7 +1553,7 @@
 	@put(text box en)
 	<div class="form-group">
 		<label @v(for)="private-message"
-		>@s(Plaintext) (sample input 6. 13, 111) =</label>
+		>@s(Plaintext) (sample input 6, 13, 111)</label>
 		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 @end(crypt boxes en)
@@ -1588,7 +1594,7 @@
 @add(crypt boxes en)
 	<div class="form-group">
 		<label @v(for)="public-message"
-		>@s(Ciphertext) (sample input 128, 52, 67) =</label>
+		>@s(Ciphertext) (sample input 128, 52, 67)</label>
 		<input class="form-control" id="public-message"></input>
 	</div>
 @end(crypt boxes en)
@@ -2053,7 +2059,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (Dank an)
 		@s(Bernhard Esslinger für das)
-		@s(Review@)) letzter Update 2021-01-14</em></div>
+		@s(Review@)), letzter Update 2021-01-14</em></div>
 @end(container de)
 ```
 * Die Seite endet mit dem Autor-Tag
@@ -2063,7 +2069,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (thanks to)
 		@s(Bernhard Esslinger for the)
-		@s(review@)) updated 2021-01-14</em></div>
+		@s(review@)), last 2021-01-14</em></div>
 @end(container en)
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
@@ -2242,7 +2248,7 @@
 ```
 @def(text box de)
 	<div class="form-group">
-		<label @v(for)="private-txt">@s(Texteingabe) =</label>
+		<label @v(for)="private-txt">@s(Texteingabe)</label>
 		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 @end(text box de)
@@ -2251,7 +2257,7 @@
 ```
 @def(text box en)
 	<div class="form-group">
-		<label @v(for)="private-txt">@s(text entry) =</label>
+		<label @v(for)="private-txt">@s(text entry)</label>
 		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 @end(text box en)
@@ -2268,7 +2274,7 @@
 @add(refresh)
 	$private_txt_row.classList.toggle(
 		'hidden',
-		public_key.lesser(1000)
+		public_key.lesser(256)
 	);
 @end(refresh)
 ```
