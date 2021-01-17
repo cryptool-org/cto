@@ -335,7 +335,7 @@
 
 	$private_txt_row.classList.toggle(
 		'hidden',
-		public_key.lesser(1000)
+		public_key.lesser(256)
 	);
 ;
 	};
