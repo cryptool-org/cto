@@ -601,7 +601,7 @@
 @def(n elements)
 	<i>n</i>@s( = )<i>p</i>@s( × )<i>q</i>@s( =)
 	<span id="public-key"></span>
-		@s(()<span id="public-key-length"></span> @s(Bit@))
+		@s(()<span id="public-key-length"></span> @s(bit@))
 @end(n elements)
 ```
 * Die Felder bilden ein eigenes Fragment,
@@ -1444,7 +1444,7 @@
 @add(container de)
 	<h2>@s(Nachrichten)</h2>
 	<p>
-		@s(In den folgenden zwei Textboxen können Sie sehen, wie das Ver-)
+		@s(In den folgenden zwei Textboxen 'Klartext' und 'Geheimtext' können Sie sehen, wie das Ver-)
 		@s(und Entschlüsseln für konkrete Eingaben (Zahlen@) )@s(funktioniert.)
 	</p>
 	<form class="form-horizontal">
@@ -1458,7 +1458,7 @@
 @add(container en)
 	<h2>@s(Messages)</h2>
 	<p>
-		@s(In the following two text boxes, you can see how encryption and)
+		@s(In the following two text boxes 'Plaintext' and 'Ciphertext', you can see how encryption and)
 		@s(decryption work for concrete inputs (numbers@).)
 	</p>
 	<form class="form-horizontal">
@@ -2059,7 +2059,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (Dank an)
 		@s(Bernhard Esslinger für das)
-		@s(Review@)), letzter Update 2021-01-14</em></div>
+		@s(Review@)), letzter Update 2021-01-21</em></div>
 @end(container de)
 ```
 * Die Seite endet mit dem Autor-Tag
@@ -2069,7 +2069,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (thanks to)
 		@s(Bernhard Esslinger for the)
-		@s(review@)), last 2021-01-14</em></div>
+		@s(review@)), last update 2021-01-21</em></div>
 @end(container en)
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
@@ -2257,7 +2257,7 @@
 ```
 @def(text box en)
 	<div class="form-group">
-		<label @v(for)="private-txt">@s(text entry)</label>
+		<label @v(for)="private-txt">@s(Text entry)</label>
 		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 @end(text box en)
