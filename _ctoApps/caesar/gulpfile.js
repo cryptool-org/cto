@@ -3,6 +3,7 @@
 let gulp = require("gulp") // import?
 let i18n = require("gulp-i18n-localize")
 let include = require("gulp-file-include")
+let ts = require("gulp-typescript")
 let rename = require("gulp-rename")
 let merge = require("merge-stream")
 
@@ -25,7 +26,7 @@ const collectLocales = function() {
 }
 
 const processHTML = function() {
-    return gulp.src(["src/*/*.html", "!src/common/**", "!src/*/resources/**"])
+    return gulp.src(["src/*/*.html", "!src/common/**", "!src/*/resources/**", "!**/local-editor.html"])
         .pipe(include())
         .pipe(translate())
         .pipe(dest())
@@ -37,9 +38,12 @@ const processCSS = function() {
         .pipe(dest())
 } // needs collectLocales
 
-const processJS = function() {
-    return gulp.src(["src/**/*.js", "!src/common/**", "!src/*/resources/**"])
+const processTSandJS = function() {
+    return gulp.src(["src/**/*.ts", "src/**/*.js", "!src/common/**", "!src/*/resources/**"])
         .pipe(include())
+        .pipe(ts({
+            allowJs: true
+        })).on("error", () => { /* ignore errors */})
         .pipe(translate())
         .pipe(dest())
 } // needs collectLocales
@@ -69,5 +73,5 @@ const copyResources = function() {
 }
 
 module.exports = {
-    default: gulp.series(collectLocales, copyConfig, copyCodeMirror, copyResources, processHTML, processCSS, processJS)
+    default: gulp.series(collectLocales, copyConfig, copyCodeMirror, copyResources, processHTML, processCSS, processTSandJS)
 }

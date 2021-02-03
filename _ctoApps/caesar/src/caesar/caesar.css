@@ -27,6 +27,10 @@
     color: var(--text-color-invert)
 }
 
+#caesar-python-local-command {
+    white-space: pre-line;
+}
+
 #caesar-python-local-editor-font-size input {
     width: auto !important;
     display: inline-block !important;

@@ -153,83 +153,15 @@
     </button>
 </div>
 
+<!-- collapsable area of the local Python implementation -->
 <div id="caesar-python-local-collapse" class="collapse pt-3">
-
-    <div class="alert alert-info">${{caesar.PYTHON_LOCAL_NOTICE}}$</div>
-
-    <!-- load animation (will be removed by JS after loading) -->
-    <div id="caesar-python-local-load-animation" class="py-2 text-center alert alert-success" style="font-size: 1.2em">
-        <i class="fa fa-refresh fa-spin fa-fw mr-1"></i>${{caesar.LOADING_PYTHON}}$
-    </div>
-
-    <!-- command to run the python code on a local terminal -->
-    <div id="caesar-python-local-command-alert" class="alert alert-dark mb-2 d-none">
-        <b class="mr-3">${{caesar.TERMINAL_COMMAND}}$:</b><span id="caesar-python-local-command" class="text-monospace"></span>
-    </div>
-
-    <!-- python code to initialize the editor from -->
-    <div id="caesar-python-local-textarea-wrapper" class="d-none"> <!-- the editor will spawn below the textarea -->
-        <textarea class="CodeMirror">@@include("./local-python-code.py")</textarea>
-    </div>
-
-    <!-- options for the local Python editor -->
-    <div id="caesar-python-local-ide-options" class="row d-flex justify-content-between mt-2 d-none">
-
-        <div class="col-auto mt-1">
-
-            <!-- run, reset, and download the code -->
-            <button id="caesar-python-local-run" class="btn btn-success mb-1"><i class="fa fa-play mr-1"></i>${{caesar.RUN_AGAIN}}$</button>
-            <button id="caesar-python-local-reset-code-trigger" class="btn btn-secondary mb-1"><i class="fa fa-undo mr-1"></i>${{caesar.RESET_CODE}}$</button>
-            <button id="caesar-python-local-download-code" class="btn btn-info mb-1"><i class="fa fa-download mr-1"></i>${{caesar.DOWNLOAD_CODE}}$</button>
-        
-        </div>
-        
-        <div class="col-auto mt-1">
-            
-            <!-- select theme for local Python editor -->
-            <div id="caesar-python-local-theme-selector" class="d-inline-block form-inline mr-3">
-                <span>Theme:</span>
-                <div class="btn-group dropdown">
-                    <button id="caesar-python-local-theme-selector-caption" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"></button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item">eclipse</a>
-                        <a class="dropdown-item">shadowfox</a>
-                        <a class="dropdown-item">yeti</a>
-                        <a class="dropdown-item">solarized</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- define font size of local Python editor -->
-            <div id="caesar-python-local-editor-font-size" class="d-inline-block form-inline">
-                <span>${{caesar.FONTSIZE}}$:</span>
-                <input type="number" class="form-control text-center" step="1" value="12" min="1" max="50">
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- placeholder for scripts for local Python editor -->
-    <div id="caesar-python-local-scripts"></div> <!-- will be filled by JS -->
-
-    <!-- modal dialog to reset the code to its initial value -->
-    <div id="caesar-python-local-reset-code-modal" class="modal fade"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title"><i class="fa fa-undo mr-2"></i>${{caesar.RESET_CODE_MODAL_HEADER}}$</h5>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-            <p class="mb-0">${{caesar.RESET_CODE_MODAL_CONTENT}}$</p>
-        </div>
-        <div class="modal-footer">
-            <button id="caesar-python-local-reset-code" class="btn btn-primary"><i class="fa fa-check mr-1"></i>${{caesar.YES}}$</button>
-            <button class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>${{caesar.NO}}$</button>
-        </div>
-    </div></div></div>
-
+    <div class="alert alert-info">${{editor.PYTHON_LOCAL_NOTICE}}$</div>
+    @@include("./LocalEditor/LocalPythonEditor.html", {
+        "codesource": "../local-python-code.py"
+    })
 </div>
 
+<!-- collapsable area of the remote Python implementation -->
 <div id="caesar-python-remote-collapse" class="collapse">
     <div class="alert alert-info mb-2 mt-3">${{caesar.PYTHON_REMOTE_NOTICE}}$</div>
     <iframe height="900px" width="100%" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe> <!-- src will be set via JS -->
@@ -237,48 +169,57 @@
 
 <script>
 
+    let localPytonEditorObject
+    let localPythonAssetsInserted = false
+    let localPythonScriptsLoaded = {}
+
+    const insertPythonAssets = (callback = () => {}) => {
+
+        // only execute once
+        if(localPythonAssetsInserted) return
+
+        // load stylesheets
+        CTO_Globals.localPythonStyles.forEach(styleURL => {
+            if(!styleURL.includes("://")) 
+                styleURL = CTO_Globals.pluginRoot + styleURL
+            loadStylesheet(styleURL)
+        })
+
+        // load scripts
+        CTO_Globals.localPythonScripts.forEach((scriptURL, index) => {
+            if(!scriptURL.includes("://")) 
+                scriptURL = CTO_Globals.pluginRoot + scriptURL
+            localPythonScriptsLoaded[index] = false
+            loadScript(scriptURL, (e) => {
+                localPythonScriptsLoaded[index] = true
+                if(!Object.values(localPythonScriptsLoaded).includes(false)) { // all scripts loaded
+                    // when pyodide loaded
+                    languagePluginLoader.then(callback)
+                }
+            })
+        })
+
+        localPythonAssetsInserted = true
+
+    }
+
     // toggle local collapse on button click
     $("#caesar-run-as-python-local").click(function() {
         $("#caesar-python-local-collapse").collapse("toggle")
         $("#caesar-python-remote-collapse").collapse("hide")
     })
 
-    let localPythonAssetsLoaded = false
-
-    // when local collapse gets shown -> set button state and include Python editor (also use Python for calculations)
+    // when local collapse gets shown -> set button state, include Python editor, and use Python for calculations
     $("#caesar-python-local-collapse").on("show.bs.collapse", function() {
         $("#caesar-run-as-python-local").html('<i class="fa fa-chevron-up mr-1"></i> ${{caesar.HIDE_LOCAL_PYTHON}}$')
 
-        // include assets for local Python editor
-        if(!localPythonAssetsLoaded) {
-            let localPythonStyles = [
-                "resources/codemirror/lib/codemirror.css",
-                "resources/codemirror/theme/shadowfox.css",
-                "resources/codemirror/theme/eclipse.css",
-                "resources/codemirror/theme/yeti.css",
-                "resources/codemirror/theme/solarized.css"
-            ]
-            localPythonStyles.forEach(styleURL => {
-                let styleElem = document.createElement("link")
-                styleElem.type = "text/css"; styleElem.rel = "stylesheet"
-                styleElem.href = CTO_Globals.pluginRoot + styleURL
-                document.head.appendChild(styleElem)
+        // insert assets for local Python editor
+        insertPythonAssets(() => { // only executed once
+            let editorElem = document.querySelector("#caesar-python-local-collapse")
+            localPytonEditorObject = new LocalCaesarPythonEditor(editorElem, pyodide, caesar, () => {
+                window.usePython = true // use Python for calculations now
             })
-            let localPythonScripts = [
-                "resources/codemirror/lib/codemirror.js",
-                "resources/codemirror/mode/python/python.js",
-                "resources/pyodide.js", // maybe load via CDN?
-                "caesar-python-" + window.ioApp.lang + ".js"
-            ]
-            localPythonScripts.forEach(scriptURL => {
-                let scriptElem = document.createElement("script")
-                scriptElem.src = CTO_Globals.pluginRoot + scriptURL
-                $("#caesar-python-local-scripts").append(scriptElem)
-            })
-            localPythonAssetsLoaded = true
-        }
-
-        window.usePython = true
+        })
     })
 
     // when local collapse gets hidden -> set button state back again and stop using Python for calculations

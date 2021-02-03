@@ -220,7 +220,7 @@ class CaesarController {
 				this.alphabet.alphabet, 
 				this.keepChars.value)
 
-		else this.output.value = runLocalPythonCode()
+		else this.output.value = localPytonEditorObject.runEditorCode()
 
 	}
 }

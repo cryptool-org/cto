@@ -3,14 +3,32 @@
     "name": "caesar",
 
     "styles": [
-        "./caesar.css"
+        "caesar.css"
     ],
 
     "scripts": [
         "https://cdn.jsdelivr.net/npm/@arguiot/broadcast.js@1.0.2/dist/broadcast.min.js",
-        "./caesar-%lang%.js"
+        "caesar-%lang%.js"
     ],
 
-    "html": "fragment-%lang%.html"
+    "html": "fragment-%lang%.html",
+
+    "globals": {
+        "localPythonStyles": [
+            "resources/codemirror/lib/codemirror.css",
+            "resources/codemirror/theme/shadowfox.css",
+            "resources/codemirror/theme/eclipse.css",
+            "resources/codemirror/theme/yeti.css",
+            "resources/codemirror/theme/solarized.css"
+        ],
+        "localPythonScripts": [
+            "resources/codemirror/lib/codemirror.js",
+            "https://cdn.jsdelivr.net/pyodide/v0.15.0/full/pyodide.js",
+
+            "LocalEditor/LocalEditor-%lang%.js",
+            "LocalEditor/LocalPythonEditor-%lang%.js",
+            "LocalEditor/LocalCaesarPythonEditor-%lang%.js"
+        ]
+    }
 
 }

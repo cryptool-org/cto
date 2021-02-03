@@ -1,0 +1,57 @@
+<!-- source code to initialize the editor from -->
+<div class="editor-textarea-wrapper d-none"> <!-- the editor will spawn below the textarea -->
+    <textarea class="CodeMirror">@@include("@@codesource")</textarea>
+</div>
+
+<!-- options for the local editor -->
+<div class="editor-options row d-flex justify-content-between mt-2 d-none">
+
+    <div class="col-auto mt-1">
+
+        <!-- run, reset, and download the code -->
+        <button class="editor-run btn btn-success mb-1"><i class="fa fa-play mr-1"></i>${{editor.RUN_AGAIN}}$</button>
+        <button class="editor-reset-code-trigger btn btn-secondary mb-1"><i class="fa fa-undo mr-1"></i>${{editor.RESET_CODE}}$</button>
+        <button class="editor-download-code btn btn-info mb-1"><i class="fa fa-download mr-1"></i>${{editor.DOWNLOAD_CODE}}$</button>
+        
+    </div>
+        
+    <div class="col-auto mt-1">
+            
+        <!-- select theme for local editor -->
+        <div class="editor-theme-selector d-inline-block form-inline mr-3">
+            <span>Theme:</span>
+            <div class="btn-group dropdown">
+                <button class="editor-theme-selector-caption btn btn-dark dropdown-toggle" data-toggle="dropdown"></button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item">eclipse</a>
+                    <a class="dropdown-item">shadowfox</a>
+                    <a class="dropdown-item">yeti</a>
+                    <a class="dropdown-item">solarized</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- define font size of local editor -->
+        <div class="editor-font-size d-inline-block form-inline">
+            <span>${{editor.FONTSIZE}}$:</span>
+            <input type="number" class="form-control text-center" step="1" value="12" min="1" max="50">
+        </div>
+
+    </div>
+
+</div>
+
+<!-- modal dialog to reset the code to its initial value -->
+<div class="editor-reset-code-modal modal fade"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title"><i class="fa fa-undo mr-2"></i>${{editor.RESET_CODE_MODAL_HEADER}}$</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        <p class="mb-0">${{editor.RESET_CODE_MODAL_CONTENT}}$</p>
+    </div>
+    <div class="modal-footer">
+        <button class="editor-reset-code btn btn-primary"><i class="fa fa-check mr-1"></i>${{editor.YES}}$</button>
+        <button class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>${{editor.NO}}$</button>
+    </div>
+</div></div></div>
