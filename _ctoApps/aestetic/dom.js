@@ -104,7 +104,7 @@ function center(box) {
 	function updateCollapseState() {
 		for (let key in expanded) {
 			if (! expanded.hasOwnProperty(key)) { continue; }
-			const $obj = jQuery(key);
+			const $obj = jQuery('#' + key);
 			if (! $obj) { continue; }
 			const shouldBeExpanded = expanded[key];
 			const isExpanded = ! $obj.hasClass('collapsed');
