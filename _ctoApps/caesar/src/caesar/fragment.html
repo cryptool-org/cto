@@ -116,7 +116,7 @@
 
                 </p>
             </div>
-        
+
         </div>
     </div>
 </div>
@@ -167,6 +167,12 @@
     <iframe height="900px" width="100%" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe> <!-- src will be set via JS -->
 </div>
 
+<!-- <div id="secondEditor">
+    @@ \ include("./LocalEditor/LocalPythonEditor.html", {
+        "codesource": "../local-python-code.py"
+    })
+</div> -->
+
 <script>
 
     let localPytonEditorObject
@@ -176,18 +182,18 @@
     const insertPythonAssets = (callback = () => {}) => {
 
         // only execute once
-        if(localPythonAssetsInserted) return
+        if(localPythonAssetsInserted) return false
 
         // load stylesheets
         CTO_Globals.localPythonStyles.forEach(styleURL => {
-            if(!styleURL.includes("://")) 
+            if(!styleURL.includes("://"))
                 styleURL = CTO_Globals.pluginRoot + styleURL
             loadStylesheet(styleURL)
         })
 
         // load scripts
         CTO_Globals.localPythonScripts.forEach((scriptURL, index) => {
-            if(!scriptURL.includes("://")) 
+            if(!scriptURL.includes("://"))
                 scriptURL = CTO_Globals.pluginRoot + scriptURL
             localPythonScriptsLoaded[index] = false
             loadScript(scriptURL, (e) => {
@@ -203,6 +209,21 @@
 
     }
 
+    /* let secondEditorObject
+    const includeSecondEditorForTesting = () => {
+
+        const spawnEditor = () => {
+            let editorElem2 = document.getElementById("secondEditor")
+            secondEditorObject = new LocalPythonEditor(editorElem2, pyodide, () => {
+                console.log("yay, spawned the second one! :D")
+            })
+        }
+
+        if(localPythonAssetsInserted) spawnEditor()
+        else insertPythonAssets(() => { spawnEditor() })
+
+    }; includeSecondEditorForTesting() */
+
     // toggle local collapse on button click
     $("#caesar-run-as-python-local").click(function() {
         $("#caesar-python-local-collapse").collapse("toggle")
@@ -213,13 +234,19 @@
     $("#caesar-python-local-collapse").on("show.bs.collapse", function() {
         $("#caesar-run-as-python-local").html('<i class="fa fa-chevron-up mr-1"></i> ${{caesar.HIDE_LOCAL_PYTHON}}$')
 
+        // callback for when python is inizialized
+        let usePythonNow = () => {
+            window.usePython = true // use Python for calculations now
+            caesar.render() // calculate and render output again
+        }
+
         // insert assets for local Python editor
-        insertPythonAssets(() => { // only executed once
+        let executed = insertPythonAssets(() => { // only executed once
             let editorElem = document.querySelector("#caesar-python-local-collapse")
-            localPytonEditorObject = new LocalCaesarPythonEditor(editorElem, pyodide, caesar, () => {
-                window.usePython = true // use Python for calculations now
-            })
+            localPytonEditorObject = new LocalCaesarPythonEditor(editorElem, pyodide, caesar, usePythonNow)
         })
+
+        if(executed === false) usePythonNow()
     })
 
     // when local collapse gets hidden -> set button state back again and stop using Python for calculations
