@@ -57,7 +57,7 @@
 		<i>q</i>.
 	</p>
 
-	<form class="form-horizontal">
+	<form id="primes-form" class="form-horizontal">
 		
 	<div class="form-group">
 		<label for="prime-1">1. Primzahl
@@ -125,7 +125,7 @@
 		einem Exponenten <i>e</i>.
 	</p>
 
-	<form class="form-horizontal">
+	<form id="e-form" class="form-horizontal">
 		<div class="form-group">
 			
 	<label for="base"><i>e</i>
@@ -318,16 +318,16 @@
 		In den folgenden zwei Textboxen 'Klartext' und 'Geheimtext' können Sie sehen, wie das Ver-
 		und Entschlüsseln für konkrete Eingaben (Zahlen) funktioniert.
 	</p>
-	<form class="form-horizontal">
+	<form id="crypt-boxes-form" class="form-horizontal">
 		
 	
 	<div class="form-group">
-		<label for="private-txt">Texteingabe</label>
+		<label for="private-txt">Klartext (als Text eingeben)</label>
 		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 
 	<div class="form-group">
-		<label for="private-message">Klartext (Eingabe bspw. 6, 13, 111)</label>
+		<label for="private-message">Klartext (als Zahlen eingeben, bspw. 6, 13, 111)</label>
 		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 
@@ -359,7 +359,7 @@
 
 
 	<div class="form-group">
-		<label for="public-message">Geheimtext (Eingabe bspw. 128, 52, 67)</label>
+		<label for="public-message">Geheimtext (als Zahlen eingeben, bspw. 128, 52, 67)</label>
 		<input class="form-control" id="public-message"></input>
 	</div>
 

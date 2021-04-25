@@ -33,7 +33,7 @@
 		two primes <i>p</i> and <i>q</i>.
 	</p>
 
-	<form class="form-horizontal">
+	<form id="primes-form" class="form-horizontal">
 		
 	<div class="form-group">
 		<label for="prime-1">1st prime
@@ -98,7 +98,7 @@
 		an exponent <i>e</i>.
 	</p>
 
-	<form class="form-horizontal">
+	<form id="e-form" class="form-horizontal">
 		<div class="form-group">
 			
 	<label for="base"><i>e</i>
@@ -285,17 +285,17 @@
 		In the following two text boxes 'Plaintext' and 'Ciphertext', you can see how encryption and
 		decryption work for concrete inputs (numbers).
 	</p>
-	<form class="form-horizontal">
+	<form id="crypt-boxes-form" class="form-horizontal">
 		
 	
 	<div class="form-group">
-		<label for="private-txt">Text entry</label>
+		<label for="private-txt">Plaintext (enter text)</label>
 		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 
 	<div class="form-group">
 		<label for="private-message"
-		>Plaintext (sample input 6, 13, 111)</label>
+		>Plaintext (enter numbers, e.g. 6, 13, 111)</label>
 		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 
@@ -326,7 +326,7 @@
 
 	<div class="form-group">
 		<label for="public-message"
-		>Ciphertext (sample input 128, 52, 67)</label>
+		>Ciphertext (enter numbers, e.g. 128, 52, 67)</label>
 		<input class="form-control" id="public-message"></input>
 	</div>
 

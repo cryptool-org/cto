@@ -223,6 +223,10 @@
 ;
 	};
 
+	const doNothing = event => {
+		event.preventDefault();
+	};
+
 	const refresh = () => {
 		
 	const prime1 =
@@ -341,6 +345,10 @@
 	};
 	refresh();
 
+	$('primes-form').addEventListener(
+		'submit', doNothing
+	);
+
 	$prime1.addEventListener(
 		'input', queueRefresh
 	);
@@ -349,7 +357,15 @@
 		'input', queueRefresh
 	);
 
+	$('e-form').addEventListener(
+		'submit', doNothing
+	);
+
 	$e.addEventListener('input', queueRefresh);
+
+	$('crypt-boxes-form').addEventListener(
+		'submit', doNothing
+	);
 
 	$private_message.addEventListener(
 		'input',

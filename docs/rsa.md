@@ -271,7 +271,7 @@
 
 ```
 @add(container de)
-	<form class="form-horizontal">
+	<form id="primes-form" class="form-horizontal">
 		@put(primes de)
 	</form>
 @end(container de)
@@ -281,7 +281,7 @@
 
 ```
 @add(container en)
-	<form class="form-horizontal">
+	<form id="primes-form" class="form-horizontal">
 		@put(primes en)
 	</form>
 @end(container en)
@@ -365,6 +365,16 @@
 
 ```
 @add(setup rsa)
+	const @f(doNothing) = event => {
+		event.preventDefault();
+	};
+@end(setup rsa)
+```
+* bei `form`-Tags muss das Submit unterbunden werden
+* sonst wird bei jedem `return` die Seite neu geladen
+
+```
+@add(setup rsa)
 	const @f(refresh) = () => {
 		@put(refresh);
 	};
@@ -410,6 +420,15 @@
 ```
 * Referenzen auf das Textfeld mit der ID `@v(prime-1)` und auf die dazu
   gehörende Fehlermeldung werden zwischengespeichert
+
+```
+@add(setup rsa)
+	@f($)('primes-form').addEventListener(
+		'submit', @f(doNothing)
+	);
+@end(setup rsa)
+```
+* submit-Funktion der `form` deaktivieren
 
 ```
 @add(setup rsa)
@@ -699,7 +718,7 @@
 
 ```
 @add(container de)
-	<form class="form-horizontal">
+	<form id="e-form" class="form-horizontal">
 		<div class="form-group">
 			@mul(e group)
 		</div>
@@ -727,7 +746,7 @@
 
 ```
 @add(container en)
-	<form class="form-horizontal">
+	<form id="e-form" class="form-horizontal">
 		<div class="form-group">
 			@mul(e group)
 		</div>
@@ -752,6 +771,15 @@
 * Ebenso wird eine Referenz der Fehlermeldung gespeichert
 * Ob die Fehlermeldung angezeigt wird, kann erst entschieden werden,
   wenn `@f(φ)(n)` berechnet wurde
+
+```
+@add(setup rsa)
+	@f($)('e-form').addEventListener(
+		'submit', @f(doNothing)
+	);
+@end(setup rsa)
+```
+* submit bei `form` deaktivieren
 
 ```
 @add(setup rsa)
@@ -1447,7 +1475,7 @@
 		@s(In den folgenden zwei Textboxen 'Klartext' und 'Geheimtext' können Sie sehen, wie das Ver-)
 		@s(und Entschlüsseln für konkrete Eingaben (Zahlen@) )@s(funktioniert.)
 	</p>
-	<form class="form-horizontal">
+	<form id="crypt-boxes-form" class="form-horizontal">
 		@put(crypt boxes de)
 	</form>
 @end(container de)
@@ -1461,7 +1489,7 @@
 		@s(In the following two text boxes 'Plaintext' and 'Ciphertext', you can see how encryption and)
 		@s(decryption work for concrete inputs (numbers@).)
 	</p>
-	<form class="form-horizontal">
+	<form id="crypt-boxes-form" class="form-horizontal">
 		@put(crypt boxes en)
 	</form>
 @end(container en)
@@ -1472,7 +1500,7 @@
 @def(crypt boxes de)
 	@put(text box de)
 	<div class="form-group">
-		<label @v(for)="private-message">@s(Klartext) (Eingabe bspw. 6, 13, 111)</label>
+		<label @v(for)="private-message">@s(Klartext) (als Zahlen eingeben, bspw. 6, 13, 111)</label>
 		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 @end(crypt boxes de)
@@ -1517,7 +1545,7 @@
 ```
 @add(crypt boxes de)
 	<div class="form-group">
-		<label @v(for)="public-message">@s(Geheimtext) (Eingabe bspw. 128, 52, 67)</label>
+		<label @v(for)="public-message">@s(Geheimtext) (als Zahlen eingeben, bspw. 128, 52, 67)</label>
 		<input class="form-control" id="public-message"></input>
 	</div>
 @end(crypt boxes de)
@@ -1553,7 +1581,7 @@
 	@put(text box en)
 	<div class="form-group">
 		<label @v(for)="private-message"
-		>@s(Plaintext) (sample input 6, 13, 111)</label>
+		>@s(Plaintext) (enter numbers, e.g. 6, 13, 111)</label>
 		<input class="form-control" id="private-message" value="7"></input>
 	</div>
 @end(crypt boxes en)
@@ -1594,7 +1622,7 @@
 @add(crypt boxes en)
 	<div class="form-group">
 		<label @v(for)="public-message"
-		>@s(Ciphertext) (sample input 128, 52, 67)</label>
+		>@s(Ciphertext) (enter numbers, e.g. 128, 52, 67)</label>
 		<input class="form-control" id="public-message"></input>
 	</div>
 @end(crypt boxes en)
@@ -1675,6 +1703,7 @@
 @add(refresh)
 	const max_msg = public_key.subtract(one).toString();
 @end(refresh)
+
 ```
 * Die größte mögliche Nachricht ist um eins kleiner als der öffentliche
   Schlüssel
@@ -1705,6 +1734,15 @@
 * Die Referenzen auf DOM-Elemente für Klartext und Geheimtext werden in
   Variablen abgelegt
 * Ebenso die Referenzen auf die Fehlermeldungen
+
+```
+@add(setup rsa)
+	@f($)('crypt-boxes-form').addEventListener(
+		'submit', @f(doNothing)
+	);
+@end(setup rsa)
+```
+* `submit` bei `form` unterbinden
 
 ```
 @add(setup rsa)
@@ -2248,7 +2286,7 @@
 ```
 @def(text box de)
 	<div class="form-group">
-		<label @v(for)="private-txt">@s(Texteingabe)</label>
+		<label @v(for)="private-txt">Klartext (als Text eingeben)</label>
 		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 @end(text box de)
@@ -2257,7 +2295,7 @@
 ```
 @def(text box en)
 	<div class="form-group">
-		<label @v(for)="private-txt">@s(Text entry)</label>
+		<label @v(for)="private-txt">Plaintext (enter text)</label>
 		<input class="form-control" id="private-txt" value=""></input>
 	</div>
 @end(text box en)
