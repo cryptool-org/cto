@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "babel-preset-env": "^1.4.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.5.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-csso": "^2.0.0",

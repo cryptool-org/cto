@@ -66,17 +66,12 @@ gulp.task('bootstrap', function () {
         .pipe(dest())
 });
 
-gulp.task('bootstrap-fonts', function () {
-    return gulp.src(['node_modules/bootstrap/dist/fonts/*'])
-        .pipe(gulp.dest('dist/fonts'));
-});
-
 gulp.task('jquery', function() {
     return gulp.src('node_modules/jquery/dist/jquery.js')
         .pipe(dest())
 });
 
-gulp.task('default', ['html', 'js', 'css', 'config', 'bootstrap', 'bootstrap-fonts', 'jquery']);
+gulp.task('default', ['html', 'js', 'css', 'config', 'bootstrap', 'jquery']);
 
 let remote_dir = '/var/www/cryptool-dev/_ctoApps/aestetic';
 function get_remote_path(p) { return remote_dir + path.basename(p); }

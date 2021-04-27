@@ -166,7 +166,24 @@ const test_iv = [
 
 const testcases = [
 	{
-		name: 'FIPS: AES-256',
+		name: 'colored AES-128',
+		key: [
+			0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00,
+			0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00
+		],
+		rounds: std_rounds.aes128,
+		input: [
+			0x00, 0x00, 0x01, 0x01,  0x03, 0x03, 0x07, 0x07,
+			0x0f, 0x0f, 0x1f, 0x1f,  0x3f, 0x3f, 0x7f, 0x7f
+		],
+		encoded: [
+			0xc7, 0xd1, 0x24, 0x19,  0x48, 0x9e, 0x3b, 0x62,
+			0x33, 0xa2, 0xc5, 0xa7,  0xf4, 0x56, 0x31, 0x72
+		],
+		colored: true,
+		chaining: Chaining.None
+	}, {
+		name: 'FIPS test vector: AES-256',
 		key: [
 			0x00, 0x01, 0x02, 0x03,  0x04, 0x05, 0x06, 0x07,
 			0x08, 0x09, 0x0a, 0x0b,  0x0c, 0x0d, 0x0e, 0x0f,
@@ -185,7 +202,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.None
 	}, {
-		name: 'FIPS: AES-128',
+		name: 'FIPS test vector: AES-128',
 		key: [
 			0x00, 0x01, 0x02, 0x03,  0x04, 0x05, 0x06, 0x07,
 			0x08, 0x09, 0x0a, 0x0b,  0x0c, 0x0d, 0x0e, 0x0f
@@ -202,7 +219,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.None
 	}, {
-		name: 'FIPS: AES-192',
+		name: 'FIPS test vector: AES-192',
 		key: [
 			0x00, 0x01, 0x02, 0x03,  0x04, 0x05, 0x06, 0x07,
 			0x08, 0x09, 0x0a, 0x0b,  0x0c, 0x0d, 0x0e, 0x0f,
@@ -220,24 +237,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.None
 	}, {
-		name: 'colored AES-128',
-		key: [
-			0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00,
-			0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00
-		],
-		rounds: std_rounds.aes128,
-		input: [
-			0x00, 0x00, 0x01, 0x01,  0x03, 0x03, 0x07, 0x07,
-			0x0f, 0x0f, 0x1f, 0x1f,  0x3f, 0x3f, 0x7f, 0x7f
-		],
-		encoded: [
-			0xc7, 0xd1, 0x24, 0x19,  0x48, 0x9e, 0x3b, 0x62,
-			0x33, 0xa2, 0xc5, 0xa7,  0xf4, 0x56, 0x31, 0x72
-		],
-		colored: true,
-		chaining: Chaining.None
-	}, {
-		name: 'AES/ECB-128-1',
+		name: 'AES/ECB-128 test vector #1',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[0],
@@ -250,7 +250,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-128-2',
+		name: 'AES/ECB-128 test vector #2',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[1],
@@ -263,7 +263,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-128-3',
+		name: 'AES/ECB-128 test vector #3',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[2],
@@ -276,7 +276,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-128-4',
+		name: 'AES/ECB-128 test vector #4',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[3],
@@ -289,7 +289,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-192-1',
+		name: 'AES/ECB-192 test vector #1',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[0],
@@ -302,7 +302,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-192-2',
+		name: 'AES/ECB-192 test vector #2',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[1],
@@ -315,7 +315,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-192-3',
+		name: 'AES/ECB-192 test vector #3',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[2],
@@ -328,7 +328,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-192-4',
+		name: 'AES/ECB-192 test vector #4',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[3],
@@ -341,7 +341,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-256-1',
+		name: 'AES/ECB-256 test vector #1',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[0],
@@ -354,7 +354,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-256-2',
+		name: 'AES/ECB-256 test vector #2',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[1],
@@ -367,7 +367,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-256-3',
+		name: 'AES/ECB-256 test vector #3',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[2],
@@ -380,7 +380,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/ECB-256-4',
+		name: 'AES/ECB-256 test vector #4',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[3],
@@ -393,7 +393,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.ECB
 	}, {
-		name: 'AES/CBC-128-1',
+		name: 'AES/CBC-128 test vector #1',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[0],
@@ -407,7 +407,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-128-2',
+		name: 'AES/CBC-128 test vector #2',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[1],
@@ -424,7 +424,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-128-3',
+		name: 'AES/CBC-128 test vector #3',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[2],
@@ -441,7 +441,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-128-4',
+		name: 'AES/CBC-128 test vector #4',
 		key: test_keys.aes128,
 		rounds: std_rounds.aes128,
 		input: test_inputs[3],
@@ -458,7 +458,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-192-1',
+		name: 'AES/CBC-192 test vector #1',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[0],
@@ -472,7 +472,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-192-2',
+		name: 'AES/CBC-192 test vector #2',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[1],
@@ -489,7 +489,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-192-3',
+		name: 'AES/CBC-192 test vector #3',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[2],
@@ -506,7 +506,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-192-4',
+		name: 'AES/CBC-192 test vector #4',
 		key: test_keys.aes192,
 		rounds: std_rounds.aes192,
 		input: test_inputs[3],
@@ -523,7 +523,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-256-1',
+		name: 'AES/CBC-256 test vector #1',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[0],
@@ -537,7 +537,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-256-2',
+		name: 'AES/CBC-256 test vector #2',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[1],
@@ -554,7 +554,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-256-3',
+		name: 'AES/CBC-256 test vector #3',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[2],
@@ -571,7 +571,7 @@ const testcases = [
 		colored: false,
 		chaining: Chaining.CBC
 	}, {
-		name: 'AES/CBC-256-4',
+		name: 'AES/CBC-256 test vector #4',
 		key: test_keys.aes256,
 		rounds: std_rounds.aes256,
 		input: test_inputs[3],

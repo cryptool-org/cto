@@ -16,8 +16,8 @@ function addRound(round, $parent, $before, prefix, headerClasses, contentClasses
 	const $a = newTag('a', prefix + 'hdr-a', ['collapsed', 'flex-container']);
 	const $label = setTxt(newTag('span', null, 'flex-grow'), '${{ aestetic.ROUND }}$ ' + round);
 	$a.append($label);
-	$a.append(newTag('span', null, ['collapse', 'glyphicon', 'glyphicon-chevron-up']));
-    $a.append(newTag('span', null, ['expand', 'glyphicon', 'glyphicon-chevron-down']));
+	$a.append(newTag('i', null, ['collapse', 'show', 'fa', 'fa-chevron-up']));
+    $a.append(newTag('i', null, ['expand', 'fa', 'fa-chevron-down']));
 	$header.append($a);
 	$header.insertBefore($before);
 
