@@ -588,7 +588,7 @@
 	<h2>@s(Öffentlicher Schlüssel)</h2>
 	<p>
 		@s(Das Produkt )<i>n</i>@s( wird im)
-		@s(RSA-Verfahren auch Modul genannt.)
+		@s(RSA-Verfahren auch Modulus genannt.)
 	</p>
 @end(container de)
 ```
@@ -698,7 +698,7 @@
 @add(container de)
 	<p>
 		@s(Der öffentliche Schlüssel besteht)
-		@s(neben dem Modul) <i>n</i> @s(noch aus)
+		@s(neben dem Modulus) <i>n</i> @s(noch aus)
 		@s(einem Exponenten) <i>e</i>@s(.)
 	</p>
 @end(container de)
