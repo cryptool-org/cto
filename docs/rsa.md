@@ -2097,7 +2097,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (Dank an)
 		@s(Bernhard Esslinger für das)
-		@s(Review@)), letzter Update 2021-01-21</em></div>
+		@s(Review@)), letzter Update 2021-04-27</em></div>
 @end(container de)
 ```
 * Die Seite endet mit dem Autor-Tag
@@ -2107,7 +2107,7 @@
 	<div id="authors"><em>@s(CTOAUTHORS:)
 		@s(Timm Knape (thanks to)
 		@s(Bernhard Esslinger for the)
-		@s(review@)), last update 2021-01-21</em></div>
+		@s(review@)), last update 2021-04-27</em></div>
 @end(container en)
 ```
 * Auch in der englischen Version gibt es das Autor-Tag
