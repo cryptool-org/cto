@@ -10,7 +10,6 @@
 .aestetics .bytes, .aestetics .aestetic-editable, .aestetics .referable {
 	font-family: monospace;
 	padding: 8px 15px;
-	background-color: #fff;
 }
 .aestetics .bytes {
 	color: #888;
@@ -19,8 +18,15 @@
 	color: #008;
 	background-color: #ddf;
 }
+[data-theme="dark"] .aestetics .aestetic-editable {
+	color: #66d;
+	background-color: #222;
+}
 .aestetics .referable {
 	color: #008;
+}
+[data-theme="dark"] .aestetics .referable {
+	color: #66d;
 }
 .aestetics .bytes div, .aestetics .aestetic-editable div, .aestetics .referable div {
 	display: inline-block;
@@ -78,7 +84,7 @@
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 14px;
-    color: #777;
+    color: #888;
 }
 .aestetics .error-overlay {
 	position: absolute;
@@ -103,7 +109,11 @@
 	padding: 6px;
 
 }
-
+[data-theme="dark"] #aestetic-calc {
+	background-color: #222;
+	color: #888;
+	border-color: #444;
+}
 #aestetic-calc p {
 	margin-bottom: 0;
 }
@@ -152,12 +162,18 @@
 	background-color: #fafafa;
 	border-top: 2px solid #888;
 }
+[data-theme="dark"] .aestetics .header {
+	background-color: #272727;
+}
 .aestetics .card {
 	overflow: hidden;
 	background-color: #fff;
 	margin: 0 10px 10px 10px;
 	border: 1px solid #ddd;
 	border-radius: 6px;
+}
+[data-theme="dark"] .aestetics .card {
+	background-color: #222;
 }
 .aestetics .card ul {
 	margin-bottom: 0;
@@ -178,6 +194,9 @@
     -webkit-user-select: none;
     -moz-user-select: -moz-none;
     user-select: none;
+}
+[data-theme="dark"] .aestetics li > a {
+	color: #66d;
 }
 .aestetics .header > a {
 	padding: inherit;
@@ -204,6 +223,10 @@
 	background-color: #fff;
 	border: 2px solid #ddd;
 	border-radius: 20px;
+}
+[data-theme="dark"] .aestetics .toggle {
+	background-color: #222;
+	border: 2px solid #444;
 }
 /*noinspection CssUnusedSymbol*/
 .aestetics .toggle.active {
@@ -238,6 +261,10 @@
 	border: 1px solid #ddd;
 	border-radius: 100px;
 }
+[data-theme="dark"] .aestetics .toggle .toggle-handle {
+	background-color: #222;
+	border: 1px solid #444;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .toggle.active .toggle-handle {
 	border-color: #5a5;
@@ -269,17 +296,29 @@
 	background-color: rgba(0, 255, 0, 0.15);
 	border: solid 1px #060;
 }
+[data-theme="dark"] .aestetics .badge-aes256, [data-theme="dark"] .aestetics .badge-aes192, [data-theme="dark"] .aestetics .badge-aes128 {
+	color: #0f0;
+	border: solid 1px #0f0;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .badge-rijndael {
 	color: #550;
 	background-color: rgba(255, 255, 0, 0.15);
 	border: solid 1px #550;
 }
+[data-theme="dark"] .aestetics .badge-rijndael {
+	color: #ff0;
+	border: solid 1px #ff0;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .badge-unknown {
 	color: #600;
 	background-color: rgba(255, 0, 0, 0.15);
 	border: solid 1px #600;
+}
+[data-theme="dark"] .aestetics .badge-unknown {
+	color: #f00;
+	border: solid 1px #f00;
 }
 /*noinspection CssUnusedSymbol*/
 .aestetics .badge-aes256:before {
@@ -314,37 +353,64 @@
 .aestetics .c0 {
 	color: #000;
 }
+[data-theme="dark"] .aestetics .c0 {
+	color: #fff;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .c1 {
 	color: #022;
+}
+[data-theme="dark"] .aestetics .c1 {
+	color: #dff;
 }
 /*noinspection CssUnusedSymbol*/
 .aestetics .c2 {
 	color: #044;
 }
+[data-theme="dark"] .aestetics .c2 {
+	color: #bff;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .c3 {
 	color: #066;
+}
+[data-theme="dark"] .aestetics .c3 {
+	color: #9ff;
 }
 /*noinspection CssUnusedSymbol*/
 .aestetics .c4 {
 	color: #088;
 }
+[data-theme="dark"] .aestetics .c4 {
+	color: #7ff;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .c5 {
 	color: #0aa;
+}
+[data-theme="dark"] .aestetics .c5 {
+	color: #5ff;
 }
 /*noinspection CssUnusedSymbol*/
 .aestetics .c6 {
 	color: #0cc;
 }
+[data-theme="dark"] .aestetics .c6 {
+	color: #3ff;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .c7 {
 	color: #0ee;
 }
+[data-theme="dark"] .aestetics .c7 {
+	color: #1ff;
+}
 /*noinspection CssUnusedSymbol*/
 .aestetics .c8 {
 	color: #1ff;
+}
+[data-theme="dark"] .aestetics .c8 {
+	color: #0ff;
 }
 #aestetic-textbox {
 	background-color: transparent;
