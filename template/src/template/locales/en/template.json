@@ -1,4 +1,5 @@
 {
-  "TITLE": "Template Title",
-  "DESCRIPTION": "<h1>Template Plugin</h1>"
+    "heading": "Hello world",
+    "description": "This is an example plugin used to build specific plugins for",
+    "author": "Author"
 }

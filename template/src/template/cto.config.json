@@ -1,0 +1,15 @@
+{
+
+    "name": "template",
+
+    "styles": [
+        "styles.css"
+    ],
+
+    "scripts": [
+        "script.js"
+    ],
+
+    "html": "fragment-%lang%.html"
+
+}
