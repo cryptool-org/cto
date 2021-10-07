@@ -5,7 +5,7 @@ function Railfence() {
         var i, j, dir;
         var cipher = "";
         var rows = [];
-        var rails = document.getElementById("depth").selectedIndex + 3;
+        var rails = document.getElementById("depth").selectedIndex + 2;
         var offset = document.getElementById("offset").selectedIndex;
         var allAlphabets = "";
         for(var i = 0; i < alphabets.length; i++) {
@@ -70,7 +70,7 @@ function Railfence() {
         var regex = new RegExp('[^' + allAlphabets + ']', 'g');
         msg = msg.replace(regex, '');
 
-        var rails = document.getElementById("depth").selectedIndex + 3;
+        var rails = document.getElementById("depth").selectedIndex + 2;
         var offset = document.getElementById("offset").selectedIndex;
         var oneTurn = rails*2-2;
         var n = Math.floor(msg.length / oneTurn);
