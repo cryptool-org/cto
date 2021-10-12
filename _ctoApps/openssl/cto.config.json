@@ -1,0 +1,12 @@
+{
+    "name": "openssl",
+    "styles": [
+        "main.css"
+    ],
+    "scripts": [
+        "main.js"
+    ],
+    "tags": [
+        "#root"
+    ]
+}
