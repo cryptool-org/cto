@@ -22,7 +22,7 @@
 
     "themeOptionDefault": "Default",
     "themeOptionNew": "Theme 2",
-    
+
     "languageOptionEN": "English",
     "languageOptionDE": "German",
 
@@ -36,14 +36,14 @@
     "plaintextHexadecimalLabelTwo": "Plaintext (input in hex)",
     "keyLabel": "Key (input in hex)",
     "outputLabel": "Ciphertext (output in hex)",
-    
+
     "encryptButtonLabel": "Encrypt",
     "formErrorMessage": "Key must consist of 32 hexadecimal chars.",
     "formErrorPlaintextNotEmpty": "The input must not be empty.",
     "formErrorKeyNotEmpty": "The key must not be empty.",
 
     "page-1-title": "Page 1: Rijndael Animation Intro",
-    "page-1-info": "<p>This animation gives a high-level overview of the inner workings of the AES / Rijndael algorithm. Data entered below are processed dynamically. The animation then visualizes the encryption of the first plaintext block. For inputs longer than one block, the blocks are calculated in ECB mode and displayed in the \"Ciphertext (output in hex)\" field.</p><p>The gear wheel takes you to the settings, where you can e.g. switch between German and English. It uses a size of 128 bit for both, the data block and the key. For an in-depth look at the mathematics behind the algorithm please consult the according literature.</p><p>For a start have a look at: <a href='https://en.wikipedia.org/wiki/Advanced_Encryption_Standard'>https://en.wikipedia.org/wiki/Advanced_Encryption_Standard</a></p><p>Another presentation of AES can be found at: <a href='https://www.cryptool.org/en/cto/aes-step-by-step'>https://www.cryptool.org/en/cto/aes-step-by-step</a></p><p>This animation was originally implemented in Flash by Enrique Zabala, first for his master thesis and then extended for the CrypTool project. Here, this animation has been implemented using a modern web technology (PixiJS). Also, the animation data here is not hardwired, but dynamically uses the values from the input.</p>",
+    "page-1-info": "<p>This animation gives a high-level overview of the inner workings of the AES / Rijndael algorithm. Data entered below are processed dynamically. The animation then visualizes the encryption of the first plaintext block. For inputs longer than one block, the blocks are calculated in ECB mode and displayed in the \"Ciphertext (output in hex)\" field.</p><p>The gear wheel takes you to the settings, where you can e.g. switch between German and English. It uses a size of 128 bit for both, the data block and the key. For an in-depth look at the mathematics behind the algorithm please consult the according literature.</p><p>For a start have a look at: <a href='https://en.wikipedia.org/wiki/Advanced_Encryption_Standard'>https://en.wikipedia.org/wiki/Advanced_Encryption_Standard</a></p><p>Another presentation of AES can be found at: <a href='https://www.cryptool.org/en/cto/aes-step-by-step'>https://www.cryptool.org/en/cto/aes-step-by-step</a></p><p>This animation was originally implemented in Flash by Enrique Zabala, first for his master thesis and then extended for the CrypTool project. Here, this animation has been implemented using a modern web technology (PixiJS). Also, the animation data here is not hardwired, but dynamically uses the values from the input given below.</p>",
 
     "page-2-title": "Page 2: Encryption Overview",
     "page-2-info": "<p>The Advanced Encryption Standard (AES) is also known by its original name Rijndael. It is a modern symmetric block cipher. This page displays the inputs (plaintext and cipher key) and the output (ciphertext).</p>",
@@ -158,7 +158,7 @@
         "rotateTextTwo": "rotate over 2 bytes",
         "rotateTextThree": "rotate over 3 bytes"
     },
-    
+
     "page-9": {
         "title": "3 - MixColumns",
         "text": "The 4 numbers of each column are modulo multiplied by a given matrix in Rijndael's Galois field.",
