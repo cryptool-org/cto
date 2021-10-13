@@ -1,0 +1,80 @@
+{
+  "general": {
+    "execute": "Ausführen",
+    "unknownCommand": "Unbekannter Befehl!"
+  },
+  "validation": {
+    "noTextInput": "Keine Texteingabe",
+    "noFileSelected": "Keine Datei ausgewählt",
+    "noFileNameSpecified": "Kein Dateiname angegeben",
+    "noPassphraseSpecified": "Keine Passphrase angegeben",
+    "noValueSpecified": "Kein Wert angegeben"
+  },
+  "cardDescription": {
+    "text": "Diese grafische Benutzeroberfläche bietet eine Reihe von modernen, angewandten Krypto-Methoden, die von OpenSSL unterstützt werden. Die Methoden können über die GUI-Steuerelemente oder über die OpenSSL-Kommandozeilenschnittstelle (CLI) in der unteren Hälfte ausgeführt werden. Wenn eine Methode über die GUI ausgeführt wird, zeigt die CLI die entsprechenden OpenSSL-Befehlsargumente der ausgewählten GUI-Steuerelemente."
+  },
+  "tabEncryption": {
+    "name": "Symmetrische Verschlüsselung",
+    "mode": "Modus",
+    "encrypt": "Verschlüsseln",
+    "decrypt": "Entschlüsseln",
+    "input": "Eingabe",
+    "file": "Datei",
+    "cipher": "Chiffre",
+    "outputFile": "Ausgabedatei",
+    "passphraseOrigin": "Herkunft der Passphrase",
+    "initializationVector": "Inititalisierungsvektor",
+    "keyDerivationFunction": "Schlüsselableitungsfunktion",
+    "default": "Standard",
+    "filenamePlaceholder": "Dateiname...",
+    "enterTextPlaceholder": "Text zum Verschlüsseln/Entschlüsseln eingeben...",
+    "selectPlaceholder": "Wähle...",
+    "inputPlaceHolder": "Eingabe...",
+    "hexValue": "Hex-Wert...",
+    "noSalt": "Kein Salt verwenden",
+    "inputExampleText": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert."
+  },
+  "tabGenrsa": {
+    "name": "RSA-Schlüsselgenerierung",
+    "outputFile": "Ausgabedatei",
+    "keyLength": "Schlüssellänge",
+    "filenamePlaceholder": "Dateiname...",
+    "download": "Herunterladen",
+    "information": "Informationen",
+    "generate": "Erzeugen",
+    "privateKey": "Privater Schlüssel",
+    "publicKey": "Öffentlicher Schlüssel"
+  },
+  "tabDigest": {
+    "name": "Hashes",
+    "hashFunction": "Hash-Funktion",
+    "inputFile": "Eingabedatei",
+    "selectPlaceholder": "Wähle...",
+    "filenamePlaceholder": "Dateiname...",
+    "enterTextPlaceholder": "Texteingabe zur Berechnung des Hash-Wertes...",
+    "input": "Eingabe",
+    "file": "Datei",
+    "outputFile": "Ausgabedatei",
+    "inputExampleText": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert."
+  },
+  "tabFiles": {
+    "name": "Dateien",
+    "files": "Dateien",
+    "download": "Herunterladen",
+    "delete": "Löschen",
+    "selectFilesPlaceholder": "Wähle Dateien..."
+  },
+  "commandLine": {
+    "infoText": "Basierend auf <bold>OpenSSL</bold> v{{ version }}",
+    "usage": "Verwendung: <bold>openssl</bold> Kommando [ Optionen ] [ Argumente ]",
+    "moreInfo": "Mehr Infos:",
+    "availableCommands": "Verfügbare Kommandos: 'openssl help'",
+    "versionInfo": "Build-Informationen: 'openssl version -a'"
+  },
+  "deleteModal": {
+    "headline": "Datei löschen",
+    "text": "Wollen Sie diese Datei wirklich löschen?",
+    "cancel": "Abbrechen",
+    "yes": "Ja"
+  }
+}

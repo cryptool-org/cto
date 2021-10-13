@@ -1,0 +1,80 @@
+{
+  "general": {
+    "execute": "Execute",
+    "unknownCommand": "Unknown command!"
+  },
+  "validation": {
+    "noTextInput": "No text input",
+    "noFileSelected": "No file selected",
+    "noFileNameSpecified": "No filename specified",
+    "noPassphraseSpecified": "No passphrase specified",
+    "noValueSpecified": "No value specified"
+  },
+  "cardDescription": {
+    "text": "This GUI offers a bunch of modern, applied crypto methods served by OpenSSL. The methods can be executed via the GUI controls or via the OpenSSL command line interface (CLI) at the bottom. If a method is executed with the GUI, the OpenSSL arguments in the CLI show the according arguments of the selected GUI controls."
+  },
+  "tabEncryption": {
+    "name": "Symmetric encryption",
+    "mode": "Mode",
+    "encrypt": "Encrypt",
+    "decrypt": "Decrypt",
+    "input": "Input",
+    "file": "File",
+    "cipher": "Cipher",
+    "outputFile": "Output file",
+    "passphraseOrigin": "Passphrase origin",
+    "initializationVector": "Initialization vector",
+    "keyDerivationFunction": "Key derivation function",
+    "default": "Default",
+    "filenamePlaceholder": "Filename...",
+    "enterTextPlaceholder": "Enter text to encrypt/decrypt...",
+    "selectPlaceholder": "Select...",
+    "inputPlaceHolder": "Input...",
+    "hexValue": "Hex value...",
+    "noSalt": "No salt",
+    "inputExampleText": "The quick brown fox jumps over the lazy dog."
+  },
+  "tabGenrsa": {
+    "name": "RSA key generation",
+    "outputFile": "Output file",
+    "keyLength": "Key length",
+    "filenamePlaceholder": "Filename...",
+    "download": "Download",
+    "information": "Information",
+    "generate": "Generate",
+    "privateKey": "Private key",
+    "publicKey": "Public key"
+  },
+  "tabDigest": {
+    "name": "Hashes",
+    "hashFunction": "Hash function",
+    "inputFile": "Input file",
+    "selectPlaceholder": "Select...",
+    "filenamePlaceholder": "Filename...",
+    "enterTextPlaceholder": "Enter text to hash...",
+    "input": "Input",
+    "file": "File",
+    "outputFile": "Output file",
+    "inputExampleText": "The quick brown fox jumps over the lazy dog."
+  },
+  "tabFiles": {
+    "name": "Files",
+    "files": "Files",
+    "download": "Download",
+    "delete": "Delete",
+    "selectFilesPlaceholder": "Select files..."
+  },
+  "commandLine": {
+    "infoText": "Based on <bold>OpenSSL</bold> v{{ version }}",
+    "usage": "Usage: <bold>openssl</bold> command [ options ] [ arguments ]",
+    "moreInfo": "More info:",
+    "availableCommands": "Available commands: 'openssl help'",
+    "versionInfo": "Build information: 'openssl version -a'"
+  },
+  "deleteModal": {
+    "headline": "Delete file",
+    "text": "Do you really want to delete this file?",
+    "cancel": "Cancel",
+    "yes": "Yes"
+  }
+}
