@@ -31,7 +31,7 @@
                         <label class="custom-control-label" for="blocks-of-five-checkbox">${{ options.FIVE_BLOCKS }}$</label>
                     </div>
                     <!-- checkbox keep non alphabet chars -->
-                    <div class="custom-control custom-checkbox mr-3 d-inline-block" @@if(alphabet != "true") { style="display: none" }>
+                    <div class="custom-control custom-checkbox mr-3 d-inline-block" @@if(alphabet != "true") { style="display: none !important" }>
                         <input type="checkbox" class="custom-control-input" id="keep-non-alp-checkbox" checked>
                         <label class="custom-control-label" for="keep-non-alp-checkbox">${{ options.KEEP_NON_ALP }}$</label>
                     </div>

@@ -1,0 +1,6 @@
+{
+  "TITLE": "Vernam Plugin",
+  "PLAINTEXT": "Enter text ...",
+  "KEY": "Samelength key",
+  "KEYLENGTH_MESSAGE": "Text and Key have to be the same length."
+}

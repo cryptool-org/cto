@@ -1,5 +1,8 @@
 <div class="cryptool-container">
 
+    <!-- error message -->
+    <div id="error-alert" class="alert alert-danger fade close" role="alert"></div>
+
     <!-- plaintext textarea -->
     <div class="form-group mt-3">
         <label for="plaintext">${{ base.PLAIN_TEXT }}$:</label>
@@ -24,7 +27,7 @@
     <!-- key input -->
     <div class="form-group" @@if(key === "") { style="display: none" }>
         <label for="key-input">${{ base.KEY }}$:</label>
-        <input type="text" id="key-input" class="form-control" value="@@key">
+        <input type="@@keytype" id="key-input" class="form-control" value="@@key">
     </div>
 
     @@include("./options.html", {

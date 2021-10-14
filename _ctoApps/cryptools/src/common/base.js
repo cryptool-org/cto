@@ -9,13 +9,35 @@ let direction = {
 let plaintextElem = document.getElementById("plaintext")
 let ciphertextElem = document.getElementById("ciphertext")
 let keyInputElem = document.getElementById("key-input")
+let errorAlert = document.getElementById("error-alert")
+
+const showErrorMessage = (message) => {
+    errorAlert.innerHTML = message
+    errorAlert.classList.remove("close")
+    errorAlert.classList.add("show")
+}
+
+const hideErrorMessage = () => {
+    errorAlert.classList.remove("show")
+    errorAlert.classList.add("close")
+}
+
+const getKey = () => {
+    let key = keyInputElem.value
+    if(keyInputElem.type == "number") key = parseInt(key)
+    if(keyInputElem.type == "text") key = key.trim()
+    return key
+}
 
 const updateEncrypt = () => {
     direction.status = "encrypt"
     direction.arrow.classList.remove("flip")
     direction.arrow.classList.add("flop")
 
-    ciphertextElem.value = filterOutput(encrypt(plaintextElem.value.trim(), getAlphabet(), keyInputElem.value.trim()))
+    hideErrorMessage()
+
+    try { ciphertextElem.value = filterOutput(encrypt(plaintextElem.value.trim(), getAlphabet(), getKey())) }
+    catch(e) { showErrorMessage("Error: " + e.toString()) }
 }
 
 const updateDecrypt = () => {
@@ -23,7 +45,10 @@ const updateDecrypt = () => {
     direction.arrow.classList.remove("flop")
     direction.arrow.classList.add("flip")
 
-    plaintextElem.value = filterOutput(decrypt(ciphertextElem.value.trim(), getAlphabet(), keyInputElem.value.trim()))
+    hideErrorMessage()
+
+    try { plaintextElem.value = filterOutput(decrypt(ciphertextElem.value.trim(), getAlphabet(), getKey())) }
+    catch(e) { showErrorMessage("Error: " + e.toString()) }
 }
 
 const update = () => {
