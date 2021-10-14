@@ -1,0 +1,34 @@
+<div class="cryptool-container">
+
+    <!-- plaintext textarea -->
+    <div class="form-group mt-3">
+        <label for="plaintext">${{ base.PLAIN_TEXT }}$:</label>
+        <textarea id="plaintext" class="form-control" rows="4" spellcheck="false">@@plaintext</textarea>
+    </div>
+
+    <!-- cipher direction arrow -->
+    <div class="row">
+        <div id="direction" class="w-100 text-center">
+            <svg viewbox="0 0 50 50" width="50" height="50">
+                <polyline points="0,20 15,20 15,0 35,0 35,20 50,20 25,50"></polyline>
+            </svg>
+        </div>
+    </div>
+
+    <!-- ciphertext textarea -->
+    <div class="form-group ml-auto mr-auto">
+        <label for="ciphertext">${{ base.ENCRYPTED_TEXT }}$:</label>
+        <textarea id="ciphertext" class="form-control" rows="4" spellcheck="false"></textarea>
+    </div>
+
+    <!-- key input -->
+    <div class="form-group" @@if(key === "") { style="display: none" }>
+        <label for="key-input">${{ base.KEY }}$:</label>
+        <input type="text" id="key-input" class="form-control" value="@@key">
+    </div>
+
+    @@include("./options.html", {
+        "alphabet": "@@alphabet"
+    })
+
+</div>

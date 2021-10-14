@@ -1,0 +1,104 @@
+<!-- tabs card -->
+<div class="card mt-4">
+
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="options-alphabet-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#options-tab" role="tab" aria-controls="options-tab" aria-selected="true"><i class="fa fa-cog mr-2"></i>${{ options.OPTIONS }}$</a>
+            </li>
+            <li class="nav-item" @@if(alphabet != "true") { style="display: none" }>
+                <a class="nav-link"  href="#alphabet-tab" role="tab" aria-controls="alphabet-tab" aria-selected="false"><i class="fa fa-font mr-2" aria-hidden="true"></i>Alphabet</a>
+            </li>
+        </ul>
+        <script>
+            // make these (custom) tab links work
+            $("#options-alphabet-tab a").on("click", function (e) {
+                e.preventDefault()
+                $(this).tab("show")
+            })
+        </script>
+    </div>
+
+    <div class="card-body">
+        <div class="tab-content p-0">
+
+            <!-- options tab -->
+            <div class="tab-pane active" id="options-tab" role="tabpanel">
+                <p class="card-text">
+                    <!-- checkbox blocks of five -->
+                    <div class="custom-control custom-checkbox mr-3 d-inline-block">
+                        <input type="checkbox" class="custom-control-input" id="blocks-of-five-checkbox">
+                        <label class="custom-control-label" for="blocks-of-five-checkbox">${{ options.FIVE_BLOCKS }}$</label>
+                    </div>
+                    <!-- checkbox keep non alphabet chars -->
+                    <div class="custom-control custom-checkbox mr-3 d-inline-block" @@if(alphabet != "true") { style="display: none" }>
+                        <input type="checkbox" class="custom-control-input" id="keep-non-alp-checkbox" checked>
+                        <label class="custom-control-label" for="keep-non-alp-checkbox">${{ options.KEEP_NON_ALP }}$</label>
+                    </div>
+                </p>
+            </div>
+
+            <!-- alphabet tab -->
+            <div class="tab-pane" id="alphabet-tab" role="tabpanel" aria-labelledby="alphabet-tab-tab"  @@if(alphabet != "true") { style="display: none" }>
+                <p class="card-text">
+
+                    <!-- alphabet templates -->
+                    <input id="alphabet-input" class="form-control text-monospace mt-1" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" spellcheck="false" disabled>
+
+                    <div id="alphabet-templates" class="form-check form-check-inline">
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="uppercase-checkbox" checked>
+                            <label class="custom-control-label" for="uppercase-checkbox">${{ options.UPPERCASE }}$</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="lowercase-checkbox" checked>
+                            <label class="custom-control-label" for="lowercase-checkbox">${{ options.LOWERCASE }}$</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="digits-checkbox">
+                            <label class="custom-control-label" for="digits-checkbox">${{ options.DIGITS }}$</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="punctuation-checkbox">
+                            <label class="custom-control-label" for="punctuation-checkbox">${{ options.PUNCTUATION_MARKS }}$</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="umlauts-checkbox">
+                            <label class="custom-control-label" for="umlauts-checkbox">${{ options.UMLAUTS }}$</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mr-3">
+                            <input type="checkbox" class="custom-control-input" id="blanks-checkbox">
+                            <label class="custom-control-label" for="blanks-checkbox">${{ options.BLANKS }}$</label>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- alphabet selection radiobuttons -->
+                    <div class="form-check form-check-inline">
+
+                        <div class="custom-control custom-radio mr-3">
+                            <input type="radio" name="alphabet-radio" id="use-constructed-alphabet-radiobtn" class="custom-control-input" checked>
+                            <label class="custom-control-label ml-1" for="use-constructed-alphabet-radiobtn">${{ options.USE_CONSTRUCTED_ALPHABET }}$</label>
+                        </div>
+
+                        <div class="custom-control custom-radio mr-3">
+                            <input type="radio" name="alphabet-radio" id="use-custom-alphabet-radiobtn" class="custom-control-input">
+                            <label class="custom-control-label ml-1" for="use-custom-alphabet-radiobtn">${{ options.DEFINE_OWN_ALPHABET }}$</label>
+                        </div>
+
+                    </div>
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
