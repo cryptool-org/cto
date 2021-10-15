@@ -1,0 +1,15 @@
+{
+
+    "name": "ncid",
+
+    "styles": [
+        "ncid.css"
+    ],
+
+    "scripts": [
+        "ncid-%lang%.js"
+    ],
+
+    "html": "fragment-%lang%.html"
+
+}

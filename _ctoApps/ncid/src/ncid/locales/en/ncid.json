@@ -1,0 +1,19 @@
+{
+    "description": "NCID allows to identify the cipher type, given only a piece of ciphertext. For that, NCID uses several multiple neural networks from which you can select one or more.<br><br> With the 55 classical ciphers standardized by the <a href=\"https://www.cryptogram.orgresource-area/cipher-types/\" target=\"_blank\">American Cryptogram Association (ACA)</a>, the following neural networks were trained: feedforward neural network (FFNN), long short-term memory (LSTM), Transformer, and Naive Bayes network (NB). Selecting an ensemble of multiple neural network architectures normally leads to a better accuracy. Further details can be found \"Description\" tab.",
+    "author": "Author",
+    "ciphertext": "Ciphertext:",
+    "architectures" : "Architecture:",
+    "architectures_tooltip" : "Select one or more neural networks for the prediction. The result varies depending on the selected architectures. Selecting an ensemble of (multiple) architectures may lead to more precise predictions in many cases.",
+    "filter_tooltip" : "Setting filter values effectuate that only results are shown which have a higher likelihood than the selected value.",
+    "filter" : "Filter:",
+    "no_filter" : "None",
+    "analyze" : "Analyze",
+    "results" : "Results",
+    "click_for_results" : "Click on \"Analyze\" to get the results ...",
+    "ciphertext_too_short" : "The ciphertext is too short! (Minimum 30 characters)",
+    "cipher" : "Cipher",
+    "probability" : "Probability",
+    "length" :"\"length: \"",
+    "result_no_filter":"\"For the given ciphertext, the set neural network calculated the highest probability with the encryption method \" + probabilties[0][0] + \". All 55 ACA ciphers are displayed because no minimum percentage has been set via the filter.\"",
+    "result_filter":"\"For the given ciphertext, the set neural network calculated the highest probability with the encryption method \" + probabilties[0][0] + \". Out of the 55 ACA ciphers, \" + rowCount + \" ciphers have a probability of at least \"+ filterSelect.val() + \"%.\""
+}

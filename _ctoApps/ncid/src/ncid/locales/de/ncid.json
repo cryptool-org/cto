@@ -1,0 +1,19 @@
+{
+    "description": "NCID ermöglicht die Identifizierung des Chiffretyps, nur anhand eines kurzen Geheimtexts. Zu diesem Zweck verwendet NCID mehrere neuronale Netze, aus denen Sie eines oder mehrere auswählen können.<br><br> Mit den 55 von der <a href=\"https://www.cryptogram.orgresource-area/cipher-types/\" target=\"_blank\">American Cryptogram Association (ACA)</a> standardisierten, klassischen Chiffren wurden die folgenden neuronalen Netze trainiert: Feedforward Neural Network (FFNN), Long Short Memory (LSTM), Transformer und Naive Bayes Network (NB). Die Bündelung mehrerer neuronaler Netzwerkarchitekturen zu einem Ensemble führte hier in vielen Fällen zu einer besseren Genauigkeit. Weitere Einzelheiten können in der Registerkarte \"Beschreibung\" nachgelesen werden.",
+    "author": "Author",
+    "ciphertext" : "Geheimtext:",
+    "architectures" : "Architektur:",
+    "architectures_tooltip" : "Wählen Sie ein oder mehrere neuronale Netze für die Vorhersage aus. Das Ergebnis variiert je nach den ausgewählten Architekturen. Die Auswahl eines Ensembles von (mehreren) Architekturen kann in vielen Fällen zu genaueren Vorhersagen führen.",
+    "filter_tooltip" : "Durch den Filter werden nur Ergebnisse angezeigt, deren Wahrscheinlichkeit über dem gewählten Wert liegt.",
+    "filter" : "Filter:",
+    "no_filter" : "Kein Filter",
+    "analyze" : "Analysieren",
+    "results" : "Ergebnisse",
+    "click_for_results" : "Klicken Sie auf \"Analysieren\", um die Ergebnisse zu erhalten ...",
+    "ciphertext_too_short" : "Der Geheimtext ist zu kurz! (Mindestens 30 Zeichen)",
+    "cipher" : "Chiffre",
+    "probability" : "Wahrscheinlichkeit",
+    "length" :"\"Länge: \"",
+    "result_no_filter":"\"Für den gegebenen Geheimtext hat das eingestellte neuronale Netz die höchste Wahrscheinlichkeit bei dem Verschlüsselungsverfahren \" + probabilties[0][0] + \" errechnet. Alle 55 ACA-Verfahren werden angezeigt, da über den Filter kein Mindestprozentsatz eingestellt wurde.\"",
+    "result_filter":"\"Für den gegebenen Geheimtext hat das eingestellte neuronale Netz die höchste Wahrscheinlichkeit bei dem Verschlüsselungsverfahren \" + probabilties[0][0] + \" errechnet. Von den 55 ACA-Verfahren haben \" + rowCount + \" Verfahren eine Wahrscheinlichkeit von mindestens \"+ filterSelect.val() + \"%.\""
+}
