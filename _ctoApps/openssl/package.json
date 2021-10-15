@@ -1,0 +1,82 @@
+{
+  "name": "openssl-webapp",
+  "version": "0.3.0",
+  "private": true,
+  "homepage": "https://janeumnn.github.io/openssl-webapp",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
+    "bootstrap": "^4.5.3",
+    "font-awesome": "^4.7.0",
+    "i18next": "^20.2.2",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.8.15",
+    "react-responsive": "^8.2.0",
+    "react-scripts": "4.0.1",
+    "rxjs": "^6.6.3",
+    "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "gh-pages": "^3.1.0",
+    "husky": "^4.3.6",
+    "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "react-app-rewired": "^2.1.8"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:cto-app": "env-cmd -f .env.cto react-app-rewired build",
+    "build:openssl": "cd openssl && ./build.sh ${ARG} && npm run copy:openssl",
+    "build:openssl:docker": "docker run --rm -v $(pwd):$(pwd) -w $(pwd)/openssl -u $(id -u):$(id -g) emscripten/emsdk /bin/bash ./build.sh ${ARG} && npm run copy:openssl",
+    "copy:openssl": "./importWasmBuild.sh && npm run format:openssl",
+    "format:openssl": "prettier --write src/core/openssl.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss}": [
+      "prettier --write"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "bracketSpacing": true,
+    "arrowParens": "always"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

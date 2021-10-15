@@ -339,10 +339,97 @@ Your plugin should now be available at http://localhost:3000/en/cto/new-plugin.h
 
 ### 3.2 Deploying the plugin to the website
 
-* source code kommt nach ct-online/cto
-* prebuilt files kommen nach z11labs/cryptool.org in _ctoApps/new-plugin
+Now that you developed and TESTED your plugin, it's time to deploy it to the CTO website. There are two different repositories: [ct-online/cto](https://github.com/ct-online/cto) contains the **source code** of all plugins and [z11labs/cryptool.org](https://github.com/z11labs/cryptool.org) contains the **prebuilt plugin files** and the CTO website.
 
-jeweils: neuen branch erzeugen oder forken, dann pull-request stellen
+This is due to security reasons: Having the source code of the plugins inside of the website repository would require us to build the plugins on the server. And as Gulp is able to run local code, this would not be adiquate. Therefore, the **plugins are built locally** and only the prebuild files will be pushed into the CTO website. The source code remains in [ct-online/cto](https://github.com/ct-online/cto).
+
+To continue, you should have followed the steps in [3. Running the plugin in CTO](#3-running-the-plugin-in-cto) locally. Now we're just deploying to the remote website.
+
+#### 3.2.1 Push the prebuild files into CTO website
+
+If you haven't done it already, fork and clone the repository [z11labs/cryptool.org](https://github.com/z11labs/cryptool.org) and build your plugin by running `gulp` in your plugin directory. Then, copy the prebuilt files from the folder `dist/new-plugin` from your plugin folder into `_ctoApps/new-plugin` of the cryptool.org project folder:
+
+```bash
+$ cp -rf dist/new-plugin ~/cryptool.org/_ctoApps
+```
+
+You should also already have pages created for your plugin.
+
+[Make sure, that you are working on the forked repository by checking if the local repository's _remote_ is set to your account](#323-check-if-the-repository-is-set-to-your-fork).
+
+Now commit and push your changes into your forked repository. Navigate to your `cryptool.org` directory and create another branch for your changes:
+
+```bash
+$ git pull origin master
+$ git branch -b new-plugin master
+```
+
+Now add your changed files and push to your fork:
+
+```bash
+$ git add _ctoApps/new-plugin
+$ git add _pages/cto/new-plugin.html
+$ git add _i18n/de/cto/plugins/new-plugin.html
+$ git add _i18n/en/cto/plugins/new-plugin.html
+$ git commit -m "Add CTO plugin 'new-plugin'"
+$ git push origin new-plugin
+```
+
+After pushing your changes to your fork, [create a Pull Request to the original repository](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
+
+Now your changes will be reviewed by an operator and merged into the original repository.
+
+
+#### 3.2.2 Push the source code to ct-online/cto
+
+If you haven't done it already, fork and clone the repository [ct-online/cto](https://github.com/ct-online/cto). Then copy the source files of your plugin to `_ctoApps` in the forked repository.
+
+[Make sure, that you are working on the forked repository by checking if the local repository's _remote_ is set to your account](#323-check-if-the-repository-is-set-to-your-fork).
+
+Now commit and push your changes into your forked repository. Navigate to your `cto` directory and create another branch for your changes:
+
+```bash
+$ git pull origin master
+$ git branch -b new-plugin master
+```
+
+Now add your changed files and push to your fork:
+
+```bash
+$ git add _ctoApps/new-plugin
+$ git commit -m "Add CTO plugin 'new-plugin'"
+$ git push origin new-plugin
+```
+
+After pushing your changes to your fork, [create a Pull Request to the original repository](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
+
+Now your changes will be reviewed by an operator and merged into the original repository.
+
+
+#### 3.2.3 Check if the repository is set to your fork
+
+Make sure, that you are working on the forked repository by checking if the local repository's _remote_ is set to your account:
+
+```bash
+$ git remote -v
+```
+
+The output should be something like this:
+
+```
+origin	git@github.com:YOURUSERNAME/cryptool.org.git (fetch)
+origin	git@github.com:YOURUSERNAME/cryptool.org.git (push)
+```
+
+If the output does not contain your GitHub username, you should set the URL accordingly:
+
+```bash
+$ git remote set-url origin git@github.com:YOURUSERNAME/cryptool.org.git
+```
+
+> Note: This example uses SSH for accessing the repository. You can also use HTTPS instead.
+
+> For accessing via SSH, you will need to [add a SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). For using HTTPS, your will need to [create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 
 -----
@@ -372,7 +459,30 @@ You can also rename or add more scripts to the config file `cto.config.json` for
 
 ### 4.2 Set global JS variables via config
 
+It is possible to set global JavaScript variables via the `cto.config.json` file. This can be any type of JSON object and is set at the key `globals`. This would look like this:
+
+```json
+...,
+"globals": {
+    "myVariable": "variable value"
+}
 ...
+```
+
+These values will be available in the JS code at the global variable `CTO_Globals`, you can refer to it like this:
+
+```js
+CTO_Globals.myVariable
+```
+
+There also are predefined values at `CTO_Globals`, which are:
+
+```json
+{
+    "base": "https://www.cryptool.org",
+    "pluginRoot": "/_ctoApps/new-plugin/"
+}
+```
 
 
 ### 4.3 Translating strings in JS files
@@ -440,4 +550,66 @@ Feel free to customize the `gulpfile.js`. It contains tasks that will be execute
 
 ### 4.6 Including files with gulp
 
-...
+Gulp can be used to distribute your code above multiple files. This can be useful for reusing code or to maintain some order when your files get very large.
+
+Let's assume you have a file called `options.html` which is included into multiple files of your plugin:
+
+`options.html`:
+```html
+<div class="options">
+    This is our options file.
+</div>
+```
+
+Let's assume you want to include this file into another file called `index.html`.
+
+`index.html`:
+```html
+<div class="index">
+    @@include("./options.html")
+</div>
+```
+
+The result would be `index.html` containing:
+
+```html
+<div class="index">
+    <div class="options">
+        This is our options file.
+    </div>
+</div>
+```
+
+You can also pass variables to included files:
+
+`index.html`:
+```html
+<div class="index">
+    @@include("./options.html", {
+        "name": "new-plugin",
+        "anotherVariable": "${{ new-plugin.TRANSLATION }}$"
+    })
+</div>
+```
+
+`options.html`:
+```html
+<div class="options">
+    This is our options file for @@name with @@anotherVariable.
+</div>
+```
+
+> Note: This assumes that `TRANSLATION` is set in `src/new-plugin/locales/de|en/new-plugin.json`. Let's assume it is set to "something translated". When translating, the files will get a language suffix.
+
+The result would then be:
+
+`index-en.html`:
+```html
+<div class="index">
+    <div class="options">
+        This is our options file for new-plugin with something translated.
+    </div>
+</div>
+```
+
+More examples can be found at [the official docs of `gulp-file-include`](https://www.npmjs.com/package/gulp-file-include).

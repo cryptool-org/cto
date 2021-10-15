@@ -1,0 +1,19 @@
+@use "./variables" as *;
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == "phone" {
+        @media only screen and (max-width: $breakpoint-phone){ @content };
+    }
+
+    @if $breakpoint == "tab-port" {
+        @media only screen and (max-width: $breakpoint-tab-port){ @content };
+    }
+
+    @if $breakpoint == "tab-land" {
+        @media only screen and (max-width: $breakpoint-tab-land){ @content };
+    }
+
+    @if $breakpoint == "big-desktop" {
+        @media only screen and (min-width: $breakpoint-big-desktop){ @content };
+    }
+}

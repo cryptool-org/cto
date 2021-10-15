@@ -5,7 +5,7 @@ function Redefence() {
         var i, j, dir;
         var cipher = "";
         var rows = [];
-        var rails = document.getElementById("depth").selectedIndex + 3;
+        var rails = document.getElementById("depth").selectedIndex + 2;
         var offset = document.getElementById("offset").selectedIndex;
 
         var orderInput = document.getElementById("order").value;
@@ -87,7 +87,7 @@ function Redefence() {
             return index == self.indexOf(elem);
         });
 
-        var rails = document.getElementById("depth").selectedIndex + 3;
+        var rails = document.getElementById("depth").selectedIndex + 2;
         var offset = document.getElementById("offset").selectedIndex;
 
         var allAlphabets = "";
