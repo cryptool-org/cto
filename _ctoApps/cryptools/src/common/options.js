@@ -90,3 +90,6 @@ const filterOutput = (output) => {
     return output
 
 }
+
+// register change listeners
+Object.values(optionsElems).forEach(elem => elem.addEventListener("change", update))

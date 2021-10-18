@@ -1,5 +1,5 @@
 /*
-    code source: https://github.com/Cryptools/ROT13Cipher/blob/master/README.md
+    code source: https://github.com/Cryptools/ROT13Cipher
 */
 
 const encrypt = (plaintext) => {

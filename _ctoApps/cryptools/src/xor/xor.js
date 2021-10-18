@@ -1,12 +1,12 @@
 /*
-    todo: implement encrypt and decrypt
+    code source: https://github.com/CrypTools/XORCipher
 */
 
-const encrypt = (plaintext,alphabet,key=null) => {
+const encrypt = (plaintext, alphabet, key = null) => {
 
-    if (typeof key == 'number') key = [key]
+    if (typeof key == "number") key = [key]
 
-    let output = '';
+    let output = "";
     for (var i = 0; i < plaintext.length; i++) {
         const c = plaintext.charCodeAt(i)
         const k = key[i % key.length]
@@ -17,11 +17,11 @@ const encrypt = (plaintext,alphabet,key=null) => {
 
 }
 
-const decrypt = (ciphertext,alphabet,key=null) => {
+const decrypt = (ciphertext, alphabet, key = null) => {
 
-    if (typeof key == 'number') key = [key]
+    if (typeof key == "number") key = [key]
 
-    let output = '';
+    let output = "";
     for (var i = 0; i < ciphertext.length; i++) {
         const c = ciphertext.charCodeAt(i)
         const k = key[i % key.length]

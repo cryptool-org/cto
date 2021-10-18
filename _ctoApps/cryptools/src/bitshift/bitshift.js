@@ -1,5 +1,5 @@
 /*
-    code source: https://github.com/Cryptools/BitShiftCipher/blob/master/README.md
+    code source: https://github.com/Cryptools/BitShiftCipher
 */
 
 const encode = (text) => {

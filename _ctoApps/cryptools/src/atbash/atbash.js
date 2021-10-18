@@ -1,5 +1,5 @@
 /*
-    code source: https://github.com/Cryptools/ATBASHCipher/blob/master/README.md
+    code source: https://github.com/Cryptools/ATBASHCipher
 */
 
 const encrypt = (plaintext) => {

@@ -13,6 +13,7 @@
 .cryptool-container svg {
     display: block;
     margin: 1em auto;
+    cursor: pointer;
 }
 
 @keyframes flip {

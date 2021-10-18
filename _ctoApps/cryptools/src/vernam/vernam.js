@@ -1,5 +1,5 @@
 /*
-    code source: https://github.com/CrypTools/VernamCipher/tree/master/js
+    code source: https://github.com/CrypTools/VernamCipher
 */
 
 const encrypt = (plaintext, alphabet, key = null) => {
