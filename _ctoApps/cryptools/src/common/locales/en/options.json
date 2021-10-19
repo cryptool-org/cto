@@ -1,0 +1,13 @@
+{
+  "OPTIONS": "Options",
+  "FIVE_BLOCKS": "Blocks of five",
+  "KEEP_NON_ALP": "Keep non-alphabet characters",
+  "UPPERCASE": "Upper case",
+  "LOWERCASE": "Lower case",
+  "DIGITS": "Digits",
+  "PUNCTUATION_MARKS": "Punctuation marks",
+  "UMLAUTS": "Umlauts",
+  "BLANKS": "Blanks",
+  "USE_CONSTRUCTED_ALPHABET": "Use constructed alphabet",
+  "DEFINE_OWN_ALPHABET": "Define own alphabet"
+}

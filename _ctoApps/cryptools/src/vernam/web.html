@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>${{ vernam.TITLE }}$</title>
+
+        <link rel="stylesheet" href="../bootstrap.css">
+        <link rel="stylesheet" href="./vernam.css">
+
+        <script src="../jquery.js"></script>
+        <script src="../bootstrap.js"></script>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>${{ vernam.TITLE }}$</h1>
+            <div class="spacer"></div>
+            @@include("./fragment.html")
+        </div>
+
+        <script src="./vernam${{ lang.suffix }}$.js"></script>
+    </body>
+</html>
