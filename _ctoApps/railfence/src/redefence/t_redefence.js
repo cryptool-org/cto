@@ -22,8 +22,8 @@ describe('Redefence', () => {
         assert.equal('Aa', crypt.process('Zz', true));
     });
     describe('1st reference value', () => {
-        const plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
-        const encoded = 'Yxhrtqcj Wzwpxmlasyydbk ygii vwynb Exjmvg apvl hse bgkplqsfr mkabrlqvk.';
+        const plain = 'Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.';
+        const encoded = 'rgilt arna ru yrFtehTd enjkmvrotiucB aamp twle xeran zoesqh.';
 
         beforeEach(() => {
             state.$key.val = () => ('Geheimer Schluessel');
@@ -38,7 +38,7 @@ describe('Redefence', () => {
     });
     describe('2nd reference value', () => {
         const plain = 'The quick brown fox jumps over the lazy dog.';
-        const encoded = 'Llg hybmo zjsye jhh nsetu fzxb xfw pcqc wyk.';
+        const encoded = 'hkr xuety oTbjr dqi wfpoe aeco omv hzgu nsl.';
 
         beforeEach(() => {
             state.$key.val = () => ('Secret Key');

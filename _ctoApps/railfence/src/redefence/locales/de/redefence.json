@@ -1,8 +1,8 @@
 {
   "TITLE": "Redefence-Verschlüsselung",
   "DESCRIPTION": "<h1>Die Redefence-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
-  "SAMPLE_ENCRYPTED": "tsxinurA rrvemwnSEoefdr unee izguc kwnenb etay pts qdhiiodae dldurajnr.",
+  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+  "SAMPLE_ENCRYPTED": "rgilt arna ru yrFtehTd enjkmvrotiucB aamp twle xeran zoesqh.",
   "SAMPLE_KEY": "Geheimer Schluessel",
-  "RAILFENCE": "S       E       o       e       f       d       r       u     \n t     s x     i n     u r     A r     r v     e m     w n    \n  a   y   p   t   s   q   d   h   i   i   o   d   a   e   d   \n   n e     e i     z g     u c     k w     n e     n b     e t\n    l       d       u       r       a       j       n       r "
+  "RAILFENCE": "F       t       e       h       T       d       e  \n r     g i     l t     a r     n a     r u     y r \n  a   a   m   p   t   w   l   e   x   e   r   a   n\n   n j     k m     v r     o t     i u     c B     \n    z       o       e       s       q       h      "
 }

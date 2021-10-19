@@ -25,8 +25,8 @@ describe('Beaufort', () => {
         assert.equal(plain, crypt.process(encrypted, true));
     });
     describe('1st reference value', () => {
-        const plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
-        const encoded = 'Olhrxigz Ofshrwzkqyofny ssaa piqjn Enbwbg iznf rqe jyehdssfr kcinrfiny.';
+        const plain = 'Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.';
+        const encoded = 'Bnhrj delz uv bgsdhasn jdnmmxahopsqr Zshd qkdn fsnpl Bhnqnf.';
 
         beforeEach(() => {
             state.$key.val = () => ('Geheimer Schluessel');
@@ -41,7 +41,7 @@ describe('Beaufort', () => {
     });
     describe('2nd reference value', () => {
         const plain = 'The quick brown fox jumps over the lazy dog.';
-        const encoded = 'Zxy bkliu xbqge zfn vegpk djpt lro tcsg qwy.';
+        const encoded = 'Nxd ooech rltph zev vrupp qnin yly wlvg pey..';
 
         beforeEach(() => {
             state.$key.val = () => ('Secret Key');

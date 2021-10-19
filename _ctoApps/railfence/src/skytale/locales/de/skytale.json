@@ -1,8 +1,8 @@
 {
   "TITLE": "Skytale-Verschlüsselung",
   "DESCRIPTION": "<h1>Die Skytale-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
-  "SAMPLE_ENCRYPTED": "Stroutic nnaohjdnnAeels fdre zrety uirsgk mEqa axu wnpeinerr bdddeiuvw.",
+  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+  "SAMPLE_ENCRYPTED": "Fpsrr ltca ee hntnBztT ajvayaexegrir twqn iaum hekrr oldmou.",
   "SAMPLE_KEY": "ABC",
-  "RAILFENCE": "| S | t | a | n | l | e | y | s | E | x | p | e | d | i | \n| t | i | o | n | s | z | u | g | q | u | e | r | d | u | \n| r | c | h | A | f | r | i | k | a | w | i | r | d | v | \n| o | n | j | e | d | e | r | m | a | n | n | b | e | w | \n| u | n | d | e | r | t |   |   |   |   |   |   |   |   | "
+  "RAILFENCE": "| F | r | a | n | z | j | a | g | t | i | m | k | o | m | \n| p | l | e | t | t | v | e | r | w | a | h | r | l | o | \n| s | t | e | n | T | a | x | i | q | u | e | r | d | u | \n| r | c | h | B | a | y | e | r | n |   |   |   |   |   | "
 }

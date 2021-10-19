@@ -22,8 +22,8 @@ describe('Base64', () => {
         assert.equal('Aa', crypt.process('Zz', true));
     });
     describe('1st reference value', () => {
-        const plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
-        const encoded = 'Yxhrtqcj Wzwpxmlasyydbk ygii vwynb Exjmvg apvl hse bgkplqsfr mkabrlqvk.';
+        const plain = 'Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.';
+        const encoded = 'RnJhbnogamFndCBpbSBrb21wbGV0dCB2ZXJ3YWhybG9zdGVuIFRheGkgcXVlciBkdXJjaCBCYXllcm4u';
 
         beforeEach(() => {
             state.$key.val = () => ('Geheimer Schluessel');
@@ -38,7 +38,7 @@ describe('Base64', () => {
     });
     describe('2nd reference value', () => {
         const plain = 'The quick brown fox jumps over the lazy dog.';
-        const encoded = 'Llg hybmo zjsye jhh nsetu fzxb xfw pcqc wyk.';
+        const encoded = 'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=';
 
         beforeEach(() => {
             state.$key.val = () => ('Secret Key');

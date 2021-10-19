@@ -1,7 +1,7 @@
 {
   "TITLE": "Gronsfeld-Verschlüsselung",
   "DESCRIPTION": "<h1>Die Gronsfeld-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
-  "SAMPLE_ENCRYPTED": "Vueoqnay Jbsfhjyrqtxdxh uvja fawgk Bjsntc cnvg wso onfkwqdor cjfwtiiuu.",
+  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+  "SAMPLE_ENCRYPTED": "Iseoe scmy mp lsnuugzy zhsabmanuxxho Xbcr sajv gvvdm Kcejvq.",
   "SAMPLE_KEY": "3141592654"
 }

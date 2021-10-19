@@ -1,7 +1,7 @@
 {
   "TITLE": "Vigenère-Verschlüsselung",
   "DESCRIPTION": "<h1>Die Vigenère-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
-  "SAMPLE_ENCRYPTED": "Yxhrtqcj Wzwpxmlasyydbk ygii vwynb Exjmvg apvl hse bgkplqsfr mkabrlqvk.",
+  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+  "SAMPLE_ENCRYPTED": "Lvhrh vexl kt viqhdiez zlvemlidqzeyr Lsbt wylv lgvtz Dhjyvf.",
   "SAMPLE_KEY": "Geheimer Schluessel"
 }

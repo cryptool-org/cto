@@ -22,8 +22,8 @@ describe('Bacon', () => {
         assert.equal('Aa', crypt.process('Zz', true));
     });
     describe('1st reference value', () => {
-        const plain = 'Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.';
-        const encoded = 'Yxhrtqcj Wzwpxmlasyydbk ygii vwynb Exjmvg apvl hse bgkplqsfr mkabrlqvk.';
+        const plain = 'Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.';
+        const encoded = 'aabab baaaa aaaaa abbaa babbb abaaa aaaaa aabba baaba abaaa ababb abaab abbab ababb abbba ababa aabaa baaba baaba baabb aabaa baaaa babaa aaaaa aabbb baaaa ababa abbab baaab baaba aabaa abbaa baaba aaaaa babab abaaa abbbb baabb aabaa baaaa aaabb baabb baaaa aaaba aabbb aaaab aaaaa babba aabaa baaaa abbaa ';
 
         beforeEach(() => {
             state.$key.val = () => ('Geheimer Schluessel');
@@ -38,7 +38,7 @@ describe('Bacon', () => {
     });
     describe('2nd reference value', () => {
         const plain = 'The quick brown fox jumps over the lazy dog.';
-        const encoded = 'Llg hybmo zjsye jhh nsetu fzxb xfw pcqc wyk.';
+        const encoded = 'baaba aabbb aabaa abbbb baabb abaaa aaaba abaab aaaab baaaa abbab babaa abbaa aabab abbab babab abaaa baabb ababb abbba baaab abbab baabb aabaa baaaa baaba aabbb aabaa ababa aaaaa babbb babba aaabb abbab aabba ';
 
         beforeEach(() => {
             state.$key.val = () => ('Secret Key');

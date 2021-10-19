@@ -32,7 +32,7 @@
     "inputPlaceHolder": "Eingabe...",
     "hexValue": "Hex-Wert...",
     "noSalt": "Kein Salt verwenden",
-    "inputExampleText": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert."
+    "inputExampleText": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern."
   },
   "tabGenrsa": {
     "name": "RSA-Schlüsselgenerierung",
@@ -55,7 +55,7 @@
     "input": "Eingabe",
     "file": "Datei",
     "outputFile": "Ausgabedatei",
-    "inputExampleText": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert."
+    "inputExampleText": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern."
   },
   "tabFiles": {
     "name": "Dateien",

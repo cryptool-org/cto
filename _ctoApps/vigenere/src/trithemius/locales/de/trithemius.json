@@ -1,7 +1,7 @@
 {
   "TITLE": "Trithemius-Verschlüsselung",
   "DESCRIPTION": "<h1>Die Trithemius-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
-  "SAMPLE_ENCRYPTED": "Sucqpjez Mgzppvhxeeksob mrcq dvtfl Flyqtk huer kee bxxznjymn cgzysjlzc.",
+  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+  "SAMPLE_ENCRYPTED": "Fscqd ognb rw vazdaukl oymsxfqlpuwis Zhfr afqe rjhtz Uutaol.",
   "SAMPLE_KEY": "Geheimer Schluessel"
 }

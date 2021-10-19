@@ -1,7 +1,7 @@
 {
   "TITLE": "Beaufort-Verschlüsselung",
   "DESCRIPTION": "<h1>Die Beaufort-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Stanleys Expeditionszug quer durch Afrika wird von jedermann bewundert.",
-  "SAMPLE_ENCRYPTED": "Olhrxigz Ofshrwzkqyofny ssaa piqjn Enbwbg iznf rqe jyehdssfr kcinrfiny.",
+  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+  "SAMPLE_ENCRYPTED": "Bnhrj delz uv bgsdhasn jdnmmxahopsqr Zshd qkdn fsnpl Bhnqnf.",
   "SAMPLE_KEY": "Geheimer Schluessel"
 }
