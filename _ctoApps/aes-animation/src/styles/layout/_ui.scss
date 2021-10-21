@@ -1,0 +1,639 @@
+@use "../abstracts/" as *;
+
+.ui{
+
+    display: grid;
+    background: #888;
+
+    grid-template-rows: 600px 3rem 16rem 1fr;
+    grid-template-columns: 12rem 1fr 8rem;
+    overflow: hidden;
+
+    grid-template-areas: 
+        "screen screen screen"
+        "menuleft menu menuright"
+        "info info info"
+        "form form form"
+    ; 
+
+    @include respond("tab-port"){
+        height: 100%;
+
+
+        grid-template-rows: 1fr 3rem 3rem;
+        grid-template-columns: 1fr 1fr;
+    
+        
+        grid-template-areas: 
+            "screen screen"
+            "menutwo menutwo"
+            "menuleft menuright"
+        ;
+    }
+
+
+    &__page{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        overflow: hidden;
+    }
+    
+    &__screen{
+        background:  var(--screen-bg);
+        grid-area: screen;
+  
+        position: relative;
+
+        &::before{
+            content: "loading...";
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+           
+        }
+
+        canvas{
+            position: absolute;
+            z-index: 2;
+        }
+    }
+
+    &__animation-final-overlay{
+        grid-area: screen;
+        z-index: 4;
+    }
+
+
+    
+    &__settings{
+        grid-area: screen;
+        display: none;
+        z-index: 25;  
+        padding: 1rem;
+        background: rgba(85, 85, 85, 0.8);
+        
+        
+        @include respond("tab-port"){
+            overflow-y: auto;
+        }
+        
+    }
+    
+    &__settings-btn{
+        grid-area: menuright;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 1rem;
+        align-items: center;
+
+    }
+    
+    &__controlls{
+        padding: 0rem 1rem;
+        grid-area: menuleft;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        & > * {
+            user-select: none;
+        }
+    
+        
+    }
+
+    &__controlls .controlls__btn{
+        margin-right: .5rem;
+    }
+    
+    &__form{
+        grid-area: form;
+        padding: 1rem;
+        z-index: 5;
+
+
+        @include respond("tab-port"){
+            grid-area: screen;
+        }
+
+    }
+    
+    &__info{
+        background: #888;
+        grid-area: info;
+        padding: 1rem;
+
+        @include respond("tab-port"){
+            grid-area: screen; 
+            word-break: break-all;
+            overflow-y: auto;
+        }
+
+    }
+    
+    &__navigations{
+        z-index: 5;
+        grid-area: menu;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        @include respond("tab-port"){
+            padding: 1rem;
+            grid-area: screen;    
+            
+        }
+    }
+
+    &__mobile-btns{
+        grid-area: menutwo;
+        display: none;
+        & > * {
+            user-select: none;
+        }
+    
+
+        @include respond("tab-port"){
+            display: flex;
+            background: #f00;
+        }
+    }
+
+    &__btn{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #aaa;
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+
+        &--selected{
+            background: #555;
+        }
+    }
+    
+    &--hidden{
+        display: block;
+
+        @include respond("tab-port"){
+            grid-area: screen;
+           
+        }
+    }
+}
+
+.info{
+    display: none;
+
+    padding: 1rem;
+   
+
+    &__title{
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    &__body{
+        line-height: 1.6rem;
+        font-size: 1rem;
+
+        p {
+            margin: 1rem 0;
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.7rem;
+        }
+
+        ul{
+            padding-left: 2rem;
+        }
+    }
+}
+
+
+.finish-screen{
+    
+    width: 100%;
+    height: 100%;
+    background: #000;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    &__button{
+        color: #fff;
+        cursor: pointer;
+        padding: 1rem;
+        text-align: center;
+        color: #fff;
+        margin: 1rem 0;
+
+        &--yellow{
+            border: 3px solid var(--text-color-alpha);
+        }
+
+        &--blue{
+            border: 3px solid var(--text-color-beta);
+        }
+    }
+
+    &__container{
+        height: 50%;
+
+        h3{
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+     
+
+        svg{
+            fill: #fff;
+        }
+    }
+
+    &__button-repeat{
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+
+        .controlls__btn{
+            width: 4rem;
+            height: 4rem;
+            color: #000;
+            background: #fff;
+        }
+    }
+}
+
+.navigation{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+
+    @include respond("tab-port"){
+        width: 100%;
+        display: block;
+        background: #fff;
+       
+      
+        position: absolute;
+       
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: none;
+    }
+
+}
+
+
+.ui-container{
+    @include respond("tab-port"){
+        width: 100%;
+        height: 100%;
+        background: rgba(85,85,85,.8);
+        z-index: 5;
+        display: none;
+       
+    }
+
+    & > * {
+        //user-select: none;
+    }
+
+   
+
+    &--display{
+        display: flex;
+    }
+}
+ 
+
+.info-container{
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    user-select: auto !important;
+}
+
+
+.controlls{
+
+    display: flex;
+    width: 100%;
+
+
+    &__btn{
+        position: relative;
+        background: #333;
+        display: flex;
+        border-radius: 50%;
+        width: 2.4rem;
+        height: 2.4rem;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+      
+        user-select: none;
+        border: none;
+        outline: none;
+
+    
+        & svg{
+            width: 1rem;
+            height: 1rem;
+            fill: #fff;
+          
+        }
+    }
+
+    &__play-icon{
+        display: none;
+    }
+
+    &__pause-icon{
+        display: block;
+    }
+
+
+    &__play-btn--paused &__play-icon{
+        display: block;
+    }
+
+    &__play-btn--paused &__pause-icon{
+        display: none;
+    }
+
+
+
+}
+
+
+.navigation-item{
+
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    margin: .1rem 0;
+    cursor: pointer;
+
+    @include respond("tab-port"){
+       width: 100%;
+       height: auto;
+      
+       
+       justify-content: flex-start;
+       height: auto;
+       padding: 1rem 2rem;
+     
+    }
+
+
+    &--current{
+        background: #555;
+    }
+
+    &__number{
+        @include respond("tab-port"){
+            display: none;
+           
+       
+         }
+    }
+
+    &__title{
+        display: none;
+
+        @include respond("tab-port"){
+            display: block;
+         }
+    }
+}
+
+
+.rijndael-form{
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    @include respond("tab-port"){
+        overflow-y: scroll;
+    }
+
+    &__form{
+
+    }
+
+    &__title{
+        font-size: 2rem;
+      
+        @include respond("tab-port"){
+            font-size: 1.4rem;
+         }
+       
+    }
+
+    &__info{
+        margin: 1rem 0;
+    }
+
+    &__radio-row{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+
+        & > * {
+            margin-right: .5rem ;
+            @include respond("tab-port"){
+                margin-right: .2rem;
+            }
+        }
+
+        @include respond("tab-port"){
+            font-size: .9rem;
+        }
+    }
+
+    &__row{
+        display: flex;
+        flex-direction: column;
+        padding: .1rem;
+        margin-bottom: 1rem;
+
+        @include respond("tab-port"){
+            margin-bottom: .5rem;
+        }
+
+        & > input{
+            padding: .5rem 1rem;
+        }
+
+        
+    }
+
+    &__rows{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__error{
+        color: red;
+        padding: .2rem .2rem;
+        margin-top: -1rem;
+        margin-bottom: .5rem;
+        font-size: .9rem;
+
+        @include respond("tab-port"){
+            height: 1rem;
+            margin-top: 0rem;
+            font-size: .8rem;
+            padding: 0 .2rem;
+        }
+    }
+
+    &__button{
+        font-size: 1rem;
+        font-weight: bold;
+        padding: .3rem 1rem;
+        cursor: pointer;
+
+        @include respond("tab-port"){
+            font-size: .9rem;
+            padding: .2rem 1rem;
+        }
+    }
+}
+
+
+#rijndael-animation-speed-select{
+    padding: 0;
+}
+
+.settings{
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+   
+
+    @include respond("tab-port"){
+        overflow-y: scroll;
+    }
+  
+
+    &__title{
+        font-size: 2.4rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #aaa;
+
+        max-width: 40rem;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        margin: 0 auto;
+        max-width: 40rem;
+        font-size: .7rem;
+        margin-bottom: .3rem;
+    }
+
+    &__section{
+        width: 100%;
+        padding: 1rem;
+        margin: 1rem 0;
+        background: #eee;
+        border-bottom: 1px solid #aaa;
+
+        
+       
+   
+        max-width: 40rem;
+        margin: 1rem auto;
+
+        p{
+            font-size: .7rem;
+            margin-top: 1rem;
+        }
+
+        @include respond("tab-port"){
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__section-input-wrapper{
+        
+        display: flex;
+        align-items: center;
+
+        @include respond("tab-port"){
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__section-input{
+        padding: .5rem 2rem;
+        font-size: 1.2rem;
+        flex: 1;
+        @include respond("tab-port"){
+            width: 100%;
+        }
+    }
+
+    
+
+    &__section-label{
+        min-width: 18rem;
+        font-weight: bold;
+       
+
+        @include respond("tab-port"){
+            margin-bottom: .5rem;
+        }
+    }
+
+    &__close-btn{
+        display: block;
+        width: 10rem;
+        margin: 0 auto;
+        padding: .3rem .5rem;
+        cursor: pointer;
+        margin-top: 1.5rem;
+        transition: all .3s;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: #eee;
+        border: none;
+        box-shadow: 0 .2rem .3rem rgba(0,0,0,.3);
+        border-bottom: 1px solid #aaa;
+
+        &:hover{
+            box-shadow: 0 .2rem .3rem rgba(0,0,0,.5);
+        }
+
+        &:active{
+            box-shadow: 0 .2rem .2rem rgba(0,0,0,.3);
+        }
+    }
+}

@@ -1,0 +1,226 @@
+{
+
+    "playButtonTooltip": "Wiedergabe / Pause",
+    "jumpForwardsTooltip": "Vorwärts springen",
+    "jumpBackwardsTooltip": "Zurück springen",
+    "settingsButtonTooltip": "Einstellungen",
+    "settingsCloseBtn": "Schließen",
+
+    "infoButtLabel": "Info",
+    "navigationButtonLabel": "Navigation",
+    "formButtonLabel": "Eingabe",
+
+    "settingsTitle": "Einstellungen",
+    "settingsNotice": "Wenn Sie nochmal auf das Zahnrad klicken, kommen Sie zurück in die Animation.",
+    "settingsNoticeJump": "Setzt die Sprungdauer in der Animations-Timeline für die Buttons \"Zurück springen\" und \"Vorwärts springen\".",
+
+    "settingsInfo": "<p>Jede Seite dieser Animation besteht aus 4 Teilen: einem Anzeigefeld, in dem die Animation dargestellt wird. Unter diesem Feld befindet sich eine Bedienungsleiste, in der sich die Animation starten/stoppen lässt, sowie Knöpfe um direkt zu einzelnen Animations-Seiten zu gelangen. Ebenso sind ein \"Vorwärtsspringen\"- und ein \"Rückwärtsspringen\"-Button vorhanden. Diese erlauben es, sich in der eingestellten Sprungdauer über die Seitengrenzen hinweg durch die Animations-Timeline zu bewegen.</p><p>Unter der Bedienungsleiste befindet sich noch ein Abschnitt mit einem Info-Text zu der jeweils angezeigten Seite, und ganz unten ein Formular zur Eingabe (der Parameter und der Nachricht, die in der Animation benutzt werden) und zur Ausgabe.</p>",
+
+    "finishOverlayBackToEncryption": "Verschlüsselungsprozess erneut anschauen",
+    "finishOverlayBackToKeySchedule": "Schlüsselgenerierung erneut anschauen",
+    "finishOverlayBackToStart": "Animation neu starten",
+
+    "settingsThemeLabel": "Theme:",
+    "settingsSpeedLabel": "Animations Geschwindigkeit",
+    "settingsJumpLabel": "Sprungdauer (Sekunden)",
+    "settingsLanguageLabel": "Sprache",
+
+    "themeOptionDefault": "Standard",
+    "themeOptionNew": "Theme 2",
+
+    "languageOptionEN": "Englisch",
+    "languageOptionDE": "Deutsch",
+
+
+
+    "formTitle": "AES-Animation: Verwendete Daten",
+    "formInfo": "Die Daten in der Animation ändern sich, wenn man die Daten ganz unten ändert. Probiere es aus!",
+    "formSelectInputOne": "Plaintext eingeben in ",
+    "formSelectInputTwo": "oder in ",
+    "plaintextLabel": "Klartext (Eingabe in ASCII)",
+    "plaintextHexadecimalLabel": "Klartext (in hex)",
+    "plaintextHexadecimalLabelTwo": "Klartext (Eingabe in hex)",
+    "keyLabel": "Schlüssel (Eingabe in hex)",
+    "outputLabel": "Geheimtext (Ausgabe in hex)",
+    "encryptButtonLabel": "Verschlüsseln",
+    "formErrorMessage": "Der Schlüssel muss aus 32 hexadezimalen Zeichen bestehen.",
+    "formErrorPlaintextNotEmpty": "Die Eingabe darf nicht leer sein.",
+    "formErrorKeyNotEmpty": "Der Schlüssel darf nicht leer sein.",
+
+    "page-1-title": "Seite 1: AES-Animation Intro",
+    "page-1-info": "<p>Diese Animation gibt einen Überblick über die Funktionsweise des AES-/Rijndael-Algorithmus. Die unten eingegebenen Daten werden dynamisch verarbeitet. Die Animation behandelt dann die Verschlüsselung des ersten Klartext-Blocks. Für Eingaben länger als ein Block werden die Folgeblöcke im ECB-Modus berechnet und im Feld \"Geheimtext (Ausgabe in hex)\" angezeigt.</p><p>Über das Zahnrad kommen Sie zu den Einstellungen, wo Sie bspw. zwischen deutsch und englisch umschalten können. In dieser Animation haben sowohl der Datenblock als auch der Schlüssel eine Länge von 128 bit. Für einen tieferen Einblick in die Mathematik hinter dem Algorithmus konsultieren Sie bitte die entsprechende Literatur.</p><p>Zum Einstieg können Sie sich anschauen: <a href='https://de.wikipedia.org/wiki/Advanced_Encryption_Standard'>https://de.wikipedia.org/wiki/Advanced_Encryption_Standard</a></p><p>Eine weitere Darstellung von AES bietet auch: <a href='https://www.cryptool.org/de/cto/aes-step-by-step'>https://www.cryptool.org/de/cto/aes-step-by-step</a></p><p>Diese Animation wurde ursprünglich von Enrique Zabala in Flash implementiert, zuerst für seine Masterarbeit und dann erweitert für das CrypTool-Projekt. Hier ist diese Animation mit einer modernen Web-Technologie (PixiJS) implementiert worden. Außerdem sind die Daten der Animation hier nicht fest verdrahtet, sondern nutzen dynamisch die Werte aus der Eingabe weiter unten.</p>",
+
+    "page-2-title": "Seite 2: Übersicht über die Verschlüsselung",
+    "page-2-info": "<p>Der Advanced Encryption Standard (AES) ist auch unter seinem ursprünglichen Namen Rijndael bekannt. Es handelt sich um eine moderne symmetrische Blockchiffre. Auf der Seite werden die Eingaben (Klartext und Hauptschlüssel) und die Ausgaben (Geheimtext) angezeigt.</p>",
+
+    "page-3-title": "Seite 3: Verschlüsselungsprozess und Hauptschlüssel",
+    "page-3-info": "<p>AES basiert auf der Rijndael-Blockchiffre. Während der Rijndael-Algorithmus eine Reihe von Schlüssel- und Blockgrößen zulässt (128, 160, 192, 224, 256 Bit), ist AES nicht so flexibel. AES hat eine feste Blocklänge von 128 Bit und lässt nur 128, 192 und 256 Bit als Schlüssellänge zu.</p><p>Der Zustand (enthält die Nachricht) und der Schlüssel können als rechteckiges Feld von Bytes dargestellt werden. Während die Bitlängen des Zustands/Schlüssels geteilt durch 32 die Anzahl der Spalten bestimmen, besteht jede Spalte immer aus 4 Bytes. Diese Spalten werden manchmal auch als Wörter bezeichnet. Die Anzahl der Spalten im Zustand wird üblicherweise als Nb und die Anzahl der Spalten im Hauptschlüssel als Nk bezeichnet.</p><p>Da wir in dieser Animation sowohl für den Zustand als auch für den Schlüssel eine Länge von 128 Bit verwenden, sind Nb und Nk in diesem Fall jeweils 4. Die sich ergebenden Arrays können daher als vier mal vier Tabellen dargestellt werden, wobei die Byte-Werte in hexadezimaler Schreibweise angegeben werden.</p><p>Der Übersichtlichkeit halber werden der Verschlüsselungsvorgang und die Erstellung der Rundenschlüssel in getrennten Abschnitten dargestellt. Da der eigentliche Verschlüsselungsvorgang für die meisten Menschen der interessantere Teil ist, wird dieser zuerst in Teil A behandelt.</p>",
+
+    "page-4-title": "Seite 4: A) Verschlüsselungsprozess",
+    "page-4-info": "<p>In diesem Abschnitt werden der Verschlüsselungsprozess und seine Teilschritte erläutert. Der Entschlüsselungsprozess funktioniert in umgekehrter Weise sehr ähnlich.</p>",
+
+    "page-5-title": "Seite 5: Übersicht über den Verschlüsselungsprozess",
+    "page-5-info": "<p>Die AES-Verschlüsselung ist ein iterativer Prozess. Die Anzahl der Runden hängt von der Schlüssellänge ab.</p><ul><li>10 Runden für 128-Bit-Schlüssel.</li><li>12 Runden für 192-Bit-Schlüssel.</li><li>14 Runden für 256-Bit-Schlüssel.</li></ul><p>Bei jeder der Runden, mit Ausnahme der ersten und letzten, werden dieselben vier Operationen in der folgenden Reihenfolge durchgeführt:</p><ul><li>SubBytes</li><li>ShiftRows</li><li>MixColumns</li><li>AddRoundKey</li></ul><p>In der letzten Runde wird der Schritt 'MixColumns' übersprungen. Außerdem gibt es zu Beginn eine initiale Runde (#1), in der nur die Operation AddRoundKey durchgeführt wird.</p>",
+
+    "page-6-title": "Seite 6: Transformationstypen",
+    "page-6-info": "<p>Auf den folgenden Seiten (Seite 7-10) werden die 4 Verschlüsselungs-Transformationen behandelt: SubBytes, ShiftRows, MixColumns und AddRoundKey.</p>",
+
+    "page-7-title": "Seite 7: SubBytes",
+    "page-7-info": "<p>Bei der SubBytes-Transformation wird jedes Byte im Zustand durch eine 8-Bit-Substitutionsbox ersetzt, die gemeinhin als S-Box bezeichnet wird. Die Verwendung der S-Box sorgt für die Nichtlinearität in der Chiffre.</p><p>Um diesen Schritt umzukehren, wird bei der Entschlüsselung die Umkehrung der S-Box verwendet.</p>",
+
+    "page-8-title": "Seite 8: ShiftRows",
+    "page-8-info": "<p>Bei der ShiftRows-Transformation werden die Bytes jeder Zeile um einen bestimmten Offset verschoben. Die erste Zeile wird immer unverändert gelassen, während der Offset für die Zeilen zwei bis vier von der Blocklänge abhängt.</p><p>Bei einer Blocklänge von 128 Bit (4 Nb) werden die Bytes in den Zeilen zwei, drei und vier jeweils um eins, zwei und drei verschoben.</p><p>Die Verschiebung der Zeilen um diese vordefinierten Offsets erzeugt eine Ausgabe, bei der jede Spalte des Ausgangszustands Bytes aus jeder Spalte des Eingangszustands enthält.</p><p>Mit diesem Schritt soll sichergestellt werden, dass die Spalten nicht unabhängig voneinander verschlüsselt werden.</p>",
+
+    "page-9-title": "Seite 9: MixColumns",
+    "page-9-info": "<p>Bei der MixColumns-Transformation werden die vier Bytes jeder Spalte des Zustands durch eine invertierbare lineare Transformation kombiniert. Die Funktion MixColumns nimmt vier Bytes als Eingabe und gibt vier Bytes aus. Zusammen mit ShiftRows sorgt MixColumns für Diffusion in dieser Chiffre.</p>",
+
+    "page-10-title": "Seite 10: AddRoundKey",
+    "page-10-info": "<p>Bei der AddRoundKey-Transformation wird ein Rundenschlüssel durch ein einfaches bitweises XOR auf den Zustand angewendet.</p><p>Dieser Rundenschlüssel wird durch Expansion des Hauptschlüssels vor dem Verschlüsselungs-/Entschlüsselungsprozess erstellt (mehr dazu ab Seite 13). Der Rundenschlüssel hat dieselbe Länge wie ein Block.</p>",
+
+    "page-11-title": "Seite 11: Runden 1 - 5",
+    "page-11-info": "<p>Auf dieser Seite werden die Zustände nach jeder Transformation während der Runden 1 bis 5 des Verschlüsselungsprozesses angezeigt.</p>",
+
+    "page-12-title": "Seite 12: Runden 6 - 10",
+    "page-12-info": "<p>Diese Seite zeigt die Zustände nach jeder Transformation während der Runden 6 bis 10 des Verschlüsselungsprozesses sowie die endgültige Ausgabe für den ersten Block.</p>",
+
+    "page-13-title": "Seite 13: B) Generierung der Rundenschlüssel",
+    "page-13-info": "<p>Der gegebene Hauptschlüssel wird expandiert, um die Rundenschlüssel herzuleiten, die in jeder Runde des Verschlüsselungs-/Entschlüsselungsprozesses verwendet werden. Die Anzahl der Rundenschlüssel ist gleich der Anzahl der Runden plus eins und ihre Größe hängt von der Länge des Nachrichtenblocks ab.</p>",
+
+    "page-14-title": "Seite 14: Schlüsselexpansion",
+    "page-14-info": "<p>Bei der Schlüsselexpansion (key schedule) werden aus dem Hauptschlüssel die Rundenschlüssel generiert. Dies geschieht vor dem Verschlüsselungs-/Entschlüsselungsprozess. Die Gesamtanzahl der resultierenden Rundenschlüssel-Bits ist gleich der Blocklänge multipliziert mit der Anzahl der Runden plus eins (hier 128 bit * 11 = 1408 bit).</p><p>Zur Erinnerung: Nb = Anzahl der Wörter im Nachrichtenblock, Nk = Anzahl der Wörter im Hauptschlüssel.</p><p>Dieser expandierte Rundenschlüssel ist ein Array von 4-Byte-Wörtern (W). Die ersten Nb Wörter werden mit dem Hauptschlüssel gefüllt. Die folgenden Wörter werden dann rekursiv durch Wörter mit kleineren Indizes definiert.</p><p>Die genauen Operationen, die dafür verwendet werden, hängen vom Wert von Nk ab. Es gibt zwei Gruppen von Operationen, eine für Nk ≤ 6 und eine für Nk > 6.</p><p>Jedes Wort, das auf den Hauptschlüssel folgt, wird durch eine XOR-Verknüpfung des vorherigen Wortes W[i-1] und des Wortes, das Nk Positionen davor liegt W[i-Nk], erzeugt.</p><p>Für Wörter an Positionen, die ein Vielfaches von Nk sind, wird vor der XOR-Verknüpfung eine Transformation auf W[i-1] angewendet. Zusätzlich wird eine Rundungskonstante (Rcon) mit XOR verknüpft.</p><p>Die Transformation von W[i-1] besteht aus einer zyklischen Verschiebung der Bytes im Wort (RotByte), gefolgt von einem Tabellen-Lookup auf alle vier Bytes des Wortes (SubBytes).</p><p>Der individuelle Rundenschlüssel (i) kann dann durch Auswahl des Unterarrays W[Nb * i] bis W[Nb * (i+1)] definiert werden.</p>",
+
+    "page-15-title": "Seite 15: Ende",
+    "page-15-info": "<p>Vielen Dank fürs Anschauen. Sie können die oben gezeigten Buttons verwenden, um zum Anfang zurückzuspringen oder direkt zu den Teilen A) und B) der Animation zurückzukehren.</p>",
+
+    "page-1": {
+        "titlePartOne": "AES",
+        "titlePartTwo": "Verschlüsselung",
+        "text": "In der Animation wurde sowohl für den Datenblock als auch für den Schlüssel eine Länge von 128 Bit genommen",
+        "introTitle": "Intro",
+        "introText": "Drücken Sie auf Play, um die Animation zu starten."
+    },
+    "page-2": {
+        "boxText": "AES-Verschlüsseler",
+        "textLeft": "Hauptschlüssel",
+        "textBottom": "Geheimtext",
+        "textTop": "Klartext"
+    },
+    "page-3": {
+        "title": "Eingabe",
+        "subtitleLeft": "Zustand",
+        "subtitleRight": "Hauptschlüssel",
+        "explanationLeft": "Dies ist ein Block vom Klartext, der verschlüsselt werden soll",
+        "explanationRight": "Hexadezimal-Darstellung (Beispiel):",
+        "textLeft": "Zum Verschlüsselungs-Prozess",
+        "textRight": "Zur Schlüsselgenerierung"
+    },
+    "page-4": {
+        "title": "Verschlüsselungs-Prozess",
+        "text": "Durchführung der Verschlüsselung für den gegebenen Klartextblock in der Initial-Runde, den 9 Haupt-Runden und in der Final-Runde (alle 4 Transformationen werden nur in den Haupt-Runden benutzt)."
+    },
+    "page-5": {
+        "title": "Verschlüsselungs-Prozess",
+        "titleInitialRound": "Initial-Runde",
+        "titleMainRounds": "9 Haupt-Runden",
+        "titleFinalRound": "Final-Runde",
+        "labelInitial": "AddRoundKey",
+        "labelMrone": "1-SubBytes",
+        "labelMrTwo": "2-ShiftRows",
+        "labelMrThree": "3-MixColumns",
+        "labelMrFour": "4-AddRoundKey",
+        "labelFrOne": "SubBytes",
+        "labelFrTwo": "ShiftRows",
+        "labelFrThree": "AddRoundKey",
+
+        "boxTitleOne": "Hauptschlüssel",
+        "boxTitleTwo": "Rundenschlüssel 0",
+        "boxTitleThree": "Rundenschlüssel 10",
+
+        "round": "Runde"
+    },
+    "page-6": {
+        "title": "Die vier Arten der Verschlüsselungs-Transformationen:",
+        "labelOne": "1-SubBytes",
+        "labelTwo": "2-ShiftRows",
+        "labelThree": "3-MixColumns",
+        "labelFour": "4-AddRoundKey"
+    },
+    "page-7": {
+        "title": "1 - SubBytes",
+        "round": "Runde 1",
+        "sboxLabel": "S-Box",
+        "sboxExplanation": "Byte-Ersetzungstabelle"
+    },
+    "page-8": {
+        "title": "2 - ShiftRows",
+        "rotateTextOne": "Rotation um 1 Byte",
+        "rotateTextTwo": "Rotation um 2 Bytes",
+        "rotateTextThree": "Rotation um 3 Bytes"
+    },
+    "page-9": {
+        "title": "3 - MixColumns",
+        "text": "Die 4 Zahlen jeder Spalte werden in einem AES-Galois-Feld mit einer gegebenen Matrix modulo multipliziert.",
+        "text2": "Der MixColumns-Schritt ist zusammen mit dem ShiftRows-Schritt die Hauptursache für die Diffusion in der AES-Chiffre."
+    },
+    "page-10": {
+        "title": "4 - AddRoundKey",
+        "roundKeyLabel": "Rundenschlüssel",
+        "roundKeyText": "Hergeleitet als Rundenschlüssel 1 bei der Schlüsselgenerierung – siehe Seite 14"
+    },
+    "page-11": {
+        "introText": "Diese 4 Transformationen werden in den 9 Haupt-Runden auf den Klartextblock angewandt. Die MixColumns-Transformation wird in der Final-Runde nicht benutzt.",
+        "roundLabel": "Start der Runde",
+        "subBytesLabel": "Nach SubBytes",
+        "ShiftRowsLabel": "Nach ShiftRows",
+        "MixColumnsLabel": "Nach MixColumns",
+        "RoundKeyLabel": "Rundenschlüssel",
+        "inputLabel": "Eingabe",
+        "roundOneLabel": "Runde 1",
+        "roundTwoLabel": "Runde 2",
+        "roundThreeLabel": "Runde 3",
+        "roundFourLabel": "Runde 4",
+        "roundFiveLabel": "Runde 5"
+    },
+    "page-12": {
+        "roundLabel": "Start der Runde",
+        "subBytesLabel": "Nach SubBytes",
+        "ShiftRowsLabel": "Nach ShiftRows",
+        "MixColumnsLabel": "Nach MixColumns",
+        "RoundKeyLabel": "Rundenschlüssel",
+        "outputLabel": "Ausgabe",
+        "roundSixLabel": "Runde 6",
+        "roundSevenLabel": "Runde 7",
+        "roundEightLabel": "Runde 8",
+        "roundNineLabel": "Runde 9",
+        "roundTenLabel": "Runde 10",
+        "cipherTextLabel": "Geheimtext"
+    },
+    "page-13": {
+        "title": "Schlüsselgenerierung",
+        "text": "Expandierung des gegebenen Hauptschlüssels in 11 Teilschlüssel, die in der Initial-Runde, den 9 Haupt-Runden und in der Final-Runde benutzt werden."
+    },
+    "page-14": {
+        "title": "Schlüsselgenerierung",
+        "RotWordLabel": "RotWord",
+        "RconLabel": "Rcon",
+        "SubBytesLabel": "SubBytes",
+        "SBoxLabel": "S-Box",
+        "WOne": "Wi-4",
+        "WTwo": "Wi-1",
+        "WThree": "Wi",
+        "RconFourLabel": "Rcon(4)",
+
+
+        "textIntro": "Der expandierte Schlüssel kann als Vektor von 32-Bit-Worten (Spalten W<sub>i</sub>) betrachtet werden. Die Indizes der Spalten W<sub>i</sub> laufen von 0 bis 43. Die ersten vier Spalten werden mit dem gegebenen Hauptschlüssel gefüllt.",
+        "text": "Die Worte auf durch 4 teilbaren Positionen (W<sub>4</sub>, W<sub>8</sub>, ..., W<sub>40</sub>) werden folgendermaßen berechnet:",
+        "textA": "a) Anwenden der Funktion RotWord und der Transformation SubBytes auf das vorausgehende Wort W<sub>i-1</sub>.",
+        "textB": "b) Verknüpfen des ersten Ergebnisses mit dem Vorgängerwort W<sub>i-4</sub> und der Rundenkonstante Rcon mittels der XOR-Funktion.",
+        "textXOR": "Die restlichen 32-Bit-Worte W<sub>i</sub> werden berechnet, indem das jeweilige Vorgängerwort W<sub>i-1</sub> XOR-verknüpft wird mit dem Wort W<sub>i-4</sub> vier Positonen vorher.",
+
+        "cipherKeyLabel": "Hauptschlüssel",
+        "roundKeyOneLabel": "Rundenschlüssel 1",
+        "roundKeyTwoLabel": "Rundenschlüssel 2",
+        "roundKeyThreeLabel": "Rundenschlüssel 3",
+        "roundKeyTenLabel": "Rundenschlüssel 10"
+    }
+}
