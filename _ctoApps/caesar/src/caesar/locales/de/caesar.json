@@ -1,7 +1,8 @@
 {
     "INPUT_LABEL": "Eingabe",
     "INIT_TEXT": "Hallo, das ist ein Test. Bitte geben Sie Ihren Text hier ein.",
-    
+    "LENGTH": "Länge",
+
     "ENCIPHER": "Verschlüsseln",
     "DECIPHER": "Entschlüsseln",
     "OPTIONS": "Optionen",

@@ -212,15 +212,18 @@ class CaesarController {
 	}
 
 	render() {
-		
-		if(!window.usePython) 
-			this.output.value = this.input.value.encrypt(this.key.value, 
-				!this.encrypt.value, 
-				this.blocksFive.value, 
-				this.alphabet.alphabet, 
+
+		if(!window.usePython)
+			this.output.value = this.input.value.encrypt(this.key.value,
+				!this.encrypt.value,
+				this.blocksFive.value,
+				this.alphabet.alphabet,
 				this.keepChars.value)
 
 		else this.output.value = localPytonEditorObject.runEditorCode()
+
+		document.querySelector("#caesar-input-length").innerText = this.input.value.length
+		document.querySelector("#caesar-output-length").innerText = this.output.value.length
 
 	}
 }

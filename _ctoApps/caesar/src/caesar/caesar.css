@@ -12,6 +12,25 @@
     text-align: center
 }
 
+#caesar-key-minus {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#caesar-key-plus {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#caesar-key-input {
+    font-family: monospace;
+    border-radius: 0;
+}
+
+[data-theme="dark"] #caesar-key-input {
+    border: none;
+}
+
 #caesar-crypt-checkbox-wrapper .custom-control-input:checked~.custom-control-label::before,
 #caesar-crypt-checkbox-wrapper .custom-control-label::before {
     color: #fff;

@@ -1,6 +1,7 @@
 <!-- text input -->
 <div class="form-group mt-3">
     <label for="caesar-input">${{caesar.INPUT_LABEL}}$</label>
+    <span class="small float-right mr-1 pt-1 text-muted">${{caesar.LENGTH}}$: <span id="caesar-input-length"></span></span>
     <textarea spellcheck="false" rows="4" class="form-control" id="caesar-input">${{caesar.INIT_TEXT}}$</textarea>
 </div>
 
@@ -132,6 +133,7 @@
 <!-- output textarea -->
 <div class="form-group mt-3 ml-auto mr-auto">
     <label for="caesar-output">${{caesar.OUTPUT_LABEL}}$</label>
+    <span class="small float-right mr-1 pt-1 text-muted">${{caesar.LENGTH}}$: <span id="caesar-output-length"></span></span>
     <textarea id="caesar-output" rows="4" class="form-control" spellcheck="false"></textarea>
 </div>
 

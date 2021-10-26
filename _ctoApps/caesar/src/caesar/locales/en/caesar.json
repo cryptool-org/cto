@@ -1,7 +1,8 @@
 {
     "INPUT_LABEL": "Input",
     "INIT_TEXT": "Hello this is a test. Please enter your text here.",
-    
+    "LENGTH": "length",
+
     "ENCIPHER": "Encipher",
     "DECIPHER": "Decipher",
     "OPTIONS": "Options",
