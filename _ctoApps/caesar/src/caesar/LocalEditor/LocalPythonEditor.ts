@@ -1,6 +1,6 @@
 /// <reference path="./LocalEditor.ts" />
 
-class LocalPythonEditor extends LocalEditor {
+abstract class LocalPythonEditor extends LocalEditor {
 
     protected syntaxHightlighting: string = "resources/codemirror/mode/python/python.js"
     protected pyodide: any
@@ -72,7 +72,8 @@ class LocalPythonEditor extends LocalEditor {
             this.pyodide.runPython(this.editor.getValue())
 
             // get the output of the script
-            let output = this.pyodide.runPython("sys.stdout.getvalue()")
+            let output = this.pyodide.runPython("sys.stdout.getvalue()") // "r'{0}'.format(sys.stdout.getvalue())" for raw string
+            console.log("output:", output)
             return output.replace(/\n$/g, "") // remove last linebreak
 
         }
@@ -81,24 +82,13 @@ class LocalPythonEditor extends LocalEditor {
 
     }
 
-    protected getArgsFromGUI(): ArgsFormat {
-        console.warn("args from gui were requested, this needs to be overwritten")
-        return null
-    }
+    protected abstract getArgsFromGUI(): ArgsFormat;
 
-    protected getArgsForPyodide(): string[] {
-        console.warn("args for pyodide were requested, this needs to be overwritten")
-        return []
-    }
+    protected abstract getArgsForPyodide(): string[];
 
-    protected getArgsForGuiCommand(): ArgsFormat {
-        console.warn("args for gui command were requested, this needs to be overwritten")
-        return null
-    }
+    protected abstract getArgsForGuiCommand(): ArgsFormat;
 
-    public updateGuiCommand() {
-        console.warn("gui commands were tried to be updated, this needs to be overwritten")
-    }
+    public abstract updateGuiCommand(): void;
 
 }
 

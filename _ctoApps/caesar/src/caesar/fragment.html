@@ -177,7 +177,6 @@
 
     let localPytonEditorObject
     let localPythonAssetsInserted = false
-    let localPythonScriptsLoaded = {}
 
     const insertPythonAssets = (callback = () => {}) => {
 
@@ -192,19 +191,19 @@
         })
 
         // load scripts
-        CTO_Globals.localPythonScripts.forEach((scriptURL, index) => {
+        const loadLocalPythonScripts = (index = 0) => {
+            let scriptURL = CTO_Globals.localPythonScripts[index]
             if(!scriptURL.includes("://"))
                 scriptURL = CTO_Globals.pluginRoot + scriptURL
-            localPythonScriptsLoaded[index] = false
             loadScript(scriptURL, (e) => {
-                localPythonScriptsLoaded[index] = true
-                if(!Object.values(localPythonScriptsLoaded).includes(false)) { // all scripts loaded
-                    // when pyodide loaded
-                    languagePluginLoader.then(callback)
-                }
+                // load more scripts if available
+                if(++index < CTO_Globals.localPythonScripts.length) loadLocalPythonScripts(index)
+                // callback when all are loaded
+                else languagePluginLoader.then(callback)
             })
-        })
+        }
 
+        loadLocalPythonScripts()
         localPythonAssetsInserted = true
 
     }

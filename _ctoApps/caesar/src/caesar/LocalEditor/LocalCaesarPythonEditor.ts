@@ -31,19 +31,33 @@ class LocalCaesarPythonEditor extends LocalPythonEditor {
 
         let args = this.getArgsFromGUI()
 
-        // escape single quotes and linebreaks in text inputs
-        args.message  =  args.message.replace(/'/g, "'\"'\"'").replace(/\\n/g, "\\\n").replace(/\n/g, "\\n")
-        args.alphabet = args.alphabet.replace(/'/g, "'\"'\"'").replace(/\\n/g, "\\\n").replace(/\n/g, "\\n")
+        const escapeSpecialChars = (char: String) => {
+            char = String.fromCharCode(char.charCodeAt(0))
+            if(char == "'") char = "'\"'\"'"
+            if(char == "\n") char = "\\n"
+            if(char == "\t") char = "\\t"
+            // if(char == "\u") char = "\\u"
+            // if(char == "\r") char = "\\r"
+            if(char == "\\") char = "\\\\"
+            return char
+        }
 
-        // escape last backslash in message if there is any (would break params otherwise)
-        if(args.message.charAt(args.message.length - 1) == "\\") args.message = args.message.slice(0, -1) + "\\\\"
+        let message = ""
+        for(let i = 0; i < args.message.length; i++)
+            message += escapeSpecialChars(args.message[i])
+        console.log("message:", message)
+
+        let alphabet = ""
+        for(let i = 0; i < args.alphabet.length; i++)
+            alphabet += escapeSpecialChars(args.alphabet[i])
+        console.log("alphabet:", alphabet)
 
         let params = [
             "caesar.py",
             ((args.encrypt) ? "--encrypt" : "--decrypt"),
             `--key=${args.key}`,
-            `--message=${args.message}`,
-            `--alphabet=${args.alphabet}`
+            `--message=${message}`,
+            `--alphabet=${alphabet}`
         ]
 
         if(caesar.keepChars.value) params.push("--keep-non-alp")
@@ -69,7 +83,7 @@ class LocalCaesarPythonEditor extends LocalPythonEditor {
 
     }
 
-    public updateGuiCommand() {
+    public updateGuiCommand(): void {
 
         let args = this.getArgsForGuiCommand()
 
