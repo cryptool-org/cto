@@ -1,5 +1,5 @@
 {
-    "PYTHON_LOCAL_NOTICE": "<b>Having the code below visible results in it being used for calculating the upper output.</b> To use the default (JavaScript) implementation again, just click the hide button. The code below can be edited, so you can experiment with it. You can also download the code and run it in a local terminal on your computer. The executed command is derived from the upper GUI elements.",
+    "PYTHON_LOCAL_NOTICE": "<b>If the Python code below is visible, it is used to calculate the upper output.</b> To use the default (JavaScript) implementation again, just click the hide button. The code below can be edited, so you can experiment with it. You can also download the code and run it in a local terminal on your computer.",
     "LOADING_PYTHON": "Loading local Python runtime environment, please wait ...",
     "TERMINAL_COMMAND": "Terminal command",
 

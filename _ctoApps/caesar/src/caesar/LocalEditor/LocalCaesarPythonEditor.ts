@@ -98,8 +98,15 @@ class LocalCaesarPythonEditor extends LocalPythonEditor {
         if(caesar.keepChars.value) params.push("--keep-non-alp")
         if(caesar.blocksFive.value) params.push("--blocks-of-five")
 
+        // params.join(" ").replace(/(--[\w-]+)/g, '<span class="d-inline-block">$1</span>')
         this.editorElem.querySelector(".editor-command").innerHTML = "python " + params.join(" ")
 
+    }
+
+    public runEditorCode(): string {
+        let output = super.runEditorCode();
+        (<HTMLTextAreaElement> document.querySelector("#caesar-output")).value = output
+        return output
     }
 
 }

@@ -1,17 +1,36 @@
 <!-- text input -->
 <div class="form-group mt-3">
-    <label for="caesar-input">${{caesar.INPUT_LABEL}}$</label>
+    <label for="caesar-input">${{caesar.INPUT_LABEL}}$ (<span>${{caesar.PLAIN_TEXT}}$</span>)</label>
     <span class="small float-right mr-1 pt-1 text-muted">${{caesar.LENGTH}}$: <span id="caesar-input-length"></span></span>
     <textarea spellcheck="false" rows="4" class="form-control" id="caesar-input">${{caesar.INIT_TEXT}}$</textarea>
 </div>
 
-<!-- encipher / decipher -->
-<div id="caesar-mode-switch" class="row mt-2 mb-2 ml-auto">
-    <label for="caesar-crypt-checkbox" class="mr-2 left-switch-label">${{caesar.ENCIPHER}}$</label>
-    <div id="caesar-crypt-checkbox-wrapper" class="custom-control custom-switch">
-        <input id="caesar-crypt-checkbox" type="checkbox" class="custom-control-input">
-        <label for="caesar-crypt-checkbox" class="custom-control-label right-switch-label">${{caesar.DECIPHER}}$</label>
+<div class="d-flex flex-column flex-sm-row pt-3 pb-2 align-items-center justify-content-sm-between justify-content-md-around">
+
+    <!-- encrypt / decrypt -->
+    <div id="caesar-mode-switch" class="d-flex align-items-center mb-3 mb-sm-0">
+        <label for="caesar-crypt-checkbox" class="mr-2 mb-0 left-switch-label">${{caesar.ENCRYPT}}$</label>
+        <div id="caesar-crypt-checkbox-wrapper" class="custom-control custom-switch">
+            <input id="caesar-crypt-checkbox" type="checkbox" class="custom-control-input">
+            <label for="caesar-crypt-checkbox" class="custom-control-label right-switch-label">${{caesar.DECRYPT}}$</label>
+        </div>
     </div>
+
+    <!-- key section -->
+    <div class="form-inline flex-nowrap">
+        <span class="mr-2">${{caesar.KEY}}$:</span>
+        <button class="btn btn-success" id="caesar-key-minus">-</button>
+        <input id="caesar-key-input" class="form-control text-center w-auto" type="number" value="1" min="0" max="99">
+        <button class="btn btn-success" id="caesar-key-plus">+</button>
+    </div>
+
+</div>
+
+<!-- output textarea -->
+<div class="form-group mt-3 ml-auto mr-auto">
+    <label for="caesar-output">${{caesar.OUTPUT_LABEL}}$ (<span>${{caesar.CIPHER_TEXT}}$</span>)</label>
+    <span class="small float-right mr-1 pt-1 text-muted">${{caesar.LENGTH}}$: <span id="caesar-output-length"></span></span>
+    <textarea id="caesar-output" rows="4" class="form-control" spellcheck="false"></textarea>
 </div>
 
 <!-- tabs card -->
@@ -122,21 +141,6 @@
     </div>
 </div>
 
-<!-- key section -->
-<div class="form-inline mt-3">
-    <span class="mr-2">${{caesar.KEY}}$:</span>
-    <button class="btn btn-success" id="caesar-key-minus">-</button>
-    <input id="caesar-key-input" class="form-control text-center w-auto" type="number" value="1" min="0" max="99">
-    <button class="btn btn-success" id="caesar-key-plus">+</button>
-</div>
-
-<!-- output textarea -->
-<div class="form-group mt-3 ml-auto mr-auto">
-    <label for="caesar-output">${{caesar.OUTPUT_LABEL}}$</label>
-    <span class="small float-right mr-1 pt-1 text-muted">${{caesar.LENGTH}}$: <span id="caesar-output-length"></span></span>
-    <textarea id="caesar-output" rows="4" class="form-control" spellcheck="false"></textarea>
-</div>
-
 <!-- ORIGINAL AUTHOR JEAN MICHEL POLAK -->
 
 
@@ -150,23 +154,14 @@
     <button id="caesar-run-as-python-local" class="btn btn-success mr-1">
         <i class="fa fa-play mr-1"></i> ${{caesar.RUN_AS_PYTHON}}$ (<b>${{caesar.LOCALLY}}$</b>)
     </button>
-    <button id="caesar-run-as-python-remote" class="btn btn-success">
-        <i class="fa fa-play mr-1"></i> ${{caesar.RUN_AS_PYTHON}}$ (<b>${{caesar.REMOTE}}$</b>)
-    </button>
 </div>
 
 <!-- collapsable area of the local Python implementation -->
 <div id="caesar-python-local-collapse" class="collapse pt-3">
-    <div class="alert alert-info">${{editor.PYTHON_LOCAL_NOTICE}}$</div>
+    <div class="alert alert-info mt-2">${{editor.PYTHON_LOCAL_NOTICE}}$</div>
     @@include("./LocalEditor/LocalPythonEditor.html", {
         "codesource": "../local-python-code.py"
     })
-</div>
-
-<!-- collapsable area of the remote Python implementation -->
-<div id="caesar-python-remote-collapse" class="collapse">
-    <div class="alert alert-info mb-2 mt-3">${{caesar.PYTHON_REMOTE_NOTICE}}$</div>
-    <iframe height="900px" width="100%" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe> <!-- src will be set via JS -->
 </div>
 
 <!-- <div id="secondEditor">
@@ -228,7 +223,6 @@
     // toggle local collapse on button click
     $("#caesar-run-as-python-local").click(function() {
         $("#caesar-python-local-collapse").collapse("toggle")
-        $("#caesar-python-remote-collapse").collapse("hide")
     })
 
     // when local collapse gets shown -> set button state, include Python editor, and use Python for calculations
@@ -257,22 +251,20 @@
         caesar.render() // calculate with JS
     })
 
-    // toggle remote collapse on button click
-    $("#caesar-run-as-python-remote").click(function () {
-        $("#caesar-python-local-collapse").collapse("hide")
-        $("#caesar-python-remote-collapse").collapse("toggle")
-    })
+    // when encrypt / decrypt toggler changes -> update textarea labels
+    $("#caesar-crypt-checkbox").on("change", function() {
 
-    // when remote collape gets shown -> set button state and iframe src
-    $("#caesar-python-remote-collapse").on("show.bs.collapse", function() {
-        $("#caesar-run-as-python-remote").html('<i class="fa fa-chevron-up mr-1"></i> ${{caesar.HIDE_REMOTE_PYTHON}}$')
-        let iframe = $("#caesar-python-remote-collapse iframe")
-        if(!iframe.attr("src")) iframe.attr("src", "https://repl.it/@arthurguiot/CaesarCipher?lite=true&embedded=true")
-    })
+        let inputSpan = $("label[for=caesar-input] span")
+        let outputSpan = $("label[for=caesar-output] span")
 
-    // when remote collapse gets hidden -> set button state back again
-    $("#caesar-python-remote-collapse").on("hide.bs.collapse", function() {
-        $("#caesar-run-as-python-remote").html('<i class="fa fa-play mr-1"></i> ${{caesar.RUN_AS_PYTHON}}$ (<b>${{caesar.REMOTE}}$</b>)')
+        if(!this.checked) { // encrypt
+            inputSpan.text("${{caesar.PLAIN_TEXT}}$")
+            outputSpan.text("${{caesar.CIPHER_TEXT}}$")
+        } else {
+            inputSpan.text("${{caesar.CIPHER_TEXT}}$")
+            outputSpan.text("${{caesar.PLAIN_TEXT}}$")
+        }
+
     })
 
 </script>

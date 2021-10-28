@@ -50,11 +50,11 @@ if __name__ == "__main__":
 
     # add command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-k", "--key", help="key for encipher/ decipher", type=int)
+    parser.add_argument("-k", "--key", help="key for encrypt / decrypt", type=int)
     parser.add_argument("-e", "--encrypt", dest="crypt_modus", action="store_true")
     parser.add_argument("-d", "--decrypt", dest="crypt_modus", action="store_false")
     parser.add_argument("-f", "--blocks-of-five", dest="blocks_of_five", action="store_true")
-    parser.add_argument("-m", "--message", help="message for encipher/ decipher", type=str, required=True)
+    parser.add_argument("-m", "--message", help="message for encrypt / decrypt", type=str, required=True)
     parser.add_argument("-ka","--keep-non-alp", help="keep non-alphabet characters", dest="keep_chars", action="store_true")
     parser.add_argument("-a", "--alphabet", help="defined alphabet", type=str)
 

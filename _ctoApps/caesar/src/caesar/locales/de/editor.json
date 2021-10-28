@@ -1,5 +1,5 @@
 {
-    "PYTHON_LOCAL_NOTICE": "<b>Solange der Python-Code sichtbar ist, wird dieser zum Ver- und Entschlüsseln verwendet.</b> Um wieder die standardmäßige JavaScript-Implementierung zu verwenden, blenden Sie die Python-Implementierung einfach wieder aus. Der unten stehende Code kann bearbeitet werden, sodass Sie damit experimentieren können. Sie können den Code auch herunterladen und in einem lokalen Terminal auf Ihrem Computer ausführen. Der auszuführende Befehl wird aus den obigen GUI-Komponenten abgeleitet.",
+    "PYTHON_LOCAL_NOTICE": "<b>Solange der Python-Code sichtbar ist, wird dieser zum Ver- und Entschlüsseln verwendet.</b> Um wieder die standardmäßige JavaScript-Implementierung zu verwenden, blenden Sie die Python-Implementierung einfach wieder aus. Der unten stehende Code kann bearbeitet werden, sodass Sie damit experimentieren können. Sie können den Code auch herunterladen und in einem lokalen Terminal auf Ihrem Computer ausführen.",
     "LOADING_PYTHON": "Lokale Python-Laufzeitumgebung wird geladen ...",
     "TERMINAL_COMMAND": "Konsolen-Befehl",
 

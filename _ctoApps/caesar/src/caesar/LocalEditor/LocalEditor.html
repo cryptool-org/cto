@@ -1,10 +1,5 @@
-<!-- source code to initialize the editor from -->
-<div class="editor-textarea-wrapper d-none"> <!-- the editor will spawn below the textarea -->
-    <textarea class="CodeMirror">@@include("@@codesource")</textarea>
-</div>
-
 <!-- options for the local editor -->
-<div class="editor-options row d-flex justify-content-between mt-2 d-none">
+<div class="editor-options row d-flex justify-content-between mt-3 mb-2 d-none">
 
     <div class="col-auto mt-1">
 
@@ -12,11 +7,11 @@
         <button class="editor-run btn btn-success mb-1"><i class="fa fa-play mr-1"></i>${{editor.RUN_AGAIN}}$</button>
         <button class="editor-reset-code-trigger btn btn-secondary mb-1"><i class="fa fa-undo mr-1"></i>${{editor.RESET_CODE}}$</button>
         <button class="editor-download-code btn btn-info mb-1"><i class="fa fa-download mr-1"></i>${{editor.DOWNLOAD_CODE}}$</button>
-        
+
     </div>
-        
+
     <div class="col-auto mt-1">
-            
+
         <!-- select theme for local editor -->
         <div class="editor-theme-selector d-inline-block form-inline mr-3">
             <span>Theme:</span>
@@ -39,6 +34,11 @@
 
     </div>
 
+</div>
+
+<!-- source code to initialize the editor from -->
+<div class="editor-textarea-wrapper d-none"> <!-- the editor will spawn below the textarea -->
+    <textarea class="CodeMirror">@@include("@@codesource")</textarea>
 </div>
 
 <!-- modal dialog to reset the code to its initial value -->

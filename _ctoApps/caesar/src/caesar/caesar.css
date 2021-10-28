@@ -1,15 +1,16 @@
 .badge {
     font-size: small !important;
-    padding: 0% !important
+    padding: 0% !important;
 }
 
 .CodeMirror {
     font-size: 12px;
     border: 1px solid var(--border-color);
+    border-radius: 0.25rem !important;
 }
 
 #caesar-key-minus, #caesar-key-plus {
-    text-align: center
+    text-align: center;
 }
 
 #caesar-key-minus {
@@ -25,6 +26,7 @@
 #caesar-key-input {
     font-family: monospace;
     border-radius: 0;
+    max-width: 50px;
 }
 
 [data-theme="dark"] #caesar-key-input {
@@ -35,15 +37,17 @@
 #caesar-crypt-checkbox-wrapper .custom-control-label::before {
     color: #fff;
     border-color: var(--primary);
-    background-color: var(--primary)
+    background-color: var(--primary);
+    margin-top: 2px;
 }
 
 #caesar-crypt-checkbox-wrapper .custom-control-label::after {
-    background-color: #fff
+    background-color: #fff;
+    margin-top: 2px;
 }
 
 #caesar-mode-switch {
-    color: var(--text-color-invert)
+    color: var(--text-color-invert);
 }
 
 #caesar-python-local-command {

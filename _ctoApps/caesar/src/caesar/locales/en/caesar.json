@@ -1,10 +1,12 @@
 {
     "INPUT_LABEL": "Input",
+    "PLAIN_TEXT": "plaintext",
+    "CIPHER_TEXT": "ciphertext",
     "INIT_TEXT": "Hello this is a test. Please enter your text here.",
     "LENGTH": "length",
 
-    "ENCIPHER": "Encipher",
-    "DECIPHER": "Decipher",
+    "ENCRYPT": "Encrypt",
+    "DECRYPT": "Decrypt",
     "OPTIONS": "Options",
     "FIVE_BLOCKS": "Blocks of five",
     "KEEP_NON_ALP": "Keep non-alphabet characters",
@@ -23,12 +25,8 @@
     "KEY": "Key",
     "OUTPUT_LABEL": "Output",
 
-    "PYTHON_EXPLANATION": "This application is also available implemented in Python. The local variant downloads a local runtime environment (8MB compressed) into your browser and uses the values from the upper GUI components. The remote version will embedd <a href='https://repl.it' target='_blank'>https://repl.it</a> into this website (2.3MB compressed) and does NOT use the upper GUI components but can be customized by editing its source code. Feel free to try them out:",
+    "PYTHON_EXPLANATION": "This application is also available implemented in Python. Running it as Python downloads a local runtime environment (8MB compressed) into your browser. You can edit the Python code and it will use the values from the upper GUI components. Feel free to try it:",
     "RUN_AS_PYTHON": "Run as Python",
     "LOCALLY": "locally",
-    "REMOTE": "remotely",
-    "HIDE_LOCAL_PYTHON": "Hide local Python implementation",
-    "HIDE_REMOTE_PYTHON": "Hide remote Python implementation",
-
-    "PYTHON_REMOTE_NOTICE": "To run the script, just click the green \"Play\"-button below this notice."
+    "HIDE_LOCAL_PYTHON": "Hide local Python implementation"
 }

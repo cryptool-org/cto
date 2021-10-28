@@ -1,10 +1,12 @@
 {
     "INPUT_LABEL": "Eingabe",
+    "PLAIN_TEXT": "Klartext",
+    "CIPHER_TEXT": "verschlüsselt",
     "INIT_TEXT": "Hallo, das ist ein Test. Bitte geben Sie Ihren Text hier ein.",
     "LENGTH": "Länge",
 
-    "ENCIPHER": "Verschlüsseln",
-    "DECIPHER": "Entschlüsseln",
+    "ENCRYPT": "Verschlüsseln",
+    "DECRYPT": "Entschlüsseln",
     "OPTIONS": "Optionen",
     "FIVE_BLOCKS": "5er-Blöcke",
     "KEEP_NON_ALP": "Nicht im Alphabet enthaltene Zeichen beibehalten",
@@ -23,12 +25,8 @@
     "KEY": "Schlüssel",
     "OUTPUT_LABEL": "Ausgabe",
 
-    "PYTHON_EXPLANATION": "Diese Anwendung ist auch als Python-Implementierung verfügbar. Die lokale Variante lädt eine lokale Laufzeitumgebung (komprimiert 8MB) in Ihren Browser und verwendet die Werte aus den obigen GUI-Komponenten. Die Remote-Variante bettet <a href='https://repl.it' target='_blank'>https://repl.it</a> in diese Seite ein (komprimiert 2,3MB) und verwendet die obigen GUI-Komponenten NICHT, kann aber durch Bearbeiten des Quellcodes angepasst werden. Probieren Sie sie doch einfach aus:",
+    "PYTHON_EXPLANATION": "Diese Anwendung ist auch mit Python-Quellcode verfügbar, der durch eine lokale Laufzeitumgebung in Ihrem Browser läuft. Sie können den Code bearbeiten und es werden die Eingabewerte aus den oberen GUI-Komponenten verwendet. Probieren Sie es gerne aus:",
     "RUN_AS_PYTHON": "Mit Python ausführen",
     "LOCALLY": "lokal",
-    "REMOTE": "remote",
-    "HIDE_LOCAL_PYTHON": "Lokale Python-Implementierung ausblenden",
-    "HIDE_REMOTE_PYTHON": "Remote Python-Implementierung ausblenden",
-
-    "PYTHON_REMOTE_NOTICE": "Um das Script auszuführen, klicken Sie einfach auf den grünen \"Play\"-Button unterhalb dieses Hinweises."
+    "HIDE_LOCAL_PYTHON": "Lokale Python-Implementierung ausblenden"
 }
