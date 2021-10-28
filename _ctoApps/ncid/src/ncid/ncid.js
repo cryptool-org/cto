@@ -16,7 +16,7 @@ $("#input-textarea").on("input", () => {
 
   function displaylength(textForLen) {
     len = textForLen.replace(/(\r\n|\n|\r)/gm, "").length;
-    return ${{ncid.length}}$ + len.toString();
+    return "${{ncid.length}}$ " + len.toString();
   }
 
     $(function () {
@@ -25,40 +25,40 @@ $("#input-textarea").on("input", () => {
     })
 
     const parseResponse = (response, successCallback = () => {}) => {
-    
+
         if(response.success != undefined) {
-    
+
             if(response.success == true) {
                 successCallback(response.payload)
             }
-    
+
             else {
                 // error response from web api
                 showErrorAlert({ statusText: "API Error", responseText: response.error_msg })
             }
-    
+
         }
-    
+
         else {
             // response.success undefined -> unknown Error
             showErrorResponse({ statusText: "Unknown Error", responseText: "Response undefined" })
         }
-    
+
     }
-    
+
     const showErrorResponse = (error) => {
         console.error(error)
-    
+
         if(error.responseText == undefined) {
             error.responseText = "Unknown Error, maybe CORS or something ..."
         }
-    
+
         if(error.statusText != undefined) {
             type = error.statusText
         } else {
             type = "Error"
         }
-    
+
         if(error.responseJSON != undefined && error.responseJSON.error_msg != undefined) {
             error_msg = error.responseJSON.error_msg
         } else if(error.responseText != undefined) {
@@ -66,53 +66,53 @@ $("#input-textarea").on("input", () => {
         } else {
             error_msg = "Unknown Error"
         }
-    
+
         showErrorAlert(type, error_msg)
     }
-    
-    
+
+
     const showErrorAlert = (type, message) => {
         $("#error-alert-type").text(type)
         $("#error-alert-content").text(message)
         $("#error-alert").removeClass("d-none")
     }
-    
+
     const hideErrorAlert = () => {
         $("#error-alert").addClass("d-none")
     }
     $("#error-alert .close").on("click", hideErrorAlert)
-    
-    
+
+
     const loadAndShowAvailableArchitectures = () => {
-    
+
         $.get(host + "/get_available_architectures", {}, response => {
-    
+
             parseResponse(response, payload => {
-    
+
                 console.log(payload)
-    
+
                     if(typeof payload == "object") {
                         architectureSelect.selectpicker()
                         let htmlToInsert = ""
                         payload.forEach(architecture => {
                             htmlToInsert += `<option value="${architecture}"${(architecture == architecture) ? ' selected' : ''}>${architecture}</option>`
                         })
-                        
+
                         architectureSelect.html(htmlToInsert)
                         architectureSelect.selectpicker('refresh')
-                        
+
                     }
-    
+
                     else console.error("payload is not an object")
-    
+
                 })
-    
+
             }).fail(showErrorResponse)
-    
+
     }
-    
+
         $("#analyze-button").click(function(e) {
-          
+
             hideErrorAlert()
             ciphertext = $("#input-textarea").val()
             ciphertext = ciphertext.toLowerCase()
@@ -122,9 +122,9 @@ $("#input-textarea").on("input", () => {
             ciphertext = ciphertext.replace(/\n|\r/g, '')
             //remove symbols, which are not a-z,A-Z
             ciphertext = ciphertext.replace(/[^A-Za-z]/g, '')
-            
+
             if(ciphertext.length <30){
-                showErrorAlert("Error","Der Geheimtext ist zu kurz! (Mindestens 30 Zeichen)")
+                showErrorAlert("Error", "${{ ncid.ciphertext_too_short }}$")
                 return;
             }
 
@@ -132,41 +132,41 @@ $("#input-textarea").on("input", () => {
             $.get(host + "/filter_ciphertext", {
                 ciphertext: ciphertext,
             }, response => {
-    
+
                 parseResponse(response, payload => {
                     console.log(payload)
                 })
-    
+
             }).fail(showErrorResponse)
             */
             // todo: Use cipherImplementations.Cipher.filter() method to filter input
-    
+
             $.get(host + "/evaluate/single_line/ciphertext", {
                 ciphertext: ciphertext,
                 architecture: architectureSelect.val()[0] // todo: send all selected elems
             }, response => {
-    
+
                 parseResponse(response, payload => {
                     if(typeof payload == "object") showSingleLineEvaluationResults(payload)
                     else console.error("single line evaluation: payload is not an object")
                 })
-    
+
             }).fail(showErrorResponse)
-    
+
             // todo: animate icon while loading
-            
+
         })
-    
+
         const showSingleLineEvaluationResults = (results) => {
-    
+
             let container = $("#results-card")
-    
+
             // sort cipher probabilties
             let probabilties = []
             for (let architecture in results)
                 probabilties.push([architecture, results[architecture]])
             probabilties = probabilties.sort((a, b) => { return b[1] - a[1] })
-    
+
             let htmlToInsert = `
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -200,9 +200,9 @@ $("#input-textarea").on("input", () => {
             }else{
                 $("#result-view-p").html(${{ncid.result_filter}}$)
             }
-    
+
         }
-    
+
         // initialize when all contents have been loaded
         document.addEventListener("DOMContentLoaded", function() {
             loadAndShowAvailableArchitectures()

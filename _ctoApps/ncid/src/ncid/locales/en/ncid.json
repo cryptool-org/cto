@@ -13,7 +13,7 @@
     "ciphertext_too_short" : "The ciphertext is too short! (Minimum 30 characters)",
     "cipher" : "Cipher",
     "probability" : "Probability",
-    "length" :"\"length: \"",
+    "length" :"length:",
     "result_no_filter":"\"For the given ciphertext, the set neural network calculated the highest probability with the encryption method \" + probabilties[0][0] + \". All 55 ACA ciphers are displayed because no minimum percentage has been set via the filter.\"",
     "result_filter":"\"For the given ciphertext, the set neural network calculated the highest probability with the encryption method \" + probabilties[0][0] + \". Out of the 55 ACA ciphers, \" + rowCount + \" ciphers have a probability of at least \"+ filterSelect.val() + \"%.\""
 }

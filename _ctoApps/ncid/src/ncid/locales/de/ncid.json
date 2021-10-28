@@ -13,7 +13,7 @@
     "ciphertext_too_short" : "Der Geheimtext ist zu kurz! (Mindestens 30 Zeichen)",
     "cipher" : "Chiffre",
     "probability" : "Wahrscheinlichkeit",
-    "length" :"\"Länge: \"",
+    "length" :"Länge:",
     "result_no_filter":"\"Für den gegebenen Geheimtext hat das eingestellte neuronale Netz die höchste Wahrscheinlichkeit bei dem Verschlüsselungsverfahren \" + probabilties[0][0] + \" errechnet. Alle 55 ACA-Verfahren werden angezeigt, da über den Filter kein Mindestprozentsatz eingestellt wurde.\"",
     "result_filter":"\"Für den gegebenen Geheimtext hat das eingestellte neuronale Netz die höchste Wahrscheinlichkeit bei dem Verschlüsselungsverfahren \" + probabilties[0][0] + \" errechnet. Von den 55 ACA-Verfahren haben \" + rowCount + \" Verfahren eine Wahrscheinlichkeit von mindestens \"+ filterSelect.val() + \"%.\""
 }
