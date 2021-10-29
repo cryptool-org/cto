@@ -1,134 +1,270 @@
 <!-- text input -->
 <div class="form-group mt-3">
-    <label>${{caesar.INPUT-LABEL}}$</label>
-    <textarea spellcheck="false" rows="4" class="form-control" id="input">${{caesar.INIT-TEXT}}$</textarea>
-    <span id="input-len" class="float-right length-label"></span>
+    <label for="caesar-input">${{caesar.INPUT_LABEL}}$ (<span>${{caesar.PLAIN_TEXT}}$</span>)</label>
+    <span class="small float-right mr-1 pt-1 text-muted">${{caesar.LENGTH}}$: <span id="caesar-input-length"></span></span>
+    <textarea spellcheck="false" rows="4" class="form-control" id="caesar-input">${{caesar.INIT_TEXT}}$</textarea>
 </div>
 
-<!-- encipher / decipher -->
-<div id="modeSwitch" class="row mt-2 mb-2 ml-auto">
-    <label for="cryptCheckbox" class="mr-2 left-switch-label">${{caesar.ENCIPHER}}$</label>
-    <div id="cryptCheckboxWrapper" class="custom-control custom-switch">
-        <input id="cryptCheckbox" type="checkbox" class="custom-control-input">
-        <label for="cryptCheckbox" class="custom-control-label right-switch-label">${{caesar.DECIPHER}}$</label>
+<div class="d-flex flex-column flex-sm-row pt-3 pb-2 align-items-center justify-content-sm-between justify-content-md-around">
+
+    <!-- encrypt / decrypt -->
+    <div id="caesar-mode-switch" class="d-flex align-items-center mb-3 mb-sm-0">
+        <label for="caesar-crypt-checkbox" class="mr-2 mb-0 left-switch-label">${{caesar.ENCRYPT}}$</label>
+        <div id="caesar-crypt-checkbox-wrapper" class="custom-control custom-switch">
+            <input id="caesar-crypt-checkbox" type="checkbox" class="custom-control-input">
+            <label for="caesar-crypt-checkbox" class="custom-control-label right-switch-label">${{caesar.DECRYPT}}$</label>
+        </div>
     </div>
+
+    <!-- key section -->
+    <div class="form-inline flex-nowrap">
+        <span class="mr-2">${{caesar.KEY}}$:</span>
+        <button class="btn btn-success" id="caesar-key-minus">-</button>
+        <input id="caesar-key-input" class="form-control text-center w-auto" type="number" value="1" min="0" max="99">
+        <button class="btn btn-success" id="caesar-key-plus">+</button>
+    </div>
+
+</div>
+
+<!-- output textarea -->
+<div class="form-group mt-3 ml-auto mr-auto">
+    <label for="caesar-output">${{caesar.OUTPUT_LABEL}}$ (<span>${{caesar.CIPHER_TEXT}}$</span>)</label>
+    <span class="small float-right mr-1 pt-1 text-muted">${{caesar.LENGTH}}$: <span id="caesar-output-length"></span></span>
+    <textarea id="caesar-output" rows="4" class="form-control" spellcheck="false"></textarea>
 </div>
 
 <!-- tabs card -->
 <div class="card">
 
     <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs" id="cmdOptions" role="tablist">
+        <ul class="nav nav-tabs card-header-tabs" id="caesar-options-alphabet-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" href="#choseOptions" role="tab" aria-controls="choseOptions" aria-selected="true"><i class="fa fa-cog mr-2"></i>${{caesar.OPTIONS}}$</a>
+                <a class="nav-link active" href="#caesar-options-tab" role="tab" aria-controls="caesar-options-tab" aria-selected="true"><i class="fa fa-cog mr-2"></i>${{caesar.OPTIONS}}$</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="#choseAlphabet" role="tab" aria-controls="choseAlphabet" aria-selected="false"><i class="fa fa-font mr-2" aria-hidden="true"></i>Alphabet</a>
+                <a class="nav-link"  href="#caesar-alphabet-tab" role="tab" aria-controls="caesar-alphabet-tab" aria-selected="false"><i class="fa fa-font mr-2" aria-hidden="true"></i>Alphabet</a>
             </li>
         </ul>
+        <script>
+            // make these (custom) tab links work
+            $("#caesar-options-alphabet-tab a").on("click", function (e) {
+                e.preventDefault();
+                $(this).tab("show");
+            });
+        </script>
     </div>
 
     <div class="card-body">
         <div class="tab-content p-0">
 
             <!-- options tab -->
-            <div class="tab-pane active" id="choseOptions" role="tabpanel">
+            <div class="tab-pane active" id="caesar-options-tab" role="tabpanel">
                 <p class="card-text">
                     <!-- checkbox blocks of five -->
                     <div class="custom-control custom-checkbox mr-3 d-inline-block">
-                        <input type="checkbox" class="custom-control-input" id="addFiveBlocksCodeCheckbox">
-                        <label class="custom-control-label" for="addFiveBlocksCodeCheckbox">${{caesar.FIVE-BLOCKS}}$</label>
+                        <input type="checkbox" class="custom-control-input" id="caesar-blocks-of-five-checkbox">
+                        <label class="custom-control-label" for="caesar-blocks-of-five-checkbox">${{caesar.FIVE_BLOCKS}}$</label>
                     </div>
                     <!-- checkbox keep non alphabet chars -->
                     <div class="custom-control custom-checkbox mr-3 d-inline-block">
-                        <input type="checkbox" class="custom-control-input" id="KeepNonAlphabetCharacters" checked>
-                        <label class="custom-control-label" for="KeepNonAlphabetCharacters">${{caesar.KEEP-ALPHABET}}$</label>
+                        <input type="checkbox" class="custom-control-input" id="caesar-keep-non-alp-checkbox" checked>
+                        <label class="custom-control-label" for="caesar-keep-non-alp-checkbox">${{caesar.KEEP_NON_ALP}}$</label>
                     </div>
                 </p>
             </div>
 
             <!-- alphabet tab -->
-            <div class="tab-pane" id="choseAlphabet" role="tabpanel" aria-labelledby="choseAlphabet-tab">
+            <div class="tab-pane" id="caesar-alphabet-tab" role="tabpanel" aria-labelledby="caesar-alphabet-tab-tab">
                 <p class="card-text">
 
                     <!-- alphabet templates -->
-                    <label class="mb-0">${{caesar.PLAINTEXT-ALPHABET-LABEL}}$</label>
-                    <textarea rows="1" wrap="soft" class="mt-1 form-control" id="plaintextAlp" spellcheck="false" disabled>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</textarea>
-                    <label class="mb-0 mt-2">${{caesar.CIPHERTEXT-ALPHABET-LABEL}}$</label>
-                    <textarea rows="1" wrap="soft" class="mt-1 form-control mb-2" id="cipherAlp" spellcheck="false" disabled>BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzA</textarea>
+                    <label class="mb-0">${{caesar.PLAINTEXT_ALPHABET_LABEL}}$</label>
+                    <input id="caesar-plaintext-alphabet" class="form-control text-monospace mt-1" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" spellcheck="false" disabled>
+                    <label class="mb-0 mt-2">${{caesar.CIPHERTEXT_ALPHABET_LABEL}}$</label>
+                    <input id="caesar-ciphertext-alphabet" class="form-control text-monospace mt-1 mb-2" value="BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzA" spellcheck="false" disabled>
 
-                    <div id="alphabetTemplates" class="form-check form-check-inline">
+                    <div id="caesar-alphabet-templates" class="form-check form-check-inline">
 
                         <div class="custom-control custom-checkbox mr-3">
-                            <input type="checkbox" class="custom-control-input" id="uppercaseAlphabet" checked>
-                            <label class="custom-control-label" for="uppercaseAlphabet">${{caesar.UPPERCASE}}$</label>
+                            <input type="checkbox" class="custom-control-input" id="caesar-uppercase-checkbox" checked>
+                            <label class="custom-control-label" for="caesar-uppercase-checkbox">${{caesar.UPPERCASE}}$</label>
                         </div>
 
                         <div class="custom-control custom-checkbox mr-3">
-                            <input type="checkbox" class="custom-control-input" id="lowercaseAlphabet" checked>
-                            <label class="custom-control-label" for="lowercaseAlphabet">${{caesar.LOWERCASE}}$</label>
+                            <input type="checkbox" class="custom-control-input" id="caesar-lowercase-checkbox" checked>
+                            <label class="custom-control-label" for="caesar-lowercase-checkbox">${{caesar.LOWERCASE}}$</label>
                         </div>
 
                         <div class="custom-control custom-checkbox mr-3">
-                            <input type="checkbox" class="custom-control-input" id="digitsAlphabet">
-                            <label class="custom-control-label" for="digitsAlphabet">${{caesar.DIGITS}}$</label>
+                            <input type="checkbox" class="custom-control-input" id="caesar-digits-checkbox">
+                            <label class="custom-control-label" for="caesar-digits-checkbox">${{caesar.DIGITS}}$</label>
                         </div>
 
                         <div class="custom-control custom-checkbox mr-3">
-                            <input type="checkbox" class="custom-control-input" id="punctuationAlphabet">
-                            <label class="custom-control-label" for="punctuationAlphabet">${{caesar.PUNCTUATION-MARKS}}$</label>
+                            <input type="checkbox" class="custom-control-input" id="caesar-punctuation-checkbox">
+                            <label class="custom-control-label" for="caesar-punctuation-checkbox">${{caesar.PUNCTUATION_MARKS}}$</label>
                         </div>
 
                         <div class="custom-control custom-checkbox mr-3">
-                            <input type="checkbox" class="custom-control-input" id="umlautsAlphabet">
-                            <label class="custom-control-label" for="umlautsAlphabet">${{caesar.UMLAUTS}}$</label>
+                            <input type="checkbox" class="custom-control-input" id="caesar-umlauts-checkbox">
+                            <label class="custom-control-label" for="caesar-umlauts-checkbox">${{caesar.UMLAUTS}}$</label>
                         </div>
 
                         <div class="custom-control custom-checkbox mr-3">
-                            <input type="checkbox" class="custom-control-input" id="blanksAlphabet">
-                            <label class="custom-control-label" for="blanksAlphabet">${{caesar.BLANKS}}$</label>
+                            <input type="checkbox" class="custom-control-input" id="caesar-blanks-checkbox">
+                            <label class="custom-control-label" for="caesar-blanks-checkbox">${{caesar.BLANKS}}$</label>
                         </div>
 
-                    </div> <!-- end alphabet templates -->
+                    </div>
 
-                    <!-- radiobuttons -->
                     <hr>
+
+                    <!-- alphabet selection radiobuttons -->
                     <div class="form-check form-check-inline">
 
                         <div class="custom-control custom-radio mr-3">
-                            <input type="radio" id="putTogetherAlphabet" name="customRadio" class="custom-control-input" checked>
-                            <label class="custom-control-label ml-1" for="putTogetherAlphabet">${{caesar.CREATE-ALPHABET}}$</label>
+                            <input type="radio" name="caesar-alphabet-radio" id="caesar-use-constructed-alphabet-radiobtn" class="custom-control-input" checked>
+                            <label class="custom-control-label ml-1" for="caesar-use-constructed-alphabet-radiobtn">${{caesar.USE_CONSTRUCTED_ALPHABET}}$</label>
                         </div>
 
                         <div class="custom-control custom-radio mr-3">
-                            <input type="radio" id="defineOwnAlphabet" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label ml-1" for="defineOwnAlphabet">${{caesar.DEFINE-OWN-ALPHABET}}$</label>
+                            <input type="radio" name="caesar-alphabet-radio" id="caesar-use-custom-alphabet-radiobtn" class="custom-control-input">
+                            <label class="custom-control-label ml-1" for="caesar-use-custom-alphabet-radiobtn">${{caesar.DEFINE_OWN_ALPHABET}}$</label>
                         </div>
 
                     </div>
 
                 </p>
             </div>
-        
+
         </div>
     </div>
 </div>
 
-<!-- key Section -->
-<div class="row mt-3">
-    <div id="keyBox" class="form-inline col-lg-3 col-md-4 col-sm-5 col-6">
-        <span class="mr-2">${{caesar.KEY}}$:</span>
-        <button class="btn btn-success " id="minus">-</button>
-        <input id="key" class="text-center form-control" value="1" maxlength="2" type="text" size="2">
-        <button class="btn btn-success " id="plus">+</button>
-    </div>
-</div>
-
-<div class="form-group mt-3 ml-auto mr-auto">
-    <label>${{caesar.OUTPUT-LABEL}}$</label>
-    <textarea id="output" rows="4" class="form-control" spellcheck="false"></textarea>
-</div>
-
 <!-- ORIGINAL AUTHOR JEAN MICHEL POLAK -->
 
-<script src="https://cdn.jsdelivr.net/npm/@arguiot/broadcast.js@1.0.2/dist/broadcast.min.js"></script>
+
+<hr>
+
+<!-- Python implementations -->
+
+<div class="alert alert-secondary">${{caesar.PYTHON_EXPLANATION}}$</div>
+
+<div class="d-flex">
+    <button id="caesar-run-as-python-local" class="btn btn-success mr-1">
+        <i class="fa fa-play mr-1"></i> ${{caesar.RUN_AS_PYTHON}}$ (<b>${{caesar.LOCALLY}}$</b>)
+    </button>
+</div>
+
+<!-- collapsable area of the local Python implementation -->
+<div id="caesar-python-local-collapse" class="collapse pt-3">
+    <div class="alert alert-info mt-2">${{editor.PYTHON_LOCAL_NOTICE}}$</div>
+    @@include("./LocalEditor/LocalPythonEditor.html", {
+        "codesource": "../local-python-code.py"
+    })
+</div>
+
+<!-- <div id="secondEditor">
+    @@ \ include("./LocalEditor/LocalPythonEditor.html", {
+        "codesource": "../local-python-code.py"
+    })
+</div> -->
+
+<script>
+
+    let localPytonEditorObject
+    let localPythonAssetsInserted = false
+
+    const insertPythonAssets = (callback = () => {}) => {
+
+        // only execute once
+        if(localPythonAssetsInserted) return false
+
+        // load stylesheets
+        CTO_Globals.localPythonStyles.forEach(styleURL => {
+            if(!styleURL.includes("://"))
+                styleURL = CTO_Globals.pluginRoot + styleURL
+            loadStylesheet(styleURL)
+        })
+
+        // load scripts
+        const loadLocalPythonScripts = (index = 0) => {
+            let scriptURL = CTO_Globals.localPythonScripts[index]
+            if(!scriptURL.includes("://"))
+                scriptURL = CTO_Globals.pluginRoot + scriptURL
+            loadScript(scriptURL, (e) => {
+                // load more scripts if available
+                if(++index < CTO_Globals.localPythonScripts.length) loadLocalPythonScripts(index)
+                // callback when all are loaded
+                else languagePluginLoader.then(callback)
+            })
+        }
+
+        loadLocalPythonScripts()
+        localPythonAssetsInserted = true
+
+    }
+
+    /* let secondEditorObject
+    const includeSecondEditorForTesting = () => {
+
+        const spawnEditor = () => {
+            let editorElem2 = document.getElementById("secondEditor")
+            secondEditorObject = new LocalPythonEditor(editorElem2, pyodide, () => {
+                console.log("yay, spawned the second one! :D")
+            })
+        }
+
+        if(localPythonAssetsInserted) spawnEditor()
+        else insertPythonAssets(() => { spawnEditor() })
+
+    }; includeSecondEditorForTesting() */
+
+    // toggle local collapse on button click
+    $("#caesar-run-as-python-local").click(function() {
+        $("#caesar-python-local-collapse").collapse("toggle")
+    })
+
+    // when local collapse gets shown -> set button state, include Python editor, and use Python for calculations
+    $("#caesar-python-local-collapse").on("show.bs.collapse", function() {
+        $("#caesar-run-as-python-local").html('<i class="fa fa-chevron-up mr-1"></i> ${{caesar.HIDE_LOCAL_PYTHON}}$')
+
+        // callback for when python is inizialized
+        let usePythonNow = () => {
+            window.usePython = true // use Python for calculations now
+            caesar.render() // calculate and render output again
+        }
+
+        // insert assets for local Python editor
+        let executed = insertPythonAssets(() => { // only executed once
+            let editorElem = document.querySelector("#caesar-python-local-collapse")
+            localPytonEditorObject = new LocalCaesarPythonEditor(editorElem, pyodide, caesar, usePythonNow)
+        })
+
+        if(executed === false) usePythonNow()
+    })
+
+    // when local collapse gets hidden -> set button state back again and stop using Python for calculations
+    $("#caesar-python-local-collapse").on("hide.bs.collapse", function() {
+        $("#caesar-run-as-python-local").html('<i class="fa fa-play mr-1"></i> ${{caesar.RUN_AS_PYTHON}}$ (<b>${{caesar.LOCALLY}}$</b>)')
+        window.usePython = false
+        caesar.render() // calculate with JS
+    })
+
+    // when encrypt / decrypt toggler changes -> update textarea labels
+    $("#caesar-crypt-checkbox").on("change", function() {
+
+        let inputSpan = $("label[for=caesar-input] span")
+        let outputSpan = $("label[for=caesar-output] span")
+
+        if(!this.checked) { // encrypt
+            inputSpan.text("${{caesar.PLAIN_TEXT}}$")
+            outputSpan.text("${{caesar.CIPHER_TEXT}}$")
+        } else {
+            inputSpan.text("${{caesar.CIPHER_TEXT}}$")
+            outputSpan.text("${{caesar.PLAIN_TEXT}}$")
+        }
+
+    })
+
+</script>

@@ -1,64 +1,71 @@
-#cmdLine {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    font-size: small;
-    text-align: left;
-    border: solid #000 1px !important;
-    resize: none;
-    border-radius: 6px
-}
-
 .badge {
     font-size: small !important;
-    padding: 0% !important
-}
-
-.tab-content .card-body {
-    padding: 0%
-}
-
-.inlineSection {
-    word-spacing: -1em;
-    display: inline-block
-}
-
-textarea#yourcode {
-    overflow: hidden;
-    height: auto
+    padding: 0% !important;
 }
 
 .CodeMirror {
     font-size: 12px;
-    border: #000 solid 1px;
-    border-radius: 1%
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem !important;
 }
 
-.tab-content input {
-    border-radius: 7px;
-    border: solid #000 1px
+#caesar-key-minus, #caesar-key-plus {
+    text-align: center;
 }
 
-#dropdownTheme>.dropdown-item:active,
-#dropdownTheme>.dropdown-item:hover {
-    background-color: var(--green)
+#caesar-key-minus {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-#minus,
-#plus {
-    text-align: center
+#caesar-key-plus {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
-#cryptCheckboxWrapper .custom-control-input:checked~.custom-control-label::before,
-#cryptCheckboxWrapper .custom-control-label::before {
+#caesar-key-input {
+    font-family: monospace;
+    border-radius: 0;
+    max-width: 50px;
+}
+
+[data-theme="dark"] #caesar-key-input {
+    border: none;
+}
+
+#caesar-crypt-checkbox-wrapper .custom-control-input:checked~.custom-control-label::before,
+#caesar-crypt-checkbox-wrapper .custom-control-label::before {
     color: #fff;
     border-color: var(--primary);
-    background-color: var(--primary)
+    background-color: var(--primary);
+    margin-top: 2px;
 }
 
-#cryptCheckboxWrapper .custom-control-label::after {
-    background-color: #fff
+#caesar-crypt-checkbox-wrapper .custom-control-label::after {
+    background-color: #fff;
+    margin-top: 2px;
 }
 
-#modeSwitch {
-    color: var(--text-color-invert)
+#caesar-mode-switch {
+    color: var(--text-color-invert);
+}
+
+#caesar-python-local-command {
+    white-space: pre-line;
+}
+
+#caesar-python-local-editor-font-size input {
+    width: auto !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+/* hide arrows for #caesar-key-input input */
+#caesar-key-input::-webkit-outer-spin-button,
+#caesar-key-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#caesar-key-input[type=number] {
+    -moz-appearance:textfield;
 }

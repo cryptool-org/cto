@@ -1,0 +1,13 @@
+<!-- load animation (will be removed by JS after loading) -->
+<div class="editor-load-animation py-2 text-center alert alert-success" style="font-size: 1.2em">
+    <i class="fa fa-refresh fa-spin fa-fw mr-1"></i>${{editor.LOADING_PYTHON}}$
+</div>
+
+<!-- command to run the python code on a local terminal -->
+<div class="editor-command-alert alert alert-dark mt-4 mb-2 d-none">
+    <b class="mr-3">${{editor.TERMINAL_COMMAND}}$:</b><span class="editor-command text-monospace"></span>
+</div>
+
+@@include("./LocalEditor.html", {
+    "codesource": "@@codesource"
+})

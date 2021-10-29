@@ -18,7 +18,7 @@ String.prototype.encrypt = function (key, b_encrypt, b_block_of_five, alphabet, 
 				const new_index = (index + key) % alphabet.length
 				new_character = alphabet[new_index]
 			} else {
-				new_index = (index - key) % alphabet.length
+				const new_index = (index - key) % alphabet.length
 				new_character = alphabet[new_index]
 			}
 		}
@@ -81,15 +81,15 @@ const CheckboxInterface = query => new ElementInterface(query, "checked")
 
 class KeyComponent {
 	constructor() {
-		this.el = document.querySelector("#key")
+		this.el = document.querySelector("#caesar-key-input")
 		this.max = 24
-		document.querySelector("#minus").addEventListener("click", e => {
+		document.querySelector("#caesar-key-minus").addEventListener("click", e => {
 			const val = this.value - 1
 			this.el.value = String(val < 0 ? 0 : val)
 
 			this.triggerRender()
 		})
-		document.querySelector("#plus").addEventListener("click", e => {
+		document.querySelector("#caesar-key-plus").addEventListener("click", e => {
 			const val = this.value + 1
 			this.el.value = String(val % this.max)
 
@@ -120,18 +120,18 @@ class AlphabetBuilder {
 		this.umlautsUpper = "ÄÖÜ";
 		this.umlautsLower = "äöüß";
 
-		this.alphabetEl = InputInterface("#plaintextAlp");
-		this.computedEl = document.querySelector("#cipherAlp")
+		this.alphabetEl = InputInterface("#caesar-plaintext-alphabet");
+		this.computedEl = document.querySelector("#caesar-ciphertext-alphabet")
 
-		this.upperCasedBox = CheckboxInterface("#uppercaseAlphabet")
-		this.blanksBox = CheckboxInterface("#blanksAlphabet")
-		this.digitsBox = CheckboxInterface("#digitsAlphabet")
-		this.punctuationBox = CheckboxInterface("#punctuationAlphabet")
-		this.lowerCasedBox = CheckboxInterface("#lowercaseAlphabet")
-		this.umlautBox = CheckboxInterface("#umlautsAlphabet")
+		this.upperCasedBox = CheckboxInterface("#caesar-uppercase-checkbox")
+		this.blanksBox = CheckboxInterface("#caesar-blanks-checkbox")
+		this.digitsBox = CheckboxInterface("#caesar-digits-checkbox")
+		this.punctuationBox = CheckboxInterface("#caesar-punctuation-checkbox")
+		this.lowerCasedBox = CheckboxInterface("#caesar-lowercase-checkbox")
+		this.umlautBox = CheckboxInterface("#caesar-umlauts-checkbox")
 
-		this.custom = CheckboxInterface("#defineOwnAlphabet")
-		this.normal = CheckboxInterface("#putTogetherAlphabet")
+		this.custom = CheckboxInterface("#caesar-use-custom-alphabet-radiobtn")
+		this.normal = CheckboxInterface("#caesar-use-constructed-alphabet-radiobtn")
 
 		NotificationCenter.default.addObserver("render", () => {
 			this.render()
@@ -179,9 +179,9 @@ class AlphabetBuilder {
 		const alphabet = this.alphabet
 		this.alphabetEl.el.disabled = !this.custom.value
 		if (this.custom.value) {
-			document.querySelector("#alphabetTemplates").style.display = "none"
+			document.querySelector("#caesar-alphabet-templates").style.display = "none"
 		} else {
-			document.querySelector("#alphabetTemplates").style.display = ""
+			document.querySelector("#caesar-alphabet-templates").style.display = ""
 			this.alphabetEl.value = alphabet
 		}
 		this.computedEl.value = this.rotateAlphabet(this.key.value, alphabet.split(""))
@@ -191,12 +191,12 @@ class AlphabetBuilder {
 class CaesarController {
 	constructor() {
 		// Elements
-		this.input = InputInterface("#input")
-		this.output = InputInterface("#output")
+		this.input = InputInterface("#caesar-input")
+		this.output = InputInterface("#caesar-output")
 
-		this.keepChars = CheckboxInterface("#KeepNonAlphabetCharacters")
-		this.blocksFive = CheckboxInterface("#addFiveBlocksCodeCheckbox")
-		this.encrypt = CheckboxInterface("#cryptCheckbox")
+		this.keepChars = CheckboxInterface("#caesar-keep-non-alp-checkbox")
+		this.blocksFive = CheckboxInterface("#caesar-blocks-of-five-checkbox")
+		this.encrypt = CheckboxInterface("#caesar-crypt-checkbox")
 
 		this.key = new KeyComponent()
 		this.alphabet = new AlphabetBuilder(this.key)
@@ -206,23 +206,25 @@ class CaesarController {
 		}, "controller")
 
 		// Hydrate
-		this.input.value = "${{ caesar.INIT-TEXT }}$"
-
-		//show tabs
-		$("#cmdOptions a").on("click", function (e) {
-			e.preventDefault();
-			$(this).tab("show");
-		});
+		this.input.value = "${{caesar.INIT_TEXT}}$"
 
 		this.render()
 	}
 
 	render() {
-		this.output.value = this.input.value.encrypt(this.key.value, 
-			!this.encrypt.value, 
-			this.blocksFive.value, 
-			this.alphabet.alphabet, 
-			this.keepChars.value)
+
+		if(!window.usePython)
+			this.output.value = this.input.value.encrypt(this.key.value,
+				!this.encrypt.value,
+				this.blocksFive.value,
+				this.alphabet.alphabet,
+				this.keepChars.value)
+
+		else this.output.value = localPytonEditorObject.runEditorCode()
+
+		document.querySelector("#caesar-input-length").innerText = this.input.value.length
+		document.querySelector("#caesar-output-length").innerText = this.output.value.length
+
 	}
 }
 
