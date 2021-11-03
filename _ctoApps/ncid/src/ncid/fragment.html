@@ -1,50 +1,42 @@
-<p>
-${{ncid.description}}$
-</p>
+<p>${{ ncid.description }}$</p>
+
 <hr>
 
-<div class="form-group">
-<span id="input-len" class="float-right text-muted mr-1"></span>
-<label for="input-textarea" class="align-self-center">${{ncid.ciphertext}}$</label>
-<textarea class="form-control" id="input-textarea" rows="3">yingraobhoarhthosortmkicwhaslcbpirpocuedcfthcezvoryyrsrdyaffcleaetiaaeuhtyegeadsneanmatedbtrdndres</textarea>
+<div class="form-group mb-lg-2">
+    <span id="input-len" class="float-right text-muted mr-1 small pt-1"></span>
+    <label for="input-textarea" class="align-self-center">${{ ncid.ciphertext }}$</label>
+    <textarea class="form-control" id="input-textarea" rows="4">yingraobhoarhthosortmkicwhaslcbpirpocuedcfthcezvoryyrsrdyaffcleaetiaaeuhtyegeadsneanmatedbtrdndres</textarea>
 </div>
 
-<div class="form-group float-md-left p-0 p-md-2 col-12 col-md-auto d-md-inline-flex">
-<label for="architecture-select" class="align-self-center">${{ ncid.architectures }}$&nbsp;</label><i style="color:orange" data-toggle="tooltip-architecture" data-placement="top" title="${{ ncid.architectures_tooltip }}$" class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>
-<select id="architecture-select" class="selectpicker" style="width:200px" multiple data-live-search="true"></select>
+<div id="architecture-select-wrapper" class="form-group float-lg-left p-0 p-lg-2 col-12 col-lg-auto d-lg-inline-flex">
+    <label for="architecture-select" class="align-self-center mb-lg-1">${{ ncid.architectures }}$&nbsp;</label><i style="color:orange" data-toggle="tooltip-architecture" data-placement="top" title="${{ ncid.architectures_tooltip }}$" class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>
+    <select id="architecture-select" class="selectpicker w-100 w-lg-auto" multiple data-live-search="true"></select>
 </div>
 
-<div class="form-group float-md-right p-0 p-md-2 col-12 col-md-auto d-md-inline-flex">
-    <label for="filter-select"> ${{ ncid.filter }}$&nbsp;</label><i style="color:orange" data-toggle="tooltip-filter" data-placement="top" title="${{ ncid.filter_tooltip }}$" class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>
-    <select id="filter-select" class="selectpicker" style="width:120px">
+<div id="filter-select-wrapper" class="form-group float-lg-right p-0 p-lg-2 col-12 col-lg-auto d-lg-inline-flex">
+    <label for="filter-select" class="align-self-center mb-lg-1">${{ ncid.filter }}$&nbsp;</label><i style="color:orange" data-toggle="tooltip-filter" data-placement="top" title="${{ ncid.filter_tooltip }}$" class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>
+    <select id="filter-select" class="selectpicker w-100 w-lg-auto">
         <option value="0">${{ ncid.no_filter }}$</option>
-        <option value="2">2%</option>
+        <option value="2" selected>2%</option>
         <option value="5">5%</option>
         <option value="10">10%</option>
     </select>
 </div>
 
 <button id="analyze-button" class="btn btn-primary btn-block mb-3 mt-4">
-<i class="fa fa-bar-chart fa-fw mr-2"></i>${{ ncid.analyze }}$
+    <i class="fa fa-bar-chart fa-fw mr-2"></i>${{ ncid.analyze }}$
 </button>
 
 <hr>
 
 <div id="error-alert" class="alert alert-danger d-none">
-<b id="error-alert-type"></b>: <span id="error-alert-content"></span>
-<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+    <b id="error-alert-type"></b>: <span id="error-alert-content"></span>
+    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
 </div>
 
-<div class="card">
-<div class="card-header">${{ ncid.results }}$</div>
-<div class="card-body" id="results-card">
-    <div class="text-center text-muted">${{ ncid.click_for_results }}$</div>
-</div>
-</div>
-
-<br>
-<div id="result-view" class="alert alert-primary d-none">
-    <p id="result-view-p"></p>
+<h3>${{ ncid.results }}$</h3>
+<div id="ncid-results">
+    <div class="text-muted">${{ ncid.click_for_results }}$</div>
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">

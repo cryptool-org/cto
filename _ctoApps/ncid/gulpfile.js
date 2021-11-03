@@ -43,12 +43,12 @@ const processJS = function() {
         .pipe(dest());
 }; // needs collectLocales
 
-const copyConfig = function() {
-    return gulp.src(["src/*/cto.config.json", "!src/common/**"])
+const copyJSON = function() {
+    return gulp.src(["src/*/*.json", "!src/common/**"])
         .pipe(include())
         .pipe(dest());
 };
 
 module.exports = {
-    default: gulp.series(collectLocales, copyConfig, processHTML, processCSS, processJS)
+    default: gulp.series(collectLocales, copyJSON, processHTML, processCSS, processJS)
 };

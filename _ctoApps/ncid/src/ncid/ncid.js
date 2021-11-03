@@ -1,210 +1,255 @@
 let architectureSelect = $("#architecture-select")
+let analyzeButton = $("#analyze-button")
 let filterSelect = $("#filter-select")
 let defaultArchitecture = "Transformer"
-let host = "https://dev.cryptool.org/ncidapi"
+let host = "/ncidapi" // [dev.]cryptool.org
+let acaGroups, lastResults, hasAnalyzed
 
 const onRefresh = () => {
-    $("#input-len").html(displaylength($("#input-textarea").val()));
-};
-
-onRefresh();
+    $("#input-len").html(displaylength($("#input-textarea").val()))
+}; onRefresh()
 
 $("#input-textarea").on("input", () => {
-    let newInput = $("#input-textarea").val();
-    $("#input-len").html(displaylength(newInput));
-  });
+    let newInput = $("#input-textarea").val()
+    $("#input-len").html(displaylength(newInput))
+})
 
-  function displaylength(textForLen) {
-    len = textForLen.replace(/(\r\n|\n|\r)/gm, "").length;
-    return "${{ncid.length}}$ " + len.toString();
-  }
+function displaylength(textForLen) {
+    len = textForLen.replace(/(\r\n|\n|\r)/gm, "").length
+    return "${{ncid.length}}$ " + len.toString()
+}
 
-    $(function () {
-        $('[data-toggle="tooltip-architecture"]').tooltip()
-        $('[data-toggle="tooltip-filter"]').tooltip()
-    })
+$(function () {
+    $('[data-toggle="tooltip-architecture"]').tooltip()
+    $('[data-toggle="tooltip-filter"]').tooltip()
+    $.get(CTO_Globals.pluginRoot + "aca-groups.json", aca => acaGroups = aca)
+})
 
-    const parseResponse = (response, successCallback = () => {}) => {
+const parseResponse = (response, successCallback = () => {}) => {
 
-        if(response.success != undefined) {
+    if(response.success != undefined) {
 
-            if(response.success == true) {
-                successCallback(response.payload)
-            }
-
-            else {
-                // error response from web api
-                showErrorAlert({ statusText: "API Error", responseText: response.error_msg })
-            }
-
+        if(response.success == true) {
+            successCallback(response.payload)
         }
 
         else {
-            // response.success undefined -> unknown Error
-            showErrorResponse({ statusText: "Unknown Error", responseText: "Response undefined" })
+            // error response from web api
+            showErrorAlert({ statusText: "API Error", responseText: response.error_msg })
         }
 
     }
 
-    const showErrorResponse = (error) => {
-        console.error(error)
-
-        if(error.responseText == undefined) {
-            error.responseText = "Unknown Error, maybe CORS or something ..."
-        }
-
-        if(error.statusText != undefined) {
-            type = error.statusText
-        } else {
-            type = "Error"
-        }
-
-        if(error.responseJSON != undefined && error.responseJSON.error_msg != undefined) {
-            error_msg = error.responseJSON.error_msg
-        } else if(error.responseText != undefined) {
-            error_msg = error.responseText
-        } else {
-            error_msg = "Unknown Error"
-        }
-
-        showErrorAlert(type, error_msg)
+    else {
+        // response.success undefined -> unknown Error
+        showErrorResponse({ statusText: "Unknown Error", responseText: "Response undefined" })
     }
 
+}
 
-    const showErrorAlert = (type, message) => {
-        $("#error-alert-type").text(type)
-        $("#error-alert-content").text(message)
-        $("#error-alert").removeClass("d-none")
+const showErrorResponse = (error) => {
+    console.error(error)
+
+    if(error.responseText == undefined) {
+        error.responseText = "Unknown Error, maybe CORS or something ..."
     }
 
-    const hideErrorAlert = () => {
-        $("#error-alert").addClass("d-none")
+    if(error.statusText != undefined) type = error.statusText
+    else type = "Error"
+
+    if(error.responseJSON != undefined && error.responseJSON.error_msg != undefined) {
+        error_msg = error.responseJSON.error_msg
+    } else if(error.responseText != undefined) {
+        error_msg = error.responseText
+    } else {
+        error_msg = "Unknown Error"
     }
-    $("#error-alert .close").on("click", hideErrorAlert)
+
+    showErrorAlert(type, error_msg)
+}
 
 
-    const loadAndShowAvailableArchitectures = () => {
+const showErrorAlert = (type, message) => {
+    $("#error-alert-type").text(type)
+    $("#error-alert-content").text(message)
+    $("#error-alert").removeClass("d-none")
+}
 
-        $.get(host + "/get_available_architectures", {}, response => {
+const hideErrorAlert = () => {
+    $("#error-alert").addClass("d-none")
+}
+$("#error-alert .close").on("click", hideErrorAlert)
 
-            parseResponse(response, payload => {
 
-                console.log(payload)
+const loadAndShowAvailableArchitectures = () => {
 
-                    if(typeof payload == "object") {
-                        architectureSelect.selectpicker()
-                        let htmlToInsert = ""
-                        payload.forEach(architecture => {
-                            htmlToInsert += `<option value="${architecture}"${(architecture == architecture) ? ' selected' : ''}>${architecture}</option>`
-                        })
+    $.get(host + "/get_available_architectures", {}, response => {
 
-                        architectureSelect.html(htmlToInsert)
-                        architectureSelect.selectpicker('refresh')
+        parseResponse(response, payload => {
 
-                    }
-
-                    else console.error("payload is not an object")
-
+            if(typeof payload == "object") {
+                architectureSelect.selectpicker()
+                let htmlToInsert = ""
+                payload.forEach(architecture => {
+                    htmlToInsert += `<option value="${architecture}"${(architecture == architecture) ? ' selected' : ''}>${architecture}</option>`
                 })
 
-            }).fail(showErrorResponse)
+                architectureSelect.html(htmlToInsert)
+                architectureSelect.selectpicker('refresh')
 
-    }
-
-        $("#analyze-button").click(function(e) {
-
-            hideErrorAlert()
-            ciphertext = $("#input-textarea").val()
-            ciphertext = ciphertext.toLowerCase()
-            //remove spaces
-            ciphertext = ciphertext.replace(/\s+/g, '')
-            //remove newline
-            ciphertext = ciphertext.replace(/\n|\r/g, '')
-            //remove symbols, which are not a-z,A-Z
-            ciphertext = ciphertext.replace(/[^A-Za-z]/g, '')
-
-            if(ciphertext.length <30){
-                showErrorAlert("Error", "${{ ncid.ciphertext_too_short }}$")
-                return;
             }
 
-            /*
-            $.get(host + "/filter_ciphertext", {
-                ciphertext: ciphertext,
-            }, response => {
-
-                parseResponse(response, payload => {
-                    console.log(payload)
-                })
-
-            }).fail(showErrorResponse)
-            */
-            // todo: Use cipherImplementations.Cipher.filter() method to filter input
-
-            $.get(host + "/evaluate/single_line/ciphertext", {
-                ciphertext: ciphertext,
-                architecture: architectureSelect.val()[0] // todo: send all selected elems
-            }, response => {
-
-                parseResponse(response, payload => {
-                    if(typeof payload == "object") showSingleLineEvaluationResults(payload)
-                    else console.error("single line evaluation: payload is not an object")
-                })
-
-            }).fail(showErrorResponse)
-
-            // todo: animate icon while loading
+            else console.error("payload is not an object")
 
         })
 
-        const showSingleLineEvaluationResults = (results) => {
+    }).fail(showErrorResponse)
 
-            let container = $("#results-card")
+}
 
-            // sort cipher probabilties
-            let probabilties = []
-            for (let architecture in results)
-                probabilties.push([architecture, results[architecture]])
-            probabilties = probabilties.sort((a, b) => { return b[1] - a[1] })
+const analyze = () => {
 
-            let htmlToInsert = `
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">${{ncid.cipher}}$</th>
-                                <th scope="col">${{ncid.probability}}$</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+    hideErrorAlert()
+    hasAnalyzed = true
+
+    ciphertext = $("#input-textarea").val().toLowerCase()
+    ciphertext = ciphertext.replace(/\s+/g, '') // remove spaces
+    ciphertext = ciphertext.replace(/\n|\r/g, '') // remove newline
+    ciphertext = ciphertext.replace(/[^A-Za-z]/g, '') // remove symbols, which are not a-z,A-Z
+
+    if(ciphertext.length < 30) {
+        showErrorAlert("Error", "${{ ncid.ciphertext_too_short }}$"); return
+    }
+
+    if(architectureSelect.val().length == 0) {
+        showErrorAlert("Error", "${{ ncid.no_architecture_selected }}$"); return
+    }
+
+    $.ajaxSetup({ traditional: true }) // needed for correct array transmission
+    $.get(host + "/evaluate/single_line/ciphertext", {
+        ciphertext: ciphertext,
+        architecture: architectureSelect.val(),
+    }, response => {
+
+        parseResponse(response, payload => {
+            if(typeof payload == "object") showSingleLineEvaluationResults(payload)
+            else console.error("single line evaluation: payload is not an object")
+            lastResults = payload
+        })
+
+    }).fail(showErrorResponse)
+
+    // todo: animate icon while loading
+
+}
+
+const showSingleLineEvaluationResults = (results) => {
+
+    let container = $("#ncid-results")
+    let cipherClasses = {}
+
+    // concat results with aca groups
+    for(let architecture in results) {
+
+        // filter lower probabilities
+        if(results[architecture] < parseInt(filterSelect.val())) continue
+
+        // fallback for unassigned ciphers
+        if(acaGroups.ciphers[architecture] == undefined)
+            acaGroups.ciphers[architecture] = {name: architecture, url: "#", class: ["none"]}
+
+        // fallback for ciphers without class
+        if((acaGroups.ciphers[architecture].class || []).length == 0
+          || !Array.isArray(acaGroups.ciphers[architecture].class))
+            acaGroups.ciphers[architecture].class = ["none"]
+
+        // concat objects into cipher object
+        let cipher = {...{probability: results[architecture]}, ...acaGroups.ciphers[architecture]}
+
+        // add cipher to all set classes
+        cipher.class.forEach(cipherClass => {
+            if(!acaGroups.classes[cipherClass]) cipherClass = "none" // fallback
+            if(!cipherClasses[cipherClass]) cipherClasses[cipherClass] = []
+            cipherClasses[cipherClass].push(cipher)
+        })
+
+    }
+
+    // sort ciphers by probability
+    let sortedCipherClasses = []
+    for(let cipherClass in cipherClasses) {
+
+        let newCipherClassObject = { key: cipherClass, probability: 0, items: [] }
+
+        cipherClasses[cipherClass].forEach(cipher => {
+            newCipherClassObject.probability += cipher.probability
+            newCipherClassObject.items.push(cipher)
+        })
+
+        newCipherClassObject.items = newCipherClassObject.items.sort(
+            (a, b) => { return b.probability - a.probability })
+
+        sortedCipherClasses.push(newCipherClassObject)
+
+    }; delete cipherClasses
+
+    // sort cipher classes by probability
+    sortedCipherClasses = sortedCipherClasses.sort((a, b) => { return b.probability - a.probability })
+
+    // show cipher classes in html
+    let htmlToInsert = ""
+    sortedCipherClasses.forEach(cipherClass => {
+
+        let cipherCaption = "${{ncid.cipher}}$"
+        let probabilityCaption = "${{ncid.probability}}$"
+        let acaClassCaption = (acaGroups.classes[cipherClass.key] || {})[ioApp.lang]
+
+        htmlToInsert += `
+            <div class="card my-4 border-0 text-center">
+                <div class="card-header bg-dark text-white border">
+                    <h5 class="mb-0">${acaClassCaption} <span class="badge badge-secondary">${cipherClass.probability.toFixed(2)}%</span></h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0" style="table-layout: fixed;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">${cipherCaption}</th>
+                                    <th scope="col">${probabilityCaption}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+        `
+
+        cipherClass.items.forEach(cipher => {
+            if(cipher.url && cipher.url != "#")
+                cipher.name = `<a href="${cipher.url}" target="_blank">${cipher.name}</a>`
+
+            htmlToInsert += `
+                <tr>
+                    <td>${cipher.name}</td>
+                    <td>${cipher.probability.toFixed(2)}%</td>
+                </tr>
             `
-            let rowCount = 0
-
-            probabilties.forEach(cipher => {
-                if(cipher[1]>filterSelect.val()){
-                rowCount+=1
-                htmlToInsert += `
-                    <tr>
-                        <td>${cipher[0]}</td>
-                        <td>${cipher[1].toFixed(2)}%</td>
-                    </tr>
-                `
-                }
-            })
-            htmlToInsert += `</tbody></table></div>`
-            container.html(htmlToInsert)
-
-            $("#result-view").removeClass("d-none")
-            if(filterSelect.val() == 0){
-                $("#result-view-p").html(${{ncid.result_no_filter}}$)
-            }else{
-                $("#result-view-p").html(${{ncid.result_filter}}$)
-            }
-
-        }
-
-        // initialize when all contents have been loaded
-        document.addEventListener("DOMContentLoaded", function() {
-            loadAndShowAvailableArchitectures()
         })
 
+        htmlToInsert += `</tbody></table></div></div></div>`
+
+    })
+
+    if(htmlToInsert == "") htmlToInsert = '<span class="text-muted">${{ ncid.result_no_result }}$</span>'
+    container.html(htmlToInsert)
+
+}
+
+// initialize when all contents have been loaded
+document.addEventListener("DOMContentLoaded", function() {
+    loadAndShowAvailableArchitectures()
+})
+
+// add click handlers to analyze
+$(analyzeButton).click(analyze)
+$(architectureSelect).change(() => { if(hasAnalyzed) analyze() })
+
+// add change handler for filter
+$(filterSelect).change(() => { if(lastResults) showSingleLineEvaluationResults(lastResults) })
