@@ -1,0 +1,398 @@
+
+	<!doctype html>
+	<html>
+		<head>
+			
+	<title>RSA-js</title>
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+		crossorigin="anonymous"
+	>
+
+	<link rel="stylesheet"
+		href="../_ctoApps/rsa/rsa.css"
+	>
+
+		</head>
+		<body>
+			
+	<div id="rsa-container"
+		class="container">
+		
+	<p>
+		This module demonstrates
+		step-by-step encryption and
+		decryption with the RSA method.
+		The sender uses the public key of
+		the recipient for encryption;
+		the recipient uses his associated
+		private key to decrypt.
+	</p>
+
+	<h2>Primes</h2>
+
+	<p>
+		The security of RSA is based on
+		the fact that it is easy to
+		calculate the product <i>n</i>
+		of two large primes <i>p</i> and
+		<i>q</i>. However, it is very
+		difficult to determine only from
+		the product <i>n</i> the two
+		primes that yield the product.
+		This decomposition is also called
+		the factorization of <i>n</i>.
+	</p>
+
+	<p>
+		As a starting point for RSA choose
+		two primes <i>p</i> and <i>q</i>.
+	</p>
+
+	<form id="primes-form" class="form-horizontal">
+		
+	<div class="form-group">
+		<label for="prime-1">1st prime
+			<i>p</i> =</label>
+		<input class="form-control" id="prime-1" value="11">
+	</div>
+
+	<div id="err-p-not-prime"
+		class="row alert alert-danger hidden"
+	><i>p</i> is not prime!</div>
+
+	<div class="form-group">
+		<label for="prime-2">2nd prime
+			<i>q</i> =</label>
+		<input class="form-control" id="prime-2" value="13">
+	</div>
+
+	<div id="err-q-not-prime"
+		class="row alert alert-danger hidden"
+	><i>q</i> is not prime!</div>
+	<div id="err-p-equal-q"
+		class="row alert alert-danger hidden"
+	><i>p</i> and <i>q</i> are not
+		different!</div>
+
+	</form>
+
+	<p>
+		For the algorithm to work, the two
+		primes must be different.
+	</p>
+
+	<h2>Public key</h2>
+	<p>
+		The product <i>n</i> is also
+		called modulus in the RSA method.
+	</p>
+
+	
+	<p class="form">
+		
+	<i>n</i> = <i>p</i> × <i>q</i> =
+	<span id="public-key"></span>
+		(<span id="public-key-length"></span> bit)
+
+	</p>
+
+
+	<p>
+		For demonstration we start with
+		small primes. To make the
+		factorization difficult, the
+		primes must be much larger.
+		Currently, values of <i>n</i> with
+		several thousand binary digits
+		are used for secure communication.
+	</p>
+
+	<p>
+		The public key consists of the
+		modulus <i>n</i> and
+		an exponent <i>e</i>.
+	</p>
+
+	<form id="e-form" class="form-horizontal">
+		<div class="form-group">
+			
+	<label for="base"><i>e</i>
+		=</label>
+	<input class="form-control" id="base" value="23">
+
+		</div>
+		<div id="err-gcd-not-1"
+			class="row alert alert-danger"
+		><i>e</i> and <i>φ(n)</i>
+			have a common divisor,
+			they are not coprime.</div>
+	</form>
+
+	<p>
+		This <i>e</i> may even be
+		pre-selected and the same
+		for all participants.
+	</p>
+
+	<h2>Secret key</h2>
+	<p>
+		RSA uses the Euler φ function
+		of <i>n</i> to calculate the
+		secret key. This is defined as
+	</p>
+
+	
+	<p class="form">
+		
+	φ(<i>n</i>) =  (<i>p</i> − 1) ×
+		(<i>q</i> − 1) = <span id="phi"></span>
+
+	</p>
+
+
+	<p>
+		The prerequisit here is that
+		<i>p</i> and <i>q</i> are
+		different. Otherwise, the φ
+		function would be calculated
+		differently.
+	</p><p>
+		It is important for RSA that the
+		value of the φ function is
+		coprime to <i>e</i> (the largest
+		common divisor must be 1).
+	</p>
+
+	<p class="form">
+		
+	gcd(<i>e</i>,
+		φ(<i>n</i>)) =
+	<span id="gcd"></span>
+
+	</p>
+
+	<p>
+		To determine the value of
+		φ(<i>n</i>), it is not enough
+		to know <i>n</i>. Only with the
+		knowledge of <i>p</i> and <i>q</i>
+		we can efficiently determine
+		φ(<i>n</i>).
+	</p>
+
+	<p>
+		The secret key also consists of
+		a <i>d</i> with the
+		property that <i>e</i> ×
+		<i>d</i> − 1 is a multiple of
+		φ(<i>n</i>).
+	</p>
+
+	<p>
+		Expressed in formulas, the
+		following must apply:
+	</p><p class="form">
+		<i>e</i> × <i>d</i> = 1
+		(mod φ(<i>n</i>))
+	</p>
+
+	<p>
+		In this case, the mod expression
+		means equality with regard to a
+		residual class. It is <i>x</i> =
+		<i>y</i> (mod <i>z</i>) if and
+		only if there is an integer a
+		with <i>x</i> − <i>y</i> =
+		<i>z</i> × <i>a</i>.
+	</p>
+
+	<p>
+		For the chosen values of <i>p</i>,
+		<i>q</i>, and <i>e</i>, we get
+		<i>d</i> as:
+	</p>
+
+	
+	<p class="form">
+		
+	<i>d</i> =
+	<span id="private-key"></span>
+
+	</p>
+
+
+	<p>
+		This <i>d</i> can always be
+		determined (if <i>e</i> was
+		chosen with the restriction
+		described above) — for example
+		with the extended Euclidean
+		algorithm.
+	</p>
+
+	<h2>Encryption and decryption</h2>
+	<p>
+		Internally, this method works only
+		with numbers (no text), which are
+		between 0 and <i>n</i> − 1.
+	</p>
+
+	<p>
+		A message <i>m</i> (number) is
+		encrypted with the public key (
+		<i>n</i>, <i>e</i>) by
+		calculating:
+	</p><p class="form">
+		<i>m'</i> :=
+			<i>m</i><sup><i>e</i></sup>
+			(mod <i>n</i>)
+	</p>
+
+	<p>
+		Decrypting with the private key
+		(<i>n</i>, <i>d</i>) is done
+		analogously with
+	</p><p class="form">
+		<i>m''</i> :=
+			(<i>m'</i>)<sup><i>d</i></sup>
+			(mod <i>n</i>).
+	</p>
+
+	<p>
+		This is
+	</p><p class="form">
+		<i>m''</i> =
+			<i>m</i><sup><i>e</i> ×
+			<i>d</i></sup> (mod <i>n</i>).
+	</p>
+
+	<p>
+		RSA exploits the property that
+	</p><p class="form">
+		<i>x</i><sup><i>a</i></sup> =
+			<i>x</i><sup><i>b</i></sup>
+			(mod <i>n</i>)
+	</p><p>
+		if
+	</p><p class="form">
+		<i>a</i> =
+			<i>b</i> (mod φ(<i>n</i>))
+	</p>
+
+	<p>
+		As <i>e</i> and <i>d</i> were
+		chosen appropriately, it is
+	</p><p class="form">
+		<i>m''</i> = <i>m</i>.
+	</p>
+
+	<p>
+		The order does not matter. You
+		could also first raise a message
+		with the private key, and then
+		power up the result with the
+		public key — this is what you use
+		with RSA signatures.
+	</p>
+
+	<h2>Messages</h2>
+	<p>
+		In the following two text boxes 'Plaintext' and 'Ciphertext', you can see how encryption and
+		decryption work for concrete inputs (numbers).
+	</p>
+	<form id="crypt-boxes-form" class="form-horizontal">
+		
+	
+	<div class="form-group">
+		<label for="private-txt">Plaintext (enter text)</label>
+		<input class="form-control" id="private-txt" value=""></input>
+	</div>
+
+	<div class="form-group">
+		<label for="private-message"
+		>Plaintext (enter numbers, e.g. 6, 13, 111)</label>
+		<input class="form-control" id="private-message" value="7"></input>
+	</div>
+
+	<div id="err-private-msg-too-big"
+		class="row alert alert-danger"
+	>A plaintext number is too big. The
+		maximum value is
+		<span class="max-msg"></span> as <i>n</i> = <span class="max-msg-n"></span>.
+		Please choose bigger
+		primes to get a bigger <i>n</i>.</div>
+
+	<div id="err-private-msg-invalid"
+		class="row alert alert-danger">
+		Please enter integers.
+	</div>
+
+	
+	<div class="row">
+		<div id="direction">
+			<svg viewbox="0 0 50 50"
+				width="50" height="50">
+				<polyline points="0,20 15,20 15,0 35,0 35, 20 50,20 25,50"
+				></polyline>
+			</svg>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label for="public-message"
+		>Ciphertext (enter numbers, e.g. 128, 52, 67)</label>
+		<input class="form-control" id="public-message"></input>
+	</div>
+
+	<div id="err-public-msg-too-big"
+		class="row alert alert-danger"
+	>A ciphertext number is too big. The
+		maximum value is
+		<span class="max-msg"></span> as <i>n</i> = <span class="max-msg-n"></span>.
+		Please choose bigger
+		primes to get a bigger <i>n</i>.</div>
+
+	<div id="err-public-msg-invalid" class="row alert alert-danger">
+		Please enter integers.
+	</div>
+
+	</form>
+
+	<h2>Used library</h2>
+	<p>
+		This page uses the library
+		<a href="https://peterolson.github.com/BigInteger.js/"
+			>BigInteger.js</a>
+		to work with big numbers.
+	</p>
+
+	<p>
+		As a result, you can calculate
+		arbitrarily large numbers in
+		JavaScript, even those that are
+		actually used in RSA
+		applications.
+	</p>
+
+	<div id="authors"><em>CTOAUTHORS:
+		Timm Knape (thanks to
+		Bernhard Esslinger for the
+		review), last update 2021-04-27</em></div>
+
+	</div>
+
+			
+	<script
+		src="../_ctoApps/rsa/BigInteger.min.js"
+	></script>
+	<script
+		src="../_ctoApps/rsa/rsa.js"
+	></script>
+
+		</body>
+	</html>

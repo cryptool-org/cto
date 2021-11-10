@@ -1,0 +1,3 @@
+[submodule "slides"]
+	path = slides
+	url = https://github.com/itmm/slides.git
