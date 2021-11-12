@@ -1,5 +1,5 @@
 # CrypTool-Online Sourcen
-* Auf CryptTool-Online werden unterschiedliche
+* Auf CrypTool-Online werden unterschiedliche
   Verschlüsselungsalgorithmen in JavaScript vorgestellt
 * Diese Seite ist der Einstieg in die konkreten Implementierungen
 * Auf den verlinkten Unterseiten werden Schritt für Schritt die
