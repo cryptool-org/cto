@@ -1,4 +1,8 @@
 # CrypTool-Online Sourcen
+
+Diese Beschreibung ist für Entwickler, die interessiert, 
+wie RSA-Schritt-für-Schritt funktioniert.
+
 * Auf CrypTool-Online werden unterschiedliche
   Verschlüsselungsalgorithmen in JavaScript vorgestellt
 * Diese Seite ist der Einstieg in die konkreten Implementierungen
