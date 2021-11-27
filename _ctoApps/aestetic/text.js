@@ -105,7 +105,10 @@ jQuery(function () {
             // cursor keys
         } else if (c >= 48 && c <= 57 || c >= 65 && c <= 70 || c >= 97 && c <= 102) {
             // hex digits
+        } else if (c == 32) {
+            // space
         } else {
+            //console.log('key code: ' + c);
             evt.preventDefault();
         }
     });
