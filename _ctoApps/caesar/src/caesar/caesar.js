@@ -15,10 +15,10 @@ String.prototype.encrypt = function (key, b_encrypt, b_block_of_five, alphabet, 
 			const index = alphabet.indexOf(old_character)
 			// if text get encrypted
 			if (b_encrypt) {
-				const new_index = (index + key) % alphabet.length
+				const new_index = (((index + key) % alphabet.length) + alphabet.length) % alphabet.length
 				new_character = alphabet[new_index]
 			} else {
-				const new_index = (index - key) % alphabet.length
+				const new_index = (((index - key) % alphabet.length) + alphabet.length) % alphabet.length
 				new_character = alphabet[new_index]
 			}
 		}
@@ -37,11 +37,7 @@ String.prototype.encrypt = function (key, b_encrypt, b_block_of_five, alphabet, 
 				new_character = old_character
 			}
 		}
-		if (typeof new_character != "undefined") {
-			ciphertext = ciphertext + new_character
-		} else {
-			ciphertext = ciphertext + old_character
-		}
+		ciphertext = ciphertext + (new_character || old_character)
 		// if blocks_of_five is true then after 5 characters append a space
 		if (b_block_of_five && b_encrypt) {
 			if (ciphertext.split(" ").join("").length % 5 == 0) {
