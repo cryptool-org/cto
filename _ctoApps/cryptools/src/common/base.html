@@ -30,8 +30,10 @@
         <input type="@@keytype" id="key-input" class="form-control" value="@@key">
     </div>
 
-    @@include("./options.html", {
-        "alphabet": "@@alphabet"
-    })
+    @@if(showOptions == "true") {
+        @@include("./options.html", {
+            "alphabet": "@@alphabet"
+        })
+    }
 
 </div>

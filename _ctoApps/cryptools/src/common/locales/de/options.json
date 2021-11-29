@@ -9,5 +9,6 @@
   "UMLAUTS": "Umlaute",
   "BLANKS": "Leerzeichen",
   "USE_CONSTRUCTED_ALPHABET": "Konstruiertes Alphabet nutzen",
-  "DEFINE_OWN_ALPHABET": "Eigenes Alphabet definieren"
+  "DEFINE_OWN_ALPHABET": "Eigenes Alphabet definieren",
+  "FIVE_BLOCKS_TOOLTIP": "Nur verfügbar wenn Alphabet Leerzeichen enthält"
 }

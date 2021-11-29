@@ -62,10 +62,14 @@ const updateAlphabet = () => {
         alphabetElems.alphabetInput.value = getAlphabet()
     }
 
+    // enable blocks of 5 only when space is included in alphabet
+    optionsElems.blocksOf5.disabled = !getAlphabet().includes(" ")
+
 }
 
 // register change listeners
 Object.values(alphabetElems).forEach(elem => elem.addEventListener("change", updateAlphabet))
+alphabetElems.alphabetInput.addEventListener("input", updateAlphabet)
 
 let optionsElems = {
     blocksOf5: document.getElementById("blocks-of-five-checkbox"),
@@ -92,4 +96,8 @@ const filterOutput = (output) => {
 }
 
 // register change listeners
-Object.values(optionsElems).forEach(elem => elem.addEventListener("change", update))
+Object.values(optionsElems).forEach(elem => elem.addEventListener("change", () => { update() }))
+
+// enable tooltips
+$(function () { $('[data-toggle="tooltip"]').tooltip() })
+updateAlphabet()

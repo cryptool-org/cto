@@ -9,5 +9,6 @@
   "UMLAUTS": "Umlauts",
   "BLANKS": "Blanks",
   "USE_CONSTRUCTED_ALPHABET": "Use constructed alphabet",
-  "DEFINE_OWN_ALPHABET": "Define own alphabet"
+  "DEFINE_OWN_ALPHABET": "Define own alphabet",
+  "FIVE_BLOCKS_TOOLTIP": "Only available if alphabet contains a space"
 }
