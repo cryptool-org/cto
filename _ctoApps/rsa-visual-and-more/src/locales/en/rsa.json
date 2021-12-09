@@ -22,7 +22,7 @@
     "VISUAL-OVERWRITE-RSA-PARAMETER": "If you press 'Yes', it will overwrite the current RSA parameters and reset the graphics. Continue?",
     "VISUAL-GENERATE-NEW-KEY-AND-OVERWRITE": "If you press 'Yes', it will reset the graphics and take over the new parameters. Continue?",
     "VISUAL-GENERATE-KEY-BUTTON": "Generate another set of parameters",
-    "VISUAL-SUCCESS-VALID-KEY-FEEDBACK": "Now you can build the graphics by pressing 'Automatic run'",
+    "VISUAL-SUCCESS-VALID-KEY-FEEDBACK": "Now you can start the visualization by clicking on 'Automatic execution' below",
     "VISUAL-TWO-LINE-ASSIGNMENT": "Two-line assignment",
     "VISUAL-CIRCLE": "Circle assigment",
     "VISUAL-AUTOMATIC-RUN": "Automatic run",
