@@ -1,0 +1,1508 @@
+<!-- // TABS -->
+
+<!-- Visualization TAB -->
+<div id="circle-rsa-tab" class="tab-pane active mt-3">
+    <!-- PARAMATER BOX -->
+    <div class="container mt-3 mb-5" id="rsa-input">
+        <div style="text-align: center;" class="mb-3">${{rsa.VISUAL-DESCRIPTION_1}}$
+        </div>
+        <div class="row" id="prime-input-numbers">
+            <div class="col-md-6">
+                <div class="row">
+                    <label class="col-lg-3 col-md-4 col-3 col-form-label" for="p-number-input">${{rsa.GENERALLY-PRIME}}$
+                        p</label>
+                    <div class="col-lg-9 col-md-8 col-9 input-parent-element">
+                        <input type="number" class="form-control" id="p-number-input" aria-describedby="p-number-input"
+                            placeholder="${{rsa.GENERALLY-ENTER-PRIME}}$" min="1">
+                        <div id="p-is-not-prime-alert" class="alert alert-danger mt-2" role="alert" hidden>
+                            p ${{rsa.GENERALLY-PRIME-FEEDBACK-NEGATIV}}$
+                        </div>
+                        <div id="p-is-prime-alert" class="alert alert-success mt-2" role="alert" hidden>
+                            p ${{rsa.GENERALLY-PRIME-FEEDBACK-POSITIV}}$
+                        </div>
+                        <div id="p-is-equal-q-alert" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.GENERALLY-P-FEEDBACK-P-EQUAL-Q}}$ </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-md-0 mt-2">
+                <div class="row">
+                    <label class="col-lg-3 col-md-4 col-3 col-form-label" for="q-number-input">${{rsa.GENERALLY-PRIME}}$
+                        q</label>
+                    <div class="col-lg-9 col-md-8 col-9 input-parent-element">
+                        <input type="number" class="form-control" id="q-number-input" aria-describedby="q-number-input"
+                            placeholder="${{rsa.GENERALLY-ENTER-PRIME}}$" min="1">
+                        <div id="q-is-not-prime-alert" class="alert alert-danger mt-2" role="alert" hidden>
+                            q ${{rsa.GENERALLY-PRIME-FEEDBACK-NEGATIV}}$
+                        </div>
+                        <div id="q-is-prime-alert" class="alert alert-success mt-2" role="alert" hidden>
+                            q ${{rsa.GENERALLY-PRIME-FEEDBACK-POSITIV}}$
+                        </div>
+                        <div id="q-is-equal-p-alert" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.GENERALLY-Q-FEEDBACK-Q-EQUAL-P}}$ </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEXT ROW WITH PHI, LCM AND N -->
+        <div class="form-group row mt-md-5 mt-3" id="phi-n-number-input">
+            <div class="col-md-6">
+                <div class="row">
+                    <label class="col-lg-3 col-md-4 col-3 col-form-label" for="phi-number-input">φ(n)</label>
+                    <label class="col-lg-3 col-md-4 col-3 col-form-label" for="lcm-number-input"
+                        hidden>${{rsa.GENERALLY-LCM-SHORT}}$</label>
+                    <div class="col-lg-9 col-md-8 col-9 input-parent-element">
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="lcm-number-input"
+                                aria-describedby="lcm-number-input" placeholder="${{rsa.GENERALLY-LCM}}$" min="1"
+                                disabled hidden>
+                            <input style="border-top-left-radius: .25rem;border-bottom-left-radius: .25rem;"
+                                type="number" class="form-control" id="phi-number-input"
+                                aria-describedby="phi-number-input" placeholder="φ(n) = (p - 1) * (q - 1)" min="1"
+                                disabled>
+                            <div class="input-group-append">
+                                <button name="phi" disabled class="btn btn-primary insert-number-automatic"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="${{rsa.VISUAL-INSERT-NUMBER-AUTOMATIC}}$" type="button"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></button>
+
+                                <button name="lcm" disabled hidden class="btn  btn-primary insert-number-automatic"
+                                    type="button" data-toggle="tooltip" data-placement="top"
+                                    title="${{rsa.VISUAL-INSERT-NUMBER-AUTOMATIC}}$"><i class="fa fa-pencil"
+                                        aria-hidden="true"></i></button>
+
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu" style="width:fit-content" value="phi-input">
+                                    <a class="dropdown-item param-box-switch-input" id="phi-input">φ(n)</a>
+                                    <a class="dropdown-item param-box-switch-input"
+                                        id="lcm-input">${{rsa.GENERALLY-LCM-SHORT}}$</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="phi-is-not-coprime" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-PHI-FEEDBACK-NEGATIV}}$
+                        </div>
+                        <div id="phi-is-coprime" class="alert alert-success mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-PHI-FEEDBACK-POSITIV}}$
+                        </div>
+                        <div id="lcm-is-not-coprime" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-LCM-FEEDBACK-NEGATIV}}$
+                        </div>
+                        <div id="lcm-is-coprime" class="alert alert-success mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-LCM-FEEDBACK-POSITIV}}$
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-6 mt-md-0 mt-2">
+                <div class="row">
+                    <label class="col-lg-3 col-md-4 col-3 col-form-label" for="n-number-input">n</label>
+                    <div class="col-lg-9 col-md-8 col-9 input-parent-element">
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="n-number-input"
+                                aria-describedby="n-number-input" placeholder="n = p * q" min="1" disabled>
+                            <div class="input-group-append">
+                                <button data-toggle="tooltip" data-placement="top"
+                                    title="${{rsa.VISUAL-INSERT-NUMBER-AUTOMATIC}}$" name="n" disabled
+                                    class="btn  btn-primary insert-number-automatic" type="button"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div id="n-is-correct" class="alert alert-success mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-N-FEEDBACK-POSITIV}}$
+                        </div>
+                        <div id="n-is-not-correct" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-N-FEEDBACK-NEGATIV}}$
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="mt-3" style="text-align: center;">${{rsa.VISUAL-DESCRIPTION_2}}$</div>
+        <!-- NEXT ROW WITH E AND D -->
+        <div class="form-group row mt-md-5 mt-3" id="e-d-number-input">
+            <div class="col-md-6">
+                <div class="row">
+                    <label class="col-lg-3 col-md-4 col-3 col-form-label" for="e-number-input">e
+                    </label>
+                    <div class="col-lg-9 col-md-8 col-9 input-parent-element">
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="e-number-input"
+                                aria-describedby="e-number-input"
+                                placeholder="${{rsa.VISUAL-E-HAS-BE-COPRIME-TO-PLACEHOLDER}}$ φ(n)" disabled>
+                            <div class="input-group-append">
+                                <button name="e" disabled class="btn btn-primary insert-number-automatic"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="${{rsa.VISUAL-INSERT-NUMBER-AUTOMATIC}}$" type="button"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></button>
+
+                                <button style="height: 100%;" type="button" class="btn btn-primary" id="e-helper"
+                                    data-container="body" data-toggle="popover" data-placement="bottom"
+                                    data-trigger="focus" data-content="${{rsa.VISUAL-PHI-LCM-DESCRIPTION}}$"
+                                    title="${{rsa.VISUAL-HOW-TO}}$">
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <div id="e-can-not-be-found" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.GENERALLY-E-NO-NUMBER-EXIST}}$ <span
+                                class="visualition-key-gen-phi-or-lcm">φ(n)</span>
+                        </div>
+                        <div id="e-is-coprime" class="alert alert-success mt-2" role="alert" hidden>
+                            ${{rsa.GENERALLY-E-FEEDBACK-POSITIV}}$ <span
+                                class="visualition-key-gen-phi-or-lcm">φ(n)</span>.
+                        </div>
+                        <div id="e-is-not-coprime" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.GENERALLY-E-FEEDBACK-NEGATIV}}$ <span
+                                class="visualition-key-gen-phi-or-lcm">φ(n)</span>
+                        </div>
+                        <div id="e-is-greater-phi-or-lcm" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.GENERALLY-E-FEEDBACK-GREATER}}$ <span
+                                class="visualition-key-gen-phi-or-lcm">φ(n)</span>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="col-md-6 mt-md-0 mt-2">
+                <div class="row">
+                    <label class="col-lg-3 col-md-4 col-3 col-form-label " for="d-number-input" style="float: right">
+                        d
+                    </label>
+                    <div class="col-lg-9 col-md-8 col-9 input-parent-element">
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="d-number-input"
+                                aria-describedby="d-number-input"
+                                placeholder="${{rsa.VISUAL-D-HAS-BE-CONGRUENT-TO-E-PLACEHOLDER}}$" min="1" disabled>
+                            <div class="input-group-append">
+                                <button name="d" disabled class="btn btn-primary insert-number-automatic"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="${{rsa.VISUAL-INSERT-NUMBER-AUTOMATIC}}$" type="button"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></button>
+
+
+                                <button style="height: 100%;" id="popover-d-button" type="button"
+                                    class="btn btn-primary" data-container="body" data-toggle="popover"
+                                    data-placement="bottom" data-trigger="focus" data-content="(d * e ) mod φ(n) = 1"
+                                    title="${{rsa.VISUAL-HOW-TO}}$">
+                                    <i class="fa fa-calculator" aria-hidden="true"></i>
+                                </button>
+
+
+                            </div>
+                        </div>
+                        <div id="e-is-not-valid" class="alert alert-warning mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-D-FEEDBACK-E-INVALID}}$
+                        </div>
+
+                        <div id="d-is-not-correct" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-D-FEEDBACK-NEGATIV}}$
+                        </div>
+                        <div id="d-is-correct" class="alert alert-success mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-D-FEEDBACK-POSITIV}}$
+                        </div>
+                        <div id="d-greater-phi-or-lcm" class="alert alert-danger mt-2" role="alert" hidden>
+                            ${{rsa.VISUAL-D-FEEDBACK-GREATER}}$ <span class="visualition-key-gen-phi-or-lcm">φ(n)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mt-2" style="align-content: center;">
+            <div class="alert alert-warning" hidden role="alert" id="e-d-equal-alert">
+                ${{rsa.VISUAL-E-EQUAL-D}}$
+            </div>
+        </div>
+        <hr>
+        <div hidden id="alert-smaller-200" class="alert alert-warning" role="alert">
+            ${{rsa.VISUAL-N-GREATER-200}}$
+        </div>
+
+        <div class="border rounded" style="text-align: center;">
+            <span class="mr-5">${{rsa.GENERALLY-PRIVATE-KEY}}$: ( d, n
+                <span class="key-generation-visualisation-result" hidden>
+                    = <span id="d-key"></span>, <span class="n-key"></span>
+                </span>)
+            </span>
+            <span class="ml-5">${{rsa.GENERALLY-PUBLIC-KEY}}$: ( e, n
+                <span class="key-generation-visualisation-result" hidden>=
+                    <span id="e-key"></span>, <span class="n-key"></span>
+                </span>)
+            </span>
+        </div>
+        <br>
+        <div id="alert-overwrite-input" class="w-100 alert alert-warning mb-2" role="alert" hidden="true">
+            ${{rsa.VISUAL-OVERWRITE-RSA-PARAMETER}}$
+            <button type="button" class="btn btn-warning ml-5 mt-0" id="visual-overwrite-input-yes">
+                ${{rsa.GENERALLY-YES}}$
+            </button>
+            <button type="button" class="btn btn-warning ml-2 mt-0" id="visual-overwrite-input-no">
+                ${{rsa.GENERALLY-NO}}$
+            </button>
+        </div>
+        <div id="alert-reset-graphic-input" class="w-100 alert alert-warning mb-2" role="alert" hidden="true">
+            ${{rsa.VISUAL-OVERWRITE-RSA-PARAMETER}}$
+            <button type="button" class="btn btn-warning ml-5 mt-0" id="alert-reset-graphic-input-yes">
+                ${{rsa.GENERALLY-YES}}$
+            </button>
+            <button type="button" class="btn btn-warning ml-2 mt-0" id="alert-reset-graphic-input-no">
+                ${{rsa.GENERALLY-NO}}$
+            </button>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-primary ml-auto mr-3" id="visualization-primes-button">
+                <i class="fa fa-random" aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-GENERATE-KEY-BUTTON}}$
+            </button>
+        </div>
+        <div id="success-key-in-graphic-useable" class="w-100 alert alert-success mt-4" role="alert" hidden="true">
+            ${{rsa.VISUAL-SUCCESS-VALID-KEY-FEEDBACK}}$
+        </div>
+
+
+    </div>
+    <!-- // PARAMATER BOX -->
+    <!-- CARD -->
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="visualization-list" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#two-lines-tab" role="tab" aria-controls="two-lines-tab"
+                        aria-selected="true">${{rsa.VISUAL-TWO-LINE-ASSIGNMENT}}$</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#circle-tab" role="tab" aria-controls="circle-tab"
+                        aria-selected="false">${{rsa.VISUAL-CIRCLE}}$</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body" id="visualization-card">
+            <div class="tab-content">
+                <!-- two lines tab -->
+                <div class="tab-pane active" id="two-lines-tab" role="tabpanel" aria-labelledby="two-lines-tab">
+                    <!-- ROW WITH MODE, BTN AND CALC-HEADER  -->
+                    <div class="row mr-auto align-items-end pr-0">
+                        <div class="col-lg-7 col-md-9 col-5">
+                            <span class="mr-3">${{rsa.GENERALLY-MODE}}$:</span>
+                            <div class="custom-control custom-radio custom-control-inline mr-5 mb-0">
+                                <input type="radio" class="custom-control-input" id="visualization-encrypt"
+                                    name="visualization-radio" checked>
+                                <label class="custom-control-label"
+                                    for="visualization-encrypt">${{rsa.GENERALLY-ENCRYPT}}$</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="visualization-decrpyt"
+                                    name="visualization-radio">
+                                <label class="custom-control-label"
+                                    for="visualization-decrpyt">${{rsa.GENERALLY-DECRYPT}}$</label>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-7">
+                        </div>
+                        <div class="col-lg-2 col-12 d-flex justify-content-start mt-lg-0 mt-4">
+                            <span id="calculation-keys" class="calculation-paramater-header">
+                                &nbsp;</span>
+                        </div>
+                    </div>
+
+                    <hr class="d-lg-block d-none">
+                    <!--  -->
+                    <!-- CALCULATION CARD -->
+
+                    <div class="col-lg-2 col-12 float-lg-right mb-lg-0 mb-2 pr-0 pl-0">
+                        <div class="headerSiding">
+                            <div id="line-calculation-wrapper" class="calculation-wrapper">
+                                <div style="width: 100%;" id="header-line-calculation" class="header-calculation">
+                                </div>
+                                <div id="body-line-calculation">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- // CALCULATION CARD -->
+                    <div id="calculation-two-lines" class="col-lg-10 col-12 pl-0 pr-lg-2 pr-0 mr-0"
+                        style="vertical-align: bottom;">
+                        <div id="jxg2line" class="jxgbox"></div>
+                    </div>
+                    <hr>
+
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <button id="start-arrow-two-line-button" type="button" class="mt-1 btn btn-primary"
+                                style="width: 150px;" value="0">
+                            </button>
+                        </div>
+                        <div class="col-auto mt-sm-2">
+                            <span>
+                                <label for="sleep-two-lines-range">${{rsa.VISUAL-SPEED}}$:</label>
+                                <input class="slider-width" id="sleep-two-lines-range" type="range" min="200" max="1000"
+                                    value="200">
+                                </input>
+                            </span>
+                        </div>
+                        <div class="col-auto ml-lg-auto mr-0 mt-lg-0 mt-md-2">
+                            <button id="next-step-arrow-two-line-button" type="button" class="btn btn-primary"
+                                value="4"><i class="fa fa-step-forward"
+                                    aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-NEXT-STEP}}$
+                            </button>
+                            <button id="previous-step-arrow-two-line-button" type="button" class="btn btn-primary"
+                                value="5"><i class="fa fa-step-backward"
+                                    aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-PREVIOUS-STEP}}$
+                            </button>
+
+                        </div>
+                        <div class="col-auto mt-xl-0 mt-2">
+                            <button id="clear-two-line-button" type="button" class="btn btn-primary" value="6"><i
+                                    class="fa fa-refresh" aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-RESET-GRAPHIC}}$
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- circle tab -->
+                <div class="tab-pane" id="circle-tab" role="tabpanel">
+                    <div class="row mr-auto align-items-end pr-0">
+                        <div class="col-lg-7 col-md-9 col-5">
+                            <span class="mr-3 ">${{rsa.GENERALLY-MODE}}$:</span>
+                            <div class="custom-control custom-radio custom-control-inline mr-5 mb-0">
+                                <input type="radio" class="custom-control-input" id="visualization-circle-encrypt"
+                                    name="visualization-circle-radio" checked>
+                                <label class="custom-control-label"
+                                    for="visualization-circle-encrypt">${{rsa.GENERALLY-ENCRYPT}}$</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="visualization-circle-decrypt"
+                                    name="visualization-circle-radio">
+                                <label class="custom-control-label"
+                                    for="visualization-circle-decrypt">${{rsa.GENERALLY-DECRYPT}}$</label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-7">
+
+                        </div>
+                        <div class="col-lg-2 col-12 d-flex justify-content-start mt-lg-0 mt-4">
+                            <div id="calculation-circle-keys" class="calculation-paramater-header">&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="d-lg-block d-none">
+                    <!-- CALCULATION CARD -->
+                    <div class="col-lg-2 col-12 float-lg-right mb-lg-0 mb-2 pr-0 pl-0">
+                        <div class="headerSiding">
+                            <div id="circle-calculation-wrapper" class="calculation-wrapper">
+                                <div style="width: 100%;" id="header-circle-calculation" class="header-calculation">
+                                </div>
+                                <div id="body-calculation">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // CALCULATION CARD -->
+                    <div class="col-lg-10 col-12 pl-0 pr-lg-2 pr-0">
+
+                        <div id="jxgbox" class="jxgbox"></div>
+
+                    </div>
+                    <hr>
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <button id="start-circle-visualization" type="button" style="width: 150px;"
+                                class="mt-1 btn btn-primary mr-xl-5 mr-3" value="0">
+                            </button>
+
+                        </div>
+                        <div class="col-auto mt-sm-2">
+                            <span>
+                                <label for="sleep-circle-range">${{rsa.VISUAL-SPEED}}$:</label>
+                                <input class="slider-width" type="range" min="200" max="1000" id="sleep-circle-range"
+                                    value="200">
+                                </input>
+                            </span>
+                        </div>
+                        <div class="col-auto ml-lg-auto mr-0 mt-lg-0 mt-md-2">
+                            <button id="next-step-arrow-circle-button" type="button" class="btn btn-primary"
+                                value="4"><i class="fa fa-step-forward"
+                                    aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-NEXT-STEP}}$</button>
+                            <button id="previous-step-arrow-circle-button" type="button" class="btn btn-primary"
+                                value="5"><i class="fa fa-step-backward"
+                                    aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-PREVIOUS-STEP}}$</button>
+
+                        </div>
+                        <div class="col-auto mt-xl-0 mt-2">
+                            <button id="clear-circle-button" type="button" class="btn btn-primary" value="6"><i
+                                    class="fa fa-refresh"
+                                    aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-RESET-GRAPHIC}}$</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- // CARD -->
+</div>
+<!-- // Visualization TAB -->
+
+<!-- RSA TAB-->
+<div id="rsa-tab" class="tab-pane mt-3">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="encryption-list" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#keygeneration-tab" role="tab" aria-controls="circle-tab"
+                        aria-selected="false">${{rsa.DIDACTIC-KEY-GEN-TAB}}$</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#encryption-card-tab" role="tab" aria-controls="decryption-tab"
+                        aria-selected="true">${{rsa.DIDACTIC-KEY-ENC-TAB}}$</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#keys-tab" role="tab" aria-controls="keys-tab"
+                        aria-selected="false">${{rsa.DIDACTIC-KEY-KEYS-TAB}}$</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <!-- two lines tab -->
+
+                <div class="tab-pane" id="encryption-card-tab" role="tabpanel" aria-labelledby="decryption-tab">
+                    <form id="didactic-encryption-form" class="needs-validation" novalidate>
+                        <span class="mr-3">${{rsa.GENERALLY-MODE}}$:</span>
+                        <br class="d-sm-none d-block">
+                        <div class="custom-control custom-radio custom-control-inline mr-4 mb-0">
+                            <input type="radio" class="custom-control-input" id="encrypt-modus" name="decryption-modus"
+                                checked>
+                            <label class="custom-control-label"
+                                for="encrypt-modus">${{rsa.DIDACTIC-ENC-ENCRPYT}}$</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="decrypt-modus" name="decryption-modus">
+                            <label class="custom-control-label"
+                                for="decrypt-modus">${{rsa.DIDACTIC-ENC-DECRYPT}}$</label>
+
+                        </div>
+
+
+                        <hr>
+
+                        <div class="alert alert-warning" role="alert" id="keypair-is-not-valid-alert" hidden>
+                            ${{rsa.DIDACTIC-ENC-KEY-INVALID}}$
+                        </div>
+                        <div class="input-group  w-100" id="encryption-key-input">
+                            <div class="input-group-prepend">
+                                <span style="background-color: white;" id="changeable-input-decryption-label"
+                                    class="input-group-text">e</span>
+                            </div>
+                            <input type="number" class="form-control" aria-label="" aria-describedby="basic-addon1"
+                                id="changeable-input-decryption" placeholder="" disabled>
+                            <div class="input-group-prepend">
+                                <span style="background-color: white;" class="input-group-text">n</span>
+                            </div>
+
+                            <input type="number" class="form-control" aria-label="" aria-describedby="basic-addon1"
+                                id="n-input-decryption" placeholder="" disabled>
+                            <div class="input-group-prepend">
+                                <span style="background-color: white;" class="input-group-text">
+                                    ${{rsa.DIDACTIC-ENC-KEY-HOLDER}}$</span>
+                            </div>
+                            <select style="border-top-right-radius: .25rem;border-bottom-right-radius: .25rem;"
+                                class="form-control key-selection" id="encrypt-contacts-dropdown">
+                                <option disabled hidden selected value="1">${{rsa.DIDACTIC-ENC-PUBLIC-SELECT}}$
+                                </option>
+
+                            </select>
+                            <select hidden class="form-control key-selection" id="decrypt-contacts-dropdown">
+                                <option disabled hidden selected value="1">${{rsa.DIDACTIC-ENC-PRIVATE-SELECT}}$
+                                </option>
+
+                            </select>
+                        </div>
+                        <div id="rsa-en-decryption-param-box" class="">
+
+                            <hr>
+                            <div>
+                                <label for="alphabet"
+                                    class="form-label mb-0">Alphabet&nbsp;[${{rsa.DIDACTIC-ENC-ALPHABET-LENGTH}}$:&nbsp;
+                                    <span id="alphabet-length">256
+                                    </span>]:
+                                    <br class="d-lg-none d-block">
+                                    <div class="custom-control custom-radio custom-control-inline ml-lg-5 mb-0">
+                                        <input type="radio" class="custom-control-input" id="alphabet-all-256-chars"
+                                            name="alpahet-radio" value="256-chars" checked>
+                                        <label class="custom-control-label"
+                                            for="alphabet-all-256-chars">ASCII-256</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline ml-2">
+                                        <input type="radio" class="custom-control-input" id="alphabet-own-defined"
+                                            name="alpahet-radio" value="own-defined">
+                                        <label class="custom-control-label"
+                                            for="alphabet-own-defined">${{rsa.DIDACTIC-ENC-DEFINE-OWN-ALPHABET}}$</label>
+
+                                    </div>
+                                </label>
+                                <input type="text" class="form-control" id="alphabet" aria-describedby="alphabet"
+                                    value=" ABCDEFGHIJKLMNOPQRSTUVWXYZ" data-toggle="popover"
+                                    title="${{rsa.DIDACTIC-ENC-DUPLICATES-FOUND}}$" data-content="" data-placement="top"
+                                    autocomplete="off">
+                                <div hidden id="alphabet-length-danger-alert" class="alert alert-danger mt-2"
+                                    role="alert">
+                                    ${{rsa.DIDACTIC-ENC-ALPHABET-WARNING}}$
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-row align-items-end">
+                                <div class="form-group col-4">
+                                    <label for="separation-select"
+                                        class="mb-0">${{rsa.DIDACTIC-ENC-SEPARATION}}$:</label>
+                                    <select class="form-control" id="separation-select">
+                                        <option val="," selected>${{rsa.DIDACTIC-ENC-SEPARATION-COMMA}}$</option>
+                                        <option val="&nbsp;">${{rsa.DIDACTIC-ENC-SEPARATION-SPACE}}$</option>
+                                        <option val="#">Hashtag</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label for="encodingmethod-select" class="mb-0"
+                                        style="word-break: break-all;">${{rsa.DIDACTIC-ENC-ENCODING-METHOD}}$:</label>
+                                    <select class="form-control" id="encodingmethod-select">
+                                        <option val="1" selected>${{rsa.DIDACTIC-ENC-ENCODING-METHOD-BADIC}}$
+                                        </option>
+                                        <option val="2">${{rsa.DIDACTIC-ENC-ENCODING-METHOD-BASE-SYSTEM}}$</option>
+                                        <option val="3">${{rsa.DIDACTIC-ENC-ENCODING-METHOD-CONCATENATION}}$
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label for="encodingmethod-select"
+                                        class="mb-0">${{rsa.DIDACTIC-ENC-BLOCK-LENGTH}}$:</label>
+                                    <select id="blocklength" class="form-control" aria-label="blocklength">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                            <span class="col-lg-2 col-md-3 col-4">${{rsa.DIDACTIC-ENC-INPUT-TYPE}}$:</span>
+                            <div
+                                class="custom-control custom-radio custom-control-inline col-1 mr-lg-3 mr-md-5 pr-5 mr-5 ml-3 pl-md-0 ">
+                                <input type="radio" class="custom-control-input" id="encryption-text-input-type"
+                                    name="en-decryption-text-number-modus" value="text" checked>
+                                <label class="custom-control-label" for="encryption-text-input-type">Text</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col-1 pl-md-3 pl-sm-0 pl-3">
+                                <input type="radio" class="custom-control-input" id="encryption-number-input-type"
+                                    name="en-decryption-text-number-modus" value="number">
+                                <label class="custom-control-label"
+                                    for="encryption-number-input-type">${{rsa.DIDACTIC-ENC-INPUT-TYPE-NUMBER}}$</label>
+                            </div>
+
+                        </div>
+                        <!--  -->
+
+
+                        <div class="row mt-3">
+                            <span class="col-lg-2 col-md-3 col-12 pr-0">${{rsa.DIDACTIC-ENC-NUMERAL-SYSTEM}}$:</span>
+
+                            <div
+                                class="custom-control custom-radio custom-control-inline col-1 mr-lg-3 mr-md-5 mr-5 pl-md-0 ml-3">
+                                <input type="radio" class="custom-control-input" id="decimal-numeral-system"
+                                    name="output-numeral-system" value="10" checked>
+                                <label class="custom-control-label"
+                                    for="decimal-numeral-system">${{rsa.DIDACTIC-ENC-NUMERAL-SYSTEM-DECIMAL}}$</label>
+                            </div>
+                            <div
+                                class="custom-control custom-radio custom-control-inline col-1 mr-lg-3 mr-md-5 mr-5 pl-md-3">
+                                <input type="radio" class="custom-control-input" id="octal-numeral-system"
+                                    name="output-numeral-system" value="8">
+                                <label class="custom-control-label"
+                                    for="octal-numeral-system">${{rsa.DIDACTIC-ENC-NUMERAL-SYSTEM-OCTAL}}$</label>
+                            </div>
+                            <div
+                                class="custom-control custom-radio custom-control-inline col-1 mr-lg-3 mr-md-5 mr-5 pl-md-3">
+                                <input type="radio" class="custom-control-input" id="binary-numeral-system"
+                                    name="output-numeral-system" value="2">
+                                <label class="custom-control-label"
+                                    for="binary-numeral-system">${{rsa.DIDACTIC-ENC-NUMERAL-SYSTEM-BINARY}}$</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col-1 pl-md-3">
+                                <input type="radio" class="custom-control-input" id="hexa-numeral-system"
+                                    name="output-numeral-system" value="16">
+                                <label class="custom-control-label"
+                                    for="hexa-numeral-system">${{rsa.DIDACTIC-ENC-NUMERAL-SYSTEM-HEXA}}$</label>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <!-- INPUTS -->
+                        <div class="form-group mt-3">
+                            <div class="row">
+                                <label class="col-lg-2 col-md-3 col-4 mb-0 pr-0"
+                                    for="input-en-decryption">${{rsa.DIDACTIC-ENC-INPUT}}$
+                                </label>
+                                <div
+                                    class="custom-control custom-radio custom-control-inline col-1 mr-lg-3 mr-md-5 pr-5 mr-5 ml-3 pl-md-0">
+                                    <input type="radio" class="custom-control-input" id="manual-input-encryption-radio"
+                                        name="type-input-encryption-radio" value="manual" checked>
+                                    <label class="custom-control-label"
+                                        for="manual-input-encryption-radio">${{rsa.DIDACTIC-ENC-INPUT-MANUAL}}$</label>
+                                </div>
+                                <div
+                                    class="custom-control custom-radio custom-control-inline mb-0 col-1 pl-md-3 pl-sm-0 pl-3">
+                                    <input type="radio" class="custom-control-input" id="file-input-encryption-radio"
+                                        name="type-input-encryption-radio" value="file">
+                                    <label class="custom-control-label"
+                                        for="file-input-encryption-radio">${{rsa.DIDACTIC-ENC-INPUT-FILE}}$</label>
+                                </div>
+
+                            </div>
+
+                            <div id="warning-rsa-input" hidden class="alert alert-warning" role="alert">
+                            </div>
+
+                            <div class="custom-file mb-2" id="file-input-en-decryption" hidden>
+                                <input type="file" class="custom-file-input" id="get-file-for-encryption" required>
+                                <label class="custom-file-label"
+                                    for="get-file-for-encryption">${{rsa.DIDACTIC-ENC-CHOOSE-FILE}}$</label>
+                                <div class="invalid-feedback">
+                                    ${{rsa.DIDACTIC-ENC-NO-FILE-INPUT}}$
+                                </div>
+                            </div>
+                            <div id="text-input-en-decryption" class="mb-2">
+                                <textarea class="form-control" id="input-en-decryption" rows="2"
+                                    placeholder="${{rsa.DIDACTIC-ENC-PLACEHOLDER}}$"
+                                    required>${{rsa.GENERALLLY-INPUT-PLACEHOLDER}}$</textarea>
+                                <div class="invalid-feedback">
+                                    ${{rsa.DIDACTIC-ENC-NO-TEXT-INPUT}}$
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="mb-0" for="input-seperation-en-decryption"></label>
+                            <textarea class="form-control en-decrypt-textarea" id="input-seperation-en-decryption"
+                                rows="2" disabled></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="mb-0" for="output-number-en-decryption"></label>
+                            <textarea class="form-control en-decrypt-textarea" id="output-number-en-decryption" rows="2"
+                                disabled></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="mb-0" for="output-en-decryption">
+                            </label>
+                            <textarea class="form-control en-decrypt-textarea" id="output-en-decryption" rows="2"
+                                disabled></textarea>
+                        </div>
+
+                        <button type="click" class="btn btn-primary mt-3" id="start-en-decryption-button"><i
+                                class="fa fa-lock" aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-ENC-ENCRPYT}}$</button>
+                        <button type="button" class="btn btn-primary mt-3" id="download-message-button" disabled><i
+                                class="fa fa-download"
+                                aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-ENC-DOWNLOAD-MESSAGE-BUTTON}}$
+                        </button>
+                    </form>
+                </div>
+
+                <!-- keygeneration tab -->
+                <div class="tab-pane active" id="keygeneration-tab" role="tabpanel">
+
+                    <div id="keys-inputs-generation-wrapper" class="mt-2 ">
+                        <div class="dropdown float-right" id="generate-key-button-wrapper">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2"
+                                data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-key"
+                                    aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-KEY-GEN-GENERATE-KEYPAIR-BUTTON}}$
+                            </button>
+                            <ul class="dropdown-menu p-2" style="text-align: center;" aria-labelledby="dropdownMenu2">
+                                <li>Minimum <input style="text-align: center;" id="minimum-prime-key-generation"
+                                        type="number" min="0" value="500" step="1" v-model="sliderMin"
+                                        class="form-control">
+                                    Maximum
+                                    <input style="text-align: center;" id="maximum-prime-key-generation" value="700"
+                                        type="number" min="0" step="1" v-model="sliderMin" class="form-control">
+                                </li>
+                                <li style="text-align: center;"><button id="key-generation-primes-button"
+                                        class="mt-3  btn btn-primary" type="button"><i class="fa fa-play"
+                                            aria-hidden="true"></i>&nbsp;${{rsa.DIDACITC-KEY-GEN-START-GENERATION-BUTTON}}$</button>
+                                </li>
+                                <div id="min-max-not-valid" class="alert alert-warning mt-2" role="alert" hidden>
+                                    ${{rsa.DIDACTIC-KEY-GEN-RANGE-NOT-VALID}}$
+                                </div>
+                                <div id="key-generation-overwrite-input-alert" class="alert alert-warning mt-2"
+                                    role="alert" hidden="true">
+                                    ${{rsa.GENERALLY-WARNING-OVERWRITE-PROGRESS}}$<br>
+                                    <button type="button" class="btn btn-warning ml-5 mt-0"
+                                        id="key-generation-overwrite-input-yes">
+                                        ${{rsa.GENERALLY-YES}}$
+                                    </button>
+                                    <button type="button" class="btn btn-warning ml-2 mt-0"
+                                        id="key-generation-overwrite-input-no">
+                                        ${{rsa.GENERALLY-NO}}$
+                                    </button>
+
+                                </div>
+                            </ul>
+                        </div>
+                        <br class="d-lg-none d-md-block">
+                        <div class="col-xl-8 col-lg-7 col-md-12 col-12 mt-lg-0 mt-md-5 mt-0">
+                            <div class="form-group row mt-3">
+                                <label for="key-generation-p"
+                                    class="col-xl-2 col-lg-2 col-md-2 col-form-label mr-0 pl-0 pr-0">${{rsa.GENERALLY-PRIME}}$
+                                    p</label>
+                                <div class="col-lg-9 col-md-10 pl-0 pr-0">
+                                    <input type="number" class="form-control key-generation-input" id="key-generation-p"
+                                        value="" placeholder="${{rsa.GENERALLY-ENTER-PRIME}}$">
+                                    <div style="text-align: center;" hidden class="alert alert-danger mt-1"
+                                        id="didactic-p-is-not-prime" role="alert">
+                                        p ${{rsa.GENERALLY-PRIME-FEEDBACK-NEGATIV}}$
+                                    </div>
+                                    <div style="text-align: center;" hidden class="alert alert-success mt-1"
+                                        id="didactic-p-is-prime" role="alert">
+                                        p ${{rsa.GENERALLY-PRIME-FEEDBACK-POSITIV}}$
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row mt-3">
+                                <label for="key-generation-q"
+                                    class="col-xl-2 col-lg-2 col-md-2 col-form-label mr-0 pl-0 pr-0">${{rsa.GENERALLY-PRIME}}$
+                                    q</label>
+                                <div class="col-lg-9 col-md-10 pl-0 pr-0">
+                                    <input type="number" class="form-control key-generation-input" id="key-generation-q"
+                                        value="" placeholder="${{rsa.GENERALLY-ENTER-PRIME}}$">
+                                    <div style="text-align: center;" hidden class="alert alert-success mt-1"
+                                        id="didactic-q-is-prime" role="alert">
+                                        q ${{rsa.GENERALLY-PRIME-FEEDBACK-POSITIV}}$
+                                    </div>
+                                    <div style="text-align: center;" hidden class="alert alert-danger mt-1"
+                                        id="didactic-q-is-not-prime" role="alert">
+                                        q ${{rsa.GENERALLY-PRIME-FEEDBACK-NEGATIV}}$
+                                    </div>
+                                    <div style="text-align: center;" hidden class="alert alert-danger mt-1"
+                                        id="p-and-q-same-input-alert" role="alert">
+                                        ${{rsa.GENERALLY-P-FEEDBACK-P-EQUAL-Q}}$
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row align-items-end mb-0 mt-4">
+                                <label for="key-generation-e"
+                                    class="col-xl-2 col-lg-2 col-md-2 col-2 col-form-label mr-0 pl-0 pr-0 "></label>
+                                <div class="col-lg-9 col-md-10 pl-0 pr-0 ">
+                                    <label class="col-xl-3 col-lg-4 col-md-5 col-5 col-form-label mr-xl-5 mr-0 pl-0">
+                                        ${{rsa.DIDACTIC-KEY-GEN-COPRIME-TO-STRING}}$:</label>
+                                    <div class="custom-control custom-radio custom-control-inline mb-0 col-1 mr-5">
+                                        <input type="radio" class="custom-control-input"
+                                            id="e-has-to-be-coprime-to-phi-radio" name="e-has-to-be-coprime-to"
+                                            value="φ(n)" checked>
+                                        <label class="custom-control-label"
+                                            for="e-has-to-be-coprime-to-phi-radio">φ(n)</label>
+                                    </div>
+                                    <div
+                                        class="custom-control custom-radio custom-control-inline mb-0 col-1 pl-md-3 pl-sm-0 pl-3">
+                                        <input type="radio" class="custom-control-input"
+                                            id="e-has-to-be-coprime-to-lcm-radio" name="e-has-to-be-coprime-to"
+                                            value="${{rsa.GENERALLY-LCM-SHORT}}$">
+                                        <label class="custom-control-label"
+                                            for="e-has-to-be-coprime-to-lcm-radio">${{rsa.GENERALLY-LCM-SHORT}}$</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="key-generation-e"
+                                    class="col-xl-2 col-lg-2 col-md-2 col-2 col-form-label mr-0 pl-0 pr-0">e</label>
+                                <div class="col-lg-9 col-md-10 pl-0 pr-0">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control key-generation-input"
+                                            id="key-generation-e" value="" placeholder="e" disabled>
+                                        <div class="input-group-append">
+                                            <button e-value='' data-toggle="tooltip" data-placement="top" disabled
+                                                title="${{rsa.VISUAL-INSERT-NUMBER-AUTOMATIC}}$" id="insert-e-auto-btn"
+                                                class="btn  btn-primary insert-number-automatic" type="button"><i
+                                                    class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;" hidden class="alert alert-success mt-1"
+                                        id="didactic-e-is-coprime" role="alert">
+                                        ${{rsa.GENERALLY-E-FEEDBACK-POSITIV}}$ <span
+                                            class="e-has-to-be-coprime-to-filler">φ(n)</span>
+                                    </div>
+                                    <div style="text-align: center;" hidden class="alert alert-danger mt-1"
+                                        id="didactic-e-is-not-coprime" role="alert">
+                                        ${{rsa.GENERALLY-E-FEEDBACK-NEGATIV}}$ <span
+                                            class="e-has-to-be-coprime-to-filler">φ(n)</span>
+                                    </div>
+                                    <div style="text-align: center;" hidden class="alert alert-danger mt-1"
+                                        id="didactic-no-e-coprime-to" role="alert">
+                                        ${{rsa.GENERALLY-E-NO-NUMBER-EXIST}}$ <span
+                                            class="e-has-to-be-coprime-to-filler">φ(n)</span>
+                                    </div>
+                                    <div style="text-align: center;" hidden class="alert alert-danger mt-1"
+                                        id="didactic-e-is-greater-phi-or-lcm" role="alert">
+                                        ${{rsa.GENERALLY-E-FEEDBACK-GREATER}}$ <span
+                                            class="e-has-to-be-coprime-to-filler">φ(n)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form id="key-generation-form" class="needs-validation" novalidate>
+                                <div class="form-group row mt-5">
+                                    <label for="key-generation-name"
+                                        class="col-xl-2 col-lg-2 col-md-2 col-form-label mr-0 pl-0 pr-0">Name</label>
+                                    <div class="col-lg-9 col-md-10 pl-0 pr-0">
+                                        <input type="text" class="form-control" id="key-generation-name" value=""
+                                            placeholder="Name" spellcheck="false" autocomplete="off" required>
+                                        <div class="invalid-feedback">
+                                            ${{rsa.DIDACTIC-KEY-GEN-WARNING-NO-NAME}}$
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="border rounded" style="text-align: center;">
+                        <span id="lcm-phi-generation"><b>${{rsa.GENERALLY-LCM-SHORT}}$</b> = <span id="lcm"></span>,
+                            <b>φ(n)</b> =
+                            <span id="phi"></span></span>,
+                        <span id="key-generation-private-key">${{rsa.GENERALLY-PRIVATE-KEY}}$= ( <b>d</b>,
+                            <b>n</b>
+                            <span class="key-generation-key-result" hidden> =
+                                <span for="d-generation-key"></span>,
+                                <span for="n-generation-key"></span>
+                            </span>
+                            ),
+                        </span>
+                        <span id="key-generation-public-key">${{rsa.GENERALLY-PUBLIC-KEY}}$: ( <b>e</b>, <b>n</b>
+                            <span class="key-generation-key-result" hidden> = <span for="e-generation-key"></span>,
+                                <span for="n-generation-key"></span></span>)</span>
+                    </div>
+                    <br>
+                    <div hidden id="key-added-success-alert" class="alert alert-success mt-2" role="alert">
+                        ${{rsa.DIDACTIC-KEY-GEN-SUCCESS-EXPORT-KEY}}$
+                    </div>
+                    <!-- Zwischen die Buttons ein br -> somit kein mt zu gebrauchen -->
+                    <button disabled type="button" class="btn btn-primary export-key-button-wrapper export-key-button"
+                        id="import-keypair">
+                        <i class="fa fa-upload"
+                            aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-KEY-GEN-IMPORT-THIS-KEYPAIR-BUTTON}}$</button>
+                    <br class="d-lg-none d-block">
+                    <!-- Dropdown -->
+                    <div class="btn-group dropright ml-lg-1 ml-0 mt-lg-0 mt-1">
+                        <button type="button" disabled class="btn btn-primary export-key-button-wrapper"><i
+                                class="fa fa-upload"
+                                aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-KEY-GEN-IMPORT-THIS-KEYPAIR-SEPARAT-BUTTON}}$</button>
+                        <button type="button" disabled
+                            class="btn btn-primary dropdown-toggle dropdown-toggle-split export-key-button-wrapper"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item export-key-button" type="button"
+                                id="add-public-key-to-table-button">
+                                ${{rsa.DIDACTIC-KEY-GEN-IMPORT-PUBLIC-KEYPAIR-SEPARAT-BUTTON}}$</button>
+                            <button class="dropdown-item export-key-button" type="button"
+                                id="add-key-to-table-button">${{rsa.DIDACTIC-KEY-GEN-IMPORT-PRIVATE-KEYPAIR-SEPARAT-BUTTON}}$</button>
+                        </div>
+                    </div>
+                    <!-- Dropdown -->
+                    <br class="d-xl-none d-block">
+                    <button type="button" class="btn btn-primary mt-xl-0 float-xl-right float-md-none mt-1"
+                        id="clear-key-inputs-button">
+                        <i class="fa fa-eraser"
+                            aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-KEY-GEN-RESET-INPUTS}}$</button>
+
+                    </form>
+                </div>
+                <!-- // keygeneration tab -->
+                <!-- keys tab -->
+
+                <div class="tab-pane" id="keys-tab" role="tabpanel">
+                    <div hidden class="alert alert-warning" id="invalid-json-alert" role="alert">
+                        ${{rsa.DIDACTIC-KEY-INVALID-IMPORTED-FILE}}$: <span id="invalid-filename"></span>
+                    </div>
+                    <div hidden class="alert alert-warning" id="no-data-checked-for-export" role="alert">
+                        ${{rsa.DIDACTIC-KEY-NO-KEY-CHOSEN-EXPORTING}}$
+                    </div>
+                    <div hidden class="alert alert-warning" id="no-data-checked-for-deleting" role="alert">
+                        ${{rsa.DIDACTIC-KEY-NO-KEY-CHOSEN-DELETING}}$
+                    </div>
+                    <div id="toolbar">
+                        <div class="btn btn-primary div-upload-button mr-1">
+                            <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-KEY-IMPORT-BUTTON}}$
+                            <input class="div-upload-input" type="file" id="upload-file-input">
+                        </div>
+                        <button id="export-selected-keys-button" type="button" class="btn btn-primary">
+                            <i class="fa fa-download" aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-KEY-EXPORT-BUTTON}}$
+                        </button>
+                        <button id="delete-selected-keys-button" type="button" class="btn btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;${{rsa.DIDACTIC-KEY-DELETE-BUTTON}}$
+                        </button>
+                    </div>
+                    <table id="table" data-search="true" data-unique-id="id" data-toolbar="#toolbar"
+                        data-show-columns="true" data-page-list="[10, 25, 50, 100, all]" data-pagination="true">
+                        <thead>
+                            <tr>
+                                <th data-field="state" data-checkbox="true" data-width="5" data-width-unit="%"
+                                    data-searchable="false">
+                                </th>
+                                <th data-field="id" data-sortable="true" data-width="5" data-width-unit="%"
+                                    data-searchable="false">
+                                    ${{rsa.DIDACTIC-KEY-INTERNAL-ID}}$</th>
+                                <th data-field="name" data-sortable="true" data-width="15" data-width-unit="%">
+                                    Name</th>
+                                <th data-field="keytype_string" data-sortable="true" data-width="5" data-width-unit="%"
+                                    data-searchable="false">${{rsa.DIDACTIC-KEY-KEY-TYPE}}$</th>
+                                <th data-field="date" data-sortable="true" data-width="15" data-width-unit="%"
+                                    data-searchable="false">${{rsa.DIDACTIC-KEY-CREATED}}$</th>
+                                <th data-field="keys" data-sortable="true" data-width="5" data-width-unit="%"
+                                    data-searchable="false">${{rsa.DIDACTIC-KEY-KEYS}}$
+                                </th>
+                                <th data-field="action" data-sortable="true" data-width="10" data-width-unit="%"
+                                    data-searchable="false">
+                                    ${{rsa.DIDACTIC-KEY-ACTION}}$
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- DELETE KEY MODAL -->
+    <div class="modal" tabindex="-1" role="dialog" id="delete-key-modal" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">${{rsa.DIDACTIC-KEY-DELETE-KEY-MODAL}}$</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>${{rsa.GENERALLY-ARE-YOU-SURE}}$ <span
+                            id="delete-keys-numerus"></span>${{rsa.GENERALLY-ARE-YOU-SURE-PART-TWO}}$?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">${{rsa.GENERALLY-CLOSE}}$</button>
+                    <button type="button" class="btn btn-primary"
+                        id="delete-key-modal-button">${{rsa.GENERALLY-DELETE}}$</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DELETE KEY MODAL -->
+
+    <!-- DOWNLOAD MESSAGE MODAL -->
+    <div class="modal" tabindex="-1" role="dialog" id="download-message-modal" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <form id="download-message-form" class="needs-validation" novalidate>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${{rsa.DIDACTIC-ENC-DOWNLOAD-MESSAGE-BUTTON}}$</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row mt-3">
+                            <label for="filename"
+                                class="col-auto col-form-label">${{rsa.DIDACTIC-ENC-DOWNLOAD-FILE-NAME}}$</label>
+                            <div class="col-auto">
+                                <input type="text" class="form-control" id="filename" value=""
+                                    placeholder="${{rsa.DIDACTIC-ENC-DOWNLOAD-NO-FILE-NAME}}$" required>
+                                <div class="invalid-feedback">${{rsa.DIDACTIC-ENC-DOWNLOAD-NO-FILE-NAME}}$</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">${{rsa.GENERALLY-CLOSE}}$</button>
+                        <button type="submit" class="btn btn-primary"
+                            id="download-message-modal-button">${{rsa.GENERALLY-DOWNLOAD}}$</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- DELETE KEY MODAL -->
+</div>
+<!-- // RSA TAB-->
+
+<!-- OPENSSL tab -->
+<div id="openssl" class="tab-pane mt-3">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="visualization-list" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#real-key-gen-card-tab" role="tab"
+                        aria-controls="real-key-gen-card-tab" aria-selected="false">${{rsa.REAL-USE-KEY-GEN}}$</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#real-encryption-card-tab" role="tab"
+                        aria-controls="real-encryption-card-tab" aria-selected="true">${{rsa.REAL-USE-ENC}}$</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#create-config-card-tab" role="tab" aria-controls="create-config-card-tab"
+                        aria-selected="false">${{rsa.REAL-USE-CREATE-CONF}}$</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#real-files-card-tab" role="tab" aria-controls="real-files-card-tab"
+                        aria-selected="false">${{rsa.REAL-USE-FILES}}$</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="card-body " id="real-use-card">
+            <div class="tab-content ">
+                <!--  -->
+                <div class="tab-pane" id="real-encryption-card-tab" role="tabpanel" aria-labelledby="two-lines-tab">
+                    <form id="real-encryption-form" class="needs-validation" novalidate>
+                        <div class="form-check-inline">${{rsa.GENERALLY-MODE}}$:</div>
+                        <br class="d-sm-none d-block">
+                        <div class="custom-control custom-radio custom-control-inline ml-1">
+                            <input type="radio" class="custom-control-input" id="real-use-mode-enc" name="real-use-mode"
+                                value="enc" checked>
+                            <label class="custom-control-label"
+                                for="real-use-mode-enc">${{rsa.GENERALLY-ENCRYPT}}$</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                            <input type="radio" class="custom-control-input" id="real-use-mode-dec" name="real-use-mode"
+                                value="dec">
+                            <label class="custom-control-label"
+                                for="real-use-mode-dec">${{rsa.GENERALLY-DECRYPT}}$</label>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="laoded-files-real-use-select" class="mb-0 ">${{rsa.DIDACTIC-KEY-KEYS}}$</label>
+                            <select class="form-control custom-select file-select" id="laoded-files-real-use-select"
+                                required>
+                                <option value="" disabled="" hidden="" selected>${{rsa.REAL-USE-SELECT}}$...
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">${{rsa.REAL-USE-NO-KEY-CHOSEN}}$</div>
+                        </div>
+                        <hr>
+                        <div class="form-check-inline">${{rsa.DIDACTIC-ENC-INPUT}}$:</div>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                            <input type="radio" class="custom-control-input" id="real-use-input-text"
+                                name="real-use-input-type" value="text" checked>
+                            <label class="custom-control-label" for="real-use-input-text">Text&nbsp;&nbsp;</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline ml-4">
+                            <input type="radio" class="custom-control-input" id="real-use-input-file"
+                                name="real-use-input-type" value="file">
+                            <label class="custom-control-label"
+                                for="real-use-input-file">${{rsa.DIDACTIC-ENC-INPUT-FILE}}$
+                            </label>
+
+                        </div>
+                        <div class="form-group mt-3" id="text-input-wrapper">
+                            <textarea class="form-control" id="text-input-real-use-textarea"
+                                placeholder="${{rsa.DIDACTIC-ENC-PLACEHOLDER}}$" rows="2"
+                                required>${{rsa.GENERALLLY-INPUT-PLACEHOLDER}}$</textarea>
+                            <div class="invalid-feedback">${{rsa.DIDACTIC-ENC-NO-TEXT-INPUT}}$</div>
+                        </div>
+                        <div class="form-group mt-3" id="file-input-wrapper" hidden>
+
+                            <select class="form-control custom-select file-select file-select" id="file-select-input"
+                                required disabled>
+                                <option value="" disabled="" hidden="" selected>${{rsa.REAL-USE-SELECT}}$...
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">${{rsa.REAL-USE-NO-FILE-CHOSEN}}$</div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="mb-0 custom-control custom-checkbox">
+                                <input type="checkbox" id="enc-file-out" class="custom-control-input">
+                                <label title="" for="enc-file-out"
+                                    class="custom-control-label">${{rsa.REAL-USE-OUTPUT-FILE}}$
+                                </label>
+                            </div>
+
+                            <textarea disabled placeholder="${{rsa.DIDACTIC-ENC-DOWNLOAD-FILE-NAME}}$..."
+                                id="enc-file-out-name" class="form-control" value="" required rows="1"></textarea>
+
+                            <div class="invalid-feedback">${{rsa.DIDACTIC-ENC-DOWNLOAD-NO-FILE-NAME}}$</div>
+
+                        </div>
+                        <button id="execute-rsa-encryption" type="button"
+                            class="btn btn-primary mt-2 execute-openssl-button">${{rsa.REAL-USE-EXECUTE-BUTTON}}$</button>
+                    </form>
+                </div>
+
+                <!-- key gen tab -->
+                <div class="tab-pane active" id="real-key-gen-card-tab" role="tabpanel">
+                    <form id="real-key-gen-form" class="needs-validation" novalidate>
+                        <div class="mb-2 custom-control custom-checkbox">
+                            <input type="checkbox" id="toggle-create-x509-cer-checkbox" class="custom-control-input">
+                            <label title="" for="toggle-create-x509-cer-checkbox"
+                                class="custom-control-label">${{rsa.REAL-USE-CREATE-CER}}$
+                            </label>
+                        </div>
+                        <div class="form-row align-items-end">
+                            <div class="form-group col">
+                                <label for="rsa-key-gen-output-name-input"
+                                    class="mb-0">${{rsa.REAL-USE-OUTPUT-FILE}}$</label>
+                                <input type="text" placeholder="${{rsa.REAL-USE-OUTPUT-FILE}}$..." value="my_rsa.pem"
+                                    class="form-control" id="rsa-key-gen-output-name-input" spellcheck="false"
+                                    autocomplete="off" required>
+                                <div class="invalid-feedback">${{rsa.DIDACTIC-ENC-DOWNLOAD-NO-FILE-NAME}}$</div>
+                            </div>
+
+                            <div class="form-group col" id="openssl-key-length">
+                                <label for="rsa-key-gen-bit-select" class="mb-0">${{rsa.REAL-USE-KEY-LENGTH}}$</label>
+                                <select id="rsa-key-gen-bit-select" class="form-control custom-select"
+                                    aria-label="Default select example">
+                                    <option value="1024">1024-bit</option>
+                                    <option selected value="2048">2048-bit</option>
+                                    <option value="4096">4096-bit</option>
+                                </select>
+                            </div>
+                            <div class="form-group col x509-cer-param" hidden="true">
+                                <label for="private-key-for-cer-select"
+                                    class="mb-0">${{rsa.REAL-USE-PRIVATE-KEY}}$</label>
+                                <select id="private-key-for-cer-select" disabled
+                                    class="form-control custom-select file-select" aria-label="Default select example"
+                                    required>
+                                    <option value="" disabled="" hidden="" selected>${{rsa.REAL-USE-SELECT}}$...
+                                    </option>
+                                </select>
+                                <div class="invalid-feedback">${{rsa.REAL-USE-NO-PUBLIC-KEY}}$</div>
+                            </div>
+                            <div class="form-group col x509-cer-param" hidden="true">
+                                <label for="config-file-for-cer-select"
+                                    class="mb-0">${{rsa.REAL-USE-CONF-FILE}}$</label>
+                                <select id="config-file-for-cer-select" disabled
+                                    class="form-control custom-select file-select" aria-label="Default select example"
+                                    required>
+                                    <option value="" disabled="" hidden="" selected>${{rsa.REAL-USE-SELECT}}$...
+                                    </option>
+                                </select>
+                                <div class="invalid-feedback">${{rsa.REAL-USE-NO-CONF-FILE}}$</div>
+                            </div>
+
+                        </div>
+                        <div class="form-row">
+                            <div class="mb-md-0 form-group col-auto mt-2">
+                                <button id="execute-generate-real-key-button" type="click"
+                                    class="btn btn-primary execute-openssl-button">${{rsa.REAL-USE-EXECUTE-BUTTON}}$</button>
+
+                            </div>
+                            <!-- PUBLIC AND PRIVATE KEY -->
+                            <div class="mb-md-0 form-group col-auto mt-2 execute-openssl-button key-pair-button" hidden>
+                                <div class="btn-group mr-1">
+                                    <button id="key-private-button" type="button"
+                                        class="btn btn-primary">${{rsa.REAL-USE-PRIVATE-KEY}}$</button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <h6 class="dropdown-header" id="key-private-dropdown-header">
+                                        </h6>
+
+                                        <a class="dropdown-item" href=""
+                                            id="private-key-show-information-button">${{rsa.REAL-USE-INFORMATION}}$</a>
+                                        <a class="dropdown-item" href=""
+                                            id="download-private-key-information-action">${{rsa.GENERALLY-DOWNLOAD}}$</a>
+
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button id="key-public-button" disabled type="button"
+                                        class="btn btn-primary">${{rsa.REAL-USE-PUBLIC-KEY}}$</button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <div id="generate-dropdown-menu">
+                                            <a class="dropdown-item" id="generate-public-key-action"
+                                                href="">${{rsa.REAL-USE-GENERATE}}$</a>
+                                        </div>
+                                        <div id="after-generate-dropdown-menu" hidden>
+                                            <a class="dropdown-item" id="show-public-key-information-action"
+                                                href="">${{rsa.REAL-USE-INFORMATION}}$</a>
+                                            <a class="dropdown-item" id="download-public-key-information-action"
+                                                href="">${{rsa.GENERALLY-DOWNLOAD}}$</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <!-- Certifikate dropdown for information and download -->
+                            <div class="mb-md-0 form-group col-auto mt-2 execute-openssl-button certificate-pair-button"
+                                hidden>
+                                <div class="btn-group">
+                                    <button id="key-private-button" type="button"
+                                        class="btn btn-primary">${{rsa.REAL-USE-CERTIFIKATE}}$</button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <h6 class="dropdown-header" id="key-private-dropdown-header">
+                                        </h6>
+
+                                        <a class="dropdown-item" href=""
+                                            id="certificate-show-information-button">${{rsa.REAL-USE-INFORMATION}}$</a>
+                                        <a class="dropdown-item" href=""
+                                            id="download-certificate-information-action">${{rsa.GENERALLY-DOWNLOAD}}$</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  -->
+                        </div>
+                    </form>
+                </div>
+                <!--  -->
+                <div class="tab-pane" id="real-files-card-tab" role="tabpanel">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary btn-nav-accordion collapsed" type="button"
+                                data-toggle="collapse" data-target="#uploaded-files-collapse">
+                                <i class="fa fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="input-file-real-use"
+                                onclick='this.value=null' multiple>
+                            <label id="input-file-real-use-label" class="custom-file-label"
+                                for="input-file-real-use">${{rsa.REAL-USE-SELECT-FILE}}$...</label>
+                        </div>
+                    </div>
+                    <div style="text-align: center; color: grey;" id="file-upload-info"></div>
+                    <div class="collapse multi-collapse" id="uploaded-files-collapse">
+                        <hr>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="tab-pane" id="create-config-card-tab" role="tabpanel">
+                    <form id="add-section-to-config-file-form" class="needs-validation" novalidate>
+                    </form>
+                    <form id="create-config-file-form" class="needs-validation" novalidate></form>
+                    <div class="form-row mb-3">
+                        <div class="col-lg-3 col-md-5 col-12 mb-3">
+                            <label for="config-filename-input"
+                                style="margin-bottom: 0% !important">${{rsa.DIDACTIC-ENC-DOWNLOAD-FILE-NAME}}$</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="config-filename-input"
+                                    placeholder="${{rsa.DIDACTIC-ENC-DOWNLOAD-FILE-NAME}}$"
+                                    aria-describedby="config-file-append-cnf" required form="create-config-file-form">
+                                <div class="input-group-append">
+                                    <span style="border-top-right-radius: .25rem;border-bottom-right-radius: .25rem;"
+                                        class="input-group-text" id="config-file-append-cnf">.cnf</span>
+                                </div>
+                                <div class="invalid-feedback">${{rsa.DIDACTIC-ENC-DOWNLOAD-NO-FILE-NAME}}$</div>
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-lg-5 col-md-6 col-12">
+                            <label for="config-filename-input"
+                                style="margin-bottom: 0% !important">${{rsa.REAL-USE-ADD-SECTION}}$</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">[</div>
+                                </div>
+                                <input id="add-section-name-input" type="text" class="form-control"
+                                    placeholder="${{rsa.REAL-USE-ADD-SECTION}}$..." aria-label="Add
+                                            section" aria-describedby="basic-addon2"
+                                    form="add-section-to-config-file-form" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">]</span>
+                                </div>
+                                <div class="input-group-append">
+                                    <button style="border-top-right-radius: .25rem;border-bottom-right-radius: .25rem;"
+                                        class="btn btn-primary add-section-for-config-file-button"
+                                        type="submit">${{rsa.REAL-USE-ADD}}$</button>
+                                </div>
+                                <div id="section-feedback" class="invalid-feedback">
+                                    ${{rsa.REAL-USE-NO-SECTION-NAME}}$
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ml-auto mr-1">
+                            <label style="margin-bottom: 0% !important">&nbsp;</label>
+                            <div class="input-group">
+                                <button id="generate-x509-init-config-button"
+                                    class="btn btn-primary">${{rsa.REAL-USE-USE-X509-TEMPLATE}}$
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div id="certifikate-overwrite-input-alert" class="alert alert-warning mt-2 col-12" role="alert"
+                            hidden="true">
+                            ${{rsa.GENERALLY-WARNING-OVERWRITE-PROGRESS}}$
+                            <button type="button" class="btn btn-warning ml-5 mt-0"
+                                id="certifikate-overwrite-input-yes">
+                                ${{rsa.GENERALLY-YES}}$
+                            </button>
+                            <button type="button" class="btn btn-warning ml-2 mt-0" id="certifikate-overwrite-input-no">
+                                ${{rsa.GENERALLY-NO}}$
+                            </button>
+                        </div>
+                    </div>
+                    <div class="config-section-card-wrapper scrollable-context">
+                    </div>
+                    <!-- FOR CLONING -->
+                    <div hidden="" id="hidden-card-for-cloning" class="card mt-3 card-section-wrapper"
+                        style="width: 100%;">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <hr>
+                            <div class="element-to-add-rows-for-config-files mb-3">
+                                <!-- HERE COME INPUTS -->
+                            </div>
+                            <a class="add-rows-for-config-files-button" href="#"><i style="font-size: 40px !important;"
+                                    class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                            <a class="delete-rows-for-config-files-button" href="#"><i
+                                    style="font-size: 40px !important;" class="fa fa-minus-circle"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!-- FOR CLONING -->
+                    <br>
+                    <div hidden id="config-file-succesfully-created-alert" class="alert alert-success" role="alert">
+                        ${{rsa.REAL-USE-CONF-FILE-CREATED}}$
+                    </div>
+                    <button type="button" class="btn btn-primary mt-2"
+                        id="create-config-file-button">${{rsa.REAL-USE-CREATE}}$</button>
+                    <button data-toggle="modal" data-target="#preview-config-file-modal" type="button"
+                        class="btn btn-primary mt-2">${{rsa.REAL-USE-PREVIEW}}$</button>
+
+                    <!-- MODAL -->
+                    <div id="preview-config-file-modal" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">${{rsa.GENERALLY-CLOSE}}$</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--  -->
+    <div class="CommandLine mt-3">
+        <div class="CommandLine-output"><span class="mb-3">
+                ${{rsa.REAL-USE-CMD-INFO}}$
+                <ul>
+                    ${{rsa.REAL-USE-CMD-INFO-LIST}}$
+                </ul>
+        </div>
+
+        <form>
+            <div class="CommandLine-input">
+                <label>$ </label>
+                <input id="command-line-input" type="text" spellcheck="false" value="" autocomplete="off">
+            </div>
+        </form>
+    </div>
+    <!--  -->
+</div>
+<!-- OPENSSL tab -->
+<!-- FILE OVERWRITE MODAL -->
+<div class="modal" tabindex="-1" role="dialog" id="duplicate-file-modal" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">${{rsa.REAL-USE-OVERWRITE-FILE}}$</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>${{rsa.REAL-USE-OVERWRITE-FILE-TEXT}}$ <span id="filename-for-overwrite"></span>?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    id="exit-file-overwrite-modal">${{rsa.GENERALLY-CLOSE}}$</button>
+                <button type="submit" class="btn btn-primary"
+                    id="duplicate-file-modal-button">${{rsa.REAL-USE-OVERWRITE-FILE-SAVE}}$</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FILE DELETE MODAL -->
+<div class="modal" tabindex="-1" role="dialog" id="delete-file-modal" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">${{rsa.REAL-USE-DELETE-FILE}}$</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>${{rsa.REAL-USE-DELETE-FILE-TEXT}}$
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">${{rsa.GENERALLY-CLOSE}}$</button>
+                <button type="submit" class="btn btn-primary"
+                    id="delete-file-modal-button">${{rsa.GENERALLY-DELETE}$</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- DESCRIPTION TAB -->
+
+
+<!-- OWN JS modules -->
+<script type="module"
+    src="/_ctoApps/rsa-visual-and-more/resources/scripts/rsa-visualization/visualization-${{rsa.LANG}}$.js"></script>
+<script type="module" src="/_ctoApps/rsa-visual-and-more/resources/scripts/rsa-didactic/rsa-${{rsa.LANG}}$.js"></script>
+<script type="module"
+    src="/_ctoApps/rsa-visual-and-more/resources/scripts/rsa-real-use/command-${{rsa.LANG}}$.js"></script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA-WebApp</title>
+    <link rel="stylesheet" type="text/css" href="resources/external/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="resources/external/jsxgraph/jsxgraph.css" />
+    <link rel="stylesheet" type="text/css" href="resources/external/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" type="text/css" href="resources/style/style.css" />
+    <link rel="stylesheet" type="text/css" href="resources/style/commandLine.css" />
+
+</head>
+
+<body>
+    <h2 class="main-heading">Title</h2>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a resize-value="false" class="nav-link active" data-toggle="tab"
+                href="#circle-rsa-tab">${{rsa.GENERALLY-RSA-VISUAL}}$</a>
+        </li>
+        <li class="nav-item">
+            <a resize-value="true" class="nav-link" data-toggle="tab"
+                href="#rsa-tab">${{rsa.GENERALLY-RSA-DIDACTIC}}$</a>
+        </li>
+        <li class="nav-item">
+            <a resize-value="true" class="nav-link" data-toggle="tab"
+                href="#openssl">${{rsa.GENERALLY-RSA-REAL-USE}}$</a>
+        </li>
+        <li class="nav-item">
+            <a resize-value="true" class="nav-link" data-toggle="tab"
+                href="#description">${{rsa.GENERALLY-RSA-DESCRIPTION}}$</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+        <div id="cipher" class="tab-pane active">
+            @@include("./fragment.html")
+        </div>
+
+        <div id="description" class="tab-pane">
+            ... add info about your plugin here later ...
+        </div>
+
+    </div>
+</body>
+
+</html>
