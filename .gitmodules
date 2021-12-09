@@ -1,4 +1,0 @@
-[submodule "_ctoApps/rsa-visual-and-more"]
-	path = _ctoApps/rsa-visual-and-more
-	url = https://github.com/jmpolak/rsa-webapp.git
-	branch = gulp
