@@ -5,6 +5,8 @@ const initialState = {
   isLoading: false,
   command: '',
   files: [],
+  availableCiphers: [],
+  availableDigests: [],
 };
 
 const reducer = (state, action) => {
@@ -43,6 +45,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         files: state.files.filter((item) => item !== action.item),
+      };
+
+    case 'SET_AVAILABLE_CIPHERS':
+      return {
+        ...state,
+        availableCiphers: action.ciphers,
+      };
+
+    case 'SET_AVAILABLE_DIGEST':
+      return {
+        ...state,
+        availableDigests: action.digests,
       };
 
     default:
