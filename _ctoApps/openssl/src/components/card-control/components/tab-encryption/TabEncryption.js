@@ -15,30 +15,6 @@ import { useTranslation } from 'react-i18next';
 
 import './TabEncryption.css';
 
-const CIPHERS = [
-  'aes-128-cbc',
-  'aes-192-cbc',
-  'aes-256-cbc',
-  'aria-128-cbc',
-  'aria-192-cbc',
-  'aria-256-cbc',
-  'bf',
-  'cast-cbc',
-  'cast5-cbc',
-  'camellia-128-cbc',
-  'camellia-192-cbc',
-  'camellia-256-cbc',
-  'des',
-  'des-ede',
-  'des-ede3',
-  'des3',
-  'desx',
-  'rc2',
-  'rc4',
-  'seed',
-  'sm4',
-];
-
 function TabEncryption({ runCommand }) {
   const { t } = useTranslation('translation');
   const { state, dispatch } = useStore();
@@ -52,7 +28,7 @@ function TabEncryption({ runCommand }) {
   const [enc, setEnc] = useState({
     e: true,
     d: false,
-    cipher: CIPHERS[0],
+    cipher: '',
     in: false,
     inFile: '',
     out: false,
@@ -82,6 +58,15 @@ function TabEncryption({ runCommand }) {
       };
     });
   }, [state.files]);
+
+  useEffect(() => {
+    setEnc((prev) => {
+      return {
+        ...prev,
+        cipher: state.availableCiphers[0],
+      };
+    });
+  }, [state.availableCiphers]);
 
   const set = (key) => (event) => {
     const value =
@@ -320,7 +305,7 @@ function TabEncryption({ runCommand }) {
         <Form.Group as={Col} md={5} controlId="enc-cipher">
           <Form.Label className="mb-2">{t('tabEncryption.cipher')}</Form.Label>
           <Form.Control as="select" value={enc.cipher} onChange={set('cipher')} custom>
-            {CIPHERS.map((cipher) => (
+            {state.availableCiphers.map((cipher) => (
               <option key={cipher}>{cipher}</option>
             ))}
           </Form.Control>

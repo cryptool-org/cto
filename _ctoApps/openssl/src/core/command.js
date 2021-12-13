@@ -1,8 +1,13 @@
-import OpenSSL from './openssl';
 import { Subject } from 'rxjs';
+import { getFileAsByteArray } from '../utils/getFileAsByteArray';
+import OpenSSL from './openssl';
 
 let instance = null;
 class Command {
+  get resultAsObservable() {
+    return this.resultSubject.asObservable();
+  }
+
   constructor() {
     if (!instance) {
       instance = this;
@@ -14,11 +19,7 @@ class Command {
     return instance;
   }
 
-  get resultAsObservable() {
-    return this.resultSubject.asObservable();
-  }
-
-  async fetchWasmBinary() {
+  fetchWasmBinary() {
     const baseUrl = window.CTO_Globals?.pluginRoot || window.location.href;
 
     return fetch(`${baseUrl}/openssl.wasm`)
@@ -28,20 +29,36 @@ class Command {
       });
   }
 
-  async getByteArray(file) {
-    const fileReader = new FileReader();
-    return new Promise(function (resolve, reject) {
-      fileReader.readAsArrayBuffer(file);
-      fileReader.onload = function (event) {
-        const array = new Uint8Array(event.target.result);
-        const fileByteArray = [];
-        for (let i = 0; i < array.length; i++) {
-          fileByteArray.push(array[i]);
-        }
-        resolve(array);
-      };
-      fileReader.onerror = reject;
+  async getWasmInstance(customProps = {}) {
+    const output = {
+      stdout: '',
+      stderr: '',
+      file: null,
+    };
+
+    const instantiateWasm = (imports, successCallback) => {
+      this.wasmModule.then((module) => {
+        WebAssembly.instantiate(module, imports).then(successCallback);
+      });
+      return {};
+    };
+    const print = (line) => {
+      output.stdout += line + '\n';
+    };
+    const printErr = (line) => {
+      output.stderr += line + '\n';
+    };
+
+    const instance = await OpenSSL({
+      thisProgamm: 'openssl',
+      instantiateWasm: instantiateWasm,
+      print: print,
+      printErr: printErr,
+      customOutput: output,
+      ...customProps,
     });
+
+    return instance;
   }
 
   /**
@@ -50,94 +67,102 @@ class Command {
    * @param {string} text Command text to process
    */
   async run(args, files = null, text = '') {
-    const wasmModule = this.wasmModule;
-    let inputText = false;
-    let inputFiles = false;
-    let writeFiles = [];
-    let charIndex = 0;
-    let error = null;
-
-    let output = {
-      stdout: '',
-      stderr: '',
-      file: null,
-    };
-
     const argsArray = this.convertArgsToArray(args);
 
     if (args && !(Object.prototype.toString.call(args) === '[object String]')) {
       return;
     }
+
+    let inputText = false;
     if (text && Object.prototype.toString.call(text) === '[object String]') {
       inputText = true;
       text = !text.endsWith('\\n')
         ? text.split('\\n').join('\n').concat('\n')
         : text.split('\\n').join('\n');
     }
+
+    let inputFiles = false;
+    let writeFiles = [];
     if (files && files.length && Object.prototype.toString.call(files) === '[object Array]') {
       inputFiles = true;
       const filteredFiles = this.filterInputFiles(argsArray, files);
       for (const file of filteredFiles) {
-        const byteArray = await this.getByteArray(file);
+        const byteArray = await getFileAsByteArray(file);
         writeFiles.push({ name: file.name, buffer: byteArray });
       }
     }
 
-    const moduleObj = {
-      thisProgram: 'openssl',
-      instantiateWasm: function (imports, successCallback) {
-        wasmModule.then((module) => {
-          WebAssembly.instantiate(module, imports).then(successCallback);
-        });
-        return {};
-      },
-      stdin: inputText
-        ? function () {
-            if (charIndex < text.length) {
-              let code = text.charCodeAt(charIndex);
-              ++charIndex;
-              return code;
-            }
-            return null;
-          }
-        : function () {
-            error = new Error('Standard stream (stdin) not available!');
-            return undefined;
-          },
-      print: function (line) {
-        output.stdout += line + '\n';
-      },
-      printErr: function (line) {
-        output.stderr += line + '\n';
-      },
+    let charIndex = 0;
+    const customStdin = () => {
+      if (charIndex < text.length) {
+        let code = text.charCodeAt(charIndex);
+        ++charIndex;
+        return code;
+      }
+      return null;
     };
 
-    OpenSSL(moduleObj)
-      .then((instance) => {
-        if (inputFiles) {
-          writeFiles.forEach((file) => {
-            instance['FS'].writeFile(file.name, file.buffer);
-          });
-        }
-
-        instance.callMain(argsArray);
-
-        if (this.getFileOutParameter(argsArray)) {
-          const readFileBuffer = instance['FS'].readFile(this.getFileOutParameter(argsArray), {
-            encoding: 'binary',
-          });
-          output.file = new File([readFileBuffer], this.getFileOutParameter(argsArray), {
+    const instance = await this.getWasmInstance(inputText ? { stdin: customStdin } : {});
+    try {
+      if (inputFiles) {
+        writeFiles.forEach((file) => {
+          instance?.FS?.writeFile(file.name, file.buffer);
+        });
+      }
+      instance?.callMain(argsArray);
+      if (this.getFileOutParameter(argsArray)) {
+        const readFileBuffer = instance?.FS?.readFile(this.getFileOutParameter(argsArray), {
+          encoding: 'binary',
+        });
+        instance.customOutput.file = new File(
+          [readFileBuffer],
+          this.getFileOutParameter(argsArray),
+          {
             type: 'application/octet-stream',
-          });
-        }
+          }
+        );
+      }
+    } catch (error) {
+      instance.customOutput.stdout = '';
+      instance.customOutput.stderr = `${error.name}: ${error.message}`;
+    } finally {
+      this.resultSubject.next(instance?.customOutput);
+    }
+  }
 
-        if (error) throw error;
-      })
-      .catch((error) => {
-        output.stdout = '';
-        output.stderr = `${error.name}: ${error.message}`;
-      })
-      .finally(() => this.resultSubject.next(output));
+  async getCiphers() {
+    const instance = await this.getWasmInstance();
+    instance.callMain(['enc', '-list']);
+    const blacklist = [
+      'des3-wrap',
+      'aes128-wrap',
+      'id-aes128-wrap',
+      'aes192-wrap',
+      'id-aes192-wrap',
+      'aes256-wrap',
+      'id-aes256-wrap',
+      'id-smime-alg-CMS3DESwrap',
+    ];
+
+    return instance.customOutput.stdout
+      .split('\n')
+      .slice(1)
+      .map((x) => x.split(' ').filter((y) => y))
+      .reduce((a, b) => a.concat(b), [])
+      .map((x) => x.substring(1))
+      .filter((x) => !blacklist.includes(x));
+  }
+
+  async getDigests() {
+    const instance = await this.getWasmInstance();
+    instance.callMain(['dgst', '-list']);
+
+    return instance.customOutput.stdout
+      .split('\n')
+      .slice(1)
+      .map((x) => x.split(' ').filter((y) => y))
+      .reduce((a, b) => a.concat(b), [])
+      .map((x) => x.substring(1));
   }
 
   convertArgsToArray(args) {

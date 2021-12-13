@@ -6,26 +6,6 @@ import { useTranslation } from 'react-i18next';
 
 import './TabDigest.css';
 
-const ALGORITHMS = [
-  'blake2s256',
-  'blake2b512',
-  'md5',
-  'sha1',
-  'sha3-224',
-  'sha3-256',
-  'sha3-384',
-  'sha3-512',
-  'sha224',
-  'sha384',
-  'sha256',
-  'sha512',
-  'sha512-224',
-  'sha512-256',
-  'shake128',
-  'shake256',
-  'sm3',
-];
-
 function TabDigest({ runCommand }) {
   const { t } = useTranslation('translation');
   const { state, dispatch } = useStore();
@@ -35,7 +15,7 @@ function TabDigest({ runCommand }) {
     fileOutput: false,
   });
   const [dgst, setDgst] = useState({
-    algorithm: ALGORITHMS[0],
+    algorithm: '',
     out: false,
     outFile: '',
     text: true,
@@ -54,6 +34,15 @@ function TabDigest({ runCommand }) {
       };
     });
   }, [state.files]);
+
+  useEffect(() => {
+    setDgst((prev) => {
+      return {
+        ...prev,
+        algorithm: state.availableDigests[0],
+      };
+    });
+  }, [state.availableDigests]);
 
   const set = (key) => (event) => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
@@ -194,7 +183,7 @@ function TabDigest({ runCommand }) {
         <Form.Group as={Col} md={5} controlId="dgst-algorithm">
           <Form.Label className="mb-2">{t('tabDigest.hashFunction')}</Form.Label>
           <Form.Control as="select" value={dgst.algorithm} onChange={set('algorithm')} custom>
-            {ALGORITHMS.map((algorithm) => (
+            {state.availableDigests.map((algorithm) => (
               <option key={algorithm}>{algorithm}</option>
             ))}
           </Form.Control>
