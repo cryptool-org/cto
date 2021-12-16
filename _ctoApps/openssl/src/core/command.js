@@ -29,7 +29,7 @@ class Command {
       });
   }
 
-  async getWasmInstance(customProps = {}) {
+  async getWasmInstance(initStdin = '') {
     const output = {
       stdout: '',
       stderr: '',
@@ -42,23 +42,71 @@ class Command {
       });
       return {};
     };
-    const print = (line) => {
-      output.stdout += line + '\n';
-    };
-    const printErr = (line) => {
-      output.stderr += line + '\n';
+
+    let stdinBuffer = initStdin;
+    let lastStdin = '';
+    const stdin = () => {
+      if (lastStdin === '\n') {
+        lastStdin = '';
+        return null;
+      }
+
+      // raise prompt when buffer empty
+      if (stdinBuffer.length === 0 && (stderrBuffer.length || stdinBuffer.length)) {
+        stdinBuffer = window.prompt(stderrBuffer ?? stdinBuffer);
+        stderrBuffer = '';
+        stdinBuffer = '';
+
+        // fallback for empty prompt
+        if (stdinBuffer === null) {
+          return null;
+        } else {
+          stdinBuffer += '\n';
+        }
+      }
+
+      if (stdinBuffer.length) {
+        let firstChar = stdinBuffer.charCodeAt(0);
+        stdinBuffer = stdinBuffer.substring(1);
+
+        lastStdin = String.fromCharCode(firstChar);
+        return firstChar;
+      }
+      return null;
     };
 
-    const instance = await OpenSSL({
+    let stdoutBuffer = '';
+    const stdout = (code) => {
+      if (code === '\n'.charCodeAt(0) && stdoutBuffer !== '') {
+        output.stdout += stdoutBuffer + '\n';
+        stdoutBuffer = '';
+      } else {
+        stdoutBuffer += String.fromCharCode(code);
+      }
+    };
+
+    let stderrBuffer = '';
+    const stderr = (code) => {
+      if (code === '\n'.charCodeAt(0) && stderrBuffer !== '') {
+        output.stderr += stderrBuffer + '\n';
+        stderrBuffer = '';
+      } else {
+        stderrBuffer += String.fromCharCode(code);
+      }
+    };
+
+    const moduleObj = {
       thisProgamm: 'openssl',
+      preRun: [
+        () => {
+          moduleObj.FS.init(stdin, stdout, stderr);
+        },
+      ],
       instantiateWasm: instantiateWasm,
-      print: print,
-      printErr: printErr,
       customOutput: output,
-      ...customProps,
-    });
+    };
 
-    return instance;
+    return await OpenSSL(moduleObj);
   }
 
   /**
@@ -92,17 +140,7 @@ class Command {
       }
     }
 
-    let charIndex = 0;
-    const customStdin = () => {
-      if (charIndex < text.length) {
-        let code = text.charCodeAt(charIndex);
-        ++charIndex;
-        return code;
-      }
-      return null;
-    };
-
-    const instance = await this.getWasmInstance(inputText ? { stdin: customStdin } : {});
+    const instance = await this.getWasmInstance(inputText ? text : '');
     try {
       if (inputFiles) {
         writeFiles.forEach((file) => {
