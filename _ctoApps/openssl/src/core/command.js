@@ -52,10 +52,10 @@ class Command {
       }
 
       // raise prompt when buffer empty
-      if (stdinBuffer.length === 0 && (stderrBuffer.length || stdinBuffer.length)) {
-        stdinBuffer = window.prompt(stderrBuffer ?? stdinBuffer);
+      if (stdinBuffer.length === 0 && (stderrBuffer.length || stdoutBuffer.length)) {
+        stdinBuffer = window.prompt(stderrBuffer ?? stdoutBuffer);
         stderrBuffer = '';
-        stdinBuffer = '';
+        stdoutBuffer = '';
 
         // fallback for empty prompt
         if (stdinBuffer === null) {
