@@ -5225,6 +5225,7 @@ var OpenSSL = (function () {
     Module['FS_unlink'] = FS.unlink;
     Module['callMain'] = callMain;
     Module['FS'] = FS;
+    Module['TTY'] = TTY;
     var calledRun;
     function ExitStatus(status) {
       this.name = 'ExitStatus';

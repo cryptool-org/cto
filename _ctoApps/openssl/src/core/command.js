@@ -1,6 +1,7 @@
 import { Subject } from 'rxjs';
 import { getFileAsByteArray } from '../utils/getFileAsByteArray';
 import OpenSSL from './openssl';
+import OpenSSLModule from './openssl.module';
 
 let instance = null;
 class Command {
@@ -29,84 +30,9 @@ class Command {
       });
   }
 
-  async getWasmInstance(initStdin = '') {
-    const output = {
-      stdout: '',
-      stderr: '',
-      file: null,
-    };
-
-    const instantiateWasm = (imports, successCallback) => {
-      this.wasmModule.then((module) => {
-        WebAssembly.instantiate(module, imports).then(successCallback);
-      });
-      return {};
-    };
-
-    let stdinBuffer = initStdin;
-    let lastStdin = '';
-    const stdin = () => {
-      if (lastStdin === '\n') {
-        lastStdin = '';
-        return null;
-      }
-
-      // raise prompt when buffer empty
-      if (stdinBuffer.length === 0 && (stderrBuffer.length || stdoutBuffer.length)) {
-        stdinBuffer = window.prompt(stderrBuffer ?? stdoutBuffer);
-        stderrBuffer = '';
-        stdoutBuffer = '';
-
-        // fallback for empty prompt
-        if (stdinBuffer === null) {
-          return null;
-        } else {
-          stdinBuffer += '\n';
-        }
-      }
-
-      if (stdinBuffer.length) {
-        let firstChar = stdinBuffer.charCodeAt(0);
-        stdinBuffer = stdinBuffer.substring(1);
-
-        lastStdin = String.fromCharCode(firstChar);
-        return firstChar;
-      }
-      return null;
-    };
-
-    let stdoutBuffer = '';
-    const stdout = (code) => {
-      if (code === '\n'.charCodeAt(0) && stdoutBuffer !== '') {
-        output.stdout += stdoutBuffer + '\n';
-        stdoutBuffer = '';
-      } else {
-        stdoutBuffer += String.fromCharCode(code);
-      }
-    };
-
-    let stderrBuffer = '';
-    const stderr = (code) => {
-      if (code === '\n'.charCodeAt(0) && stderrBuffer !== '') {
-        output.stderr += stderrBuffer + '\n';
-        stderrBuffer = '';
-      } else {
-        stderrBuffer += String.fromCharCode(code);
-      }
-    };
-
-    const moduleObj = {
-      thisProgamm: 'openssl',
-      preRun: [
-        () => {
-          moduleObj.FS.init(stdin, stdout, stderr);
-        },
-      ],
-      instantiateWasm: instantiateWasm,
-      customOutput: output,
-    };
-
-    return await OpenSSL(moduleObj);
+  async getWasmInstance(stdinInit = '') {
+    const openSSLModule = new OpenSSLModule(this.wasmModule, stdinInit);
+    return await OpenSSL(openSSLModule.object);
   }
 
   /**
