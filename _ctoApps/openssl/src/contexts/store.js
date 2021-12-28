@@ -5,6 +5,7 @@ const initialState = {
   isLoading: false,
   command: '',
   files: [],
+  opensslVersion: '',
   availableCiphers: [],
   availableDigests: [],
 };
@@ -57,6 +58,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         availableDigests: action.digests,
+      };
+
+    case 'SET_OPENSSL_VERSION':
+      return {
+        ...state,
+        opensslVersion: action.version,
       };
 
     default:

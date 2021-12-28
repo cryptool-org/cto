@@ -94,6 +94,12 @@ class Command {
     }
   }
 
+  async getVersion() {
+    const instance = await this.getWasmInstance();
+    instance.callMain(['version']);
+    return instance.customOutput.stdout;
+  }
+
   async getCiphers() {
     const instance = await this.getWasmInstance();
     instance.callMain(['enc', '-list']);

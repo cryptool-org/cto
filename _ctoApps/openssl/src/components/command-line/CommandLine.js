@@ -97,8 +97,7 @@ function CommandLine({ runCommand, result }) {
                 <span className="mb-3">
                   <Trans
                     i18nKey="commandLine.infoText"
-                    components={{ bold: <strong /> }}
-                    values={{ version: process.env.REACT_APP_OPENSSL_VERSION }}
+                    values={{ version: state.opensslVersion }}
                   ></Trans>
                 </span>
                 <span className="mb-3">

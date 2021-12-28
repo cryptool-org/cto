@@ -87,6 +87,11 @@ function App() {
     }
   };
 
+  const getOpenSSLVersion = useCallback(async () => {
+    const version = await command.getVersion();
+    dispatch({ type: 'SET_OPENSSL_VERSION', version });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const getAvailableCiphers = useCallback(async () => {
     const ciphers = await command.getCiphers();
     dispatch({ type: 'SET_AVAILABLE_CIPHERS', ciphers: ciphers });
@@ -98,6 +103,7 @@ function App() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    getOpenSSLVersion();
     getAvailableCiphers();
     getAvailableDigests();
     const result = command.resultAsObservable.subscribe((value) => {

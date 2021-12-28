@@ -65,7 +65,7 @@
     "selectFilesPlaceholder": "Wähle Dateien..."
   },
   "commandLine": {
-    "infoText": "Basierend auf <bold>OpenSSL</bold> v{{ version }}",
+    "infoText": "Basierend auf {{ version }}",
     "usage": "Verwendung: <bold>openssl</bold> Kommando [ Optionen ] [ Argumente ]",
     "moreInfo": "Mehr Infos:",
     "availableCommands": "Verfügbare Kommandos: 'openssl help'",
