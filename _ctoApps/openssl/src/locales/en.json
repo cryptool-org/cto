@@ -11,7 +11,7 @@
     "noValueSpecified": "No value specified"
   },
   "cardDescription": {
-    "text": "This GUI offers a bunch of modern, applied crypto methods served by OpenSSL. The methods can be executed via the GUI controls or via the OpenSSL command line interface (CLI) at the bottom. If a method is executed with the GUI, the OpenSSL arguments in the CLI show the according arguments of the selected GUI controls."
+    "text": "This graphical user interface (GUI) offers modern, applied crypto methods served by OpenSSL. The methods can be executed via the GUI controls or via the OpenSSL command line interface (CLI) at the bottom. When a method is executed via the GUI, the CLI displays the corresponding OpenSSL command arguments."
   },
   "tabEncryption": {
     "name": "Symmetric encryption",

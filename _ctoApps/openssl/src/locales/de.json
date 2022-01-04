@@ -11,7 +11,7 @@
     "noValueSpecified": "Kein Wert angegeben"
   },
   "cardDescription": {
-    "text": "Diese grafische Benutzeroberfläche bietet eine Reihe von modernen, angewandten Krypto-Methoden, die von OpenSSL unterstützt werden. Die Methoden können über die GUI-Steuerelemente oder über die OpenSSL-Kommandozeilenschnittstelle (CLI) in der unteren Hälfte ausgeführt werden. Wenn eine Methode über die GUI ausgeführt wird, zeigt die CLI die entsprechenden OpenSSL-Befehlsargumente der ausgewählten GUI-Steuerelemente."
+    "text": "Diese grafische Benutzeroberfläche (GUI) bietet moderne, angewandte Krypto-Verfahren an, die von OpenSSL geliefert werden. Die Verfahren können sowohl über die GUI-Steuerelemente oben als auch über die OpenSSL-Kommandozeilenschnittstelle (CLI) in der unteren Hälfte ausgeführt werden. Wenn ein Verfahren über die GUI ausgeführt wird, zeigt die CLI die entsprechenden OpenSSL-Befehlsargumente."
   },
   "tabEncryption": {
     "name": "Symmetrische Verschlüsselung",
