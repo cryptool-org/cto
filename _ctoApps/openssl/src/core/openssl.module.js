@@ -11,7 +11,7 @@ class OpenSSLModule {
     this.output = {
       stdout: '',
       stderr: '',
-      file: null,
+      files: [],
     };
   }
 

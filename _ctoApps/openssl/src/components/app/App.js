@@ -34,7 +34,7 @@ function CardDescription({ close }) {
 
 function App() {
   const { state, dispatch } = useStore();
-  const [output, setOutput] = useState({ stdout: '', stderr: '', file: null });
+  const [output, setOutput] = useState({ stdout: '', stderr: '', files: null });
   const [showDescription, setShowDescription] = useState(true);
   const { t } = useTranslation('translation');
 
@@ -47,7 +47,7 @@ function App() {
 
     if (Object.keys(pipe).length === 1 && Object.keys(pipe).includes('echo')) {
       dispatch({ type: 'SET_LOADING', isLoading: false });
-      setOutput({ stdout: pipe.echo, stderr: '', file: null });
+      setOutput({ stdout: pipe.echo, stderr: '', files: null });
       return;
     }
 
@@ -57,7 +57,7 @@ function App() {
       !Object.keys(pipe).includes('openssl')
     ) {
       dispatch({ type: 'SET_LOADING', isLoading: false });
-      setOutput({ stdout: '', stderr: t('general.unknownCommand'), file: null });
+      setOutput({ stdout: '', stderr: t('general.unknownCommand'), files: null });
       return;
     }
 
@@ -82,7 +82,7 @@ function App() {
       }
     } else {
       dispatch({ type: 'SET_LOADING', isLoading: false });
-      setOutput({ stdout: '', stderr: t('general.unknownCommand'), file: null });
+      setOutput({ stdout: '', stderr: t('general.unknownCommand'), files: null });
       return;
     }
   };
@@ -110,8 +110,11 @@ function App() {
       if (value) {
         dispatch({ type: 'SET_LOADING', isLoading: false });
         setOutput(value);
-        if (value.file && value.file.size !== 0) {
-          dispatch({ type: 'ADD_FILES', items: [{ file: value.file, output: true }] });
+        if (value.files && value.files.length) {
+          dispatch({
+            type: 'ADD_FILES',
+            items: value.files.map((x) => ({ file: x, output: true })),
+          });
         }
       }
     });

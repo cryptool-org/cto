@@ -73,18 +73,21 @@ class Command {
           instance?.FS?.writeFile(file.name, file.buffer);
         });
       }
+      const currentFileList = instance?.FS?.readdir('/');
       instance?.callMain(argsArray);
-      if (this.getFileOutParameter(argsArray)) {
-        const readFileBuffer = instance?.FS?.readFile(this.getFileOutParameter(argsArray), {
-          encoding: 'binary',
+
+      const fileListDiff = instance?.FS?.readdir('/').filter((x) => !currentFileList.includes(x));
+      if (fileListDiff.length) {
+        fileListDiff.forEach((fileName) => {
+          const readFileBuffer = instance?.FS?.readFile(fileName, {
+            encoding: 'binary',
+          });
+          instance.customOutput.files.push(
+            new File([readFileBuffer], fileName, {
+              type: 'application/octet-stream',
+            })
+          );
         });
-        instance.customOutput.file = new File(
-          [readFileBuffer],
-          this.getFileOutParameter(argsArray),
-          {
-            type: 'application/octet-stream',
-          }
-        );
       }
     } catch (error) {
       instance.customOutput.stdout = '';
@@ -137,18 +140,6 @@ class Command {
 
   convertArgsToArray(args) {
     return args.split(/[\s]{1,}/g).filter(Boolean);
-  }
-
-  getFileInParameter(argsArray) {
-    return argsArray[argsArray.indexOf('-in') + 1];
-  }
-
-  getFileOutParameter(argsArray) {
-    if (argsArray[argsArray.indexOf('-out')]) {
-      return argsArray[argsArray.indexOf('-out') + 1];
-    } else {
-      return null;
-    }
   }
 
   filterInputFiles(argsArray, inputFiles) {
