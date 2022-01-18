@@ -1,35 +1,35 @@
-.big-numbers{
+.big-numbers {
     max-width: 300px !important;
 }
 
-.icons-size{
+.icons-size {
     font-size: 25px !important;
 }
 
-.slider-width
-{
+.slider-width {
     width: 130px;
 }
 
-#content a{
+#content a {
     text-decoration: none !important;
 }
 
-#rsa-input .input-parent-element{
+#rsa-input .input-parent-element {
     padding-left: 0 !important;
-} 
+}
 
-#rsa-input .col-form-label{
+#rsa-input .col-form-label {
     text-align: center !important;
-} 
+}
 
-#table > tbody > tr > td:nth-child(7){
+#table > tbody > tr > td:nth-child(7) {
   margin-left: 0% !important;
   margin-right: 0% !important;
   padding-left: 0% !important;
   padding-right: 0% !important;
 }
-.jxgbox{
+
+.jxgbox {
     border-width: 1px !important;
     border-color: black !important;
     height: 500px;
@@ -61,8 +61,8 @@
     border-radius: 0.25rem!important;
 }
 
-@media only screen and (max-width: 991px ){
-    .headerSiding{
+@media only screen and (max-width: 991px) {
+    .headerSiding {
         font-size:medium!important;
         height:100px;
         min-height: 100px;
@@ -70,12 +70,12 @@
 }
 
 
-.calculation-wrapper{
+.calculation-wrapper {
     height: 100%;
     overflow-y:auto;
 }
 
-.header-calculation{
+.header-calculation {
     border-bottom: 1px solid black;
     position: absolute; /* pinned to next non-static parent */
     top: 0; /* at top of parent */
@@ -83,11 +83,11 @@
 
 /* Ending calculation body */
 
-.div-upload-button{
+.div-upload-button {
     position: relative;
     overflow: hidden;
 }
-.div-upload-input{
+.div-upload-input {
     position: absolute;
     font-size: 50px;
     opacity: 0;
@@ -95,7 +95,7 @@
     top: 0;
 }
 
-#rsa-input label{
+#rsa-input label {
     float: right;
 }
 
@@ -107,7 +107,7 @@
     margin-bottom: 0;
   }
 
-.scrollable-context{
+.scrollable-context {
     max-height: 30em;
     min-height: 20em;
     overflow: auto;
@@ -116,16 +116,16 @@
     padding: 10px;
 }
 
-#preview-config-file-modal .modal-body>p{
+#preview-config-file-modal .modal-body > p {
     border-radius: 5px;
     padding: 5px;
     background-color: lightgray;
-    
 }
 
 .fa-chevron-down {
     transition: all 0.3s ease;
- }
- .btn-nav-accordion.collapsed .fa-chevron-down {
+}
+
+.btn-nav-accordion.collapsed .fa-chevron-down {
     transform: rotate(180deg);
-  }
+}

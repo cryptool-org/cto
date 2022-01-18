@@ -4,15 +4,21 @@
 <div id="circle-rsa-tab" class="tab-pane active mt-3">
     <!-- PARAMATER BOX -->
     <div class="container mt-3 mb-5" id="rsa-input">
-        <div style="text-align: center;" class="mb-3">${{rsa.VISUAL-DESCRIPTION_1}}$
+
+        <div class="alert card border alert-dismissible fade show mb-5" role="alert" style="padding: 1.25rem; padding-right: 4rem;">
+            ${{rsa.VISUAL-DESCRIPTION_1}}$
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
         </div>
+
         <div class="row" id="prime-input-numbers">
             <div class="col-md-6">
                 <div class="row">
                     <label class="col-lg-3 col-md-4 col-3 col-form-label" for="p-number-input">${{rsa.GENERALLY-PRIME}}$
                         p</label>
                     <div class="col-lg-9 col-md-8 col-9 input-parent-element">
-                        <input type="number" class="form-control" id="p-number-input" aria-describedby="p-number-input"
+                        <input type="number" class="form-control" id="p-number-input" aria-describedby="p-number-input" data-defaultstate="normal"
                             placeholder="${{rsa.GENERALLY-ENTER-PRIME}}$" min="1">
                         <div id="p-is-not-prime-alert" class="alert alert-danger mt-2" role="alert" hidden>
                             p ${{rsa.GENERALLY-PRIME-FEEDBACK-NEGATIV}}$
@@ -30,7 +36,7 @@
                     <label class="col-lg-3 col-md-4 col-3 col-form-label" for="q-number-input">${{rsa.GENERALLY-PRIME}}$
                         q</label>
                     <div class="col-lg-9 col-md-8 col-9 input-parent-element">
-                        <input type="number" class="form-control" id="q-number-input" aria-describedby="q-number-input"
+                        <input type="number" class="form-control" id="q-number-input" aria-describedby="q-number-input" data-defaultstate="normal"
                             placeholder="${{rsa.GENERALLY-ENTER-PRIME}}$" min="1">
                         <div id="q-is-not-prime-alert" class="alert alert-danger mt-2" role="alert" hidden>
                             q ${{rsa.GENERALLY-PRIME-FEEDBACK-NEGATIV}}$
@@ -56,11 +62,11 @@
                         <div class="input-group">
                             <input type="number" class="form-control" id="lcm-number-input"
                                 aria-describedby="lcm-number-input" placeholder="${{rsa.GENERALLY-LCM}}$" min="1"
-                                disabled hidden>
+                                data-defaultstate="disabled hidden" disabled hidden>
                             <input style="border-top-left-radius: .25rem;border-bottom-left-radius: .25rem;"
                                 type="number" class="form-control" id="phi-number-input"
                                 aria-describedby="phi-number-input" placeholder="φ(n) = (p - 1) * (q - 1)" min="1"
-                                disabled>
+                                data-defaultstate="disabled" disabled>
                             <div class="input-group-append">
                                 <button name="phi" disabled class="btn btn-primary insert-number-automatic"
                                     data-toggle="tooltip" data-placement="top"
@@ -106,7 +112,7 @@
                     <div class="col-lg-9 col-md-8 col-9 input-parent-element">
                         <div class="input-group">
                             <input type="number" class="form-control" id="n-number-input"
-                                aria-describedby="n-number-input" placeholder="n = p * q" min="1" disabled>
+                                aria-describedby="n-number-input" placeholder="n = p * q" min="1" data-defaultstate="disabled" disabled>
                             <div class="input-group-append">
                                 <button data-toggle="tooltip" data-placement="top"
                                     title="${{rsa.VISUAL-INSERT-NUMBER-AUTOMATIC}}$" name="n" disabled
@@ -137,7 +143,7 @@
                         <div class="input-group">
                             <input type="number" class="form-control" id="e-number-input"
                                 aria-describedby="e-number-input"
-                                placeholder="${{rsa.VISUAL-E-HAS-BE-COPRIME-TO-PLACEHOLDER}}$ φ(n)" disabled>
+                                placeholder="${{rsa.VISUAL-E-HAS-BE-COPRIME-TO-PLACEHOLDER}}$ φ(n)" data-defaultstate="disabled" disabled>
                             <div class="input-group-append">
                                 <button name="e" disabled class="btn btn-primary insert-number-automatic"
                                     data-toggle="tooltip" data-placement="top"
@@ -184,7 +190,7 @@
                         <div class="input-group">
                             <input type="number" class="form-control" id="d-number-input"
                                 aria-describedby="d-number-input"
-                                placeholder="${{rsa.VISUAL-D-HAS-BE-CONGRUENT-TO-E-PLACEHOLDER}}$" min="1" disabled>
+                                placeholder="${{rsa.VISUAL-D-HAS-BE-CONGRUENT-TO-E-PLACEHOLDER}}$" min="1" data-defaultstate="disabled" disabled>
                             <div class="input-group-append">
                                 <button name="d" disabled class="btn btn-primary insert-number-automatic"
                                     data-toggle="tooltip" data-placement="top"
@@ -262,9 +268,13 @@
                 ${{rsa.GENERALLY-NO}}$
             </button>
         </div>
-        <div class="row">
-            <button type="button" class="btn btn-primary ml-auto mr-3" id="visualization-primes-button">
-                <i class="fa fa-random" aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-GENERATE-KEY-BUTTON}}$
+        <div class="row flex-row-reverse">
+
+            <button type="button" class="btn btn-secondary mr-3" id="visualization-reset-inputs">
+                <i class="fa fa-eraser mr-1" aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-RESET-INPUTS}}$
+            </button>
+            <button type="button" class="btn btn-primary mr-2" id="visualization-primes-button">
+                <i class="fa fa-random mr-1" aria-hidden="true"></i>&nbsp;${{rsa.VISUAL-GENERATE-KEY-BUTTON}}$
             </button>
         </div>
         <div id="success-key-in-graphic-useable" class="w-100 alert alert-success mt-4" role="alert" hidden="true">
@@ -541,10 +551,8 @@
 
                             <hr>
                             <div>
-                                <label for="alphabet"
-                                    class="form-label mb-0">Alphabet&nbsp;[${{rsa.DIDACTIC-ENC-ALPHABET-LENGTH}}$:&nbsp;
-                                    <span id="alphabet-length">256
-                                    </span>]:
+                                <label for="alphabet" class="form-label mb-0">
+                                    Alphabet [${{rsa.DIDACTIC-ENC-ALPHABET-LENGTH}}$: <span id="alphabet-length">256</span>]:
                                     <br class="d-lg-none d-block">
                                     <div class="custom-control custom-radio custom-control-inline ml-lg-5 mb-0">
                                         <input type="radio" class="custom-control-input" id="alphabet-all-256-chars"
@@ -1053,6 +1061,9 @@
         </div>
     </div>
     <!-- DELETE KEY MODAL -->
+
+    <div class="text-center mt-4">${{rsa.DIDACTIC-LINK-TO-STEPBYSTEP}}$</div>
+
 </div>
 <!-- // RSA TAB-->
 

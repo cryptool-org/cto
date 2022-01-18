@@ -8,7 +8,7 @@ let alert_vis_key_gen_id
 let reset_and_overwrite_warning
 let reset_warning
 /**
- * 
+ *
  */
 $(function () {
 
@@ -20,8 +20,8 @@ $(function () {
 });
 
 /**
- * 
- * 
+ *
+ *
  */
 $(window).resize(() => {
     if (window_resize_tab == "false") {
@@ -33,7 +33,7 @@ $(window).resize(() => {
     }
 })
 /***
- * 
+ *
  */
 function resizeThrottler(board, width, height) {
     board.resizeContainer(width, height)
@@ -95,7 +95,7 @@ triggerTabList.forEach(function (triggerEl) {
 })
 /**
  * INITIILAIZE THE BORADS AND THE ELEMENTS
- * 
+ *
  */
 function init_boards_and_elements() {
     $("#visualization-card button").prop("disabled", true)
@@ -136,8 +136,8 @@ let circle_board, circ, ticks, valid_key_for_take_over
 let two_lines_board, line_one_element, line_two_element
 
 /**
- * 
- * @param {*} input_value 
+ *
+ * @param {*} input_value
  */
 function take_over_key_pair_for_visualization(input_value) {
 
@@ -174,8 +174,8 @@ function take_over_key_pair_for_visualization(input_value) {
 }
 
 /**
- * 
- * @param {*} input_value 
+ *
+ * @param {*} input_value
  */
 function delete_key_pair_for_visualization(input_value) {
     valid_key_for_take_over = null
@@ -203,9 +203,9 @@ function delete_key_pair_for_visualization(input_value) {
     switch_de_encrypt_modus("reset-both")
 }
 /**
- * 
- * @param {*} input_el 
- * @returns 
+ *
+ * @param {*} input_el
+ * @returns
  */
 const visualization_param_input_handler = async (input_el = undefined) => {
     $("#rsa-input .alert").attr("hidden", "true");
@@ -227,7 +227,7 @@ const visualization_param_input_handler = async (input_el = undefined) => {
     const e_phi_coprime = check_coprime(e, phi)
     const e_lcm_coprime = check_coprime(e, lcm)
     const lcm_hidden = $("#lcm-number-input").attr("hidden")// TRUE -> HIDDEN
-    // 
+    //
     let valid_lcm_phi_n = true
     let valid_p_q = true
     let valid_e_d = true
@@ -648,11 +648,11 @@ const visualization_param_input_handler = async (input_el = undefined) => {
 
 
 /**
- * 
- * @param {*} vis_box 
- * @param {*} n 
- * @param {*} e 
- * @param {*} d 
+ *
+ * @param {*} vis_box
+ * @param {*} n
+ * @param {*} e
+ * @param {*} d
  */
 function switch_de_encrypt_modus(vis_box = "two-lines") {
 
@@ -695,9 +695,9 @@ function switch_de_encrypt_modus(vis_box = "two-lines") {
 //
 
 /**
- * 
+ *
  * CREATE ARROWS IN CIRCLE
- * 
+ *
  */
 
 
@@ -709,10 +709,10 @@ const circle_information = {
 }
 
 /**
- * 
- * @param {*} button 
- * @param {*} encrypt_bool 
- * @returns 
+ *
+ * @param {*} button
+ * @param {*} encrypt_bool
+ * @returns
  */
 async function start_visualization_circle(button, encrypt_bool = $("#visualization-circle-encrypt").is(':checked')) {
     if (circle_information.n == null ||
@@ -723,7 +723,7 @@ async function start_visualization_circle(button, encrypt_bool = $("#visualizati
     /**
      *  its for reset purpose
      *  the while-loop is break with the help of the internal_id
-     *  its reset the previous while loop 
+     *  its reset the previous while loop
      */
     let internal_id
     if (circle_information.circle_start) {
@@ -769,8 +769,8 @@ async function start_visualization_circle(button, encrypt_bool = $("#visualizati
     }
 }
 /**
- * 
- * @param {*} encrypt_bool 
+ *
+ * @param {*} encrypt_bool
  */
 function set_up_circle_view_for_start(encrypt_bool) {
     $("#body-calculation").html("")
@@ -792,9 +792,9 @@ function set_up_circle_view_for_start(encrypt_bool) {
 }
 
 /**
- * 
- * @param {*} present_n 
- * @param {*} encrypt_bool 
+ *
+ * @param {*} present_n
+ * @param {*} encrypt_bool
  */
 function one_circle_iteration(present_n, encrypt_bool) {
     let next_number
@@ -822,9 +822,9 @@ function one_circle_iteration(present_n, encrypt_bool) {
 
 
 /**
- * 
- * @param {*} milliseconds 
- * @returns 
+ *
+ * @param {*} milliseconds
+ * @returns
  */
 function Sleep(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -841,9 +841,9 @@ const two_lines_information = {
 }
 
 /**
- * 
- * @param {*} curr_point 
- * @param {*} bool_encrypt 
+ *
+ * @param {*} curr_point
+ * @param {*} bool_encrypt
  */
 function one_two_lines_iteration(curr_point, bool_encrypt) {
     let result;
@@ -879,10 +879,10 @@ function one_two_lines_iteration(curr_point, bool_encrypt) {
 
 
 /**
- * 
- * @param {*} button 
- * @param {*} bool_encrypt 
- * @returns 
+ *
+ * @param {*} button
+ * @param {*} bool_encrypt
+ * @returns
  */
 async function start_visualization_two_lines(button, bool_encrypt = $("#visualization-encrypt").is(':checked')) {
     if (two_lines_information.n == null ||
@@ -891,7 +891,7 @@ async function start_visualization_two_lines(button, bool_encrypt = $("#visualiz
 
     // its for reset purpose
     // the while-loop is break with the help of the internal_id
-    // its delete the previous while loop 
+    // its delete the previous while loop
     let internal_id
 
     if (two_lines_information.start_two_lines) {
@@ -946,8 +946,8 @@ async function start_visualization_two_lines(button, bool_encrypt = $("#visualiz
     }
 }
 /**
- * 
- * @param {*} bool_encrypt 
+ *
+ * @param {*} bool_encrypt
  */
 function set_up_two_lines_view_for_start(bool_encrypt) {
 
@@ -971,7 +971,7 @@ function set_up_two_lines_view_for_start(bool_encrypt) {
 
 
 /**
- * 
+ *
  */
 $("#previous-step-arrow-two-line-button").on("click", () => {
     delete_last_line(two_lines_board, two_lines_information.two_lines_arrow_array, "body-line-calculation")
@@ -983,8 +983,8 @@ $("#previous-step-arrow-two-line-button").on("click", () => {
 })
 
 /**
- * 
- * 
+ *
+ *
 */
 $("#body-calculation").on("mouseenter mouseout", ".circle-arrow", function (e) {
     let event_type = e.type
@@ -1005,8 +1005,8 @@ $("#body-calculation").on("mouseenter mouseout", ".circle-arrow", function (e) {
     }
 })
 /**
- * 
- * 
+ *
+ *
  */
 $("#body-line-calculation").on("mouseenter mouseout", ".two-lines-arrow", function (e) {
     on_mouseover_mouseenter_line(e.type, this.getAttribute("value"))
@@ -1015,9 +1015,9 @@ $("#body-line-calculation").on("mouseenter mouseout", ".two-lines-arrow", functi
 /** HELPER FUNCTIONS */
 
 /**
- * 
- * @param {*} action 
- * @returns 
+ *
+ * @param {*} action
+ * @returns
  * TODO: String button
  */
 function visualization_controller(action, type) {
@@ -1075,7 +1075,7 @@ function visualization_controller(action, type) {
                 reset_button.prop("disabled", true);
                 start_button.prop("disabled", false);
 
-                // Start- / Continue- / Restart- BUTTON STRING 
+                // Start- / Continue- / Restart- BUTTON STRING
                 start_button.html(start_string)
                 start_button.val(0)
             } else if (current_amount_of_lines >= 1 && current_amount_of_lines < current_n) {
@@ -1086,7 +1086,7 @@ function visualization_controller(action, type) {
                 reset_button.prop("disabled", false);
                 start_button.prop("disabled", false);
 
-                // Start- / Continue- / Restart- BUTTON STRING 
+                // Start- / Continue- / Restart- BUTTON STRING
                 start_button.html(continue_string)
                 start_button.val(1)
             } else if (current_amount_of_lines == current_n) {
@@ -1161,9 +1161,9 @@ function visualization_controller(action, type) {
 }
 
 /**
- * 
- * @param {*} button 
- * @returns 
+ *
+ * @param {*} button
+ * @returns
  */
 function pause_the_visualization(button) {
     return new Promise((resolve, reject) => {
@@ -1174,11 +1174,11 @@ function pause_the_visualization(button) {
 }
 
 /**
- * 
- * @param {String} event_type 
- * @param {Int} value_el 
- * @param {String} line_name 
- * @returns 
+ *
+ * @param {String} event_type
+ * @param {Int} value_el
+ * @param {String} line_name
+ * @returns
  */
 function on_mouseover_mouseenter_line(event_type, value_el, encrypt, line_name) {
     let calculation_element
@@ -1257,11 +1257,11 @@ function on_mouseover_mouseenter_line(event_type, value_el, encrypt, line_name) 
 
 
 /**
- * 
- * @param {object} line_obj 
- * @param {int} amount_of_points 
+ *
+ * @param {object} line_obj
+ * @param {int} amount_of_points
  * @param {object} board_name // default line_board (board where only one line exists)
- * @param {Boolean} encrypt 
+ * @param {Boolean} encrypt
  */
 function create_points_on_line(line_obj, amount_of_points, board_name = two_lines_board, encrypt) {
     // board_name.removeObject(line_obj.points)
@@ -1311,13 +1311,13 @@ function create_points_on_line(line_obj, amount_of_points, board_name = two_line
 }
 
 /**
- * 
- * @param {*} from_point 
- * @param {*} to_point 
- * @param {*} arrow_color 
- * @param {*} case_ 
- * @param {*} modus 
- * @returns 
+ *
+ * @param {*} from_point
+ * @param {*} to_point
+ * @param {*} arrow_color
+ * @param {*} case_
+ * @param {*} modus
+ * @returns
  */
 function create_arrow(from_point, to_point, arrow_color = "black", case_ = "circle", modus) {
     let p
@@ -1332,8 +1332,8 @@ function create_arrow(from_point, to_point, arrow_color = "black", case_ = "circ
 }
 
 /**
- * 
- * @param {*} ticks_amount 
+ *
+ * @param {*} ticks_amount
  */
 function create_circle(ticks_amount) {
 
@@ -1381,11 +1381,11 @@ function create_circle(ticks_amount) {
 
 
 /**
- * 
- * @param {Board Object} board_el 
- * @param {Array} array_for_pop 
- * @param {Int} global_var_index 
- * @param {String} calculation_card 
+ *
+ * @param {Board Object} board_el
+ * @param {Array} array_for_pop
+ * @param {Int} global_var_index
+ * @param {String} calculation_card
  */
 function delete_last_line(board_el, array_for_pop, calculation_card) {
     let line_to_delete = array_for_pop.pop()
@@ -1401,10 +1401,10 @@ function delete_last_line(board_el, array_for_pop, calculation_card) {
 }
 
 /**
- * 
- * @param {*} key 
+ *
+ * @param {*} key
  * @returns true if all are fixpoints
- * 
+ *
  */
 function test_key_for_fixpoints(key) {
     let all_same = true
@@ -1420,8 +1420,8 @@ function test_key_for_fixpoints(key) {
 }
 
 /**
- * 
- * @param {String} id 
+ *
+ * @param {String} id
  */
 function scrollToBottom(id) {
     $(`#${id}`).scrollTop(function () { return this.scrollHeight; });
@@ -1429,7 +1429,7 @@ function scrollToBottom(id) {
 }
 
 /**
- * 
+ *
  */
 $("#previous-step-arrow-circle-button").on("click", () => {
     delete_last_line(circle_board, circle_information.circle_arrows_array, "body-calculation")
@@ -1463,7 +1463,7 @@ $("#rsa-input input").on("input", function () {
 })
 /**
  * Button-Event to generate a key for visualization
- * 
+ *
  */
 $("#visualization-primes-button").on("click", async function () {
     clearTimeout(reset_and_overwrite_warning)
@@ -1533,6 +1533,16 @@ $("#visualization-primes-button").on("click", async function () {
 
 })
 
+$("#visualization-reset-inputs").on("click", function () {
+    $("#rsa-input input").val("").removeClass("is-valid").removeClass("is-invalid")
+    .each(function() {
+        const defaultstate = $(this).data("defaultstate")
+        $(this).prop("disabled", defaultstate.includes("disabled"))
+        $(this).prop("hidden", defaultstate.includes("hidden"))
+    })
+    $(".key-generation-visualisation-result").attr("hidden", true)
+})
+
 
 $("#start-arrow-two-line-button, #next-step-arrow-two-line-button").on("click", function () {
     start_visualization_two_lines(this)
@@ -1594,7 +1604,7 @@ $(".param-box-switch-input").on("click", function () {
 
 })
 /**
- * 
+ *
  */
 $(".insert-number-automatic").on("click", function () {
     $("#rsa-input .alert").attr("hidden", "true");
