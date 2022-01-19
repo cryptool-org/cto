@@ -425,7 +425,7 @@ async function RSA_en_decryption() {
             let char_pair = input.substring(i, i + pairs).split("");
             seperation_array.push(char_pair.join(""));
             let iterator = 0;
-            let temp_result = encode_type == 3 ? "" : bigInt(0);
+            let temp_result = bigInt(0);
             for (let a = pairs - 1; a >= 0; a--) {
                 let char_temp;
                 if (!char_pair[iterator] && alphabet_input_value == 'own-defined') {
@@ -444,29 +444,19 @@ async function RSA_en_decryption() {
                     // basis 10
                     temp_result = bigInt(temp_result, base_for_calculation);
                     temp_result = temp_result.add(bigInt(char_temp).multiply(basis_res.pow(bigInt(a))));
-                } else if (encode_type == 3) {
-                    char_temp = bigInt(char_temp, base_for_calculation).toString(numeral_system_basis);
-                    const alphabet_digit_amount = alphabet_length.toString(numeral_system_basis).length;
-
-                    if (char_temp.length < alphabet_digit_amount) {
-                        char_temp = '0'.repeat(alphabet_digit_amount - char_temp.length) + char_temp;
-                    }
-                    temp_result += char_temp;
                 }
             }
 
-            let numeric_rep = encode_type == 3 ? temp_result : bigInt(temp_result, base_for_calculation).toString(numeral_system_basis);
+            let numeric_rep = bigInt(temp_result, base_for_calculation).toString(numeral_system_basis);
             // for further calculation purpose
-            temp_result = encode_type == 3 ? bigInt(bigInt(temp_result, numeral_system_basis).toString(base_for_calculation)) : bigInt(bigInt(temp_result), base_for_calculation);
+            temp_result = bigInt(bigInt(temp_result), base_for_calculation);
             let res = bigInt(temp_result.modPow(sec_input, n), base_for_calculation).toString(numeral_system_basis);
             const alphabet_digit_amount = alphabet_length.toString(numeral_system_basis).length;
             if ((encode_type == 1 || encode_type == 2) && numeric_rep.length < pairs * alphabet_digit_amount) {
                 numeric_rep = '0'.repeat(pairs * alphabet_digit_amount - numeric_rep.length) + numeric_rep.toString(numeral_system_basis);
             }
             seperation_number_array.push(numeric_rep);
-            if (encode_type == 3 && res.length < pairs * alphabet_digit_amount) {
-                res = '0'.repeat(pairs * alphabet_digit_amount - res.length) + res.toString(numeral_system_basis);
-            }
+
             output.push(res);
         }
         // SEPERATION
@@ -496,11 +486,7 @@ async function RSA_en_decryption() {
                 let numeric_represantation = bigInt(seperated_en_decrypted_number).toString(numeral_system_basis)
                 const alphabet_digit_amount = alphabet_length.toString(numeral_system_basis).length
 
-                if (encode_type == 3) {
-                    if (numeric_represantation.toString(numeral_system_basis).length < pairs * alphabet_digit_amount) {
-                        numeric_represantation = '0'.repeat(pairs * alphabet_digit_amount - numeric_represantation.toString(numeral_system_basis).length) + numeric_represantation.toString(numeral_system_basis)
-                    }
-                }
+
                 seperation_array.push(numeric_represantation)
                 // B-ADIC
                 if (encode_type == 1 && seperated_en_decrypted_number.greater(max_number)) {
@@ -513,11 +499,7 @@ async function RSA_en_decryption() {
                     $("#download-message-button").prop("disabled", true)
                     break
                 }
-                if (encode_type == 3 && (numeric_represantation.length > pairs * alphabet_digit_amount || numeric_represantation.length < pairs * alphabet_digit_amount)) {
-                    seperation_text_array = ["${{rsa.DIDACTIC-ENC-INVALID-INPUT}$"]
-                    $("#download-message-button").prop("disabled", true)
-                    break
-                }
+
 
                 let start_for_en_type_3 = 0
                 let temp_array_for_pairs = []
@@ -530,13 +512,6 @@ async function RSA_en_decryption() {
                         let expo = pairs - a
                         sub_number = bigInt(bigInt(sub_number, numeral_system_basis).toString(base_for_calculation))
                         sub_number = bigInt(seperated_en_decrypted_number).divide(basis_res.pow(bigInt(expo))).toString(numeral_system_basis)
-                    } else if (encode_type == 3) {
-                        if (pairs == 1) {
-                            sub_number = numeric_represantation
-                        } else {
-                            sub_number = numeric_represantation.substring(start_for_en_type_3, start_for_en_type_3 + alphabet_digit_amount)
-                        }
-                        start_for_en_type_3 += alphabet_digit_amount
                     }
 
                     let number_to_char
@@ -546,8 +521,6 @@ async function RSA_en_decryption() {
                         number_to_char = bigInt(sub_number).divide(alphabet_length.pow(a - bigInt(1)))
                     } else if (encode_type == 2 && sub_number.greaterOrEquals(alphabet_length)) {
                         number_to_char = bigInt(sub_number).mod(alphabet_length)
-                    } else {
-                        number_to_char = bigInt(sub_number)
                     }
                     if (alphabet_input_value == "own-defined") {
                         temp_array_for_pairs.push(defined_alphabet[number_to_char])
@@ -568,8 +541,7 @@ async function RSA_en_decryption() {
                     seperation_text_array.push(temp_array_for_pairs.reverse().join(""))
                 else if (encode_type == 2)
                     seperation_text_array.push(temp_array_for_pairs.join(""))
-                else if (encode_type == 3)
-                    seperation_text_array.push(temp_array_for_pairs.join(""))
+
 
             } catch (e) {
                 const string = $(`label[for='${$(`input[name = 'output-numeral-system']:checked`).attr("id")}']`).html().toLowerCase() + " " + "numeral system"
@@ -618,18 +590,6 @@ const calculate_max_blocksize = (n, encode_type, alphabet_length) => {
             i = bigInt(i).add(1);
         } while (w.lesserOrEquals(n));
         return i.minus(1);
-    } else if (encode_type == 3) {
-        // n^k ≤ N   concatenation 
-        alphabet_length = bigInt(alphabet_length).minus(1)
-        let temp = alphabet_length.toString()
-        const temp_n = bigInt(n)
-        while (bigInt(temp).lesserOrEquals(temp_n)) {
-            temp += bigInt(alphabet_length).toString()
-            if (bigInt(temp).greater(temp_n)) {
-                return expo
-            }
-            expo++
-        }
     }
 }
 
