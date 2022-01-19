@@ -82,19 +82,13 @@ gulp.task("resources", function () {
 });
 
 
-gulp.task('openssl', function (cb) {
+gulp.task('build_openssl', function (cb) {
   exec('src/resources/openssl/build.sh', function (err, stdout, stderr) {
     console.log(stderr);
     cb(err);
   }).stdout.pipe(process.stdout);
 })
 
-
-gulp.task('build_openssl', function (callback) {
-  runSequence(
-    'openssl',
-  );
-});
 
 gulp.task("build_dist", ['html', 'config', 'js', 'css', 'resources']);
 
