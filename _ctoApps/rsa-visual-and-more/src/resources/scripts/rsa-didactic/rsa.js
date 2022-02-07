@@ -474,34 +474,29 @@ async function RSA_en_decryption() {
         const max_number = alphabet_length.pow(bigInt(pairs))
         for (let i = 0; i < input.length; i++) {
             try {
-                // const iterator = encode_type == 1 || encode_type == 2 ? pairs : pairs < bigInt(input[i].length).divide(bigInt(alphabet_length - 1).toString(numeral_system_basis).length).plus(1) ? pairs : bigInt(input[i].length).divide(bigInt(alphabet_length - 1).toString(numeral_system_basis).length).plus(1)
                 const iterator = pairs
                 // TRY TO CONVERT INPUT NUMBER, IF NOT POSSIBLE Than CATCH AN ERROR
                 let temp = bigInt(input[i], numeral_system_basis).toString(base_for_calculation)
                 if (bigInt(temp).greaterOrEquals(n)) {
-                    $("#input-seperation-en-decryption").val("Input has to be greater then n.")
+                    $("#input-seperation-en-decryption").val("${{rsa.DIDACTIC-KEY-INPUT-LESSER-THAN-N}}$")
                     return
                 }
                 let seperated_en_decrypted_number = bigInt(temp).modPow(sec_input, n)
                 let numeric_represantation = bigInt(seperated_en_decrypted_number).toString(numeral_system_basis)
-                const alphabet_digit_amount = alphabet_length.toString(numeral_system_basis).length
-
 
                 seperation_array.push(numeric_represantation)
                 // B-ADIC
                 if (encode_type == 1 && seperated_en_decrypted_number.greater(max_number)) {
-                    seperation_text_array = ["${{rsa.DIDACTIC-ENC-INVALID-INPUT}$"]
+                    seperation_text_array = ["${{rsa.DIDACTIC-ENC-INVALID-INPUT}}$"]
                     $("#download-message-button").prop("disabled", true)
                     break
                 }
                 else if (encode_type == 2 && seperated_en_decrypted_number.greater(basis_res.pow(iterator))) {
-                    seperation_text_array = ["${{rsa.DIDACTIC-ENC-INVALID-INPUT}$"]
+                    seperation_text_array = ["${{rsa.DIDACTIC-ENC-INVALID-INPUT}}$"]
                     $("#download-message-button").prop("disabled", true)
                     break
                 }
 
-
-                let start_for_en_type_3 = 0
                 let temp_array_for_pairs = []
                 for (let a = 1; a <= iterator; a++) {
                     let sub_number
@@ -521,6 +516,8 @@ async function RSA_en_decryption() {
                         number_to_char = bigInt(sub_number).divide(alphabet_length.pow(a - bigInt(1)))
                     } else if (encode_type == 2 && sub_number.greaterOrEquals(alphabet_length)) {
                         number_to_char = bigInt(sub_number).mod(alphabet_length)
+                    } else {
+                        number_to_char = bigInt(sub_number)
                     }
                     if (alphabet_input_value == "own-defined") {
                         temp_array_for_pairs.push(defined_alphabet[number_to_char])
@@ -534,7 +531,6 @@ async function RSA_en_decryption() {
                     }
                     else if (encode_type == 2) {
                         seperated_en_decrypted_number = bigInt(seperated_en_decrypted_number).minus(sub_number.multiply(basis_res.pow(pairs - a))).lesserOrEquals(0) ? bigInt(0) : bigInt(seperated_en_decrypted_number).minus(sub_number.multiply(basis_res.pow(pairs - a)))
-
                     }
                 }
                 if (encode_type == 1)
@@ -544,8 +540,10 @@ async function RSA_en_decryption() {
 
 
             } catch (e) {
-                const string = $(`label[for='${$(`input[name = 'output-numeral-system']:checked`).attr("id")}']`).html().toLowerCase() + " " + "numeral system"
-                $("#warning-rsa-input").html(`Invalid input for ${string}`)
+                const numeral_system_ending = "${{rsa.LANG}}$" === "de" ? "e" : ""
+                const numeral_system = "${{rsa.LANG}}$" === "de" ? "${{rsa.DIDACTIC-ENC-NUMERAL-SYSTEM}}$" : "${{rsa.DIDACTIC-ENC-NUMERAL-SYSTEM}}$".toLowerCase()
+                const string = $(`label[for='${$(`input[name = 'output-numeral-system']:checked`).attr("id")}']`).html().toLowerCase() + numeral_system_ending + " " + numeral_system
+                $("#warning-rsa-input").html("${{rsa.DIDACTIC-INPUT-INVALID-FOR-NUMERAL-SYSTEM}}$ " + string)
                 $("#warning-rsa-input").attr("hidden", false)
                 setTimeout(() => {
                     $("#warning-rsa-input").attr("hidden", true)
@@ -556,8 +554,8 @@ async function RSA_en_decryption() {
             }
         }
         $("#input-seperation-en-decryption").val(seperation_array.join(`${seperation} `))
-        $("#output-number-en-decryption").val(seperation_text_array.join(`${seperation} `))
-        $("#output-en-decryption").val(seperation_text_array.join(""))
+        $("#output-number-en-decryption").val(seperation_text_array.join(`${seperation} `).trim())
+        $("#output-en-decryption").val(seperation_text_array.join("").trim())
     }
     $("#download-message-button").prop("disabled", false)
 }

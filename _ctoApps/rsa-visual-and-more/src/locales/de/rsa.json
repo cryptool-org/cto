@@ -112,6 +112,8 @@
     "DIDACTIC-KEY-PLURAL-KEY": "diese Schlüssel",
     "DIDACTIC-KEY-KEY-TYPE-PUBLIC": "öffentlich",
     "DIDACTIC-KEY-KEY-TYPE-PRIVATE": "privat",
+    "DIDACTIC-KEY-INPUT-LESSER-THAN-N": "Die Eingabe muss kleiner als n sein.",
+    "DIDACTIC-INPUT-INVALID-FOR-NUMERAL-SYSTEM": "Ungültige Eingabe für das",
     "DIDACTIC-LINK-TO-STEPBYSTEP": "Hinweis: Die Formeln von RSA werden im Plugin <a href=\"https://cryptool.org/de/cto/rsa-step-by-step\">RSA (Schritt-für-Schritt)</a> ausführlicher erklärt.",
     "GENERAL": "--",
     "GENERALLY-DELETE": "Löschen",

@@ -77,7 +77,7 @@ gulp.task("config", function () {
 
 gulp.task("resources", function () {
   return gulp
-    .src(["src/resources/**", "!src/resources/scripts/rsa-didactic/*.js", "!src/resources/scripts/rsa-visualization/*.js", "!src/resources/scripts/rsa-real-use/command.js", "!src/resources/style/**"])
+    .src(["src/resources/**", "!src/resources/openssl*/**", "!src/resources/scripts/rsa-didactic/*.js", "!src/resources/scripts/rsa-visualization/*.js", "!src/resources/scripts/rsa-real-use/command.js", "!src/resources/style/**"])
     .pipe(gulp.dest("rsa-visual-and-more/resources"));
 });
 
@@ -88,6 +88,8 @@ gulp.task('build_openssl', function (cb) {
     cb(err);
   }).stdout.pipe(process.stdout);
 })
+
+
 
 
 gulp.task("build_dist", ['html', 'config', 'js', 'css', 'resources']);
