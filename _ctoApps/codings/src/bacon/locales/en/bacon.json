@@ -1,7 +1,0 @@
-{
-  "TITLE": "Bacon Code",
-  "DESCRIPTION": "<h1>The Bacon Code</h1>",
-  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
-  "SAMPLE_ENCRYPTED": "baaba aabbb aabaa abbbb baabb abaaa aaaba abaab aaaab baaaa abbab babaa abbaa aabab abbab babab abaaa baabb ababb abbba baaab abbab baabb aabaa baaaa baaba aabbb aabaa ababa aaaaa babbb babba aaabb abbab aabba ",
-  "SAMPLE_KEY": "Secret Key"
-}

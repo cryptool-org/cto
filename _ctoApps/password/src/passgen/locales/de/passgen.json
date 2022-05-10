@@ -1,7 +1,0 @@
-{
-  "TITLE": "Passwort-Generator",
-  "DESCRIPTION": "<h1>Passwort-Generator</h1>",
-  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
-  "SAMPLE_ENCRYPTED": " ",
-  "SAMPLE_KEY": "Geheimer Schluessel"
-}

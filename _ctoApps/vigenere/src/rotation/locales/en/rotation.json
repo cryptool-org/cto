@@ -1,7 +1,0 @@
-{
-  "TITLE": "Rotation Encryption",
-  "DESCRIPTION": "<h1>The Rotation Encryption</h1>",
-  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
-  "SAMPLE_ENCRYPTED": "Zts xoity hojwc hde vunke olem fbq garp oru.",
-  "SAMPLE_KEY": "Secret Key"
-}

@@ -1,7 +1,0 @@
-{
-  "TITLE": "Multiplicative Encryption",
-  "DESCRIPTION": "<h1>The Multiplicative Encryption</h1>",
-  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
-  "SAMPLE_ENCRYPTED": "The quick brown fox jumps over the lazy dog.",
-  "SAMPLE_KEY": "B"
-}

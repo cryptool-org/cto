@@ -1,7 +1,0 @@
-{
-  "TITLE": "Multiplikativ-Verschlüsselung",
-  "DESCRIPTION": "<h1>Die Multiplikativ-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
-  "SAMPLE_ENCRYPTED": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
-  "SAMPLE_KEY": "B"
-}

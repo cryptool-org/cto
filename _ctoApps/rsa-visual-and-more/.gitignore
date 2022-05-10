@@ -1,9 +1,0 @@
-# openssl source
-package-lock.json
-src/resources/openssl/*
-!src/resources/openssl/build.sh
-!src/resources/openssl/openssl.cnf
-src/resources/scripts/rsa-real-use/openssl.js
-src/resources/wasm/*
-node_modules
-rsa-visual-and-more

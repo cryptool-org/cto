@@ -1,8 +1,0 @@
-{
-  "TITLE": "Jägerzaun-Verschlüsselung (Zick-Zack)",
-  "DESCRIPTION": "<h1>Die Railfence-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
-  "SAMPLE_ENCRYPTED": "FtehT derg il tarnaruy raamptwlexera nnjk mvro tiucB zoesqh.",
-  "SAMPLE_KEY": "Geheimer Schluessel",
-  "RAILFENCE": "F       t       e       h       T       d       e  \n r     g i     l t     a r     n a     r u     y r \n  a   a   m   p   t   w   l   e   x   e   r   a   n\n   n j     k m     v r     o t     i u     c B     \n    z       o       e       s       q       h      "
-}

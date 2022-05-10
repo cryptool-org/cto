@@ -1,6 +1,0 @@
-{
-  "name": "numberconverter",
-  "styles": ["./numberconverter.css", "./resources/bootstrap.css"],
-  "scripts": ["./resources/cloudfare.js", "./numberconverter-%lang%.js"],
-  "html": "fragment-%lang%.html"
-}

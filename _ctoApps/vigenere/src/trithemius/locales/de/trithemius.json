@@ -1,7 +1,0 @@
-{
-  "TITLE": "Trithemius-Verschlüsselung",
-  "DESCRIPTION": "<h1>Die Trithemius-Verschlüsselung</h1>",
-  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
-  "SAMPLE_ENCRYPTED": "Fscqd ognb rw vazdaukl oymsxfqlpuwis Zhfr afqe rjhtz Uutaol.",
-  "SAMPLE_KEY": "Geheimer Schluessel"
-}

@@ -1,3 +1,0 @@
-@@include('../common/cto.config.json', {
-  "name": "morsecode"
-})

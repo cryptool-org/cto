@@ -1,7 +1,0 @@
-{
-  "TITLE": "Base64-Kodierung",
-  "DESCRIPTION": "<h1>Die Base64-Kodierung</h1>",
-  "SAMPLE_PLAIN": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
-  "SAMPLE_ENCRYPTED": "RnJhbnogamFndCBpbSBrb21wbGV0dCB2ZXJ3YWhybG9zdGVuIFRheGkgcXVlciBkdXJjaCBCYXllcm4u",
-  "SAMPLE_KEY": "Geheimer Schluessel"
-}

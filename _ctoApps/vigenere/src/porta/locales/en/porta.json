@@ -1,7 +1,0 @@
-{
-  "TITLE": "Porta Encryption",
-  "DESCRIPTION": "<h1>The Porta Encryption</h1>",
-  "SAMPLE_PLAIN": "The quick brown fox jumps over the lazy dog.",
-  "SAMPLE_ENCRYPTED": "Csq ljzxv padki qkc ugqeg jkvj ivv wzha ugr.",
-  "SAMPLE_KEY": "Secret Key"
-}

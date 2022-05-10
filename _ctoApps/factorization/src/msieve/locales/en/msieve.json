@@ -1,5 +1,0 @@
-{
-  "TITLE": "Quadratic Sieve",
-  "DESCRIPTION": "Prime factorization with Msieve",
-  "STATUS_TEXT": "Found ${p1} relations (${p2} full + ${p3} combined from ${p4} partial), need ${p5}."
-}

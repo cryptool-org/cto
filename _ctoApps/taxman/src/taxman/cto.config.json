@@ -1,8 +1,0 @@
-{
-  "name": "taxman",
-  "styles": [
-    "./taxman.css"
-  ],
-  "scripts": [],
-  "html": "fragment-%lang%.html"
-}

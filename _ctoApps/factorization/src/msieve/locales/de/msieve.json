@@ -1,5 +1,0 @@
-{
-  "TITLE": "Quadratisches Sieb",
-  "DESCRIPTION": "Primfaktorzerlegung mit Msieve",
-  "STATUS_TEXT": "${p1} Relationen gefunden (${p2} vollständige + ${p3} kombinierte aus ${p4} partiellen), benötigt ${p5}."
-}
