@@ -4,15 +4,15 @@
     "description": "Base plugin for simple CTO ciphers and codes",
     "scripts": {
         "serve": "webpack serve --mode development",
-        "build": "rm -rf dist && webpack --mode production && rm -f dist/*.LICENSE.txt"
+        "build": "webpack --mode production && rm -f dist/**/*.LICENSE.txt"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.1.1",
         "@fortawesome/free-solid-svg-icons": "^6.1.1",
         "@fortawesome/react-fontawesome": "^0.1.18",
-        "react": "^17.0.2",
+        "react": "^18.1.0",
         "react-bootstrap": "^2.3.1",
-        "react-dom": "^17.0.2"
+        "react-dom": "^18.1.0"
     },
     "devDependencies": {
         "@babel/core": "^7.17.10",
@@ -23,13 +23,13 @@
         "html-webpack-plugin": "^5.5.0",
         "react-i18next": "^11.16.9",
         "style-loader": "^3.3.1",
-        "webpack": "^5.69.1",
+        "webpack": "^5.72.1",
         "webpack-cli": "^4.9.2",
-        "webpack-dev-server": "^4.7.4"
+        "webpack-dev-server": "^4.9.0"
     },
     "babel": {
-      "presets": [
-        "@babel/preset-react"
-      ]
+        "presets": [
+            "@babel/preset-react"
+        ]
     }
 }

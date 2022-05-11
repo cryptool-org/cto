@@ -4,13 +4,18 @@ import { Button, Modal } from "react-bootstrap"
 
 class OptionsModal extends React.Component {
 
-    props = {
+    static defaultProps = {
         title: "Einstellungen"
     }
 
     state = {
         shown: false,
         pinned: false
+    }
+
+    componentDidMount() {
+        // pass `this` to upper component (for btn trigger)
+        if(this.props.onMounted) this.props.onMounted(this)
     }
 
     render() {
