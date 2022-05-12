@@ -6,6 +6,9 @@ import Col from "react-bootstrap/Col"
 import InputOutputField from "./InputOutputField"
 import DirectionArrow from "./DirectionArrow"
 import OptionsModal from "./OptionsModal"
+import OptionsAlphabet from "./OptionsAlphabet"
+import OptionsKey from "./OptionsKey"
+import OptionsFormat from "./OptionsFormat"
 
 class DefaultGUI extends React.Component {
 
@@ -23,40 +26,56 @@ class DefaultGUI extends React.Component {
     
     state = {
         encrypt: true, // false => decrypt
+        alphabet: OptionsAlphabet.defaultProps.initialAlphabet, 
+        key: OptionsKey.defaultProps.initialKey,
         cleartextValue: this.props.initialCleartext,
-        ciphertextValue: this.props.algorithm.encrypt(this.props.initialCleartext)
+        ciphertextValue: this.props.algorithm.encrypt(this.props.initialCleartext),
+        inputOutputFormat: OptionsFormat.defaultProps.initialFormat,
+        showOpenOptionsModalBtn: true
     }
 
     render() {
-        return <div className="container">
+        return <>
             <Row>
                 <Col xl={5}>
                     <InputOutputField ioCaption={this.props.cleartextCaption} rawValue={this.state.cleartextValue} 
-                        onChange={(value) => this.onCleartextChange(value)} />
+                        format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
+                        onChange={(value) => this.handleCleartextChange(value)} />
                 </Col>
                 <Col xl={2}>
-                    <DirectionArrow direction={this.state.encrypt} onBtnClick={() => this.onModalBtnClick()} />
+                    <DirectionArrow direction={this.state.encrypt} showBtn={this.state.showOpenOptionsModalBtn} 
+                        onBtnClick={() => this.handleModalBtnClick()} onArrowClick={() => this.setState({ encrypt: !this.state.encrypt })} />
                 </Col>
                 <Col xl={5}>
                     <InputOutputField ioCaption={this.props.ciphertextCaption} rawValue={this.state.ciphertextValue} 
-                        onChange={(value) => this.onCiphertextChange(value)} />
+                        format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
+                        onChange={(value) => this.handleCiphertextChange(value)} />
                 </Col>
             </Row>
             {this.props.children}
-            <OptionsModal onMounted={(modal) => this.modalObj = modal} />
-        </div>
+            <OptionsModal onMounted={(modal) => this.modalObj = modal} 
+                    onPin={() => this.setState({ showOpenOptionsModalBtn: false })}
+                    onUnpin={() => this.setState({ showOpenOptionsModalBtn: true })}>
+
+                <OptionsKey initialKey={this.state.key} onKeyChange={(key) => this.setState({ key: key })} />
+                <OptionsAlphabet initialAlphabet={this.state.alphabet} initialCheckboxes={["uppercase", "lowercase"]} 
+                    onAlphabetChange={(alphabet) => this.setState({ alphabet: alphabet })} />
+                <OptionsFormat initialFormat={this.state.format} onFormatChange={(format) => this.setState({ inputOutputFormat: format })} />
+
+            </OptionsModal>
+        </>
     }
 
-    onModalBtnClick() {
+    handleModalBtnClick() {
         if(this.modalObj != undefined) this.modalObj.handleOpen()
     }
 
-    onCleartextChange(value) {
+    handleCleartextChange(value) {
         this.setState({ encrypt: true, cleartextValue: value,
             ciphertextValue: this.props.algorithm.encrypt(value) })
     }
 
-    onCiphertextChange(value) {
+    handleCiphertextChange(value) {
         this.setState({ encrypt: false, ciphertextValue: value,
             cleartextValue: this.props.algorithm.decrypt(value) })
     }
