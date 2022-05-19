@@ -51,7 +51,7 @@ class OptionsModal extends React.Component {
                 </Button>}
                 {this.state.pinned == true && <Button variant="primary" className="flex-fill" 
                         onClick={() => this.handleUnpin()}>
-                    <FontAwesomeIcon icon={faWindowRestore} /> Fixierung lösen
+                    <FontAwesomeIcon icon={faWindowRestore} /> Ausblenden
                 </Button>}
             </Modal.Footer>
         </Modal>

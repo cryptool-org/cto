@@ -1,5 +1,8 @@
 import React from "react"
 
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+
 import Card from "react-bootstrap/Card"
 import Form from "react-bootstrap/Form"
 
@@ -16,12 +19,18 @@ class OptionsKey extends React.Component {
 
     static defaultProps = {
         initialKey: "In1tIaLk3y",
-        onKeyChange: () => alert("no key change handler!")
+        onKeyChange: () => alert("no key change handler!"),
+        idPrefix: (Math.random()+1).toString(36).substring(2)
     }
 
     state = {
-        key: this.props.initialKey
+        // make key a map to allow multiple values to be passed
+        key: (this.props.initialKey instanceof Map) ? this.props.initialKey : new Map(Object.entries(
+            { value: { type: typeof this.props.initialKey, value: this.props.initialKey } }))
     }
+
+    // if initialKey is string|number -> use this one
+    // if initialKey is map -> use format.. keyId: { type, caption, value }
 
     render() {
         return <Card className="mt-3">
@@ -29,16 +38,25 @@ class OptionsKey extends React.Component {
                 <FontAwesomeIcon icon={faKey} /> Schlüssel
             </Card.Header>
             <Card.Body>
-                <Form.Control as="textarea" rows={2} value={this.state.key}
-                    onChange={(e) => this.handleKeyChange(e)} spellCheck={false}
-                    isValid={(this.state.key.length > 0)} isInvalid={!(this.state.key.length > 0)} />
+                <Row>
+                    {Array.from(this.state.key).map(([key, values]) => <Form.Group as={Col}>
+                        {values.caption && 
+                            <Form.Label htmlFor={this.props.idPrefix + key}>{values.caption}</Form.Label>}
+                        <Form.Control 
+                            as={(values.type == "string") ? "textarea" : undefined} rows={2} value={values.value} spellCheck={false}
+                            id={this.props.idPrefix + key} type={values.type} onChange={(e) => this.handleKeyChange(e, key)}
+                            isValid={("" + values.value).length > 0} isInvalid={!(("" + values.value).length > 0)}
+                        />
+                    </Form.Group>)}
+                </Row>
             </Card.Body>
         </Card>
     }
 
-    handleKeyChange(event) {
-        this.setState({ key: event.target.value }) // update this component
-        this.props.onKeyChange(event.target.value) // call props listener
+    handleKeyChange(event, key) {
+        let keys = this.state.key
+        keys.set(key, { ...keys.get(key), value: event.target.value })
+        this.setState({ key: keys }, () => this.props.onKeyChange(keys))
     }
 
 }

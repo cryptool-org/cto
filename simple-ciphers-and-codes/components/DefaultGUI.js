@@ -19,19 +19,34 @@ class DefaultGUI extends React.Component {
             encrypt: () => "No algorithm defined!",
             decrypt: () => "No algorithm defined!"
         },
+
         initialCleartext: "The quick brown fox jumps over the lazy dog.",
-        cleartextCaption: "Klartext",
-        ciphertextCaption: "Geheimtext"
+        cleartextCaption: "Klartext", ciphertextCaption: "Geheimtext",
+
+        showKeyOptions: true,
+        initialKey: OptionsKey.defaultProps.initialKey,
+        onOptionsKeyChange: () => {},
+
+        showAlphabetOptions: true,
+        initialAlphabet: OptionsAlphabet.defaultProps.initialAlphabet,
+        onOptionsAlphabetChange: () => {},
+
+        showIOFormatOptions: true,
+        initialFormat: OptionsFormat.defaultProps.initialFormat,
+        onOptionsFormatChange: () => {},
+
+        showOpenOptionsModalBtn: true
     }
     
     state = {
         encrypt: true, // false => decrypt
-        alphabet: OptionsAlphabet.defaultProps.initialAlphabet, 
-        key: OptionsKey.defaultProps.initialKey,
+        alphabet: this.props.initialAlphabet, 
+        key: this.props.initialKey,
         cleartextValue: this.props.initialCleartext,
-        ciphertextValue: this.props.algorithm.encrypt(this.props.initialCleartext),
-        inputOutputFormat: OptionsFormat.defaultProps.initialFormat,
-        showOpenOptionsModalBtn: true
+        ciphertextValue: this.props.algorithm.encrypt({ value: this.props.initialCleartext, 
+            alphabet: this.props.initialAlphabet, key: this.props.initialKey }),
+        inputOutputFormat: this.props.initialFormat,
+        showOpenOptionsModalBtn: this.props.showOpenOptionsModalBtn
     }
 
     render() {
@@ -39,7 +54,7 @@ class DefaultGUI extends React.Component {
             <Row>
                 <Col xl={5}>
                     <InputOutputField ioCaption={this.props.cleartextCaption} rawValue={this.state.cleartextValue} 
-                        format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
+                        formatted={this.props.showIOFormatOptions} format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
                         onChange={(value) => this.handleCleartextChange(value)} />
                 </Col>
                 <Col xl={2}>
@@ -48,19 +63,27 @@ class DefaultGUI extends React.Component {
                 </Col>
                 <Col xl={5}>
                     <InputOutputField ioCaption={this.props.ciphertextCaption} rawValue={this.state.ciphertextValue} 
-                        format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
+                        formatted={this.props.showIOFormatOptions} format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
                         onChange={(value) => this.handleCiphertextChange(value)} />
                 </Col>
             </Row>
-            {this.props.children}
+
+            { React.Children.map(this.props.children, child => React.cloneElement(child, this.state)) }
+            
             <OptionsModal onMounted={(modal) => this.modalObj = modal} 
                     onPin={() => this.setState({ showOpenOptionsModalBtn: false })}
                     onUnpin={() => this.setState({ showOpenOptionsModalBtn: true })}>
 
-                <OptionsKey initialKey={this.state.key} onKeyChange={(key) => this.setState({ key: key })} />
+                {this.props.showKeyOptions &&
+                <OptionsKey initialKey={this.state.key} onKeyChange={(key) => this.handleOptionsKeyChange(key)} />}
+
+                {this.props.showAlphabetOptions &&
                 <OptionsAlphabet initialAlphabet={this.state.alphabet} initialCheckboxes={["uppercase", "lowercase"]} 
-                    onAlphabetChange={(alphabet) => this.setState({ alphabet: alphabet })} />
-                <OptionsFormat initialFormat={this.state.format} onFormatChange={(format) => this.setState({ inputOutputFormat: format })} />
+                    onAlphabetChange={(alphabet) => this.handleOptionsAlphabetChange(alphabet)} />}
+
+                {this.props.showIOFormatOptions &&
+                <OptionsFormat initialFormat={this.state.format} 
+                    onFormatChange={(format) => this.handleOptionsFormatChange(format)} />}
 
             </OptionsModal>
         </>
@@ -71,13 +94,43 @@ class DefaultGUI extends React.Component {
     }
 
     handleCleartextChange(value) {
-        this.setState({ encrypt: true, cleartextValue: value,
-            ciphertextValue: this.props.algorithm.encrypt(value) })
+        this.setState({ encrypt: true, cleartextValue: value, ciphertextValue: 
+            this.props.algorithm.encrypt({ value, alphabet: this.state.alphabet, key: this.state.key }) })
     }
 
     handleCiphertextChange(value) {
-        this.setState({ encrypt: false, ciphertextValue: value,
-            cleartextValue: this.props.algorithm.decrypt(value) })
+        this.setState({ encrypt: false, ciphertextValue: value, cleartextValue: 
+            this.props.algorithm.decrypt({ value, alphabet: this.state.alphabet, key: this.state.key }) })
+    }
+
+    handleOptionsKeyChange(value) {
+        let params = { alphabet: this.state.alphabet, key: value }, newState = { key: value }
+        if(this.state.encrypt == true) {
+            params.value = this.state.cleartextValue
+            newState.ciphertextValue = this.props.algorithm.encrypt(params)
+        }
+        if(this.state.encrypt == false) {
+            params.value = this.state.ciphertextValue
+            newState.cleartextValue = this.props.algorithm.decrypt(params)
+        }
+        this.setState(newState, () => this.props.onOptionsKeyChange(value))
+    }
+
+    handleOptionsAlphabetChange(value) {
+        let params = { alphabet: value, key: this.state.key }, newState = { alphabet: value }
+        if(this.state.encrypt == true) {
+            params.value = this.state.cleartextValue
+            newState.ciphertextValue = this.props.algorithm.encrypt(params)
+        }
+        if(this.state.encrypt == false) {
+            params.value = this.state.ciphertextValue
+            newState.cleartextValue = this.props.algorithm.decrypt(params)
+        }
+        this.setState(newState, () => this.props.onOptionsAlphabetChange(value))
+    }
+
+    handleOptionsFormatChange(value) {
+        this.setState({ inputOutputFormat: value }, () => this.props.onOptionsFormatChange(value))
     }
 
 }

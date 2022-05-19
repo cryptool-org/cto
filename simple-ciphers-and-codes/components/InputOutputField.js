@@ -13,9 +13,10 @@ class InputOutputField extends React.Component {
 
     static defaultProps = {
         ioCaption: "Eingabe / Ausgabe",
-        formatted: true,
+        formatted: true, format: {},
         onChange: () => { alert("no change handler for io field!") },
-        alphabet: "" // should be overwritten by apps using an alphabet
+        alphabet: "", // should be overwritten by apps using an alphabet
+        readOnly: false
     }
 
     state = {
@@ -27,25 +28,27 @@ class InputOutputField extends React.Component {
         return <Tab.Container activeKey={this.state.activeTab} onSelect={(ek) => this.onTabSelect(ek)}>
             <Card>
                 <Card.Header>
-                    <Nav className="flex-column flex-md-row" variant="pills">
+                    <Nav variant="pills">
                         <Nav.Item>
                             <Nav.Link eventKey="rawvalue">{this.props.ioCaption}</Nav.Link>
                         </Nav.Item>
+                        {this.props.formatted &&
                         <Nav.Item>
                             <Nav.Link eventKey="formatted">Formatted</Nav.Link>
-                        </Nav.Item>
+                        </Nav.Item>}
                     </Nav>
                 </Card.Header>
                 <Card.Body>
                     <Tab.Content>
                         <Tab.Pane eventKey="rawvalue">
                             <Form.Control as="textarea" rows={4} value={this.props.rawValue} onChange={(e) => this.onRawValueChange(e)} spellCheck={false}
-                                isValid={(this.props.rawValue.length > 0)} isInvalid={!(this.props.rawValue.length > 0)} />
+                                isValid={(this.props.rawValue.length > 0)} isInvalid={!(this.props.rawValue.length > 0)} readOnly={this.props.readOnly} />
                         </Tab.Pane>
+                        {this.props.formatted &&
                         <Tab.Pane eventKey="formatted">
                             <Form.Control as="textarea" rows={4} value={formattedValue} readOnly spellCheck={false} 
                                 isValid={(formattedValue.length > 0)} isInvalid={!(formattedValue.length > 0)} />
-                        </Tab.Pane>
+                        </Tab.Pane>}
                     </Tab.Content>
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-between align-items-end">
@@ -83,14 +86,15 @@ class InputOutputField extends React.Component {
         let alphabet = this.props.alphabet
         let format = this.props.format
 
-        // todo: this is "show only alphabet chars". this should be "also show non alp chars"
-        if(format.keepnonalp) value = Array.from(value).filter(c => alphabet.includes(c)).join("") || ""
+        if(format.removeblanks) value = Array.from(value).filter(c => c != " ").join("") || ""
+        if(format.alpcharsonly) value = Array.from(value).filter(c => alphabet.includes(c)).join("") || ""
+        if(format.convtoupper) value = Array.from(value).map(c => c.toUpperCase()).join("") || ""
 
         // todo: might add more formaters here
 
         // this should always be last
         if(format.fiveblocks) value = value.match(/.{1,5}/g)?.join(" ") || ""
-        return value.toString()
+        return value?.toString() || ""
     }
 
 }

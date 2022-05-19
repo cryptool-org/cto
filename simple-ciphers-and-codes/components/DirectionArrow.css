@@ -1,11 +1,29 @@
-@keyframes flip {
-    0% { transform: rotate(90deg) }
-    to { transform: rotate(270deg) }
+@media (max-width: 1200px) {
+
+    @keyframes flip {
+        0% { transform: rotate(180deg) }
+        to { transform: rotate(0deg) }
+    }
+
+    @keyframes flop {
+        0% { transform: rotate(0deg) }
+        to { transform: rotate(180deg) }
+    }
+
 }
 
-@keyframes flop {
-    0% { transform: rotate(270deg) }
-    to { transform: rotate(90deg) }
+@media (min-width: 1200px) {
+
+    @keyframes flip {
+        0% { transform: rotate(90deg) }
+        to { transform: rotate(270deg) }
+    }
+
+    @keyframes flop {
+        0% { transform: rotate(270deg) }
+        to { transform: rotate(90deg) }
+    }
+
 }
 
 .direction-arrow > svg {

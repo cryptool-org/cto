@@ -7,7 +7,8 @@ module.exports = (env, argv) => {
 
         // add an entry for every new application here
         entry: {
-            "atbash": "./applications/atbash/index.js"
+            "atbash": "./applications/atbash/index.js",
+            "railfence": "./applications/railfence/index.js"
         },
 
         // everything will be built to "dist/<appname>"

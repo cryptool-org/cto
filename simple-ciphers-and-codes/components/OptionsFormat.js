@@ -15,14 +15,16 @@ class OptionsFormat extends React.Component {
      */
 
     static defaultProps = {
-        initialFormat: { fiveblocks: true, keepnonalp: false },
+        initialFormat: { fiveblocks: true, alpcharsonly: false },
         onFormatChange: () => alert("no format change handler!"),
         idPrefix: (Math.random()+1).toString(36).substring(2)
     }
 
     state = {
+        removeblanks: this.props.initialFormat.removeblanks,
         fiveblocks: this.props.initialFormat.fiveblocks,
-        keepnonalp: this.props.initialFormat.keepnonalp
+        alpcharsonly: this.props.initialFormat.alpcharsonly,
+        convtoupper: this.props.initialFormat.convtoupper
     }
 
     render() {
@@ -31,10 +33,14 @@ class OptionsFormat extends React.Component {
                 <FontAwesomeIcon icon={faHighlighter} /> Ausgabe formatieren
             </Card.Header>
             <Card.Body>
-                <Form.Check id={this.props.idPrefix + "fiveblocks"} data-key="fiveblocks" label="5er-Blöcke" inline 
+                <Form.Check id={this.props.idPrefix + "removeblanks"} data-key="removeblanks" label="Leerzeichen rausfiltern" inline 
+                    checked={this.state.removeblanks} onChange={(e) => this.handleCheckboxChange(e)} />
+                <Form.Check id={this.props.idPrefix + "fiveblocks"} data-key="fiveblocks" label="In 5er-Blöcken anzeigen" inline 
                     checked={this.state.fiveblocks} onChange={(e) => this.handleCheckboxChange(e)} />
-                <Form.Check id={this.props.idPrefix + "keepnonalp"} data-key="keepnonalp" label="Nicht im Alphabet enthaltene Zeichen behalten" inline 
-                    checked={this.state.keepnonalp} onChange={(e) => this.handleCheckboxChange(e)} />
+                <Form.Check id={this.props.idPrefix + "alpcharsonly"} data-key="alpcharsonly" label="Auf Alphabet-Zeichen filtern" inline 
+                    checked={this.state.alpcharsonly} onChange={(e) => this.handleCheckboxChange(e)} />
+                <Form.Check id={this.props.idPrefix + "convtoupper"} data-key="convtoupper" label="In Großbuchstaben umwandeln" inline 
+                    checked={this.state.convtoupper} onChange={(e) => this.handleCheckboxChange(e)} />
             </Card.Body>
         </Card>
     }

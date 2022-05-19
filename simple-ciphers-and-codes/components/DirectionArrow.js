@@ -18,7 +18,7 @@ class DirectionArrow extends React.Component {
     }
 
     render() {
-        return <div className={(this.props.direction ? "flip" : "flop") + " direction-arrow h-100 d-flex flex-column justify-content-center align-items-center"}>
+        return <div className={(this.props.direction ? "flip" : "flop") + " direction-arrow h-100 d-flex flex-row flex-xl-column justify-content-center align-items-center p-3"}>
 
             <OverlayTrigger overlay={<Tooltip>Type to change direction</Tooltip>}>
 
@@ -29,7 +29,7 @@ class DirectionArrow extends React.Component {
             </OverlayTrigger>
 
             <Button variant="primary" size="sm" onClick={() => this.props.onBtnClick()}
-                    className={"mt-3 text-nowrap" + (this.props.showBtn ? "" : " d-none") }>
+                    className={"ms-3 ms-xl-0 mt-xl-3 text-nowrap" + (this.props.showBtn ? "" : " d-none") }>
                 <FontAwesomeIcon icon={faScrewdriverWrench} /> Einstellungen
             </Button>
 
