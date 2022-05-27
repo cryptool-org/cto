@@ -42,18 +42,22 @@ class DefaultGUI extends React.Component {
         encrypt: true, // false => decrypt
         alphabet: this.props.initialAlphabet, 
         key: this.props.initialKey,
-        cleartextValue: this.props.initialCleartext,
-        ciphertextValue: this.props.algorithm.encrypt({ value: this.props.initialCleartext, 
-            alphabet: this.props.initialAlphabet, key: this.props.initialKey }),
+        cleartext: this.props.initialCleartext,
+        ciphertext: "", // -> componentDidMount
         inputOutputFormat: this.props.initialFormat,
         showOpenOptionsModalBtn: this.props.showOpenOptionsModalBtn
+    }
+
+    componentDidMount() {
+        // encrypt first time when component has initialized
+        this.handleCleartextChange(this.props.initialCleartext)
     }
 
     render() {
         return <>
             <Row>
                 <Col xl={5}>
-                    <InputOutputField ioCaption={this.props.cleartextCaption} rawValue={this.state.cleartextValue} 
+                    <InputOutputField ioCaption={this.props.cleartextCaption} rawValue={getReturnValueHelper(this.state.cleartext)} 
                         formatted={this.props.showIOFormatOptions} format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
                         onChange={(value) => this.handleCleartextChange(value)} />
                 </Col>
@@ -62,7 +66,7 @@ class DefaultGUI extends React.Component {
                         onBtnClick={() => this.handleModalBtnClick()} onArrowClick={() => this.setState({ encrypt: !this.state.encrypt })} />
                 </Col>
                 <Col xl={5}>
-                    <InputOutputField ioCaption={this.props.ciphertextCaption} rawValue={this.state.ciphertextValue} 
+                    <InputOutputField ioCaption={this.props.ciphertextCaption} rawValue={getReturnValueHelper(this.state.ciphertext)} 
                         formatted={this.props.showIOFormatOptions} format={this.state.inputOutputFormat} alphabet={this.state.alphabet} 
                         onChange={(value) => this.handleCiphertextChange(value)} />
                 </Col>
@@ -94,24 +98,25 @@ class DefaultGUI extends React.Component {
     }
 
     handleCleartextChange(value) {
-        this.setState({ encrypt: true, cleartextValue: value, ciphertextValue: 
-            this.props.algorithm.encrypt({ value, alphabet: this.state.alphabet, key: this.state.key }) })
+        // todo: check if everything is valid? :D
+        let encryption = this.props.algorithm.encrypt({ value, alphabet: this.state.alphabet, key: this.state.key })
+        this.setState({ encrypt: true, cleartext: value, ciphertext: encryption })
     }
 
     handleCiphertextChange(value) {
-        this.setState({ encrypt: false, ciphertextValue: value, cleartextValue: 
-            this.props.algorithm.decrypt({ value, alphabet: this.state.alphabet, key: this.state.key }) })
+        let decryption = this.props.algorithm.decrypt({ value, alphabet: this.state.alphabet, key: this.state.key })
+        this.setState({ encrypt: false, ciphertext: value, cleartext: decryption })
     }
 
     handleOptionsKeyChange(value) {
         let params = { alphabet: this.state.alphabet, key: value }, newState = { key: value }
         if(this.state.encrypt == true) {
-            params.value = this.state.cleartextValue
-            newState.ciphertextValue = this.props.algorithm.encrypt(params)
+            params.value = getReturnValueHelper(this.state.cleartext)
+            newState.ciphertext = this.props.algorithm.encrypt(params)
         }
         if(this.state.encrypt == false) {
-            params.value = this.state.ciphertextValue
-            newState.cleartextValue = this.props.algorithm.decrypt(params)
+            params.value = getReturnValueHelper(this.state.ciphertext)
+            newState.cleartext = this.props.algorithm.decrypt(params)
         }
         this.setState(newState, () => this.props.onOptionsKeyChange(value))
     }
@@ -119,12 +124,12 @@ class DefaultGUI extends React.Component {
     handleOptionsAlphabetChange(value) {
         let params = { alphabet: value, key: this.state.key }, newState = { alphabet: value }
         if(this.state.encrypt == true) {
-            params.value = this.state.cleartextValue
-            newState.ciphertextValue = this.props.algorithm.encrypt(params)
+            params.value = getReturnValueHelper(this.state.cleartext)
+            newState.ciphertext = this.props.algorithm.encrypt(params)
         }
         if(this.state.encrypt == false) {
-            params.value = this.state.ciphertextValue
-            newState.cleartextValue = this.props.algorithm.decrypt(params)
+            params.value = getReturnValueHelper(this.state.ciphertext)
+            newState.cleartext = this.props.algorithm.decrypt(params)
         }
         this.setState(newState, () => this.props.onOptionsAlphabetChange(value))
     }
@@ -133,6 +138,13 @@ class DefaultGUI extends React.Component {
         this.setState({ inputOutputFormat: value }, () => this.props.onOptionsFormatChange(value))
     }
 
+}
+
+// sometimes algorithms return a string, sometimes an object (containing meta info like interim results)
+// but the gui needs a string, so here we map to the default object return property "value" if it exists
+const getReturnValueHelper = (clearOrCipherTextObject) => {
+    if(clearOrCipherTextObject.hasOwnProperty("value")) return clearOrCipherTextObject.value
+    else return (clearOrCipherTextObject || "").toString()
 }
 
 export default DefaultGUI

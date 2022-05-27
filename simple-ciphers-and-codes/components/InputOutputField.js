@@ -16,7 +16,7 @@ class InputOutputField extends React.Component {
         formatted: true, format: {},
         onChange: () => { alert("no change handler for io field!") },
         alphabet: "", // should be overwritten by apps using an alphabet
-        readOnly: false
+        readOnly: false, rows: 4
     }
 
     state = {
@@ -38,15 +38,15 @@ class InputOutputField extends React.Component {
                         </Nav.Item>}
                     </Nav>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className="p-0">
                     <Tab.Content>
                         <Tab.Pane eventKey="rawvalue">
-                            <Form.Control as="textarea" rows={4} value={this.props.rawValue} onChange={(e) => this.onRawValueChange(e)} spellCheck={false}
+                            <Form.Control as="textarea" rows={this.props.rows} value={this.props.rawValue} onChange={(e) => this.onRawValueChange(e)} spellCheck={false}
                                 isValid={(this.props.rawValue.length > 0)} isInvalid={!(this.props.rawValue.length > 0)} readOnly={this.props.readOnly} />
                         </Tab.Pane>
                         {this.props.formatted &&
                         <Tab.Pane eventKey="formatted">
-                            <Form.Control as="textarea" rows={4} value={formattedValue} readOnly spellCheck={false} 
+                            <Form.Control as="textarea" rows={this.props.rows} value={formattedValue} readOnly spellCheck={false} 
                                 isValid={(formattedValue.length > 0)} isInvalid={!(formattedValue.length > 0)} />
                         </Tab.Pane>}
                     </Tab.Content>

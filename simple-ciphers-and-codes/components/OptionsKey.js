@@ -45,7 +45,7 @@ class OptionsKey extends React.Component {
                         <Form.Control 
                             as={(values.type == "string") ? "textarea" : undefined} rows={2} value={values.value} spellCheck={false}
                             id={this.props.idPrefix + key} type={values.type} onChange={(e) => this.handleKeyChange(e, key)}
-                            isValid={("" + values.value).length > 0} isInvalid={!(("" + values.value).length > 0)}
+                            isValid={values.valid == true || values.isValid?.(values.value)} isInvalid={!(values.valid == true || values.isValid?.(values.value))}
                         />
                     </Form.Group>)}
                 </Row>
@@ -55,7 +55,9 @@ class OptionsKey extends React.Component {
 
     handleKeyChange(event, key) {
         let keys = this.state.key
-        keys.set(key, { ...keys.get(key), value: event.target.value })
+        let newValue = event.target.value
+        let isValid = keys.get(key)?.isValid?.(newValue)
+        keys.set(key, { ...keys.get(key), value: newValue, valid: isValid })
         this.setState({ key: keys }, () => this.props.onKeyChange(keys))
     }
 

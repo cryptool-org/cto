@@ -9,17 +9,24 @@ import "./translations"
 
 class RailfenceComponent extends React.Component {
 
+    /**
+     * props are inherited from DefaultGUI state
+     */
+
     render() {
         return <Row className="mt-5">
             <Col xs={12}>
-                <InputOutputField ioCaption="Jägerzaun" rawValue={this.formatAsRailfence()} 
-                    formatted={false} onChange={() => { /* empty */ }} />
+                <InputOutputField ioCaption="Jägerzaun" rawValue={this.formatAsRailfence()} formatted={false}
+                    rows={(this.props.ciphertext?.railfenceRows || this.props.cleartext?.railfenceRows)?.length} 
+                    onChange={() => { /* empty */ }} />
             </Col>
         </Row>
     }
 
     formatAsRailfence() {
-        return "todoooo :D  " + JSON.stringify(this.props.key)
+        let rows = this.props.ciphertext?.railfenceRows || this.props.cleartext?.railfenceRows
+        if(!rows) return "error: railfenceRows props missing"
+        else return rows.join("\n")
     }
 
 }
