@@ -10,6 +10,8 @@ import OptionsAlphabet from "./OptionsAlphabet"
 import OptionsKey from "./OptionsKey"
 import OptionsFormat from "./OptionsFormat"
 
+export const DefaultGUIContext = React.createContext()
+
 class DefaultGUI extends React.Component {
 
     modalObj = undefined
@@ -72,7 +74,9 @@ class DefaultGUI extends React.Component {
                 </Col>
             </Row>
 
-            { React.Children.map(this.props.children, child => React.cloneElement(child, this.state)) }
+            <DefaultGUIContext.Provider value={this.state}>
+                {this.props.children}
+            </DefaultGUIContext.Provider>
             
             <OptionsModal onMounted={(modal) => this.modalObj = modal} 
                     onPin={() => this.setState({ showOpenOptionsModalBtn: false })}
@@ -99,12 +103,14 @@ class DefaultGUI extends React.Component {
 
     handleCleartextChange(value) {
         // todo: check if everything is valid? :D
-        let encryption = this.props.algorithm.encrypt({ value, alphabet: this.state.alphabet, key: this.state.key })
+        let key = getKeyMapDefaultKey(this.state.key)
+        let encryption = this.props.algorithm.encrypt({ value, alphabet: this.state.alphabet, key: key })
         this.setState({ encrypt: true, cleartext: value, ciphertext: encryption })
     }
 
     handleCiphertextChange(value) {
-        let decryption = this.props.algorithm.decrypt({ value, alphabet: this.state.alphabet, key: this.state.key })
+        let key = getKeyMapDefaultKey(this.state.key)
+        let decryption = this.props.algorithm.decrypt({ value, alphabet: this.state.alphabet, key: key })
         this.setState({ encrypt: false, ciphertext: value, cleartext: decryption })
     }
 
@@ -145,6 +151,13 @@ class DefaultGUI extends React.Component {
 const getReturnValueHelper = (clearOrCipherTextObject) => {
     if(clearOrCipherTextObject.hasOwnProperty("value")) return clearOrCipherTextObject.value
     else return (clearOrCipherTextObject || "").toString()
+}
+
+// sometimes algorithms have multiple key parameters and sometimes only one. both will be organized using 
+// a map. if the entry "value" is set (which is the default), we will return the direct value instead of map
+const getKeyMapDefaultKey = (keyMap) => {
+    if(keyMap.size == 1 && keyMap.has("value")) return keyMap.get("value").value
+    else return keyMap
 }
 
 export default DefaultGUI

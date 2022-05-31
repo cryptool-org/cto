@@ -8,6 +8,7 @@ module.exports = (env, argv) => {
         // add an entry for every new application here
         entry: {
             "atbash": "./applications/atbash/index.js",
+            "caesar": "./applications/caesar/index.js",
             "railfence": "./applications/railfence/index.js",
             "redefence": "./applications/redefence/index.js"
         },
@@ -33,6 +34,10 @@ module.exports = (env, argv) => {
             }, {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
+            }, {
+                // import .py files as raw text
+                test: /\.py$/,
+                type: "asset/source"
             }]
         },
 
@@ -52,6 +57,8 @@ module.exports = (env, argv) => {
         ]
 
     }
+
+    // todo: find solution for different dependencies in different apps (like pyodide in caesar)
 
     // create index.html files in memory for when running `npm run serve`
     // (makes the app bundles available at http://localhost:4200/<appname>)

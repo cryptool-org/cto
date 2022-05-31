@@ -1,5 +1,5 @@
 {
-    "name": "simple-ciphers-and-codes",
+    "name": "default-apps",
     "version": "0.4.2",
     "description": "Base plugin for simple CTO ciphers and codes",
     "scripts": {
@@ -7,9 +7,11 @@
         "build": "webpack --mode production && rm -f dist/**/*.LICENSE.txt"
     },
     "dependencies": {
+        "@codemirror/lang-python": "^0.20.0",
         "@fortawesome/fontawesome-svg-core": "^6.1.1",
         "@fortawesome/free-solid-svg-icons": "^6.1.1",
         "@fortawesome/react-fontawesome": "^0.1.18",
+        "@uiw/react-codemirror": "^4.7.0",
         "react": "^18.1.0",
         "react-bootstrap": "^2.3.1",
         "react-dom": "^18.1.0"
