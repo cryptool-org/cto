@@ -1,0 +1,98 @@
+{
+    "heading" : "SHA 256 Algorithmus",
+    "description" : "Hier wird die Funktionsweise des Hashing-Algorithmus SHA256 beleuchtet und erklärt. Fügen Sie etwas in das Textfeld ein und betätigen Sie den Button.",
+    "author" : "Autor: Jan-Niklas Jeske",
+
+    "inputPlaceholder" : "Füge Daten ein, die gehasht werden sollen...",
+    "hashing_button" : "Eingabe hashen!",
+
+    "table1_text": "Die Eingabedaten werden in ihre einzelnen Zeichen zerlegt. Für jedes Zeichen wird dessen Codepoint ermittelt. Der Codepoint ist ein Zahlenwert, der das jeweilige Zeichen eindeutig identifiziert. Schließlich wird dieser Zahlenwert in die Binärdarstellung konvertiert. Für die binäre Darstellung eines Zeichens durch dessen Codepoint legen wir eine Größe von 8 Bit (1 Byte) fest. Um dies zu gewährleisten, wird die Binärzahl jedes Zeichens (sofern dies notwendig ist) auf 1 Byte aufgefüllt. Links werden also 0en angefügt. Sie haben keinen Einfluss auf den Wert der Binärzahl.",
+    "table1_column1" : "Zeichen",
+    "table1_column2" : "Codepoint",
+    "table1_column3" : "Binärzahl (1 Byte)",
+
+    "table2_text" : "Die Nachrichtengröße beschreibt wie viele Bits benutzt werden, um die Nachricht darzustellen. Es geht also um die Anzahl der Bits aus der 3. Spalte der oberen Tabelle. Die Nachrichtengröße wird auch binär dargestellt und schließlich auf eine Größe von 64 Bits aufgefüllt.",
+    "table2_row1" : "Nachrichtengröße",
+    "table2_row2" : "In Binärdarstellung",
+    "table2_row3" : "Auf 8 Byte (64 Bits) aufgefüllt",
+
+    "final_message1" : "Wir haben die Nachricht sowie die Länge dieser Nachricht in der binären Darstellung. Kurzgesagt müssen wir diese beiden Komponenten nun zusammenführen und dafür sorgen, dass wir eine Größe erhalten, die einem Vielfachen von 512 Bits entsprechen. Das Ziel ist es ein oder mehrere Chunks zu generieren. Diese Chunks sind die Grundlage des Algorithmus. Jeder Chunk muss die feste Größe von 512 Bits betragen.",
+    "final_message2" : "Zuerst wird die binäre Nachricht zu einem Packet zusammengefasst. Jedes Byte wird also konkateniert. Anschließend fügen wir eine 1 an das rechte Ende an.",
+    "final_message3" : "Was nun passiert ist abhängig von der Nachrichtengröße.",
+
+    "final_message_case1_1" : "Fall 1",
+    "final_message_case1_2" : "Nachrichtengröße &lt; 448",
+    "final_message_case1_3" : "Wir fügen 0en an das rechte Ende an, bis wir eine Größe von 448 Bits erreichen. Schließlich fügen wir an das Ende die binäre Nachrichtengröße an. Nun sind wir fertig. Wir erhalten einen Datenblock, also einen einzelnen Chunk. Aus diesem Chunk wird der Hashwert berechnet.",
+
+    "final_message_case2_1" : "Fall 2",
+    "final_message_case2_2" : "448 &le; Nachrichtengröße &le; 512",
+    "final_message_case2_3" : "Wir fügen 0en an das rechte Ende an, bis wir eine Größe von 1024 Bits erreichen. 1024 Bits sind bereits ein Vielfaches von 512, daher ersetzen wir die letzten 64 Bits von den aufgefüllten 0en durch die Nachrichtengröße. Anschließend teilen wir die 1024 Bits in zwei Chunks der Größe 512 auf.",
+
+    "final_message_case3_1" : "Fall 3",
+    "final_message_case3_2" : "512 &lt; Nachrichtengröße",
+    "final_message_case3_3" : "Wir fügen solange 0en an das rechte Ende an, bis wir ein Vielfaches von 512 Bits erreichen. Schließlich ersetzen wir die letzten 64 Bits der aufgefüllten 0en durch die Nachrichtengröße und teilen die Daten in Chunks der Größe 512 Bits auf.",
+
+    "step1_1" : "Schritt 1",
+    "step1_2" : "Wir konkatenieren das Byte jedes Zeichens unserer Eingabe.",
+
+    "step2_1" : "Schritt 2",
+    "step2_2" : "Wir fügen eine einzelne 1 an das rechte an. Es ist eine Markierung für das Ende unserer eigentlichen Nachricht.",
+
+    "step3_1" : "Schritt 3",
+    "step3_2" : "Wir fügen 0en an das rechte Ende an, bis wir eine Größe erreichen, die ein Vielfaches von 512 Bits beträgt. Dies wird in Fall 1 anders erreicht.",
+
+    "step4_1" : "Schritt 4",
+    "step4_2" : "Die binäre Nachrichtengröße wird an den Datenblock angehängt.",
+
+    "step5_1" : "Schritt 5",
+    "step5_2" : "Hier wird der gesamte Datensatz in die einzelnen Chunks von 512 Bits aufgeteilt. In Fall 1 ist dies nicht notwendig.",
+
+    "loop1_1" : "Der Algorithmus ist in zwei Schleifen aufgeteilt. Für jeden Chunk werden beide Schleifen einmal ausgeführt. Im ersten Teil wird die Funktionsweise der ersten Schleife dargestellt. Bevor die Schleife arbeitet, wird der jeweilige ausgewählte Chunk nochmal in einzelne Chunks von 32 Bit unterteilt. Anschließend werden 48 32-Bit Chunks, bestehend aus 0en hinzugefügt.",
+    "loop1_2" : "rotr(): Lässt die Bits des Chunks um die angegebene Anzahl nach rechts rotieren. Die Bits die rechts aus dem Chunk fliegen, schieben sich von links wieder rein.",
+    "loop1_3" : "shr(): Verschiebt die Bits nach rechts. Die Bits die rechts aus dem Chunk fliegen gehen verloren und werden auf der linken Seite durch 0en ersetzt.",
+    "loop1_4" : "add(): Diese Methode addiert Chunks bitweise.",
+    "loop1_5" : "xor(): Verknüpft Chunks auf Grundlage der Exklusiv-Oder-Verknüpfung.",
+
+    "loop1_button_reset" : "Zurücksetzen",
+    "loop1_button_play" : "Abspielen",
+
+
+    "loop2_1" : "Hier wird die 2. Schleife dargestellt. Das Prinzip ist folgendes:<br>",
+    "loop2_2" : "Für jeden Chunk wird als letztes diese 2. Schleife ausgeführt. Sie berechnet 8 Konstanten. Diese 8 Konstanten werden für den nächsten Chunk an die 2. Schleife weitergegeben und dienen als Fundament für die nächste Konstanten-Berechnung. ",
+    "loop2_3" : "Betrachtet man den letzten Chunk, so werden die 8 berechneten Konstanten der 2. Schleife nicht weitergegeben, sondern sie repräsentieren bereits den 256 Bit großen Hashwert. ",
+    "loop2_4" : "Die 2. Schleife benötigt für die Berechnung der Konstanten 64 Schritte. Es ist kein Zufall, dass der Chunk sowie die Konstantenmenge K 64 Datenblöcke beinhalten. Jeder Datenblock wird mit einberechnet. ",
+    "loop2_5" : "In Schritt 1 repräsentiert die Spalte (Vorherige Konstanten) die 8 Konstanten die im Chunk von der 2. Schleife zuvor berechnet wurden. Handelt es sich um den ersten Chunk, so entspricht die Spalte der Konstantenmenge H. ",
+    "loop2_6" : "Jedes mal, wenn in einem einzelnen Schritt die neuen Konstanten berechnet wurden, springen sie in der nächsten Runde auf den Platz der vorherigen Konstanten und werden wieder verechnet. Diesmal mit dem nächsten Datenblock des Chunks und der Konstantenmenge K.",
+
+    "dynamic_title_loop1" : "Schleife 1",
+    "dynamic_title_loop2" : "Schleife 2",
+
+    "dynamic_button_loop1_1" : "Zurücksetzen",
+    "dynamic_button_loop1_2" : "Abspielen",
+
+    "dynamic_computation_description" : "Wird mit folgendem Ergebnis ersetzt:",
+
+    "dynamic_computation_loop2_description1" : "6 der vorherigen Konstanten werden in die neuen Konstanten-Menge übernommen.",
+    "dynamic_computation_loop2_description2" : "Die 3 blauen, sowie die 3 gelben Chunks werden um einen Platz nach unten verschoben und in die neue Konstanten-Menge übernommen.",
+
+    "dynamic_loop2_header1" : "Position",
+    "dynamic_loop2_header2" : "Vorherige Konstanten",
+    "dynamic_loop2_header3" : "Neue Konstanten",
+
+    "dynamic_lastChunksComputation1" : "Die 2. Schleife ist fertig.",
+    "dynamic_lastChunksComputation2" : "Die berechneten Konstanten sind in der unteren Tabelle (3. Spalte) nochmals zu sehen. ",
+    "dynamic_lastChunksComputation3" : "Diese Konstanten werden mit der berechneten Summe des vorherigen Chunks (Summe (vorheriger Chunk)) addiert und bilden für diesen Schleifendurchlauf die neue Summe, die neuen 8 Konstanten-Werte. ",
+    "dynamic_lastChunksComputation4" : "Der letzte Chunk wurde nun vollständig verarbeitet. Die 8 Konstanten werden nicht weitergegeben, sie enthalten nun unseren Hashwert.",
+    "dynamic_lastChunksComputation5" : "Summe",
+    "dynamic_lastChunksComputation6" : "Summe (vorheriger Chunk)",
+    "dynamic_lastChunksComputation7" : "Neue Konstanten",
+    "dynamic_lastChunksComputation8" : "Die Summe jeder Konstante wird in die Hexadezimal-Darstellung konvertiert und konkateniert:",
+    "dynamic_lastChunksComputation9" : "Hexadezimal",
+    "dynamic_lastChunksComputation10" : "Der Hashwert:",
+
+    "dynamic_lastChunksComputation11" : "Neu berechnete Konstanten",
+    "dynamic_lastChunksComputation12" : "ist das",
+    "dynamic_lastChunksComputation13" : "Element der Konstantenmenge K (im Tab (Konstanten) zu finden),",
+    "dynamic_lastChunksComputation14" : "Element des",
+    "dynamic_lastChunksComputation15" : "oben"
+}

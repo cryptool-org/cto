@@ -1,0 +1,16 @@
+{
+
+    "name": "sha2",
+
+    "styles": [
+        "styles.css"
+    ],
+
+    "scripts": [
+        "sha2.js",
+        "tools.js"
+    ],
+
+    "html": "fragment-%lang%.html"
+
+}

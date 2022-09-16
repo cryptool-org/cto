@@ -1,0 +1,305 @@
+<div class="cryptool-container">
+
+    <script>
+        dynamic1 = '${{ sha2.dynamic_title_loop1 }}$'
+        dynamic2 = '${{ sha2.dynamic_title_loop2 }}$'
+        dynamic3 = '${{ sha2.dynamic_button_loop1_1 }}$'
+        dynamic4 = '${{ sha2.dynamic_button_loop1_2 }}$'
+        dynamic5 = '${{ sha2.dynamic_computation_description }}$'
+        dynamic6 = '${{ sha2.dynamic_computation_loop2_description1 }}$'
+        dynamic7 = '${{ sha2.dynamic_computation_loop2_description2 }}$'
+        dynamic8 = '${{ sha2.dynamic_loop2_header1 }}$'
+        dynamic9 = '${{ sha2.dynamic_loop2_header2 }}$'
+        dynamic10 = '${{ sha2.dynamic_loop2_header3 }}$'
+        dynamic11 = '${{ sha2.dynamic_lastChunksComputation1 }}$'
+        dynamic12 = '${{ sha2.dynamic_lastChunksComputation2 }}$'
+        dynamic13 = '${{ sha2.dynamic_lastChunksComputation3 }}$'
+        dynamic14 = '${{ sha2.dynamic_lastChunksComputation4 }}$'
+        dynamic15 = '${{ sha2.dynamic_lastChunksComputation5 }}$'
+        dynamic16 = '${{ sha2.dynamic_lastChunksComputation6 }}$'
+        dynamic17 = '${{ sha2.dynamic_lastChunksComputation7 }}$'
+        dynamic18 = '${{ sha2.dynamic_lastChunksComputation8 }}$'
+        dynamic19 = '${{ sha2.dynamic_lastChunksComputation9 }}$'
+        dynamic20 = '${{ sha2.dynamic_lastChunksComputation10 }}$'
+        dynamic21 = '${{ sha2.dynamic_lastChunksComputation11 }}$'
+        dynamic22 = '${{ sha2.dynamic_lastChunksComputation12 }}$'
+        dynamic23 = '${{ sha2.dynamic_lastChunksComputation13 }}$'
+        dynamic24 = '${{ sha2.dynamic_lastChunksComputation14 }}$'
+        dynamic25 = '${{ sha2.dynamic_lastChunksComputation15 }}$'
+    </script>
+
+
+    <p>${{ sha2.description }}$</p>
+
+    <hr class="separator">
+
+    <div>
+        <textarea class="form-control" id="hash_input" onkeypress="auto_grow_textfield(this)" onkeyup="auto_grow_textfield(this)" placeholder="${{sha2.inputPlaceholder}}$"></textarea>
+
+        <div style="text-align: center">
+            <button
+            type="button"
+            onClick="algo_info = sha256(document.getElementById('hash_input').value), createInputPreprocessingData(), fillMessagePreprocessingInfos(),
+            createInputLengthPreprocessingData(), createFinalInputPreprocessingData(), spawnRange(), createAlgorithmVisualizationInitial(), spawnpreloop1(), spawnpreloop2(),
+            createAlgorithmVisualization2()"
+            class="btn btn-secondary"
+            style="margin-top: 10px;">${{sha2.hashing_button}}$</button>
+        </div>
+
+    </div>
+
+    <hr class="separator">
+
+    <div>
+        <div id="message_preprocessing"></div>
+
+        <script>
+            function createInputPreprocessingData() {
+                if((algo_info.input_to_bit_translation).length) {
+
+                    let data = '<p>${{ sha2.table1_text }}$</p>'
+
+                    data += '<table><tr><th>${{ sha2.table1_column1 }}$</th><th>${{ sha2.table1_column2 }}$</th><th>${{ sha2.table1_column3 }}$</th></tr>'
+
+                    for(let c = 0; c<algo_info.input_to_bit_translation.length; c++) {
+                        data += '<tr>'
+
+                        if(algo_info.input_to_bit_translation[c][1] == 32) {
+                            data += '<td>_space_</td>'
+
+                        }else if(algo_info.input_to_bit_translation[c][1] == 9) {
+                            data += '<td>_character_tabulation_</td>'
+
+                        }else if(algo_info.input_to_bit_translation[c][1] == 10) {
+                            data += '<td>_line_feed_</td>'
+
+                        }else if(algo_info.input_to_bit_translation[c][1] == 11) {
+                            data += '<td>_line_tabulation_</td>'
+
+                        }else if(algo_info.input_to_bit_translation[c][1] == 13) {
+                            data += '<td>_carriage_return_</td>'
+
+                        }else if(algo_info.input_to_bit_translation[c][1] == 133) {
+                            data += '<td>_next_line_</td>'
+
+                        }else if(algo_info.input_to_bit_translation[c][1] == 8232) {
+                            data += '<td>_line_separator_</td>'
+
+                        }else if(algo_info.input_to_bit_translation[c][1] == 8233) {
+                            data += '<td>_paragraph_separator_</td>'
+
+                        }else {
+                            data += '<td>' + algo_info.input_to_bit_translation[c][0] + '</td>'
+                        }
+
+                        data += '<td>' + algo_info.input_to_bit_translation[c][1] + '</td>'
+                        data += '<td>' + algo_info.input_to_bit_translation[c][2] + '</td>'
+                        data += '</tr>'
+                    }
+
+                    data += '</table>'
+
+                    document.getElementById("message_preprocessing").innerHTML = data
+
+                }
+            }
+
+        </script>
+
+    </div>
+
+
+    <div>
+        <div id="input_length_preprocessing"></div>
+
+        <script>
+            function createInputLengthPreprocessingData() {
+                if(algo_info.input_length_preprocessing.length) {
+
+                    let data = '<hr class="separator">'
+
+                    data += '<p>${{ sha2.table2_text}}$</p>'
+
+                    data += '<table><tr><td style="color: rgb(20, 179, 20)">'
+                    data += '${{ sha2.table2_row1}}$</td>'
+                    data += '<td>' + algo_info.input_length_preprocessing[0][0] + '</td></tr><tr>'
+                    data += '<td style="color: rgb(20, 179, 20)">${{ sha2.table2_row2}}$</td><td>' + algo_info.input_length_preprocessing[0][1] + '</td></tr><tr>'
+                    data += '<td style="color: rgb(20, 179, 20)">${{ sha2.table2_row3}}$</td><td>' + algo_info.input_length_preprocessing[0][2] + '</td></tr></table>'
+
+                    document.getElementById("input_length_preprocessing").innerHTML = data
+                }
+            }
+        </script>
+
+    </div>
+
+    <script>
+
+        function fillMessagePreprocessingInfos() {
+            let data = '<hr class="separator">'
+
+            data += '<p>${{ sha2.final_message1 }}$</p>'
+            data += '<p>${{ sha2.final_message2}}$</p>'
+            data += '<p>${{ sha2.final_message3}}$</p>'
+
+
+            data += '<table>'
+            data += '<tr>'
+            data += '<td style="color: rgb(20, 179, 20)">${{ sha2.final_message_case1_1}}$</td>'
+            data += '<td>${{ sha2.final_message_case1_2}}$</td>'
+            data += '<td>${{ sha2.final_message_case1_3}}$</td>'
+            data += '</tr>'
+            data += '<tr>'
+            data += '<td style="color: rgb(20, 179, 20)">${{ sha2.final_message_case2_1}}$</td>'
+            data += '<td>${{ sha2.final_message_case2_2}}$</td>'
+            data += '<td>${{ sha2.final_message_case2_3}}$</td>'
+            data += '</tr>'
+            data += '<tr>'
+            data += '<td style="color: rgb(20, 179, 20)">${{ sha2.final_message_case3_1}}$</td>'
+            data += '<td>${{ sha2.final_message_case3_2}}$</td>'
+            data += '<td>${{ sha2.final_message_case3_3}}$</td>'
+            data += '</tr>'
+            data += '</table>'
+            data += '<br><br>'
+
+            document.getElementById("fillMessagePreprocessingInfosToInsert").innerHTML = data
+        }
+
+
+    </script>
+
+ 
+    <div>
+
+        <div id="fillMessagePreprocessingInfosToInsert"></div>
+        <div id="final_input_preprocessing">
+        </div>
+
+
+        <script>
+            function createFinalInputPreprocessingData() {
+                if((algo_info.final_input_preprocessing).length && (algo_info.final_input_preprocessing_result).length) {
+                    let data = ''
+
+                    data += '<hr class="separator">'
+
+                    data += '<p style="color: rgb(20, 179, 20)">${{ sha2.step1_1 }}$</p>'
+                    data += '<p>${{ sha2.step1_2 }}$</p>'
+
+                    let temp = ''
+                    for(let c = 0; c<algo_info.final_input_preprocessing[0][0].slice().length-1; c++) {
+                        temp += [...algo_info.final_input_preprocessing[0][0].slice()][c]
+                    }
+
+                    data += '<p>' + temp + '</p>'
+                    data += '<hr class="separator">'
+
+                    data += '<p style="color: rgb(20, 179, 20)">${{ sha2.step2_1 }}$</p>'
+                    data += '<p>${{ sha2.step2_2 }}$</p>'
+
+                    temp = ''
+                    for(let c = 0; c<algo_info.final_input_preprocessing[0][0].slice().length-1; c++) {
+                        temp += [...algo_info.final_input_preprocessing[0][0].slice()][c]
+                    }
+
+                    data += '<p>' + temp + '<span style="color: red">1</span></p>'
+                    data += '<hr class="separator">'
+
+                    data += '<p style="color: rgb(20, 179, 20)">${{ sha2.step3_1 }}$</p>'
+                    data += '<p>${{ sha2.step3_2 }}$</p>'
+
+                    temp = ''
+                    for(let c = 0; c<algo_info.final_input_preprocessing[0][0].slice().length-1; c++) {
+                        temp += [...algo_info.final_input_preprocessing[0][0].slice()][c]
+                    }
+
+                    data += '<p>' + temp + '<span style="color: red">1</span>'
+
+                    temp = ''
+                    for(let c = (algo_info.final_input_preprocessing[0][0]).length; c<(algo_info.final_input_preprocessing[0][1]).length; c++) {
+                        temp += [...algo_info.final_input_preprocessing[0][1]][c]
+                    }
+
+                    data += '<span style="color: blue">' + temp + '</span></p>'
+                    data += '<hr class="separator">'
+
+                    data += '<p style="color: rgb(20, 179, 20)">${{ sha2.step4_1 }}$</p>'
+                    data += '<p>${{ sha2.step4_2 }}$</p>'
+
+                    temp = ''
+
+                    data += '<p>' + algo_info.final_input_preprocessing[0][0].slice(0, algo_info.final_input_preprocessing[0][0].length-1)
+                    data += '<span style="color: red">1</span>'
+
+                    temp = algo_info.final_input_preprocessing[0][2].slice(parseInt(algo_info.input_length_preprocessing[0][0])+1)
+                    let lastBits = temp.slice(-64)
+                    temp = temp.slice(0, temp.length-64)
+                        
+                    data += '<span style="color: blue">' + temp + '</span>'
+                    data += '<span style="color: yellow">' + lastBits + '</span>'
+                    data += '<hr class="separator">'
+
+                    data += '<p style="color: rgb(20, 179, 20)">${{ sha2.step5_1 }}$</p>'
+                    data += '<p>${{ sha2.step5_2 }}$</p>'
+
+                    for(let c = 0; c<algo_info.final_input_preprocessing_result.length; c++) {
+                        data += '<p>' + `<span style="color: rgb(20, 179, 20)">Chunk ${c+1} </span>` + algo_info.final_input_preprocessing_result[c] + '</p>'
+                    }
+
+                    data += '<hr class="separator">'
+
+                    document.getElementById("final_input_preprocessing").innerHTML = data
+
+                }
+            }
+        </script>
+
+    </div>
+
+
+    <div id="preloop1"></div>
+
+    <script>
+        function spawnpreloop1() {
+
+            let data = `<div style="text-align: center"><h3>${greenify(dynamic1)}</h3></div>`
+
+
+            data += '<p>'
+            data += '${{ sha2.loop1_2 }}$<br>'
+            data += '${{ sha2.loop1_3 }}$<br>'
+            data += '${{ sha2.loop1_4 }}$<br>'
+            data += '${{ sha2.loop1_5 }}$<br><br>'
+            data += '${{ sha2.loop1_1 }}$</p>'
+
+            document.getElementById("preloop1").innerHTML = data
+        }
+    </script>
+
+    <div id="chunk_control" style="text-align: center"></div>
+    <div id="step_control" style="text-align: center"></div>
+    <div id="algorithm_vis" style="text-align: center"></div>
+    <div id="preloop2"></div>
+
+    <script>
+        function spawnpreloop2() {
+            let data = '<hr class="separator">'
+            data += `<div style="text-align: center"><h3>${greenify(dynamic2)}</h3></div>`
+            data += '<p>${{ sha2.loop2_1 }}$<br>'
+            data += '${{ sha2.loop2_2 }}$'
+            data += '${{ sha2.loop2_3 }}$<br><br>'
+            data += '${{ sha2.loop2_4 }}$'
+            data += '${{ sha2.loop2_5 }}$<br><br>'
+            data += '${{ sha2.loop2_6 }}$'
+            data += '</p>'
+
+            document.getElementById("preloop2").innerHTML = data
+        }
+    </script>
+
+    <div id="step2_control_label" style="text-align: center"></div>
+    <div id="step2_control" style="text-align: center"></div>
+    <div id="algorithm_vis2" style="text-align: center"></div>
+    <div id="algorithm_vis2_final"></div>
+    <p class="text-center">${{ sha2.author }}$</p>
+</div>

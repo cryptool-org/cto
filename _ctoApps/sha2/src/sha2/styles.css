@@ -1,0 +1,47 @@
+.separator {
+    border-top: 1px solid #8c8b8b;
+}
+
+.representation_box {
+    height: 200px;
+    width: 100%;
+    border: 1px solid;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    color: rgb(20, 179, 20);
+}
+
+tr:nth-child(event) {
+    background-color: #dddddd;
+}
+
+strong {
+    font-weight: bold;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 80%;
+  }
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000031;
+    border: 1px solid #00001E;
+    height: 20px;
+    width: 20px;
+    border-radius: 15px;
+    background: #0DBD13;
+    cursor: pointer;
+  }

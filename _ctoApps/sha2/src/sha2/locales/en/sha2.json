@@ -1,0 +1,99 @@
+{
+    "heading" : "SHA 256 Algorithm",
+    "description" : "Here the functionality of the hashing algorithm SHA256 is illuminated and explained. Insert something into the text field and press the button.",
+    "author" : "Author: Jan-Niklas Jeske",
+
+    "inputPlaceholder" : "Insert some data which will be hashed...",
+    "hashing_button" : "Hash input!",
+
+    "table1_text": "The input is split into every single character. For every character the Codepoint is determined. The Codepoint is a numerical value which uniquely identifies every character. Finally we convert this numerical value into the binary representation. For the binary values we want a size of 8 Bit (1 Byte). To achieve this, we fill every binary value up to 1 Byte. That means we insert 0s to the left end. With that, there is no influence to the intial numerical value.",
+    "table1_column1" : "Character",
+    "table1_column2" : "Codepoint",
+    "table1_column3" : "Binary number (1 Byte)",
+
+    "table2_text" : "The Message-Size describes the amount of bits we used to represent the message. We are talking about the amount of bits of the 3. column of the table above. The Message-Size is also representated in binary and finally filled up to 64 bits.",
+    "table2_row1" : "Message-Size",
+    "table2_row2" : "In binary representation",
+    "table2_row3" : "Filled up to 8 Byte (64 Bits)",
+
+    "final_message1" : "We got the message itself and the length of it in binary representation. In a nutshell we have to merge both components together to one block of data. The whole message block needs a size of a multiple of 512 bits. The goal is to generate one or several chunks. Those chunks are the foundation for the algorithm. Every chunks needs the consistend length of 512 bits.",
+    "final_message2" : "In first place we concatenate the binary message to one packet. Every byte is going to be concatenated. Afterwards we append a single 1 to the right end.",
+    "final_message3" : "What happens specifically depends on the Message-Size.",
+
+    "final_message_case1_1" : "Case 1",
+    "final_message_case1_2" : "Message-Size &lt; 448",
+    "final_message_case1_3" : "We append 0s to the right end until we reach a size of 448 bits. Afterwards we append the binary Message-Length. Now we are done. We have one block of data, a single chunk. Out of this chunk the hash-digest will be computed.",
+
+    "final_message_case2_1" : "Case 2",
+    "final_message_case2_2" : "448 &le; Message-Size &le; 512",
+    "final_message_case2_3" : "We append 0s to the right end until we reach a size of 1024 bits. 1024 bits are already a multiple of 512, that means we now replace the last 64 bits of the filled up 0s with the binary message-length. Afterwards we cut those 1024 bits into two chunks with a length of 512 bits.",
+
+    "final_message_case3_1" : "Case 3",
+    "final_message_case3_2" : "512 &lt; Message-Size",
+    "final_message_case3_3" : "We append 0s to the right end until the length of the data is a multiple of 512 bits. Finally we replace the last 64 bits of the filled up 0s with the binary message-length and cut the data into several 512 bit chunks.",
+
+    "step1_1" : "Step 1",
+    "step1_2" : "We concatenate the Byte of every character of our input.",
+
+    "step2_1" : "Step 2",
+    "step2_2" : "We append a single 1 to the right end. Its a marker which indicates the end of our initial message.",
+
+    "step3_1" : "Step 3",
+    "step3_2" : "We append 0s to the right end until we reach a length which is a multiple of 512 bits. In Case 1, step 4 will finally achieve this condition through appending the binary message-length.",
+
+    "step4_1" : "Step 4",
+    "step4_2" : "We append the binary message-length to the data-block",
+
+    "step5_1" : "Step 5",
+    "step5_2" : "The whole dataset is cut into several 512 bit chunks if its needed (In Case 1 its not needed!).",
+
+    "loop1_1" : "The algorithm is segmented into 2 loops. For every chunk both loops are executed a single time. In the first place the 1. loop is visualized. Before the 1. loop starts its job, the chunk, the loop works with, is cut into 32 bit data-segments. Afterwards 48 32-bit data-segments of 0s are added to the chunk.",
+    "loop1_2" : "rotr(): Rotates a binary segment to the right. The bits falling out of the right end are placed back to the left most position.",
+    "loop1_3" : "shr(): Shifts the bits of a binary segment to the right. The bits falling out of the right end are replaced with 0s at the left most position.",
+    "loop1_4" : "add(): This method adds two binary sequences together.",
+    "loop1_5" : "xor(): Combines two binary sequences bitwise, based on the logical Exclusive-Or-Conjunction.",
+
+    "loop1_button_reset" : "Reset",
+    "loop1_button_play" : "Play",
+
+
+    "loop2_1" : "Here, the 2. loop is visualized. The concept is the following:<br>",
+    "loop2_2" : "For every chunk the 2. loop is executed as a final instance. The loop computes 8 constants. Those 8 constants will be passed on to the next chunk, to the 2. loop. There they serve as foundation for the next constant computation. ",
+    "loop2_3" : "If you look at the last chunk, the new 8 computed constants arent passed on to the next chunk, they already represent the 256 bit sized hash-digest. ",
+    "loop2_4" : "The 2. loop needs 64 rounds for the constant computation. Its no coincidence that the chunk and the constant-set K has a length of 64 data-segments. Every segment of both sets is included in the constant computation. ",
+    "loop2_5" : "In the first step, the first column (Previous Constants) represents the 8 constants which were computed with the 2. loops of the chunk before. If this is the 1. chunk, this column represents the values of the constant-set H. ",
+    "loop2_6" : "Everytime in a single round the constants were computed, they jump back to the position of the previous constants and are reckoned up again. This time with the new data-segment of the chunk and the constant-set K.",
+
+    "dynamic_title_loop1" : "Loop 1",
+    "dynamic_title_loop2" : "Loop 2",
+
+    "dynamic_button_loop1_1" : "Reset",
+    "dynamic_button_loop1_2" : "Play",
+
+    "dynamic_computation_description" : "Is replaced with the following result:",
+
+    "dynamic_computation_loop2_description1" : "6 of the previous constants will be taken over into the new constant-set.",
+    "dynamic_computation_loop2_description2" : "The 3 blue and the 3 yellow constants are shifted down for one place and taken over to the new constants.",
+
+    "dynamic_loop2_header1" : "Position",
+    "dynamic_loop2_header2" : "Previous Constants",
+    "dynamic_loop2_header3" : "New Constants",
+
+    "dynamic_lastChunksComputation1" : "The 2. loop is done.",
+    "dynamic_lastChunksComputation2" : "The computed constants are shown again in the table below (3. column). ",
+    "dynamic_lastChunksComputation3" : "Those constants are added together with the computed sum of the previous chunk (Sum (previous chunk)) and represent the new sum of constants for this chunk. ",
+    "dynamic_lastChunksComputation4" : "The last chunk is fully processed. The 8 new constants are containing the hash-digest.",
+    "dynamic_lastChunksComputation5" : "Sum",
+    "dynamic_lastChunksComputation6" : "Sum (Previous Chunk)",
+    "dynamic_lastChunksComputation7" : "New constants",
+    "dynamic_lastChunksComputation8" : "The sum of every constant is turned into the hexadecimal-representation and concatenated to the hash-digest:",
+    "dynamic_lastChunksComputation9" : "Hexadecimal",
+    "dynamic_lastChunksComputation10" : "The hash-digest:",
+
+    "dynamic_lastChunksComputation11" : "New computed constants",
+    "dynamic_lastChunksComputation12" : "is the",
+    "dynamic_lastChunksComputation13" : "element of the constant-set K (Tab (Constants))",
+    "dynamic_lastChunksComputation14" : "element of",
+    "dynamic_lastChunksComputation15" : "above"
+}
+
