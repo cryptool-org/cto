@@ -86,7 +86,6 @@ function formatInteger(int) {
 
 
 function createAlgorithmVisualizationInitial() {
-
     let data = ''
     data += '<button type="button" class="btn btn-secondary" style="margin: 5px" onClick="previousChunk()">&#8678;</button>'
     data += '&nbsp;&nbsp;<span style="color: rgb(20, 179, 20)">CHUNK ' + `${chunk_index+1}/${algo_info.main_algorithm.length}` + '</span>&nbsp;&nbsp;'
@@ -172,6 +171,8 @@ function createAlgorithmVisualization() {
             data += `${formatInteger(c)}` + algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_w"][c] + '&nbsp;&nbsp;'
         }
 
+        //colorizing for c+1
+
         if(algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_sh1"] == c+1) {
 
             data += `${formatInteger(c+1)}` + '<span style="color: blue">' + algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_w"][c+1] + '&nbsp;&nbsp;</span>'
@@ -196,6 +197,8 @@ function createAlgorithmVisualization() {
             data += `${formatInteger(c+1)}` + algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_w"][c+1] + '&nbsp;&nbsp;'
         }
 
+        //colorizing for c+2
+
         if(algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_sh1"] == c+2) {
 
             data += `${formatInteger(c+2)}` + '<span style="color: blue">' + algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_w"][c+2] + '&nbsp;&nbsp;</span>'
@@ -219,6 +222,8 @@ function createAlgorithmVisualization() {
         }else {
             data += `${formatInteger(c+2)}` + algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_w"][c+2] + '&nbsp;&nbsp;'
         }
+
+        //colorizing for c+3
 
         if(algo_info.main_algorithm[chunk_index]["loop1"][step]["lp1_sh1"] == c+3) {
 
@@ -351,6 +356,8 @@ function createAlgorithmVisualization2() {
     data += '<button type="button" class="btn btn-secondary" style="margin: 5px" onClick="vis2pastStep()">&#8678;</button>'
     data += '<button type="button" class="btn btn-secondary" style="margin: 5px" onClick="vis2nextStep()">&#8680;</button>'
 
+    //HERE
+
     switch(innerSteps) {
         case 0:
 
@@ -442,6 +449,8 @@ function createAlgorithmVisualization2() {
 
             document.getElementById("algorithm_vis2").innerHTML = data
 
+            //innerSteps = 0
+
             break;
 
     }
@@ -473,6 +482,7 @@ function chunker(bits, chunk_length=8) {
 
 function finalConstantAdditionToHash() {
 
+    //triggers in last chunk
     if(chunk_index == (algo_info.main_algorithm.length)-1) {
 
         let const_keys = ['h0', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7']
@@ -512,6 +522,7 @@ function finalConstantAdditionToHash() {
 
         document.getElementById("algorithm_vis2_final").innerHTML = data
 
+        //triggers if not last chunk
     }else {
 
         let const_keys = ['h0', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7']

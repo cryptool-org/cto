@@ -28,6 +28,26 @@
         dynamic25 = '${{ sha2.dynamic_lastChunksComputation15 }}$'
     </script>
 
+    <script>
+
+        function createPluginContent() {
+            let content = document.getElementById('hash_input').value
+            if (typeof content !== 'undefined' && content.trim()) {
+                algo_info = sha256(content)
+                createInputPreprocessingData()
+                fillMessagePreprocessingInfos()
+                createInputLengthPreprocessingData()
+                createFinalInputPreprocessingData()
+                spawnRange()
+                createAlgorithmVisualizationInitial()
+                spawnpreloop1()
+                spawnpreloop2()
+                createAlgorithmVisualization2()
+            }
+        }
+
+    </script>
+
 
     <p>${{ sha2.description }}$</p>
 
@@ -39,9 +59,7 @@
         <div style="text-align: center">
             <button
             type="button"
-            onClick="algo_info = sha256(document.getElementById('hash_input').value), createInputPreprocessingData(), fillMessagePreprocessingInfos(),
-            createInputLengthPreprocessingData(), createFinalInputPreprocessingData(), spawnRange(), createAlgorithmVisualizationInitial(), spawnpreloop1(), spawnpreloop2(),
-            createAlgorithmVisualization2()"
+            onClick="createPluginContent()"
             class="btn btn-secondary"
             style="margin-top: 10px;">${{sha2.hashing_button}}$</button>
         </div>
@@ -122,7 +140,7 @@
 
                     data += '<table><tr><td style="color: rgb(20, 179, 20)">'
                     data += '${{ sha2.table2_row1}}$</td>'
-                    data += '<td>' + algo_info.input_length_preprocessing[0][0] + '</td></tr><tr>'
+                    data += '<td style="color: rgb(255, 0, 0)">' + algo_info.input_length_preprocessing[0][0] + '</td></tr><tr>'
                     data += '<td style="color: rgb(20, 179, 20)">${{ sha2.table2_row2}}$</td><td>' + algo_info.input_length_preprocessing[0][1] + '</td></tr><tr>'
                     data += '<td style="color: rgb(20, 179, 20)">${{ sha2.table2_row3}}$</td><td>' + algo_info.input_length_preprocessing[0][2] + '</td></tr></table>'
 
@@ -139,30 +157,40 @@
             let data = '<hr class="separator">'
 
             data += '<p>${{ sha2.final_message1 }}$</p>'
-            data += '<p>${{ sha2.final_message2}}$</p>'
-            data += '<p>${{ sha2.final_message3}}$</p>'
-
+            data += '<p>${{ sha2.final_message2 }}$</p>'
+            data += '<p>${{ sha2.final_message3 }}$</p>'
 
             data += '<table>'
             data += '<tr>'
-            data += '<td style="color: rgb(20, 179, 20)">${{ sha2.final_message_case1_1}}$</td>'
-            data += '<td>${{ sha2.final_message_case1_2}}$</td>'
-            data += '<td>${{ sha2.final_message_case1_3}}$</td>'
+            data += '<td id="cs1" style="color: rgb(20, 179, 20)">${{ sha2.final_message_case1_1 }}$</td>'
+            data += '<td>${{ sha2.final_message_case1_2 }}$</td>'
+            data += '<td>${{ sha2.final_message_case1_3 }}$</td>'
             data += '</tr>'
             data += '<tr>'
-            data += '<td style="color: rgb(20, 179, 20)">${{ sha2.final_message_case2_1}}$</td>'
-            data += '<td>${{ sha2.final_message_case2_2}}$</td>'
-            data += '<td>${{ sha2.final_message_case2_3}}$</td>'
+            data += '<td id="cs2" style="color: rgb(20, 179, 20)">${{ sha2.final_message_case2_1 }}$</td>'
+            data += '<td>${{ sha2.final_message_case2_2 }}$</td>'
+            data += '<td>${{ sha2.final_message_case2_3 }}$</td>'
             data += '</tr>'
             data += '<tr>'
-            data += '<td style="color: rgb(20, 179, 20)">${{ sha2.final_message_case3_1}}$</td>'
-            data += '<td>${{ sha2.final_message_case3_2}}$</td>'
-            data += '<td>${{ sha2.final_message_case3_3}}$</td>'
+            data += '<td id="cs3" style="color: rgb(20, 179, 20)">${{ sha2.final_message_case3_1 }}$</td>'
+            data += '<td>${{ sha2.final_message_case3_2 }}$</td>'
+            data += '<td>${{ sha2.final_message_case3_3 }}$</td>'
             data += '</tr>'
             data += '</table>'
             data += '<br><br>'
 
             document.getElementById("fillMessagePreprocessingInfosToInsert").innerHTML = data
+
+            let message_length = algo_info["input_length_preprocessing"][0][0]
+
+
+            if(message_length < 448) {
+                document.getElementById("cs1").style.color = "rgb(255, 0, 0)"
+            }else if(448 <= message_length && message_length <= 512) {
+                document.getElementById("cs2").style.color = "rgb(255, 0, 0)"
+            }else {
+                document.getElementById("cs3").style.color = "rgb(255, 0, 0)"
+            }
         }
 
 
@@ -262,7 +290,7 @@
     <script>
         function spawnpreloop1() {
 
-            let data = `<div style="text-align: center"><h3>${greenify(dynamic1)}</h3></div>`
+            let data = `<div style="text-align: center"><h3>${greenify(dynamic1)}</h3></div>` //stemp
 
 
             data += '<p>'
@@ -284,7 +312,7 @@
     <script>
         function spawnpreloop2() {
             let data = '<hr class="separator">'
-            data += `<div style="text-align: center"><h3>${greenify(dynamic2)}</h3></div>`
+            data += `<div style="text-align: center"><h3>${greenify(dynamic2)}</h3></div>` //stemp
             data += '<p>${{ sha2.loop2_1 }}$<br>'
             data += '${{ sha2.loop2_2 }}$'
             data += '${{ sha2.loop2_3 }}$<br><br>'
