@@ -16,7 +16,7 @@
 
     "settingsInfo": "<p>Jede Seite dieser Animation besteht aus 4 Teilen: einem Anzeigefeld, in dem die Animation dargestellt wird. Unter diesem Feld befindet sich eine Bedienungsleiste, in der sich die Animation starten/stoppen lässt, sowie Knöpfe um direkt zu einzelnen Animations-Seiten zu gelangen. Ebenso sind ein \"Vorwärtsspringen\"- und ein \"Rückwärtsspringen\"-Button vorhanden. Diese erlauben es, sich in der eingestellten Sprungdauer über die Seitengrenzen hinweg durch die Animations-Timeline zu bewegen.</p><p>Unter der Bedienungsleiste befindet sich noch ein Abschnitt mit einem Info-Text zu der jeweils angezeigten Seite, und ganz unten ein Formular zur Eingabe (der Parameter und der Nachricht, die in der Animation benutzt werden) und zur Ausgabe.</p>",
 
-    "finishOverlayBackToEncryption": "Verschlüsselungsprozess erneut anschauen",
+    "finishOverlayBackToEncryption": "Verschlüsselungs-Prozess erneut anschauen",
     "finishOverlayBackToKeySchedule": "Schlüsselgenerierung erneut anschauen",
     "finishOverlayBackToStart": "Animation neu starten",
 
@@ -56,7 +56,7 @@
     "page-3-title": "Seite 3: Verschlüsselungsprozess und Hauptschlüssel",
     "page-3-info": "<p>AES basiert auf der Rijndael-Blockchiffre. Während der Rijndael-Algorithmus eine Reihe von Schlüssel- und Blockgrößen zulässt (128, 160, 192, 224, 256 Bit), ist AES nicht so flexibel. AES hat eine feste Blocklänge von 128 Bit und lässt nur 128, 192 und 256 Bit als Schlüssellänge zu.</p><p>Der Zustand (enthält die Nachricht) und der Schlüssel können als rechteckiges Feld von Bytes dargestellt werden. Während die Bitlängen des Zustands/Schlüssels geteilt durch 32 die Anzahl der Spalten bestimmen, besteht jede Spalte immer aus 4 Bytes. Diese Spalten werden manchmal auch als Wörter bezeichnet. Die Anzahl der Spalten im Zustand wird üblicherweise als Nb und die Anzahl der Spalten im Hauptschlüssel als Nk bezeichnet.</p><p>Da wir in dieser Animation sowohl für den Zustand als auch für den Schlüssel eine Länge von 128 Bit verwenden, sind Nb und Nk in diesem Fall jeweils 4. Die sich ergebenden Arrays können daher als vier mal vier Tabellen dargestellt werden, wobei die Byte-Werte in hexadezimaler Schreibweise angegeben werden.</p><p>Der Übersichtlichkeit halber werden der Verschlüsselungsvorgang und die Erstellung der Rundenschlüssel in getrennten Abschnitten dargestellt. Da der eigentliche Verschlüsselungsvorgang für die meisten Menschen der interessantere Teil ist, wird dieser zuerst in Teil A behandelt.</p>",
 
-    "page-4-title": "Seite 4: A) Verschlüsselungsprozess",
+    "page-4-title": "A) Verschlüsselungsprozess (Seite 4)",
     "page-4-info": "<p>In diesem Abschnitt werden der Verschlüsselungsprozess und seine Teilschritte erläutert. Der Entschlüsselungsprozess funktioniert in umgekehrter Weise sehr ähnlich.</p>",
 
     "page-5-title": "Seite 5: Übersicht über den Verschlüsselungsprozess",
@@ -83,7 +83,7 @@
     "page-12-title": "Seite 12: Runden 6 - 10",
     "page-12-info": "<p>Diese Seite zeigt die Zustände nach jeder Transformation während der Runden 6 bis 10 des Verschlüsselungsprozesses sowie die endgültige Ausgabe für den ersten Block.</p>",
 
-    "page-13-title": "Seite 13: B) Generierung der Rundenschlüssel",
+    "page-13-title": "B) Generierung der Rundenschlüssel (Seite 13)",
     "page-13-info": "<p>Der gegebene Hauptschlüssel wird expandiert, um die Rundenschlüssel herzuleiten, die in jeder Runde des Verschlüsselungs-/Entschlüsselungsprozesses verwendet werden. Die Anzahl der Rundenschlüssel ist gleich der Anzahl der Runden plus eins und ihre Größe hängt von der Länge des Nachrichtenblocks ab.</p>",
 
     "page-14-title": "Seite 14: Schlüsselexpansion",
