@@ -115,7 +115,7 @@ const analyze = () => {
     ciphertext = $("#input-textarea").val().toLowerCase()
     ciphertext = ciphertext.replace(/\s+/g, '') // remove spaces
     ciphertext = ciphertext.replace(/\n|\r/g, '') // remove newline
-    ciphertext = ciphertext.replace(/[^A-Za-z]/g, '') // remove symbols, which are not a-z,A-Z
+    ciphertext = ciphertext.replace(/[^A-Za-z0-9]/g, '') // remove symbols, which are not a-z,A-Z,0-9
 
     if(ciphertext.length < 30) {
         showErrorAlert("Error", "${{ ncid.ciphertext_too_short }}$"); return
