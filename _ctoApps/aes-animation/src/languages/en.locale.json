@@ -51,7 +51,7 @@
     "page-3-title": "Page 3: Encryption Process and Cipher Key",
     "page-3-info": "<p>AES is based on the Rijndael block cipher. While the Rijndael algorithm allows for a range of key and block sizes (128, 160, 192, 224, 256 bit), AES is not that flexible. AES has a fixed block length of 128 bit and only allows 128, 192, and 256 bits as key lengths.</p><p>The state (contains the message) and the key can be visualized as a rectangular array of bytes. While the state/key bitlength divided by 32 determines the number of columns, each column will always consist of 4 bytes. These columns are also sometimes referred to as words. The number of columns in the state is usually denoted as Nb and the number of columns in the cipher key as Nk.</p><p>As we use a 128 bit length for both the state and the key in this animation, both Nb and Nk, are 4 in this case. The resulting arrays can thus be displayed as four by four tables, using hexadecimal notation for the byte values.</p><p> For the sake of clarity, the encryption process and the creation of the key schedule (generation of round keys) are presented in separate sections. Since the actual encryption process is the more interesting part for most people, this will be covered first in part A.</p>",
 
-    "page-4-title": "Page 4: A) Encryption Process",
+    "page-4-title": "A) Encryption Process (Page 4)",
     "page-4-info": "<p>This section explains the encryption process and its operations. The decryption process works very similar in an inverted manner.</p>",
 
     "page-5-title": "Page 5: Encryption Process Overview",
@@ -78,7 +78,7 @@
     "page-12-title": "Page 12: Rounds 6 - 10",
     "page-12-info": "<p>This page displays the states after each transformation during rounds 6 to 10 of the encryption process, as well as the final output for the first block.</p>",
 
-    "page-13-title": "Page 13: B) Key Schedule",
+    "page-13-title": "B) Key Schedule (Page 13)",
     "page-13-info": "<p>The given cipher key (main key) is expanded to create round keys used in each round in the encryption / decryption process. The number of round keys is equal to the number of rounds plus one and their size depends on the message block's length. </p>",
 
     "page-14-title": "Page 14: Key Expansion",
